@@ -1,0 +1,45 @@
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
+  secret: NwobS3vT3wShr53wI2fvmVbOtV6I5dq9b2n6Zat2DZR
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/students?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 951753
+  thymeleaf:
+    cache: true
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+      exclude: WEB-INF/**
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+
+pagehelper:
+  helper-dialect: mysql
+#mybatis:
+#  type-aliases-package: com.jdragon.tlj.pojo
+#  mapper-locations: classpath:/mappers/*Mapper.xml
+# Mybatis-plus 配置
+mybatis-plus:
+  mapper-locations: classpath:/mappers/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: false
+editor:
+  windowsPath: D:/WEB/MEditor/
+  linuxPath: /var/java/MEditor/
+  MdPrefixUrl: /static/MEditor/
+
+
+

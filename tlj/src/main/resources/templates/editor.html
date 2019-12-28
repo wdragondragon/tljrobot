@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf8" src="/ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript">
+        var contentEditor = UE.getEditor('content');
+        function getEdit(){
+            $.ajax({
+                type:'POST',
+                contentType:'application/json;charset=utf-8',
+                url:'/home/GetNew/'+ $("#contendId").val(),
+                dataType:'json',
+                success:function(data) {
+                    $("#edit").html(data['result']['content']);
+                },
+                error:function (err) {
+                    console.log(err.responseText);
+                    alert(err.responseText);
+                }
+            })
+        }
+        function publishNews() {;
+            var data={title:$("#title").val(),newsType:$("#newsType").val(),content:contentEditor.getContent(),editorType:1,newsType:$('#newsType').val()} ;
+            $.ajax({
+                url:"/UEditor/newPublish/"+sessionStorage.sessionId, //dojson
+                type:"post",//get/post
+                data:JSON.stringify(data),
+                contentType:"application/json",
+                dataType:"json",//json ,text
+                success:function(data){
+                    if(data["message"]=="上传成功") {
+                        alert(data["result"]);
+                        $(location).prop('href',"/");
+                    }
+                },
+                error:function(e){alert( JSON.stringify(e) );}
+            });//json
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <form name="newform" id="newform" action="#" method="post">
+            <label>标题：</label><input type="text" name="title" id="title" size="20" /><br/>
+            <label>类别：</label>
+            <select name="newsType" id="newsType">
+                <option value="方案魔改">方案魔改</option>
+                <option value="方案教学">方案教学</option>
+                <option value="提升分享">提升分享</option>
+                <option value="速度录屏">速度录屏</option>
+            </select><br/>
+            <!--<label>发布时间：</label>
+            <input id="meeting" type="date" name="publishTime" id="publishTime"/><br/>  -->
+            <label>发布内容：</label><br/>
+            <input class="btn btn-default" type="button" onclick="publishNews()" value="提交"/>
+            <a class="btn btn-default" href="/">返回主页</a>
+            <textarea name="content" id="content" style="width:95%;height:300px;"></textarea>
+        </form>
+    </div>
+<!--    <input type="text" id="contendId"/>-->
+<!--    <div class="container" id="edit">-->
+
+
+<!--    </div>-->
+<!--    <button onclick="getEdit()">获取</button>-->
+</body>
+</html>

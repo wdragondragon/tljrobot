@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="itchat4j-1.1.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/robot/lib/itchat4j-1.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

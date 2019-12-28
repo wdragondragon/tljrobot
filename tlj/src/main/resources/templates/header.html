@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width-device-width,initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/ajaxGetHtml.js"></script>
+    <style>
+        .onClickMouser {
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            changeLogStatu();
+            clickHome();
+            getFooter();
+        })
+        function isLogin() {
+            if(sessionStorage.sessionId==null||sessionStorage.sessionId=="")return false;
+            else return true;
+        }
+        function changeLogStatu (){
+            if(isLogin()){
+                $("#loginButton").hide();
+                $("#logoutButton").show();
+
+            }else{
+                $("#loginButton").show();
+                $("#logoutButton").hide();
+            }
+        }
+        function ClickMyInfo() {
+            if(isLogin()) {
+                instead('/home/myInfo','#instead');
+            }else alert("未登录");
+        };
+        function ClickAllUser() {
+            instead('/home/allUser','#instead');
+        };
+        function ClickAllHistory() {
+            if(isLogin()) {
+                instead('/home/historyTable','#instead');
+            }else alert("未登录");
+        }
+        function clickHome(){
+            instead('/home/introduce','#instead');
+        }
+        function Logout(){
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: '/home/logout/'+sessionStorage.sessionId,
+                dataType: 'json',
+                success: function (data) {
+                    var result = data['message'];
+                    if(result=="退出成功"){
+                        sessionStorage.sessionId="";
+                        changeLogStatu();
+                        alert(result);
+                    }
+                },
+                error: function (err) {
+                    alert(JSON.stringify(err));
+                }
+            });
+        }
+        function getMDEditor(proFixUrl) {
+            if(isLogin())
+                insteadSafe(proFixUrl,'#instead');
+            else
+                alert("请先登录");
+        }
+        function getFooter() {
+            instead("/home/footer","#footer");
+        }
+        function getArticle() {
+            instead("/home/article","#instead");
+        }
+        function wati(){
+            alert("敬请期待");
+        }
+
+    </script>
+    <title>拖拉机跟打器</title>
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+<div class="jumbotron text-center" style="margin-bottom:0" id="header">
+    <h1>拖拉机跟打器</h1>
+    <p>一款属于你的跟打器！</p>
+</div>
+<nav class="navbar navbar-inverse" role="navigation" style="margin-bottom:0" id="nav">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#example-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand onClickMouser" onclick="clickHome()">拖拉机</a>
+        </div>
+        <div class="collapse navbar-collapse" id="example-navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        个人资料
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="onClickMouser" onclick="ClickMyInfo()"><a>个人概况</a> </li>
+                        <li class="onClickMouser" onclick="ClickAllHistory()"><a>跟打记录</a> </li>
+                    </ul>
+                </li>
+                <li class="onClickMouser" id="alluser" onclick="ClickAllUser()"><a>全体概况</a> </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        下载
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://jdragon.club/upload/2019/7/tlj/new.rar">Windows版完整版</a></li>
+                        <li><a href="https://jdragon.club/upload/2019/7/tlj/new.exe">Windows版更新包</a></li>
+                        <li class="divider"></li>
+                        <li><a href="https://jdragon.club/upload/2019/7/tlj/new.jar">linux版更新包</a></li>
+                        <li><a href="https://jq.qq.com/?_wv=1027&k=5EVEbCx">linux完整版点击进群下载</a></li>
+                    </ul>
+                </li>
+                <li class="onClickMouser" onclick="wati()"><a>上传词库</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        经验交流
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="onClickMouser" onclick="getArticle()"><a>文章特区</a></a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">文章发布</li>
+                        <li class="onClickMouser" onclick="getHttp('/UEditor/editor')"><a>富文本</a></a></li>
+                        <li class="onClickMouser" onclick="getHttp('/MEditor/editor')"><a>MD文本</a></a></li>
+                        <li class="divider"></li>
+                        <li class="onClickMouser" onclick="insteadSafe('/MEditor/manageArticle','#instead')"><a>管理文章</a></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/home/register"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                <li>
+                    <a href="/home/login" id="loginButton"><span class="glyphicon glyphicon-log-in"></span> 登录</a>
+                    <a onclick="Logout()" id="logoutButton" style="display: none"><span class="glyphicon glyphicon-log-in"></span> 登出</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

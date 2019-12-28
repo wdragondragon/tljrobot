@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jdragon.tljrobot.tlj.mappers.UserMapper">
+    <resultMap id="BaseResultMap" type="com.jdragon.tljrobot.tlj.pojo.User">
+        <id property = "name" column = "username" />
+        <result property = "pwd"  column = "password"/>
+        <result property = "num"  column = "num"/>
+        <result property = "rightnum" column = "rightnum"/>
+        <result property = "misnum" column = "misnum"/>
+        <result property = "datenum" column = "datenum"/>
+        <result property = "online" column = "online"/>
+        <result property = "aver" column = "aver"/>
+        <result property = "n" column = "n"/>
+        <result property = "zhucedate" column = "zhucedate"/>
+        <result property = "lastdate" column = "lastdate"/>
+        <result property = "email" column = "email"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        username, password, num, rightnum, misnum, datenum, online, aver, n, zhucedate, lastdate, email
+    </sql>
+</mapper>

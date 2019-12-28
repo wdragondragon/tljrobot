@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        #MyInfoTable,#MyInfoTable th{
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+    <script type="text/javascript">
+
+        var GetMyInfo = function () {
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: '/me/info/' + sessionStorage.sessionId,
+                dataType: 'json',
+                success: function (data) {
+                    var message = data["message"];
+                    if(message=="获取成功") {
+                        data = data["result"];
+                        let tr = $('#MyInfo');
+                        tr.empty();
+                        tr.append('<td>' + data.name + '</td>');
+                        tr.append('<td>' + data.num + '</td>');
+                        tr.append('<td>' + data.rightnum + '</td>');
+                        tr.append('<td>' + data.misnum + '</td>');
+                        tr.append('<td>' + data.datenum + '</td>');
+                        tr.append('<td>' + data.n + '</td>');
+                        tr.append('<td>' + data.aver.toFixed(2) + '</td>');
+                        tr.append('<td>' + data.lastdate + '</td>');
+                        tr.append('<td>' + data.zhucedate + '</td>');
+                        tr.append('<td>' + data.online + '</td>');
+                    }else
+                        alert(message);
+                },
+                error: function (err) {
+                    alert("拉取失败");
+                }
+            })
+        }
+        $(function () {
+            GetMyInfo();
+        })
+    </script>
+    <title>Title</title>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="table-responsive" id="MyInfoTable">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>总字数</th>
+                    <th>正确字数</th>
+                    <th>错误字数</th>
+                    <th>今日字数</th>
+                    <th>赛文跟打次数</th>
+                    <th>赛文平均成绩</th>
+                    <th>最后登录日期</th>
+                    <th>注册日期</th>
+                    <th>在线情况</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr id="MyInfo"></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

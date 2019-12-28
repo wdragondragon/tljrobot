@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        #UsersTable,#UsersTable th,#UserList,#UserList th,
+        #UserChangePage,#UserChangePage li{
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+    <script type="text/javascript">
+        function addUserPageList (pageul,gopagenum){
+            pageul.append('<li><a>'+gopagenum+'</a></li>');
+            pageul.find(':last').attr('onclick','changePage('+gopagenum+')');
+            pageul.find('li:last').addClass('onClickMouser');
+        }
+        function showPage (data) {
+            let tb = $('#UserList');
+            tb.empty();
+            for(let i in data.list){
+                tb.append('<tr></tr>');
+                let tr = tb.find(":last");
+                tr.append('<td>'+((data.pageNum-1)*data.pageSize*1+i*1+1)+'</td>');
+                tr.append('<td>'+data.list[i].name+'</td>');
+                tr.append('<td>'+data.list[i].num+'</td>');
+                tr.append('<td>'+data.list[i].rightnum+'</td>');
+                tr.append('<td>'+data.list[i].misnum+'</td>');
+                tr.append('<td>'+data.list[i].datenum+'</td>');
+                tr.append('<td>'+data.list[i].n+'</td>');
+                tr.append('<td>'+data.list[i].aver.toFixed(2)+'</td>');
+                tr.append('<td>'+data.list[i].lastdate+'</td>');
+                tr.append('<td>'+data.list[i].zhucedate+'</td>');
+                tr.append('<td>'+data.list[i].online+'</td>');
+            }
+            let pageul = $('#UserChangePage');
+            pageul.empty();
+            let gopagenum;
+            pageul.append('<li><a>&laquo;</a></li>');
+            pageul.find(':last').attr('onclick','changePage('+1+')');
+            pageul.find('li:last').addClass('onClickMouser');
+            if(data.pageNum*1-1>0){
+                gopagenum = data.pageNum*1-1;
+                pageul.append('<li><a><</a></li>');
+                pageul.find(':last').attr('onclick','changePage('+gopagenum+')');
+                pageul.find('li:last').addClass('onClickMouser');
+            }
+            if(data.pageNum*1-2>0){
+                gopagenum = data.pageNum*1-2;
+                addUserPageList(pageul,gopagenum);
+            }
+            if(data.pageNum*1-1>0){
+                gopagenum = data.pageNum*1-1;
+                addUserPageList(pageul,gopagenum);
+            }
+            addUserPageList(pageul,data.pageNum);
+            pageul.find('li:last').addClass('active');
+            if(data.pageNum*1+1<data.pages){
+                gopagenum = data.pageNum*1+1;
+                addUserPageList(pageul,gopagenum);
+            }
+            if(data.pageNum*1+2<data.pages){
+                gopagenum = data.pageNum*1+2;
+                addUserPageList(pageul,gopagenum);
+            }
+            if(data.pageNum*1+1<data.pages){
+                gopagenum = data.pageNum*1+1;
+                pageul.append('<li><a>></a></li>');
+                pageul.find(':last').attr('onclick','changePage('+gopagenum+')');
+                pageul.find('li:last').addClass('onClickMouser');
+            }
+            pageul.append('<li><a>&raquo;</a></li>');
+            pageul.find(':last').attr('onclick','changePage('+data.pages+')');
+            pageul.find('li:last').addClass('onClickMouser');
+        };
+        function changePage (page){
+            $.ajax({
+                type:'POST',
+                contentType:'application/json;charset=utf-8',
+                url:'/home/allUser/'+page,
+                dataType:'json',
+                success:function(data) {
+                    showPage(data["result"]);
+                },
+                error:function (err) {
+                    alert(err.responseText);
+                }
+            })
+        }
+        $(document).ready(changePage(1));
+    </script>
+    <title>Title</title>
+</head>
+<body>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="table-responsive" id="UsersTable">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>用户名</th>
+                        <th>总字数</th>
+                        <th>正确字数</th>
+                        <th>错误字数</th>
+                        <th>今日字数</th>
+                        <th>赛文跟打次数</th>
+                        <th>赛文平均成绩</th>
+                        <th>最后登录日期</th>
+                        <th>注册日期</th>
+                        <th>在线情况</th>
+                    </tr>
+                    </thead>
+                    <tbody id="UserList"></tbody>
+                </table>
+                <ul class="pagination" id="UserChangePage">
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

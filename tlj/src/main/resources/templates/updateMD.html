@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Simple example - Editor.md examples</title>
+    <link rel="stylesheet" href="/editor/examples/css/style.css"/>
+    <link rel="stylesheet" href="/editor/css/editormd.css" />
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
+    <script src="/js/ajaxGetHtml.js"></script>
+    <script>
+        function uploadContent() {
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: '/MEditor/updateArticle/'+sessionStorage.sessionId,
+                data :JSON.stringify({id:sessionStorage.articleId,mdContent:$('#mdContent').val(),content:$('#content').val()
+                    ,editorType:2,title:$('#title').val(),newsType:$('#newsType').val()}),
+                dataType: 'json',
+                success: function (data) {
+                    var result = data['message'];
+                    if(result=="更新成功"){
+                        alert(result);
+                        instead("/home/article","#instead");
+                    }
+                },
+                error: function (err) {
+                    alert(JSON.stringify(err));
+                }
+            });
+        }
+        function getContent() {
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: '/MEditor/getMdContent/'+ sessionStorage.articleId+'/'+ sessionStorage.sessionId,
+                dataType: 'json',
+                success: function (data) {
+                    var result = data['message'];
+                    if(result=="获取成功"){
+                        $('#mdContent').text(data['result']['mdContent']);
+                        $("#title").val(data['result']['title']);
+                        $('#newsType').val(data['result']['newsType']);
+                    }
+                },
+                error: function (err) {
+                    alert(JSON.stringify(err));
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<label>标题：</label><input type="text" name="title" id="title" size="20" /><br/>
+<label>类别：</label>
+<select name="newsType" id="newsType">
+    <option value="方案魔改">方案魔改</option>
+    <option value="方案教学">方案教学</option>
+    <option value="提升分享">提升分享</option>
+    <option value="速度录屏">速度录屏</option>
+</select><br/>
+<!--        <input type="text" id="contendId"/><button onclick="getContent()">获取</button>-->
+<div id="layout">
+    <header>
+        <h1>欢迎使用Markdown</h1>
+    </header>
+    <div id="test-editormd">
+                <textarea style="display:none;" id="mdContent" name="mdContent">
+                </textarea>
+        <!-- 第二个隐藏文本域，用来构造生成的HTML代码，方便表单POST提交，这里的name可以任意取，后台接受时以这个name键为准 -->
+        <textarea class="editormd-html-textarea" id="content" name="content"></textarea>
+    </div>
+</div>
+<script src="/editor/examples/js/jquery.min.js"></script>
+<script src="/editor/editormd.js" ></script>
+<script type="text/javascript">
+    var testEditor;
+    getContent();
+    $(function() {
+        testEditor = editormd("test-editormd", {
+            width   : "90%",
+            height  : 640,
+            syncScrolling : "single",
+            path    : "/editor/lib/",
+            codeFold : true,
+            saveHTMLToTextarea : true,    // 保存 HTML 到 Textarea
+            searchReplace : true,
+            emoji : true,
+            taskList : true,
+            tocm : true,         // Using [TOCM]
+            tex : true,                   // 开启科学公式TeX语言支持，默认关闭
+            flowChart : true,             // 开启流程图支持，默认关闭
+            sequenceDiagram : true,       // 开启时序/序列图支持，默认关闭,
+            imageUpload : true,
+            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL : "/static/uploadImg", //这个是上传图片时的访问地址
+            toolbarIcons : function() {
+                return [
+                    "undo", "redo", "|",
+                    "bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase", "|",
+                    "h1", "h2", "h3", "h4", "h5", "h6", "|",
+                    "list-ul", "list-ol", "hr", "|",
+                    "link", "reference-link", "image", "code", "preformatted-text", "code-block", "table", "datetime", "emoji", "html-entities", "pagebreak", "|",
+                    "goto-line", "watch", "preview", "fullscreen", "clear", "search", "|",
+                    "help", "info","releaseIcon","index"
+                ]
+            },
+            /*自定义功能按钮，下面我自定义了2个，一个是发布，一个是返回首页*/
+            toolbarIconTexts : {
+                releaseIcon : "<span bgcolor=\"gray\">发布</span>",
+                index : "<span bgcolor=\"red\">返回首页</span>",
+            },
+
+            /*给自定义按钮指定回调函数*/
+            toolbarHandlers:{
+                releaseIcon : function(cm, icon, cursor, selection) {
+                    uploadContent();
+                },
+                index : function(){
+                    window.location.href = '/';
+                },
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        #HistoryTable,#HistoryTable th,#HistoryTable,#UserList th,
+        #HistorychangeHisPage,#HistorychangeHisPage li{
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+    <script type="text/javascript">
+        function addHisPageList(pageul,gopagenum){
+            pageul.append('<li><a>'+gopagenum+'</a></li>');
+            pageul.find(':last').attr('onclick','changeHisPage('+gopagenum+')');
+            pageul.find('li:last').addClass('onClickMouser');
+        }
+        function showHisPage(data) {
+            let tb = $('#HistoryList');
+            tb.empty();
+            for (let i in data.list) {
+                tb.append('<tr></tr>');
+                let tr = tb.find(":last");
+                tr.append('<td>' + data.list[i].date + '</td>');
+                tr.append('<td>' + data.list[i].sudu + '</td>');
+                tr.append('<td>' + data.list[i].key + '</td>');
+                tr.append('<td>' + data.list[i].keylength + '</td>');
+                tr.append('<td>' + data.list[i].number + '</td>');
+                tr.append('<td>' + data.list[i].deletetext + '</td>');
+                tr.append('<td>' + data.list[i].delete + '</td>');
+                tr.append('<td>' + data.list[i].repeat + '</td>');
+                tr.append('<td>' + data.list[i].keyaccuracy + '</td>');
+                tr.append('<td>' + data.list[i].keymethod + '</td>');
+                tr.append('<td>' + data.list[i].dacilv + '</td>');
+                tr.append('<td>' + data.list[i].time + '</td>');
+                tr.append('<td>' + data.list[i].duan + '</td>');
+            }
+            let pageul = $('#HistorychangeHisPage');
+            pageul.empty();
+            let gopagenum;
+            pageul.append('<li><a>&laquo;</a></li>');
+            pageul.find(':last').attr('onclick', 'changeHisPage(' + 1 + ')');
+            pageul.find('li:last').addClass('onClickMouser');
+            if (data.pageNum * 1 - 1 > 0) {
+                gopagenum = data.pageNum * 1 - 1;
+                pageul.append('<li><a><</a></li>');
+                pageul.find(':last').attr('onclick', 'changeHisPage(' + gopagenum + ')');
+                pageul.find('li:last').addClass('onClickMouser');
+            }
+            if (data.pageNum * 1 - 2 > 0) {
+                gopagenum = data.pageNum * 1 - 2;
+                addHisPageList(pageul, gopagenum);
+            }
+            if (data.pageNum * 1 - 1 > 0) {
+                gopagenum = data.pageNum * 1 - 1;
+                addHisPageList(pageul, gopagenum);
+            }
+            pageul.append('<li><a>' + (data.pageNum) + '</a></li>');
+            pageul.find('li:last').addClass('active');
+            if (data.pageNum * 1 + 1 < data.pages) {
+                gopagenum = data.pageNum * 1 + 1;
+                addHisPageList(pageul, gopagenum);
+            }
+            if (data.pageNum * 1 + 2 < data.pages) {
+                gopagenum = data.pageNum * 1 + 2;
+                addHisPageList(pageul, gopagenum);
+            }
+            if (data.pageNum * 1 + 1 < data.pages) {
+                gopagenum = data.pageNum * 1 + 1;
+                pageul.append('<li><a>></a></li>');
+                pageul.find(':last').attr('onclick', 'changeHisPage(' + gopagenum + ')');
+                pageul.find('li:last').addClass('onClickMouser');
+            }
+            pageul.append('<li><a>&raquo;</a></li>');
+            pageul.find(':last').attr('onclick', 'changeHisPage(' + data.pages + ')');
+            pageul.find('li:last').addClass('onClickMouser');
+        };
+        function changeHisPage(page){
+            $.ajax({
+                type:'POST',
+                contentType:'application/json;charset=utf-8',
+                url:'/me/history/'+page+'/'+sessionStorage.sessionId,
+                dataType:'json',
+                success:function(data) {
+                    var message = data["message"];
+                    if(message=="获取成功")
+                        showHisPage(data["result"]);
+                    else
+                        alert(message);
+                },
+                error:function (err) {
+                    console.log(err.responseText);
+                    alert(err.responseText);
+                }
+            })
+        }
+        $(function () {
+            changeHisPage(1);
+        })
+    </script>
+    <title>历史记录</title>
+</head>
+<body>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="table-responsive" id="HistoryTable">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>速度</th>
+                    <th>击键</th>
+                    <th>码长</th>
+                    <th>字数</th>
+                    <th>回改</th>
+                    <th>退格</th>
+                    <th>选重</th>
+                    <th>键准</th>
+                    <th>键法</th>
+                    <th>打词</th>
+                    <th>时间</th>
+                    <th>段号</th>
+                </tr>
+                </thead>
+                <tbody id="HistoryList"></tbody>
+            </table>
+            <ul class="pagination" id="HistorychangeHisPage"></ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
