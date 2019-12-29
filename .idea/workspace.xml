@@ -6,46 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="560566ca-4c25-4104-974e-54a248fc5e69" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/client_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/tljrobot_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/resourese/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/home/ArticleManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/home/Security.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/robot_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/itchat4j_1_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/itchat4j_1_1_0_jar_with_dependencies.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/itchat4j_1_1_0_sources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="560566ca-4c25-4104-974e-54a248fc5e69" name="Default Changelist" comment="用直接跳转页面替换ajax交互嵌入">
+      <change afterPath="$PROJECT_DIR$/.gttattributes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/META-INF/client.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/home/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/editor/MdEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/editor/MdEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/editor/UEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/editor/UEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/userCenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/userCenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/pojo/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/pojo/News.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/static/js/ajaxGetHtml.js" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/js/ajaxGetHtml.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/AllHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/myAllHistory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/AllUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/allUser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/articles.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/articles.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/editor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/public/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/full.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/model/full.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/public/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/model/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/introduce.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/introduce.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/manageArticle.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/manageArticle.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/moreArticles.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/moreArticles.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/myinfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/myInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/showArticle.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/showArticle.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/simple.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/MDEditor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/updateMD.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/updateMD.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/updateUEditor.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/updateUEditor.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,13 +84,16 @@
     </option>
   </component>
   <component name="ProjectId" id="1VaohEjZpgP9C5qLddoOzt8Vw5F" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -352,11 +318,25 @@
       <workItem from="1577500689806" duration="3020000" />
       <workItem from="1577504411836" duration="14547000" />
       <workItem from="1577536837095" duration="6743000" />
+      <workItem from="1577583911577" duration="741000" />
     </task>
+    <task id="LOCAL-00001" summary="用直接跳转页面替换ajax交互嵌入">
+      <created>1577584125492</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1577584125492</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="用直接跳转页面替换ajax交互嵌入" />
+    <option name="LAST_COMMIT_MESSAGE" value="用直接跳转页面替换ajax交互嵌入" />
   </component>
   <component name="WindowStateProjectService">
     <state x="265" y="63" key="#Project_Structure" timestamp="1577503881625">
@@ -371,6 +351,10 @@
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="420" y="249" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/62.0.1218.800@62.0.1218.800" timestamp="1577503398719" />
+    <state x="277" y="0" key="CommitChangelistDialog2" timestamp="1577584648010">
+      <screen x="62" y="0" width="1218" height="800" />
+    </state>
+    <state x="277" y="0" key="CommitChangelistDialog2/62.0.1218.800@62.0.1218.800" timestamp="1577584648010" />
     <state x="100" y="153" key="FileChooserDialogImpl" timestamp="1577503898119">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
@@ -395,10 +379,10 @@
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="176" y="46" key="SettingsEditor/62.0.1218.800@62.0.1218.800" timestamp="1577504473997" />
-    <state x="264" y="137" key="Vcs.Push.Dialog.v2" timestamp="1577583981259">
+    <state x="264" y="137" key="Vcs.Push.Dialog.v2" timestamp="1577584136203">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
-    <state x="264" y="137" key="Vcs.Push.Dialog.v2/62.0.1218.800@62.0.1218.800" timestamp="1577583981259" />
+    <state x="264" y="137" key="Vcs.Push.Dialog.v2/62.0.1218.800@62.0.1218.800" timestamp="1577584136203" />
     <state x="368" y="229" key="com.intellij.ide.util.TipDialog" timestamp="1577583913509">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
