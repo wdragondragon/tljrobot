@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/js/ajaxGetHtml.js"></script>
     <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
     <script type="text/javascript" th:inline="javascript">
         var articleId = [[${articleId}]];
-        if(articleId!=null)sessionStorage.articleId=[[${articleId}]];
         $(function () {
             $.ajax({
                 type:'POST',
                 contentType:'application/json;charset=utf-8',
-                url:'/home/getNews/'+sessionStorage.articleId,
+                url:'/home/getNewsById/'+articleId,
                 dataType:'json',
                 success:function(data) {
                     if(data['message']=="获取成功"){
@@ -33,18 +32,13 @@
                     alert(err.responseText);
                 }
             })
-            $('#copy-content').val("https://tlj.wiki/home/showArticle/"+sessionStorage.articleId);
+            $('#copy-content').val("https://tlj.wiki/home/showArticle/"+articleId);
         })
         function backPre() {
-            if(articleId==null)
-                instead("/home/article","#instead");
-            else $(location).attr('href',"/");
-
+            location.href = document.referrer;
         }
         function backHome(){
-            if(articleId==null)
-                instead("/home/introduce","#instead");
-            else $(location).attr('href',"/");
+            $(location).attr('href',"/home/articles");
         }
         function share() {
             var copyObject=document.getElementById("copy-content");
@@ -55,6 +49,7 @@
     </script>
 </head>
 <body>
+<div th:include="public/header"></div>
 <div class="page-header container">
 
     <span class="label label-info"><span id="newsType"></span></span>
@@ -66,8 +61,10 @@
             作者：<span id="author"></span>——<span id="time"></span>
         </small>
     </h1>
+    <br>
     <span id="content"></span>
     <span>本文链接</span><input id="copy-content" readonly/>
 </div>
+<div th:include="public/footer"></div>
 </body>
 </html>

@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" charset="utf8" src="/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf8" src="/ueditor/ueditor.all.min.js"></script>
     <script type="text/javascript" charset="utf8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script src="/js/ajaxGetHtml.js"></script>
     <script type="text/javascript">
         var contentEditor = UE.getEditor('content');
         function getEdit(){
@@ -37,7 +38,7 @@
                 success:function(data){
                     if(data["message"]=="上传成功") {
                         alert(data["result"]);
-                        $(location).prop('href',"/");
+                        $(location).attr('href',"/home/showArticle/"+data['result']);
                     }
                 },
                 error:function(e){alert( JSON.stringify(e) );}
@@ -46,7 +47,8 @@
     </script>
 </head>
 <body>
-    <div class="container">
+<div th:replace="public/header"></div>
+    <div class="container panel">
         <form name="newform" id="newform" action="#" method="post">
             <label>标题：</label><input type="text" name="title" id="title" size="20" /><br/>
             <label>类别：</label>
@@ -71,4 +73,5 @@
 <!--    </div>-->
 <!--    <button onclick="getEdit()">获取</button>-->
 </body>
+<div th:replace="public/footer"></div>
 </html>

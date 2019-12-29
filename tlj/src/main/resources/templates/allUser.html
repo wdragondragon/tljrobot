@@ -1,5 +1,11 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8" >
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/ajaxGetHtml.js"></script>
     <style>
         #UsersTable,#UsersTable th,#UserList,#UserList th,
         #UserChangePage,#UserChangePage li{
@@ -90,6 +96,7 @@
     <title>Title</title>
 </head>
 <body>
+    <div th:include="public/header"></div>
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="table-responsive" id="UsersTable">
@@ -116,5 +123,6 @@
             </div>
         </div>
     </div>
+    <div th:include="public/footer"></div>
 </body>
 </html>

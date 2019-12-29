@@ -12,10 +12,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @Controller
@@ -25,7 +23,7 @@ public class userCenter {
     @PostMapping(value = "/info/{userId}")
     @ApiOperation("获取个人信息")
     @ResponseBody
-    public Result Myinfo(@ApiParam(name = "userId",value = "使用userId获取") @PathVariable String userId){
+    public Result myInfo(@ApiParam(name = "userId",value = "使用userId获取") @PathVariable String userId){
         return Result.success("获取成功").setResult(Local.getSession(userId));
     }
     @Autowired
@@ -39,5 +37,13 @@ public class userCenter {
         List<History> histories = histroyMapper.getHistoryByName(user.getName());
         PageInfo<History> pageInfo = new PageInfo<History>(histories);
         return Result.success("获取成功").setResult(pageInfo);
+    }
+    @GetMapping("/history/{userId}")
+    public String getHistoryTable(@PathVariable String userId){
+        return "myAllHistory";
+    }
+    @GetMapping("/info/{userId}" )
+    public String getInfo(@PathVariable String userId){
+        return "myInfo";
     }
 }

@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" charset="utf8" src="/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf8" src="/ueditor/ueditor.all.min.js"></script>
     <script type="text/javascript" charset="utf8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
-    <script type="text/javascript">
-
+    <script src="/js/ajaxGetHtml.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        var articleId = [[${articleId}]];
         function getEdit(){
             $.ajax({
                 type:'POST',
                 contentType:'application/json;charset=utf-8',
-                url:'/UEditor/getNew/'+ sessionStorage.articleId+'/'+sessionStorage.sessionId,
+                url:'/UEditor/getNew/'+ articleId+'/'+sessionStorage.sessionId,
                 dataType:'json',
                 success:function(data) {
                     $("#content").text(data['result']['content']);
@@ -35,7 +36,7 @@
             contentEditor = UE.getEditor('content');
         })
         function update() {
-            var data={id:sessionStorage.articleId,title:$("#title").val(),newsType:$("#newsType").val(),content:contentEditor.getContent(),editorType:1,newsType:$('#newsType').val()} ;
+            var data={id:articleId,title:$("#title").val(),newsType:$("#newsType").val(),content:contentEditor.getContent(),editorType:1,newsType:$('#newsType').val()} ;
             $.ajax({
                 url:"/UEditor/updateArticle/"+sessionStorage.sessionId, //dojson
                 type:"post",//get/post
@@ -45,7 +46,7 @@
                 success:function(data){
                     alert(data["message"]);
                     if(data["message"]=="更新成功") {
-                        $(location).prop('href',"/");
+                        $(location).attr('href','/home/showArticle/'+articleId);
                     }
                 },
                 error:function(e){alert( JSON.stringify(e) );}
@@ -54,6 +55,7 @@
     </script>
 </head>
 <body>
+<div th:replace="public/header"></div>
 <div class="container">
     <form name="newform" id="newform" action="#" method="post">
         <label>标题：</label><input type="text" name="title" id="title" size="20" /><br/>
@@ -79,4 +81,5 @@
 <!--    </div>-->
 <!--    <button onclick="getEdit()">获取</button>-->
 </body>
+<div th:replace="public/header"></div>
 </html>

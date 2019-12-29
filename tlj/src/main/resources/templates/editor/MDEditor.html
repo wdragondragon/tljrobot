@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8" />
         <title>Simple example - Editor.md examples</title>
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="/editor/examples/css/style.css"/>
         <link rel="stylesheet" href="/editor/css/editormd.css" />
         <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
@@ -20,7 +23,7 @@
                         var result = data['message'];
                         if(result=="上传成功"){
                             alert(result);
-                            instead("/home/article","#instead");
+                            $(location).attr('href',"/home/showArticle/"+data['result']);
                         }
                     },
                     error: function (err) {
@@ -28,27 +31,10 @@
                     }
                 });
             }
-            // function getContent() {
-            //     $.ajax({
-            //         type: 'POST',
-            //         contentType: 'application/json;charset=utf-8',
-            //         url: '/MEditor/getMdContent/'+ $("#contendId").val()+'/'+ sessionStorage.sessionId,
-            //         dataType: 'json',
-            //         success: function (data) {
-            //             var result = data['message'];
-            //             if(result=="获取成功"){
-            //                 testEditor.setMarkdown(data['result']['mdContent']);
-            //                 alert(data['result']['mdContent']);
-            //             }
-            //         },
-            //         error: function (err) {
-            //             alert(JSON.stringify(err));
-            //         }
-            //     });
-            // }
         </script>
     </head>
     <body>
+    <div th:replace="public/header"></div>
         <label>标题：</label><input type="text" name="title" id="title" size="20" /><br/>
         <label>类别：</label>
         <select name="newsType" id="newsType">
@@ -131,5 +117,6 @@
 
             });
         </script>
+    <div th:replace="public/footer"></div>
     </body>
 </html>

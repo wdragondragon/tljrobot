@@ -23,7 +23,7 @@
       <module name="client" options="-parameters" />
       <module name="public" options="-parameters" />
       <module name="publicmodel" options="-parameters" />
-      <module name="robot" options="-parameters -extdirs C:\Users\Lenovo\IdeaProjects\tljrobot\robot/lib" />
+      <module name="robot" options="-parameters -extdirs C:\Users\10619\IdeaProjects\tljrobot\robot/lib" />
       <module name="tlj" options="-parameters" />
       <module name="tlj-utils" options="-parameters" />
     </option>

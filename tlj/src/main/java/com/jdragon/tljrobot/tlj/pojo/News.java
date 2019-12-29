@@ -37,7 +37,9 @@ public class News extends Model<News> {
 		return "[id="+id+",newsType="+newsType+",title="+title+",publicTime="+publishTime+",content="+content+",isTop="+isTop+"]";
 	}
 	public static class Def{
+		public static final String ID= "id";
 		public static final String NEWS_TYPE = "newsType";
 		public static final String NEWS_AUTHOR="author";
+		public static final String CLICK_NUM = "clickNum";
 	}
 }

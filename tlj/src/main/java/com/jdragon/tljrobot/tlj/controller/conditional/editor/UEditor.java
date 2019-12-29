@@ -8,6 +8,7 @@ import com.jdragon.tljrobot.tljutils.Local;
 import com.jdragon.tljrobot.tljutils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -15,10 +16,18 @@ import org.springframework.web.bind.annotation.*;
 public class UEditor {
     @Autowired
     NewsMapper newsMapper;
-
+    @GetMapping("/updateArticle/{articleId}/{userId}")
+    public String updateArticle(Model model, @PathVariable String userId, @PathVariable String articleId){
+        model.addAttribute("articleId",articleId);
+        return "editor/updateUEditor";
+    }
+    @RequestMapping("/editor/{userId}")
+    public String ed1(@PathVariable String userId){
+        return "editor/editor";
+    }
     @PostMapping("/newPublish/{userId}")
     @ResponseBody
-    public Result edpublish(@RequestBody News news, @PathVariable String userId){
+    public Result publish(@RequestBody News news, @PathVariable String userId){
         User user = (User)Local.getSession(userId);
         news.setAuthor(user.getName());
         news.setPublishTime(DateUtil.now());
@@ -29,10 +38,7 @@ public class UEditor {
             return Result.success("上传失败");
         }
     }
-    @RequestMapping("/editor/{userId}")
-    public String ed1(@PathVariable String userId){
-        return "editor";
-    }
+
     @PostMapping("/getNew/{articleId}/{userId}")
     @ResponseBody
     public Result getNews(@PathVariable int articleId, @PathVariable String userId){
@@ -46,10 +52,7 @@ public class UEditor {
             return Result.error("不能获取别人的文章来修改");
         }
     }
-    @GetMapping("/updateArticle/{userId}")
-    public String updateArticle(@PathVariable String userId){
-        return "updateUEditor";
-    }
+
     @PostMapping("/updateArticle/{userId}")
     @ResponseBody
     public Result updateArticle(@RequestBody News news , @PathVariable String userId){
@@ -66,7 +69,5 @@ public class UEditor {
         }else{
             return Result.error("更新失败，你不能更新别人的文章");
         }
-
-
     }
 }

@@ -1,6 +1,5 @@
 package com.jdragon.tljrobot.tlj.controller.conditional.editor;
 
-import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jdragon.tljrobot.tlj.mappers.NewsMapper;
 import com.jdragon.tljrobot.tlj.pojo.News;
@@ -8,8 +7,10 @@ import com.jdragon.tljrobot.tlj.pojo.User;
 import com.jdragon.tljrobot.tljutils.DateUtil;
 import com.jdragon.tljrobot.tljutils.Local;
 import com.jdragon.tljrobot.tljutils.Result;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,21 +22,29 @@ public class MdEditor {
     NewsMapper newsMapper;
 
     @RequestMapping("/editor/{userId}")
-    public String ed2(@PathVariable String userId){return "simple";}
+    public String ed2(@PathVariable String userId){return "editor/MDEditor";}
+    @GetMapping("/updateArticle/{articleId}/{userId}")
+    public String updateArticle(Model model, @PathVariable String userId, @PathVariable String articleId){
+        model.addAttribute("articleId",articleId);
+        return "editor/updateMD";
+    }
+    @RequestMapping("/manageArticle/{userId}")
+    public String getManageArticle(@PathVariable String userId){
+        return "manageArticle";
+    }
     @RequestMapping("/full/{userId}")
-    public String ed3(@PathVariable String userId){return "full";}
+    public String ed3(@PathVariable String userId){return "model/full";}
     @PostMapping("/newPublish/{userId}")
     @ResponseBody
     public Result publish(@RequestBody News news, @PathVariable String userId){
         news.setPublishTime(DateUtil.now());
         User user = (User)Local.getSession(userId);
         news.setAuthor(user.getName());
-        if(news.insert())
-            return Result.success("上传成功");
+        if(newsMapper.insert(news)>0)
+            return Result.success("上传成功").setResult(news.getId());
         else
             return Result.error("上传失败");
     }
-
     @PostMapping("/getMdContent/{articleId}/{userId}")
     @ResponseBody
     public Result getMdContent(@PathVariable int articleId, @PathVariable String userId){
@@ -48,10 +57,6 @@ public class MdEditor {
         }else{
             return Result.success("获取成功").setResult(news);
         }
-    }
-    @RequestMapping("/manageArticle/{userId}")
-    public String getManageArticle(@PathVariable String userId){
-        return "manageArticle";
     }
     @PostMapping("/getNewsByUserName/{userId}")
     @ResponseBody
@@ -76,10 +81,7 @@ public class MdEditor {
             return Result.error("你不能删除别人的文章");
         }
     }
-    @GetMapping("/updateArticle/{userId}")
-    public String updateArticle(@PathVariable String userId){
-        return "updateMD";
-    }
+
     @PostMapping("/updateArticle/{userId}")
     @ResponseBody
     public Result update(@RequestBody News news, @PathVariable String userId){

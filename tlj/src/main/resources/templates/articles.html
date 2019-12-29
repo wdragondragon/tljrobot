@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" >
     <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/js/ajaxGetHtml.js"></script>
     <script>
         $(function () {
             getNewsType();
+            getHot();
         })
         function getNewsType() {
             $.ajax({
@@ -34,18 +38,40 @@
                 }
             });
         }
+        function getHot() {
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: '/home/getHotArticles',
+                dataType: 'json',
+                success: function (data) {
+                    var result = data['message'];
+                    if(result=="获取成功"){
+                        var news = data['result'];
+                        for(let index in news) {
+                            var tb = $('#热点');
+                            tb.append('<tr></tr>')
+                            let tr = tb.find("tr:last");
+                            tr.append('<td><a onclick="showArticle(' + news[index]['id'] + ')">' + news[index]['title'] + '</a>' +
+                                '<span class="label label-info" style="float:right">' + news[index]['clickNum'] + '</span></td>')
+                        }
+                    }
+                },
+                error: function (err) {
+                    alert(JSON.stringify(err));
+                }
+            });
+        }
         function showArticle(id) {
-            $("#articleId").val(id);
-            sessionStorage.articleId=id;
-            instead("/home/showArticle","#instead");
+            $(location).attr('href','/home/showArticle/'+id);
         }
         function showArticlesByType(type) {
-            sessionStorage.articleType=type;
-            instead('/home/moreArticles','#instead')
+            $(location).attr('href','/home/moreArticles/'+type);
         }
     </script>
 </head>
 <body>
+<div th:include="public/header"></div>
 <div class="container" style="margin-top: 15px">
     <div class=row>
         <div class="col-sm-4">
@@ -64,6 +90,18 @@
                     </table>
                 </div>
             </div>
+            <div class="panel panel-default">
+                <table class="table table-bordered table-hover">
+                    <caption>热点</caption>
+                    <tbody id="热点">
+                    <!--<tr><td>
+                         <a href="">文章标题</a>
+                         <span class="label label-info" style="float:right">点击量</span>
+                     </td></tr>-->
+                    </tbody>
+                </table>
+            </div>
+
         </div>
         <div class="col-sm-8">
             <div class="row" id="typeArticle">
@@ -120,5 +158,6 @@
     </div>
 </div>
 <input type="text" style="display: none" id="articleId">
+<div th:include="public/footer"></div>
 </body>
 </html>

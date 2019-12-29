@@ -27,10 +27,9 @@ function insteadSafe(insteadUrl,insteadDom) {
     });
 }
 function getHttp(proFixUrl) {
-    if(isLogin())
-        $(location).prop('href',proFixUrl+'/'+sessionStorage.sessionId);
-    else
-        alert("请先登录");
+    $(location).prop('href',proFixUrl+'/'+sessionStorage.sessionId);
 }
-
-
+function isLogin() {
+    if(sessionStorage.sessionId==null||sessionStorage.sessionId=="")return false;
+    else return true;
+}

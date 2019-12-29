@@ -2,161 +2,169 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" >
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/js/ajaxGetHtml.js"></script>
     <style>
-        .onClickMouser {
-            cursor: pointer;
-        }
+
     </style>
     <script type="text/javascript">
-        $(function () {
-            changeLogStatu();
-            clickHome();
-            getFooter();
-        })
-        function isLogin() {
-            if(sessionStorage.sessionId==null||sessionStorage.sessionId=="")return false;
-            else return true;
-        }
-        function changeLogStatu (){
-            if(isLogin()){
-                $("#loginButton").hide();
-                $("#logoutButton").show();
-
-            }else{
-                $("#loginButton").show();
-                $("#logoutButton").hide();
-            }
-        }
-        function ClickMyInfo() {
-            if(isLogin()) {
-                instead('/home/myInfo','#instead');
-            }else alert("未登录");
-        };
-        function ClickAllUser() {
-            instead('/home/allUser','#instead');
-        };
-        function ClickAllHistory() {
-            if(isLogin()) {
-                instead('/home/historyTable','#instead');
-            }else alert("未登录");
-        }
-        function clickHome(){
-            instead('/home/introduce','#instead');
-        }
-        function Logout(){
-            $.ajax({
-                type: 'POST',
-                contentType: 'application/json;charset=utf-8',
-                url: '/home/logout/'+sessionStorage.sessionId,
-                dataType: 'json',
-                success: function (data) {
-                    var result = data['message'];
-                    if(result=="退出成功"){
-                        sessionStorage.sessionId="";
-                        changeLogStatu();
-                        alert(result);
-                    }
-                },
-                error: function (err) {
-                    alert(JSON.stringify(err));
-                }
-            });
-        }
-        function getMDEditor(proFixUrl) {
-            if(isLogin())
-                insteadSafe(proFixUrl,'#instead');
-            else
-                alert("请先登录");
-        }
-        function getFooter() {
-            instead("/home/footer","#footer");
-        }
-        function getArticle() {
-            instead("/home/article","#instead");
-        }
-        function wati(){
-            alert("敬请期待");
-        }
 
     </script>
     <title>拖拉机跟打器</title>
 </head>
-<body data-spy="scroll" data-target="#myScrollspy">
-<div class="jumbotron text-center" style="margin-bottom:0" id="header">
-    <h1>拖拉机跟打器</h1>
-    <p>一款属于你的跟打器！</p>
-</div>
-<nav class="navbar navbar-inverse" role="navigation" style="margin-bottom:0" id="nav">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#example-navbar-collapse">
-                <span class="sr-only">切换导航</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand onClickMouser" onclick="clickHome()">拖拉机</a>
+<body>
+<div th:replace="public/header"></div>
+<div id="myCarousel" class="carousel slide" style="width: 100%;margin-bottom: 20px;">
+    <!-- 轮播（Carousel）指标 -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="/img/tlj.png" alt="First slide" style="margin: auto">
+            <div class="carousel-caption"><span style="color: black; ">界面</span> </div>
         </div>
-        <div class="collapse navbar-collapse" id="example-navbar-collapse">
-            <ul class="nav navbar-nav navbar-left">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        个人资料
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="onClickMouser" onclick="ClickMyInfo()"><a>个人概况</a> </li>
-                        <li class="onClickMouser" onclick="ClickAllHistory()"><a>跟打记录</a> </li>
-                    </ul>
-                </li>
-                <li class="onClickMouser" id="alluser" onclick="ClickAllUser()"><a>全体概况</a> </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        下载
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="https://jdragon.club/upload/2019/7/tlj/new.rar">Windows版完整版</a></li>
-                        <li><a href="https://jdragon.club/upload/2019/7/tlj/new.exe">Windows版更新包</a></li>
-                        <li class="divider"></li>
-                        <li><a href="https://jdragon.club/upload/2019/7/tlj/new.jar">linux版更新包</a></li>
-                        <li><a href="https://jq.qq.com/?_wv=1027&k=5EVEbCx">linux完整版点击进群下载</a></li>
-                    </ul>
-                </li>
-                <li class="onClickMouser" onclick="wati()"><a>上传词库</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        经验交流
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="onClickMouser" onclick="getArticle()"><a>文章特区</a></a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">文章发布</li>
-                        <li class="onClickMouser" onclick="getHttp('/UEditor/editor')"><a>富文本</a></a></li>
-                        <li class="onClickMouser" onclick="getHttp('/MEditor/editor')"><a>MD文本</a></a></li>
-                        <li class="divider"></li>
-                        <li class="onClickMouser" onclick="insteadSafe('/MEditor/manageArticle','#instead')"><a>管理文章</a></a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/home/register"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
-                <li>
-                    <a href="/home/login" id="loginButton"><span class="glyphicon glyphicon-log-in"></span> 登录</a>
-                    <a onclick="Logout()" id="logoutButton" style="display: none"><span class="glyphicon glyphicon-log-in"></span> 登出</a>
-                </li>
-            </ul>
+        <div class="item">
+            <img src="/img/tlj1.png" alt="Second slide" style="margin: auto">
+            <div class="carousel-caption"><span style="color: black; ">基础功能</span></div>
+        </div>
+        <div class="item">
+            <img src="/img/tlj2.png" alt="Third slide" style="margin: auto">
+            <div class="carousel-caption"><span style="color: black; ">联网功能</span></div>
         </div>
     </div>
-</nav>
-<div id="instead"></div>
-<div id="footer"></div>
+    <!-- 轮播（Carousel）导航 -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<div class="container-fluid" id="introduce">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">关于它</h3>
+                </div>
+                <div class="panel-body">
+                    它的图标:
+                    <div class="fakeimg" ><img src="/img/tljico.png" alt="imageico"/></div>
+                    为什么？为什么叫拖拉机？因为……拖拉机高端大气上档次，低调奢华有内涵！
+                </div>
+            </div>
+            <hr class="hidden-sm hidden-md hidden-lg">
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">1、基础功能</h3>
+                </div>
+                <div class="panel-body">
+                    <p>F区快捷键F1、F2、F3、F4、F5对应发送成绩、
+                        发文系统、重打、载文、换群 快捷键F7、F9对应对战中的准备按钮、
+                        分享正在发文的文章。</p>
+                    <p>alt区快捷键ALT+L、ALT+P、ALT+Z对应文章乱序、发文中的下一段、更多设置呼出。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">2、词语提示</h3>
+                </div>
+                <div class="panel-body">
+                    <p>较精准的词语提示，优先提示多字词，二简三简提示对比色突出鲜明，再也不怕漏词了。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">3、理论码长</h3>
+                </div>
+                <div class="panel-body">
+                    <p>理论码长与标点顶屏理论码长，载文后自动显示理论码长和标点顶屏理论码长
+                        ，点击理论码长的按钮可以获得文章的理论编码打法哦。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">4、云登录</h3>
+                </div>
+                <div class="panel-body">
+                    <p>具有登录功能，注册后跟打字数自动保存，正确字数与错误字数自动区分，
+                        跟打文本与跟打成绩具体数据记录在云端不怕丢失，有更多的排名等着你挑战。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">5、全生稿日赛</h3>
+                </div>
+                <div class="panel-body">
+                    <p>拥有与时俱进的跟打器独立每日生稿赛文机制，每日一篇生稿赛文，获取赛文确认后即开始计时，
+                        从计时开始到结束，禁用重打与载文，并且不能退出跟打器，否则当日成绩为零。
+                        成绩计入跟打器当日赛文排行。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">6、发文多进度保存</h3>
+                </div>
+                <div class="panel-body">
+                    <p>拥有独特的可保存多进度发文功能。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">7、词库练习</h3>
+                </div>
+                <div class="panel-body">
+                    <p>对导入词库的系统练习功能，能提取导入码表的固定长度词条与固定长度编码的词语进行练习，
+                        在这个练习模式乱序并不会打乱词语，只会打乱词语的顺序。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">8、英打模式</h3>
+                </div>
+                <div class="panel-body">
+                    <p>英打模式，将编码提示功能变更为英语单词翻译，发文中新增有英词练习功能，乱序时不会打乱字母顺序
+                        ，只会打乱单词顺序，而且英词练习功能打完提供英文词组翻译详情。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">9、看打模式</h3>
+                </div>
+                <div class="panel-body">
+                    <p>看打模式，将所有的辅助性关闭，实现全盲打，看打模式会统计错字，漏字，多字。alt+enter提交成绩。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="public/footer"></div>
 </body>
 </html>

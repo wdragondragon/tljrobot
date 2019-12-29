@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="/js/ajaxGetHttp.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/ajaxGetHtml.js"></script>
     <script>
+        var articleType = [[${articleType}]];
         function getNewsType() {
+
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json;charset=utf-8',
-                url: '/home/getNewsByType/'+sessionStorage.articleType+'/1/20',
+                url: '/home/getNewsByType/'+articleType+'/1/20',
                 dataType: 'json',
                 success: function (data) {
                     var result = data['message'];
@@ -34,6 +39,7 @@
     </script>
 </head>
 <body>
+<div th:replace="public/header"></div>
 <div class="container">
     <div class="box">
         <ul class="list-group" id="newsList">
@@ -45,5 +51,6 @@
         </ul>
     </div>
 </div>
+<div th:replace="public/footer"></div>
 </body>
 </html>
