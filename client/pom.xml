@@ -49,12 +49,12 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
-        <!--Httpclient-->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.0.2</version>
-        </dependency>
+<!--        &lt;!&ndash;Httpclient&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.httpcomponents</groupId>-->
+<!--            <artifactId>httpclient</artifactId>-->
+<!--            <version>4.0.2</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
