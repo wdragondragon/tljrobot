@@ -143,10 +143,6 @@ public final class ConfigManager {
 				break;
 				
 		}
-//		if(SystemUtil.isWindows())
-//			conf.put("basePath",this.jsonConfig.getString("basePath"));
-//		else
-//
 		conf.put("basePath",this.jsonConfig.getString("basePath"));
 		conf.put( "savePath", savePath );
 		conf.put( "rootPath", this.rootPath );

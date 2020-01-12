@@ -26,7 +26,7 @@ public class BinaryUploader {
 
 	public static final State save(HttpServletRequest request,
 			Map<String, Object> conf) {
-//		FileItemStream fileStream = null;
+//		aFileItemStream fileStream = null;
 //		boolean isAjaxUpload = request.getHeader( "X_Requested_With" ) != null;
 
 		if (!ServletFileUpload.isMultipartContent(request)) {
@@ -54,8 +54,8 @@ public class BinaryUploader {
 //			if (fileStream == null) {
 //				return new BaseState(false, AppInfo.NOTFOUND_UPLOAD_DATA);
 //			}
-			MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
-			MultipartFile multipartFile = multipartHttpServletRequest.getFile(conf.get("fieldName").toString());
+				MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
+				MultipartFile multipartFile = multipartHttpServletRequest.getFile(conf.get("fieldName").toString());
 			if(multipartFile==null){
 				return new BaseState(false,AppInfo.NOTFOUND_UPLOAD_DATA);
 			}
@@ -78,9 +78,9 @@ public class BinaryUploader {
 			savePath = PathFormat.parse(savePath, originFileName);
 			String basePath = (String)conf.get("basePath");
 //			String physicalPath = (String) conf.get("rootPath") + savePath;
-			String physicalPath = basePath + savePath;
+				String physicalPath = basePath + savePath;
 //			InputStream is = fileStream.openStream();
-			InputStream is = multipartFile.getInputStream();
+				InputStream is = multipartFile.getInputStream();
 			State storageState = StorageManager.saveFileByInputStream(is,
 					physicalPath, maxSize);
 			is.close();

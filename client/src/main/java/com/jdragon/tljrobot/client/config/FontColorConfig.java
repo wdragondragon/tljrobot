@@ -12,8 +12,9 @@ public class FontColorConfig {
     private static Color fourCodeColor = new Color(128, 138, 135);
     private static String family = "微软雅黑";
 
-    static public int fontSize = 30;
+
     public static void start(){
+        int fontSize = LocalConfig.fontSize;
         JTextPaneFont.creat();
         JTextPaneFont.createStyle("黑", JTextPaneFont.styledDoc, fontSize,
                 0, 0, 0, Color.BLACK, family, rightColor);

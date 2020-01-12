@@ -1,9 +1,9 @@
 package com.jdragon.tljrobot.client.window;
 
 import com.jdragon.tljrobot.client.component.JmenuComponent;
-import com.jdragon.tljrobot.client.event.*;
-import com.jdragon.tljrobot.client.listener.System.SystemListener;
-import com.jdragon.tljrobot.client.utils.common.Clipboard;
+import com.jdragon.tljrobot.client.event.FArea.*;
+import com.jdragon.tljrobot.client.listener.common.Typing;
+import com.jdragon.tljrobot.client.listener.core.SystemListener;
 import lombok.Data;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
@@ -68,8 +68,11 @@ public class MainFra extends JFrame {
         MinButton().addActionListener(SystemListener.getInstance());
         SizeButton().addMouseListener(SystemListener.getInstance());
         SizeButton().addMouseMotionListener(SystemListener.getInstance());
+        (TypingText().getDocument()).addDocumentListener(Typing.getInstance());
+        TypingText().addKeyListener(Typing.getInstance());
 
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+
         manager.addKeyEventPostProcessor(new KeyEventPostProcessor() {
             public boolean postProcessKeyEvent(KeyEvent event) {
                 if(event.getID()!=KeyEvent.KEY_RELEASED)return false;
@@ -77,14 +80,7 @@ public class MainFra extends JFrame {
                     case KeyEvent.VK_F1 : SendAchievement.start();break;
                     case KeyEvent.VK_F2 : ShareArticle.start();break;
                     case KeyEvent.VK_F3 : Replay.start();break;
-                    case KeyEvent.VK_F4 :
-                        try {
-                            QqOperation.start(QqOperation.GET_ARTICLE,QQNameLabel().getText());
-                            WatchingText().setText(Clipboard.get());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        break;
+                    case KeyEvent.VK_F4 : QQgetArticle.start();break;
                     case KeyEvent.VK_F5 : ChangeQQGroup.start();break;
 //                    case KeyEvent.VK_F6 : break;
 //                    case KeyEvent.VK_F7 : break;

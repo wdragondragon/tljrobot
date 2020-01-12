@@ -1,4 +1,4 @@
-package com.jdragon.tljrobot.tlj.dto.ShortCode;
+package com.jdragon.tljrobot.tljutils.compShortCode.simpleEntry;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

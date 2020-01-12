@@ -1,6 +1,6 @@
 package com.jdragon.tljrobot.client.config;
 
-import com.jdragon.tljrobot.client.listener.System.MoveFraListener;
+import com.jdragon.tljrobot.client.listener.core.MoveFraListener;
 import com.jdragon.tljrobot.client.window.MainFra;
 
 import javax.swing.*;

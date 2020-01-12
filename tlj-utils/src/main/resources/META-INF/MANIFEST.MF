@@ -1,3 +1,24 @@
 Manifest-Version: 1.0
-Main-Class: com.jdragon.tljrobot.robot.club.robot
+Main-Class: com.jdragon.tljrobot.client.Application
+Class-Path: lombok-1.18.8.jar jackson-annotations-2.9.0.jar tomcat-embed
+ -websocket-9.0.22.jar spring-boot-starter-2.1.7.RELEASE.jar spring-boot
+ -2.1.7.RELEASE.jar javax.annotation-api-1.3.2.jar spring-boot-starter-l
+ ogging-2.1.7.RELEASE.jar fastjson-1.2.62.jar tomcat-annotations-api-9.0
+ .22.jar jackson-datatype-jsr310-2.9.9.jar spring-boot-autoconfigure-2.1
+ .7.RELEASE.jar validation-api-2.0.1.Final.jar spring-boot-starter-json-
+ 2.1.7.RELEASE.jar log4j-api-2.11.2.jar logback-classic-1.2.3.jar spring
+ -jcl-5.1.9.RELEASE.jar spring-context-5.1.9.RELEASE.jar spring-web-5.1.
+ 9.RELEASE.jar spring-boot-starter-tomcat-2.1.7.RELEASE.jar jul-to-slf4j
+ -1.7.26.jar tomcat-embed-el-9.0.22.jar spring-beans-5.1.9.RELEASE.jar s
+ pring-expression-5.1.9.RELEASE.jar JNative.jar jna-4.4.0.jar ninepatch.
+ jar substance.jar SwingSet3.jar littleluck.jar jsoup-1.6.1.jar trident-
+ 7.0.jar beautyeye_lnf.jar gnujaxp-1.0.0.jar jcommon-1.0.16.jar javax.ma
+ il-1.6.0.jar commons-net-1.4.1.jar jfreechart-1.0.19.jar jintellitype-1
+ .3.9.jar jna-platform-4.4.0.jar spring-webmvc-5.1.9.RELEASE.jar classma
+ te-1.4.0.jar jackson-core-2.9.9.jar jboss-logging-3.3.2.Final.jar tomca
+ t-embed-core-9.0.22.jar snakeyaml-1.23.jar hibernate-validator-6.0.17.F
+ inal.jar spring-boot-starter-web-2.1.7.RELEASE.jar jackson-databind-2.9
+ .9.jar slf4j-api-1.7.26.jar jackson-datatype-jdk8-2.9.9.jar spring-aop-
+ 5.1.9.RELEASE.jar logback-core-1.2.3.jar spring-core-5.1.9.RELEASE.jar 
+ jackson-module-parameter-names-2.9.9.jar log4j-to-slf4j-2.11.2.jar
 

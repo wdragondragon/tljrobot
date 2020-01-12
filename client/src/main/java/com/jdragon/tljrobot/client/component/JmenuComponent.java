@@ -34,6 +34,7 @@ public class JmenuComponent {
     public JMenuItem email;
     public JMenuItem checkCode;
     public JMenuItem openCheat;
+
     public JMenuItem resert;
 
     public JMenuItem lookPlay;
@@ -66,7 +67,6 @@ public class JmenuComponent {
         nonOrder = new JMenuItem("该段乱序");
 
         getArticleByClipboard = new JMenuItem("剪贴板载文");
-        // jjmu = new JMenuItem("按钮模式");
         randomArticle = new JMenuItem("随机一文");
 
         createCodeTable = new JMenuItem("生成码表");

@@ -1,4 +1,4 @@
-package com.jdragon.tljrobot.client.event;
+package com.jdragon.tljrobot.client.event.FArea;
 
 import com.jdragon.tljrobot.client.config.LocalSystem;
 import com.jdragon.tljrobot.client.factory.SwingSingleton;

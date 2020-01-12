@@ -2,6 +2,7 @@ package com.jdragon.tljrobot.client;
 
 import com.jdragon.tljrobot.client.config.FontColorConfig;
 import com.jdragon.tljrobot.client.config.MainFraConfig;
+import com.jdragon.tljrobot.client.event.threadEvent.DynamicSpeed;
 import com.jdragon.tljrobot.client.window.MainFra;
 
 
@@ -10,5 +11,6 @@ public class Application {
         FontColorConfig.start();
         MainFraConfig.start();
         MainFra.getInstance().addListener();
+        DynamicSpeed.getInstance().start();
     }
 }

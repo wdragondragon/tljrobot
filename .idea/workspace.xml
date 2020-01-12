@@ -2,18 +2,78 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="tljrobot:jar" />
+      <artifact name="client:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="560566ca-4c25-4104-974e-54a248fc5e69" name="Default Changelist" comment="用直接跳转页面替换ajax交互嵌入">
-      <change afterPath="$PROJECT_DIR$/.gttattributes" afterDir="false" />
+    <list default="true" id="560566ca-4c25-4104-974e-54a248fc5e69" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/JIntellitype.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JIntellitype64.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/LocalConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/constant/Constant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/entry/Article.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/entry/TypeNum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/entry/TypingState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/QQgetArticle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/threadEvent/DynamicSpeed.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/factory/BetterTypingSingleton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/Typing.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/ArticleRegex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/Timer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/compShortCode/simpleEntry/SimpleEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gttattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/client_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/client_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/JmenuComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/JmenuComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/FontColorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/FontColorConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/MainFraConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/MainFraConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/ChangeQQGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ChangeQQGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/QqOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/QqOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/Replay.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/Replay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/SendAchievement.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/SendAchievement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/ShareArticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ShareArticle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/factory/SwingSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/factory/SwingSingleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/System/MoveFraListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/core/MoveFraListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/System/SystemListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/core/SystemListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/WindowAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/WindowAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/MainFra.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/MainFra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resourese/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resourese/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/component/JmenuComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/component/JmenuComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/config/MainFraConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/config/MainFraConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/event/ChangeQQGroup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/event/QqOperation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/event/Replay.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/event/SendAchievement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/event/ShareArticle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/listener/System/MoveFraListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/listener/System/SystemListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/WindowAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/WindowAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/window/MainFra$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/window/MainFra$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/window/MainFra.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/window/MainFra.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/UEditorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/UEditorConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/dto/ShortCode/CodeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/compShortCode/simpleEntry/CodeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/dto/ShortCode/ShortCodeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/compShortCode/simpleEntry/ShortCodeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/BestTypingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/BestTypingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/serviceImpl/BestTypingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/serviceImpl/BestTypingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/test/config.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/test/config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/ueditor/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/ueditor/ConfigManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/ueditor/upload/BinaryUploader.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/ueditor/upload/BinaryUploader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/articles.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/articles.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/model/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/model/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
@@ -27,49 +87,6 @@
         <option value="Class" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>System.out</find>
-      <find>mybatis</find>
-      <find>body</find>
-      <find>account</find>
-      <find>addaccount</find>
-      <find>assembly</find>
-      <find>card.equals(&quot;&quot;)||card==null</find>
-      <find>JTextPaneChange</find>
-      <find>threeCodeSecondColor</find>
-      <find>Instance</find>
-      <find>get</find>
-      <find>T</find>
-      <find>EnglishNext</find>
-      <find>everydaypaiming</find>
-      <find>romdom</find>
-      <find>SystemListener.getInstance()</find>
-      <find>static</find>
-      <find>private</find>
-      <find>paiming</find>
-      <find>linkbase</find>
-      <find>public</find>
-      <find>getConfigPath</find>
-      <find>rootPath</find>
-      <find>ueditor</find>
-    </findStrings>
-    <replaceStrings>
-      <replace />
-      <replace>card==null||card.equals(&quot;&quot;)</replace>
-      <replace>JTextPaneFont</replace>
-      <replace>twoCodeColor</replace>
-      <replace>threeCodeColor</replace>
-      <replace>save</replace>
-      <replace>nextEnglish</replace>
-      <replace>random</replace>
-      <replace>systemListener</replace>
-      <replace>public</replace>
-      <replace>rankingMenu</replace>
-      <replace>onlineMenu</replace>
-      <replace>private</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -99,6 +116,7 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -114,37 +132,37 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.6789396" />
+    <property name="project.structure.side.proportion" value="0.1969532" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="com.nnthink.aixcoder.config.Config" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.jdragon.tljrobot.tlj" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Lenovo\IdeaProjects\tljrobot\tlj\src\main\resources\templates" />
-      <recent name="C:\Users\Lenovo\IdeaProjects\tljrobot\tlj\src\main\resources\static" />
-      <recent name="C:\Users\Lenovo\IdeaProjects\tljrobot\tlj\src\main\resources\static\images" />
-      <recent name="C:\Users\Lenovo\IdeaProjects\tljrobot\tlj\src\main\resources\static\js" />
-      <recent name="C:\Users\Lenovo\IdeaProjects\tljrobot\tlj\src\main\resources\static\css" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.jdragon.tljrobot.tlj" />
-      <recent name="com.jdragon.tljrobot.tljutils" />
-      <recent name="com.jdragon.tljrobot.tljutils.getShell" />
-      <recent name="com.jdragon.tljrobot.tljutils.downLoad" />
-      <recent name="com.jdragon.tljrobot.tljutils.ipUtil" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\client" />
       <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\templates\editor" />
       <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\templates\model" />
       <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\templates\public" />
       <recent name="C:\Users\10619\IdeaProjects\tljrobot\client\src\main" />
-      <recent name="C:\Users\Lenovo\IdeaProjects\tljrobot\tlj\src\main\resources\static\css" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.jdragon.tljrobot.tlj" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.jdragon.tljrobot.client.utils.common" />
+      <recent name="com.jdragon.tljrobot.tlj" />
+      <recent name="com.jdragon.tljrobot.tljutils" />
+      <recent name="com.jdragon.tljrobot.tljutils.getShell" />
+      <recent name="com.jdragon.tljrobot.tljutils.downLoad" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\client\lib" />
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\client" />
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj" />
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot" />
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj-utils\src\main\java\com\jdragon\tljrobot\tljutils\compShortCode\simpleEntry" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TljApplication">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.Application" />
       <module name="client" />
@@ -171,100 +189,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="robot (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.robot.club.robot" />
-      <module name="robot" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.jdragon.tljrobot.robot.club.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="test.test (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="robot" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.jdragon.tljrobot.robot.typing.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.jdragon.tljrobot.robot.typing" />
-      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.robot.typing.test" />
-      <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="test.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="tlj" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.jdragon.tljrobot.tlj.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.jdragon.tljrobot.tlj.test" />
-      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.tlj.test.test" />
-      <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PublicmodelApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="publicmodel" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jdragon.tljrobot.publicmodel.PublicmodelApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RobotApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="robot" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jdragon.tljrobot.robot.RobotApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RobotApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="robot" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jdragon.tljrobo.robot.RobotApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TljApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="tlj" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jdragon.tljrobot.tlj.TljApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TljUtilsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="tlj-utils" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jdragon.tljrobot.tljutils.TljUtilsApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UtilApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="tlj-utils" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jdragon.tljrobot.util.UtilApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <list>
+      <item itemvalue="Application.Application" />
+      <item itemvalue="Application.TljApplication" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TljApplication" />
-        <item itemvalue="JUnit.test.test (1)" />
         <item itemvalue="Application.Application" />
-        <item itemvalue="Application.robot (1)" />
-        <item itemvalue="JUnit.test.test" />
+        <item itemvalue="Application.TljApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -318,7 +250,26 @@
       <workItem from="1577500689806" duration="3020000" />
       <workItem from="1577504411836" duration="14547000" />
       <workItem from="1577536837095" duration="6743000" />
-      <workItem from="1577583911577" duration="741000" />
+      <workItem from="1577583911577" duration="2635000" />
+      <workItem from="1577599984997" duration="6073000" />
+      <workItem from="1577607841381" duration="7954000" />
+      <workItem from="1577632240972" duration="70000" />
+      <workItem from="1577633007451" duration="1773000" />
+      <workItem from="1577670396390" duration="64000" />
+      <workItem from="1577695153661" duration="376000" />
+      <workItem from="1577806829484" duration="1730000" />
+      <workItem from="1578146823007" duration="143000" />
+      <workItem from="1578230306796" duration="55000" />
+      <workItem from="1578294486560" duration="785000" />
+      <workItem from="1578326532459" duration="3480000" />
+      <workItem from="1578629462906" duration="546000" />
+      <workItem from="1578630091475" duration="6875000" />
+      <workItem from="1578637027556" duration="232000" />
+      <workItem from="1578637690268" duration="2512000" />
+      <workItem from="1578640237289" duration="5262000" />
+      <workItem from="1578666458824" duration="2255000" />
+      <workItem from="1578705485214" duration="625000" />
+      <workItem from="1578706138754" duration="39967000" />
     </task>
     <task id="LOCAL-00001" summary="用直接跳转页面替换ajax交互嵌入">
       <created>1577584125492</created>
@@ -327,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577584125492</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="用直接跳转页面替换ajax交互嵌入">
+      <created>1577584685071</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1577584685071</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,58 +297,131 @@
     <option name="LAST_COMMIT_MESSAGE" value="用直接跳转页面替换ajax交互嵌入" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="265" y="63" key="#Project_Structure" timestamp="1577503881625">
+    <state x="412" y="120" key="#Auto_Import" timestamp="1578823323325">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
+    <state x="3112" y="436" key="#Auto_Import/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578668349254" />
+    <state x="412" y="120" key="#Auto_Import/62.0.1218.800@62.0.1218.800" timestamp="1578823323325" />
+    <state x="3014" y="485" width="1335" height="682" key="#Project_Structure" timestamp="1578666907536">
+      <screen x="2560" y="252" width="1920" height="1050" />
+    </state>
+    <state x="3014" y="485" width="1335" height="682" key="#Project_Structure/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578666907536" />
     <state x="265" y="63" key="#Project_Structure/62.0.1218.800@62.0.1218.800" timestamp="1577503881625" />
-    <state x="404" y="192" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1577503869739">
+    <state x="3250" y="532" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1578710429391">
+      <screen x="2560" y="252" width="1920" height="1050" />
+    </state>
+    <state x="3250" y="532" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578710429391" />
+    <state x="350" y="290" width="795" height="290" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1578802194296">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
+    <state x="350" y="290" width="795" height="290" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/62.0.1218.800@62.0.1218.800" timestamp="1578802194296" />
+    <state x="127" y="56" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578837446169">
+      <screen x="62" y="0" width="1218" height="800" />
+    </state>
+    <state x="127" y="56" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1218.800@62.0.1218.800" timestamp="1578837446169" />
+    <state x="3244" y="580" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578639549063">
+      <screen x="2560" y="252" width="1920" height="1050" />
+    </state>
+    <state x="3244" y="580" key="#com.intellij.fileTypes.FileTypeChooser/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578639549063" />
+    <state x="3325" y="487" key="#com.intellij.ide.util.MemberChooser" timestamp="1578710435732">
+      <screen x="2560" y="252" width="1920" height="1050" />
+    </state>
+    <state x="3325" y="487" key="#com.intellij.ide.util.MemberChooser/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578710435732" />
+    <state x="3099" y="504" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1578666880965">
+      <screen x="2560" y="252" width="1920" height="1050" />
+    </state>
+    <state x="3099" y="504" key="#com.intellij.ide.util.TreeClassChooserDialog/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578666880965" />
     <state x="404" y="192" key="#com.intellij.ide.util.TreeClassChooserDialog/62.0.1218.800@62.0.1218.800" timestamp="1577503869739" />
+    <state x="405" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1578800330662">
+      <screen x="62" y="0" width="1218" height="800" />
+    </state>
+    <state x="405" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/62.0.1218.800@62.0.1218.800" timestamp="1578800330662" />
     <state x="420" y="249" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1577503398719">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="420" y="249" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/62.0.1218.800@62.0.1218.800" timestamp="1577503398719" />
-    <state x="277" y="0" key="CommitChangelistDialog2" timestamp="1577584648010">
+    <state x="277" y="0" key="CommitChangelistDialog2" timestamp="1577584683498">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
-    <state x="277" y="0" key="CommitChangelistDialog2/62.0.1218.800@62.0.1218.800" timestamp="1577584648010" />
-    <state x="100" y="153" key="FileChooserDialogImpl" timestamp="1577503898119">
+    <state x="277" y="0" key="CommitChangelistDialog2/62.0.1218.800@62.0.1218.800" timestamp="1577584683498" />
+    <state x="2620" y="453" key="FileChooserDialogImpl" timestamp="1578666889282">
+      <screen x="2560" y="252" width="1920" height="1050" />
+    </state>
+    <state x="2620" y="453" key="FileChooserDialogImpl/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578666889282" />
+    <state x="100" y="153" key="FileChooserDialogImpl/62.0.1218.800@62.0.1218.800" timestamp="1577695176216" />
+    <state width="1176" height="121" key="GridCell.Tab.0.bottom" timestamp="1578846345597">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
-    <state x="100" y="153" key="FileChooserDialogImpl/62.0.1218.800@62.0.1218.800" timestamp="1577503898119" />
-    <state width="1176" height="143" key="GridCell.Tab.0.bottom" timestamp="1577549708390">
+    <state width="1877" height="267" key="GridCell.Tab.0.bottom/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
+    <state width="1176" height="366" key="GridCell.Tab.0.bottom/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
+    <state width="1176" height="121" key="GridCell.Tab.0.bottom/62.0.1218.800@62.0.1218.800" timestamp="1578846345597" />
+    <state width="1176" height="121" key="GridCell.Tab.0.center" timestamp="1578846345597">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
-    <state width="1176" height="143" key="GridCell.Tab.0.bottom/62.0.1218.800@62.0.1218.800" timestamp="1577549708390" />
-    <state width="1176" height="143" key="GridCell.Tab.0.center" timestamp="1577549708390">
+    <state width="1877" height="267" key="GridCell.Tab.0.center/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
+    <state width="1176" height="366" key="GridCell.Tab.0.center/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
+    <state width="1176" height="121" key="GridCell.Tab.0.center/62.0.1218.800@62.0.1218.800" timestamp="1578846345597" />
+    <state width="1176" height="121" key="GridCell.Tab.0.left" timestamp="1578846345596">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
-    <state width="1176" height="143" key="GridCell.Tab.0.center/62.0.1218.800@62.0.1218.800" timestamp="1577549708390" />
-    <state width="1176" height="143" key="GridCell.Tab.0.left" timestamp="1577549708390">
+    <state width="1877" height="267" key="GridCell.Tab.0.left/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
+    <state width="1176" height="366" key="GridCell.Tab.0.left/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
+    <state width="1176" height="121" key="GridCell.Tab.0.left/62.0.1218.800@62.0.1218.800" timestamp="1578846345596" />
+    <state width="1176" height="121" key="GridCell.Tab.0.right" timestamp="1578846345597">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
-    <state width="1176" height="143" key="GridCell.Tab.0.left/62.0.1218.800@62.0.1218.800" timestamp="1577549708390" />
-    <state width="1176" height="143" key="GridCell.Tab.0.right" timestamp="1577549708390">
+    <state width="1877" height="267" key="GridCell.Tab.0.right/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
+    <state width="1176" height="366" key="GridCell.Tab.0.right/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
+    <state width="1176" height="121" key="GridCell.Tab.0.right/62.0.1218.800@62.0.1218.800" timestamp="1578846345597" />
+    <state width="1176" height="92" key="GridCell.Tab.1.bottom" timestamp="1578840460090">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
-    <state width="1176" height="143" key="GridCell.Tab.0.right/62.0.1218.800@62.0.1218.800" timestamp="1577549708390" />
-    <state x="176" y="46" key="SettingsEditor" timestamp="1577504473997">
+    <state width="1176" height="92" key="GridCell.Tab.1.bottom/62.0.1218.800@62.0.1218.800" timestamp="1578840460090" />
+    <state width="1176" height="92" key="GridCell.Tab.1.center" timestamp="1578840460090">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
-    <state x="176" y="46" key="SettingsEditor/62.0.1218.800@62.0.1218.800" timestamp="1577504473997" />
-    <state x="264" y="137" key="Vcs.Push.Dialog.v2" timestamp="1577584136203">
+    <state width="1176" height="92" key="GridCell.Tab.1.center/62.0.1218.800@62.0.1218.800" timestamp="1578840460090" />
+    <state width="1176" height="92" key="GridCell.Tab.1.left" timestamp="1578840460090">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
-    <state x="264" y="137" key="Vcs.Push.Dialog.v2/62.0.1218.800@62.0.1218.800" timestamp="1577584136203" />
-    <state x="368" y="229" key="com.intellij.ide.util.TipDialog" timestamp="1577583913509">
+    <state width="1176" height="92" key="GridCell.Tab.1.left/62.0.1218.800@62.0.1218.800" timestamp="1578840460090" />
+    <state width="1176" height="92" key="GridCell.Tab.1.right" timestamp="1578840460090">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
-    <state x="368" y="229" key="com.intellij.ide.util.TipDialog/62.0.1218.800@62.0.1218.800" timestamp="1577583913509" />
-    <state x="330" y="182" key="run.anything.popup" timestamp="1577523198148">
+    <state width="1176" height="92" key="GridCell.Tab.1.right/62.0.1218.800@62.0.1218.800" timestamp="1578840460090" />
+    <state x="-5" y="78" width="1272" height="713" key="SettingsEditor" timestamp="1578802200719">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
-    <state x="330" y="182" key="run.anything.popup/62.0.1218.800@62.0.1218.800" timestamp="1577523198148" />
+    <state x="2740" y="312" key="SettingsEditor/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578631290323" />
+    <state x="-5" y="78" width="1272" height="713" key="SettingsEditor/62.0.1218.800@62.0.1218.800" timestamp="1578802200719" />
+    <state x="264" y="137" key="Vcs.Push.Dialog.v2" timestamp="1577584696086">
+      <screen x="62" y="0" width="1218" height="800" />
+    </state>
+    <state x="264" y="137" key="Vcs.Push.Dialog.v2/62.0.1218.800@62.0.1218.800" timestamp="1577584696086" />
+    <state x="3042" y="553" key="com.intellij.ide.util.TipDialog" timestamp="1578706140340">
+      <screen x="2560" y="252" width="1920" height="1050" />
+    </state>
+    <state x="368" y="229" key="com.intellij.ide.util.TipDialog/62.0.1218.800/2560.252.1080.1890@62.0.1218.800" timestamp="1578230305634" />
+    <state x="3042" y="553" key="com.intellij.ide.util.TipDialog/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578706140340" />
+    <state x="368" y="229" key="com.intellij.ide.util.TipDialog/62.0.1218.800@62.0.1218.800" timestamp="1577670403727" />
+    <state x="3127" y="327" width="786" height="900" key="find.popup" timestamp="1578712106387">
+      <screen x="2560" y="252" width="1920" height="1050" />
+    </state>
+    <state x="3127" y="327" width="786" height="900" key="find.popup/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578712106387" />
+    <state x="61" y="17" key="new project wizard" timestamp="1577632040170">
+      <screen x="62" y="0" width="1218" height="800" />
+    </state>
+    <state x="61" y="17" key="new project wizard/62.0.1218.800@62.0.1218.800" timestamp="1577632040170" />
+    <state x="2984" y="492" key="run.anything.popup" timestamp="1578631462186">
+      <screen x="2560" y="252" width="1920" height="1050" />
+    </state>
+    <state x="2984" y="492" key="run.anything.popup/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578631462186" />
+    <state x="331" y="183" key="run.anything.popup/62.0.1218.800@62.0.1218.800" timestamp="1577603124252" />
+    <state x="2989" y="412" width="1060" height="890" key="search.everywhere.popup" timestamp="1578664277157">
+      <screen x="2560" y="252" width="1920" height="1050" />
+    </state>
+    <state x="2989" y="412" width="1060" height="890" key="search.everywhere.popup/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578664277157" />
+    <state x="334" y="122" width="672" height="678" key="search.everywhere.popup/62.0.1218.800@62.0.1218.800" timestamp="1577625806139" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

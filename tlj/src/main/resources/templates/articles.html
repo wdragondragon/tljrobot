@@ -22,7 +22,17 @@
                     var result = data['message'];
                     if(result=="获取成功"){
                         var news = data['result'];
+                        var articlesTypeListIndex = 0;
                         for(let i in news){
+                            if(i!='新鲜出炉') {
+                                var typeArticleRow = $('#articlesTypeList'+articlesTypeListIndex%2);
+                                typeArticleRow.append('<div class="panel panel-default">' +
+                                    '<table class="table table-bordered table-hover">' +
+                                    '<caption>' + i + '<a onclick="showArticlesByType(\'' + i + '\')" class="pull-right">更多</a></caption>' +
+                                    '<tbody id="' + i + '">' +
+                                    '</tbody></table></div>');
+                                articlesTypeListIndex+=1;
+                            }
                             for(let index in news[i]){
                                 var tb = $('#'+i);
                                 tb.append('<tr></tr>')
@@ -48,6 +58,7 @@
                     var result = data['message'];
                     if(result=="获取成功"){
                         var news = data['result'];
+
                         for(let index in news) {
                             var tb = $('#热点');
                             tb.append('<tr></tr>')
@@ -101,57 +112,56 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
         <div class="col-sm-8">
             <div class="row" id="typeArticle">
-                <div class="col-sm-6">
-                    <div class="panel panel-default">
-                        <table class="table table-bordered table-hover">
-                            <caption>方案魔改<a onclick="showArticlesByType('方案魔改')" class="pull-right">更多</a></caption>
-                            <tbody id="方案魔改">
-                            <!--<tr><td>
-                                 <a href="">文章标题</a>
-                                 <span class="label label-info" style="float:right">点击量</span>
-                             </td></tr>-->
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="panel panel-default">
-                        <table class="table table-bordered table-hover">
-                            <caption>提升分享<a onclick="showArticlesByType('提升分享')" class="pull-right">更多</a></caption>
-                            <tbody id="提升分享">
-                            <!--<tr><td>
-                                <a href="">文章标题</a>
-                                <span class="label label-info" style="float:right">点击量</span>
-                            </td></tr>-->
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="col-sm-6" id="articlesTypeList0">
+<!--                    <div class="panel panel-default">-->
+<!--                        <table class="table table-bordered table-hover">-->
+<!--                            <caption>方案魔改<a onclick="showArticlesByType('方案魔改')" class="pull-right">更多</a></caption>-->
+<!--                            <tbody id="方案魔改">-->
+<!--                            &lt;!&ndash;<tr><td>-->
+<!--                                 <a href="">文章标题</a>-->
+<!--                                 <span class="label label-info" style="float:right">点击量</span>-->
+<!--                             </td></tr>&ndash;&gt;-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<!--                    <div class="panel panel-default">-->
+<!--                        <table class="table table-bordered table-hover">-->
+<!--                            <caption>提升分享<a onclick="showArticlesByType('提升分享')" class="pull-right">更多</a></caption>-->
+<!--                            <tbody id="提升分享">-->
+<!--                            &lt;!&ndash;<tr><td>-->
+<!--                                <a href="">文章标题</a>-->
+<!--                                <span class="label label-info" style="float:right">点击量</span>-->
+<!--                            </td></tr>&ndash;&gt;-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
                 </div>
-                <div class="col-sm-6">
-                    <div class="panel panel-default">
-                        <table class="table table-bordered table-hover">
-                            <caption>方案教学<a onclick="showArticlesByType('方案教学')" class="pull-right">更多</a></caption>
-                            <tbody id="方案教学">
-                            <!--<tr><td>
-                                <a href="">文章标题</a>
-                                <span class="label label-info" style="float:right">点击量</span>
-                            </td></tr>-->
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="panel panel-default">
-                        <table class="table table-bordered table-hover">
-                            <caption>速度录屏<a onclick="showArticlesByType('速录录屏')" class="pull-right">更多</a></caption>
-                            <tbody id="速度录屏">
-                            <!--<tr><td>
-                                <a href="">文章标题</a>
-                                <span class="label label-info" style="float:right">点击量</span>
-                            </td></tr>-->
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="col-sm-6" id="articlesTypeList1">
+<!--                    <div class="panel panel-default">-->
+<!--                        <table class="table table-bordered table-hover">-->
+<!--                            <caption>方案教学<a onclick="showArticlesByType('方案教学')" class="pull-right">更多</a></caption>-->
+<!--                            <tbody id="方案教学">-->
+<!--                            &lt;!&ndash;<tr><td>-->
+<!--                                <a href="">文章标题</a>-->
+<!--                                <span class="label label-info" style="float:right">点击量</span>-->
+<!--                            </td></tr>&ndash;&gt;-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<!--                    <div class="panel panel-default">-->
+<!--                        <table class="table table-bordered table-hover">-->
+<!--                            <caption>速度录屏<a onclick="showArticlesByType('速录录屏')" class="pull-right">更多</a></caption>-->
+<!--                            <tbody id="速度录屏">-->
+<!--                            &lt;!&ndash;<tr><td>-->
+<!--                                <a href="">文章标题</a>-->
+<!--                                <span class="label label-info" style="float:right">点击量</span>-->
+<!--                            </td></tr>&ndash;&gt;-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>

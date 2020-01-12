@@ -126,6 +126,7 @@ public class SwingSingleton {
         if (typingText==null) {
             typingText = new JTextArea();
             typingText.setFont(normalFont);
+            typingText.setLineWrap(true);
             typingText.setBackground(new Color(238, 238, 238));
         }
         return typingText;
