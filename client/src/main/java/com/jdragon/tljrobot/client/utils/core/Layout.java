@@ -1,11 +1,11 @@
 package com.jdragon.tljrobot.client.utils.core;
 
-import com.jdragon.tljrobot.client.factory.SwingSingleton;
+import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.window.MainFra;
 
 import java.awt.*;
 
-import static com.jdragon.tljrobot.client.factory.SwingSingleton.*;
+import static com.jdragon.tljrobot.client.component.SwingSingleton.*;
 
 public class Layout {
     public static void addOnBounds(Container win, Component component, int x, int y, int width, int height){

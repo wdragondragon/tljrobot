@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.tlj.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
@@ -9,47 +10,45 @@ import lombok.Data;
 import java.sql.Date;
 
 @Data
-@TableName("history")
+@TableName("tlj_history")
 public class History extends Model<History> {
-    @TableId("name")
-    private String name;
+    @TableId(type = IdType.AUTO)
+    private int id;
+
+    private int userId;
 
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-    private Date date;
+    private Date typeDate;
 
-    private double sudu;
+    private double speed;
 
-    private double key;
+    private double keySpeed;
 
-    private double keylength;
+    private double keyLength;
 
     private int number;
 
-    private int deletetext;
+    private int deleteText;
 
-    private int delete;
+    private int deleteNum;
 
     private int mistake;
 
-    private int repeat;
+    private int repeatNum;
 
-    private double Keyaccuracy;
+    private double keyAccuracy;
 
-    private double Keymethod;
+    private double keyMethod;
 
-    private double dacilv;
+    private double wordRate;
 
     private double time;
 
-    private String wenben;
+    private int articleId;
 
-    private int duan;
-
-    private double nandu;
-
-    private int id;
+    private int paragraph;
 
     public static class Def {
-        public static final String HISTORY_NAME = "name";
+        public static final String TLJ_HISTORY_USERID = "userId";
     }
 }

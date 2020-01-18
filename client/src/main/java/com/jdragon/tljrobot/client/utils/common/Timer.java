@@ -42,7 +42,7 @@ public class Timer {
 			timeOne = new BigInteger(String.valueOf(startTime));
 		//将暂停时间计算出来后加到开始时间上。
 		timeOne = timeOne.add(timeStopTwo.subtract(timeStopOne));
-		setStartTime(Long.valueOf(String.valueOf(timeOne)));
+		setStartTime(Long.parseLong(String.valueOf(timeOne)));
 		setPauseStartTime(0L);
 		setEndTime(0L);
 	}

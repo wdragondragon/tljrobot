@@ -13,6 +13,7 @@ public class Clipboard {
         Transferable trans = new StringSelection(text);
         // 把文本内容设置到系统剪贴板
         clipboard.setContents(trans, null);
+        clipboard.getContents(null);
         clipboard = null;
     }
 
@@ -27,15 +28,15 @@ public class Clipboard {
             if (trans.isDataFlavorSupported(DataFlavor.stringFlavor)) {
                 try {
                     // 获取剪贴板中的文本内容
-                    String text = (String) trans
-                            .getTransferData(DataFlavor.stringFlavor);
                     clipboard = null;
-                    return text;
+                    return (String) trans
+                            .getTransferData(DataFlavor.stringFlavor);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }
+        clipboard = null;
         return null;
     }
 }

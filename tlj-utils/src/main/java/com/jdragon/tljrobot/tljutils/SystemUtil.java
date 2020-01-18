@@ -1,10 +1,8 @@
 package com.jdragon.tljrobot.tljutils;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.Properties;
 public class SystemUtil {
-    private static String getSystemName(){
+    public static String getSystemName(){
 //        try {
             String systemName;
             String systemVersion;

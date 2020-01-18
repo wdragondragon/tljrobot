@@ -14,12 +14,12 @@ public class WindowAPI {
         List<String> allWindows = getAllWindows();
 //        return allWindows;
         List<String> QQWindows = new ArrayList<>();
-        ArrayList<HWND> hlist = new ArrayList<>();
-        for (int i = 0; i < allWindows.size(); i++) {
-            HWND hWnd = User32.INSTANCE.FindWindow("TXGuiFoundation", allWindows.get(i));
-            if (hWnd!=null) {
-                hlist.add(hWnd);
-                QQWindows.add(allWindows.get(i));
+        ArrayList<HWND> HList = new ArrayList<>();
+        for (String allWindow : allWindows) {
+            HWND hWnd = User32.INSTANCE.FindWindow("TXGuiFoundation", allWindow);
+            if (hWnd != null) {
+                HList.add(hWnd);
+                QQWindows.add(allWindow);
             }
         }
         return QQWindows;
@@ -29,7 +29,6 @@ public class WindowAPI {
         try
         {
             final List<DesktopWindow> list = WindowUtils.getAllWindows(true);
-
             for (DesktopWindow dd : list)
             {
                 HWND wnd = dd.getHWND();

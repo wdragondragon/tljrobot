@@ -33,8 +33,6 @@ public class LocalSystem {
         }
     }
     public static boolean isWindows(){
-        if(LocalSystem.getInstance().getSystemName().substring(0,7).equals("Windows"))
-            return true;
-        else return false;
+        return LocalSystem.getInstance().getSystemName().substring(0, 7).equals("Windows");
     }
 }

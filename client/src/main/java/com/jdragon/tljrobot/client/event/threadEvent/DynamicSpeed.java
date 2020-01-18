@@ -1,7 +1,7 @@
 package com.jdragon.tljrobot.client.event.threadEvent;
 
 import com.jdragon.tljrobot.client.entry.TypingState;
-import com.jdragon.tljrobot.client.factory.SwingSingleton;
+import com.jdragon.tljrobot.client.component.SwingSingleton;
 
 /**
  * Create by Jdragon on 2020.01.12
@@ -16,7 +16,8 @@ public class DynamicSpeed extends Thread {
     public void run() {
         while (true) {
             try {
-                sleep(100);
+                sleep(10);
+                if(TypingState.pause)continue;
                 if (TypingState.typingState&&!TypingState.stopState) {
                     TypingState.timer.timeEnd();
                     SwingSingleton.SpeedButton().setText(String.format("%.2f",

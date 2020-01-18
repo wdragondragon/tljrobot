@@ -26,16 +26,13 @@
                 tb.append('<tr></tr>');
                 let tr = tb.find(":last");
                 tr.append('<td>'+((data.pageNum-1)*data.pageSize*1+i*1+1)+'</td>');
-                tr.append('<td>'+data.list[i].name+'</td>');
+                tr.append('<td>'+data.list[i].username+'</td>');
                 tr.append('<td>'+data.list[i].num+'</td>');
-                tr.append('<td>'+data.list[i].rightnum+'</td>');
-                tr.append('<td>'+data.list[i].misnum+'</td>');
-                tr.append('<td>'+data.list[i].datenum+'</td>');
-                tr.append('<td>'+data.list[i].n+'</td>');
-                tr.append('<td>'+data.list[i].aver.toFixed(2)+'</td>');
-                tr.append('<td>'+data.list[i].lastdate+'</td>');
-                tr.append('<td>'+data.list[i].zhucedate+'</td>');
-                tr.append('<td>'+data.list[i].online+'</td>');
+                tr.append('<td>'+data.list[i].rightNum+'</td>');
+                tr.append('<td>'+data.list[i].misNum+'</td>');
+                tr.append('<td>'+data.list[i].dateNum+'</td>');
+                tr.append('<td>'+data.list[i].lastLoginDate+'</td>');
+                tr.append('<td>'+data.list[i].regDate+'</td>');
             }
             let pageul = $('#UserChangePage');
             pageul.empty();
@@ -109,11 +106,8 @@
                         <th>正确字数</th>
                         <th>错误字数</th>
                         <th>今日字数</th>
-                        <th>赛文跟打次数</th>
-                        <th>赛文平均成绩</th>
                         <th>最后登录日期</th>
                         <th>注册日期</th>
-                        <th>在线情况</th>
                     </tr>
                     </thead>
                     <tbody id="UserList"></tbody>

@@ -14,24 +14,38 @@ public class SimpleEntry {
             shortCodeEntity.setCodeEntities(getSimpleEntity(betterTyping.getSubscriptInstances()));
             shortCodeEntity.setArticleCodes(betterTyping.getDingShowStr());
             shortCodeEntity.setCodeLength(betterTyping.getDingalllength());
+            shortCodeEntity.setArticleAverCodes(
+                    Double.parseDouble(String.format("%.2f",((double)betterTyping.getDingalllength())/str.length())));
         }
         return shortCodeEntity;
     }
     public CodeEntity[] getSimpleEntity(SubscriptInstance[] subscriptInstances){
         CodeEntity[] codeEntities = new CodeEntity[subscriptInstances.length];
+        int preWordsType = 0;//上一跳词型
+        boolean bold = false;//上一跳加粗情况
         for(int i = 0;i<codeEntities.length;i++){
             int wordsSign = subscriptInstances[i].getNext();
             for(int j=i;j<=wordsSign;j++){
                 CodeEntity codeEntity = new CodeEntity();
+                codeEntity.setIndex(j);
                 codeEntity.setWord(subscriptInstances[j].getWord());
                 codeEntity.setWordCode(subscriptInstances[j].getWordCode());
                 codeEntity.setType(subscriptInstances[i].getType());
+                codeEntity.setNext(subscriptInstances[i].getNext());
+                if(preWordsType!=0&&preWordsType==subscriptInstances[i].getType()){
+                    codeEntity.setBold(!bold);
+                }
                 codeEntities[j] = codeEntity;
             }
             if(subscriptInstances[i].isUseWordSign()) {
-                codeEntities[i].setWords(subscriptInstances[wordsSign].getShortCodePreInfo().getWords());
-                codeEntities[i].setWordsCode(subscriptInstances[wordsSign].getShortCodePreInfo().getWordsCode());
+                codeEntities[i].setWords(subscriptInstances[wordsSign]
+                        .getShortCodePreInfo().getWords());
+
+                codeEntities[i].setWordsCode(subscriptInstances[wordsSign]
+                        .getShortCodePreInfo().getWordsCode());
             }
+            preWordsType = codeEntities[i].getType();
+            bold = codeEntities[i].isBold();
             i = wordsSign;
         }
         subscriptInstances = null;

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/ajaxGetHtml.js"></script>
+    <script>
+        var articleType = "[[${blogType}]]";
+        function getBlogType() {
+
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: '/home/getBlogByType/'+articleType+'/1/20',
+                dataType: 'json',
+                success: function (data) {
+                    var result = data['message'];
+                    if(result=="获取成功"){
+                        var blog = data['result'];
+                        for(let i in blog){
+                            $('#newsList').append("<li class=\"list-group-item\">" +
+                                "<a onclick=\"showBlog("+blog[i]['id']+")\">"
+                                +blog[i]['title']+"</a></li>");
+                        }
+                    }
+                },
+                error: function (err) {
+                    alert(JSON.stringify(err));
+                }
+            });
+            sessionStorage.articleType='';
+        }
+        $(function () {
+            getBlogType();
+        })
+        function showBlog(id){
+            $(location).attr('href','/home/showBlog/'+id);
+        }
+    </script>
+</head>
+<body>
+<div th:replace="public/header"></div>
+<div class="container">
+    <div class="box">
+        <ul class="list-group" id="newsList">
+<!--            <li class="list-group-item">-->
+<!--                <a onclick="instead('/home/showArticle','#instead')">-->
+
+<!--                </a>-->
+<!--            </li>-->
+        </ul>
+    </div>
+</div>
+<div th:replace="public/footer"></div>
+</body>
+</html>

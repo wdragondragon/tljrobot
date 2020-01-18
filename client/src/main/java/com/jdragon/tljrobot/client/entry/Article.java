@@ -1,6 +1,6 @@
 package com.jdragon.tljrobot.client.entry;
 
-import com.jdragon.tljrobot.client.factory.BetterTypingSingleton;
+import com.jdragon.tljrobot.client.utils.common.BetterTypingSingleton;
 import com.jdragon.tljrobot.tljutils.compShortCode.simpleEntry.ShortCodeEntity;
 import com.jdragon.tljrobot.tljutils.compShortCode.simpleEntry.SimpleEntry;
 import lombok.Data;
@@ -27,4 +27,8 @@ public class Article {
     private String article;
     private ShortCodeEntity shortCodeEntity;
     private Article(){}
+    @Override
+    public String toString() {
+        return "[\n段落:"+paragraph+",\n标题:"+title+",\n文章:"+article+",\n编码详情:"+shortCodeEntity.toString()+"]";
+    }
 }

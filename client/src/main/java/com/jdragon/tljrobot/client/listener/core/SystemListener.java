@@ -1,6 +1,8 @@
 package com.jdragon.tljrobot.client.listener.core;
 
-import com.jdragon.tljrobot.client.factory.SwingSingleton;
+import com.jdragon.tljrobot.client.config.LocalConfig;
+import com.jdragon.tljrobot.client.component.SwingSingleton;
+import com.jdragon.tljrobot.client.utils.core.IniAccess;
 import com.jdragon.tljrobot.client.utils.core.Layout;
 import com.jdragon.tljrobot.client.window.MainFra;
 
@@ -24,10 +26,7 @@ public class SystemListener implements ActionListener, MouseListener, MouseMotio
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        if(e.getActionCommand()=="关"){
-//            if(win.one.isVisible()){
-//                JOptionPane.showMessageDialog(new JTextArea(),"请先关闭在线对战");return;
-//            }
+        if(e.getActionCommand().equals("关")){
             if(MaxSign==1){
                 JOptionPane.showMessageDialog(new JTextArea(),"请先关闭全屏模式");return;
             }
@@ -35,16 +34,13 @@ public class SystemListener implements ActionListener, MouseListener, MouseMotio
             UIManager.put("OptionPane.noButtonText", "隐藏");
             int n = JOptionPane.showConfirmDialog(null, "要关闭跟打器，还是选择隐藏到托盘", "关闭提示", JOptionPane.YES_NO_OPTION);
             if (n == JOptionPane.YES_OPTION) {
-//                try {
-//                    readWrite.keep(win);//保存设置
-////					SendQQMessage.sendmessage(Login.zhanghao.getText()+"已下线，（上线消息只会发送到拖拉机交流群）");
-//                } catch (IOException e1) {System.out.println("保存失败");}
+                IniAccess.writeIni(LocalConfig.iniFilePath);
                 System.exit(0);
             }
             else{
                 win.setVisible(false);
             }
-        }else if (e.getActionCommand() == "最大化") {
+        }else if (e.getActionCommand().equals("最大化")) {
             if (MaxSign == 0) {
                 max();
             } else {
@@ -124,6 +120,8 @@ public class SystemListener implements ActionListener, MouseListener, MouseMotio
                     SwingSingleton.TipsLabel(),SwingSingleton.SendArticleLabel(),
                     SwingSingleton.NumberLabel(),SwingSingleton.TypingProgress());
             Layout.addLocation(i,0,SwingSingleton.CloseButton(),SwingSingleton.MaxButton(),SwingSingleton.MinButton());
+            LocalConfig.windowWidth += i;
+            LocalConfig.windowHeight += j;
         }
     }
 

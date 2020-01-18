@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/ajaxGetHtml.js"></script>
+    <script>
+        $(function () {
+            getNewsType();
+            getHot();
+        })
+        function getNewsType() {
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: '/home/getBlogTypeMap/1/5',
+                dataType: 'json',
+                success: function (data) {
+                    var result = data['message'];
+                    if(result=="获取成功"){
+                        var blog = data['result'];
+                        var articlesTypeListIndex = 0;
+                        for(let i in blog){
+                            if(i!='新鲜出炉') {
+                                var typeArticleRow = $('#articlesTypeList'+articlesTypeListIndex%2);
+                                typeArticleRow.append('<div class="panel panel-default">' +
+                                    '<table class="table table-bordered table-hover">' +
+                                    '<caption>' + i + '<a onclick="showArticlesByType(\'' + i + '\')" class="pull-right">更多</a></caption>' +
+                                    '<tbody id="' + i + '">' +
+                                    '</tbody></table></div>');
+                                articlesTypeListIndex+=1;
+                            }
+                            for(let index in blog[i]){
+                                var tb = $('#'+i);
+                                tb.append('<tr></tr>')
+                                let tr = tb.find("tr:last");
+                                tr.append('<td><a onclick="showArticle('+blog[i][index]['id']+')">'+blog[i][index]['title']+'</a>'+
+                                   '<span class="label label-info" style="float:right">'+blog[i][index]['clickNum']+'</span></td>')
+                            }
+                        }
+                    }
+                },
+                error: function (err) {
+                    alert(JSON.stringify(err));
+                }
+            });
+        }
+        function getHot() {
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json;charset=utf-8',
+                url: '/home/getHotBlog',
+                dataType: 'json',
+                success: function (data) {
+                    var result = data['message'];
+                    if(result=="获取成功"){
+                        var blog = data['result'];
+
+                        for(let index in blog) {
+                            var tb = $('#热点');
+                            tb.append('<tr></tr>')
+                            let tr = tb.find("tr:last");
+                            tr.append('<td><a onclick="showArticle(' + blog[index]['id'] + ')">' + blog[index]['title'] + '</a>' +
+                                '<span class="label label-info" style="float:right">' + blog[index]['clickNum'] + '</span></td>')
+                        }
+                    }
+                },
+                error: function (err) {
+                    alert(JSON.stringify(err));
+                }
+            });
+        }
+        function showArticle(id) {
+            $(location).attr('href','/home/showBlog/'+id);
+        }
+        function showArticlesByType(type) {
+            $(location).attr('href','/home/moreBlog/'+type);
+        }
+    </script>
+</head>
+<body>
+<div th:include="public/header"></div>
+<div class="container" style="margin-top: 15px">
+    <div class=row>
+        <div class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">新鲜出炉<a onclick="showArticlesByType('新鲜出炉')" class="pull-right">更多</a></h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-hover">
+                        <tbody id="新鲜出炉">
+<!--                            <tr><td>-->
+<!--                                <a href="">拖拉机社区测试启动啦</a>-->
+<!--                                <span class="label label-info" style="float:right"></span>-->
+<!--                            </td></tr>-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <table class="table table-bordered table-hover">
+                    <caption>热点</caption>
+                    <tbody id="热点">
+                    <!--<tr><td>
+                         <a href="">文章标题</a>
+                         <span class="label label-info" style="float:right">点击量</span>
+                     </td></tr>-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="row" id="typeArticle">
+                <div class="col-sm-6" id="articlesTypeList0">
+<!--                    <div class="panel panel-default">-->
+<!--                        <table class="table table-bordered table-hover">-->
+<!--                            <caption>方案魔改<a onclick="showArticlesByType('方案魔改')" class="pull-right">更多</a></caption>-->
+<!--                            <tbody id="方案魔改">-->
+<!--                            &lt;!&ndash;<tr><td>-->
+<!--                                 <a href="">文章标题</a>-->
+<!--                                 <span class="label label-info" style="float:right">点击量</span>-->
+<!--                             </td></tr>&ndash;&gt;-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<!--                    <div class="panel panel-default">-->
+<!--                        <table class="table table-bordered table-hover">-->
+<!--                            <caption>提升分享<a onclick="showArticlesByType('提升分享')" class="pull-right">更多</a></caption>-->
+<!--                            <tbody id="提升分享">-->
+<!--                            &lt;!&ndash;<tr><td>-->
+<!--                                <a href="">文章标题</a>-->
+<!--                                <span class="label label-info" style="float:right">点击量</span>-->
+<!--                            </td></tr>&ndash;&gt;-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+                </div>
+                <div class="col-sm-6" id="articlesTypeList1">
+<!--                    <div class="panel panel-default">-->
+<!--                        <table class="table table-bordered table-hover">-->
+<!--                            <caption>方案教学<a onclick="showArticlesByType('方案教学')" class="pull-right">更多</a></caption>-->
+<!--                            <tbody id="方案教学">-->
+<!--                            &lt;!&ndash;<tr><td>-->
+<!--                                <a href="">文章标题</a>-->
+<!--                                <span class="label label-info" style="float:right">点击量</span>-->
+<!--                            </td></tr>&ndash;&gt;-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<!--                    <div class="panel panel-default">-->
+<!--                        <table class="table table-bordered table-hover">-->
+<!--                            <caption>速度录屏<a onclick="showArticlesByType('速录录屏')" class="pull-right">更多</a></caption>-->
+<!--                            <tbody id="速度录屏">-->
+<!--                            &lt;!&ndash;<tr><td>-->
+<!--                                <a href="">文章标题</a>-->
+<!--                                <span class="label label-info" style="float:right">点击量</span>-->
+<!--                            </td></tr>&ndash;&gt;-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="text" style="display: none" id="articleId">
+<div th:include="public/footer"></div>
+</body>
+</html>

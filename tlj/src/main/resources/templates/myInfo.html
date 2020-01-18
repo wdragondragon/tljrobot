@@ -26,16 +26,13 @@
                         data = data["result"];
                         let tr = $('#MyInfo');
                         tr.empty();
-                        tr.append('<td>' + data.name + '</td>');
+                        tr.append('<td>' + data.username + '</td>');
                         tr.append('<td>' + data.num + '</td>');
-                        tr.append('<td>' + data.rightnum + '</td>');
-                        tr.append('<td>' + data.misnum + '</td>');
-                        tr.append('<td>' + data.datenum + '</td>');
-                        tr.append('<td>' + data.n + '</td>');
-                        tr.append('<td>' + data.aver.toFixed(2) + '</td>');
-                        tr.append('<td>' + data.lastdate + '</td>');
-                        tr.append('<td>' + data.zhucedate + '</td>');
-                        tr.append('<td>' + data.online + '</td>');
+                        tr.append('<td>' + data.rightNum + '</td>');
+                        tr.append('<td>' + data.misNum + '</td>');
+                        tr.append('<td>' + data.dateNum + '</td>');
+                        tr.append('<td>' + data.lastLoginDate + '</td>');
+                        tr.append('<td>' + data.regDate + '</td>');
                     }else
                         alert(message);
                 },
@@ -63,11 +60,8 @@
                     <th>正确字数</th>
                     <th>错误字数</th>
                     <th>今日字数</th>
-                    <th>赛文跟打次数</th>
-                    <th>赛文平均成绩</th>
                     <th>最后登录日期</th>
                     <th>注册日期</th>
-                    <th>在线情况</th>
                 </tr>
                 </thead>
                 <tbody>

@@ -2,22 +2,16 @@ package com.jdragon.tljrobot.tlj.controller.home;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.jdragon.tljrobot.tlj.mappers.NewsMapper;
 import com.jdragon.tljrobot.tlj.mappers.UserMapper;
-import com.jdragon.tljrobot.tlj.pojo.News;
 import com.jdragon.tljrobot.tlj.pojo.User;
-import com.jdragon.tljrobot.tljutils.Local;
 import com.jdragon.tljrobot.tljutils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 
 @Controller

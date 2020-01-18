@@ -25,19 +25,19 @@
             for (let i in data.list) {
                 tb.append('<tr></tr>');
                 let tr = tb.find(":last");
-                tr.append('<td>' + data.list[i].date + '</td>');
-                tr.append('<td>' + data.list[i].sudu + '</td>');
-                tr.append('<td>' + data.list[i].key + '</td>');
-                tr.append('<td>' + data.list[i].keylength + '</td>');
+                tr.append('<td>' + data.list[i].typeDate + '</td>');
+                tr.append('<td>' + data.list[i].speed + '</td>');
+                tr.append('<td>' + data.list[i].keySpeed + '</td>');
+                tr.append('<td>' + data.list[i].keyLength + '</td>');
                 tr.append('<td>' + data.list[i].number + '</td>');
-                tr.append('<td>' + data.list[i].deletetext + '</td>');
-                tr.append('<td>' + data.list[i].delete + '</td>');
-                tr.append('<td>' + data.list[i].repeat + '</td>');
-                tr.append('<td>' + data.list[i].keyaccuracy + '</td>');
-                tr.append('<td>' + data.list[i].keymethod + '</td>');
-                tr.append('<td>' + data.list[i].dacilv + '</td>');
+                tr.append('<td>' + data.list[i].deleteText + '</td>');
+                tr.append('<td>' + data.list[i].deleteNum + '</td>');
+                tr.append('<td>' + data.list[i].repeatNum + '</td>');
+                tr.append('<td>' + data.list[i].keyAccuracy + '</td>');
+                tr.append('<td>' + data.list[i].keyMethod + '</td>');
+                tr.append('<td>' + data.list[i].wordRate + '</td>');
                 tr.append('<td>' + data.list[i].time + '</td>');
-                tr.append('<td>' + data.list[i].duan + '</td>');
+                tr.append('<td>' + data.list[i].paragraph + '</td>');
             }
             let pageul = $('#HistorychangeHisPage');
             pageul.empty();

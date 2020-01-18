@@ -23,7 +23,9 @@ public class Local {
     public static void logout(String userid){
         loginMap.remove(userid);
     }
-
+    public static void login(String token,Object object){
+        loginMap.put(token,object);
+    }
     public static Object getSession(String  userId) {
         return loginMap.get(userId);
     }

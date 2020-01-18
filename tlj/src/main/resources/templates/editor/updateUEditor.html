@@ -11,18 +11,18 @@
     <script type="text/javascript" charset="utf8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
     <script src="/js/ajaxGetHtml.js"></script>
     <script type="text/javascript" th:inline="javascript">
-        var articleId = [[${articleId}]];
+        var articleId = [[${blogId}]];
         function getEdit(){
             $.ajax({
                 type:'POST',
                 contentType:'application/json;charset=utf-8',
-                url:'/UEditor/getNew/'+ articleId+'/'+sessionStorage.sessionId,
+                url:'/UEditor/blog/'+ articleId+'/'+sessionStorage.sessionId,
                 dataType:'json',
                 success:function(data) {
                     $("#content").text(data['result']['content']);
                     // contentEditor.setContent(data['result']['content']);
                     $("#title").val(data['result']['title']);
-                    $("#newsType").val(data['result']['newsType']);
+                    $("#newsType").val(data['result']['blogType']);
                 },
                 error:function (err) {
                     console.log(err.responseText);
@@ -36,9 +36,9 @@
             contentEditor = UE.getEditor('content');
         })
         function update() {
-            var data={id:articleId,title:$("#title").val(),newsType:$("#newsType").val(),content:contentEditor.getContent(),editorType:1,newsType:$('#newsType').val()} ;
+            var data={id:articleId,title:$("#title").val(),blogType:$("#newsType").val(),content:contentEditor.getContent(),editorType:1,newsType:$('#newsType').val()} ;
             $.ajax({
-                url:"/UEditor/updateArticle/"+sessionStorage.sessionId, //dojson
+                url:"/UEditor/updateBlog/"+sessionStorage.sessionId, //dojson
                 type:"post",//get/post
                 data:JSON.stringify(data),
                 contentType:"application/json",
@@ -46,7 +46,7 @@
                 success:function(data){
                     alert(data["message"]);
                     if(data["message"]=="更新成功") {
-                        $(location).attr('href','/home/showArticle/'+articleId);
+                        $(location).attr('href','/home/showBlog/'+articleId);
                     }
                 },
                 error:function(e){alert( JSON.stringify(e) );}

@@ -7,8 +7,8 @@ public class ArticleRegex {
         int gang = 0,space = 0;
         int i,j,k,sign1=0,sign2=0;
 
-        String paragraphStr = new String();
-        String title = new String();
+        StringBuilder paragraphStr = new StringBuilder();
+        StringBuilder title = new StringBuilder();
         char [] articleChars = ArticleStr.toCharArray();
         int length = ArticleStr.length();
 
@@ -20,9 +20,9 @@ public class ArticleRegex {
                 if(gang>=5){
                     sign1 = k;
                     space = 0;
-                    paragraphStr = "";
+                    paragraphStr = new StringBuilder();
                     while(articleChars[j]!='段'){
-                        paragraphStr = paragraphStr+articleChars[j];j++;
+                        paragraphStr.append(articleChars[j]);j++;
                     }
                 }
                 gang=0;
@@ -44,7 +44,7 @@ public class ArticleRegex {
                     else
                         j=-1;
                     for(j=j+1;j<sign2;j++)
-                        title+=String.valueOf(articleChars[j]);
+                        title.append(articleChars[j]);
                     break;}
             }
         }
@@ -56,46 +56,33 @@ public class ArticleRegex {
         ArticleStr = String.valueOf(articleChars);
         String regex = "[^0123456789]+";
         ArticleStr = ArticleStr.replaceAll("#","");
-        ArticleStr = qukong(ArticleStr);
-        ArticleStr = huanfu(ArticleStr);
+        ArticleStr = clearSpace(ArticleStr);
+        ArticleStr = replace(ArticleStr);
 
-        paragraphStr = paragraphStr.replaceAll(regex,"");
+        paragraphStr = new StringBuilder(paragraphStr.toString().replaceAll(regex, ""));
 
         if(paragraphStr.length()>0){
-            int paragraphNum = Integer.valueOf(paragraphStr);
+            int paragraphNum = Integer.parseInt(paragraphStr.toString());
             System.out.println("段号"+paragraphNum+",标题:"+title+"\n"+ArticleStr);
-            Article article = Article.getArticleSingleton(paragraphNum,title,ArticleStr);
-            return article;
+            return Article.getArticleSingleton(paragraphNum, title.toString(),ArticleStr);
         }else return null;
 
     }
-    public static String huanfu(String str){
-        String initchar = ";:,.!?";
-        String afterchar = "；：，。！？";
-        char []a = str.toCharArray();
+    public static String replace(String str){
+        String initChar = ";:,.!?";
+        String afterChar = "；：，。！？";
+        char[] a = str.toCharArray();
         int b ;
-        char y[] = afterchar.toCharArray();
+        char[] y = afterChar.toCharArray();
         for(int i =0;i<a.length;i++)
-            if((b = initchar.indexOf(a[i]))!=-1)
+            if((b = initChar.indexOf(a[i]))!=-1)
                 a[i] = y[b];
         str = String.valueOf(a);
         return str;
     }
-    public static String qukong(String str){
+    public static String clearSpace(String str){
         str = str.replaceAll("\\s*", "");
         str = str.replaceAll("　","");
-        return str;
-    }
-    public static String biaoding(String str){
-        char []a = str.toCharArray();
-        String ding = "，。、！?↓,.!?";
-        for(int i=0;i<a.length-1;i++){
-            if(a[i]=='_'&&ding.indexOf(String.valueOf(a[i+1]))!=-1){
-                a[i]='#';
-            }
-        }
-        str = new String(a);
-        str = str.replaceAll("#","");
         return str;
     }
 }

@@ -11,20 +11,20 @@
     <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
     <script src="/js/ajaxGetHtml.js"></script>
     <script th:inline="javascript">
-        var articleId = [[${articleId}]];
+        var articleId = [[${blogId}]];
         function uploadContent() {
             $.ajax({
                 type: 'POST',
                 contentType: 'application/json;charset=utf-8',
-                url: '/MEditor/updateArticle/'+sessionStorage.sessionId,
+                url: '/MEditor/updateBlog/'+sessionStorage.sessionId,
                 data :JSON.stringify({id:articleId,mdContent:$('#mdContent').val(),content:$('#content').val()
-                    ,editorType:2,title:$('#title').val(),newsType:$('#newsType').val()}),
+                    ,editorType:2,title:$('#title').val(),blogType:$('#newsType').val()}),
                 dataType: 'json',
                 success: function (data) {
                     var result = data['message'];
                     if(result=="更新成功"){
                         alert(result);
-                        $(location).attr('href','/home/showArticle/'+articleId);
+                        $(location).attr('href','/home/showBlog/'+articleId);
                     }
                 },
                 error: function (err) {
@@ -43,7 +43,7 @@
                     if(result=="获取成功"){
                         $('#mdContent').text(data['result']['mdContent']);
                         $("#title").val(data['result']['title']);
-                        $('#newsType').val(data['result']['newsType']);
+                        $('#newsType').val(data['result']['blogType']);
                     }
                 },
                 error: function (err) {

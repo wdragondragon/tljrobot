@@ -1,34 +1,27 @@
 package com.jdragon.tljrobot.tlj.pojo;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.sql.Date;
 
+/**
+ * Create by Jdragon on 2020.01.17
+ */
 @Data
-@TableName("allgroupsaiwen")
+@TableName("all_article")
 public class Article extends Model<Article> {
     @TableId
-    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-    private Date saiwenDate;
+    private int id;
 
     private String title;
-    @TableField("saiwen")
-    private String article;
 
-    private long author;
-
-    public static class Def {
-        public static final String SAIWEN_DATA = "saiwendate";
-    }
+    private String content;
 
     @Override
     protected Serializable pkVal(){
-        return this.saiwenDate;
+        return this.id;
     }
 }

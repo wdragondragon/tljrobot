@@ -15,15 +15,15 @@
                 $.ajax({
                     type: 'POST',
                     contentType: 'application/json;charset=utf-8',
-                    url: '/MEditor/newPublish/'+sessionStorage.sessionId,
+                    url: '/MEditor/blogPublish/'+sessionStorage.sessionId,
                     data :JSON.stringify({mdContent:$('#mdContent').val(),content:$('#content').val()
-                        ,editorType:2,title:$('#title').val(),newsType:$('#newsType').val()}),
+                        ,editorType:2,title:$('#title').val(),blogType:$('#newsType').val()}),
                     dataType: 'json',
                     success: function (data) {
                         var result = data['message'];
                         if(result=="上传成功"){
                             alert(result);
-                            $(location).attr('href',"/home/showArticle/"+data['result']);
+                            $(location).attr('href',"/home/showBlog/"+data['result']);
                         }
                     },
                     error: function (err) {

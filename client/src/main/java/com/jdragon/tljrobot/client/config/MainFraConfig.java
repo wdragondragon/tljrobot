@@ -1,12 +1,12 @@
 package com.jdragon.tljrobot.client.config;
 
 import com.jdragon.tljrobot.client.listener.core.MoveFraListener;
+import com.jdragon.tljrobot.client.utils.core.IniAccess;
 import com.jdragon.tljrobot.client.window.MainFra;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class MainFraConfig {
 
@@ -24,14 +24,19 @@ public class MainFraConfig {
         //设置鼠标拖动
         mainFra.addMouseListener(MoveFraListener.getInstance());
         mainFra.addMouseMotionListener(MoveFraListener.getInstance());
-
+        mainFra.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                IniAccess.writeIni(LocalConfig.iniFilePath);
+            }
+        });
         onSystem();
         //设置可见
         mainFra.setVisible(true);
     }
     //创建系统托盘
     private static void onSystem(){
-        TrayIcon trayIcon = null;
+        TrayIcon trayIcon;
         if (SystemTray.isSupported()) // 判断系统是否支持系统托盘
         {
             SystemTray tray = SystemTray.getSystemTray(); // 创建系统托盘

@@ -17,71 +17,70 @@ import java.text.SimpleDateFormat;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("client")
+@TableName("tlj_user")
 public class User extends Model<User> {
-    @TableId("username")
-    private String name;
+    @TableId
+    private int id;
+
+    private String username;
     @JsonIgnore
-    @TableField("password")
-    private String pwd;
+    @TableField
+    private String password;
 
     private int num;
 
-    private int rightnum;
+    private int rightNum;
 
-    private int misnum;
+    private int misNum;
 
-    private int datenum;
-
-    private int online;
-
-    private double aver;
-
-    private int n;
+    private int dateNum;
 
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-    private Date zhucedate;
+    private Date regDate;
 
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd")
-    private Date lastdate;
+    private Date lastLoginDate;
 
-    @TableField("email")
     private String email;
-    public User(String name,String pwd,int num,int rightnum,int misnum,int datenum,int online,
-                double aver,int n,Date zhucedate,Date lastdate,String email){
+
+    private String token;
+    public User(int id,String username, String password, int num, int rightNum, int misNum, int dateNum,
+                 Date regDate, Date lastLoginDate, String email, String token){
         super();
-        this.name = name;
-        this.pwd = pwd;
+        this.id = id;
+        this.username = username;
+        this.password = password;
         this.num = num;
-        this.rightnum = rightnum;
-        this.misnum = misnum;
-        this.datenum = datenum;
-        this.online = online;
-        this.aver = aver;
-        this.n = n;
-        this.zhucedate = zhucedate;
-        this.lastdate = lastdate;
+        this.rightNum = rightNum;
+        this.misNum = misNum;
+        this.dateNum = dateNum;
+        this.regDate = regDate;
+        this.lastLoginDate = lastLoginDate;
         this.email = email;
+        this.token = token;
     }
-    public User(String name,String pwd){
-        this.name = name;
-        this.pwd = pwd;
-        num=0;rightnum=0;misnum=0;online=0;datenum=0;
-        aver=0;n=0;email=null;
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
+        num=0;
+        rightNum =0;
+        misNum =0;
+        dateNum =0;
+        email=null;
         java.util.Date nDate = new java.util.Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String sDate = sdf.format(nDate);
         Date now = Date.valueOf(sDate);
-        zhucedate = now;
-        lastdate = now;
+        regDate = now;
+        lastLoginDate = now;
     }
     @Override
     public String toString(){
-        return "[name="+name+"]";
+        return "[name="+ username +"]";
     }
     @Override
     protected Serializable pkVal() {
-        return this.name;
+        return this.id;
     }
     public static class Def {
         public static final String USER_NUM = "num";

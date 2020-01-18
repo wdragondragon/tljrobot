@@ -16,7 +16,7 @@
             $.ajax({
                 type:'POST',
                 contentType:'application/json;charset=utf-8',
-                url:'/home/GetNew/'+ $("#contendId").val(),
+                url:'/home/blog/'+ $("#contendId").val(),
                 dataType:'json',
                 success:function(data) {
                     $("#edit").html(data['result']['content']);
@@ -27,10 +27,10 @@
                 }
             })
         }
-        function publishNews() {;
-            var data={title:$("#title").val(),newsType:$("#newsType").val(),content:contentEditor.getContent(),editorType:1,newsType:$('#newsType').val()} ;
+        function publishNews() {
+            var data={title:$("#title").val(),blogType:$("#newsType").val(),content:contentEditor.getContent(),editorType:1,newsType:$('#newsType').val()} ;
             $.ajax({
-                url:"/UEditor/newPublish/"+sessionStorage.sessionId, //dojson
+                url:"/UEditor/blogPublish/"+sessionStorage.sessionId, //dojson
                 type:"post",//get/post
                 data:JSON.stringify(data),
                 contentType:"application/json",
@@ -38,7 +38,7 @@
                 success:function(data){
                     if(data["message"]=="上传成功") {
                         alert(data["result"]);
-                        $(location).attr('href',"/home/showArticle/"+data['result']);
+                        $(location).attr('href',"/home/showBlog/"+data['result']);
                     }
                 },
                 error:function(e){alert( JSON.stringify(e) );}

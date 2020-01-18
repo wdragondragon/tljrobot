@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.client.listener.core;
 
+import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.window.MainFra;
 
 import java.awt.*;
@@ -24,6 +25,8 @@ public class MoveFraListener implements MouseListener, MouseMotionListener {
         int x = locationPoint.x + point.x - mainFra.getPressedPoint().x;// 计算移动后的新坐标
         int y = locationPoint.y + point.y - mainFra.getPressedPoint().y;
         mainFra.setLocation(x, y);// 改变窗体位置
+        LocalConfig.windowX = x;
+        LocalConfig.windowY = y;
     }
     @Override
     public void mouseMoved(MouseEvent e) {

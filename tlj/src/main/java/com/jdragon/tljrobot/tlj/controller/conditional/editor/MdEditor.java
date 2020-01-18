@@ -1,8 +1,8 @@
 package com.jdragon.tljrobot.tlj.controller.conditional.editor;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jdragon.tljrobot.tlj.mappers.NewsMapper;
-import com.jdragon.tljrobot.tlj.pojo.News;
+import com.jdragon.tljrobot.tlj.mappers.BlogMapper;
+import com.jdragon.tljrobot.tlj.pojo.Blog;
 import com.jdragon.tljrobot.tlj.pojo.User;
 import com.jdragon.tljrobot.tljutils.DateUtil;
 import com.jdragon.tljrobot.tljutils.Local;
@@ -19,62 +19,62 @@ import java.util.List;
 @RequestMapping("/MEditor")
 public class MdEditor {
     @Autowired
-    NewsMapper newsMapper;
+    BlogMapper blogMapper;
 
     @RequestMapping("/editor/{userId}")
     public String ed2(@PathVariable String userId){return "editor/MDEditor";}
-    @GetMapping("/updateArticle/{articleId}/{userId}")
+    @GetMapping("/updateBlog/{articleId}/{userId}")
     public String updateArticle(Model model, @PathVariable String userId, @PathVariable String articleId){
-        model.addAttribute("articleId",articleId);
+        model.addAttribute("blogId",articleId);
         return "editor/updateMD";
     }
-    @RequestMapping("/manageArticle/{userId}")
+    @RequestMapping("/manageBlog/{userId}")
     public String getManageArticle(@PathVariable String userId){
-        return "manageArticle";
+        return "manageBlog";
     }
     @RequestMapping("/full/{userId}")
     public String ed3(@PathVariable String userId){return "model/full";}
-    @PostMapping("/newPublish/{userId}")
+    @PostMapping("/blogPublish/{userId}")
     @ResponseBody
-    public Result publish(@RequestBody News news, @PathVariable String userId){
-        news.setPublishTime(DateUtil.now());
+    public Result publish(@RequestBody Blog blog, @PathVariable String userId){
+        blog.setPublishTime(DateUtil.now());
         User user = (User)Local.getSession(userId);
-        news.setAuthor(user.getName());
-        if(newsMapper.insert(news)>0)
-            return Result.success("上传成功").setResult(news.getId());
+        blog.setAuthor(user.getUsername());
+        if(blogMapper.insert(blog)>0)
+            return Result.success("上传成功").setResult(blog.getId());
         else
             return Result.error("上传失败");
     }
     @PostMapping("/getMdContent/{articleId}/{userId}")
     @ResponseBody
     public Result getMdContent(@PathVariable int articleId, @PathVariable String userId){
-        News news = newsMapper.selectById(articleId);
+        Blog blog = blogMapper.selectById(articleId);
         User user =  (User)Local.getSession(userId);
-        if(news==null){
+        if(blog ==null){
             return Result.error("无该id文章");
-        }else if(!user.getName().equals(news.getAuthor())){
+        }else if(!user.getUsername().equals(blog.getAuthor())){
             return Result.error("不是你上传的文章无法获取");
         }else{
-            return Result.success("获取成功").setResult(news);
+            return Result.success("获取成功").setResult(blog);
         }
     }
-    @PostMapping("/getNewsByUserName/{userId}")
+    @PostMapping("/getBlogByUserName/{userId}")
     @ResponseBody
     public Result getNewsByUserId(@PathVariable String userId){
         User user = (User)Local.getSession(userId);
         QueryWrapper queryWrapper = new QueryWrapper();
-        queryWrapper.eq(News.Def.NEWS_AUTHOR,user.getName());
-        List<News> news = newsMapper.selectList(queryWrapper);
-        return Result.success("获取成功").setResult(news);
+        queryWrapper.eq(Blog.Def.NEWS_AUTHOR,user.getUsername());
+        List<Blog> blogs = blogMapper.selectList(queryWrapper);
+        return Result.success("获取成功").setResult(blogs);
     }
     @PostMapping("/delete/{articleId}/{userId}")
     @ResponseBody
     public Result delete(@PathVariable int articleId, @PathVariable String userId){
-        News news = newsMapper.selectById(articleId);
+        Blog blog = blogMapper.selectById(articleId);
         User user = (User)Local.getSession(userId);
-        if(news==null)return Result.error("无该文章");
-        else if(news.getAuthor().equals(user.getName())) {
-            int i = newsMapper.deleteById(articleId);
+        if(blog ==null)return Result.error("无该文章");
+        else if(blog.getAuthor().equals(user.getUsername())) {
+            int i = blogMapper.deleteById(articleId);
             if(i>0)return Result.success("删除成功");
             else return Result.error("删除失败");
         }else{
@@ -82,14 +82,14 @@ public class MdEditor {
         }
     }
 
-    @PostMapping("/updateArticle/{userId}")
+    @PostMapping("/updateBlog/{userId}")
     @ResponseBody
-    public Result update(@RequestBody News news, @PathVariable String userId){
-        News oldNews = newsMapper.selectById(news.getId());
+    public Result update(@RequestBody Blog blog, @PathVariable String userId){
+        Blog oldBlog = blogMapper.selectById(blog.getId());
         User user = (User)Local.getSession(userId);
-        if(oldNews==null)return Result.error("无该文章无法修改");
-        else if(oldNews.getAuthor().equals(user.getName())) {
-            int i = newsMapper.updateById(news);
+        if(oldBlog ==null)return Result.error("无该文章无法修改");
+        else if(oldBlog.getAuthor().equals(user.getUsername())) {
+            int i = blogMapper.updateById(blog);
             if (i > 0) return Result.success("更新成功");
             else return Result.error("更新失败");
         }else{

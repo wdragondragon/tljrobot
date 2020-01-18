@@ -1,10 +1,10 @@
 package com.jdragon.tljrobot.tlj.controller.home;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.jdragon.tljrobot.tlj.mappers.NewsMapper;
-import com.jdragon.tljrobot.tlj.pojo.News;
+import com.jdragon.tljrobot.tlj.mappers.BlogMapper;
+import com.jdragon.tljrobot.tlj.pojo.Blog;
+import com.jdragon.tljrobot.tlj.service.BlogService;
 import com.jdragon.tljrobot.tljutils.Result;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,67 +20,58 @@ import java.util.List;
 @Api(tags = "无条件操作")
 public class ArticleManager {
 
-    @RequestMapping("/articles")
-    public String getArticle(){
-        return "articles";
+    @RequestMapping("/blog")
+    public String getBlog(){
+        return "blog";
     }
-    @GetMapping("/moreArticles/{articleType}")
-    public String moreArticles(Model model, @PathVariable String articleType){
-        model.addAttribute("articleType",articleType);
-        return "moreArticles";
+    @GetMapping("/moreBlog/{blogType}")
+    public String moreBlogs(Model model, @PathVariable String blogType){
+        model.addAttribute("blogType",blogType);
+        return "moreBlog";
     }
-    @GetMapping("/showArticle/{articleId}")
-    public String showArticle(Model model, @PathVariable String articleId){
-        model.addAttribute("articleId",articleId);
-        return "showArticle";
+    @GetMapping("/showBlog/{blogId}")
+    public String showBlog(Model model, @PathVariable String blogId){
+        model.addAttribute("blogId",blogId);
+        return "showBlog";
     }
-
     @Autowired
-    NewsMapper newsMapper;
+    BlogMapper blogMapper;
+    @Autowired
+    BlogService blogService;
 
-    @PostMapping("/GetNew/{id}")
+    @PostMapping("/GetBlog/{id}")
     @ResponseBody
-    public Result getNew(@PathVariable int id){
-        return Result.success("获取成功").setResult(newsMapper.selectById(id));
+    public Result getBlog(@PathVariable int id){
+        return Result.success("获取成功").setResult(blogMapper.selectById(id));
     }
 
-    @RequestMapping("/getNewsTypeMap/{page}/{pageSize}")
+    @RequestMapping("/getBlogTypeMap/{page}/{pageSize}")
     @ResponseBody
-    public Result getNewsTypeMap(@PathVariable int page, @PathVariable int pageSize){
-        String[] types = {"方案魔改","方案教学","提升分享","速度录屏","新鲜出炉"};
-        HashMap<String, List<News>> newsTypeMap = new HashMap<>();
+    public Result getBlogTypeMap(@PathVariable int page, @PathVariable int pageSize){
         PageHelper.startPage(page,pageSize,true);
+        String[] types = {"方案魔改","方案教学","提升分享","速度录屏","新鲜出炉"};
+        HashMap<String, List<Blog>> newsTypeMap = new HashMap<>();
         for(String type:types) {
-            QueryWrapper<News> queryWrapper = new QueryWrapper();
-            queryWrapper.eq(News.Def.NEWS_TYPE, type).orderByDesc(News.Def.ID);
-            newsTypeMap.put(type, new PageInfo<News>(newsMapper.selectList(queryWrapper)).getList());
+            newsTypeMap.put(type, new PageInfo<>(blogService.getBlogByType(type)).getList());
         }
         return Result.success("获取成功").setResult(newsTypeMap);
     }
-    @RequestMapping("/getNewsByType/{type}/{page}/{pageSize}")
+    @RequestMapping("/getBlogByType/{type}/{page}/{pageSize}")
     @ResponseBody
-    public Result getNewsByType(@PathVariable int page, @PathVariable int pageSize, @PathVariable String type){
+    public Result getBlogByType(@PathVariable int page, @PathVariable int pageSize, @PathVariable String type){
         PageHelper.startPage(page,pageSize,true);
-        QueryWrapper<News> queryWrapper = new QueryWrapper();
-        queryWrapper.eq(News.Def.NEWS_TYPE, type).orderByDesc(News.Def.ID);
-        return Result.success("获取成功").setResult(newsMapper.selectList(queryWrapper));
+        List<Blog> blogList = blogService.getBlogByType(type);
+        PageInfo<Blog> blogPageInfo = new PageInfo<>(blogList);
+        return Result.success("获取成功").setResult(blogPageInfo.getList());
     }
-    @PostMapping("/getNewsById/{articleId}")
+    @PostMapping("/getBlogById/{blogId}")
     @ResponseBody
-    public Result getNews(@PathVariable int articleId){
-        News news = newsMapper.selectById(articleId);
-        news.setClickNum(news.getClickNum()+1);
-        news.updateById();
-        news.setMdContent("****");
-        return Result.success("获取成功").setResult(news);
+    public Result getBlogById(@PathVariable int blogId){
+        return Result.success("获取成功").setResult(blogService.getBlogById(blogId));
     }
-
-    @PostMapping("/getHotArticles")
+    @PostMapping("/getHotBlog")
     @ResponseBody
-    public Result getHotArticles(){
-        PageHelper.startPage(1,10,true);
-        return Result.success("获取成功").setResult(
-                new PageInfo<>(newsMapper.selectList(new QueryWrapper<News>().
-                                orderByDesc(News.Def.CLICK_NUM))).getList());
+    public Result getHotBlog(){
+        return Result.success("获取成功").setResult(blogService.getHotBlog(10));
     }
 }
