@@ -7,8 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="560566ca-4c25-4104-974e-54a248fc5e69" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gttattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/tlj.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +64,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SQL" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/images" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -84,11 +85,11 @@
       <recent name="com.jdragon.tljrobot.tlj" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\images" />
       <recent name="C:\Users\10619\IdeaProjects\tljrobot\client\lib" />
       <recent name="C:\Users\10619\IdeaProjects\tljrobot\client" />
       <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj" />
       <recent name="C:\Users\10619\IdeaProjects\tljrobot" />
-      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj-utils\src\main\java\com\jdragon\tljrobot\tljutils\compShortCode\simpleEntry" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.jdragon.tljrobot.client.event.threadEvent" />
@@ -280,7 +281,7 @@
       <workItem from="1578706138754" duration="146790000" />
       <workItem from="1579248965486" duration="322000" />
       <workItem from="1579249304904" duration="35838000" />
-      <workItem from="1579339169143" duration="31747000" />
+      <workItem from="1579339169143" duration="32204000" />
     </task>
     <task id="LOCAL-00001" summary="用直接跳转页面替换ajax交互嵌入">
       <created>1577584125492</created>
@@ -331,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579432350054</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="拖拉机上传历史成绩，生稿赛成绩，创建文章独立表消除冗余。">
+      <created>1579432557894</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1579432557894</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,11 +416,11 @@
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="420" y="249" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/62.0.1218.800@62.0.1218.800" timestamp="1577503398719" />
-    <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2" timestamp="1579432348701">
+    <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2" timestamp="1579432556990">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="62" y="0" key="CommitChangelistDialog2/62.0.1218.800@62.0.1218.800" timestamp="1579188400057" />
-    <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2/62.0.1858.1080@62.0.1858.1080" timestamp="1579432348701" />
+    <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2/62.0.1858.1080@62.0.1858.1080" timestamp="1579432556990" />
     <state x="155" y="93" width="1031" height="613" key="DiffContextDialog" timestamp="1578846678181">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
@@ -504,11 +512,11 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/62.0.1858.1080@62.0.1858.1080" timestamp="1579346721229" />
-    <state x="370" y="185" key="Vcs.Push.Dialog.v2" timestamp="1579432356973">
+    <state x="370" y="185" key="Vcs.Push.Dialog.v2" timestamp="1579432566821">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="264" y="137" key="Vcs.Push.Dialog.v2/62.0.1218.800@62.0.1218.800" timestamp="1578847066652" />
-    <state x="370" y="185" key="Vcs.Push.Dialog.v2/62.0.1858.1080@62.0.1858.1080" timestamp="1579432356973" />
+    <state x="370" y="185" key="Vcs.Push.Dialog.v2/62.0.1858.1080@62.0.1858.1080" timestamp="1579432566821" />
     <state x="473" y="178" key="chooseDestDirectoryDialog" timestamp="1579055606183">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
