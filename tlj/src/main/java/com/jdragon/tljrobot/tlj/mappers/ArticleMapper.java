@@ -2,10 +2,7 @@ package com.jdragon.tljrobot.tlj.mappers;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jdragon.tljrobot.tlj.pojo.Article;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,11 +11,14 @@ import org.springframework.stereotype.Component;
 @Component
 @Mapper
 public interface ArticleMapper extends BaseMapper<Article> {
-    @Results({
+    @Results(id = "articleResultMap",value = {
             @Result(column = "id",property = "id",id = true),
             @Result(column = "title" , property = "title"),
             @Result(column = "content",property = "content")
     })
     @Select("select * from all_article where id=#{id};")
-    public Article getArticleById(int id);
+    public Article selectArticleById(int id);
+
+    @Select("select * from all_article where content=#{content}")
+    public Article selectArticleByContent(String content);
 }

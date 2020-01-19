@@ -9,7 +9,6 @@ import java.util.List;
 public class TypingState {
     private TypingState(){}
     public static boolean typingState;//跟打状态
-    public static boolean stopState;//暂停状态
     public static int typeLength;
     public static int keyNumber;//键数
 
@@ -73,28 +72,28 @@ public class TypingState {
     public static double getSpeed(){
         double minute = timer.getMinute();
 //        speed = (typeLength*1.0-5*mistake)/minute;
-        return doubleKeyTwo((1.0*typeLength-5.0*mistake)/minute);
+        return doubleKeyTwo((1.00*typeLength-5.00*mistake)/minute);
     }
     public static double getKeyLength(){
         if(typeLength==0)return keyNumber;
-        else return doubleKeyTwo((double)keyNumber/typeLength);
+        else return doubleKeyTwo(1.00*keyNumber/typeLength);
     }
     public static double getKeySpeed(){
-        return doubleKeyTwo(keyNumber/timer.getSecond());
+        return doubleKeyTwo(1.00*keyNumber/timer.getSecond());
     }
     public static double getKeyAccuracy(){
 //        return doubleKeyTwo(typeLength/typeWordsNum);
-        return doubleKeyTwo(100.0*(keyNumber - deleteNumber * 2 - deleteTextNumber
+        return doubleKeyTwo(100.00*(keyNumber - deleteNumber * 2 - deleteTextNumber
                 * Article.getArticleSingleton().getShortCodeEntity().getArticleAverCodes())/keyNumber);
     }
     public static double getWordRate(){
-        return doubleKeyTwo(100.0*typeWordsNum / (typeLength + deleteTextNumber));
+        return doubleKeyTwo(100.00*typeWordsNum / (typeLength + deleteTextNumber));
     }
     public static double getRepeatRate(){
-        return doubleKeyTwo(100.0*repeat/typeLength);
+        return doubleKeyTwo(100.00*repeat/typeLength);
     }
     public static double getKeyMethod(){
-        return doubleKeyTwo(100.0*left/right);
+        return doubleKeyTwo(100.00*left/right);
     }
     private static double doubleKeyTwo(double target){
         return Double.parseDouble(String.format("%.2f", target));

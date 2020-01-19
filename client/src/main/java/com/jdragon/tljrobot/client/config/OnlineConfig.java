@@ -16,5 +16,6 @@ public class OnlineConfig {
     public final static String ME_INFO_ADDR = SERVER_ADDR + ME_ADDR + "/info";
     public final static String NUM_CHANGE_NUM = SERVER_ADDR + NUM_ADDR + "/changeNum";
     public final static String MATCH_GET_TODAY = SERVER_ADDR + MATCH_ADDR + "/today";
-    public final static String MATCH_UPLOAD_ACH = SERVER_ADDR + MATCH_ADDR + "/uploadAch";
+    public final static String MATCH_UPLOAD_TLJ_MATCH_ACH = SERVER_ADDR + MATCH_ADDR + "/uploadTljMatchAch";
+    public final static String MATCH_UPLOAD_HISTORY =  SERVER_ADDR + MATCH_ADDR + "/uploadHistory";
 }

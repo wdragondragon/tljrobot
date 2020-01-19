@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.tlj.controller.home;
 
+import com.alibaba.nacos.common.util.Md5Utils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jdragon.tljrobot.tlj.mappers.UserMapper;
 import com.jdragon.tljrobot.tlj.pojo.User;
@@ -33,6 +34,7 @@ public class Security {
     @ResponseBody
     public Result Login(@ApiParam(name = "username",value = "用户名")@PathVariable("username") String username,
                         @ApiParam(name = "password",value = "登录密码")@PathVariable("password") String password){
+        password = Md5Utils.getMD5(password.getBytes());
         User user = userMapper.selectOne(new QueryWrapper<User>().eq(User.Def.USER_NMAE,username));
         if(user==null){
             return Result.success("无该用户");
@@ -50,9 +52,11 @@ public class Security {
     @ResponseBody
     public Result Logout(@ApiParam(name = "userId",value = "使用userId退出")@PathVariable String userId){
         User user = (User)Local.getSession(userId);
-        user.setToken("");
-        user.updateById();
-        Local.logout(userId);
+        if(user!=null) {
+            user.setToken("");
+            user.updateById();
+            Local.logout(userId);
+        }
         return Result.success("退出成功");
     }
 
@@ -61,7 +65,7 @@ public class Security {
     @ResponseBody
     public Result register(@ApiParam(name = "username",value = "用户名")@PathVariable String username,
                            @ApiParam(name = "password",value = "密码")@PathVariable String password){
-
+        password = Md5Utils.getMD5(password.getBytes());
         User user = userMapper.selectOne(new QueryWrapper<User>().eq(User.Def.USER_NMAE,username));
         if(user==null){
             user = new User(username, password);

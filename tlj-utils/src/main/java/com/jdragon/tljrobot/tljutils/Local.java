@@ -10,7 +10,7 @@ public class Local {
     private static TimingMap loginMap = new TimingMap();
 
     public static boolean isLogin(String userid){
-        if(loginMap.containsKey(userid))
+        if(loginMap.containsKey(userid)&&loginMap.get(userid)!=null)
             return true;
         else return false;
     }

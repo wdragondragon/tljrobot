@@ -13,7 +13,6 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 /**
@@ -249,7 +248,7 @@ public class HttpUtil {
         }
         return result;
     }
-    public static String doPostObjectAndParams(String url,Map<String,String> params,Object object,String...urlParams) throws UnsupportedEncodingException {
+    public static String doPostObjectAndParams(String url,Map<String,String> params,Object object,String...urlParams) {
         String result = "请求错误";
         // 获得Http客户端(可以理解为:你得先有一个浏览器;注意:实际上HttpClient与浏览器是不一样的)
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();

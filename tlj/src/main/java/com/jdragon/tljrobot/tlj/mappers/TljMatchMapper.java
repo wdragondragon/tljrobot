@@ -17,6 +17,7 @@ public interface TljMatchMapper extends BaseMapper<TljMatch> {
     @Results(id = "TljMatchResultMap",value = {
         @Result(column = "id",property = "id",id = true),
         @Result(column = "holdDate",property = "holdDate",javaType = java.sql.Date.class),
+        @Result(column = "articleId",property = "articleId"),
         @Result(column = "articleId",property = "article" , one=@One(select = "com.jdragon.tljrobot.tlj.mappers.ArticleMapper.selectById",fetchType = FetchType.EAGER))
     })
     @Select("select * from tlj_match where holdDate=#{holdDate}")

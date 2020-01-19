@@ -173,8 +173,7 @@ public class Typing implements DocumentListener, KeyListener {
                 init();//打字状态初始化
                 typingStart();// 计算第一键时间
                 typingState = true; //标记已开始跟打
-            } else
-                typingEnd();//计算最后一键的时间
+            }
             if(typeLength<1)return;
             String typingLastIndexWord = String.valueOf(typeStr.charAt(typeLength - 1));
             String articleLastIndexWord = String.valueOf(articleStr.charAt(articleStr.length() - 1)); // 取两文本最后一个字

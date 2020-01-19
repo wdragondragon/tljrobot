@@ -17,8 +17,7 @@ public class DynamicSpeed extends Thread {
         while (true) {
             try {
                 sleep(10);
-                if(TypingState.pause)continue;
-                if (TypingState.typingState&&!TypingState.stopState) {
+                if (TypingState.typingState&&!TypingState.pause) {//跟打时并没有暂停时才计算
                     TypingState.timer.timeEnd();
                     SwingSingleton.SpeedButton().setText(String.format("%.2f",
                             TypingState.getSpeed()));

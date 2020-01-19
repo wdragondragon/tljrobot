@@ -1,6 +1,7 @@
 package com.jdragon.tljrobot.client.utils.common;
 
 import com.jdragon.tljrobot.client.entry.Article;
+import com.jdragon.tljrobot.tljutils.ArticleUtil;
 
 public class ArticleRegex {
     public static Article regexStringToArticle(String ArticleStr){
@@ -56,8 +57,8 @@ public class ArticleRegex {
         ArticleStr = String.valueOf(articleChars);
         String regex = "[^0123456789]+";
         ArticleStr = ArticleStr.replaceAll("#","");
-        ArticleStr = clearSpace(ArticleStr);
-        ArticleStr = replace(ArticleStr);
+        ArticleStr = ArticleUtil.clearSpace(ArticleStr);
+        ArticleStr = ArticleUtil.replace(ArticleStr);
 
         paragraphStr = new StringBuilder(paragraphStr.toString().replaceAll(regex, ""));
 
@@ -68,21 +69,5 @@ public class ArticleRegex {
         }else return null;
 
     }
-    public static String replace(String str){
-        String initChar = ";:,.!?";
-        String afterChar = "；：，。！？";
-        char[] a = str.toCharArray();
-        int b ;
-        char[] y = afterChar.toCharArray();
-        for(int i =0;i<a.length;i++)
-            if((b = initChar.indexOf(a[i]))!=-1)
-                a[i] = y[b];
-        str = String.valueOf(a);
-        return str;
-    }
-    public static String clearSpace(String str){
-        str = str.replaceAll("\\s*", "");
-        str = str.replaceAll("　","");
-        return str;
-    }
+
 }

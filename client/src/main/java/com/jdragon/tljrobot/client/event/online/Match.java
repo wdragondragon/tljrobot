@@ -13,6 +13,8 @@ import com.jdragon.tljrobot.client.event.threadEvent.CountMatch;
 import com.jdragon.tljrobot.tljutils.HttpUtil;
 
 import javax.swing.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Create by Jdragon on 2020.01.18
@@ -34,7 +36,21 @@ public class Match {
             JOptionPane.showMessageDialog(null,message);
         }
     }
-    public static void uploadAch(){
+    public static String uploadMatchAch(){
+        History history = getHistoryEntry();
+        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObject(OnlineConfig.MATCH_UPLOAD_TLJ_MATCH_ACH,history, UserState.token));
+        return jsonObject.getString("message");
+    }
+    public static String uploadHistory(){
+        History history = getHistoryEntry();
+        Map<String,String> params = new HashMap();
+        params.put("content",Article.getArticleSingleton().getArticle());
+        params.put("title",Article.getArticleSingleton().getTitle());
+        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObjectAndParams(OnlineConfig.MATCH_UPLOAD_HISTORY,params,history,UserState.token));
+        System.out.println(jsonObject.toJSONString());
+        return jsonObject.getString("message");
+    }
+    public static History getHistoryEntry(){
         History history = new History();
         history.setSpeed(TypingState.getSpeed());
         history.setKeySpeed(TypingState.getKeySpeed());
@@ -49,8 +65,7 @@ public class Match {
         history.setRepeatNum(TypingState.repeat);
         history.setTime(TypingState.timer.getSecond());
         history.setWordRate(TypingState.getWordRate());
-        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObject(OnlineConfig.MATCH_UPLOAD_ACH,history, UserState.token));
-        String message = jsonObject.getString("message");
-        JOptionPane.showMessageDialog(null,message);
+        history.setParagraph(Article.getArticleSingleton().getParagraph());
+        return history;
     }
 }

@@ -26,21 +26,21 @@ public class SendAchievement {
         String checkCode = DoCheck.buildCheckStr(check,"genda");
         String result =
                 "第" + paragraph + "段"+
-                        " 速度" + speed +
-                        " 击键" + keySpeed +
-                        " 码长" + keyLength +
-                        " 标顶理论" + shortCodesNum +
+                        " 速度" + String.format("%.2f", speed) +
+                        " 击键" + String.format("%.2f", keySpeed) +
+                        " 码长" + String.format("%.2f", keyLength) +
+                        " 标顶理论" + String.format("%.2f", shortCodesNum) +
                         " 字数" + articleLength +
                         " 回改" + deleteTextNumber +
                         " 退格" + deleteNumber +
                         " 错字" + mistake +
                         " 键数" + keyNumber +
                         " 选重" + repeat +
-                        " 键准" + getKeyAccuracy() + "%" +
-                        " 键法" + getKeyMethod() + "%" +
+                        " 键准" + String.format("%.2f", getKeyAccuracy()) + "%" +
+                        " 键法" + String.format("%.2f", getKeyMethod()) + "%" +
                         "(左" + left + ":右" + right + ":空格" + space + ")" +
-                        " 打词率" + getWordRate()+ "%" +
-                        " 选重率" + getRepeatRate() + "%" +
+                        " 打词率" + String.format("%.2f", getWordRate())+ "%" +
+                        " 选重率" + String.format("%.2f", getRepeatRate()) + "%" +
                         " 拖拉机跟打器 " + FinalConfig.VERSION +
                         " " + SystemUtil.getSystemName() + "版"+
                         " 校验码"+checkCode;
