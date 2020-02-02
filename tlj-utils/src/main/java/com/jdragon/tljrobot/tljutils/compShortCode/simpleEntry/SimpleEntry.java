@@ -30,8 +30,8 @@ public class SimpleEntry {
                 codeEntity.setIndex(j);
                 codeEntity.setWord(subscriptInstances[j].getWord());
                 codeEntity.setWordCode(subscriptInstances[j].getWordCode());
-                codeEntity.setType(subscriptInstances[i].getType());
-                codeEntity.setNext(subscriptInstances[i].getNext());
+                codeEntity.setType(subscriptInstances[j].getType());
+                codeEntity.setNext(subscriptInstances[j].getNext());
                 if(preWordsType!=0&&preWordsType==subscriptInstances[i].getType()){
                     codeEntity.setBold(!bold);
                 }

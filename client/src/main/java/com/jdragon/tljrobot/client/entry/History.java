@@ -3,6 +3,8 @@ package com.jdragon.tljrobot.client.entry;
 
 import lombok.Data;
 
+import java.sql.Date;
+
 @Data
 public class History{
 
@@ -31,4 +33,8 @@ public class History{
     private double time;
 
     private int paragraph;
+
+    private int articleId;
+
+    private Date typeDate;
 }

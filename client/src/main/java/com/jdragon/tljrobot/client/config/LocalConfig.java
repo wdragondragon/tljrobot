@@ -19,6 +19,11 @@ public class LocalConfig {
     public static Integer windowWidth = 710;
     public static Integer windowHeight = 520;
 
+    public static Color UIBackgroundColor = new Color(238, 238, 238);
+
+    public static Color typingBackgroundColor = new Color(238, 238, 238);
+    public static Color watchingBackgroundColor = new Color(238, 238, 238);
+
     public static Color rightColor = Color.GRAY;//对字颜色
     public static Color mistakeColor = Color.RED;//错字颜色
     public static Color threeCodeColor = Color.BLUE;//三码词颜色

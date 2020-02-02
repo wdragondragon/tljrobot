@@ -2,7 +2,10 @@ package com.jdragon.tljrobot.client.component;
 
 
 import com.jdragon.tljrobot.client.config.LocalConfig;
+import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.utils.common.JTextPaneFont;
+import com.jdragon.tljrobot.client.window.Cirecord;
+import com.jdragon.tljrobot.client.window.ShowArticleDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -53,6 +56,7 @@ public class SwingSingleton {
             sendArticleLabel = new JLabel("发文进度");
             sendArticleLabel.setBorder(BorderFactory.createTitledBorder("发文进度"));
             sendArticleLabel.setFont(tipsFont);
+            sendArticleLabel.setVisible(false);
         }
         return sendArticleLabel;
     }
@@ -95,7 +99,10 @@ public class SwingSingleton {
         return minButton;
     }
     public static JButton SpeedButton(){
-        if (speedButton==null)speedButton = new JButton("击键");
+        if (speedButton==null){
+            speedButton = new JButton("速度");
+            speedButton.addActionListener(e->new Cirecord());
+        }
         return speedButton;
     }
     public static JButton KeySpeedButton(){
@@ -107,7 +114,10 @@ public class SwingSingleton {
         return keyLengthButton;
     }
     public static JButton TheoreticalCodeLengthButton(){
-        if(theoreticalCodeLength==null)theoreticalCodeLength = new JButton("理论码长");
+        if(theoreticalCodeLength==null){
+            theoreticalCodeLength = new JButton("理论码长");
+            theoreticalCodeLength.addActionListener(e-> ShowArticleDialog.getInstance(Article.getArticleSingleton().getShortCodeEntity().getArticleCodes()).setVisible(true));
+        }
         return theoreticalCodeLength;
     }
     public static JMenuBar JMenu(){
@@ -123,7 +133,7 @@ public class SwingSingleton {
             watchingText.setText("F5换群，F4载文，F3重打，F2发文，F1发送成绩，默认自动发送成绩。");
             watchingText.setFont(normalFont);
             watchingText.setEditable(false);
-            watchingText.setBackground(new Color(238, 238, 238));
+            watchingText.setBackground(LocalConfig.watchingBackgroundColor);
         }
         return watchingText;
     }
@@ -132,13 +142,15 @@ public class SwingSingleton {
             typingText = new JTextArea();
             typingText.setFont(normalFont);
             typingText.setLineWrap(true);
-            typingText.setBackground(new Color(238, 238, 238));
+            typingText.setBackground(LocalConfig.typingBackgroundColor);
         }
         return typingText;
     }
 
     public static JScrollPane WatchingJSP(){
-        if (watchingJSP==null)watchingJSP = new JScrollPane(WatchingText());
+        if (watchingJSP==null){
+            watchingJSP = new JScrollPane(WatchingText());
+        }
         return watchingJSP;
     }
     public static JScrollPane TypingJSP(){

@@ -21,5 +21,5 @@ public interface TljMatchMapper extends BaseMapper<TljMatch> {
         @Result(column = "articleId",property = "article" , one=@One(select = "com.jdragon.tljrobot.tlj.mappers.ArticleMapper.selectById",fetchType = FetchType.EAGER))
     })
     @Select("select * from tlj_match where holdDate=#{holdDate}")
-    public TljMatch selectTodayTljMatchByDate(Date holdDate);
+    public TljMatch selectTljMatchByDate(Date holdDate);
 }

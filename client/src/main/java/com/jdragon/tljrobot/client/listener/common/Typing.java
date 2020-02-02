@@ -8,6 +8,7 @@ import com.jdragon.tljrobot.client.entry.TypingState;
 import com.jdragon.tljrobot.client.entry.TypingState.*;
 import com.jdragon.tljrobot.client.utils.common.JTextPaneFont;
 import com.jdragon.tljrobot.client.utils.common.Timer;
+import com.jdragon.tljrobot.client.utils.core.Layout;
 import com.jdragon.tljrobot.tljutils.compShortCode.simpleEntry.CodeEntity;
 import lombok.Data;
 
@@ -42,6 +43,7 @@ public class Typing implements DocumentListener, KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         try {
+//            if(TypingText().getText().length()==0)return;
             if (e.getKeyChar() != '\b')
                 typeStr = TypingText().getText() + e.getKeyChar();
             else
@@ -50,7 +52,9 @@ public class Typing implements DocumentListener, KeyListener {
 
             typeChars = typeStr.toCharArray();
             articleChars = articleStr.toCharArray();
-
+            /**
+             * 增加已打字数
+             */
             if (typeStr.length() > oldTypeStrLength) {
                 if (articleChars[typeStr.length() - 1] == e.getKeyChar()) {
                     NumState.rightNum++;
@@ -60,7 +64,9 @@ public class Typing implements DocumentListener, KeyListener {
                 NumState.num++;
                 NumState.dateNum++;
             }
-            // 计算打词率
+            /**
+             * 计算打词率
+              */
             try {
                 compTypingWords(e.getKeyChar());// 计算打词
             } catch (Exception ignored) {}
@@ -75,13 +81,9 @@ public class Typing implements DocumentListener, KeyListener {
 //                    missign.add(n);
                 }
             }
-            if (typingState)
-                changeFontColor();
-
-            CodeEntity codeEntity = Article.getArticleSingleton()
-                    .getShortCodeEntity().getCodeEntities()[typeChars.length];
-            TipsLabel().setText(codeEntity.getWord()+":"+codeEntity.getWordCode());// 单字编码提示更改
-
+            /**
+             * 改变字数框
+             */
             NumberLabel().setText("字数:" + articleStr.length() + "/已打:" + typeStr.length() + "/错:"
                     + mistake);
 
@@ -89,6 +91,7 @@ public class Typing implements DocumentListener, KeyListener {
                     + NumState.rightNum + " 错:"
                     + NumState.misNum + " 今:"
                     + NumState.dateNum);
+
 //            readWrite.keepfontnum(Window.fontallnum, Window.rightnum,
 //                    Window.misnum);
 //            try {
@@ -96,8 +99,14 @@ public class Typing implements DocumentListener, KeyListener {
 //            } catch (Exception ex) {
 //                System.out.println("发送跟打字数失败196genda");
 //            }
-            if (LocalConfig.progress)// 判断是否开了进度条
+            if (typingState)
+                changeFontColor();//改变颜色
+            if (LocalConfig.progress)// 进度条
                 TypingProgress().setValue(typeStr.length() + 1 - mistake);
+            /**
+             * 改变编码提示框
+             */
+            changeTipLabel(typeChars.length);
             changePosition();// 文本自动翻页
         } catch (Exception ignored) {}
     }
@@ -203,11 +212,37 @@ public class Typing implements DocumentListener, KeyListener {
                         typeWordsList.get(typeWordsList.size() - 1);
                 if (wordsState.getWords().equals(temp.substring(0, 1))) // 单字对比
                     typeWordsList.remove(typeWordsList.get(typeWordsList.size() - 1));
-                typeWordsList.add(new WordsState(getSpeed(),getKeySpeed(), compInstantaneousSpeed(), temp.toString()));
+                typeWordsList.add(new WordsState(getSpeed(),getKeySpeed(), compInstantaneousSpeed(), temp.toString(), typingWordsTime));
             } else {
-                typeWordsList.add(new WordsState(getSpeed(),getKeySpeed(), compInstantaneousSpeed(),String.valueOf(c)));
+                typeWordsList.add(new WordsState(getSpeed(),getKeySpeed(), compInstantaneousSpeed(),String.valueOf(c),timer.getSecond()));
             }
         }
+    }
+    /**
+     * @Author: Jdragon on 2020.01.20 上午 12:32
+     * @param: [index]
+     * @return: void
+     * @Description 根据跟打进度来改变词语提示框的内容
+     */
+    public void changeTipLabel(int index){
+        CodeEntity codeEntity = Article.getArticleSingleton()
+                .getShortCodeEntity().getCodeEntities()[index];
+        StringBuilder tipStr = new StringBuilder();
+        String word = codeEntity.getWord();
+        String wordCode = codeEntity.getWordCode();
+        String words = "",wordsCode = "";
+        tipStr.append(word+":"+ wordCode);
+        if(codeEntity.getWords()!=null) {
+            words = codeEntity.getWords();
+            wordsCode = codeEntity.getWordsCode();
+            tipStr.append("  "+ words+ ":" + wordsCode);
+        }
+        TipsLabel().setText(tipStr.toString());// 单字编码提示更改
+        int chineseLength = word.length()+words.length();//中文长度
+        int englishLength = wordCode.length()+wordsCode.length();//英文长度
+        int subWidth = chineseLength*12+(englishLength+4)*8-TipsLabel().getWidth();//用中英文长度来计算改变的提示宽度
+        Layout.addSize(subWidth,0,TipsLabel());
+        Layout.addLocation(subWidth,0,SendArticleLabel());
     }
     /**
      * @Author: Jdragon on 2020.01.12 下午 9:53
@@ -254,6 +289,12 @@ public class Typing implements DocumentListener, KeyListener {
             System.out.println("跟打框无字3");
         }
     }
+    /**
+     * @Author: Jdragon on 2020.01.20 上午 12:33
+     * @param: []
+     * @return: void
+     * @Description 分页显示，词语提示等功能实现
+     */
     private String thisPageTypeStr;
     int thisPageNum;
     public void changeFontColor() {
@@ -274,7 +315,8 @@ public class Typing implements DocumentListener, KeyListener {
                 n = thisPageNum * pageCount - (widthFontNum + 1) / 3;
             else
                 n = thisPageNum * pageCount;
-            for (; n < typeStr.length(); n++) { // 统计错误字数，向文本框添加字体
+
+            for (; n < (Math.min(typeStr.length(), articleStr.length())); n++) { // 统计错误字数，向文本框添加字体
                 if (typeChars[n] != articleChars[n] && typingState) {
                     JTextPaneFont.insertDoc(typeDocName,
                             String.valueOf(articleChars[n]), "红");
@@ -298,68 +340,89 @@ public class Typing implements DocumentListener, KeyListener {
             }else{
                 int type = codeEntities[n].getType();
                 boolean isBold = codeEntities[n].isBold();
+                int next = codeEntities[n].getNext();
                 if(!isBold) {
                     switch (type) {
                         case 0:
+                            for(int index = n;index<=next;index++)
                             JTextPaneFont.insertDoc(typeDocName,
-                                    String.valueOf(articleChars[n]), "灰");
+                                    String.valueOf(articleChars[index]), "灰");
                             break;
                         case 1:
+                            for(int index = n;index<=next;index++)
                             JTextPaneFont.insertDoc(typeDocName,
-                                    String.valueOf(articleChars[n]), "绿");
+                                    String.valueOf(articleChars[index]), "绿");
                             break;
                         case 2:
+                            for(int index = n;index<=next;index++)
                             JTextPaneFont.insertDoc(typeDocName,
-                                    String.valueOf(articleChars[n]), "绿斜");
+                                    String.valueOf(articleChars[index]), "绿斜");
                             break;
                         case 3:
+                            for(int index = n;index<=next;index++)
                             JTextPaneFont.insertDoc(typeDocName,
-                                    String.valueOf(articleChars[n]), "蓝");
+                                    String.valueOf(articleChars[index]), "蓝");
                             break;
                         case 4:
+                            for(int index = n;index<=next;index++)
                             JTextPaneFont.insertDoc(typeDocName,
-                                    String.valueOf(articleChars[n]), "蓝斜");
+                                    String.valueOf(articleChars[index]), "蓝斜");
                             break;
                         case 5:
+                            for(int index = n;index<=next;index++)
                             JTextPaneFont.insertDoc(typeDocName,
-                                    String.valueOf(articleChars[n]), "粉");
+                                    String.valueOf(articleChars[index]), "粉");
                             break;
                         case 6:
+                            for(int index = n;index<=next;index++)
                             JTextPaneFont.insertDoc(typeDocName,
-                                    String.valueOf(articleChars[n]), "粉斜");
+                                    String.valueOf(articleChars[index]), "粉斜");
                             break;
                     }
                 }else{
                     switch (type) {
                         case 1:
+                            for(int index = n;index<=next;index++)
                             JTextPaneFont.insertDoc(typeDocName,
-                                    String.valueOf(articleChars[n]), "绿粗");
+                                    String.valueOf(articleChars[index]), "绿粗");
                             break;
                         case 2:
+                            for(int index = n;index<=next;index++)
                             JTextPaneFont.insertDoc(typeDocName,
-                                    String.valueOf(articleChars[n]), "绿粗斜");
+                                    String.valueOf(articleChars[index]), "绿粗斜");
                             break;
                         case 3:
+                            for(int index = n;index<=next;index++)
                             JTextPaneFont.insertDoc(typeDocName,
-                                    String.valueOf(articleChars[n]), "蓝粗");
+                                    String.valueOf(articleChars[index]), "蓝粗");
                             break;
                         case 4:
+                            for(int index = n;index<=next;index++)
                             JTextPaneFont.insertDoc(typeDocName,
-                                    String.valueOf(articleChars[n]), "蓝粗斜");
+                                    String.valueOf(articleChars[index]), "蓝粗斜");
                             break;
                         case 5:
+                            for(int index = n;index<=next;index++)
                             JTextPaneFont.insertDoc(typeDocName,
-                                    String.valueOf(articleChars[n]), "粉粗");
+                                    String.valueOf(articleChars[index]), "粉粗");
                             break;
                         case 6:
+                            for(int index = n;index<=next;index++)
                             JTextPaneFont.insertDoc(typeDocName,
-                                    String.valueOf(articleChars[n]), "粉粗斜");
+                                    String.valueOf(articleChars[index]), "粉粗斜");
                             break;
                     }
                 }
+                n = next;
             }
         }
     }
+    /**
+     * @Author: Jdragon on 2020.01.20 上午 12:33
+     * @param: []
+     * @return: void
+     * @Description 根据打字进度来进行翻页
+     */
     int widthFontNum;// 一行字数
     int cursor = 116;//光标所在位置
     void changePosition() {// 自动滚动条翻页方法

@@ -7,6 +7,7 @@ import com.jdragon.tljrobot.tlj.pojo.Blog;
 import com.jdragon.tljrobot.tlj.service.BlogService;
 import com.jdragon.tljrobot.tljutils.Result;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,16 +21,19 @@ import java.util.List;
 @Api(tags = "无条件操作")
 public class ArticleManager {
 
-    @RequestMapping("/blog")
+    @GetMapping("/blog")
+    @ApiOperation("进入文章特区")
     public String getBlog(){
         return "blog";
     }
     @GetMapping("/moreBlog/{blogType}")
+    @ApiOperation("进入更多分类页面")
     public String moreBlogs(Model model, @PathVariable String blogType){
         model.addAttribute("blogType",blogType);
         return "moreBlog";
     }
     @GetMapping("/showBlog/{blogId}")
+    @ApiOperation("打开某篇文章")
     public String showBlog(Model model, @PathVariable String blogId){
         model.addAttribute("blogId",blogId);
         return "showBlog";
@@ -40,12 +44,14 @@ public class ArticleManager {
     BlogService blogService;
 
     @PostMapping("/GetBlog/{id}")
+    @ApiOperation("通过id获取文章详情（用于修改文章）")
     @ResponseBody
     public Result getBlog(@PathVariable int id){
         return Result.success("获取成功").setResult(blogMapper.selectById(id));
     }
 
-    @RequestMapping("/getBlogTypeMap/{page}/{pageSize}")
+    @PostMapping("/getBlogTypeMap/{page}/{pageSize}")
+    @ApiOperation("分页获取分类文章")
     @ResponseBody
     public Result getBlogTypeMap(@PathVariable int page, @PathVariable int pageSize){
         PageHelper.startPage(page,pageSize,true);
@@ -56,7 +62,8 @@ public class ArticleManager {
         }
         return Result.success("获取成功").setResult(newsTypeMap);
     }
-    @RequestMapping("/getBlogByType/{type}/{page}/{pageSize}")
+    @PostMapping("/getBlogByType/{type}/{page}/{pageSize}")
+    @ApiOperation("通过类型分页获取文章")
     @ResponseBody
     public Result getBlogByType(@PathVariable int page, @PathVariable int pageSize, @PathVariable String type){
         PageHelper.startPage(page,pageSize,true);
@@ -65,11 +72,13 @@ public class ArticleManager {
         return Result.success("获取成功").setResult(blogPageInfo.getList());
     }
     @PostMapping("/getBlogById/{blogId}")
+    @ApiOperation("通过id获取文章（用于用户浏览）")
     @ResponseBody
     public Result getBlogById(@PathVariable int blogId){
         return Result.success("获取成功").setResult(blogService.getBlogById(blogId));
     }
     @PostMapping("/getHotBlog")
+    @ApiOperation("获取点击量较高的文章")
     @ResponseBody
     public Result getHotBlog(){
         return Result.success("获取成功").setResult(blogService.getHotBlog(10));

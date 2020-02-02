@@ -39,7 +39,6 @@ public class TypeNumManager extends Thread {
                     String resultJsonStr = HttpUtil.doGetParam(OnlineConfig.NUM_CHANGE_NUM ,params,UserState.token);
                     JSONObject resultJson = JSONObject.parseObject(resultJsonStr);
                     if(resultJson.getString(Constant.RESPONSE_MESSAGE).equals("更新成功")){
-                        System.out.println("更新成功");
                         numTemp = NumState.num;
                     }
                 }
@@ -55,8 +54,8 @@ public class TypeNumManager extends Thread {
         jsonObject = jsonObject.getJSONObject(Constant.RESPONSE_RESULT);
         Class clazz = NumState.class;
         Field[] fields = clazz.getDeclaredFields();
-        for(Field field:fields){
-            field.set(clazz,jsonObject.getIntValue(field.getName().toLowerCase()));
+        for(Field field:fields) {
+            field.set(clazz, jsonObject.getIntValue(field.getName()));
         }
         numTemp = NumState.num;
         SwingSingleton.NumberRecordLabel().setText("总:" + NumState.num +

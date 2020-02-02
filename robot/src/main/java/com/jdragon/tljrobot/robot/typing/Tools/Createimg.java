@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.robot.typing.Tools;
 
+import com.jdragon.tljrobot.tljutils.SystemUtil;
 import com.jdragon.tljrobot.tljutils.compShortCode.BetterTyping;
 import com.jdragon.tljrobot.tljutils.compShortCode.SubscriptInstance;
 
@@ -205,10 +206,12 @@ public class Createimg {
         }
         String path = "typinggroup"+separator+"zmc.png";
         graphics.drawImage(image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_SMOOTH), 0, 0, null);
-        ImageIO.write(image, "png",
-                new File("/root/coolq/data/image/"
-//                new File("C:\\Users\\Lenovo\\Desktop\\酷Q Pro\\data\\image\\"
-                        +path));
+        String localPath;
+        if(SystemUtil.isWindows())
+            localPath = "C:\\Users\\10619\\Desktop\\testImg\\" + path;
+        else
+            localPath= "/root/coolq/data/image/" + path;
+        ImageIO.write(image, "png", new File(localPath));
         return path;
     }
 
@@ -372,10 +375,13 @@ public class Createimg {
         graphics.setStroke(s);
         String path = "typinggroup"+separator+"zmc.png";
         graphics.drawImage(image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_SMOOTH), 0, 0, null);
-        ImageIO.write(image, "png",
-                new File("/root/coolq/data/image/"
-//                new File("C:\\Users\\Lenovo\\Desktop\\酷Q Pro\\data\\image\\"
-                        +path));
+
+        String localPath;
+        if(SystemUtil.isWindows())
+            localPath = "C:\\Users\\10619\\Desktop\\testImg\\" + path;
+        else
+            localPath= "/root/coolq/data/image/" + path;
+        ImageIO.write(image, "png", new File(localPath));
         return path;
     }
     public static void main(String[] args) throws IOException {

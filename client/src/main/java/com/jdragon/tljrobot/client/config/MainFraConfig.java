@@ -8,12 +8,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+import static com.jdragon.tljrobot.client.config.LocalConfig.UIBackgroundColor;
+
 public class MainFraConfig {
 
     private static MainFra mainFra = MainFra.getInstance();
     public static void start(){
 
 //        mainFra.addWindowFocusListener(new StopListener());
+        mainFra.getContentPane().setBackground(UIBackgroundColor);
         // 设置无边框，用鼠标控制窗体移动
         mainFra.getContentPane().setLayout(null);
         mainFra.setLocationRelativeTo(null);
@@ -30,6 +33,8 @@ public class MainFraConfig {
                 IniAccess.writeIni(LocalConfig.iniFilePath);
             }
         });
+        ImageIcon icon = new ImageIcon("images\\installer_repair_1.png"); // xxx代表图片存放路径，2.png图片名称及格式
+        mainFra.setIconImage(icon.getImage());
         onSystem();
         //设置可见
         mainFra.setVisible(true);
@@ -51,19 +56,19 @@ public class MainFraConfig {
             };
             // 创建弹出菜单
             PopupMenu popup = new PopupMenu();// 这个是右键才能触发的菜单
-            MenuItem defaultItem = new MenuItem("打开");
+            MenuItem defaultItem = new MenuItem("open");
             defaultItem.addActionListener(listener);
             MenuItem change = new MenuItem("看/跟");
 //            change.addActionListener(lookda);
 
-            MenuItem exitItem = new MenuItem("退出");
+            MenuItem exitItem = new MenuItem("exit");
             exitItem.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     System.exit(0);
                 }
             });
             popup.add(defaultItem);
-            popup.add(change);
+//            popup.add(change);
             popup.add(exitItem);
             trayIcon = new TrayIcon(image, "拖拉机跟打器", popup);// 创建trayIcon
             trayIcon.addActionListener(listener);// 给小图标加上监听器，默认的就是监听双击。

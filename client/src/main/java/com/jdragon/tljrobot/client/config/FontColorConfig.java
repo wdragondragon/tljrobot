@@ -6,7 +6,6 @@ import java.awt.*;
 import static com.jdragon.tljrobot.client.config.LocalConfig.*;
 public class FontColorConfig {
     public static void start(){
-        int fontSize = LocalConfig.fontSize;
         JTextPaneFont.creat(typeDocName);
         JTextPaneFont.createStyle("黑", typeDocName, fontSize,
                 0, 0, 0, Color.BLACK, family, rightColor);

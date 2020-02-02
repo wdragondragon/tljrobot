@@ -75,15 +75,14 @@ public class User extends Model<User> {
         lastLoginDate = now;
     }
     @Override
-    public String toString(){
-        return "[name="+ username +"]";
-    }
-    @Override
     protected Serializable pkVal() {
         return this.id;
     }
     public static class Def {
         public static final String USER_NUM = "num";
         public static final String USER_NMAE = "username";
+    }
+    public String toString(){
+        return "[username:"+username+",num:"+num+",rightNum:"+rightNum+",misNum:"+misNum+"]";
     }
 }

@@ -104,12 +104,14 @@ public class TypingState {
         private double speed;//临时速度
         private double keySpeed;//临时击键
         private double instantaneousSpeed;//瞬时速度
+        private double time;//上屏时间
         private String words;
-        public WordsState(double speed,double keySpeed,double instantaneousSpeed,String words){
+        public WordsState(double speed,double keySpeed,double instantaneousSpeed,String words,double time){
             this.speed = speed;
             this.keySpeed = keySpeed;
             this.instantaneousSpeed = instantaneousSpeed;
             this.words = words;
+            this.time = time;
         }
     }
 }

@@ -66,10 +66,15 @@
             <artifactId>PicqBotX</artifactId>
             <version>4.10.1.928</version>
         </dependency>
+
         <dependency>
             <groupId>com.jdragon.tljrobot</groupId>
             <artifactId>tlj-utils</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
         </dependency>
     </dependencies>
 </project>

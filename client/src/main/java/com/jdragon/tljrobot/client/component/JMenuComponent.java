@@ -1,7 +1,16 @@
 package com.jdragon.tljrobot.client.component;
 
-import com.jdragon.tljrobot.client.event.FArea.*;
-import com.jdragon.tljrobot.client.event.online.Match;
+import com.jdragon.tljrobot.client.event.FArea.ChangeQQGroup;
+import com.jdragon.tljrobot.client.event.FArea.QQGetArticle;
+import com.jdragon.tljrobot.client.event.FArea.Replay;
+import com.jdragon.tljrobot.client.event.FArea.SendAchievement;
+import com.jdragon.tljrobot.client.event.Other.ClipboardGetArticle;
+import com.jdragon.tljrobot.client.event.online.HistoryEvent;
+import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
+import com.jdragon.tljrobot.client.listener.common.BuildChooseFile;
+import com.jdragon.tljrobot.client.listener.common.MixListener;
+import com.jdragon.tljrobot.client.window.HelpDialog;
+import com.jdragon.tljrobot.client.window.HistoryDialog;
 import com.jdragon.tljrobot.client.window.LogonDialog;
 import com.jdragon.tljrobot.client.window.SetDialog;
 import lombok.Data;
@@ -44,7 +53,7 @@ public class JMenuComponent {
     public JMenuItem nonOrder;
     public JMenuItem orderNextParagraph;
     public JMenuItem save;
-    public JMenuItem extractNextParagraph;
+//    public JMenuItem extractNextParagraph;
     public JMenuItem email;
     public JMenuItem checkCode;
     public JMenuItem openCheat;
@@ -82,9 +91,9 @@ public class JMenuComponent {
         QQGetArticleItem = new JMenuItem("载文 F4");
         groupChanging = new JMenuItem("换群 F5");
 
-        orderNextParagraph = new JMenuItem("顺序下一段");
-        save = new JMenuItem("保存跟打进度");
-        extractNextParagraph = new JMenuItem("抽取下一段");
+        orderNextParagraph = new JMenuItem("下一段");
+        save = new JMenuItem("保存进度");
+//        extractNextParagraph = new JMenuItem("抽取下一段");
         nonOrder = new JMenuItem("该段乱序");
 
         getArticleByClipboard = new JMenuItem("剪贴板载文");
@@ -115,8 +124,8 @@ public class JMenuComponent {
     private void addItem(){
         sendArticleMenu.add(nonOrder);
         sendArticleMenu.add(orderNextParagraph);
-        sendArticleMenu.add(extractNextParagraph);
-        sendArticleMenu.add(nextEnglish);
+//        sendArticleMenu.add(extractNextParagraph);
+//        sendArticleMenu.add(nextEnglish);
         sendArticleMenu.add(save);
 
         rankingMenu.add(allNumberRanking);
@@ -129,15 +138,15 @@ public class JMenuComponent {
         base.add(replay);
         base.add(QQGetArticleItem);
         base.add(groupChanging);
-//        base.add(getArticleByClipboard);
+        base.add(getArticleByClipboard);
 //        base.add(checkCode);
-//        base.add(sendArticleMenu);
+        base.add(sendArticleMenu);
 //        base.add(lookPlay);
 //        base.add(check);
 
 //        onlineMenu.add(rankingMenu);
 //        onlineMenu.add(battleOnline);
-//        onlineMenu.add(getHistory);
+        onlineMenu.add(getHistory);
         onlineMenu.add(everydayMatch);
 //        onlineMenu.add(email);
 //        onlineMenu.add(friendSys);
@@ -146,14 +155,14 @@ public class JMenuComponent {
 
         // other.add(jjmu);
         otherMenu.add(createCodeTable);
-        otherMenu.add(randomArticle);
+//        otherMenu.add(randomArticle);
 
         menu.add(Login);
         menu.add(base);
         menu.add(onlineMenu);
-//        menu.add(otherMenu);
+        menu.add(otherMenu);
 //
-//        menu.add(help);
+        menu.add(help);
 //        menu.add(helpAuthor);
         menu.add(moreSetUp);
 //        menu.add(openCheat);
@@ -163,6 +172,11 @@ public class JMenuComponent {
     public void setAccelerator(){
         moreSetUp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z,
                 KeyEvent.ALT_MASK));
+        orderNextParagraph.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P,
+                KeyEvent.CTRL_MASK));
+        save.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,KeyEvent.CTRL_MASK));
+        nonOrder.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L,KeyEvent.CTRL_MASK));
+        getArticleByClipboard.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, KeyEvent.CTRL_MASK));
     }
     public void addListener(){
         Login.addActionListener(e-> LogonDialog.getInstance().setVisible(true));
@@ -175,6 +189,13 @@ public class JMenuComponent {
         groupChanging.addActionListener(e-> ChangeQQGroup.start());
 
         moreSetUp.addActionListener(e-> SetDialog.getInstance().setVisible(true));
-        everydayMatch.addActionListener(e-> Match.getMatch());
+        everydayMatch.addActionListener(e-> HistoryEvent.getMatch());
+        getHistory.addActionListener(e-> HistoryDialog.getInstance().setVisible(true));
+        orderNextParagraph.addActionListener(ArticleTreeListener.getInstance());
+        save.addActionListener(ArticleTreeListener.getInstance());
+        nonOrder.addActionListener(MixListener.getInstance());
+        createCodeTable.addActionListener(new BuildChooseFile());
+        getArticleByClipboard.addActionListener(e-> ClipboardGetArticle.start());
+        help.addActionListener(e-> HelpDialog.showHelp());
     }
 }

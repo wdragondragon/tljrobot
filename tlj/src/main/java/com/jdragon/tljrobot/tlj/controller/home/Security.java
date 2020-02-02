@@ -29,12 +29,36 @@ public class Security {
     public String register(){
         return "register";
     }
+    @PostMapping("loginState/{userId}")
+    @ApiOperation(value = "验证登录状态")
+    public Result LoginState(@PathVariable String userId){
+        if(Local.getSession(userId)!=null)
+            return Result.success("已登录");
+        else return Result.success("未登录");
+    }
     @PostMapping(value = "/login/{username}/{password}")
     @ApiOperation(value = "登录接口")
     @ResponseBody
     public Result Login(@ApiParam(name = "username",value = "用户名")@PathVariable("username") String username,
                         @ApiParam(name = "password",value = "登录密码")@PathVariable("password") String password){
         password = Md5Utils.getMD5(password.getBytes());
+        User user = userMapper.selectOne(new QueryWrapper<User>().eq(User.Def.USER_NMAE,username));
+        if(user==null){
+            return Result.success("无该用户");
+        }else if(!user.getPassword().equals(password)){
+            return Result.success("密码错误");
+        }else{
+            String userId = Local.login(user);
+            user.setToken(userId);
+            user.updateById();
+            return Result.success("登录成功").setResult(userId);
+        }
+    }
+    @PostMapping(value = "/loginMD5/{username}/{password}")
+    @ApiOperation(value = "登录接口")
+    @ResponseBody
+    public Result LoginMD5(@ApiParam(name = "username",value = "用户名")@PathVariable("username") String username,
+                        @ApiParam(name = "password",value = "登录密码")@PathVariable("password") String password){
         User user = userMapper.selectOne(new QueryWrapper<User>().eq(User.Def.USER_NMAE,username));
         if(user==null){
             return Result.success("无该用户");

@@ -13,10 +13,10 @@ import static java.io.File.separator;
 public class BetterTyping {
     private double averCodeLength = 0.0;
     private int allCodeLength = 0;
-    private HashMap<String,String> wordCode;
-    private HashMap<String,String> symbolCode;
+    private HashMap<String,String> wordCode;//单字码表
+    private HashMap<String,String> symbolCode;//符号码表
     private ArrayList<String> symbolEntry;
-    private ArrayList<HashMap<String,String>> wordsCodeList;
+    private ArrayList<HashMap<String,String>> wordsCodeList;//词组码表
     private StringBuilder allCode;
     enum Type{
         //1全 2次全 3三简 4 次三简 5二简  6次二简
@@ -53,7 +53,7 @@ public class BetterTyping {
         String regex = "234567890";
         String topSymbol = "，。";
         String str;
-        File more = new File("编码文件"+separator+"输入法编码"+separator+ciZuFileName+".txt");
+        File more = new File(ciZuFileName);
         try {
             fuHao();
         } catch (IOException e1) {

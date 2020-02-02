@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 @Data
@@ -49,6 +50,10 @@ public class History extends Model<History> {
     private int paragraph;
 
     public static class Def {
-        public static final String TLJ_HISTORY_USERID = "userId";
+        public static final String TLJ_HISTORY_USER_ID = "userId";
+    }
+    @Override
+    protected Serializable pkVal(){
+        return this.id;
     }
 }

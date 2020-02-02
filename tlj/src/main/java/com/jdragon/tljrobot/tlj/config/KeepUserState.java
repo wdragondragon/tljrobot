@@ -19,7 +19,7 @@ public class KeepUserState implements ApplicationRunner {
     @Autowired
     UserMapper userMapper;
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
         List<User> userList = userMapper.selectList(new QueryWrapper<>());
         for(User user:userList){
             if(!user.getToken().equals("")){

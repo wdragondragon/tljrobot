@@ -4,8 +4,8 @@ import com.jdragon.tljrobot.client.component.JMenuComponent;
 import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.entry.UserState;
-import com.jdragon.tljrobot.client.event.online.Login;
-import com.jdragon.tljrobot.client.event.online.Logout;
+import com.jdragon.tljrobot.client.event.online.LoginEvent;
+import com.jdragon.tljrobot.client.event.online.LogoutEvent;
 import com.jdragon.tljrobot.client.utils.core.Layout;
 
 import javax.swing.*;
@@ -69,13 +69,13 @@ public class LogonDialog {
     }
     public static void doLogin(){
         getInstance();
-        if(UserState.loginState&&Logout.start()){
+        if(UserState.loginState&& LogoutEvent.start()){
             username.setEditable(true);
             password.setEditable(true);
             confirm.setText("登录");
             JMenuComponent.getInstance().getLogin().setText("登录");
         }
-        else if(Login.start(username.getText(),new String(password.getPassword()))){
+        else if(LoginEvent.start(username.getText(),new String(password.getPassword()))){
             username.setEditable(false);
             password.setEditable(false);
             confirm.setText("退出登录");

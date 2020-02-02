@@ -19,6 +19,6 @@ public interface ArticleMapper extends BaseMapper<Article> {
     @Select("select * from all_article where id=#{id};")
     public Article selectArticleById(int id);
 
-    @Select("select * from all_article where content=#{content}")
-    public Article selectArticleByContent(String content);
+    @Select("select * from all_article where title=#{title} and content=#{content}")
+    public Article selectArticleByContent(String title,String content);
 }

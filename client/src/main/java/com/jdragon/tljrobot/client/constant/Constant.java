@@ -1,11 +1,13 @@
 package com.jdragon.tljrobot.client.constant;
 
+import static java.io.File.separator;
+
 /**
  * Create by Jdragon on 2020.01.12
  */
 public class Constant {
     //codeTable
-    public static final String CODE_TABLE = "词组提示码表";
+    public static final String CODE_TABLE = "编码文件"+separator+"输入法编码"+separator+"词组提示码表.txt";
     //typingPattern
     public static final String FOLLOW_PLAY_PATTERN = "跟打";
     public static final String WATCH_PLAY_PATTERN = "看打";

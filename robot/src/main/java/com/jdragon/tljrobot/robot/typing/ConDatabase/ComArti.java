@@ -203,59 +203,59 @@ public class ComArti {
                 sql = "select * from groupmap where groupid="+groupid;
                 ResultSet rs2 = Conn.getStmtSet(con,sql);
                 String groupname = "";
-                Double speedaver = -1.0;
-                if(averrs.next()) {
-                    speedaver = averrs.getDouble("speedaver");
-                    ranklist.add(Double.parseDouble(String.format("%.2f",speedaver)));
-                }
-                if(rs2.next())groupname = rs2.getString("groupname");
-                String name = rs.getString("name");
-                Double key1 = rs.getDouble("keyspeed");
-                Double keylenth1 = rs.getDouble("keylength");
-                Double firstsudu1 = rs.getDouble("firstplay");
-                String sudu = String.valueOf(rs.getDouble("sudu"));
-                String key = String.valueOf(key1);
-                String firstsudu = String.valueOf(firstsudu1);
-                name = name.replaceAll("%","");
-                if(initGroupList.QQDomap.containsKey(id))
-                    name += "%" + initGroupList.QQDomap.get(id);
-                if(key.equals("-1.0"))
-                    key = "无";
-                else if(keylenth1<4)
-                    keylist.add(key1);
-                String keylenth = String.valueOf(keylenth1);
-                if(keylenth.equals("-1.0"))
-                    keylenth = "无";
-                else if(key1>4)
-                    keylenthlist.add(keylenth1);
-                String typenum = String.valueOf(rs.getInt("typenum"));
-                String delete = String.valueOf(rs.getInt("del"));
-                if (delete.equals("-1"))
-                    delete = "无";
-                String deletext = String.valueOf(rs.getInt("deletetext"));
-                if(deletext.equals("-1"))
-                    deletext = "无";
-                String select = String.valueOf(rs.getInt("sel"));
-                if(select.equals("-1"))
-                    select = "无";
-                String mistake = String.valueOf(rs.getInt("mistake"));
-                if(mistake.equals("-1"))
-                    mistake = "无";
-                String rightkeyper = String.valueOf(rs.getDouble("rightkeyper"));
-                if(rightkeyper.equals("-1.0"))
-                    rightkeyper = "无";
-                else
-                    rightkeyper += "%";
-                String straver = String.valueOf(speedaver);
-                if(straver.equals("-1")){
-                    straver = "无";
-                }else {
-                    straver = String.format("%.2f",speedaver);
-                }
-                firstplaylist.add(firstsudu1);
-                sign = true;
-                contentArray.add(Arrays.asList(new String[]{name,groupname,sudu,straver,firstsudu,key,keylenth,delete,deletext,select,mistake,rightkeyper,typenum}));
+            Double speedaver = -1.0;
+            if(averrs.next()) {
+                speedaver = averrs.getDouble("speedaver");
+                ranklist.add(Double.parseDouble(String.format("%.2f",speedaver)));
             }
+            if(rs2.next())groupname = rs2.getString("groupname");
+            String name = rs.getString("name");
+            Double key1 = rs.getDouble("keyspeed");
+            Double keylenth1 = rs.getDouble("keylength");
+            Double firstsudu1 = rs.getDouble("firstplay");
+            String sudu = String.valueOf(rs.getDouble("sudu"));
+            String key = String.valueOf(key1);
+            String firstsudu = String.valueOf(firstsudu1);
+            name = name.replaceAll("%","");
+            if(initGroupList.QQDomap.containsKey(id))
+                name += "%" + initGroupList.QQDomap.get(id);
+            if(key.equals("-1.0"))
+                key = "无";
+            else if(keylenth1<4)
+                keylist.add(key1);
+            String keylenth = String.valueOf(keylenth1);
+            if(keylenth.equals("-1.0"))
+                keylenth = "无";
+            else if(key1>4)
+                keylenthlist.add(keylenth1);
+            String typenum = String.valueOf(rs.getInt("typenum"));
+            String delete = String.valueOf(rs.getInt("del"));
+            if (delete.equals("-1"))
+                delete = "无";
+            String deletext = String.valueOf(rs.getInt("deletetext"));
+            if(deletext.equals("-1"))
+                deletext = "无";
+            String select = String.valueOf(rs.getInt("sel"));
+            if(select.equals("-1"))
+                select = "无";
+            String mistake = String.valueOf(rs.getInt("mistake"));
+            if(mistake.equals("-1"))
+                mistake = "无";
+            String rightkeyper = String.valueOf(rs.getDouble("rightkeyper"));
+            if(rightkeyper.equals("-1.0"))
+                rightkeyper = "无";
+            else
+                rightkeyper += "%";
+            String straver = String.valueOf(speedaver);
+            if(straver.equals("-1")){
+                straver = "无";
+            }else {
+                straver = String.format("%.2f",speedaver);
+            }
+            firstplaylist.add(firstsudu1);
+            sign = true;
+            contentArray.add(Arrays.asList(new String[]{name,groupname,sudu,straver,firstsudu,key,keylenth,delete,deletext,select,mistake,rightkeyper,typenum}));
+        }
             Collections.sort(keylist,Collections.reverseOrder());
             Collections.sort(keylenthlist);
             Collections.sort(firstplaylist,Collections.reverseOrder());

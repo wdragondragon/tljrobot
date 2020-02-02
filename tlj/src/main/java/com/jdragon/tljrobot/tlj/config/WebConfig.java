@@ -3,7 +3,6 @@ package com.jdragon.tljrobot.tlj.config;
 import com.jdragon.tljrobot.tlj.interceptor.LoginInterceptor;
 import com.jdragon.tljrobot.tljutils.SystemUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -53,12 +52,16 @@ public class WebConfig extends WebMvcConfigurationSupport{
                     .addResourceLocations("file:D:/WEB/UEditor/");
             registry.addResourceHandler("/static/MEditor/**")
                     .addResourceLocations("file:D:/WEB/MEditor/");
+            registry.addResourceHandler("/static/tlj/**")
+                    .addResourceLocations("file:D:/WEB/tlj/");
         }
         else {
             registry.addResourceHandler("/static/UEditor/**")
                     .addResourceLocations("file:/var/java/UEditor/");
             registry.addResourceHandler("/static/MEditor/**")
                     .addResourceLocations("file:/var/java/MEditor/");
+            registry.addResourceHandler("/static/tlj/**")
+                    .addResourceLocations("file:/var/java/tlj/");
         }
         super.addResourceHandlers(registry);
     }
@@ -77,4 +80,6 @@ public class WebConfig extends WebMvcConfigurationSupport{
         registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns("/login", "/home");
 //        super.addInterceptors(registry);    //较新Spring Boot的版本中这里可以直接去掉，否则会报错
     }
+
+
 }

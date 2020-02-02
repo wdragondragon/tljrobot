@@ -32,15 +32,18 @@ public class Home {
         PageInfo<User> pageInfo = new PageInfo<User>(users);
         return Result.success("获取成功").setResult(pageInfo);
     }
-    @RequestMapping("/introduce")
+    @GetMapping("/introduce")
+    @ApiOperation("进入主页面")
     public String getIntroduce(){
         return "introduce";
     }
-    @RequestMapping("/myInfo")
+    @GetMapping("/myInfo")
+    @ApiOperation("进入我的信息页面")
     public String getMyInfo(){
         return "myInfo";
     }
-    @RequestMapping("/allUser")
+    @GetMapping("/allUser")
+    @ApiOperation("进入全体概况页面")
     public String getAllUser(){
         return "allUser";
     }

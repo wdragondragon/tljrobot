@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Create by Jdragon on 2020.01.18
@@ -55,14 +56,16 @@ public class TljServiceImpl implements TljService {
         else return false;
     }
 
+    @Transactional
     @Override
     public TljMatch insertTljMatch() {
-        TljMatch tljMatch = tljMatchMapper.selectTodayTljMatchByDate(DateUtil.now());
+        TljMatch tljMatch = tljMatchMapper.selectTljMatchByDate(DateUtil.now());
         if(tljMatch==null){
             String random = ArticleUtil.getRandomContent();
-            Article article = articleMapper.selectArticleByContent(random);
+            String title = "拖拉机日赛";
+            Article article = articleMapper.selectArticleByContent(title,random);
             if(article==null){
-                article = new Article("拖拉机日赛",random);
+                article = new Article(title,random);
                 if(!article.insert())return null;
             }
             tljMatch = new TljMatch(article,DateUtil.now(),"随机生成");
@@ -73,26 +76,23 @@ public class TljServiceImpl implements TljService {
 
     @Override
     public boolean uploadTljMatchAch(int userId, History history) {
-        TljMatch tljMatch = tljMatchMapper.selectTodayTljMatchByDate(DateUtil.now());
+        TljMatch tljMatch = tljMatchMapper.selectTljMatchByDate(DateUtil.now());
         history.setArticleId(tljMatch.getArticle().getId());
         history.setUserId(userId);
-        history.setTypeDate(DateUtil.now());
         return history.updateById();
     }
 
+    @Transactional
     @Override
     public boolean uploadHistory(int userId, History history,Article articleTemp) {
-        Article article = articleMapper.selectArticleByContent(articleTemp.getContent());
+        Article article = articleMapper.selectArticleByContent(articleTemp.getTitle(),articleTemp.getContent());
         if(article==null) {
             if (articleTemp.insert()) {
                 article = articleTemp;
-            } else {
-                return false;
-            }
+            } else return false;
         }
         history.setArticleId(article.getId());
         history.setUserId(userId);
-        history.setTypeDate(DateUtil.now());
         if (history.insert())
             return true;
         else return false;

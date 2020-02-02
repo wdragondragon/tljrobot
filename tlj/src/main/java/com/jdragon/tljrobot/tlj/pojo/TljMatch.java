@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
@@ -35,5 +36,9 @@ public class TljMatch extends Model<TljMatch> {
         this.articleId = article.getId();
         this.holdDate = holdDate;
         this.author = author;
+    }
+    @Override
+    protected Serializable pkVal(){
+        return this.id;
     }
 }

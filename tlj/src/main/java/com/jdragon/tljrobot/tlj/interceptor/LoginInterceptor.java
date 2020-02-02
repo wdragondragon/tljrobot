@@ -25,28 +25,28 @@ public class LoginInterceptor implements HandlerInterceptor {
         /*
            如果为允许访问的地址或携带已登录userId则通过
          */
-        List allow = Arrays.asList("error","img","css","js","home","swagger-ui.html","webjars","swagger-resources","test","editor","ueditor","UEditorConfig","static");
+        List allow = Arrays.asList("error","home","swagger-ui.html","webjars","swagger-resources","test","editor","ueditor","UEditorConfig","static","robot");
         List allow2 = Arrays.asList("img","css","js","png","jpg","txt","ico");
-
         String pattern = "(?<=/)(.*?)(?=/)|(?<=/)(.*)";
         Pattern r = Pattern.compile(pattern);
         Matcher m = r.matcher(requestURI);
         System.out.println(requestURI);
-        boolean isInterceptor = true;
-        if(m.find() &&allow.contains(m.group())||
-                allow2.contains(requestURI.substring(requestURI.lastIndexOf(".")+1))||
-                Local.isLogin(requestURI.substring(requestURI.lastIndexOf("/")+1))||
-                requestURI.equals("/")){
-            System.out.println("放行");
-            isInterceptor = false;
-        }
-        if(isInterceptor){
+        String lastPath = requestURI.substring(requestURI.lastIndexOf("/")+1);
+        if(requestURI.equals("/")){
+//            System.out.println("放行home");
+        }else if(allow2.contains(requestURI.substring(requestURI.lastIndexOf(".")+1))){
+//            System.out.println("放行制定后缀文件");
+        }else if(m.find()&&allow.contains(m.group())){
+            System.out.println(allow.contains(m.group()));
+        }else if(Local.isLogin(lastPath)){
+//            System.out.println("放行登录用户" + lastPath);
+        }else{
+            System.out.println("拦截"+requestURI);
             request.getRequestDispatcher("/home/login").forward(request,response);
             return false;
         }
         return true;
     }
-
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable ModelAndView modelAndView) throws Exception {
     }
 

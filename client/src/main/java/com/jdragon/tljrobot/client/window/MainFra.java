@@ -88,7 +88,7 @@ public class MainFra extends JFrame {
                     SendAchievement.start();
                     break;
                 case KeyEvent.VK_F2:
-//                    ShareArticle.start();
+                    SendArticle.start();
                     break;
                 case KeyEvent.VK_F3:
                     Replay.start();
@@ -105,7 +105,7 @@ public class MainFra extends JFrame {
                 case KeyEvent.VK_F7 :
                     TypingPause.start();
                     break;
-//                    case KeyEvent.VK_F8: break;
+//                    case KeyEvent.VK_F8: new web(); break;
 //                    case KeyEvent.VK_F9 : break;
 //                    case KeyEvent.VK_F10 : break;
 //                    case KeyEvent.VK_F11 : break;

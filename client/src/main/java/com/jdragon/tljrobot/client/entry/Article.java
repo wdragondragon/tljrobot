@@ -31,4 +31,11 @@ public class Article {
     public String toString() {
         return "[\n段落:"+paragraph+",\n标题:"+title+",\n文章:"+article+",\n编码详情:"+shortCodeEntity.toString()+"]";
     }
+    public void setArticle(String article){
+        this.article =article;
+        this.shortCodeEntity = new SimpleEntry().readyCreate(article,BetterTypingSingleton.getInstance());
+    }
+    public void addParagraph(){
+        paragraph++;
+    }
 }
