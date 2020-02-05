@@ -2,7 +2,9 @@ package com.jdragon.tljrobot.client.utils.common;
 
 import javax.swing.text.*;
 import java.awt.*;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class JTextPaneFont {
     public static HashMap<String,StyledDocument> styleDocs = new HashMap<>();
@@ -42,10 +44,8 @@ public class JTextPaneFont {
         StyleConstants.setUnderline(s, underline == 1); // 下划线
         StyleConstants.setForeground(s, color); // 颜色
         StyleConstants.setFontFamily(s, fontName);// 字体
-        if (style.equals("黑"))
+        List<String> colorBackgroundList = Arrays.asList("黑","红","对","错原");
+        if (colorBackgroundList.contains(style))
             StyleConstants.setBackground(s, backColor);
-        else if (style.equals("红")) {
-            StyleConstants.setBackground(s, backColor);
-        }
     }
 }

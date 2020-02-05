@@ -30,6 +30,22 @@ public class ArticleUtil {
 //			System.out.println(str1);
         return str1;
     }
+    public static String getRandomContent2(){
+        String str = getUrlConStr();//获得网站str
+        String regex = "<p>(.*?)</p>";//正则匹配出<p>与</p>之间
+        Pattern pattern = Pattern.compile(regex);//匹配模式
+        Matcher m = pattern.matcher(str);//判断是否符合匹配
+        String str1 = "";
+        while(m.find()){
+            int i =1;
+            str1+=m.group(i);
+            i++;
+        }
+        clearSpace(str1);
+        str1 = replace(str1);
+//			System.out.println(str1);
+        return str1;
+    }
     static String getUrlConStr(){
         try{
             URL url = new URL("https://meiriyiwen.com/random");

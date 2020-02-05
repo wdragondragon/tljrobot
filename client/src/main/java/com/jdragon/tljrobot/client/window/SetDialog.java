@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.client.window;
 
+import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.config.FontColorConfig;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.listener.common.SetBackground;
@@ -203,6 +204,7 @@ public class SetDialog{
             LocalConfig.fontSize = Integer.parseInt(fontSizeText.getText());
             FontColorConfig.start();
             Typing.getInstance().changeFontColor();
+            SwingSingleton.TypingText().setFont(new Font(LocalConfig.family, Font.PLAIN, LocalConfig.fontSize));
         });
         codeTableButton.addActionListener(new ChooseFile());
         familyChange.addActionListener(e-> {

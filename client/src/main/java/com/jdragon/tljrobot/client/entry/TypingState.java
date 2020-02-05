@@ -16,7 +16,11 @@ public class TypingState {
 //    public static double keySpeed;//击键
 //    public static double keyLength;//码长
 
-    public static int mistake;//错字
+    public static int lookMore;//看打多字
+    public static int lookMiss;//看打少字
+    public static int lookMis;//看打错字
+
+    public static int mistake;//一共错字
     public static int deleteNumber;//退格
     public static int deleteTextNumber;//回改
     public static int repeat;//选重
@@ -51,6 +55,9 @@ public class TypingState {
         right = 0;
         space = 0;
         typeWordsNum = 0;
+        lookMis = 0;
+        lookMiss = 0;
+        lookMore = 0;
         record = new StringBuilder();
         timer.setStartTime(0L);
         timer.setEndTime(0L);
@@ -71,8 +78,11 @@ public class TypingState {
     }
     public static double getSpeed(){
         double minute = timer.getMinute();
-//        speed = (typeLength*1.0-5*mistake)/minute;
         return doubleKeyTwo((1.00*typeLength-5.00*mistake)/minute);
+    }
+    public static double getSpeedNoMistake(){
+        double minute = timer.getMinute();
+        return doubleKeyTwo((1.00*typeLength)/minute);
     }
     public static double getKeyLength(){
         if(typeLength==0)return keyNumber;

@@ -1,6 +1,8 @@
 package com.jdragon.tljrobot.robot.newTyping.tools;
 
+import com.jdragon.tljrobot.robot.newTyping.GroupCache;
 import com.jdragon.tljrobot.robot.newTyping.entry.RobotHistory;
+import com.jdragon.tljrobot.robot.newTyping.entry.TljHistory;
 import com.jdragon.tljrobot.robot.typing.Tools.Createimg;
 
 import java.util.*;
@@ -9,7 +11,7 @@ import java.util.*;
  * Create by Jdragon on 2020.01.23
  */
 public class DrawImg {
-    public static String tljMatchByHistories(String title,String[] head,List<RobotHistory> robotHistories){
+    public static String unionMatchByHistories(String title, String[] head, List<RobotHistory> robotHistories){
         //处理返回路径或处理结果
         String path;
         //表格基本信息项
@@ -24,12 +26,17 @@ public class DrawImg {
         titles.add(title);
         heads.add(head);
         for(RobotHistory robotHistory:robotHistories) {
-//            String name = initGroupList.QQlist.get(robotHistory.getQq());
-            String name = "谭宇";
-//            String groupName = initGroupList.QQGroupMap.get(robotHistory.getGroupId());
-            String groupName = "练习群";
+            String name = "未知";
+            String groupName = "未知";
+
+            long groupId = robotHistory.getGroupId();
+            HashMap<Long,String> groupMemberCardList = GroupCache.groupCardCache.get(groupId);
+            if(groupMemberCardList!=null&&GroupCache.typeGroupMap.containsKey(groupId)) {
+                name = groupMemberCardList.get(robotHistory.getQq());
+                groupName = GroupCache.typeGroupMap.get(groupId);
+            }
             Double keySpeed = robotHistory.getKeySpeed();
-           Double keyLength = robotHistory.getKeyLength();
+            Double keyLength = robotHistory.getKeyLength();
             String SpeedStr = String.valueOf(robotHistory.getSpeed());
 
             String keySpeedStr = String.valueOf(keySpeed);
@@ -67,7 +74,7 @@ public class DrawImg {
                 keyAccuracyStr = "无";
             else
                 keyAccuracyStr += "%";
-            contentArray.add(Arrays.asList(new String[]{name,groupName,SpeedStr,keySpeedStr,keyLengthStr,deleteNumStr,deleteTextStr,repeatNumStr,mistakeStr,keyAccuracyStr,typeNumStr}));
+            contentArray.add(Arrays.asList(name,groupName,SpeedStr,keySpeedStr,keyLengthStr,deleteNumStr,deleteTextStr,repeatNumStr,mistakeStr,keyAccuracyStr,typeNumStr));
         }
         allValue.add(contentArray);
         Collections.sort(keySpeedList,Collections.reverseOrder());
@@ -83,4 +90,50 @@ public class DrawImg {
         }
         return path;
     }
+    public static String tljMatchByHistories(String title,String[] head,List<TljHistory> tljHistories){
+        //处理返回路径或处理结果
+        String path;
+        //表格基本信息项
+        List<List<List<String>>> allValue = new ArrayList<List<List<String>>>();
+        List<List<String>> contentArray = new ArrayList<List<String>>();
+        List<String[]> heads = new ArrayList<String[]>();
+        List<String> titles = new ArrayList<String>();
+        //两链表作排名使用
+        List<Double> keySpeedList = new ArrayList<>();
+        List<Double> keyLengthList = new ArrayList<>();
+        titles.add(title);
+        heads.add(head);
+        for(TljHistory tljHistory:tljHistories){
+            String name = tljHistory.getUserName();
+            String speed = String.valueOf(tljHistory.getSpeed());
+            String keySpeed = String.valueOf(tljHistory.getKeySpeed());
+            String keyLength = String.valueOf(tljHistory.getKeyLength());
+            String deleteNum = String.valueOf(tljHistory.getDeleteNum());
+            String deleteText = String.valueOf(tljHistory.getDeleteText());
+            String mistake = String.valueOf(tljHistory.getMistake());
+            String repeatNum = String.valueOf(tljHistory.getRepeatNum());
+            String keyAccuracy = String.valueOf(tljHistory.getKeyAccuracy());
+            String keyMethod = String.valueOf(tljHistory.getKeyMethod());
+            String wordRate = String.valueOf(tljHistory.getWordRate());
+            keySpeedList.add(tljHistory.getKeySpeed());
+            keyLengthList.add(tljHistory.getKeyLength());
+            contentArray.add(Arrays.asList(name,speed,keySpeed,keyLength,deleteNum,deleteText,mistake,repeatNum,keyAccuracy,keyMethod,wordRate));
+        }
+        allValue.add(contentArray);
+        Collections.sort(keySpeedList,Collections.reverseOrder());
+        Collections.sort(keyLengthList);
+        HashMap<Integer, List<Double>> rankMap = new HashMap<>();
+        rankMap.put(3,keySpeedList);
+        rankMap.put(4,keyLengthList);
+        try {
+            path = Createimg.graphicsGeneration(allValue,titles,heads,null,heads.get(0).length,rankMap);
+        } catch (Exception e) {
+            path = "生成图片出错";
+            e.printStackTrace();
+        }
+        return path;
+    }
+//    public static String unionMatchFirstPlayByHistories(String title, String[] head, List<RobotHistory> robotHistories){
+//
+//    }
 }

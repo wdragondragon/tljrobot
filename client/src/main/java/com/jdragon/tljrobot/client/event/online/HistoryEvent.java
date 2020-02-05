@@ -12,6 +12,7 @@ import com.jdragon.tljrobot.tljutils.DateUtil;
 import com.jdragon.tljrobot.tljutils.HttpUtil;
 
 import javax.swing.*;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +23,9 @@ import java.util.Map;
  */
 public class HistoryEvent {
     public static void getMatch(){
-        JSONObject jsonObject = JSON.parseObject(HttpUtil.doGet(OnlineConfig.MATCH_GET_TODAY, UserState.token));
+        HashMap<String,String> params = new HashMap<>();
+        params.put("isMobile","0");
+        JSONObject jsonObject = JSON.parseObject(HttpUtil.doGetParam(OnlineConfig.MATCH_GET_TODAY, params,UserState.token));
         String message = jsonObject.getString(Constant.RESPONSE_MESSAGE);
         if(message.equals("获取成功")){
             /**
@@ -93,5 +96,17 @@ public class HistoryEvent {
         historyListEntry.setPageNum(pageNum);
         historyListEntry.setPages(pages);
         return historyListEntry;
+    }
+    public static List<History2> getTljMatchAchList(Date date){
+        List<History2> historyList = new ArrayList<>();
+        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(OnlineConfig.MATCH_GET_MATCH_ACH_BY_DATE, String.valueOf(date),UserState.token));
+        JSONArray result = jsonObject.getJSONArray("result");
+        if(jsonObject.getString("message").equals("获取成功")) {
+            for (Object historyJson : result) {
+                JSON json = JSON.parseObject(historyJson.toString());
+                historyList.add(JSONObject.toJavaObject(json, History2.class));
+            }
+        }
+        return historyList;
     }
 }

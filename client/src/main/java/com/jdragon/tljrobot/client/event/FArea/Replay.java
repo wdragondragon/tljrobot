@@ -34,8 +34,12 @@ public class Replay {
         TypingText().setEditable(true);
         TypingText().requestFocusInWindow();
 
-        Typing.getInstance().changeTipLabel(0);//提示第一个字
+        if(!TypingState.dailyCompetition)
+            Typing.getInstance().changeTipLabel(0);//提示第一个字
 
         TheoreticalCodeLengthButton().setText(String.valueOf(Article.getArticleSingleton().getShortCodeEntity().getArticleAverCodes()));
+
+        TypingState.pause = false;
+        TypingText().requestFocusInWindow();
     }
 }

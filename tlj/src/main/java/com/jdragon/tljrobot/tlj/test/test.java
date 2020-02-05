@@ -1,11 +1,13 @@
 package com.jdragon.tljrobot.tlj.test;
 
+import com.alibaba.nacos.common.util.Md5Utils;
 import com.jdragon.tljrobot.tlj.service.BestTypingService;
 import com.jdragon.tljrobot.tljutils.DateUtil;
 import com.jdragon.tljrobot.tljutils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -39,5 +41,12 @@ public class test {
     @ApiOperation(value = "获取最佳编码")
     public Result testShortCodes(@ApiParam(name = "str",value = "字符串")@PathVariable String str) {
         return Result.success("获取成功").setResult(bestTypingService.readyCreate(str).getArticleCodes());
+    }
+    @Test
+    public void mdt(){
+        System.out.println(Md5Utils.getMD5("12345678".getBytes()));
+        String str = "21342";
+        str = str.substring(0, Math.min(str.length(), 10));
+        System.out.println(str);
     }
 }

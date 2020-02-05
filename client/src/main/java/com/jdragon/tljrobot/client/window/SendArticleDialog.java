@@ -22,8 +22,8 @@ public class SendArticleDialog {
     static JScrollPane tree1;
     static DefaultMutableTreeNode root;
     static DefaultMutableTreeNode danzilei, wenzhanglei, yingwenlei;
-    static JButton send, next, mix, chouqu, cikuchouqu, English;
-    public static JTextField number,cikuchouqucanshu;
+    static JButton send, next, mix, chouqu, cikuchouqu, English,sendAll;
+    public static JTextField number;
     public static JTextArea wenben;
     public static JScrollPane wenben1;
     public static JSpinner machang1,machang2,cishu,cichang1,cichang2;
@@ -46,6 +46,7 @@ public class SendArticleDialog {
         addOrder();//顺序发文按钮及功能
         addMix();//全局乱序按钮及功能
         addNoOrder();//抽取发文按钮及功能
+        addSendAll();//发送全文按钮
         addcikuchouqu();//词库联系按钮及功能
         automaticDisruption();//自动下一段条件选择及功能
     }
@@ -68,12 +69,16 @@ public class SendArticleDialog {
         p.add(send);
         send.addActionListener(articleTreeListener);
     }
+    private static void addSendAll(){
+        sendAll = new JButton("发送全文");
+        sendAll.setBounds(425, 270, 90, 30);
+        p.add(sendAll);
+        sendAll.addActionListener(articleTreeListener);
+    }
     private static void addcikuchouqu() {
         cikuchouqu = new JButton("词库练习");
 
-        cikuchouqucanshu = new JTextField("a:b:c:d");
         cikuchouqu.setBounds(350, 270, 70, 30);
-        cikuchouqucanshu.setBounds(425, 270, 60, 30);
 
         JLabel lable1 = new JLabel("码长");
         JLabel lable2 = new JLabel("组数");
@@ -123,7 +128,6 @@ public class SendArticleDialog {
         p.add(cichang1);
         p.add(cichang2);
         p.add(cishu);
-        p.add(cikuchouqucanshu);
     }
     private static void automaticDisruption() {
         JLabel lable1 = new JLabel("速度≥");

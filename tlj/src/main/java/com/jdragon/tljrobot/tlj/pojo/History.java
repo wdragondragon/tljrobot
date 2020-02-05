@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -12,6 +14,7 @@ import java.sql.Date;
 
 @Data
 @TableName("tlj_history")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class History extends Model<History> {
     @TableId(type = IdType.AUTO)
     private int id;
@@ -48,6 +51,9 @@ public class History extends Model<History> {
     private int articleId;
 
     private int paragraph;
+
+    @JsonIgnore
+    private boolean isMobile;
 
     public static class Def {
         public static final String TLJ_HISTORY_USER_ID = "userId";

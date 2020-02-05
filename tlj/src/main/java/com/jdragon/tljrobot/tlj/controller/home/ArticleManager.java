@@ -55,7 +55,7 @@ public class ArticleManager {
     @ResponseBody
     public Result getBlogTypeMap(@PathVariable int page, @PathVariable int pageSize){
         PageHelper.startPage(page,pageSize,true);
-        String[] types = {"方案魔改","方案教学","提升分享","速度录屏","新鲜出炉"};
+        String[] types = {"方案魔改","BUG提交","提升分享","速度录屏","新鲜出炉"};
         HashMap<String, List<Blog>> newsTypeMap = new HashMap<>();
         for(String type:types) {
             newsTypeMap.put(type, new PageInfo<>(blogService.getBlogByType(type)).getList());

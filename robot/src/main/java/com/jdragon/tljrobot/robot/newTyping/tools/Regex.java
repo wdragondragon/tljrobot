@@ -10,6 +10,8 @@ import java.util.regex.Pattern;
  */
 public class Regex {
     public static int getParagraph(String str) {
+        int strLength = str.length();
+        str = str.substring(0, Math.min(strLength, 10));
         Pattern p = Pattern.compile("第(.*?)段");//正则表达式，取=和|之间的字符串，不包括=和|
         Matcher m = p.matcher(str);
         if (m.find()) {

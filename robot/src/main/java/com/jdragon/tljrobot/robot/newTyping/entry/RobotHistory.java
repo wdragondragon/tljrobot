@@ -36,6 +36,7 @@ public class RobotHistory {
     private boolean isMatch;
 
     private int typeNum;
+
     public static class Def {
         public static final String SAIWEN_DATE = "saiwendate";
     }

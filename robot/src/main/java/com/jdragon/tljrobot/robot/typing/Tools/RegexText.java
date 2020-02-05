@@ -68,7 +68,7 @@ public class RegexText {
 //		str = qukong(str);
 //		str = huanfu(str);
 		duan = duan.replaceAll(regex,"");
-		duan1 = Integer.valueOf(duan);
+		duan1 = Integer.parseInt(duan);
 		comarti[0] = title;
 		comarti[1] = str;
 		comarti[2] = String.valueOf(duan1);

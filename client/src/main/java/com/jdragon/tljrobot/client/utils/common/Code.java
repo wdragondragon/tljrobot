@@ -7,8 +7,6 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
-import static java.io.File.separator;
-
 /**
  * Create by Jdragon on 2020.01.31
  */
@@ -24,7 +22,7 @@ public class Code {
     }
     private Code(String ciZuFileName){
         try{
-            File more = new File("编码文件"+separator+"输入法编码"+separator+ciZuFileName+".txt");
+            File more = new File(ciZuFileName);
             FileInputStream fis = new FileInputStream(more);
             InputStreamReader read = new InputStreamReader(fis, StandardCharsets.UTF_8);
             BufferedReader bufferRead = new BufferedReader(read);

@@ -29,4 +29,7 @@ public class Local {
     public static Object getSession(String  userId) {
         return loginMap.get(userId);
     }
+    public static int size(){
+        return loginMap.size();
+    }
 }

@@ -37,7 +37,7 @@ public class TimingMap<K, V> extends HashMap<K, V> {
             removeExpireData(removeList);
             }
         };
-        timer.schedule(task, 1000, 60000); // 一分钟刷新一次
+        timer.schedule(task, 1000, 60*1000); // 一分钟刷新一次
     }
 
     /**

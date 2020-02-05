@@ -6,6 +6,7 @@ import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.entry.UserState;
 import com.jdragon.tljrobot.client.event.online.LoginEvent;
 import com.jdragon.tljrobot.client.event.online.LogoutEvent;
+import com.jdragon.tljrobot.client.event.online.RegEvent;
 import com.jdragon.tljrobot.client.utils.core.Layout;
 
 import javax.swing.*;
@@ -66,25 +67,43 @@ public class LogonDialog {
             password.setText("");
         });
         runLoginButton.addChangeListener(e->LocalConfig.runLogin=runLoginButton.isSelected());
+        reg.addActionListener(e->doReg());
+    }
+    public static void doReg(){
+        JOptionPane.showMessageDialog(logonDialog,RegEvent.start(username.getText(), new String(password.getPassword())));
     }
     public static void doLogin(){
         getInstance();
-        if(UserState.loginState&& LogoutEvent.start()){
-            username.setEditable(true);
-            password.setEditable(true);
-            confirm.setText("登录");
-            JMenuComponent.getInstance().getLogin().setText("登录");
+        if(UserState.loginState){
+            if(LogoutEvent.start()) {
+                username.setEditable(true);
+                password.setEditable(true);
+                confirm.setText("登录");
+                reg.setEnabled(true);
+                reset.setEnabled(true);
+                JMenuComponent.getInstance().getLogin().setText("登录");
+                JOptionPane.showMessageDialog(logonDialog,"退出成功");
+            }else{
+                JOptionPane.showMessageDialog(logonDialog,"退出失败");
+            }
         }
-        else if(LoginEvent.start(username.getText(),new String(password.getPassword()))){
-            username.setEditable(false);
-            password.setEditable(false);
-            confirm.setText("退出登录");
-            logonDialog.dispose();
-            SwingSingleton.WatchingText().setText("登录成功" + "\n" + "欢迎：" + username.getText() + "\n拖拉机交流群:974172771");
-            JMenuComponent.getInstance().getLogin().setText(username.getText());
-            if(LocalConfig.runLogin){
-                LocalConfig.username = username.getText();
-                LocalConfig.password = new String(password.getPassword());
+        else {
+            String loginResult = LoginEvent.start(username.getText(), new String(password.getPassword()));
+            if (loginResult.equals("登录成功")) {
+                username.setEditable(false);
+                password.setEditable(false);
+                confirm.setText("退出登录");
+                logonDialog.dispose();
+                SwingSingleton.WatchingText().setText("登录成功" + "\n" + "欢迎：" + username.getText() + "\n长流交流群:974172771");
+                JMenuComponent.getInstance().getLogin().setText(username.getText());
+                reg.setEnabled(false);
+                reset.setEnabled(false);
+                if (LocalConfig.runLogin) {
+                    LocalConfig.username = username.getText();
+                    LocalConfig.password = new String(password.getPassword());
+                }
+            }else{
+                JOptionPane.showMessageDialog(logonDialog,loginResult);
             }
         }
     }

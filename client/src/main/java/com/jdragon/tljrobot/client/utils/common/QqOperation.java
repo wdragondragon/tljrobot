@@ -2,6 +2,7 @@ package com.jdragon.tljrobot.client.utils.common;
 
 import com.jdragon.tljrobot.client.window.MainFra;
 import com.sun.jna.platform.win32.User32;
+import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinDef.HWND;
 
 import java.awt.*;
@@ -18,6 +19,8 @@ public class QqOperation {
         robot.delay(150);
         if(hWnd!=null) {
             User32.INSTANCE.SetForegroundWindow(hWnd);    //切换到聊天窗口
+            WinDef.RECT rect = new WinDef.RECT();
+            User32.INSTANCE.GetWindowRect(hWnd,rect);
             if (i == GET_ARTICLE) {
 
                 robot.keyPress(KeyEvent.VK_TAB);

@@ -2,6 +2,8 @@ package com.jdragon.tljrobot.client.event.FArea;
 
 
 import com.jdragon.tljrobot.client.config.FinalConfig;
+import com.jdragon.tljrobot.client.config.LocalConfig;
+import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
 import com.jdragon.tljrobot.client.utils.common.DoCheck;
@@ -15,18 +17,23 @@ import static com.jdragon.tljrobot.client.entry.TypingState.*;
 public class SendAchievement {
     @SneakyThrows
     public static void start()  {
+        if(LocalConfig.lurk)return;
         Article article = Article.getArticleSingleton();
         int paragraph = article.getParagraph();
         double speed = getSpeed();
+        double noMisSpeed = getSpeedNoMistake();
         double keySpeed = getKeySpeed();
         double keyLength = getKeyLength();
         int articleLength = article.getArticle().length();
         double shortCodesNum = (article.getShortCodeEntity().getArticleAverCodes());
         String check = String.format("%.2f",speed+keySpeed+keyLength);
         String checkCode = DoCheck.buildCheckStr(check,"genda");
+        String noMisSpeedStr = mistake==0 ? "" : ("/"+String.format("%.2f", noMisSpeed));
+        String lookPlayStr = LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)
+                ? " 看打模式 错:"+lookMis+" 多:"+lookMore+" 少:"+lookMiss+"" : "";
         String result =
                 "第" + paragraph + "段"+
-                        " 速度" + String.format("%.2f", speed) +
+                        " 速度"  + String.format("%.2f", speed) + noMisSpeedStr +
                         " 击键" + String.format("%.2f", keySpeed) +
                         " 码长" + String.format("%.2f", keyLength) +
                         " 标顶理论" + String.format("%.2f", shortCodesNum) +
@@ -40,8 +47,8 @@ public class SendAchievement {
                         " 键法" + String.format("%.2f", getKeyMethod()) + "%" +
                         "(左" + left + ":右" + right + ":空格" + space + ")" +
                         " 打词率" + String.format("%.2f", getWordRate())+ "%" +
-                        " 选重率" + String.format("%.2f", getRepeatRate()) + "%" +
-                        " 拖拉机跟打器 " + FinalConfig.VERSION +
+                        " 选重率" + String.format("%.2f", getRepeatRate()) + "%" + lookPlayStr +
+                        " 长流跟打器" + FinalConfig.VERSION +
                         " " + SystemUtil.getSystemName() + "版"+
                         " 校验码"+checkCode;
 //        if(LocalConfig.typingPattern.equals(Constant.FOLLOW_PLAY_PATTERN)){

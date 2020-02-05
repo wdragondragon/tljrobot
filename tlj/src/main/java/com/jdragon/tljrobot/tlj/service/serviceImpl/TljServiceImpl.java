@@ -2,6 +2,7 @@ package com.jdragon.tljrobot.tlj.service.serviceImpl;
 
 import com.alibaba.nacos.common.util.Md5Utils;
 import com.jdragon.tljrobot.tlj.mappers.ArticleMapper;
+import com.jdragon.tljrobot.tlj.mappers.HistroyMapper;
 import com.jdragon.tljrobot.tlj.mappers.TljMatchMapper;
 import com.jdragon.tljrobot.tlj.mappers.UserMapper;
 import com.jdragon.tljrobot.tlj.pojo.Article;
@@ -36,6 +37,8 @@ public class TljServiceImpl implements TljService {
     @Autowired
     TljMatchMapper tljMatchMapper;
 
+    @Autowired
+    HistroyMapper histroyMapper;
     @Override
     public boolean checkNumSecret(int num, int rightNum, int misNum, int dateNum, String numKey) {
         if(!Md5Utils.getMD5((num+rightNum+misNum+dateNum+secret).getBytes()).equals(numKey)){
@@ -62,7 +65,7 @@ public class TljServiceImpl implements TljService {
         TljMatch tljMatch = tljMatchMapper.selectTljMatchByDate(DateUtil.now());
         if(tljMatch==null){
             String random = ArticleUtil.getRandomContent();
-            String title = "拖拉机日赛";
+            String title = DateUtil.now()+"日生稿赛";
             Article article = articleMapper.selectArticleByContent(title,random);
             if(article==null){
                 article = new Article(title,random);

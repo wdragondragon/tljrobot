@@ -12,9 +12,9 @@ import java.awt.*;
 
 
 public class SwingSingleton {
-    private static Font nonSizeFont = new Font("微软雅黑", Font.PLAIN, 0);
-    private static Font normalFont =  new Font("微软雅黑", Font.PLAIN, 30);
-    private static Font tipsFont = new Font("微软雅黑", Font.PLAIN, 12);
+    private static Font nonSizeFont = new Font(LocalConfig.family, Font.PLAIN, 0);
+    private static Font normalFont =  new Font(LocalConfig.family, Font.PLAIN, LocalConfig.fontSize);
+    private static Font tipsFont = new Font(LocalConfig.family, Font.PLAIN, 12);
     private static JMenuBar jMenu;
     private static JButton speedButton,keySpeedButton,keyLengthButton,theoreticalCodeLength;
     private static JTextArea typingText;

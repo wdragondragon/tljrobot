@@ -70,7 +70,7 @@ public class MainFraConfig {
             popup.add(defaultItem);
 //            popup.add(change);
             popup.add(exitItem);
-            trayIcon = new TrayIcon(image, "拖拉机跟打器", popup);// 创建trayIcon
+            trayIcon = new TrayIcon(image, "长流跟打器", popup);// 创建trayIcon
             trayIcon.addActionListener(listener);// 给小图标加上监听器，默认的就是监听双击。
             // 如果偶想监听单击啥的 就加mouselistener
             try {

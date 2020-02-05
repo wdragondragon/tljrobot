@@ -33,17 +33,21 @@ public class HistoryTableListener implements MouseListener {
             int selectedRow = jTable.getSelectedRow();
             String articleId = String.valueOf(jTable.getValueAt(selectedRow,1));
             int paragraph = (int) jTable.getValueAt(selectedRow,15);
-            JSONObject article = getArticleJson(articleId,paragraph);
-            Article.getArticleSingleton(paragraph,article.getString("title"),article.getString("content"));
-            HistoryDialog.getInstance().setVisible(false);
-            Replay.start();
+            JSONObject articleJson = getArticleJson(articleId,paragraph);
+            if(articleJson!=null) {
+                Article.getArticleSingleton(paragraph, articleJson.getString("title"), articleJson.getString("content"));
+                HistoryDialog.getInstance().setVisible(false);
+                Replay.start();
+            }
         });
 
         getArticle.addActionListener(e -> {
             int selectedRow = jTable.getSelectedRow();
             String articleId = String.valueOf(jTable.getValueAt(selectedRow,1));
             int paragraph = (int) jTable.getValueAt(selectedRow,15);
-            ShowArticleDialog.getInstance(getArticleJson(articleId,paragraph).getString("content")).setVisible(true);
+            JSONObject articleJson = getArticleJson(articleId,paragraph);
+            if(articleJson!=null)
+                ShowArticleDialog.getInstance(articleJson.getString("content")).setVisible(true);
         });
         m_popupMenu.add(replay);
         m_popupMenu.add(getArticle);
@@ -51,7 +55,10 @@ public class HistoryTableListener implements MouseListener {
     private JSONObject getArticleJson(String articleId,int paragraph){
         JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(OnlineConfig.HISTORY_ARTICLE,articleId, UserState.token));
         String message = jsonObject.getString("message");
-        if(paragraph==0)JOptionPane.showMessageDialog(null, "0段无法再次获取");
+        if(paragraph==0){
+            JOptionPane.showMessageDialog(null, "0段无法再次获取");
+            return null;
+        }
         if(message.equals("获取成功")){
             JSONObject article = jsonObject.getJSONObject("result");
             return article;

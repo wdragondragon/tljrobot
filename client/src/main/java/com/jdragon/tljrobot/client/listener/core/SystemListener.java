@@ -1,7 +1,9 @@
 package com.jdragon.tljrobot.client.listener.core;
 
-import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.component.SwingSingleton;
+import com.jdragon.tljrobot.client.config.LocalConfig;
+import com.jdragon.tljrobot.client.entry.UserState;
+import com.jdragon.tljrobot.client.event.online.LogoutEvent;
 import com.jdragon.tljrobot.client.utils.core.IniAccess;
 import com.jdragon.tljrobot.client.utils.core.Layout;
 import com.jdragon.tljrobot.client.window.MainFra;
@@ -32,9 +34,10 @@ public class SystemListener implements ActionListener, MouseListener, MouseMotio
             }
             UIManager.put("OptionPane.yesButtonText", "关闭");
             UIManager.put("OptionPane.noButtonText", "隐藏");
-            int n = JOptionPane.showConfirmDialog(null, "要关闭跟打器，还是选择隐藏到托盘", "关闭提示", JOptionPane.YES_NO_OPTION);
+            int n = JOptionPane.showConfirmDialog(MainFra.getInstance(), "要关闭跟打器，还是选择隐藏到托盘", "关闭提示", JOptionPane.YES_NO_OPTION);
             if (n == JOptionPane.YES_OPTION) {
                 IniAccess.writeIni(LocalConfig.iniFilePath);
+                if(UserState.loginState) LogoutEvent.start();
                 System.exit(0);
             }
             else{

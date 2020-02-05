@@ -19,4 +19,5 @@ public interface TljService {
     public boolean uploadTljMatchAch(int userId, History history);
 
     public boolean uploadHistory(int userId, History history, Article article);
+
 }

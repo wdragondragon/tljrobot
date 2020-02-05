@@ -12,4 +12,5 @@ import java.util.List;
 public interface RobotService {
     public boolean uploadUnionMatch(Article article,String author);
     public List<RobotHistory> getUnionMatchRank(Date date);
+    public List<RobotHistory> getUnionFirstMatchRank(Date date);
 }

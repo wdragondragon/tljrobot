@@ -31,6 +31,7 @@ public class HistoryController {
                                 @RequestBody History history){
         User user = (User) Local.getSession(userId);
         Article article = new Article(title,content);
+        if(history.getParagraph()==0)history.setParagraph(1);
         if(tljService.uploadHistory(user.getId(),history,article)){
             return Result.success("上传成功");
         }else{

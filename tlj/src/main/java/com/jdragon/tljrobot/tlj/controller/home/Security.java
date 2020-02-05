@@ -42,7 +42,7 @@ public class Security {
     public Result Login(@ApiParam(name = "username",value = "用户名")@PathVariable("username") String username,
                         @ApiParam(name = "password",value = "登录密码")@PathVariable("password") String password){
         password = Md5Utils.getMD5(password.getBytes());
-        User user = userMapper.selectOne(new QueryWrapper<User>().eq(User.Def.USER_NMAE,username));
+        User user = userMapper.selectOne(new QueryWrapper<User>().eq(User.Def.USERNAME,username));
         if(user==null){
             return Result.success("无该用户");
         }else if(!user.getPassword().equals(password)){
@@ -59,7 +59,7 @@ public class Security {
     @ResponseBody
     public Result LoginMD5(@ApiParam(name = "username",value = "用户名")@PathVariable("username") String username,
                         @ApiParam(name = "password",value = "登录密码")@PathVariable("password") String password){
-        User user = userMapper.selectOne(new QueryWrapper<User>().eq(User.Def.USER_NMAE,username));
+        User user = userMapper.selectOne(new QueryWrapper<User>().eq(User.Def.USERNAME,username));
         if(user==null){
             return Result.success("无该用户");
         }else if(!user.getPassword().equals(password)){
@@ -90,7 +90,7 @@ public class Security {
     public Result register(@ApiParam(name = "username",value = "用户名")@PathVariable String username,
                            @ApiParam(name = "password",value = "密码")@PathVariable String password){
         password = Md5Utils.getMD5(password.getBytes());
-        User user = userMapper.selectOne(new QueryWrapper<User>().eq(User.Def.USER_NMAE,username));
+        User user = userMapper.selectOne(new QueryWrapper<User>().eq(User.Def.USERNAME,username));
         if(user==null){
             user = new User(username, password);
             if(user.insert())

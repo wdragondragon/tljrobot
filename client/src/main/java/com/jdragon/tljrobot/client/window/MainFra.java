@@ -2,9 +2,13 @@ package com.jdragon.tljrobot.client.window;
 
 import com.jdragon.tljrobot.client.component.JMenuComponent;
 import com.jdragon.tljrobot.client.config.LocalConfig;
+import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.event.FArea.*;
+import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
+import com.jdragon.tljrobot.client.listener.common.MixListener;
 import com.jdragon.tljrobot.client.listener.common.Typing;
 import com.jdragon.tljrobot.client.listener.core.SystemListener;
+import com.jdragon.tljrobot.client.utils.common.Clipboard;
 import lombok.Data;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
@@ -41,6 +45,14 @@ public class MainFra extends JFrame {
         init();
     }
     public void init(){
+//        addOnBounds(this,F1(),0,0,0,0);
+//        addOnBounds(this,F2(),0,0,0,0);
+//        addOnBounds(this,F3(),0,0,0,0);
+//        addOnBounds(this,F4(),0,0,0,0);
+//        addOnBounds(this,F5(),0,0,0,0);
+//        addOnBounds(this,F6(),0,0,0,0);
+//        addOnBounds(this,F7(),0,0,0,0);
+
         JMenu().add(JMenuComponent.getInstance().getMenu());
         addOnBounds(this,JMenu(),5, 10, 45, 32);
         addOnBounds(this,SpeedButton(),
@@ -70,6 +82,7 @@ public class MainFra extends JFrame {
         addOnBounds(this,TipsLabel(),rowAddSpacing(NumberRecordLabel(),10),columnAddSpacing(TypingAndWatching(),10),120,40);
         addOnBounds(this,SendArticleLabel(),rowAddSpacing(TipsLabel(),10),columnAddSpacing(TypingAndWatching(),10),120,40);
     }
+    int preButton;
     public void addListener(){
         CloseButton().addActionListener(SystemListener.getInstance());
         MaxButton().addActionListener(SystemListener.getInstance());
@@ -78,11 +91,32 @@ public class MainFra extends JFrame {
         SizeButton().addMouseMotionListener(SystemListener.getInstance());
         (TypingText().getDocument()).addDocumentListener(Typing.getInstance());
         TypingText().addKeyListener(Typing.getInstance());
-
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
 
+
+
         manager.addKeyEventPostProcessor(event->{
-            if (event.getID() != KeyEvent.KEY_RELEASED) return false;
+            if (event.getID() != KeyEvent.KEY_PRESSED) return false;
+            if(preButton==17){
+                switch (event.getKeyCode()){
+                    case 'Z': SetDialog.getInstance().setVisible(true);break;
+                    case 'P': ArticleTreeListener.getInstance().nextOrder();break;
+                    case 'S': ArticleTreeListener.getInstance().save();break;
+                    case 'L':
+                        MixListener.getInstance().mixButton("该段乱序");break;
+                    case 'E':
+                        Article.getArticleSingleton(1,"剪贴板载文", Clipboard.get());
+                        Replay.start();
+                        break;
+                    case 'Q':JMenuComponent.getInstance().switchingMode();break;
+                    case KeyEvent.VK_ENTER:
+                        TypingText().setEditable(false); // 设置不可打字状态
+                        Typing.delaySendResultSign = true;
+                        break;
+                }
+                TypingText().requestFocusInWindow();
+            }
+            preButton = event.getKeyCode();
             switch (event.getKeyCode()) {
                 case KeyEvent.VK_F1:
                     SendAchievement.start();
@@ -107,7 +141,10 @@ public class MainFra extends JFrame {
                     break;
 //                    case KeyEvent.VK_F8: new web(); break;
 //                    case KeyEvent.VK_F9 : break;
-//                    case KeyEvent.VK_F10 : break;
+//                    case KeyEvent.VK_F9 :
+//                        TypingText().setEditable(false); // 设置不可打字状态
+//                        Typing.delaySendResultSign = true;
+//                        break;
 //                    case KeyEvent.VK_F11 : break;
 //                    case KeyEvent.VK_F12 : break;
                 default:break;

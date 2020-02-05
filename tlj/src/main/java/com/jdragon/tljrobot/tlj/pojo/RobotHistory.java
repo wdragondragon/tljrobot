@@ -43,6 +43,8 @@ public class RobotHistory extends Model<RobotHistory> {
 
     private boolean isMatch;
 
+    private boolean isFirst;
+
     @TableField(exist = false)
     private int typeNum;
     public static class Def {

@@ -16,6 +16,9 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static com.jdragon.tljrobot.client.entry.TypingState.*;
 import static com.jdragon.tljrobot.client.component.SwingSingleton.*;
@@ -27,7 +30,7 @@ public class Typing implements DocumentListener, KeyListener {
         if(typingListener==null) typingListener = new Typing();
         return typingListener;
     }
-    public static boolean delaySendResultSign;
+    public static boolean delaySendResultSign;//跟打标志，作延迟用
     String leftStr = "qazwsxedcrfvtgb", rightStr = ";/.,。，；、plokmijnuhy";
     String typeStr = "";
     String articleStr = "";
@@ -102,11 +105,14 @@ public class Typing implements DocumentListener, KeyListener {
             if (typingState)
                 changeFontColor();//改变颜色
             if (LocalConfig.progress)// 进度条
-                TypingProgress().setValue(typeStr.length() + 1 - mistake);
+                TypingProgress().setValue(TypingText().getText().length() + 1 - mistake);
             /**
              * 改变编码提示框
              */
-            changeTipLabel(typeChars.length);
+            if(!TypingState.dailyCompetition&& typingState) {
+                changeTipLabel(typeStr.length());
+
+            }
             changePosition();// 文本自动翻页
         } catch (Exception ignored) {}
     }
@@ -274,7 +280,7 @@ public class Typing implements DocumentListener, KeyListener {
             WatchingText().setText(""); // 清空文本框
             try {
                 for (n = 0; n < articleStr.length(); n++) { // 统计错误字数，向文本框添加字体
-                    if (typeChars[n] != articleChars[n]&&typeLength<n)
+                    if (typeChars[n] != articleChars[n]&&typeLength>n)
                         JTextPaneFont.insertDoc(typeDocName,
                                 String.valueOf(articleChars[n]), "红");
                     else
@@ -381,6 +387,11 @@ public class Typing implements DocumentListener, KeyListener {
                     }
                 }else{
                     switch (type) {
+                        case 0:
+                            for(int index = n;index<=next;index++)
+                            JTextPaneFont.insertDoc(typeDocName,
+                                    String.valueOf(articleChars[index]), "灰");
+                            break;
                         case 1:
                             for(int index = n;index<=next;index++)
                             JTextPaneFont.insertDoc(typeDocName,
@@ -416,6 +427,29 @@ public class Typing implements DocumentListener, KeyListener {
                 n = next;
             }
         }
+    }
+
+    public void changeLookPlayFontColor(List<HashMap<String,Integer>> strList){
+        WatchingText().setText(""); // 清空文本框
+        for(HashMap<String,Integer> hashMap:strList){
+            for(Map.Entry<String,Integer> entry:hashMap.entrySet()){
+                if(entry.getValue()==0){
+                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "对");
+                }else if(entry.getValue()==1){
+                    lookMiss++;
+                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "少");
+                }else if(entry.getValue()==2){
+                    lookMore++;
+                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "多");
+                }else if(entry.getValue()==3){
+                    lookMis++;
+                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "错");
+                }else{
+                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "错原");
+                }
+            }
+        }
+        mistake = lookMis + lookMore + lookMiss;
     }
     /**
      * @Author: Jdragon on 2020.01.20 上午 12:33

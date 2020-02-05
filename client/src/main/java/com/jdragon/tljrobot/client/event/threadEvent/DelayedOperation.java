@@ -1,5 +1,7 @@
 package com.jdragon.tljrobot.client.event.threadEvent;
 
+import com.jdragon.tljrobot.client.component.SwingSingleton;
+import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.TypingState;
@@ -14,7 +16,10 @@ import com.jdragon.tljrobot.client.listener.common.Typing;
 import com.jdragon.tljrobot.client.utils.common.ArticleRegex;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
 import com.jdragon.tljrobot.client.window.SendArticleDialog;
+import com.jdragon.tljrobot.tljutils.string.Comparison;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -26,6 +31,7 @@ public class DelayedOperation extends Thread {
         while (true) {
             try {
                 sleep(10);
+
                 if (QQGetArticle.isGetArticleSign){
                     QQGetArticle.isGetArticleSign = false;
                     ArticleRegex.regexStringToArticle(Objects.requireNonNull(Clipboard.get()));
@@ -33,7 +39,16 @@ public class DelayedOperation extends Thread {
                 }
                 if (Typing.delaySendResultSign){
                     Typing.delaySendResultSign = false;
-                    Typing.getInstance().changeAllFontColor();
+                    if(LocalConfig.typingPattern.equals(Constant.FOLLOW_PLAY_PATTERN))
+                        Typing.getInstance().changeAllFontColor();
+                    else{
+                        List<HashMap<String,Integer>> hashMapList =
+                                Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(), SwingSingleton.TypingText().getText());
+                        Typing.getInstance().changeLookPlayFontColor(hashMapList);
+                        SwingSingleton.SpeedButton().setText(String.format("%.2f",
+                                TypingState.getSpeed()));
+                    }
+
                     sleep(200);
                     TypingState.typingState = false;//跟打结束标志使DynamicSpeed中计算停止
                     SendAchievement.start();
@@ -46,7 +61,7 @@ public class DelayedOperation extends Thread {
                             Replay.start();
                         }else{
                            HistoryEvent.uploadHistory();
-                           if(TypingState.sendArticle==0)return;
+                           if(TypingState.sendArticle==0)continue;
                             //自动下一段判断
                             double nextSpeed = Double.parseDouble(String.valueOf(SendArticleDialog.spinnerSpeed.getValue()));
                             double nextKey = Double.parseDouble(String.valueOf(SendArticleDialog.spinnerKey.getValue()));

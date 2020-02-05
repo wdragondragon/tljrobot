@@ -76,7 +76,7 @@ public class HistoryDialog {
         nextPageButton.addActionListener(e -> getTable(++page));
         prePageButton.addActionListener(e->getTable(--page));
         goFirstPageButton.addActionListener(e->getTable(page=1));
-        goLastPageButton.addActionListener(e->getTable(lastPage));
+        goLastPageButton.addActionListener(e->getTable(page=lastPage));
         goOtherPageButton.addActionListener(e -> {
             int goPage = Integer.valueOf(goOtherPage.getText());
             if(goPage>lastPage||goPage<1)

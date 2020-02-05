@@ -5,9 +5,11 @@ import com.jdragon.tljrobot.robot.EntoZh.Translate;
 import cc.moecraft.icq.PicqBotX;
 import cc.moecraft.icq.PicqConfig;
 import com.jdragon.tljrobot.robot.game.OneATwoB.O2TCarry;
-import com.jdragon.tljrobot.robot.game.P2P.PointClient;
+//import com.jdragon.tljrobot.robot.game.P2P.PointClient;
 import com.jdragon.tljrobot.robot.game.PlayCards.CardCarry;
 
+import com.jdragon.tljrobot.robot.newTyping.GroupCache;
+import com.jdragon.tljrobot.robot.newTyping.QueryUser;
 import com.jdragon.tljrobot.robot.typing.CommandVersion;
 import com.jdragon.tljrobot.robot.typing.ConDatabase.AllUserNum;
 import com.jdragon.tljrobot.robot.typing.ConDatabase.HeartCon;
@@ -39,22 +41,23 @@ public class robot
         c.setDebug(true);
         // 添加一个机器人账户 ( 名字, 发送URL, 发送端口 )
         bot.addAccount("Bot01", "127.0.0.1", 5700);
-        PointClient pointClient = new PointClient(bot.getAccountManager().getNonAccountSpecifiedApi());
+//        PointClient pointClient = new PointClient(bot.getAccountManager().getNonAccountSpecifiedApi());
         // 注册事件监听器, 可以注册多个监听器
         bot.getEventManager().registerListeners(
                 new OneUserNum(),//拖拉机T
                 new RobotGroupClient(),//打字群
                 new MessageMove(),//消息转发
                 new Translate(),//翻译
-                new CardCarry(),//斗地主
-                pointClient//传话筒
+                new CardCarry()//斗地主
+//                pointClient//传话筒
                 ,new O2TCarry()
                 ,new ownUse()
+                ,new com.jdragon.tljrobot.robot.newTyping.RobotGroupClient()
+                ,new QueryUser()
         );
         // 启用指令管理器
         // 这些字符串是指令前缀, 比如指令"!help"的前缀就是"!"
         bot.enableCommandManager("bot -", "!", "/", "~");
-
         // 注册指令, 可以注册多个指令
         bot.getCommandManager().registerCommands(
                 new CommandSay(),//返回自己名字
@@ -65,6 +68,9 @@ public class robot
         bot.startBot();
         HeartCon h = new HeartCon();
         h.start();
+        //刷新群名片缓存
+        GroupCache.refreshCardCache(bot.getAccountManager().getNonAccountSpecifiedApi());
+//        bot.getAccountManager().getNonAccountSpecifiedApi().getGroupMemberList();
 //        //微信机器人
 //        String qrPath = System.getProperty("user.dir")+"/login";
 ////                "D://itchat4j//login"; // 保存登陆二维码图片的路径，这里需要在本地新建目录

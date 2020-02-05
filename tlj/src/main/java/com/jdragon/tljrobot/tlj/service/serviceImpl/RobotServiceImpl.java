@@ -64,7 +64,26 @@ public class RobotServiceImpl implements RobotService {
         for(RobotHistory robotHistory:robotHistoryList){
             for(Map<String, Long> repeatMap : typeNumMapList) {
                 if(repeatMap.get("key")==robotHistory.getQq()) {
-                    robotHistory.setTypeNum(Integer.valueOf(String.valueOf(repeatMap.get("value"))));
+                    robotHistory.setTypeNum(Integer.parseInt(String.valueOf(repeatMap.get("value"))));
+                    break;
+                }
+            }
+        }
+        return robotHistoryList;
+    }
+
+    @Override
+    public List<RobotHistory> getUnionFirstMatchRank(Date date) {
+        Map<Long, RobotHistory> robotHistoryMap = robotHistoryMapper.selectUnionFirstAchRankByDate(date);
+        List<Map<String, Long>> typeNumMapList = robotHistoryMapper.selectUnionRepeatTime(date);
+
+        List<RobotHistory> robotHistoryList = new ArrayList<>(robotHistoryMap.values());
+        Collections.sort(robotHistoryList, (o1,o2)->Double.valueOf(o2.getSpeed()).compareTo(o1.getSpeed()));
+
+        for(RobotHistory robotHistory:robotHistoryList){
+            for(Map<String, Long> repeatMap : typeNumMapList) {
+                if(repeatMap.get("key")==robotHistory.getQq()) {
+                    robotHistory.setTypeNum(Integer.parseInt(String.valueOf(repeatMap.get("value"))));
                     break;
                 }
             }

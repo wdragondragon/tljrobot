@@ -50,6 +50,14 @@ public class UnionMatchController {
         else
             return Result.success("今天尚未有人提交成绩");
     }
+    @PostMapping("/getUnionFirstAchRank/{date}")
+    public Result getUnionFirstAchRank(@PathVariable Date date){
+        List<RobotHistory> robotHistoryList = robotService.getUnionFirstMatchRank(date);
+        if(robotHistoryList.size()!=0)
+            return Result.success("获取成功").setResult(robotHistoryList);
+        else
+            return Result.success("今天尚未有人提交成绩");
+    }
     /**
      * 赛文成绩上传在合并到robotHistoryController
      */

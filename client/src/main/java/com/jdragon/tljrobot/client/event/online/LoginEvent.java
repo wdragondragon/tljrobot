@@ -15,18 +15,17 @@ import java.net.URLEncoder;
  */
 public class LoginEvent {
     @SneakyThrows
-    public static boolean start(String username, String password) {
+    public static String start(String username, String password) {
         username = URLEncoder.encode(username, FinalConfig.ENCODING);
         JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(OnlineConfig.LOGIN_ADDR,username,password));
+
         if(jsonObject.getString(Constant.RESPONSE_MESSAGE).equals("登录成功")){
             UserState.loginState = true;
             UserState.token = jsonObject.getString(Constant.RESPONSE_RESULT);
             TypeNumManager.getInstance().setLocalNumFromServer();
             TypeNumManager.getInstance().start();
             new KeepALiveThread().start();
-            return true;
-        }else{
-            return false;
         }
+        return jsonObject.getString(Constant.RESPONSE_MESSAGE);
     }
 }

@@ -208,7 +208,7 @@ public class Createimg {
         graphics.drawImage(image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_SMOOTH), 0, 0, null);
         String localPath;
         if(SystemUtil.isWindows())
-            localPath = "C:\\Users\\10619\\Desktop\\testImg\\" + path;
+            localPath = "C:\\Users\\10619\\Desktop\\酷Q Pro\\data\\image\\" + path;
         else
             localPath= "/root/coolq/data/image/" + path;
         ImageIO.write(image, "png", new File(localPath));
@@ -378,7 +378,7 @@ public class Createimg {
 
         String localPath;
         if(SystemUtil.isWindows())
-            localPath = "C:\\Users\\10619\\Desktop\\testImg\\" + path;
+            localPath = "C:\\Users\\10619\\Desktop\\酷Q Pro\\data\\image\\" + path;
         else
             localPath= "/root/coolq/data/image/" + path;
         ImageIO.write(image, "png", new File(localPath));

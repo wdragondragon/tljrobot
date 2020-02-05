@@ -4,6 +4,7 @@ package com.jdragon.tljrobot.client.event.threadEvent;
 import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.entry.TypingState;
 import com.jdragon.tljrobot.client.event.FArea.Replay;
+import com.jdragon.tljrobot.client.listener.common.Typing;
 
 public class CountMatch extends Thread {
 	public void run(){
@@ -20,6 +21,7 @@ public class CountMatch extends Thread {
 			Replay.start();
 			TypingState.typingState = true;
 			TypingState.dailyCompetition = true;
+			Typing.getInstance().changeFontColor();
 			TypingState.typingStart();
 			System.out.println("赛文开始");
 		}

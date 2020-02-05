@@ -80,7 +80,7 @@ public class User extends Model<User> {
     }
     public static class Def {
         public static final String USER_NUM = "num";
-        public static final String USER_NMAE = "username";
+        public static final String USERNAME = "username";
     }
     public String toString(){
         return "[username:"+username+",num:"+num+",rightNum:"+rightNum+",misNum:"+misNum+"]";
