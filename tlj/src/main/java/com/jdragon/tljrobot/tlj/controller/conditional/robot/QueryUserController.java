@@ -1,10 +1,8 @@
 package com.jdragon.tljrobot.tlj.controller.conditional.robot;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jdragon.tljrobot.tlj.mappers.GroupMapper;
-import com.jdragon.tljrobot.tlj.mappers.HistroyMapper;
-import com.jdragon.tljrobot.tlj.mappers.RobotHistoryMapper;
-import com.jdragon.tljrobot.tlj.mappers.UserMapper;
+import com.jdragon.tljrobot.tlj.mappers.*;
+import com.jdragon.tljrobot.tlj.pojo.RobotUser;
 import com.jdragon.tljrobot.tlj.pojo.User;
 import com.jdragon.tljrobot.tljutils.Local;
 import com.jdragon.tljrobot.tljutils.Result;
@@ -30,9 +28,18 @@ public class QueryUserController {
 
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    RobotUserMapper robotUserMapper;
     @PostMapping("/groupTypeInfo/{qq}")
     public Result queryGroupTypeInfo(@PathVariable long qq){
-        return Result.success("获取成功").setResult(robotHistoryMapper.selectAvgGroupTypeInfo(qq));
+        HashMap<String,Object> result = new HashMap<>();
+        result.putAll(robotHistoryMapper.selectAvgGroupTypeInfo(qq));
+        RobotUser robotUser = robotUserMapper.selectById(qq);
+        int chatNum = 0;
+        if(robotUser!=null)chatNum = robotUser.getChatNum();
+        result.put("chatNum",chatNum);
+        return Result.success("获取成功").setResult(result);
     }
 
     @PostMapping("/tljTypeInfo/{username}")

@@ -2,13 +2,14 @@ package com.jdragon.tljrobot.tljutils;
 
 import lombok.Data;
 
-
 import java.util.UUID;
 
 @Data
 public class Local {
-    private static TimingMap loginMap = new TimingMap();
-
+    private static TimingMap<String,Object> loginMap = new TimingMap();
+    public static TimingMap<String, Object> getTokenMap(){
+        return loginMap;
+    }
     public static boolean isLogin(String userid){
         if(loginMap.containsKey(userid)&&loginMap.get(userid)!=null)
             return true;

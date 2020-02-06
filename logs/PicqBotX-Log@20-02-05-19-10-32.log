@@ -1,0 +1,18 @@
+[20-02-05 19:10:33] [PicqBotX] [INFO] 
+[20-02-05 19:10:33] [PicqBotX] [INFO]     ____  _            ____        __ _  __
+[20-02-05 19:10:33] [PicqBotX] [INFO]    / __ \(_)________ _/ __ )____  / /| |/ /
+[20-02-05 19:10:33] [PicqBotX] [INFO]   / /_/ / / ___/ __ `/ __  / __ \/ __/   /
+[20-02-05 19:10:33] [PicqBotX] [INFO]  / ____/ / /__/ /_/ / /_/ / /_/ / /_/   |
+[20-02-05 19:10:33] [PicqBotX] [INFO] /_/   /_/\___/\__, /_____/\____/\__/_/|_|
+[20-02-05 19:10:33] [PicqBotX] [INFO]                 /_/         v4.10.1.928
+[20-02-05 19:10:33] [PicqBotX] [INFO] 日志管理器     初始化完成 [******] ...(63.3 ms)
+[20-02-05 19:10:33] [PicqBotX] [INFO] 缓存管理器     初始化完成 [******] ...(3.06 ms)
+[20-02-05 19:10:33] [PicqBotX] [INFO] DEBUG设置     初始化完成 [******] ...(0.02 ms)
+[20-02-05 19:10:33] [PicqBotX] [INFO] 事件管理器     初始化完成 [******] ...(56.5 ms)
+[20-02-05 19:10:33] [PicqBotX] [INFO] 账号管理器     初始化完成 [******] ...(1.28 ms)
+[20-02-05 19:10:33] [PicqBotX] [INFO] HTTP监听服务器 初始化完成 [******] ...(2.64 ms)
+[20-02-05 19:10:35] [PicqBotX] [INFO] 指令管理器     初始化完成 [******] ...(3.65 ms)
+[20-02-05 19:10:35] [PicqBotX] [INFO] 账号 Bot01:   版本验证完成!
+[20-02-05 19:10:35] [PicqBotX] [INFO] 正在启动...
+[20-02-05 19:10:42] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-05 19:10:42] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":76977104,"group_id":28534214,"message":"这个差不多","message_id":2934,"message_type":"group","post_type":"message","raw_message":"这个差不多","self_id":1061917110,"sender":{"age":24,"area":"泉州","card":"「福建」衰仔","level":"梦幻键神","nickname":"样衰","role":"admin","sex":"unknown","title":"","user_id":1490987944},"sub_type":"normal","time":1580901042,"user_id":1490987944}

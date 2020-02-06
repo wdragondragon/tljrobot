@@ -1,7 +1,6 @@
 package com.jdragon.tljrobot.robot.newTyping.entry;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.sql.Date;
@@ -43,8 +42,7 @@ public class TljHistory {
 
     private int paragraph;
 
-    @JsonIgnore
-    private int isMobile;
+    private boolean isMobile;
 
     private String userName;
 

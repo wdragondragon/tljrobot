@@ -5,6 +5,7 @@ import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.event.FArea.*;
 import com.jdragon.tljrobot.client.event.online.HistoryEvent;
+import com.jdragon.tljrobot.client.event.other.ListenPlay;
 import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
 import com.jdragon.tljrobot.client.listener.common.BuildChooseFile;
 import com.jdragon.tljrobot.client.listener.common.MixListener;
@@ -73,6 +74,7 @@ public class JMenuComponent {
     public JMenuItem update;
 
     public JMenuItem switchingMode;//切换看打模式
+    public JMenuItem soundRecordPlay = new JMenuItem("听打选择文件");//
     public JMenu getMenu(){
         menu = new JMenu("菜单");
         initItem();
@@ -131,6 +133,7 @@ public class JMenuComponent {
         nextEnglish = new JMenuItem("英词下一段");
 
         switchingMode = new JMenuItem("当前模式："+ LocalConfig.typingPattern+" ctrl+Q");
+
     }
     private void addItem(){
         sendArticleMenu.add(nonOrder);
@@ -182,6 +185,7 @@ public class JMenuComponent {
 //        menu.add(openCheat);
 //        menu.add(resert);
         menu.add(update);
+        menu.add(soundRecordPlay);
     }
     public void addListener(){
         Login.addActionListener(e-> LogonDialog.getInstance().setVisible(true));
@@ -235,6 +239,7 @@ public class JMenuComponent {
                 System.exit(0);
             }catch(Exception ignored){}
         });
+        soundRecordPlay.addActionListener(e-> ListenPlay.start());
     }
     public void switchingMode(){
         if(LocalConfig.typingPattern.equals(Constant.FOLLOW_PLAY_PATTERN)){
@@ -245,7 +250,9 @@ public class JMenuComponent {
             JTextPaneFont.createStyle("红", LocalConfig.typeDocName,
                     LocalConfig.fontSize, 0, 0, 0, Color.BLACK, LocalConfig.family,
                     LocalConfig.watchingBackgroundColor);
-            JOptionPane.showMessageDialog(null,"ctrl+enter提交成绩后，绿色代表打少字，粉色代表打多字，红色背景代表错误原字，绿色为上屏错字");
+            JOptionPane.showMessageDialog(null,"ctrl+enter提交成绩后，灰色代表打少字，粉色代表打多字，红色背景代表错误原字，蓝色为上屏错字");
+        }else if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)){
+            LocalConfig.typingPattern = Constant.LISTEN_PLAY_PATTERN;
         }else{
             LocalConfig.typingPattern = Constant.FOLLOW_PLAY_PATTERN;
             JTextPaneFont.createStyle("黑", LocalConfig.typeDocName,

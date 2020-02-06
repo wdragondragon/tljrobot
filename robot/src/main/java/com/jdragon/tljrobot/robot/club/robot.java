@@ -1,21 +1,19 @@
 package com.jdragon.tljrobot.robot.club;
 
 
-import com.jdragon.tljrobot.robot.EntoZh.Translate;
 import cc.moecraft.icq.PicqBotX;
 import cc.moecraft.icq.PicqConfig;
+import com.jdragon.tljrobot.robot.EntoZh.Translate;
 import com.jdragon.tljrobot.robot.game.OneATwoB.O2TCarry;
-//import com.jdragon.tljrobot.robot.game.P2P.PointClient;
-import com.jdragon.tljrobot.robot.game.PlayCards.CardCarry;
-
-import com.jdragon.tljrobot.robot.newTyping.GroupCache;
+import com.jdragon.tljrobot.robot.newTyping.ChatWords;
 import com.jdragon.tljrobot.robot.newTyping.QueryUser;
+import com.jdragon.tljrobot.robot.newTyping.tools.GroupCache;
 import com.jdragon.tljrobot.robot.typing.CommandVersion;
 import com.jdragon.tljrobot.robot.typing.ConDatabase.AllUserNum;
 import com.jdragon.tljrobot.robot.typing.ConDatabase.HeartCon;
-import com.jdragon.tljrobot.robot.typing.MessageMove;
-import com.jdragon.tljrobot.robot.typing.OneUserNum;
 import com.jdragon.tljrobot.robot.typing.RobotGroupClient;
+
+//import com.jdragon.tljrobot.robot.game.P2P.PointClient;
 
 /**
  * game 游戏模块
@@ -44,16 +42,17 @@ public class robot
 //        PointClient pointClient = new PointClient(bot.getAccountManager().getNonAccountSpecifiedApi());
         // 注册事件监听器, 可以注册多个监听器
         bot.getEventManager().registerListeners(
-                new OneUserNum(),//拖拉机T
-                new RobotGroupClient(),//打字群
-                new MessageMove(),//消息转发
-                new Translate(),//翻译
-                new CardCarry()//斗地主
+//                new OneUserNum(),//拖拉机T
+                new RobotGroupClient()//打字群
+//                ,new MessageMove()//消息转发
+                ,new Translate()//翻译
+//                ,new CardCarry()//斗地主
 //                pointClient//传话筒
                 ,new O2TCarry()
                 ,new ownUse()
                 ,new com.jdragon.tljrobot.robot.newTyping.RobotGroupClient()
                 ,new QueryUser()
+                ,new ChatWords()
         );
         // 启用指令管理器
         // 这些字符串是指令前缀, 比如指令"!help"的前缀就是"!"

@@ -7,6 +7,7 @@ import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.TypingState;
 import com.jdragon.tljrobot.client.event.FArea.Replay;
 import com.jdragon.tljrobot.client.event.FArea.ShareArticle;
+import com.jdragon.tljrobot.client.utils.common.Clipboard;
 import com.jdragon.tljrobot.client.utils.common.Code;
 import com.jdragon.tljrobot.client.window.SendArticleDialog;
 import com.jdragon.tljrobot.tljutils.ArticleUtil;
@@ -43,7 +44,11 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                 Article article = Article.getArticleSingleton();
                 fontweizhi = 0;
                 article.setTitle(node.toString());
-                if(!article.getTitle().equals("随机一文")){
+                if(article.getTitle().equals("随机一文")){
+                    all = ArticleUtil.getRandomContent2();
+                }else if(article.getTitle().equals("剪贴板")){
+                    all = Clipboard.get();
+                }else{
                     if (article.getTitle().substring(0, 4).equals("跟打进度")) {
                         readjindu();
                     }
@@ -53,8 +58,6 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                     s = new byte[(int) length];
                     in.readFully(s);
                     all = new String(s);
-                }else{
-                    all = ArticleUtil.getRandomContent2();
                 }
                 if(LocalConfig.clearSpace)
                     all = ArticleUtil.clearSpace(all);

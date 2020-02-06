@@ -44,7 +44,7 @@ public class JTextPaneFont {
         StyleConstants.setUnderline(s, underline == 1); // 下划线
         StyleConstants.setForeground(s, color); // 颜色
         StyleConstants.setFontFamily(s, fontName);// 字体
-        List<String> colorBackgroundList = Arrays.asList("黑","红","对","错原");
+        List<String> colorBackgroundList = Arrays.asList("黑","红","对","错原","忽略");
         if (colorBackgroundList.contains(style))
             StyleConstants.setBackground(s, backColor);
     }

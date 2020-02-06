@@ -1,19 +1,11 @@
 package com.jdragon.tljrobot.robot.typing;
 
-import com.alibaba.fastjson.JSONObject;
-import com.jdragon.tljrobot.tljutils.compShortCode.BetterTyping;
+import com.alibaba.nacos.common.util.Md5Utils;
 import org.junit.Test;
-
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
 
 public class test {
     @Test
     public void test(){
-        String str = "/ds/df.js";
-        List allow2 = Arrays.asList("img","css","js","png","jpg","txt");
-        System.out.println(str.substring(str.lastIndexOf(".")+1));
+        System.out.println(Md5Utils.getMD5("12345678".getBytes()));
     }
 }

@@ -32,8 +32,8 @@ public class ChooseFile implements ActionListener{
 		        System.out.println("文件:"+file.getAbsolutePath());  
 		    }
 		    String str = file.getAbsolutePath();
-		    str = str.replace("\\", "/");
-		    System.out.println("选择词码表:"+str);
+//		    str = str.replace("\\", "/");
+//		    System.out.println("选择词码表:"+str);
 			return str;
 	    }
 	    return null;

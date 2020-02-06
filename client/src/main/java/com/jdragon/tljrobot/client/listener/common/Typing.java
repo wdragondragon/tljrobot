@@ -46,6 +46,7 @@ public class Typing implements DocumentListener, KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         try {
+            if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN))return;
 //            if(TypingText().getText().length()==0)return;
             if (e.getKeyChar() != '\b')
                 typeStr = TypingText().getText() + e.getKeyChar();
@@ -120,6 +121,7 @@ public class Typing implements DocumentListener, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         try {
+            if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN))return;
             if (typeStr.length() > 0 && typeStr.length() <= oldTypeStrLength
                     && e.getKeyChar() == '\b') {// 触发按键时如果打字框长度减小并且按键为BackSpace，即为回改
                 TypingState.deleteTextNumber++;
@@ -150,6 +152,7 @@ public class Typing implements DocumentListener, KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         try {
+            if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN))return;
             if (typeStr.length() > 0 && typingState) {
                 if (e.getKeyChar() == '\b') {
                     deleteNumber++;
@@ -181,6 +184,7 @@ public class Typing implements DocumentListener, KeyListener {
     @Override
     public void changedUpdate(DocumentEvent e) {
         try {
+            if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN))return;
             typeStr = TypingText().getText();
             articleStr = Article.getArticleSingleton().getArticle();
             typeLength = typeStr.length();
@@ -446,6 +450,30 @@ public class Typing implements DocumentListener, KeyListener {
                     JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "错");
                 }else{
                     JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "错原");
+                }
+            }
+        }
+        mistake = lookMis + lookMore + lookMiss;
+    }
+    public void changeListenPlayFontColor(List<HashMap<String,Integer>> strList){
+        WatchingText().setText(""); // 清空文本框
+        for(HashMap<String,Integer> hashMap:strList){
+            for(Map.Entry<String,Integer> entry:hashMap.entrySet()){
+                if(entry.getValue()==0){
+                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "对");
+                }else if(entry.getValue()==1){
+                    lookMiss++;
+                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "少");
+                }else if(entry.getValue()==2){
+                    lookMore++;
+                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "多");
+                }else if(entry.getValue()==3){
+                    lookMis++;
+                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "错");
+                }else if(entry.getValue()==4){
+                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "错原");
+                }else{
+                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "忽略");
                 }
             }
         }

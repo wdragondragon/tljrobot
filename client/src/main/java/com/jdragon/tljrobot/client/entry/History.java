@@ -36,5 +36,7 @@ public class History{
 
     private int articleId;
 
+    private boolean isMobile;
+
     private Date typeDate;
 }

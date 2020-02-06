@@ -42,6 +42,8 @@ public class History2 {
 
     private int paragraph;
 
+    private boolean isMobile;
+
     private String userName;
 
 }

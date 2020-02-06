@@ -13,6 +13,7 @@ import com.jdragon.tljrobot.robot.newTyping.config.HttpAddr;
 import com.jdragon.tljrobot.robot.newTyping.entry.RobotHistory;
 import com.jdragon.tljrobot.robot.newTyping.entry.TljHistory;
 import com.jdragon.tljrobot.robot.newTyping.tools.DrawImg;
+import com.jdragon.tljrobot.robot.newTyping.tools.GroupCache;
 import com.jdragon.tljrobot.robot.newTyping.tools.Regex;
 import com.jdragon.tljrobot.robot.typing.Tools.RegexText;
 import com.jdragon.tljrobot.tljutils.DateUtil;
@@ -77,7 +78,7 @@ public class RobotGroupClient extends IcqListener {
             // "keyMethod":123.0,"wordRate":123.0,"time":123.0,"articleId":123,"paragraph":0,"userName":"谭宇"}
             String resoleResult;
             String title = DateUtil.now().toString();
-            String[] head = new String[]{"序号","名字","成绩","击键","码长","退格","回改","错字","选重","键准","键法","打词"};
+            String[] head = new String[]{"序号","名字","成绩","击键","码长","退格","回改","错字","选重","键准","键法","打词","设备"};
             JSONObject retJson = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.GET_TLJ_MATCH_RANK_ALL, title));
             String retMessage = retJson.getString("message");
             if(retMessage.equals("获取成功")) {
@@ -97,6 +98,7 @@ public class RobotGroupClient extends IcqListener {
             }
             eventGroupMessage.respond(resoleResult);
         }else if(Regex.getParagraph(message)==999||Regex.getParagraph(message)==9999){
+            if(!GroupCache.typeGroupMap.containsKey(groupId))return;
             RobotHistory robotHistory = Regex.getGradeMap(message);
             robotHistory.setQq(qq);
             robotHistory.setGroupId(groupId);

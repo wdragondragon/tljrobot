@@ -76,6 +76,17 @@
             <artifactId>ini4j</artifactId>
             <version>0.5.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.googlecode.soundlibs</groupId>
+            <artifactId>mp3spi</artifactId>
+            <version>1.9.5.4</version>
+        </dependency>
+        <!-- 如果需要解码播放flac文件则引入这个jar包 -->
+        <dependency>
+            <groupId>org.jflac</groupId>
+            <artifactId>jflac-codec</artifactId>
+            <version>1.5.2</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -5,6 +5,7 @@ import cc.moecraft.icq.event.IcqListener;
 import cc.moecraft.icq.event.events.message.EventGroupMessage;
 import com.alibaba.fastjson.JSONObject;
 import com.jdragon.tljrobot.robot.newTyping.config.HttpAddr;
+import com.jdragon.tljrobot.robot.newTyping.tools.GroupCache;
 import com.jdragon.tljrobot.robot.typing.Tools.RegexText;
 import com.jdragon.tljrobot.tljutils.HttpUtil;
 import org.junit.Test;
@@ -20,7 +21,7 @@ public class QueryUser extends IcqListener {
     @EventHandler
     public void carryGroupMessage(EventGroupMessage eventGroupMessage) throws UnsupportedEncodingException {
         String message = eventGroupMessage.getMessage();
-
+        long groupId = eventGroupMessage.getGroupId();
         if(message.equals("#长流详情")){
             JSONObject jsonObject = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.QUERY_TLJ_ALL_TYPE_INFO));
             String retMessage = jsonObject.getString("message");
@@ -71,11 +72,13 @@ public class QueryUser extends IcqListener {
                         double keySpeed = result.getDoubleValue("keySpeed");
                         double speed = result.getDoubleValue("speed");
                         int num = result.getIntValue("num");
+                        int chatNum = result.getIntValue("chatNum");
                         eventGroupMessage.respond("Q号："+queryQq+
                                 "\n上屏赛文成绩次数："+ num+
                                 "\n平均速度："+ RegexText.FourOutFiveIn(speed)+
                                 " 平均击键："+RegexText.FourOutFiveIn(keySpeed)+
-                                " 平均码长："+RegexText.FourOutFiveIn(keyLength));
+                                " 平均码长："+RegexText.FourOutFiveIn(keyLength)+
+                                "\n水群字数："+chatNum);
                     }else {
                         eventGroupMessage.respond(retMessage);
                     }
@@ -101,6 +104,13 @@ public class QueryUser extends IcqListener {
                             " 平均码长："+RegexText.FourOutFiveIn(keyLength));
                 }else {
                     eventGroupMessage.respond(retMessage);
+                }
+            }else if(s[0].equals("#名片")){
+                Matcher m = RegexText.isAt(s[1]);
+                if(m.find()){
+                    long queryQq = Long.parseLong(m.group(1));
+                    String string = GroupCache.groupCardCache.get(groupId).get(queryQq);
+                    eventGroupMessage.respond(string);
                 }
             }
         }

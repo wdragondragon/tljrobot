@@ -1,6 +1,5 @@
 package com.jdragon.tljrobot.robot.newTyping.tools;
 
-import com.jdragon.tljrobot.robot.newTyping.GroupCache;
 import com.jdragon.tljrobot.robot.newTyping.entry.RobotHistory;
 import com.jdragon.tljrobot.robot.newTyping.entry.TljHistory;
 import com.jdragon.tljrobot.robot.typing.Tools.Createimg;
@@ -115,9 +114,12 @@ public class DrawImg {
             String keyAccuracy = String.valueOf(tljHistory.getKeyAccuracy());
             String keyMethod = String.valueOf(tljHistory.getKeyMethod());
             String wordRate = String.valueOf(tljHistory.getWordRate());
+            String equipment;
+            if(tljHistory.isMobile())equipment = "手机端";
+            else equipment = "PC端";
             keySpeedList.add(tljHistory.getKeySpeed());
             keyLengthList.add(tljHistory.getKeyLength());
-            contentArray.add(Arrays.asList(name,speed,keySpeed,keyLength,deleteNum,deleteText,mistake,repeatNum,keyAccuracy,keyMethod,wordRate));
+            contentArray.add(Arrays.asList(name,speed,keySpeed,keyLength,deleteNum,deleteText,mistake,repeatNum,keyAccuracy,keyMethod,wordRate,equipment));
         }
         allValue.add(contentArray);
         Collections.sort(keySpeedList,Collections.reverseOrder());

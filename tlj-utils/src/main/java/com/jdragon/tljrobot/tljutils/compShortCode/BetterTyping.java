@@ -329,4 +329,7 @@ public class BetterTyping {
     public static void setSubscriptInstanceNull(){
         subscriptInstances = null;
     }
+    public HashMap<String,String> getSymbolCode(){
+        return symbolCode;
+    }
 }

@@ -1,7 +1,6 @@
 package com.jdragon.tljrobot.client.utils.common;
 
 import com.jdragon.tljrobot.client.entry.Article;
-import com.jdragon.tljrobot.tljutils.ArticleUtil;
 
 public class ArticleRegex {
     public static Article regexStringToArticle(String ArticleStr){
@@ -57,11 +56,7 @@ public class ArticleRegex {
         ArticleStr = String.valueOf(articleChars);
         String regex = "[^0123456789]+";
         ArticleStr = ArticleStr.replaceAll("#","");
-        ArticleStr = ArticleUtil.clearSpace(ArticleStr);
-        ArticleStr = ArticleUtil.replace(ArticleStr);
-
         paragraphStr = new StringBuilder(paragraphStr.toString().replaceAll(regex, ""));
-
         if(paragraphStr.length()>0){
             int paragraphNum = Integer.parseInt(paragraphStr.toString());
             System.out.println("段号"+paragraphNum+",标题:"+title+"\n"+ArticleStr);

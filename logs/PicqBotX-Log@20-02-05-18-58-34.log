@@ -1,0 +1,24 @@
+[20-02-05 18:58:34] [PicqBotX] [INFO] 
+[20-02-05 18:58:34] [PicqBotX] [INFO]     ____  _            ____        __ _  __
+[20-02-05 18:58:34] [PicqBotX] [INFO]    / __ \(_)________ _/ __ )____  / /| |/ /
+[20-02-05 18:58:34] [PicqBotX] [INFO]   / /_/ / / ___/ __ `/ __  / __ \/ __/   /
+[20-02-05 18:58:34] [PicqBotX] [INFO]  / ____/ / /__/ /_/ / /_/ / /_/ / /_/   |
+[20-02-05 18:58:34] [PicqBotX] [INFO] /_/   /_/\___/\__, /_____/\____/\__/_/|_|
+[20-02-05 18:58:34] [PicqBotX] [INFO]                 /_/         v4.10.1.928
+[20-02-05 18:58:34] [PicqBotX] [INFO] 日志管理器     初始化完成 [******] ...(56.22 ms)
+[20-02-05 18:58:34] [PicqBotX] [INFO] 缓存管理器     初始化完成 [******] ...(2.96 ms)
+[20-02-05 18:58:34] [PicqBotX] [INFO] DEBUG设置     初始化完成 [******] ...(0.02 ms)
+[20-02-05 18:58:34] [PicqBotX] [INFO] 事件管理器     初始化完成 [******] ...(73.02 ms)
+[20-02-05 18:58:34] [PicqBotX] [INFO] 账号管理器     初始化完成 [******] ...(1.56 ms)
+[20-02-05 18:58:34] [PicqBotX] [INFO] HTTP监听服务器 初始化完成 [******] ...(3.16 ms)
+[20-02-05 18:58:36] [PicqBotX] [INFO] 指令管理器     初始化完成 [******] ...(3.95 ms)
+[20-02-05 18:58:36] [PicqBotX] [INFO] 账号 Bot01:   版本验证完成!
+[20-02-05 18:58:36] [PicqBotX] [INFO] 正在启动...
+[20-02-05 18:58:37] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-05 18:58:37] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":44108352,"group_id":28534214,"message":"国标字库分段（四）\r\n诵报辕莫旨董瞪生渤睛咙胶茫棉最撤梁隆律苇籍冕缘帅羞浦陈尧抵妙催屉琳垂贡铡冗灵屿迸箔松完冈塞迂噎振烷语戊旧儒辑豢墒黄蝴筐藻菩婪稚耗卷刨咯充晃秧窒拥蟹宜缝稿锰竖统椭陷府啦埔乒胺嘲阶鳞族篆隐尿龄咕天腊徘勤脚陵希挚醇富巳热创轮瞥笛彬赊纲布室久辊臂唾要潦杏嗡停定瘁厢维蓝活周洪敲伯矩亥样近甸终扼妓拜举衔烟哎教艰湍卫跳浚糠继蚤揍驹踞鼠宽丁烬汹恕猎隋絮煎傲慢考赶峰颐饯禄绥圆宗麦慷赔惋题养谐榴婿泛塌励受棱耻遵郊逮亦\r\n-----第33250段-乱序--c.fw.1.5","message_id":2704,"message_type":"group","post_type":"message","raw_message":"国标字库分段（四）\r\n诵报辕莫旨董瞪生渤睛咙胶茫棉最撤梁隆律苇籍冕缘帅羞浦陈尧抵妙催屉琳垂贡铡冗灵屿迸箔松完冈塞迂噎振烷语戊旧儒辑豢墒黄蝴筐藻菩婪稚耗卷刨咯充晃秧窒拥蟹宜缝稿锰竖统椭陷府啦埔乒胺嘲阶鳞族篆隐尿龄咕天腊徘勤脚陵希挚醇富巳热创轮瞥笛彬赊纲布室久辊臂唾要潦杏嗡停定瘁厢维蓝活周洪敲伯矩亥样近甸终扼妓拜举衔烟哎教艰湍卫跳浚糠继蚤揍驹踞鼠宽丁烬汹恕猎隋絮煎傲慢考赶峰颐饯禄绥圆宗麦慷赔惋题养谐榴婿泛塌励受棱耻遵郊逮亦\r\n-----第33250段-乱序--c.fw.1.5","self_id":1061917110,"sender":{"age":6,"area":"北京","card":"「云端」拆狐","level":"梦幻键神","nickname":"小拆","role":"member","sex":"male","title":"","user_id":207938707},"sub_type":"normal","time":1580900315,"user_id":207938707}
+[20-02-05 18:58:44] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-05 18:58:44] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":43124768,"group_id":28534214,"message":"这个？","message_id":2705,"message_type":"group","post_type":"message","raw_message":"这个？","self_id":1061917110,"sender":{"age":0,"area":"","card":"『浙江』罗嫣","level":"梦幻键圣","nickname":"绿野喵狐","role":"owner","sex":"male","title":"群主","user_id":83208538},"sub_type":"normal","time":1580900320,"user_id":83208538}
+[20-02-05 18:58:45] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-05 18:58:45] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8513472,"group_id":522394334,"message":"#名片 [CQ:at,qq=1061917196]","message_id":2706,"message_type":"group","post_type":"message","raw_message":"#名片 [CQ:at,qq=1061917196]","self_id":1061917110,"sender":{"age":8,"area":"广州","card":"谭宇-神键手","level":"小白","nickname":"0 4 . 2 2","role":"admin","sex":"unknown","title":"神键手","user_id":1061917196},"sub_type":"normal","time":1580900323,"user_id":1061917196}
+[20-02-05 18:59:20] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-05 18:59:20] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8060040,"group_id":28534214,"message":"会掉头发","message_id":2707,"message_type":"group","post_type":"message","raw_message":"会掉头发","self_id":1061917110,"sender":{"age":0,"area":"","card":"『浙江』罗嫣","level":"梦幻键圣","nickname":"绿野喵狐","role":"owner","sex":"male","title":"群主","user_id":83208538},"sub_type":"normal","time":1580900324,"user_id":83208538}

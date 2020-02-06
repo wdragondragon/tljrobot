@@ -6,12 +6,15 @@ import com.jdragon.tljrobot.tlj.mappers.UserMapper;
 import com.jdragon.tljrobot.tlj.pojo.User;
 import com.jdragon.tljrobot.tljutils.Local;
 import com.jdragon.tljrobot.tljutils.Result;
+import com.jdragon.tljrobot.tljutils.TimingMap;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @Controller
 @RequestMapping("/home")
@@ -48,7 +51,10 @@ public class Security {
         }else if(!user.getPassword().equals(password)){
             return Result.success("密码错误");
         }else{
-            String userId = Local.login(user);
+            String userId = getToken(username);
+            if(userId==null) {
+                userId = Local.login(user);
+            }
             user.setToken(userId);
             user.updateById();
             return Result.success("登录成功").setResult(userId);
@@ -65,11 +71,24 @@ public class Security {
         }else if(!user.getPassword().equals(password)){
             return Result.success("密码错误");
         }else{
-            String userId = Local.login(user);
+            String userId = getToken(username);
+            if(userId==null) {
+                userId = Local.login(user);
+            }
             user.setToken(userId);
             user.updateById();
             return Result.success("登录成功").setResult(userId);
         }
+    }
+    public String getToken(String username){
+        TimingMap<String, Object> loginMap = Local.getTokenMap();
+        for(Map.Entry<String,Object> entry:loginMap.entrySet()){
+            User temp = (User)entry.getValue();
+            if(temp.getUsername().equals(username)){
+                return entry.getKey();
+            }
+        }
+        return null;
     }
     @PostMapping(value = "/logout/{userId}")
     @ApiOperation("退出登录")
@@ -101,4 +120,5 @@ public class Security {
             return Result.error("已存在");
         }
     }
+
 }

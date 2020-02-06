@@ -215,6 +215,7 @@ public class SendArticleDialog {
                 .listFiles(), yingwenFile = yingwenDir.listFiles();
         String[] danziFileName = danziDir.list(), wenzhangFileName = wenzhangDir
                 .list(), yingwenFileName = yingwenDir.list();
+        root.add(new DefaultMutableTreeNode("剪贴板"));
         root.add(new DefaultMutableTreeNode("随机一文"));
         for (int i = 0; i < danziFileName.length; i++)
             if (danziFile[i].isFile()) {

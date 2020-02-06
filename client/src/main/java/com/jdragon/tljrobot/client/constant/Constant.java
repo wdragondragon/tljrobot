@@ -11,7 +11,7 @@ public class Constant {
     //typingPattern
     public static final String FOLLOW_PLAY_PATTERN = "跟打";
     public static final String WATCH_PLAY_PATTERN = "看打";
-    public static final String ENGLISH_PLAY_PATTERN = "英打";
+    public static final String LISTEN_PLAY_PATTERN = "听打";
 
     public static final String RESPONSE_MESSAGE = "message";
     public static final String RESPONSE_RESULT = "result";

@@ -15,6 +15,8 @@ public class HttpAddr {
 
     private final static String QUERY_ADDR = "/query";
 
+    private final static String CHAT_ADDR = "/chat";
+
     public final static String UPLOAD_HISTORY = SERVER_ADDR + ROBOT_HOME + "/uploadHistory";
 
     public final static String GROUP_MATCH_ADDR = "/groupMatch";
@@ -40,4 +42,6 @@ public class HttpAddr {
     public final static String QUERY_TLJ_ALL_TYPE_INFO = SERVER_ADDR + ROBOT_HOME + QUERY_ADDR + "/tljAllTypeInfo";
 
     public final static String QUERY_GROUP_MAP = SERVER_ADDR + ROBOT_HOME + QUERY_ADDR + "/getGroupMap";
+
+    public final static String CHAT_ADD_NUM_ADDR = SERVER_ADDR + ROBOT_HOME + CHAT_ADDR + "/addNum";
 }

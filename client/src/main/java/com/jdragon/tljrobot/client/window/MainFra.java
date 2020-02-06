@@ -2,19 +2,25 @@ package com.jdragon.tljrobot.client.window;
 
 import com.jdragon.tljrobot.client.component.JMenuComponent;
 import com.jdragon.tljrobot.client.config.LocalConfig;
+import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.event.FArea.*;
+import com.jdragon.tljrobot.client.event.other.ListenPlay;
 import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
 import com.jdragon.tljrobot.client.listener.common.MixListener;
 import com.jdragon.tljrobot.client.listener.common.Typing;
 import com.jdragon.tljrobot.client.listener.core.SystemListener;
+import com.jdragon.tljrobot.client.utils.common.BetterTypingSingleton;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
+import com.jdragon.tljrobot.tljutils.string.Comparison;
 import lombok.Data;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.HashMap;
+import java.util.List;
 
 import static com.jdragon.tljrobot.client.component.SwingSingleton.*;
 import static com.jdragon.tljrobot.client.utils.core.Layout.*;
@@ -110,8 +116,17 @@ public class MainFra extends JFrame {
                         break;
                     case 'Q':JMenuComponent.getInstance().switchingMode();break;
                     case KeyEvent.VK_ENTER:
-                        TypingText().setEditable(false); // 设置不可打字状态
-                        Typing.delaySendResultSign = true;
+                        if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)) {
+                            TypingText().setEditable(false); // 设置不可打字状态
+                            Typing.delaySendResultSign = true;
+                        }else if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){
+                            List<HashMap<String,Integer>> hashMapList =
+                                    Comparison.getComparisonListenResult(ListenPlay.getContent(),
+                                            TypingText().getText(), BetterTypingSingleton.getInstance().getSymbolCode());
+                            Typing.getInstance().changeListenPlayFontColor(hashMapList);
+                            SendAchievement.start();
+                            ListenPlay.stop();
+                        }
                         break;
                 }
                 TypingText().requestFocusInWindow();

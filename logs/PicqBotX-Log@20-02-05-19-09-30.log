@@ -1,0 +1,30 @@
+[20-02-05 19:09:30] [PicqBotX] [INFO] 
+[20-02-05 19:09:30] [PicqBotX] [INFO]     ____  _            ____        __ _  __
+[20-02-05 19:09:30] [PicqBotX] [INFO]    / __ \(_)________ _/ __ )____  / /| |/ /
+[20-02-05 19:09:30] [PicqBotX] [INFO]   / /_/ / / ___/ __ `/ __  / __ \/ __/   /
+[20-02-05 19:09:30] [PicqBotX] [INFO]  / ____/ / /__/ /_/ / /_/ / /_/ / /_/   |
+[20-02-05 19:09:30] [PicqBotX] [INFO] /_/   /_/\___/\__, /_____/\____/\__/_/|_|
+[20-02-05 19:09:30] [PicqBotX] [INFO]                 /_/         v4.10.1.928
+[20-02-05 19:09:30] [PicqBotX] [INFO] 日志管理器     初始化完成 [******] ...(50.87 ms)
+[20-02-05 19:09:30] [PicqBotX] [INFO] 缓存管理器     初始化完成 [******] ...(2.11 ms)
+[20-02-05 19:09:30] [PicqBotX] [INFO] DEBUG设置     初始化完成 [******] ...(0.01 ms)
+[20-02-05 19:09:31] [PicqBotX] [INFO] 事件管理器     初始化完成 [******] ...(54.28 ms)
+[20-02-05 19:09:31] [PicqBotX] [INFO] 账号管理器     初始化完成 [******] ...(1.45 ms)
+[20-02-05 19:09:31] [PicqBotX] [INFO] HTTP监听服务器 初始化完成 [******] ...(3.69 ms)
+[20-02-05 19:09:32] [PicqBotX] [INFO] 指令管理器     初始化完成 [******] ...(3.65 ms)
+[20-02-05 19:09:32] [PicqBotX] [INFO] 账号 Bot01:   版本验证完成!
+[20-02-05 19:09:32] [PicqBotX] [INFO] 正在启动...
+[20-02-05 19:09:35] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-05 19:09:35] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8060488,"group_id":28534214,"message":"我们打政论文？","message_id":2919,"message_type":"group","post_type":"message","raw_message":"我们打政论文？","self_id":1061917110,"sender":{"age":0,"area":"","card":"『浙江』罗嫣","level":"梦幻键圣","nickname":"绿野喵狐","role":"owner","sex":"male","title":"群主","user_id":83208538},"sub_type":"normal","time":1580900975,"user_id":83208538}
+[20-02-05 19:09:40] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-05 19:09:40] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":85396752,"group_id":28534214,"message":"第44段 速度182.67 击键11.16 码长3.67 键准98.86% 回改1(0.33s) 回车0 退格0 错字0 打词0 字数25 停留&#91;集&#93;0.46s 效率92% &#91;左28:26&#93; 校验:85056 t46.15","message_id":2920,"message_type":"group","post_type":"message","raw_message":"第44段 速度182.67 击键11.16 码长3.67 键准98.86% 回改1(0.33s) 回车0 退格0 错字0 打词0 字数25 停留&#91;集&#93;0.46s 效率92% &#91;左28:26&#93; 校验:85056 t46.15","self_id":1061917110,"sender":{"age":24,"area":"泉州","card":"「福建」衰仔","level":"梦幻键神","nickname":"样衰","role":"admin","sex":"unknown","title":"","user_id":1490987944},"sub_type":"normal","time":1580900976,"user_id":1490987944}
+[20-02-05 19:09:40] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-05 19:09:40] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8296336,"group_id":522394334,"message":"音形？","message_id":2921,"message_type":"group","post_type":"message","raw_message":"音形？","self_id":1061917110,"sender":{"age":0,"area":"","card":"","level":"在看群文件中","nickname":"薛定谔的猫","role":"member","sex":"unknown","title":"","user_id":2719551890},"sub_type":"normal","time":1580900978,"user_id":2719551890}
+[20-02-05 19:09:42] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-05 19:09:42] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8295952,"group_id":28534214,"message":"我发吧","message_id":2922,"message_type":"group","post_type":"message","raw_message":"我发吧","self_id":1061917110,"sender":{"age":24,"area":"泉州","card":"「福建」衰仔","level":"梦幻键神","nickname":"样衰","role":"admin","sex":"unknown","title":"","user_id":1490987944},"sub_type":"normal","time":1580900982,"user_id":1490987944}
+[20-02-05 19:09:45] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-05 19:09:45] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8296432,"group_id":28534214,"message":"随便打","message_id":2923,"message_type":"group","post_type":"message","raw_message":"随便打","self_id":1061917110,"sender":{"age":24,"area":"泉州","card":"「福建」衰仔","level":"梦幻键神","nickname":"样衰","role":"admin","sex":"unknown","title":"","user_id":1490987944},"sub_type":"normal","time":1580900985,"user_id":1490987944}
+[20-02-05 19:09:49] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-05 19:09:49] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8296048,"group_id":28534214,"message":"第44段 速度182.67 击键11.16 码长3.67 键准98.86% 回改1(0.33s) 回车0 退格0 错字0 打词0 字数25 停留&#91;集&#93;0.46s 效率92% &#91;左28:26&#93; 校验:85056 t46.15 *","message_id":2924,"message_type":"group","post_type":"message","raw_message":"第44段 速度182.67 击键11.16 码长3.67 键准98.86% 回改1(0.33s) 回车0 退格0 错字0 打词0 字数25 停留&#91;集&#93;0.46s 效率92% &#91;左28:26&#93; 校验:85056 t46.15 *","self_id":1061917110,"sender":{"age":24,"area":"泉州","card":"「福建」衰仔","level":"梦幻键神","nickname":"样衰","role":"admin","sex":"unknown","title":"","user_id":1490987944},"sub_type":"normal","time":1580900989,"user_id":1490987944}
+[20-02-05 19:09:53] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-05 19:09:53] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":8296368,"group_id":28534214,"message":"庆余年(文字精校全本)\r\n让范思辙在自己的手下转起圈来。一圈，两圈，三圈……范思辙的身体停止了转动，睁着一双余悸未消的大眼睛，似乎还不知道发生了什么事情。范闲松开手，苦笑着将犹自头晕的思辙交给范若若，踏前一步，看着那位精光内敛的高手，\r\n-----第22293段-t46-分享发文","message_id":2925,"message_type":"group","post_type":"message","raw_message":"庆余年(文字精校全本)\r\n让范思辙在自己的手下转起圈来。一圈，两圈，三圈……范思辙的身体停止了转动，睁着一双余悸未消的大眼睛，似乎还不知道发生了什么事情。范闲松开手，苦笑着将犹自头晕的思辙交给范若若，踏前一步，看着那位精光内敛的高手，\r\n-----第22293段-t46-分享发文","self_id":1061917110,"sender":{"age":24,"area":"泉州","card":"「福建」衰仔","level":"梦幻键神","nickname":"样衰","role":"admin","sex":"unknown","title":"","user_id":1490987944},"sub_type":"normal","time":1580900993,"user_id":1490987944}

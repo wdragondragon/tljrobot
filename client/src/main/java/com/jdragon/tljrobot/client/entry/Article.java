@@ -1,6 +1,8 @@
 package com.jdragon.tljrobot.client.entry;
 
+import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.utils.common.BetterTypingSingleton;
+import com.jdragon.tljrobot.tljutils.ArticleUtil;
 import com.jdragon.tljrobot.tljutils.compShortCode.simpleEntry.ShortCodeEntity;
 import com.jdragon.tljrobot.tljutils.compShortCode.simpleEntry.SimpleEntry;
 import lombok.Data;
@@ -13,6 +15,10 @@ public class Article {
         return articleSingleton;
     }
     public static Article getArticleSingleton(int paragraph1,String title1,String article1){
+        if(LocalConfig.replace)
+            article1 = ArticleUtil.replace(article1);
+        if(LocalConfig.clearSpace)
+            article1 = ArticleUtil.clearSpace(article1);
         getArticleSingleton().setArticleSingleton(paragraph1,title1,article1);
         return articleSingleton;
     }

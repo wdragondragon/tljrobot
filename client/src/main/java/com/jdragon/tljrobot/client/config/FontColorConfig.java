@@ -63,5 +63,7 @@ public class FontColorConfig {
                 0, 0, 0, Color.gray, family, mistakeColor);// GRAY
         JTextPaneFont.createStyle("错", typeDocName, (int) (fontSize*0.6),
                 1, 0, 1, Color.blue, family, mistakeColor);// GRAY
+        JTextPaneFont.createStyle("忽略", typeDocName, fontSize,
+                0, 0, 0, Color.CYAN, family, rightColor);// GRAY
     }
 }

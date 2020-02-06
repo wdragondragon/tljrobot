@@ -1,4 +1,4 @@
-package com.jdragon.tljrobot.robot.newTyping;
+package com.jdragon.tljrobot.robot.newTyping.tools;
 
 import cc.moecraft.icq.sender.IcqHttpApi;
 import cc.moecraft.icq.sender.returndata.returnpojo.get.RGroup;
@@ -47,7 +47,7 @@ public class GroupCache {
                     long qq = rGroupMemberInfo.getUserId();
                     String card = rGroupMemberInfo.getCard();
                     String nickName = rGroupMemberInfo.getNickname();
-                    if(card==null||card==""){
+                    if(card==null||card.equals("")){
                         groupMemberMap.put(qq,nickName);
                     }else groupMemberMap.put(qq,card);
                 }
