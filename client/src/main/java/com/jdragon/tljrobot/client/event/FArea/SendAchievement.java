@@ -13,6 +13,7 @@ import com.jdragon.tljrobot.tljutils.SystemUtil;
 import lombok.SneakyThrows;
 
 import static com.jdragon.tljrobot.client.component.SwingSingleton.QQNameLabel;
+import static com.jdragon.tljrobot.client.component.SwingSingleton.SpeedButton;
 import static com.jdragon.tljrobot.client.entry.TypingState.*;
 
 public class SendAchievement {
@@ -26,6 +27,7 @@ public class SendAchievement {
                     " 听打模式" + " 错:" + lookMis + " 多:" + lookMore + " 少:" + lookMiss +
                     " 长流跟打器" + FinalConfig.VERSION +
                     " " + SystemUtil.getSystemName() + "版" ;
+            SpeedButton().setText(String.format("%.2f",((double)length-mistake)/length*100)+"%");
             Clipboard.set(result);
         }else {
             Article article = Article.getArticleSingleton();

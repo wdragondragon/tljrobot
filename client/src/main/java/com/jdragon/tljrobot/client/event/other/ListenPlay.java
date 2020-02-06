@@ -2,11 +2,11 @@ package com.jdragon.tljrobot.client.event.other;
 
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
+import com.jdragon.tljrobot.client.event.FArea.Replay;
 import com.jdragon.tljrobot.client.event.threadEvent.SoundRecord;
 import com.jdragon.tljrobot.client.utils.common.ChooseFile;
 import com.jdragon.tljrobot.client.window.MainFra;
 import com.jdragon.tljrobot.tljutils.ArticleUtil;
-import lombok.SneakyThrows;
 
 import javax.swing.*;
 import java.io.File;
@@ -21,43 +21,58 @@ public class ListenPlay {
     private static String fileName;
     private static SoundRecord soundRecord;
     private static boolean isRead = false;
-    private static boolean isStart = false;
-    @SneakyThrows
+    private static File mp3;
+    private static File txt;
     public static void start(){
         if (!LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
             JOptionPane.showMessageDialog(MainFra.getInstance(), "切换成听打再尝试");
             return;
         }
         fileName = ChooseFile.getFileName();
-        fileName = fileName.substring(0,fileName.lastIndexOf("."));
-        title = fileName.substring(fileName.lastIndexOf("\\")+1);
-        System.out.println(title);
-        isRead = true;
-        File open = new File(fileName+".txt");
-        RandomAccessFile in = new RandomAccessFile(open, "r");
-        byte[] s = new byte[(int)in.length()];
-        in.readFully(s);
+        if(fileName==null)return;
+        fileName = fileName.contains(".") ? fileName.substring(0, fileName.lastIndexOf(".")) : null;
+        if(fileName==null){
+            JOptionPane.showMessageDialog(MainFra.getInstance(),"格式错误");
+            return;
+        }
+        title = fileName.contains("\\") ? fileName.substring(0, fileName.lastIndexOf("\\"+1)) : null;
+        if(title==null){
+            JOptionPane.showMessageDialog(MainFra.getInstance(),"文件错误");
+            return;
+        }
+        byte[] s;
+        try {
+            txt = new File(fileName + ".txt");
+            RandomAccessFile in = new RandomAccessFile(txt, "r");
+            s = new byte[(int) in.length()];
+            in.readFully(s);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(MainFra.getInstance(),"打开txt失败");
+            return;
+        }
         content = new String(s);
         content = ArticleUtil.clearSpace(content);
         content = ArticleUtil.replace(content);
-        soundRecord = new SoundRecord(fileName+".mp3");
+        mp3 = new File(fileName+".mp3");
+        if(!mp3.exists()){
+            JOptionPane.showMessageDialog(MainFra.getInstance(),"打开mp3失败");
+            return;
+        }
+        soundRecord = new SoundRecord(mp3);
+        isRead = true;
         soundRecord.start();
-        isStart = true;
+        Replay.start();
     }
     public static void replay(){
         stop();
         if(!isRead)start();
-        else {
-            soundRecord = new SoundRecord(fileName + ".mp3");
+        else{
+            soundRecord = new SoundRecord();
             soundRecord.start();
-            isStart = true;
         }
     }
     public static void stop(){
-        if(isStart) {
-            SoundRecord.recordStop();
-            isStart = false;
-        }
+        SoundRecord.recordStop();
     }
     public static String getContent(){return content;}
     public static String getTitle(){return title;}

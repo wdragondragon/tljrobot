@@ -1,17 +1,18 @@
 package com.jdragon.tljrobot.client.component;
 
 import com.jdragon.tljrobot.client.config.LocalConfig;
-import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.event.FArea.*;
 import com.jdragon.tljrobot.client.event.online.HistoryEvent;
 import com.jdragon.tljrobot.client.event.other.ListenPlay;
+import com.jdragon.tljrobot.client.event.other.SwitchFollowPlay;
+import com.jdragon.tljrobot.client.event.other.SwitchListenPlay;
+import com.jdragon.tljrobot.client.event.other.SwitchWatchPlay;
 import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
 import com.jdragon.tljrobot.client.listener.common.BuildChooseFile;
 import com.jdragon.tljrobot.client.listener.common.MixListener;
 import com.jdragon.tljrobot.client.listener.common.Typing;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
-import com.jdragon.tljrobot.client.utils.common.JTextPaneFont;
 import com.jdragon.tljrobot.client.window.*;
 import com.jdragon.tljrobot.tljutils.SystemUtil;
 import lombok.Data;
@@ -73,7 +74,12 @@ public class JMenuComponent {
     public JMenuItem nextEnglish;
     public JMenuItem update;
 
-    public JMenuItem switchingMode;//切换看打模式
+    public JMenu switchingMode;//切换模式
+    public JMenuItem watchMode = new JMenuItem("看打模式 ctrl+K");
+    public JMenuItem listenMode = new JMenuItem("听打模式 ctrl+Q");
+    public JMenuItem followMode = new JMenuItem("跟打模式 ctrl+G");
+
+
     public JMenuItem soundRecordPlay = new JMenuItem("听打选择文件");//
     public JMenu getMenu(){
         menu = new JMenu("菜单");
@@ -132,7 +138,7 @@ public class JMenuComponent {
 
         nextEnglish = new JMenuItem("英词下一段");
 
-        switchingMode = new JMenuItem("当前模式："+ LocalConfig.typingPattern+" ctrl+Q");
+        switchingMode = new JMenu("当前模式："+ LocalConfig.typingPattern);
 
     }
     private void addItem(){
@@ -172,6 +178,10 @@ public class JMenuComponent {
         // other.add(jjmu);
         otherMenu.add(createCodeTable);
 //        otherMenu.add(randomArticle);
+
+        switchingMode.add(followMode);
+        switchingMode.add(watchMode);
+        switchingMode.add(listenMode);
 
         menu.add(Login);
         menu.add(base);
@@ -224,7 +234,6 @@ public class JMenuComponent {
                 }
             }
         });
-        switchingMode.addActionListener(e->switchingMode());
         lookPlay.addActionListener(e->{
             TypingText().setEditable(false); // 设置不可打字状态
             Typing.delaySendResultSign = true;
@@ -239,29 +248,9 @@ public class JMenuComponent {
                 System.exit(0);
             }catch(Exception ignored){}
         });
+        watchMode.addActionListener(e-> SwitchWatchPlay.start());
+        listenMode.addActionListener(e-> SwitchListenPlay.start());
+        followMode.addActionListener(e-> SwitchFollowPlay.start());
         soundRecordPlay.addActionListener(e-> ListenPlay.start());
-    }
-    public void switchingMode(){
-        if(LocalConfig.typingPattern.equals(Constant.FOLLOW_PLAY_PATTERN)){
-            LocalConfig.typingPattern = Constant.WATCH_PLAY_PATTERN;
-            JTextPaneFont.createStyle("黑", LocalConfig.typeDocName,
-                    LocalConfig.fontSize, 0, 0, 0, Color.BLACK, LocalConfig.family,
-                    LocalConfig.watchingBackgroundColor);
-            JTextPaneFont.createStyle("红", LocalConfig.typeDocName,
-                    LocalConfig.fontSize, 0, 0, 0, Color.BLACK, LocalConfig.family,
-                    LocalConfig.watchingBackgroundColor);
-            JOptionPane.showMessageDialog(null,"ctrl+enter提交成绩后，灰色代表打少字，粉色代表打多字，红色背景代表错误原字，蓝色为上屏错字");
-        }else if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)){
-            LocalConfig.typingPattern = Constant.LISTEN_PLAY_PATTERN;
-        }else{
-            LocalConfig.typingPattern = Constant.FOLLOW_PLAY_PATTERN;
-            JTextPaneFont.createStyle("黑", LocalConfig.typeDocName,
-                    LocalConfig.fontSize, 0, 0, 0, Color.BLACK, LocalConfig.family,
-                    LocalConfig.rightColor);
-            JTextPaneFont.createStyle("红", LocalConfig.typeDocName,
-                    LocalConfig.fontSize, 0, 0, 0, Color.BLACK, LocalConfig.family,
-                    LocalConfig.mistakeColor);
-        }
-        switchingMode.setText("当前模式："+ LocalConfig.typingPattern);
     }
 }

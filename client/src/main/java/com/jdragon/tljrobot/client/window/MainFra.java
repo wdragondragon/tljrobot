@@ -6,6 +6,9 @@ import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.event.FArea.*;
 import com.jdragon.tljrobot.client.event.other.ListenPlay;
+import com.jdragon.tljrobot.client.event.other.SwitchFollowPlay;
+import com.jdragon.tljrobot.client.event.other.SwitchListenPlay;
+import com.jdragon.tljrobot.client.event.other.SwitchWatchPlay;
 import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
 import com.jdragon.tljrobot.client.listener.common.MixListener;
 import com.jdragon.tljrobot.client.listener.common.Typing;
@@ -114,7 +117,12 @@ public class MainFra extends JFrame {
                         Article.getArticleSingleton(1,"剪贴板载文", Clipboard.get());
                         Replay.start();
                         break;
-                    case 'Q':JMenuComponent.getInstance().switchingMode();break;
+                    case 'Q':
+                        SwitchListenPlay.start();break;
+                    case 'K':
+                        SwitchWatchPlay.start();break;
+                    case 'G':
+                        SwitchFollowPlay.start();break;
                     case KeyEvent.VK_ENTER:
                         if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)) {
                             TypingText().setEditable(false); // 设置不可打字状态

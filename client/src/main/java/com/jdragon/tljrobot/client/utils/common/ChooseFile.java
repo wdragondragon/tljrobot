@@ -2,6 +2,7 @@ package com.jdragon.tljrobot.client.utils.common;
 
 
 import com.jdragon.tljrobot.client.config.LocalConfig;
+import com.jdragon.tljrobot.client.window.MainFra;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -23,7 +24,7 @@ public class ChooseFile implements ActionListener{
 		File file;
 		jfc=new JFileChooser();  
 	    jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES );  
-	    jfc.showDialog(new JLabel(), "选择");  
+	    jfc.showDialog(MainFra.getInstance(), "选择");
 	    file=jfc.getSelectedFile();
 	    if(file!=null){
 		    if(file.isDirectory()){
