@@ -1,6 +1,7 @@
 package com.jdragon.tljrobot.client.event.FArea;
 
 
+import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.config.FinalConfig;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
@@ -19,6 +20,7 @@ import static com.jdragon.tljrobot.client.entry.TypingState.*;
 public class SendAchievement {
     @SneakyThrows
     public static void start()  {
+        System.out.println(SwingSingleton.TypingText().getText().length());
         String result;
         if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){
             int length = ListenPlay.getLength();

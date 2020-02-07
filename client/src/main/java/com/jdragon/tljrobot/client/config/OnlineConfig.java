@@ -4,13 +4,15 @@ package com.jdragon.tljrobot.client.config;
  * Create by Jdragon on 2020.01.14
  */
 public class OnlineConfig {
-//    private final static String SERVER_ADDR = "http://localhost:8081";
-    private final static String SERVER_ADDR = "https://tlj.wiki";
+    public  static String NEW_VERSION = VersionConfig.start();//最新版本编号
+    private final static String SERVER_ADDR = "http://localhost:8081";
+//    private final static String SERVER_ADDR = "https://tlj.wiki";
     private final static String HOME_ADDR = "/home";
     private final static String ME_ADDR = "/me";
     private final static String NUM_ADDR = "/num";
     private final static String MATCH_ADDR = "/tljMatch";
     private final static String HISTORY_ADDR = "/history";
+    private final static String TLJ_VERSION_ADDR = "/tljVersion";
 
     public final static String LOGIN_ADDR = SERVER_ADDR + HOME_ADDR + "/login";
     public final static String LOGOUT_ADDR = SERVER_ADDR + HOME_ADDR + "/logout";
@@ -28,5 +30,7 @@ public class OnlineConfig {
 
     public final static String HISTORY_UPLOAD_HISTORY =  SERVER_ADDR + HISTORY_ADDR + "/uploadHistory";
     public final static String HISTORY_ARTICLE = SERVER_ADDR + HISTORY_ADDR + "/getHistoryArticle";
+
+    public final static String GET_TLJ_NEW_VERSION = SERVER_ADDR + TLJ_VERSION_ADDR + "/getNewVersion";
 
 }

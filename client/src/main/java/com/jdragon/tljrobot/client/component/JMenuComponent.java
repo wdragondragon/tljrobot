@@ -1,7 +1,10 @@
 package com.jdragon.tljrobot.client.component;
 
+import com.jdragon.tljrobot.client.config.FinalConfig;
 import com.jdragon.tljrobot.client.config.LocalConfig;
+import com.jdragon.tljrobot.client.config.OnlineConfig;
 import com.jdragon.tljrobot.client.entry.Article;
+import com.jdragon.tljrobot.client.entry.UserState;
 import com.jdragon.tljrobot.client.event.FArea.*;
 import com.jdragon.tljrobot.client.event.online.HistoryEvent;
 import com.jdragon.tljrobot.client.event.other.ListenPlay;
@@ -131,7 +134,7 @@ public class JMenuComponent {
         checkCode = new JMenuItem("检查编码");
         openCheat = new JMenuItem("隐藏功能");
         resert = new JMenuItem("错位复位");
-        update = new JMenuItem("更新");
+        update = new JMenuItem("版本"+ FinalConfig.VERSION+" 最新" + OnlineConfig.NEW_VERSION);
 
         lookPlay = new JMenuItem("成绩提交 ctrl+enter");
         check = new JMenuItem("看打检验");
@@ -207,6 +210,10 @@ public class JMenuComponent {
 
         moreSetUp.addActionListener(e-> SetDialog.getInstance().setVisible(true));
         everydayMatch.addActionListener(e-> {
+            if(UserState.loginState){
+                JOptionPane.showMessageDialog(MainFra.getInstance(),"请先登录");
+                return;
+            }
             int n = JOptionPane.showConfirmDialog(null, "日赛一天只能获取一次，请问做好准备跟打?", "日赛获取询问", JOptionPane.YES_NO_OPTION);
             if (n == JOptionPane.YES_OPTION) {HistoryEvent.getMatch();}
         });
@@ -235,12 +242,17 @@ public class JMenuComponent {
             }
         });
         lookPlay.addActionListener(e->{
+            if(SwingSingleton.TypingText().getText().length()==0)return;
             TypingText().setEditable(false); // 设置不可打字状态
             Typing.delaySendResultSign = true;
         });
 
         update.addActionListener(e->{
             try{
+                if(FinalConfig.VERSION.equals(OnlineConfig.NEW_VERSION)){
+                    JOptionPane.showMessageDialog(MainFra.getInstance(),"已最新");
+                    return;
+                }
                 if(SystemUtil.isWindows())
                     Runtime.getRuntime().exec("更新.exe");
                 else

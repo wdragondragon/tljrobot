@@ -2,7 +2,7 @@ package com.jdragon.tljrobot.client;
 
 import com.jdragon.tljrobot.client.config.FontColorConfig;
 import com.jdragon.tljrobot.client.config.LocalConfig;
-import com.jdragon.tljrobot.client.config.LogConfig;
+import com.jdragon.tljrobot.client.config.VersionConfig;
 import com.jdragon.tljrobot.client.config.MainFraConfig;
 import com.jdragon.tljrobot.client.event.threadEvent.DelayedOperation;
 import com.jdragon.tljrobot.client.event.threadEvent.DynamicSpeed;
@@ -15,7 +15,7 @@ public class Application {
     public static void main(String[] args){
         LocalConfig.readConfig();
 
-        LogConfig.start();
+        VersionConfig.start();
 
         FontColorConfig.start();
         MainFraConfig.start();

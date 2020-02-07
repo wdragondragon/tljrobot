@@ -1,6 +1,7 @@
 package com.jdragon.tljrobot.client.window;
 
 import com.jdragon.tljrobot.client.component.JMenuComponent;
+import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
@@ -125,6 +126,7 @@ public class MainFra extends JFrame {
                         SwitchFollowPlay.start();break;
                     case KeyEvent.VK_ENTER:
                         if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)) {
+                            if(SwingSingleton.TypingText().getText().length()==0)break;
                             TypingText().setEditable(false); // 设置不可打字状态
                             Typing.delaySendResultSign = true;
                         }else if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){
