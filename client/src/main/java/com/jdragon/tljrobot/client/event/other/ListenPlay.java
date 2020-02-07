@@ -18,6 +18,7 @@ import java.io.RandomAccessFile;
 public class ListenPlay {
     private static String title;
     private static String content;
+    private static int length;
     private static String fileName;
     private static SoundRecord soundRecord;
     private static boolean isRead = false;
@@ -35,7 +36,7 @@ public class ListenPlay {
             JOptionPane.showMessageDialog(MainFra.getInstance(),"格式错误");
             return;
         }
-        title = fileName.contains("\\") ? fileName.substring(0, fileName.lastIndexOf("\\"+1)) : null;
+        title = fileName.contains("\\") ? fileName.substring(fileName.lastIndexOf("\\")+1) : null;
         if(title==null){
             JOptionPane.showMessageDialog(MainFra.getInstance(),"文件错误");
             return;
@@ -76,4 +77,6 @@ public class ListenPlay {
     }
     public static String getContent(){return content;}
     public static String getTitle(){return title;}
+    public static int getLength(){return length;}
+    public static void setLength(int length){ListenPlay.length = length;}
 }

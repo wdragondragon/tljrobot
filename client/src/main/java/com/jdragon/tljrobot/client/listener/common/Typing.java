@@ -6,6 +6,7 @@ import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.NumState;
 import com.jdragon.tljrobot.client.entry.TypingState;
 import com.jdragon.tljrobot.client.entry.TypingState.*;
+import com.jdragon.tljrobot.client.event.other.ListenPlay;
 import com.jdragon.tljrobot.client.utils.common.JTextPaneFont;
 import com.jdragon.tljrobot.client.utils.common.Timer;
 import com.jdragon.tljrobot.client.utils.core.Layout;
@@ -283,17 +284,20 @@ public class Typing implements DocumentListener, KeyListener {
         try {
             WatchingText().setText(""); // 清空文本框
             try {
+                System.out.println(articleChars.length+":"+articleStr.length());
                 for (n = 0; n < articleStr.length(); n++) { // 统计错误字数，向文本框添加字体
-                    if (typeChars[n] != articleChars[n]&&typeLength>n)
+                    if (typeChars.length>n&&typeChars[n] != articleChars[n])
                         JTextPaneFont.insertDoc(typeDocName,
                                 String.valueOf(articleChars[n]), "红");
                     else
                         JTextPaneFont.insertDoc(typeDocName,
                                 String.valueOf(articleChars[n]), "黑");
+                    System.out.println(articleChars[n]);
                 }
             } catch (Exception e) {
                 n = 0;
                 System.out.println("wussssss");
+                e.printStackTrace();
             }
         } catch (Exception ex) {
             System.out.println("跟打框无字3");
@@ -456,9 +460,11 @@ public class Typing implements DocumentListener, KeyListener {
         mistake = lookMis + lookMore + lookMiss;
     }
     public void changeListenPlayFontColor(List<HashMap<String,Integer>> strList){
+        int length = 0;
         WatchingText().setText(""); // 清空文本框
         for(HashMap<String,Integer> hashMap:strList){
             for(Map.Entry<String,Integer> entry:hashMap.entrySet()){
+                length++;
                 if(entry.getValue()==0){
                     JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "对");
                 }else if(entry.getValue()==1){
@@ -474,10 +480,12 @@ public class Typing implements DocumentListener, KeyListener {
                     JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "错原");
                 }else{
                     JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "忽略");
+                    length--;
                 }
             }
         }
         mistake = lookMis + lookMore + lookMiss;
+        ListenPlay.setLength(length);
     }
     /**
      * @Author: Jdragon on 2020.01.20 上午 12:33
