@@ -7,22 +7,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="560566ca-4c25-4104-974e-54a248fc5e69" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/tlj/TljVersionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/mappers/TljVersionMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/pojo/TljVersion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/TestJNA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/KeyboardHook.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/KeyBoardFra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/JMenuComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/JMenuComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/FinalConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/FinalConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/LogConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/VersionConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/OnlineConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/OnlineConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/SendAchievement.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/SendAchievement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/QqOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/QqOperation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/MainFra.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/MainFra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/Application.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/component/JmenuComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/component/JmenuComponent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/event/FArea/SendAchievement.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/event/FArea/SendAchievement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/QqOperation.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/QqOperation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/window/MainFra.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/window/MainFra.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/interceptor/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/interceptor/LoginInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +89,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/main/resourese" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../YogurtCat" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -173,8 +171,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.test" />
+    <configuration name="KeyboardHook" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.utils.common.KeyboardHook" />
       <module name="client" />
       <extension name="coverage">
         <pattern>
@@ -186,18 +184,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ChatWords.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="robot" />
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.test" />
+      <module name="client" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.jdragon.tljrobot.robot.newTyping.*" />
+          <option name="PATTERN" value="com.jdragon.tljrobot.client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.jdragon.tljrobot.robot.newTyping" />
-      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.robot.newTyping.ChatWords" />
-      <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -212,18 +207,18 @@
     <list>
       <item itemvalue="Application.CodeLength" />
       <item itemvalue="Application.Application" />
-      <item itemvalue="JUnit.ChatWords.test" />
       <item itemvalue="Spring Boot.TljApplication" />
       <item itemvalue="Application.test" />
       <item itemvalue="Application.Comparison" />
+      <item itemvalue="Application.KeyboardHook" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Application" />
+        <item itemvalue="Application.KeyboardHook" />
         <item itemvalue="Application.CodeLength" />
         <item itemvalue="Application.Comparison" />
         <item itemvalue="Application.test" />
-        <item itemvalue="JUnit.ChatWords.test" />
       </list>
     </recent_temporary>
   </component>
@@ -304,7 +299,7 @@
       <workItem from="1579453124352" duration="218175000" />
       <workItem from="1580882021070" duration="11430000" />
       <workItem from="1580894815076" duration="17430000" />
-      <workItem from="1580964982961" duration="30595000" />
+      <workItem from="1580964982961" duration="45375000" />
     </task>
     <task id="LOCAL-00001" summary="用直接跳转页面替换ajax交互嵌入">
       <created>1577584125492</created>
@@ -404,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581059560132</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="增加最新版本显示，更新时检测是否最新版本">
+      <created>1581062039142</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1581062039142</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,7 +425,9 @@
     <MESSAGE value="听打雏形，修复自动登录下，无法连接到服务器时造成的程序崩溃" />
     <MESSAGE value="听打完善，增加切换模式子菜单。" />
     <MESSAGE value="1、修复嵌入模式漏字。2、修复听打标点白给。3、去除看打提示。4、增加听打播放录音下切换模式停止录音" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、修复嵌入模式漏字。2、修复听打标点白给。3、去除看打提示。4、增加听打播放录音下切换模式停止录音" />
+    <MESSAGE value="增加最新版本显示，更新时检测是否最新版本" />
+    <MESSAGE value="绑定全局键盘钩子，建立全局F3" />
+    <option name="LAST_COMMIT_MESSAGE" value="绑定全局键盘钩子，建立全局F3" />
   </component>
   <component name="WindowStateProjectService">
     <state x="412" y="120" key="#Auto_Import" timestamp="1578823323325">
@@ -478,11 +482,11 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="671" y="267" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1579417464246" />
-    <state x="744" y="399" width="525" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1580972740847">
+    <state x="744" y="399" width="491" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1581062720258">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="736" y="399" width="525" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/62.0.1858.1080@62.0.1858.1080" timestamp="1580808127543" />
-    <state x="744" y="399" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/75.0.1845.1080@75.0.1845.1080" timestamp="1580972740847" />
+    <state x="744" y="399" width="491" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/75.0.1845.1080@75.0.1845.1080" timestamp="1581062720258" />
     <state x="515" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1579583575372">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
@@ -502,79 +506,79 @@
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="420" y="249" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/62.0.1218.800@62.0.1218.800" timestamp="1577503398719" />
-    <state x="384" y="96" width="1460" height="776" key="CommitChangelistDialog2" timestamp="1581059558478">
+    <state x="384" y="96" width="1460" height="776" key="CommitChangelistDialog2" timestamp="1581088489224">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="62" y="0" key="CommitChangelistDialog2/62.0.1218.800@62.0.1218.800" timestamp="1579188400057" />
     <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2/62.0.1858.1080@62.0.1858.1080" timestamp="1580895106802" />
-    <state x="384" y="96" key="CommitChangelistDialog2/75.0.1845.1080@75.0.1845.1080" timestamp="1581059558478" />
+    <state x="384" y="96" key="CommitChangelistDialog2/75.0.1845.1080@75.0.1845.1080" timestamp="1581088489224" />
     <state x="155" y="93" width="1031" height="613" key="DiffContextDialog" timestamp="1578846678181">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="155" y="93" width="1031" height="613" key="DiffContextDialog/62.0.1218.800@62.0.1218.800" timestamp="1578846678181" />
-    <state x="133" y="207" key="FileChooserDialogImpl" timestamp="1580978834382">
+    <state x="133" y="207" key="FileChooserDialogImpl" timestamp="1581078263003">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="2620" y="453" key="FileChooserDialogImpl/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578666889282" />
     <state x="100" y="153" key="FileChooserDialogImpl/62.0.1218.800@62.0.1218.800" timestamp="1579247042726" />
     <state x="120" y="207" key="FileChooserDialogImpl/62.0.1858.1080@62.0.1858.1080" timestamp="1580795401865" />
-    <state x="133" y="207" key="FileChooserDialogImpl/75.0.1845.1080@75.0.1845.1080" timestamp="1580978834382" />
-    <state width="1802" height="344" key="GridCell.Tab.0.bottom" timestamp="1581061833519">
+    <state x="133" y="207" key="FileChooserDialogImpl/75.0.1845.1080@75.0.1845.1080" timestamp="1581078263003" />
+    <state width="1802" height="292" key="GridCell.Tab.0.bottom" timestamp="1581087725888">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.bottom/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.bottom/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.bottom/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1815" height="136" key="GridCell.Tab.0.bottom/62.0.1858.1080@62.0.1858.1080" timestamp="1580971601011" />
-    <state width="1802" height="344" key="GridCell.Tab.0.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1581061833519" />
-    <state width="1802" height="344" key="GridCell.Tab.0.center" timestamp="1581061833518">
+    <state width="1802" height="292" key="GridCell.Tab.0.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1581087725888" />
+    <state width="1802" height="292" key="GridCell.Tab.0.center" timestamp="1581087725888">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.center/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.center/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.center/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1815" height="136" key="GridCell.Tab.0.center/62.0.1858.1080@62.0.1858.1080" timestamp="1580971601010" />
-    <state width="1802" height="344" key="GridCell.Tab.0.center/75.0.1845.1080@75.0.1845.1080" timestamp="1581061833518" />
-    <state width="1802" height="344" key="GridCell.Tab.0.left" timestamp="1581061833518">
+    <state width="1802" height="292" key="GridCell.Tab.0.center/75.0.1845.1080@75.0.1845.1080" timestamp="1581087725888" />
+    <state width="1802" height="292" key="GridCell.Tab.0.left" timestamp="1581087725888">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.left/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.left/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.left/62.0.1218.800@62.0.1218.800" timestamp="1580479234951" />
     <state width="1815" height="136" key="GridCell.Tab.0.left/62.0.1858.1080@62.0.1858.1080" timestamp="1580971601010" />
-    <state width="1802" height="344" key="GridCell.Tab.0.left/75.0.1845.1080@75.0.1845.1080" timestamp="1581061833518" />
-    <state width="1802" height="344" key="GridCell.Tab.0.right" timestamp="1581061833519">
+    <state width="1802" height="292" key="GridCell.Tab.0.left/75.0.1845.1080@75.0.1845.1080" timestamp="1581087725888" />
+    <state width="1802" height="292" key="GridCell.Tab.0.right" timestamp="1581087725888">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.right/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.right/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.right/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1815" height="136" key="GridCell.Tab.0.right/62.0.1858.1080@62.0.1858.1080" timestamp="1580971601010" />
-    <state width="1802" height="344" key="GridCell.Tab.0.right/75.0.1845.1080@75.0.1845.1080" timestamp="1581061833519" />
-    <state width="1802" height="344" key="GridCell.Tab.1.bottom" timestamp="1581061688464">
+    <state width="1802" height="292" key="GridCell.Tab.0.right/75.0.1845.1080@75.0.1845.1080" timestamp="1581087725888" />
+    <state width="1802" height="344" key="GridCell.Tab.1.bottom" timestamp="1581080650084">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1176" height="132" key="GridCell.Tab.1.bottom/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1815" height="302" key="GridCell.Tab.1.bottom/62.0.1858.1080@62.0.1858.1080" timestamp="1580971282519" />
-    <state width="1802" height="344" key="GridCell.Tab.1.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1581061688464" />
-    <state width="1802" height="344" key="GridCell.Tab.1.center" timestamp="1581061688463">
+    <state width="1802" height="344" key="GridCell.Tab.1.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1581080650084" />
+    <state width="1802" height="344" key="GridCell.Tab.1.center" timestamp="1581080650084">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1176" height="132" key="GridCell.Tab.1.center/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1815" height="302" key="GridCell.Tab.1.center/62.0.1858.1080@62.0.1858.1080" timestamp="1580971282518" />
-    <state width="1802" height="344" key="GridCell.Tab.1.center/75.0.1845.1080@75.0.1845.1080" timestamp="1581061688463" />
-    <state width="1802" height="344" key="GridCell.Tab.1.left" timestamp="1581061688463">
+    <state width="1802" height="344" key="GridCell.Tab.1.center/75.0.1845.1080@75.0.1845.1080" timestamp="1581080650084" />
+    <state width="1802" height="344" key="GridCell.Tab.1.left" timestamp="1581080650083">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1176" height="132" key="GridCell.Tab.1.left/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1815" height="302" key="GridCell.Tab.1.left/62.0.1858.1080@62.0.1858.1080" timestamp="1580971282518" />
-    <state width="1802" height="344" key="GridCell.Tab.1.left/75.0.1845.1080@75.0.1845.1080" timestamp="1581061688463" />
-    <state width="1802" height="344" key="GridCell.Tab.1.right" timestamp="1581061688464">
+    <state width="1802" height="344" key="GridCell.Tab.1.left/75.0.1845.1080@75.0.1845.1080" timestamp="1581080650083" />
+    <state width="1802" height="344" key="GridCell.Tab.1.right" timestamp="1581080650084">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1176" height="132" key="GridCell.Tab.1.right/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1815" height="302" key="GridCell.Tab.1.right/62.0.1858.1080@62.0.1858.1080" timestamp="1580971282518" />
-    <state width="1802" height="344" key="GridCell.Tab.1.right/75.0.1845.1080@75.0.1845.1080" timestamp="1581061688464" />
+    <state width="1802" height="344" key="GridCell.Tab.1.right/75.0.1845.1080@75.0.1845.1080" timestamp="1581080650084" />
     <state width="1815" height="302" key="GridCell.Tab.2.bottom" timestamp="1580921280680">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
@@ -604,6 +608,10 @@
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="381" y="116" key="MultipleFileMergeDialog/62.0.1218.800@62.0.1218.800" timestamp="1578846635379" />
+    <state x="637" y="238" key="NewModule_or_Project.wizard" timestamp="1581078251700">
+      <screen x="75" y="0" width="1845" height="1080" />
+    </state>
+    <state x="637" y="238" key="NewModule_or_Project.wizard/75.0.1845.1080@75.0.1845.1080" timestamp="1581078251700" />
     <state x="62" y="112" width="1218" height="713" key="SettingsEditor" timestamp="1579451436454">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
@@ -614,12 +622,12 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/62.0.1858.1080@62.0.1858.1080" timestamp="1579346721229" />
-    <state x="381" y="185" key="Vcs.Push.Dialog.v2" timestamp="1581059570454">
+    <state x="381" y="185" key="Vcs.Push.Dialog.v2" timestamp="1581062044083">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="264" y="137" key="Vcs.Push.Dialog.v2/62.0.1218.800@62.0.1218.800" timestamp="1578847066652" />
     <state x="370" y="185" key="Vcs.Push.Dialog.v2/62.0.1858.1080@62.0.1858.1080" timestamp="1580895252671" />
-    <state x="381" y="185" key="Vcs.Push.Dialog.v2/75.0.1845.1080@75.0.1845.1080" timestamp="1581059570454" />
+    <state x="381" y="185" key="Vcs.Push.Dialog.v2/75.0.1845.1080@75.0.1845.1080" timestamp="1581062044083" />
     <state x="473" y="178" key="chooseDestDirectoryDialog" timestamp="1579055606183">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
@@ -643,16 +651,18 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="721" y="305" key="extract.method.dialog/62.0.1858.1080@62.0.1858.1080" timestamp="1580647023745" />
-    <state x="611" y="0" width="1183" height="1080" key="find.popup" timestamp="1580825462570">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="620" y="0" width="1175" height="1080" key="find.popup" timestamp="1581086347202">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="3127" y="327" width="786" height="900" key="find.popup/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578712106387" />
     <state x="422" y="0" width="775" height="800" key="find.popup/62.0.1218.800@62.0.1218.800" timestamp="1579232317735" />
     <state x="611" y="0" width="1183" height="1080" key="find.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1580825462570" />
-    <state x="61" y="17" key="new project wizard" timestamp="1577632040170">
-      <screen x="62" y="0" width="1218" height="800" />
+    <state x="620" y="0" width="1175" height="1080" key="find.popup/75.0.1845.1080@75.0.1845.1080" timestamp="1581086347202" />
+    <state x="372" y="150" key="new project wizard" timestamp="1581078189518">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="61" y="17" key="new project wizard/62.0.1218.800@62.0.1218.800" timestamp="1577632040170" />
+    <state x="372" y="150" key="new project wizard/75.0.1845.1080@75.0.1845.1080" timestamp="1581078189518" />
     <state x="539" y="38" key="refactoring.ChangeSignatureDialog" timestamp="1580916926949">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>

@@ -172,6 +172,12 @@ public class MainFra extends JFrame {
 //                        break;
 //                    case KeyEvent.VK_F11 : break;
 //                    case KeyEvent.VK_F12 : break;
+                case KeyEvent.VK_ESCAPE:
+                    LogonDialog.getInstance().setVisible(false);
+                    SendArticleDialog.getInstance().setVisible(false);
+                    SetDialog.getInstance().setVisible(false);
+                    ShowArticleDialog.getInstance("").setVisible(false);
+                    break;
                 default:break;
             }
             return true;

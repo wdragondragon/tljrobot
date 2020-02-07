@@ -210,7 +210,7 @@ public class JMenuComponent {
 
         moreSetUp.addActionListener(e-> SetDialog.getInstance().setVisible(true));
         everydayMatch.addActionListener(e-> {
-            if(UserState.loginState){
+            if(!UserState.loginState){
                 JOptionPane.showMessageDialog(MainFra.getInstance(),"请先登录");
                 return;
             }
@@ -264,5 +264,6 @@ public class JMenuComponent {
         listenMode.addActionListener(e-> SwitchListenPlay.start());
         followMode.addActionListener(e-> SwitchFollowPlay.start());
         soundRecordPlay.addActionListener(e-> ListenPlay.start());
+
     }
 }

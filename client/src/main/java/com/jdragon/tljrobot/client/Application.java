@@ -7,6 +7,7 @@ import com.jdragon.tljrobot.client.config.MainFraConfig;
 import com.jdragon.tljrobot.client.event.threadEvent.DelayedOperation;
 import com.jdragon.tljrobot.client.event.threadEvent.DynamicSpeed;
 import com.jdragon.tljrobot.client.utils.common.DateNumInit;
+import com.jdragon.tljrobot.client.utils.common.KeyboardHook;
 import com.jdragon.tljrobot.client.window.LogonDialog;
 import com.jdragon.tljrobot.client.window.MainFra;
 
@@ -28,5 +29,7 @@ public class Application {
         new DelayedOperation().start();//载文线程
         if(LocalConfig.runLogin) LogonDialog.doLogin();
         new DateNumInit().start();
+        KeyboardHook kbhook = new KeyboardHook();
+        new Thread(kbhook).start();
     }
 }
