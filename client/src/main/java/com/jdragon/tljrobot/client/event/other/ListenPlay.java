@@ -61,7 +61,7 @@ public class ListenPlay {
         }
         soundRecord = new SoundRecord(mp3);
         isRead = true;
-        soundRecord.start();
+//        soundRecord.start();
         Replay.start();
     }
     public static void replay(){

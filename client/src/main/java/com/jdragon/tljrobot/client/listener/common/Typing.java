@@ -53,7 +53,7 @@ public class Typing implements DocumentListener, KeyListener {
                 typeStr = TypingText().getText() + e.getKeyChar();
             else
                 typeStr = TypingText().getText();
-            articleStr = Article.getArticleSingleton().getArticle();
+            articleStr = Article.getArticleSingleton().getArticle()!=null?Article.getArticleSingleton().getArticle():"";
 
             typeChars = typeStr.toCharArray();
             articleChars = articleStr.toCharArray();
@@ -61,7 +61,7 @@ public class Typing implements DocumentListener, KeyListener {
              * 增加已打字数
              */
             if (typeStr.length() > oldTypeStrLength) {
-                if (articleChars[typeStr.length() - 1] == e.getKeyChar()) {
+                if (articleChars.length-1>=n&&articleChars[typeStr.length() - 1] == e.getKeyChar()) {
                     NumState.rightNum++;
                 }else {
                     NumState.misNum++;
@@ -78,24 +78,18 @@ public class Typing implements DocumentListener, KeyListener {
             mistake = 0; // 错误字数清零
             oldTypeStrLength = typeStr.length();// 计算当前打字框长度
             for (n = 0; n < typeStr.length(); n++) { // 统计错误字数，向文本框添加字体
-                if (typeChars[n] != articleChars[n]) {
+                if (articleChars.length-1<n||typeChars[n] != articleChars[n]) {
                     mistake++;
-                    String mistakeStr = "\"" + articleChars[n] + "\"在第"
-                            + (n + 1) + "个字\n";
-                    mistakeList.add(mistakeStr);
+//                    String mistakeStr = "\"" + articleChars[n] + "\"在第"
+//                            + (n + 1) + "个字\n";
+//                    mistakeList.add(mistakeStr);
 //                    missign.add(n);
                 }
             }
             /**
              * 改变字数框
              */
-            NumberLabel().setText("字数:" + articleStr.length() + "/已打:" + typeStr.length() + "/错:"
-                    + mistake);
-
-            NumberRecordLabel().setText("总:" + NumState.num + " 对:"
-                    + NumState.rightNum + " 错:"
-                    + NumState.misNum + " 今:"
-                    + NumState.dateNum);
+            updateNumShow();
 
 //            readWrite.keepfontnum(Window.fontallnum, Window.rightnum,
 //                    Window.misnum);
@@ -185,7 +179,7 @@ public class Typing implements DocumentListener, KeyListener {
     @Override
     public void changedUpdate(DocumentEvent e) {
         try {
-            if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN))return;
+            if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)||Article.getArticleSingleton().getArticle()==null)return;
             typeStr = TypingText().getText();
             articleStr = Article.getArticleSingleton().getArticle();
             typeLength = typeStr.length();
@@ -313,7 +307,7 @@ public class Typing implements DocumentListener, KeyListener {
     int thisPageNum;
     public void changeFontColor() {
         int pageCount = LocalConfig.typePageCount;
-        articleStr = Article.getArticleSingleton().getArticle();
+        articleStr = Article.getArticleSingleton().getArticle()!=null?Article.getArticleSingleton().getArticle():"";
         articleChars = articleStr.toCharArray();
         thisPageNum = typeStr.length() / pageCount;
         int lastIndex;
@@ -542,6 +536,15 @@ public class Typing implements DocumentListener, KeyListener {
             WatchingJSP().getVerticalScrollBar().setValue(0);
         }
         WatchingText().setCaretPosition(cursor);
+    }
+    public void updateNumShow(){
+        NumberLabel().setText("字数:" + articleStr.length() + "/已打:" + typeStr.length() + "/错:"
+                + mistake);
+
+        NumberRecordLabel().setText("总:" + NumState.num + " 对:"
+                + NumState.rightNum + " 错:"
+                + NumState.misNum + " 今:"
+                + NumState.dateNum);
     }
     @Override
     public void insertUpdate(DocumentEvent e) {

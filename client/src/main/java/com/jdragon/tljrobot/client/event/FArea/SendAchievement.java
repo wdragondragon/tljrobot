@@ -6,7 +6,9 @@ import com.jdragon.tljrobot.client.config.FinalConfig;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
+import com.jdragon.tljrobot.client.entry.NumState;
 import com.jdragon.tljrobot.client.event.other.ListenPlay;
+import com.jdragon.tljrobot.client.listener.common.Typing;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
 import com.jdragon.tljrobot.client.utils.common.DoCheck;
 import com.jdragon.tljrobot.client.utils.common.QqOperation;
@@ -29,6 +31,11 @@ public class SendAchievement {
                     " 听打模式" + " 错:" + lookMis + " 多:" + lookMore + " 少:" + lookMiss +
                     " 长流跟打器" + FinalConfig.VERSION +
                     " " + SystemUtil.getSystemName() + "版" ;
+            NumState.num += length;
+            NumState.dateNum += length;
+            NumState.misNum += mistake;
+            NumState.rightNum += length-mistake;
+            Typing.getInstance().updateNumShow();
             SpeedButton().setText(String.format("%.2f",((double)length-mistake)/length*100)+"%");
             Clipboard.set(result);
         }else {

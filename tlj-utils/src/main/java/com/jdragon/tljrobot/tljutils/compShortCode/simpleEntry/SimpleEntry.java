@@ -36,6 +36,7 @@ public class SimpleEntry {
                     codeEntity.setBold(!bold);
                 }
                 codeEntities[j] = codeEntity;
+
             }
             if(subscriptInstances[i].isUseWordSign()) {
                 codeEntities[i].setWords(subscriptInstances[wordsSign]

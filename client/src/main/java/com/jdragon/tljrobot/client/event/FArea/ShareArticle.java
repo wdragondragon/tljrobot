@@ -22,8 +22,8 @@ public class ShareArticle {
         }
         Article article = Article.getArticleSingleton();
         String share = article.getTitle() +
-                "\n"+article.getArticle() +
-                "\n-----"+"第"+ article.getParagraph() +"段";
+                System.lineSeparator()+article.getArticle() +
+                System.lineSeparator()+"-----"+"第"+ article.getParagraph() +"段";
         if(TypingState.sendArticle== Constant.SEND_ORDER){
             share += "-余"+(ArticleTreeListener.length-ArticleTreeListener.fontweizhi)+"字";
         }

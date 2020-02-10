@@ -2,7 +2,6 @@ package com.jdragon.tljrobot.client.utils.common;
 
 import com.jdragon.tljrobot.client.window.MainFra;
 import com.sun.jna.platform.win32.User32;
-import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinDef.HWND;
 
 import java.awt.*;
@@ -35,13 +34,13 @@ public class QqOperation {
                 robot.keyRelease(KeyEvent.VK_CONTROL);
 
             } else if (i == SEND_ACHIEVEMENT) {
-                for(char s:Clipboard.get().toCharArray()) {
-                    User32.INSTANCE.PostMessage(hWnd, User32.WM_CHAR, new WinDef.WPARAM(s), new WinDef.LPARAM(0));
-                }
-//                robot.keyPress(KeyEvent.VK_CONTROL);
-//                robot.keyPress(KeyEvent.VK_V);
-//                robot.keyRelease(KeyEvent.VK_V);
-//                robot.keyRelease(KeyEvent.VK_CONTROL);
+//                for(char s:Clipboard.get().toCharArray()) {
+//                    User32.INSTANCE.PostMessage(hWnd, User32.WM_CHAR, new WinDef.WPARAM(s), new WinDef.LPARAM(0));
+//                }
+                robot.keyPress(KeyEvent.VK_CONTROL);
+                robot.keyPress(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_CONTROL);
 //
                 robot.keyPress(KeyEvent.VK_ENTER);
                 robot.keyRelease(KeyEvent.VK_ENTER);
