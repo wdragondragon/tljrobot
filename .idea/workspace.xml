@@ -575,11 +575,11 @@
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="420" y="249" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/62.0.1218.800@62.0.1218.800" timestamp="1577503398719" />
-    <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2" timestamp="1581331060874">
+    <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2" timestamp="1581344093367">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="62" y="0" key="CommitChangelistDialog2/62.0.1218.800@62.0.1218.800" timestamp="1579188400057" />
-    <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2/62.0.1858.1080@62.0.1858.1080" timestamp="1581331060874" />
+    <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2/62.0.1858.1080@62.0.1858.1080" timestamp="1581344093367" />
     <state x="384" y="96" key="CommitChangelistDialog2/75.0.1845.1080@75.0.1845.1080" timestamp="1581088489224" />
     <state x="155" y="93" width="1031" height="613" key="DiffContextDialog" timestamp="1578846678181">
       <screen x="62" y="0" width="1218" height="800" />
@@ -692,11 +692,11 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/62.0.1858.1080@62.0.1858.1080" timestamp="1579346721229" />
-    <state x="381" y="185" key="Vcs.Push.Dialog.v2" timestamp="1581088511101">
-      <screen x="75" y="0" width="1845" height="1080" />
+    <state x="370" y="185" key="Vcs.Push.Dialog.v2" timestamp="1581344185413">
+      <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="264" y="137" key="Vcs.Push.Dialog.v2/62.0.1218.800@62.0.1218.800" timestamp="1578847066652" />
-    <state x="370" y="185" key="Vcs.Push.Dialog.v2/62.0.1858.1080@62.0.1858.1080" timestamp="1580895252671" />
+    <state x="370" y="185" key="Vcs.Push.Dialog.v2/62.0.1858.1080@62.0.1858.1080" timestamp="1581344185413" />
     <state x="381" y="185" key="Vcs.Push.Dialog.v2/75.0.1845.1080@75.0.1845.1080" timestamp="1581088511101" />
     <state x="473" y="178" key="chooseDestDirectoryDialog" timestamp="1579055606183">
       <screen x="62" y="0" width="1218" height="800" />
@@ -729,6 +729,10 @@
     <state x="422" y="0" width="775" height="800" key="find.popup/62.0.1218.800@62.0.1218.800" timestamp="1579232317735" />
     <state x="611" y="0" width="1183" height="1080" key="find.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1580825462570" />
     <state x="620" y="0" width="1175" height="1080" key="find.popup/75.0.1845.1080@75.0.1845.1080" timestamp="1581086347202" />
+    <state x="682" y="331" key="git4idea.merge.GitPullDialog" timestamp="1581344178013">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="682" y="331" key="git4idea.merge.GitPullDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1581344178013" />
     <state x="372" y="150" key="new project wizard" timestamp="1581078189518">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
