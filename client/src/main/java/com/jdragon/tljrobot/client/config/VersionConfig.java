@@ -9,7 +9,7 @@ import com.jdragon.tljrobot.tljutils.HttpUtil;
 public class VersionConfig {
     public static String start(){
         try {
-            JSONObject jsonObject = JSONObject.parseObject(HttpUtil.doPost(OnlineConfig.GET_TLJ_NEW_VERSION));
+            JSONObject jsonObject = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.GET_TLJ_NEW_VERSION));
             String retMessage = jsonObject.getString("message");
             if (retMessage.equals("获取成功")) {
                 return jsonObject.getJSONObject("result").getString("version");

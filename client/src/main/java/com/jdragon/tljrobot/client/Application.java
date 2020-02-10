@@ -1,14 +1,14 @@
 package com.jdragon.tljrobot.client;
 
-import com.jdragon.tljrobot.client.config.FontColorConfig;
+import com.jdragon.tljrobot.client.config.JTextPaneFontConfig;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.config.VersionConfig;
 import com.jdragon.tljrobot.client.config.MainFraConfig;
-import com.jdragon.tljrobot.client.event.threadEvent.DelayedOperation;
-import com.jdragon.tljrobot.client.event.threadEvent.DynamicSpeed;
-import com.jdragon.tljrobot.client.utils.common.DateNumInit;
-import com.jdragon.tljrobot.client.utils.common.KeyboardHook;
-import com.jdragon.tljrobot.client.window.LogonDialog;
+import com.jdragon.tljrobot.client.event.threadEvent.DelayedOperationThread;
+import com.jdragon.tljrobot.client.event.threadEvent.DynamicSpeedThread;
+import com.jdragon.tljrobot.client.utils.common.DateNumInitThread;
+import com.jdragon.tljrobot.client.utils.common.KeyboardHookThread;
+import com.jdragon.tljrobot.client.window.dialog.LogonDialog;
 import com.jdragon.tljrobot.client.window.MainFra;
 
 
@@ -18,18 +18,18 @@ public class Application {
 
         VersionConfig.start();
 
-        FontColorConfig.start();
+        JTextPaneFontConfig.start();
         MainFraConfig.start();
 
 
         MainFra.getInstance().addListener();//添加监听器
-        DynamicSpeed.getInstance().start();//动态计时
+        DynamicSpeedThread.getInstance().start();//动态计时
 
 
-        new DelayedOperation().start();//载文线程
+        new DelayedOperationThread().start();//载文线程
         if(LocalConfig.runLogin) LogonDialog.doLogin();
-        new DateNumInit().start();
-        KeyboardHook kbhook = new KeyboardHook();
+        new DateNumInitThread().start();
+        KeyboardHookThread kbhook = new KeyboardHookThread();
         new Thread(kbhook).start();
     }
 }

@@ -2,12 +2,12 @@ package com.jdragon.tljrobot.client.listener.common;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.jdragon.tljrobot.client.config.OnlineConfig;
+import com.jdragon.tljrobot.client.config.HttpAddr;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.UserState;
-import com.jdragon.tljrobot.client.event.FArea.Replay;
-import com.jdragon.tljrobot.client.window.HistoryDialog;
-import com.jdragon.tljrobot.client.window.ShowArticleDialog;
+import com.jdragon.tljrobot.client.event.FArea.ReplayEvent;
+import com.jdragon.tljrobot.client.window.dialog.HistoryDialog;
+import com.jdragon.tljrobot.client.window.dialog.ShowArticleDialog;
 import com.jdragon.tljrobot.tljutils.HttpUtil;
 
 import javax.swing.*;
@@ -37,7 +37,7 @@ public class HistoryTableListener implements MouseListener {
             if(articleJson!=null) {
                 Article.getArticleSingleton(paragraph, articleJson.getString("title"), articleJson.getString("content"));
                 HistoryDialog.getInstance().setVisible(false);
-                Replay.start();
+                ReplayEvent.start();
             }
         });
 
@@ -53,7 +53,7 @@ public class HistoryTableListener implements MouseListener {
         m_popupMenu.add(getArticle);
     }
     private JSONObject getArticleJson(String articleId,int paragraph){
-        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(OnlineConfig.HISTORY_ARTICLE,articleId, UserState.token));
+        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(HttpAddr.HISTORY_ARTICLE,articleId, UserState.token));
         String message = jsonObject.getString("message");
         if(paragraph==0){
             JOptionPane.showMessageDialog(null, "0段无法再次获取");

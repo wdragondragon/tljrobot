@@ -1,6 +1,6 @@
 package com.jdragon.tljrobot.client.event.online;
 
-import com.jdragon.tljrobot.client.config.OnlineConfig;
+import com.jdragon.tljrobot.client.config.HttpAddr;
 import com.jdragon.tljrobot.client.entry.UserState;
 import com.jdragon.tljrobot.tljutils.HttpUtil;
 
@@ -12,7 +12,7 @@ public class KeepALiveThread extends Thread{
         while(UserState.loginState) {
             try {
                 Thread.sleep(30*60*1000);
-                HttpUtil.doPost(OnlineConfig.ME_KEEP_A_LIVE_ADDR,UserState.token);
+                HttpUtil.doPost(HttpAddr.ME_KEEP_A_LIVE_ADDR,UserState.token);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

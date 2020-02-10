@@ -4,8 +4,8 @@ package com.jdragon.tljrobot.client.component;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.utils.common.JTextPaneFont;
-import com.jdragon.tljrobot.client.window.Cirecord;
-import com.jdragon.tljrobot.client.window.ShowArticleDialog;
+import com.jdragon.tljrobot.client.window.CirecordFra;
+import com.jdragon.tljrobot.client.window.dialog.ShowArticleDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -101,7 +101,7 @@ public class SwingSingleton {
     public static JButton SpeedButton(){
         if (speedButton==null){
             speedButton = new JButton("速度");
-            speedButton.addActionListener(e->new Cirecord());
+            speedButton.addActionListener(e->new CirecordFra());
         }
         return speedButton;
     }

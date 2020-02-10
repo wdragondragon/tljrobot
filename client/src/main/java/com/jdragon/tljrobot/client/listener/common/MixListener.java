@@ -3,7 +3,7 @@ package com.jdragon.tljrobot.client.listener.common;
 import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.TypingState;
-import com.jdragon.tljrobot.client.event.FArea.Replay;
+import com.jdragon.tljrobot.client.event.FArea.ReplayEvent;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,7 +32,7 @@ public class MixListener implements ActionListener {
             }else {
                 article.setArticle(mix(article.getArticle()));
             }
-            Replay.start();
+            ReplayEvent.start();
         }
         else if(model.equals("全局乱序")){
             ArticleTreeListener.all = mix(ArticleTreeListener.all);

@@ -4,10 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.jdragon.tljrobot.client.component.SwingSingleton;
-import com.jdragon.tljrobot.client.config.OnlineConfig;
+import com.jdragon.tljrobot.client.config.HttpAddr;
 import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.*;
-import com.jdragon.tljrobot.client.event.threadEvent.CountMatch;
+import com.jdragon.tljrobot.client.event.threadEvent.CountMatchThread;
 import com.jdragon.tljrobot.tljutils.DateUtil;
 import com.jdragon.tljrobot.tljutils.HttpUtil;
 
@@ -25,7 +25,7 @@ public class HistoryEvent {
     public static void getMatch(){
         HashMap<String,String> params = new HashMap<>();
         params.put("isMobile","0");
-        JSONObject jsonObject = JSON.parseObject(HttpUtil.doGetParam(OnlineConfig.MATCH_GET_TODAY, params,UserState.token));
+        JSONObject jsonObject = JSON.parseObject(HttpUtil.doGetParam(HttpAddr.MATCH_GET_TODAY, params,UserState.token));
         String message = jsonObject.getString(Constant.RESPONSE_MESSAGE);
         if(message.equals("获取成功")){
             /**
@@ -35,14 +35,14 @@ public class HistoryEvent {
             JSONObject article = jsonObject.getJSONObject("result").getJSONObject("article");
             Article.getArticleSingleton(0,article.getString("title"),article.getString("content"));
             SwingSingleton.TypingText().setEditable(false);
-            new CountMatch().start();
+            new CountMatchThread().start();
         }else{
             JOptionPane.showMessageDialog(null,message);
         }
     }
     public static String uploadMatchAch(){
         History history = getHistoryEntry();
-        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObject(OnlineConfig.MATCH_UPLOAD_TLJ_MATCH_ACH,history, UserState.token));
+        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObject(HttpAddr.MATCH_UPLOAD_TLJ_MATCH_ACH,history, UserState.token));
         return jsonObject.getString("message");
     }
     public static String uploadHistory(){
@@ -50,7 +50,7 @@ public class HistoryEvent {
         Map<String,String> params = new HashMap();
         params.put("content",Article.getArticleSingleton().getArticle());
         params.put("title",Article.getArticleSingleton().getTitle());
-        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObjectAndParams(OnlineConfig.HISTORY_UPLOAD_HISTORY,params,history,UserState.token));
+        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObjectAndParams(HttpAddr.HISTORY_UPLOAD_HISTORY,params,history,UserState.token));
         System.out.println(jsonObject.toJSONString());
         return jsonObject.getString("message");
     }
@@ -77,7 +77,7 @@ public class HistoryEvent {
         List<History> historyList = new ArrayList<>();
         HistoryList historyListEntry = new HistoryList();
 
-        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(OnlineConfig.ME_HISTORY_ADDR, String.valueOf(page), UserState.token));
+        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(HttpAddr.ME_HISTORY_ADDR, String.valueOf(page), UserState.token));
         JSONObject result = jsonObject.getJSONObject("result");
         JSONArray historyListJson = result.getJSONArray("list");
         int total = result.getIntValue("total");
@@ -99,7 +99,7 @@ public class HistoryEvent {
     }
     public static List<History2> getTljMatchAchList(Date date){
         List<History2> historyList = new ArrayList<>();
-        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(OnlineConfig.MATCH_GET_MATCH_ACH_BY_DATE, String.valueOf(date),UserState.token));
+        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(HttpAddr.MATCH_GET_MATCH_ACH_BY_DATE, String.valueOf(date),UserState.token));
         JSONArray result = jsonObject.getJSONArray("result");
         if(jsonObject.getString("message").equals("获取成功")) {
             for (Object historyJson : result) {

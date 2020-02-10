@@ -2,21 +2,22 @@ package com.jdragon.tljrobot.client.component;
 
 import com.jdragon.tljrobot.client.config.FinalConfig;
 import com.jdragon.tljrobot.client.config.LocalConfig;
-import com.jdragon.tljrobot.client.config.OnlineConfig;
+import com.jdragon.tljrobot.client.config.HttpAddr;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.UserState;
 import com.jdragon.tljrobot.client.event.FArea.*;
 import com.jdragon.tljrobot.client.event.online.HistoryEvent;
-import com.jdragon.tljrobot.client.event.other.ListenPlay;
-import com.jdragon.tljrobot.client.event.other.SwitchFollowPlay;
-import com.jdragon.tljrobot.client.event.other.SwitchListenPlay;
-import com.jdragon.tljrobot.client.event.other.SwitchWatchPlay;
+import com.jdragon.tljrobot.client.event.other.ListenPlayEvent;
+import com.jdragon.tljrobot.client.event.other.SwitchFollowPlayEvent;
+import com.jdragon.tljrobot.client.event.other.SwitchListenPlayEvent;
+import com.jdragon.tljrobot.client.event.other.SwitchWatchPlayEvent;
 import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
-import com.jdragon.tljrobot.client.listener.common.BuildChooseFile;
+import com.jdragon.tljrobot.client.listener.common.BuildChooseFileListener;
 import com.jdragon.tljrobot.client.listener.common.MixListener;
-import com.jdragon.tljrobot.client.listener.common.Typing;
+import com.jdragon.tljrobot.client.listener.common.TypingListener;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
 import com.jdragon.tljrobot.client.window.*;
+import com.jdragon.tljrobot.client.window.dialog.*;
 import com.jdragon.tljrobot.tljutils.SystemUtil;
 import lombok.Data;
 
@@ -134,7 +135,7 @@ public class JMenuComponent {
         checkCode = new JMenuItem("检查编码");
         openCheat = new JMenuItem("隐藏功能");
         resert = new JMenuItem("错位复位");
-        update = new JMenuItem("版本"+ FinalConfig.VERSION+" 最新" + OnlineConfig.NEW_VERSION);
+        update = new JMenuItem("版本"+ FinalConfig.VERSION+" 最新" + HttpAddr.NEW_VERSION);
 
         lookPlay = new JMenuItem("成绩提交 ctrl+enter");
         check = new JMenuItem("看打检验");
@@ -202,11 +203,11 @@ public class JMenuComponent {
     }
     public void addListener(){
         Login.addActionListener(e-> LogonDialog.getInstance().setVisible(true));
-        sendAchievement.addActionListener(e-> SendAchievement.start());
-        sendArticle.addActionListener(e-> SendArticle.start());
-        replay.addActionListener(e-> Replay.start());
-        QQGetArticleItem.addActionListener(e -> QQGetArticle.start());
-        groupChanging.addActionListener(e-> ChangeQQGroup.start());
+        sendAchievement.addActionListener(e-> SendAchievementEvent.start());
+        sendArticle.addActionListener(e-> SendArticleEvent.start());
+        replay.addActionListener(e-> ReplayEvent.start());
+        QQGetArticleItem.addActionListener(e -> QQGetArticleEvent.start());
+        groupChanging.addActionListener(e-> ChangeQQGroupEvent.start());
 
         moreSetUp.addActionListener(e-> SetDialog.getInstance().setVisible(true));
         everydayMatch.addActionListener(e-> {
@@ -221,11 +222,11 @@ public class JMenuComponent {
         orderNextParagraph.addActionListener(ArticleTreeListener.getInstance());
         save.addActionListener(ArticleTreeListener.getInstance());
         nonOrder.addActionListener(MixListener.getInstance());
-        createCodeTable.addActionListener(new BuildChooseFile());
+        createCodeTable.addActionListener(new BuildChooseFileListener());
 
         getArticleByClipboard.addActionListener(e-> {
             Article.getArticleSingleton(1,"剪贴板载文", Clipboard.get());
-            Replay.start();
+            ReplayEvent.start();
         });
 
         help.addActionListener(e-> HelpDialog.showHelp());
@@ -244,12 +245,12 @@ public class JMenuComponent {
         lookPlay.addActionListener(e->{
             if(SwingSingleton.TypingText().getText().length()==0)return;
             TypingText().setEditable(false); // 设置不可打字状态
-            Typing.delaySendResultSign = true;
+            TypingListener.delaySendResultSign = true;
         });
 
         update.addActionListener(e->{
             try{
-                if(FinalConfig.VERSION.equals(OnlineConfig.NEW_VERSION)){
+                if(FinalConfig.VERSION.equals(HttpAddr.NEW_VERSION)){
                     JOptionPane.showMessageDialog(MainFra.getInstance(),"已最新");
                     return;
                 }
@@ -260,10 +261,10 @@ public class JMenuComponent {
                 System.exit(0);
             }catch(Exception ignored){}
         });
-        watchMode.addActionListener(e-> SwitchWatchPlay.start());
-        listenMode.addActionListener(e-> SwitchListenPlay.start());
-        followMode.addActionListener(e-> SwitchFollowPlay.start());
-        soundRecordPlay.addActionListener(e-> ListenPlay.start());
+        watchMode.addActionListener(e-> SwitchWatchPlayEvent.start());
+        listenMode.addActionListener(e-> SwitchListenPlayEvent.start());
+        followMode.addActionListener(e-> SwitchFollowPlayEvent.start());
+        soundRecordPlay.addActionListener(e-> ListenPlayEvent.start());
 
     }
 }

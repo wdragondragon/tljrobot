@@ -5,11 +5,11 @@ import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.TypingState;
-import com.jdragon.tljrobot.client.event.FArea.Replay;
-import com.jdragon.tljrobot.client.event.FArea.ShareArticle;
+import com.jdragon.tljrobot.client.event.FArea.ReplayEvent;
+import com.jdragon.tljrobot.client.event.FArea.ShareArticleEvent;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
 import com.jdragon.tljrobot.client.utils.common.Code;
-import com.jdragon.tljrobot.client.window.SendArticleDialog;
+import com.jdragon.tljrobot.client.window.dialog.SendArticleDialog;
 import com.jdragon.tljrobot.tljutils.ArticleUtil;
 
 import javax.swing.*;
@@ -116,14 +116,14 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
         if (article.getArticle() == null
                 || article.getArticle().equals(""))
             return;
-        Replay.start();
+        ReplayEvent.start();
         TypingState.sendArticle = 1; // 顺序发文标志
         article.setParagraph(1);//设置段号
         fontweizhi += fontnum;
         SwingSingleton.SendArticleLabel().setVisible(true);
         SendArticleDialog.getInstance().setVisible(false);
         if (!LocalConfig.lurk)
-            ShareArticle.start();
+            ShareArticleEvent.start();
     }
     public void nextOrder(){
         try {
@@ -143,14 +143,14 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
             Article article = Article.getArticleSingleton();
             article.setArticle(wen);
             article.addParagraph();// 发文增段
-            Replay.start();
+            ReplayEvent.start();
             SwingSingleton.SendArticleLabel().setText(fontweizhi
                     + "/"
                     + all.length()
                     + ":"
                     + String.format("%.2f", (double) fontweizhi * 100
                     / all.length()) + "%");
-            ShareArticle.start();
+            ShareArticleEvent.start();
         } catch (Exception ex) {
             System.out.println("发文处失败");
         }
@@ -189,8 +189,8 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
         }else if(model.equals("下一段")){
             article.addParagraph(); // 发文增段
         }
-        Replay.start();
-        ShareArticle.start();
+        ReplayEvent.start();
+        ShareArticleEvent.start();
     }
     public static int wordNum;
     public void ciKu(){
@@ -232,7 +232,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
             }
             article.setArticle(temp.toString());
             article.setParagraph(1);
-            Replay.start();
+            ReplayEvent.start();
             TypingState.sendArticle = Constant.SEND_WORDS;
             SendArticleDialog.getInstance().setVisible(false);
         } catch (Exception ex) {
@@ -250,8 +250,8 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
             }
             Article.getArticleSingleton().setArticle(str.toString());
             Article.getArticleSingleton().addParagraph();
-            Replay.start();
-            ShareArticle.start();
+            ReplayEvent.start();
+            ShareArticleEvent.start();
         }
     }
     @Override
@@ -292,13 +292,13 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
         if (article.getArticle() == null
                 || article.getArticle().equals(""))
             return;
-        Replay.start();
+        ReplayEvent.start();
         TypingState.sendArticle = 1; // 顺序发文标志
         article.setParagraph(1);//设置段号
         fontweizhi += fontnum;
         SwingSingleton.SendArticleLabel().setVisible(true);
         SendArticleDialog.getInstance().setVisible(false);
-        ShareArticle.start();
+        ShareArticleEvent.start();
     }
     public static String randomCommon(String wen, int n) {
         if (wen == null)

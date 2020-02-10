@@ -6,16 +6,20 @@ import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.event.FArea.*;
-import com.jdragon.tljrobot.client.event.other.ListenPlay;
-import com.jdragon.tljrobot.client.event.other.SwitchFollowPlay;
-import com.jdragon.tljrobot.client.event.other.SwitchListenPlay;
-import com.jdragon.tljrobot.client.event.other.SwitchWatchPlay;
+import com.jdragon.tljrobot.client.event.other.ListenPlayEvent;
+import com.jdragon.tljrobot.client.event.other.SwitchFollowPlayEvent;
+import com.jdragon.tljrobot.client.event.other.SwitchListenPlayEvent;
+import com.jdragon.tljrobot.client.event.other.SwitchWatchPlayEvent;
 import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
 import com.jdragon.tljrobot.client.listener.common.MixListener;
-import com.jdragon.tljrobot.client.listener.common.Typing;
+import com.jdragon.tljrobot.client.listener.common.TypingListener;
 import com.jdragon.tljrobot.client.listener.core.SystemListener;
 import com.jdragon.tljrobot.client.utils.common.BetterTypingSingleton;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
+import com.jdragon.tljrobot.client.window.dialog.LogonDialog;
+import com.jdragon.tljrobot.client.window.dialog.SendArticleDialog;
+import com.jdragon.tljrobot.client.window.dialog.SetDialog;
+import com.jdragon.tljrobot.client.window.dialog.ShowArticleDialog;
 import com.jdragon.tljrobot.tljutils.string.Comparison;
 import lombok.Data;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
@@ -99,8 +103,8 @@ public class MainFra extends JFrame {
         MinButton().addActionListener(SystemListener.getInstance());
         SizeButton().addMouseListener(SystemListener.getInstance());
         SizeButton().addMouseMotionListener(SystemListener.getInstance());
-        (TypingText().getDocument()).addDocumentListener(Typing.getInstance());
-        TypingText().addKeyListener(Typing.getInstance());
+        (TypingText().getDocument()).addDocumentListener(TypingListener.getInstance());
+        TypingText().addKeyListener(TypingListener.getInstance());
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
 
 
@@ -116,26 +120,26 @@ public class MainFra extends JFrame {
                         MixListener.getInstance().mixButton("该段乱序");break;
                     case 'E':
                         Article.getArticleSingleton(1,"剪贴板载文", Clipboard.get());
-                        Replay.start();
+                        ReplayEvent.start();
                         break;
                     case 'Q':
-                        SwitchListenPlay.start();break;
+                        SwitchListenPlayEvent.start();break;
                     case 'K':
-                        SwitchWatchPlay.start();break;
+                        SwitchWatchPlayEvent.start();break;
                     case 'G':
-                        SwitchFollowPlay.start();break;
+                        SwitchFollowPlayEvent.start();break;
                     case KeyEvent.VK_ENTER:
                         if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)) {
                             if(SwingSingleton.TypingText().getText().length()==0)break;
                             TypingText().setEditable(false); // 设置不可打字状态
-                            Typing.delaySendResultSign = true;
+                            TypingListener.delaySendResultSign = true;
                         }else if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){
                             List<HashMap<String,Integer>> hashMapList =
-                                    Comparison.getComparisonListenResult(ListenPlay.getContent(),
+                                    Comparison.getComparisonListenResult(ListenPlayEvent.getContent(),
                                             TypingText().getText(), BetterTypingSingleton.getInstance().getSymbolCode());
-                            Typing.getInstance().changeListenPlayFontColor(hashMapList);
-                            SendAchievement.start();
-                            ListenPlay.stop();
+                            TypingListener.getInstance().changeListenPlayFontColor(hashMapList);
+                            SendAchievementEvent.start();
+                            ListenPlayEvent.stop();
                         }
                         break;
                 }
@@ -144,25 +148,25 @@ public class MainFra extends JFrame {
             preButton = event.getKeyCode();
             switch (event.getKeyCode()) {
                 case KeyEvent.VK_F1:
-                    SendAchievement.start();
+                    SendAchievementEvent.start();
                     break;
                 case KeyEvent.VK_F2:
-                    SendArticle.start();
+                    SendArticleEvent.start();
                     break;
                 case KeyEvent.VK_F3:
-                    Replay.start();
+                    ReplayEvent.start();
                     break;
                 case KeyEvent.VK_F4:
-                    QQGetArticle.start();
+                    QQGetArticleEvent.start();
                     break;
                 case KeyEvent.VK_F5:
-                    ChangeQQGroup.start();
+                    ChangeQQGroupEvent.start();
                     break;
                 case KeyEvent.VK_F6 :
-                    ShareArticle.start();
+                    ShareArticleEvent.start();
                     break;
                 case KeyEvent.VK_F7 :
-                    TypingPause.start();
+                    TypingPauseEvent.start();
                     break;
 //                    case KeyEvent.VK_F8: new web(); break;
 //                    case KeyEvent.VK_F9 : break;
