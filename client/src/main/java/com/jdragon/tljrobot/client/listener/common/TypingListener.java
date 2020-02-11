@@ -47,13 +47,13 @@ public class TypingListener implements DocumentListener, KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         try {
-            if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN))return;
+            if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)|| Article.getArticleSingleton().getArticle()==null)return;
 //            if(TypingText().getText().length()==0)return;
             if (e.getKeyChar() != '\b')
                 typeStr = TypingText().getText() + e.getKeyChar();
             else
                 typeStr = TypingText().getText();
-            articleStr = Article.getArticleSingleton().getArticle()!=null?Article.getArticleSingleton().getArticle():"";
+            articleStr = Article.getArticleSingleton().getArticle();
 
             typeChars = typeStr.toCharArray();
             articleChars = articleStr.toCharArray();
@@ -61,7 +61,7 @@ public class TypingListener implements DocumentListener, KeyListener {
              * 增加已打字数
              */
             if (typeStr.length() > oldTypeStrLength) {
-                if (articleChars.length-1>=n&&articleChars[typeStr.length() - 1] == e.getKeyChar()) {
+                if (articleChars[typeStr.length() - 1] == e.getKeyChar()) {
                     NumState.rightNum++;
                 }else {
                     NumState.misNum++;
