@@ -15,6 +15,7 @@ import com.jdragon.tljrobot.client.listener.common.MixListener;
 import com.jdragon.tljrobot.client.listener.common.TypingListener;
 import com.jdragon.tljrobot.client.utils.common.ArticleRegex;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
+import com.jdragon.tljrobot.client.utils.common.DrawUnLookPlayResult;
 import com.jdragon.tljrobot.client.window.dialog.SendArticleDialog;
 import com.jdragon.tljrobot.tljutils.ArticleUtil;
 import com.jdragon.tljrobot.tljutils.string.Comparison;
@@ -39,21 +40,23 @@ public class DelayedOperationThread extends Thread {
                     ReplayEvent.start();
                 }
                 if (TypingListener.delaySendResultSign){
+                    List<HashMap<String,Integer>> hashMapList = null;
                     TypingListener.delaySendResultSign = false;
                     if(LocalConfig.typingPattern.equals(Constant.FOLLOW_PLAY_PATTERN))
                         TypingListener.getInstance().changeAllFontColor();
-                    else{
-                        List<HashMap<String,Integer>> hashMapList =
-                                Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(), ArticleUtil.clearSpace(SwingSingleton.TypingText().getText()));
+                    else if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)){
+                        hashMapList = Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(),
+                                ArticleUtil.clearSpace(SwingSingleton.TypingText().getText()));
                         TypingListener.getInstance().changeLookPlayFontColor(hashMapList);
                         SwingSingleton.SpeedButton().setText(String.format("%.2f",
                                 TypingState.getSpeed()));
                     }
-
                     sleep(200);
                     TypingState.typingState = false;//跟打结束标志使DynamicSpeed中计算停止
                     SendAchievementEvent.start();
-
+                    if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)){
+                        DrawUnLookPlayResult.drawUnFollowPlayResultImg(Article.getArticleSingleton().getTitle(), hashMapList,"看打");
+                    }
                     if(UserState.loginState) {//联网操作，发送跟打历史或发送0段赛文成绩
                         if (TypingState.dailyCompetition) {
                             HistoryEvent.uploadMatchAch();

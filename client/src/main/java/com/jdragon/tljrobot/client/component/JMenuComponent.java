@@ -15,10 +15,13 @@ import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
 import com.jdragon.tljrobot.client.listener.common.BuildChooseFileListener;
 import com.jdragon.tljrobot.client.listener.common.MixListener;
 import com.jdragon.tljrobot.client.listener.common.TypingListener;
+import com.jdragon.tljrobot.client.utils.common.BetterTypingSingleton;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
+import com.jdragon.tljrobot.client.utils.common.DrawUnLookPlayResult;
 import com.jdragon.tljrobot.client.window.*;
 import com.jdragon.tljrobot.client.window.dialog.*;
 import com.jdragon.tljrobot.tljutils.SystemUtil;
+import com.jdragon.tljrobot.tljutils.string.Comparison;
 import lombok.Data;
 
 import javax.swing.*;
@@ -79,12 +82,13 @@ public class JMenuComponent {
     public JMenuItem update;
 
     public JMenu switchingMode;//切换模式
-    public JMenuItem watchMode = new JMenuItem("看打模式 ctrl+K");
-    public JMenuItem listenMode = new JMenuItem("听打模式 ctrl+Q");
+    public JMenu watchModeJMenu = new JMenu("看打模式 ctrl+K");
+    public JMenu listenModeJMenu = new JMenu("听打模式 ctrl+Q");
     public JMenuItem followMode = new JMenuItem("跟打模式 ctrl+G");
 
-
     public JMenuItem soundRecordPlay = new JMenuItem("听打选择文件");//
+    public JMenuItem sendListenPlayImageResult = new JMenuItem("发送听打图片成绩");
+    public JMenuItem sendWatchPlayImageResult = new JMenuItem("发送看打图片成绩");
     public JMenu getMenu(){
         menu = new JMenu("菜单");
         initItem();
@@ -137,7 +141,7 @@ public class JMenuComponent {
         resert = new JMenuItem("错位复位");
         update = new JMenuItem("版本"+ FinalConfig.VERSION+" 最新" + HttpAddr.NEW_VERSION);
 
-        lookPlay = new JMenuItem("成绩提交 ctrl+enter");
+        lookPlay = new JMenuItem("看、听打成绩提交 ctrl+enter");
         check = new JMenuItem("看打检验");
 
         nextEnglish = new JMenuItem("英词下一段");
@@ -167,7 +171,7 @@ public class JMenuComponent {
         base.add(getArticleByClipboard);
 //        base.add(checkCode);
         base.add(sendArticleMenu);
-        base.add(lookPlay);
+//        base.add(lookPlay);
 //        base.add(check);
 
         onlineMenu.add(rankingMenu);
@@ -183,9 +187,16 @@ public class JMenuComponent {
         otherMenu.add(createCodeTable);
 //        otherMenu.add(randomArticle);
 
+
+        watchModeJMenu.add(sendWatchPlayImageResult);
+
+        listenModeJMenu.add(soundRecordPlay);
+        listenModeJMenu.add(sendListenPlayImageResult);
+
         switchingMode.add(followMode);
-        switchingMode.add(watchMode);
-        switchingMode.add(listenMode);
+        switchingMode.add(watchModeJMenu);
+        switchingMode.add(listenModeJMenu);
+        switchingMode.add(lookPlay);
 
         menu.add(Login);
         menu.add(base);
@@ -199,7 +210,7 @@ public class JMenuComponent {
 //        menu.add(openCheat);
 //        menu.add(resert);
         menu.add(update);
-        menu.add(soundRecordPlay);
+
     }
     public void addListener(){
         Login.addActionListener(e-> LogonDialog.getInstance().setVisible(true));
@@ -261,10 +272,15 @@ public class JMenuComponent {
                 System.exit(0);
             }catch(Exception ignored){}
         });
-        watchMode.addActionListener(e-> SwitchWatchPlayEvent.start());
-        listenMode.addActionListener(e-> SwitchListenPlayEvent.start());
+        watchModeJMenu.addActionListener(e-> SwitchWatchPlayEvent.start());
+        listenModeJMenu.addActionListener(e-> SwitchListenPlayEvent.start());
         followMode.addActionListener(e-> SwitchFollowPlayEvent.start());
         soundRecordPlay.addActionListener(e-> ListenPlayEvent.start());
+        sendListenPlayImageResult.addActionListener(e-> DrawUnLookPlayResult.drawUnFollowPlayResultImg(ListenPlayEvent.getTitle(),
+                Comparison.getComparisonListenResult(ListenPlayEvent.getContent(),
+                TypingText().getText(), BetterTypingSingleton.getInstance().getSymbolCode()),"听打"));
 
+        sendWatchPlayImageResult.addActionListener(e->DrawUnLookPlayResult.drawUnFollowPlayResultImg(Article.getArticleSingleton().getTitle(),
+                Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(),TypingText().getText()),"看打"));
     }
 }

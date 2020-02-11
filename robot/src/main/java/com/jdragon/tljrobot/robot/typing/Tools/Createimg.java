@@ -345,7 +345,6 @@ public class Createimg {
             DrawSub drawSub = new DrawSub(imageWidthTemp,imageHeight-40,words,wordsCode, typeColor.getColor(type), typeColor.getFont(type));
             drawSubList.add(drawSub);
             imageWidthTemp += length*20 + 10;
-
         }
 
         BufferedImage image = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);

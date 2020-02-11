@@ -16,6 +16,7 @@ import com.jdragon.tljrobot.client.listener.common.TypingListener;
 import com.jdragon.tljrobot.client.listener.core.SystemListener;
 import com.jdragon.tljrobot.client.utils.common.BetterTypingSingleton;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
+import com.jdragon.tljrobot.client.utils.common.DrawUnLookPlayResult;
 import com.jdragon.tljrobot.client.window.dialog.LogonDialog;
 import com.jdragon.tljrobot.client.window.dialog.SendArticleDialog;
 import com.jdragon.tljrobot.client.window.dialog.SetDialog;
@@ -140,6 +141,7 @@ public class MainFra extends JFrame {
                             TypingListener.getInstance().changeListenPlayFontColor(hashMapList);
                             SendAchievementEvent.start();
                             ListenPlayEvent.stop();
+                            DrawUnLookPlayResult.drawUnFollowPlayResultImg(ListenPlayEvent.getTitle(),hashMapList,"听打");
                         }
                         break;
                 }
