@@ -69,34 +69,14 @@ public class RobotGroupClient extends IcqListener {
                 eventGroupMessage.respond(retMessage);
             }
         }else if(message.equals("#联赛成绩")){
-           eventGroupMessage.respond(resultUnionJson(false));
+            eventGroupMessage.respond(resultUnionJson(false));
         }else if(message.equals("#联赛首打")){
             eventGroupMessage.respond(resultUnionJson(true));
         }else if (message.equals("#长流成绩")){
             //{"id":173,"userId":1,"typeDate":"2020-02-04","speed":123.0,"keySpeed":123.0,"keyLength":123.0,
             // "number":123,"deleteText":123,"deleteNum":123,"mistake":123,"repeatNum":123,"keyAccuracy":123.0,
             // "keyMethod":123.0,"wordRate":123.0,"time":123.0,"articleId":123,"paragraph":0,"userName":"谭宇"}
-            String resoleResult;
-            String title = DateUtil.now().toString();
-            String[] head = new String[]{"序号","名字","成绩","击键","码长","退格","回改","错字","选重","键准","键法","打词","设备"};
-            JSONObject retJson = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.GET_TLJ_MATCH_RANK_ALL, title));
-            String retMessage = retJson.getString("message");
-            if(retMessage.equals("获取成功")) {
-                List<TljHistory> tljHistories = new ArrayList<>();
-                JSONArray resultJson = retJson.getJSONArray("result");
-                for(Object achObj:resultJson){
-                    JSON achJson = JSON.parseObject(achObj.toString());
-                    tljHistories.add(JSON.toJavaObject(achJson,TljHistory.class));
-                }
-                String drawPath = DrawImg.tljMatchByHistories(title,head,tljHistories);
-                if(drawPath.equals("生成图片出错"))
-                    resoleResult = drawPath;
-                else
-                    resoleResult = new ComponentImage(drawPath).toString();
-            }else{
-                resoleResult = retMessage;
-            }
-            eventGroupMessage.respond(resoleResult);
+            eventGroupMessage.respond(resultTljJson());
         }else if(Regex.getParagraph(message)==999||Regex.getParagraph(message)==9999){
             if(!GroupCache.typeGroupMap.containsKey(groupId))return;
             RobotHistory robotHistory = Regex.getGradeMap(message);
@@ -126,7 +106,30 @@ public class RobotGroupClient extends IcqListener {
             }
         }
     }
-    private String resultUnionJson(boolean isFirst){
+    public static String resultTljJson(){
+        String resoleResult;
+        String title = DateUtil.now().toString();
+        String[] head = new String[]{"序号","名字","成绩","击键","码长","退格","回改","错字","选重","键准","键法","打词","设备"};
+        JSONObject retJson = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.GET_TLJ_MATCH_RANK_ALL, title));
+        String retMessage = retJson.getString("message");
+        if(retMessage.equals("获取成功")) {
+            List<TljHistory> tljHistories = new ArrayList<>();
+            JSONArray resultJson = retJson.getJSONArray("result");
+            for(Object achObj:resultJson){
+                JSON achJson = JSON.parseObject(achObj.toString());
+                tljHistories.add(JSON.toJavaObject(achJson,TljHistory.class));
+            }
+            String drawPath = DrawImg.tljMatchByHistories(title,head,tljHistories);
+            if(drawPath.equals("生成图片出错"))
+                resoleResult = drawPath;
+            else
+                resoleResult = new ComponentImage(drawPath).toString();
+        }else{
+            resoleResult = retMessage;
+        }
+        return resoleResult;
+    }
+    public static String resultUnionJson(boolean isFirst){
         String resoleResult;
         JSONObject articleJson = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.GET_UNION_MATCH, DateUtil.now().toString()));
         String retMessage = articleJson.getString("message");

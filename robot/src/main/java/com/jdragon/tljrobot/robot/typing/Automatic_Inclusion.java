@@ -3,8 +3,6 @@ package com.jdragon.tljrobot.robot.typing;
 import cc.moecraft.icq.sender.IcqHttpApi;
 import cc.moecraft.icq.sender.message.components.ComponentImage;
 import com.jdragon.tljrobot.robot.club.robot;
-import com.jdragon.tljrobot.robot.typing.ConDatabase.ComArti;
-import com.jdragon.tljrobot.robot.typing.ConDatabase.Conn;
 
 import java.util.Calendar;
 
@@ -24,11 +22,11 @@ public class Automatic_Inclusion extends Thread {
                     }
 
                     IcqHttpApi icqHttpApi = robot.getInstance().getAccountManager().getNonAccountSpecifiedApi();
-                    String path = ComArti.responseStr(Conn.getdate().toString(), 0L, Conn.getdate(), 3);
+                    String path = com.jdragon.tljrobot.robot.newTyping.RobotGroupClient.resultUnionJson(false);
                     if(path.equals("无该天赛文成绩")) icqHttpApi.sendGroupMsg(robot.tljGroupNum,path);
                     else icqHttpApi.sendGroupMsg(robot.tljGroupNum,new ComponentImage(path).toString());
 
-                    path = ComArti.responseStr(Conn.getdate().toString(), 0L, Conn.getdate(), 2);
+                    path = com.jdragon.tljrobot.robot.newTyping.RobotGroupClient.resultTljJson();
                     if(path.equals("无该天赛文成绩"))icqHttpApi.sendGroupMsg(robot.tljGroupNum,path);
                     else icqHttpApi.sendGroupMsg(robot.tljGroupNum,new ComponentImage(path).toString());
                 }
