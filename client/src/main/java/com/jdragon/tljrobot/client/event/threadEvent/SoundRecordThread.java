@@ -1,5 +1,7 @@
 package com.jdragon.tljrobot.client.event.threadEvent;
 
+import com.jdragon.tljrobot.client.config.LocalConfig;
+import com.jdragon.tljrobot.client.constant.Constant;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 
@@ -23,7 +25,8 @@ public class SoundRecordThread extends Thread{
     public void run(){
         try {
             Thread.sleep(3000);
-            recordStart();
+            if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN))
+                recordStart();
         }catch (Exception ignore){}
     }
     public static void recordStart(){

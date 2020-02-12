@@ -21,6 +21,7 @@ import com.jdragon.tljrobot.client.window.dialog.LogonDialog;
 import com.jdragon.tljrobot.client.window.dialog.SendArticleDialog;
 import com.jdragon.tljrobot.client.window.dialog.SetDialog;
 import com.jdragon.tljrobot.client.window.dialog.ShowArticleDialog;
+import com.jdragon.tljrobot.tljutils.ArticleUtil;
 import com.jdragon.tljrobot.tljutils.string.Comparison;
 import lombok.Data;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
@@ -137,7 +138,7 @@ public class MainFra extends JFrame {
                         }else if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){
                             List<HashMap<String,Integer>> hashMapList =
                                     Comparison.getComparisonListenResult(ListenPlayEvent.getContent(),
-                                            TypingText().getText(), BetterTypingSingleton.getInstance().getSymbolCode());
+                                            ArticleUtil.clearSpace(TypingText().getText()), BetterTypingSingleton.getInstance().getSymbolCode());
                             TypingListener.getInstance().changeListenPlayFontColor(hashMapList);
                             SendAchievementEvent.start();
                             ListenPlayEvent.stop();
@@ -159,7 +160,10 @@ public class MainFra extends JFrame {
                     ReplayEvent.start();
                     break;
                 case KeyEvent.VK_F4:
-                    QQGetArticleEvent.start();
+                    if(!LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN))
+                        QQGetArticleEvent.start();
+                    else
+                        ListenPlayEvent.start();
                     break;
                 case KeyEvent.VK_F5:
                     ChangeQQGroupEvent.start();

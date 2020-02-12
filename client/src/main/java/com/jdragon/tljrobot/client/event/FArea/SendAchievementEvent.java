@@ -29,8 +29,8 @@ public class SendAchievementEvent {
             result = ListenPlayEvent.getTitle() +
                     " 文章长度" + length + " 正确率" + String.format("%.2f",((double)length-mistake)/length*100)+"%"+
                     " 听打模式" + " 错:" + lookMis + " 多:" + lookMore + " 少:" + lookMiss +
-                    " 长流跟打器" + FinalConfig.VERSION +
-                    " " + SystemUtil.getSystemName() + "版" ;
+                    " 长流" + (LocalConfig.changLiuVersion?FinalConfig.VERSION:"") +
+                    (LocalConfig.systemVersion?" " + SystemUtil.getSystemName() + "版" :"");
             NumState.num += length;
             NumState.dateNum += length;
             NumState.misNum += mistake;

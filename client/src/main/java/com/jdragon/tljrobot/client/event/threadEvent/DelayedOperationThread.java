@@ -17,7 +17,6 @@ import com.jdragon.tljrobot.client.utils.common.ArticleRegex;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
 import com.jdragon.tljrobot.client.utils.common.DrawUnLookPlayResult;
 import com.jdragon.tljrobot.client.window.dialog.SendArticleDialog;
-import com.jdragon.tljrobot.tljutils.ArticleUtil;
 import com.jdragon.tljrobot.tljutils.string.Comparison;
 
 import java.util.HashMap;
@@ -46,7 +45,7 @@ public class DelayedOperationThread extends Thread {
                         TypingListener.getInstance().changeAllFontColor();
                     else if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)){
                         hashMapList = Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(),
-                                ArticleUtil.clearSpace(SwingSingleton.TypingText().getText()));
+                                SwingSingleton.TypingText().getText());
                         TypingListener.getInstance().changeLookPlayFontColor(hashMapList);
                         SwingSingleton.SpeedButton().setText(String.format("%.2f",
                                 TypingState.getSpeed()));
