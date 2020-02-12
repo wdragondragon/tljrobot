@@ -150,6 +150,15 @@ public class SwingSingleton {
     public static JScrollPane WatchingJSP(){
         if (watchingJSP==null){
             watchingJSP = new JScrollPane(WatchingText());
+            WatchingJSP().getVerticalScrollBar().addAdjustmentListener(e -> {
+                JScrollBar jsb = (JScrollBar)e.getAdjustable();
+                if(jsb.getValueIsAdjusting())
+                    System.out.println("adjusting ...");
+                else
+                    System.out.println(e.getValue());
+                System.out.println(jsb.getMaximum()+":"+jsb.getMinimum()+":"+jsb.getValue());
+                System.out.println(jsb.getX()+":"+jsb.getY()+":"+jsb.getWidth()+":"+jsb.getHeight());
+            });
         }
         return watchingJSP;
     }

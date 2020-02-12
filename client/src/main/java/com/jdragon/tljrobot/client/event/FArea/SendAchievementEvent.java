@@ -57,21 +57,23 @@ public class SendAchievementEvent {
                             " 速度" + String.format("%.2f", speed) + noMisSpeedStr +
                             " 击键" + String.format("%.2f", keySpeed) +
                             " 码长" + String.format("%.2f", keyLength) +
-                            " 标顶理论" + String.format("%.2f", shortCodesNum) +
-                            " 字数" + articleLength +
-                            " 回改" + deleteTextNumber +
-                            " 退格" + deleteNumber +
-                            " 错字" + mistake +
-                            " 键数" + keyNumber +
-                            " 选重" + repeat +
-                            " 键准" + String.format("%.2f", getKeyAccuracy()) + "%" +
-                            " 键法" + String.format("%.2f", getKeyMethod()) + "%" +
-                            "(左" + left + ":右" + right + ":空格" + space + ")" +
-                            " 打词率" + String.format("%.2f", getWordRate()) + "%" +
-                            " 选重率" + String.format("%.2f", getRepeatRate()) + "%" + lookPlayStr +
-                            " 长流跟打器" + FinalConfig.VERSION +
-                            " " + SystemUtil.getSystemName() + "版" +
-                            " 校验码" + checkCode;
+                            (LocalConfig.shortCodesNum?" 标顶理论" + String.format("%.2f", shortCodesNum):"") +
+                            (LocalConfig.articleLength? " 字数" + articleLength:"") +
+                            (LocalConfig.deleteTextNumber?" 回改" + deleteTextNumber:"") +
+                            (LocalConfig.deleteNumber?" 退格" + deleteNumber:"") +
+                            (LocalConfig.mistake? " 错字" + mistake :"")+
+                            (LocalConfig.keyNumber?" 键数" + keyNumber:"") +
+                            (LocalConfig.repeat?" 选重" + repeat:"") +
+                            (LocalConfig.keyAccuracy?" 键准" + String.format("%.2f", getKeyAccuracy()) + "%":"") +
+                            (LocalConfig.keyMethod? " 键法" + String.format("%.2f", getKeyMethod()) + "%" +
+                            "(左" + left + ":右" + right + ":空格" + space + ")":"") +
+                            (LocalConfig.wordRate?" 打词率" + String.format("%.2f", getWordRate()) + "%":"") +
+                            (LocalConfig.repeatRate?" 选重率" + String.format("%.2f", getRepeatRate()) + "%":"") + lookPlayStr +
+                            (LocalConfig.typeWritingSign?" 输入法:"+LocalConfig.typeWriting:"")+
+                            (LocalConfig.personalTagSign?" 个签:"+LocalConfig.personalTag:"")+
+                            " 长流" + (LocalConfig.changLiuVersion?FinalConfig.VERSION:"") +
+                            (LocalConfig.systemVersion?" " + SystemUtil.getSystemName() + "版":"") +
+                            (LocalConfig.checkCode? " 校验码" + checkCode:"");
         }
         Clipboard.set(result);
         if(LocalConfig.lurk||!SystemUtil.isWindows())return;

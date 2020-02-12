@@ -21,8 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.jdragon.tljrobot.client.entry.TypingState.*;
 import static com.jdragon.tljrobot.client.component.SwingSingleton.*;
+import static com.jdragon.tljrobot.client.entry.TypingState.*;
 @Data
 public class TypingListener implements DocumentListener, KeyListener {
     private static TypingListener typingListener;
@@ -537,7 +537,6 @@ public class TypingListener implements DocumentListener, KeyListener {
             }
             WatchingJSP().getVerticalScrollBar().setValue(0);
         }
-        System.out.println(cursor);
         WatchingText().setCaretPosition(cursor);
     }
     public void updateNumShow(){

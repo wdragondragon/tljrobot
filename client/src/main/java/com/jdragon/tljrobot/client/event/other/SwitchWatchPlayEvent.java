@@ -21,5 +21,6 @@ public class SwitchWatchPlayEvent {
                 LocalConfig.fontSize, 0, 0, 0, Color.BLACK, LocalConfig.family,
                 LocalConfig.watchingBackgroundColor);
         JMenuComponent.getInstance().switchingMode.setText("当前模式："+ LocalConfig.typingPattern);
+        JMenuComponent.getInstance().getMenu().setText(LocalConfig.typingPattern);
     }
 }

@@ -14,10 +14,10 @@ public class LocalConfig {
     public static String typeDocName = "typeDoc";
 
 
-    public static Integer windowX = 100;
-    public static Integer windowY = 100;
-    public static Integer windowWidth = 710;
-    public static Integer windowHeight = 520;
+    public static Integer windowX = 100;//窗口位置
+    public static Integer windowY = 100;//窗口位置
+    public static Integer windowWidth = 710;//窗口大小
+    public static Integer windowHeight = 520;//窗口大小
 
     public static Color UIBackgroundColor = new Color(238, 238, 238);
 
@@ -46,9 +46,28 @@ public class LocalConfig {
 
     public static Boolean runLogin = false;//自动登录
 
-    public static String username;
-    public static String password;
+    public static String username;//自动登录保存的账号
+    public static String password;//自动登录保存的密码
 
+    public static String personalTag = "个性签名";
+    public static String typeWriting = "输入法";
+
+    public static Boolean shortCodesNum = true;
+    public static Boolean articleLength = true;
+    public static Boolean deleteTextNumber = true;
+    public static Boolean deleteNumber = true;
+    public static Boolean mistake = true;
+    public static Boolean keyNumber = true;
+    public static Boolean repeat = true;
+    public static Boolean keyAccuracy = true;
+    public static Boolean keyMethod = true;
+    public static Boolean wordRate = true;
+    public static Boolean repeatRate = true;
+    public static Boolean changLiuVersion = true;
+    public static Boolean systemVersion = true;
+    public static Boolean checkCode = true;
+    public static Boolean personalTagSign = false;
+    public static Boolean typeWritingSign = false;
 
     public static void readConfig(){
         IniAccess.readIni(iniFilePath);

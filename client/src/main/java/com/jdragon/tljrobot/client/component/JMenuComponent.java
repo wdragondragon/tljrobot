@@ -90,10 +90,12 @@ public class JMenuComponent {
     public JMenuItem sendListenPlayImageResult = new JMenuItem("发送听打图片成绩");
     public JMenuItem sendWatchPlayImageResult = new JMenuItem("发送看打图片成绩");
     public JMenu getMenu(){
-        menu = new JMenu("菜单");
-        initItem();
-        addListener();
-        addItem();
+        if(menu==null) {
+            menu = new JMenu(LocalConfig.typingPattern);
+            initItem();
+            addListener();
+            addItem();
+        }
         return menu;
     }
     public void initItem(){
