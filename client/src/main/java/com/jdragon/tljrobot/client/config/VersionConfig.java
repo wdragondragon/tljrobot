@@ -11,7 +11,7 @@ public class VersionConfig {
         try {
             JSONObject jsonObject = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.GET_TLJ_NEW_VERSION));
             String retMessage = jsonObject.getString("message");
-            if (retMessage.equals("获取成功")) {
+            if ("获取成功".equals(retMessage)) {
                 return jsonObject.getJSONObject("result").getString("version");
             }
         }catch (Exception e){}

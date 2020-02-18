@@ -30,7 +30,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import static com.jdragon.tljrobot.client.component.SwingSingleton.TypingText;
+import static com.jdragon.tljrobot.client.component.SwingSingleton.typingText;
 
 @Data
 public class JMenuComponent {
@@ -256,8 +256,8 @@ public class JMenuComponent {
             }
         });
         lookPlay.addActionListener(e->{
-            if(SwingSingleton.TypingText().getText().length()==0)return;
-            TypingText().setEditable(false); // 设置不可打字状态
+            if(SwingSingleton.typingText().getText().length()==0)return;
+            typingText().setEditable(false); // 设置不可打字状态
             TypingListener.delaySendResultSign = true;
         });
 
@@ -267,10 +267,11 @@ public class JMenuComponent {
                     JOptionPane.showMessageDialog(MainFra.getInstance(),"已最新");
                     return;
                 }
-                if(SystemUtil.isWindows())
+                if(SystemUtil.isWindows()) {
                     Runtime.getRuntime().exec("更新.exe");
-                else
+                } else {
                     Runtime.getRuntime().exec("java -jar update.jar");
+                }
                 System.exit(0);
             }catch(Exception ignored){}
         });
@@ -280,9 +281,9 @@ public class JMenuComponent {
         soundRecordPlay.addActionListener(e-> ListenPlayEvent.start());
         sendListenPlayImageResult.addActionListener(e-> DrawUnLookPlayResult.drawUnFollowPlayResultImg(ListenPlayEvent.getTitle(),
                 Comparison.getComparisonListenResult(ListenPlayEvent.getContent(),
-                TypingText().getText(), BetterTypingSingleton.getInstance().getSymbolCode()),"听打"));
+                typingText().getText(), BetterTypingSingleton.getInstance().getSymbolCode()),"听打"));
 
         sendWatchPlayImageResult.addActionListener(e->DrawUnLookPlayResult.drawUnFollowPlayResultImg(Article.getArticleSingleton().getTitle(),
-                Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(),TypingText().getText()),"看打"));
+                Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(), typingText().getText()),"看打"));
     }
 }

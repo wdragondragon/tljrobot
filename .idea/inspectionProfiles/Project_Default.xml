@@ -1,6 +1,7 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
+    <inspection_tool class="AlibabaAvoidUseTimer" enabled="false" level="BLOCKER" enabled_by_default="false" />
     <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <Languages>
         <language minSize="115" name="Java" />
@@ -41,7 +42,7 @@
       <option name="IGNORE_JAVADOC_PERIOD" value="true" />
       <option name="IGNORE_DUPLICATED_THROWS" value="false" />
       <option name="IGNORE_POINT_TO_ITSELF" value="false" />
-      <option name="myAdditionalJavadocTags" value="Author:,param:,return:,Description" />
+      <option name="myAdditionalJavadocTags" value="Author:,param:,return:,Description,date" />
     </inspection_tool>
   </profile>
 </component>

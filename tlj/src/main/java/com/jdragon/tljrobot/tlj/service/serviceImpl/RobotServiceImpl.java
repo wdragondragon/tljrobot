@@ -28,12 +28,14 @@ public class RobotServiceImpl implements RobotService {
     @Autowired
     RobotHistoryMapper robotHistoryMapper;
     @Override
-    public boolean uploadUnionMatch(Article articleTemp, String author) {
+    public Date uploadUnionMatch(Article articleTemp, String author) {
         Article article = articleMapper.selectArticleByContent(articleTemp.getTitle(),articleTemp.getContent());
         if(article==null){
             if(articleTemp.insert()){
                 article = articleTemp;
-            }else return false;
+            }else {
+                return null;
+            }
         }
         UnionMatch unionMatch = unionMatchMapper.selectLastUnionMatch();
         Date date = DateUtil.now();
@@ -43,14 +45,16 @@ public class RobotServiceImpl implements RobotService {
             date = unionMatch.getHoldDate();
             Calendar calendar = new GregorianCalendar();
             calendar.setTime(date);
-            calendar.add(calendar.DATE,1);
+            calendar.add(Calendar.DATE,1);
             java.util.Date date1 =  calendar.getTime();
             date = new Date(date1.getTime());
         }
         unionMatch = new UnionMatch(article,date,author);
-        if(unionMatch.insert())
-            return true;
-        else return false;
+        if(unionMatch.insert()) {
+            return date;
+        } else {
+            return null;
+        }
     }
 
     @Override

@@ -21,6 +21,7 @@ public class SortMap {
         List<Map.Entry<Long, Integer>> list = new ArrayList<Map.Entry<Long, Integer>>(map.entrySet());
         //collections.sort()
         Collections.sort(list, new Comparator<Map.Entry<Long, Integer>>() {
+            @Override
             public int compare(Map.Entry<Long, Integer> o1, Map.Entry<Long, Integer> o2) {
                 return o2.getValue().compareTo(o1.getValue());
             }
@@ -38,6 +39,7 @@ public class SortMap {
         List<Map.Entry<Long, Double>> list = new ArrayList<Map.Entry<Long, Double>>(map.entrySet());
         //collections.sort()
         Collections.sort(list, new Comparator<Map.Entry<Long, Double>>() {
+            @Override
             public int compare(Map.Entry<Long, Double> o1, Map.Entry<Long, Double> o2) {
                 return o2.getValue().compareTo(o1.getValue());
             }
@@ -45,8 +47,9 @@ public class SortMap {
         //for-each
         int i = 0;
         for (Map.Entry<Long, Double> mapping : list) {
-            if(i<3)
+            if(i<3) {
                 math.put(mapping.getKey(),(math.get(mapping.getKey())+3-i));
+            }
             i++;// OutConn.insteadName(mapping.getKey())
             message +="用户名："+ namelist.get(mapping.getKey())+
                     " 用户Q号：" + mapping.getKey() +
@@ -61,6 +64,7 @@ public class SortMap {
         List<Map.Entry<Long, Double>> list = new ArrayList<Map.Entry<Long, Double>>(map.entrySet());
         //collections.sort()
         Collections.sort(list, new Comparator<Map.Entry<Long, Double>>() {
+            @Override
             public int compare(Map.Entry<Long, Double> o1, Map.Entry<Long, Double> o2) {
                 return o2.getValue().compareTo(o1.getValue());
             }
@@ -79,6 +83,7 @@ public class SortMap {
         List<Map.Entry<Integer,Double>> list = new ArrayList<Map.Entry<Integer,Double>>(map.entrySet());
         //collections.sort()
         Collections.sort(list, new Comparator<Map.Entry<Integer,Double>>() {
+            @Override
             public int compare(Map.Entry<Integer,Double> o1, Map.Entry<Integer,Double> o2) {
                 return o2.getValue().compareTo(o1.getValue());
             }
@@ -101,6 +106,7 @@ public class SortMap {
         List<Map.Entry<Integer, Integer>> list = new ArrayList<Map.Entry<Integer, Integer>>(map.entrySet());
         //collections.sort()
         Collections.sort(list, new Comparator<Map.Entry<Integer, Integer>>() {
+            @Override
             public int compare(Map.Entry<Integer, Integer> o1, Map.Entry<Integer, Integer> o2) {
                 return o2.getValue().compareTo(o1.getValue());
             }

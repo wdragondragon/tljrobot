@@ -9,8 +9,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static com.jdragon.tljrobot.client.component.SwingSingleton.TypingText;
-import static com.jdragon.tljrobot.client.component.SwingSingleton.WatchingText;
+import static com.jdragon.tljrobot.client.component.SwingSingleton.typingText;
+import static com.jdragon.tljrobot.client.component.SwingSingleton.watchingText;
 import static com.jdragon.tljrobot.client.config.LocalConfig.*;
 public class SetBackgroundListener implements ActionListener {
 	Dialog win = SetDialog.getInstance();
@@ -21,14 +21,14 @@ public class SetBackgroundListener implements ActionListener {
 		if(e.getActionCommand()=="打字框背景颜色"){
 			tempColor = JColorChooser.showDialog(win, "调色板", Color.white);
 			if(tempColor!=null) {
-				TypingText().setBackground(tempColor);
+				typingText().setBackground(tempColor);
 				typingBackgroundColor = tempColor;
 			}
 		}
 		else if(e.getActionCommand()=="文本框背景颜色"){
 			tempColor = JColorChooser.showDialog(win, "调色板", Color.white);
 			if(tempColor!=null) {
-				WatchingText().setBackground(tempColor);
+				watchingText().setBackground(tempColor);
 				watchingBackgroundColor = tempColor;
 			}
 		}
@@ -41,8 +41,9 @@ public class SetBackgroundListener implements ActionListener {
 		}
 		else if(e.getActionCommand()=="打错字颜色"){
 			tempColor = JColorChooser.showDialog(win, "调色板", Color.red);
-			if(tempColor!=null)
+			if(tempColor!=null) {
 				mistakeColor = tempColor;
+			}
 				JTextPaneFont.createStyle("红", typeDocName, fontSize, 0, 0, 0, Color.BLACK, family, mistakeColor);
 		}
 		else if(e.getActionCommand()=="整体界面颜色"){

@@ -13,7 +13,9 @@ public class Local {
     public static boolean isLogin(String userid){
         if(loginMap.containsKey(userid)&&loginMap.get(userid)!=null)
             return true;
-        else return false;
+        else {
+            return false;
+        }
     }
     public static String login(Object object){
         String userid = UUID.randomUUID().toString();

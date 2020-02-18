@@ -25,10 +25,11 @@ public class MdUploadImg {
     public JSONObject uploadImg(@RequestParam(value = "editormd-image-file", required = false) MultipartFile file, HttpServletRequest request) {
         // 使用自定义的上传路径
         String path;
-        if(SystemUtil.isWindows())
+        if(SystemUtil.isWindows()) {
             path = this.windowsPath;
-        else
+        } else {
             path = this.linuxPath;
+        }
         // 调用上传图片的方法
         JSONObject res = FileUtil.uploadFileReturnUrl(request,path,file,MdPrefixUrl);
         System.out.println(res.toString());

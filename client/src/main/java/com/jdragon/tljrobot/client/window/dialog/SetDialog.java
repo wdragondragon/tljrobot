@@ -23,7 +23,9 @@ public class SetDialog{
     private SetDialog(){}
     private static JDialog setDialog = null;
     public static Dialog getInstance(){
-        if(setDialog==null)init();
+        if(setDialog==null) {
+            init();
+        }
         setDialog.setBounds(mainFra.getX()+mainFra.getWidth()/4,mainFra.getY()+mainFra.getHeight()/4,535,300);
         return setDialog;
     }
@@ -267,7 +269,9 @@ public class SetDialog{
                         // TODO Auto-generated method stub
                         int keyChar = e.getKeyChar();
                         if(keyChar>=KeyEvent.VK_0&&keyChar<=KeyEvent.VK_9){}
-                        else e.consume();
+                        else {
+                            e.consume();
+                        }
                     }
                 }
         );
@@ -291,7 +295,9 @@ public class SetDialog{
                         // TODO Auto-generated method stub
                         int keyChar = e.getKeyChar();
                         if(keyChar>=KeyEvent.VK_0&&keyChar<=KeyEvent.VK_9){}
-                        else e.consume();
+                        else {
+                            e.consume();
+                        }
                     }
                 }
         );
@@ -332,7 +338,9 @@ public class SetDialog{
                         // TODO Auto-generated method stub
                         int keyChar = e.getKeyChar();
                         if(keyChar>=KeyEvent.VK_0&&keyChar<=KeyEvent.VK_9){}
-                        else e.consume();
+                        else {
+                            e.consume();
+                        }
                     }
                 }
         );
@@ -356,7 +364,7 @@ public class SetDialog{
             LocalConfig.fontSize = Integer.parseInt(fontSizeText.getText());
             JTextPaneFontConfig.start();
             TypingListener.getInstance().changeFontColor();
-            SwingSingleton.TypingText().setFont(new Font(LocalConfig.family, Font.PLAIN, LocalConfig.fontSize));
+            SwingSingleton.typingText().setFont(new Font(LocalConfig.family, Font.PLAIN, LocalConfig.fontSize));
         });
         codeTableButton.addActionListener(new ChooseFile());
         familyChange.addActionListener(e-> {

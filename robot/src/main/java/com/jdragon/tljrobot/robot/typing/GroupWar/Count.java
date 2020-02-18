@@ -19,8 +19,9 @@ public class Count extends Thread {
                 e.printStackTrace();
             }
 //            System.out.println(time);
-            if(runSign)
+            if(runSign) {
                 time++;
+            }
         }
 
     }

@@ -8,6 +8,7 @@ import com.jdragon.tljrobot.tljutils.HttpUtil;
  * Create by Jdragon on 2020.02.02
  */
 public class KeepALiveThread extends Thread{
+    @Override
     public void run(){
         while(UserState.loginState) {
             try {

@@ -69,44 +69,44 @@ public class MainFra extends JFrame {
 //        addOnBounds(this,F6(),0,0,0,0);
 //        addOnBounds(this,F7(),0,0,0,0);
 
-        JMenu().add(JMenuComponent.getInstance().getMenu());
-        addOnBounds(this,JMenu(),5, 10, 45, 32);
-        addOnBounds(this,SpeedButton(),
-                rowAddSpacing(JMenu(),7),10,150,30);
-        addOnBounds(this,KeySpeedButton(),
-                rowAddSpacing(SpeedButton(),10),10,150,30);
-        addOnBounds(this,KeyLengthButton(),
-                rowAddSpacing(KeySpeedButton(),10),10,150,30);
-        addOnBounds(this,TheoreticalCodeLengthButton(),
-                rowAddSpacing(KeyLengthButton(),10),10,150,30);
+        jMenu().add(JMenuComponent.getInstance().getMenu());
+        addOnBounds(this, jMenu(),5, 10, 45, 32);
+        addOnBounds(this, speedButton(),
+                rowAddSpacing(jMenu(),7),10,150,30);
+        addOnBounds(this, keySpeedButton(),
+                rowAddSpacing(speedButton(),10),10,150,30);
+        addOnBounds(this, keyLengthButton(),
+                rowAddSpacing(keySpeedButton(),10),10,150,30);
+        addOnBounds(this, theoreticalCodeLengthButton(),
+                rowAddSpacing(keyLengthButton(),10),10,150,30);
 
-        addOnBounds(this,TypingAndWatching(),10,
-                columnAddSpacing(SpeedButton(),10),getWidth()-10, getHeight()-100);
-        TypingAndWatching().setDividerLocation(400);
+        addOnBounds(this, typingAndWatching(),10,
+                columnAddSpacing(speedButton(),10),getWidth()-10, getHeight()-100);
+        typingAndWatching().setDividerLocation(400);
 
-        addOnBounds(this,TypingProgress(),10,
-                columnAddSpacing(TypingAndWatching(),0),getWidth()-10,10);
+        addOnBounds(this, typingProgress(),10,
+                columnAddSpacing(typingAndWatching(),0),getWidth()-10,10);
 
-        addOnBounds(this,CloseButton(),this.getWidth()-20,0,20,10);
-        addOnBounds(this,MaxButton(),this.getWidth()-42,0,20,10);
-        addOnBounds(this,MinButton(),this.getWidth()-63,0,20,10);
-        addOnBounds(this,SizeButton(),this.getWidth()-10,this.getHeight()-10,10,10);
+        addOnBounds(this, closeButton(),this.getWidth()-20,0,20,10);
+        addOnBounds(this, maxButton(),this.getWidth()-42,0,20,10);
+        addOnBounds(this, minButton(),this.getWidth()-63,0,20,10);
+        addOnBounds(this, sizeButton(),this.getWidth()-10,this.getHeight()-10,10,10);
 
-        addOnBounds(this,QQNameLabel(),TypingAndWatching().getX(),columnAddSpacing(TypingAndWatching(),10),120,40);
-        addOnBounds(this,NumberLabel(),rowAddSpacing(QQNameLabel(),10),columnAddSpacing(TypingAndWatching(),10),150,40);
-        addOnBounds(this,NumberRecordLabel(),rowAddSpacing(NumberLabel(),10),columnAddSpacing(TypingAndWatching(),10),250,40);
-        addOnBounds(this,TipsLabel(),rowAddSpacing(NumberRecordLabel(),10),columnAddSpacing(TypingAndWatching(),10),120,40);
-        addOnBounds(this,SendArticleLabel(),rowAddSpacing(TipsLabel(),10),columnAddSpacing(TypingAndWatching(),10),120,40);
+        addOnBounds(this, qQNameLabel(), typingAndWatching().getX(),columnAddSpacing(typingAndWatching(),10),120,40);
+        addOnBounds(this, numberLabel(),rowAddSpacing(qQNameLabel(),10),columnAddSpacing(typingAndWatching(),10),150,40);
+        addOnBounds(this, numberRecordLabel(),rowAddSpacing(numberLabel(),10),columnAddSpacing(typingAndWatching(),10),250,40);
+        addOnBounds(this, tipsLabel(),rowAddSpacing(numberRecordLabel(),10),columnAddSpacing(typingAndWatching(),10),120,40);
+        addOnBounds(this, sendArticleLabel(),rowAddSpacing(tipsLabel(),10),columnAddSpacing(typingAndWatching(),10),120,40);
     }
     int preButton;
     public void addListener(){
-        CloseButton().addActionListener(SystemListener.getInstance());
-        MaxButton().addActionListener(SystemListener.getInstance());
-        MinButton().addActionListener(SystemListener.getInstance());
-        SizeButton().addMouseListener(SystemListener.getInstance());
-        SizeButton().addMouseMotionListener(SystemListener.getInstance());
-        (TypingText().getDocument()).addDocumentListener(TypingListener.getInstance());
-        TypingText().addKeyListener(TypingListener.getInstance());
+        closeButton().addActionListener(SystemListener.getInstance());
+        maxButton().addActionListener(SystemListener.getInstance());
+        minButton().addActionListener(SystemListener.getInstance());
+        sizeButton().addMouseListener(SystemListener.getInstance());
+        sizeButton().addMouseMotionListener(SystemListener.getInstance());
+        (typingText().getDocument()).addDocumentListener(TypingListener.getInstance());
+        typingText().addKeyListener(TypingListener.getInstance());
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
 
 
@@ -132,13 +132,13 @@ public class MainFra extends JFrame {
                         SwitchFollowPlayEvent.start();break;
                     case KeyEvent.VK_ENTER:
                         if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)) {
-                            if(SwingSingleton.TypingText().getText().length()==0)break;
-                            TypingText().setEditable(false); // 设置不可打字状态
+                            if(SwingSingleton.typingText().getText().length()==0)break;
+                            typingText().setEditable(false); // 设置不可打字状态
                             TypingListener.delaySendResultSign = true;
                         }else if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){
                             List<HashMap<String,Integer>> hashMapList =
                                     Comparison.getComparisonListenResult(ListenPlayEvent.getContent(),
-                                            ArticleUtil.clearSpace(TypingText().getText()), BetterTypingSingleton.getInstance().getSymbolCode());
+                                            ArticleUtil.clearSpace(typingText().getText()), BetterTypingSingleton.getInstance().getSymbolCode());
                             TypingListener.getInstance().changeListenPlayFontColor(hashMapList);
                             SendAchievementEvent.start();
                             ListenPlayEvent.stop();
@@ -146,7 +146,7 @@ public class MainFra extends JFrame {
                         }
                         break;
                 }
-                TypingText().requestFocusInWindow();
+                typingText().requestFocusInWindow();
             }
             preButton = event.getKeyCode();
             switch (event.getKeyCode()) {

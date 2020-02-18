@@ -41,8 +41,9 @@ public class DrawUnLookPlayResult {
         }
         public static Color getColor(int type){
             for (lookPlayColor typeColor : lookPlayColor.values()) {
-                if(typeColor.type == type)
+                if(typeColor.type == type) {
                     return typeColor.color;
+                }
             }
             return null;
         }
@@ -89,10 +90,13 @@ public class DrawUnLookPlayResult {
                     case 1:miss++;break;
                     case 2:more++;break;
                     case 3:mistake++;break;
+                    default:break;
                 }
                 if(type==5){
                     ignore++;
-                }else length++;
+                }else {
+                    length++;
+                }
             }
         }
         //偏移
@@ -116,12 +120,12 @@ public class DrawUnLookPlayResult {
         //画颜色说明
         graphics.setFont(new Font("宋体", Font.BOLD, 15));
 
-        String help = model.equals("听打")?
+        String help = "听打".equals(model)?
                 "黑色：对、白色：少、粉色：多、红色：错、蓝色：错原字、青色：忽略":"黑色：对、白色：少、粉色：多、红色：错、蓝色：错原字";
         graphics.drawString(help,moveX,moveYTop-30);
         //画时间和详情
         String playResultStr = "文章总长"+length+" 错"+(mistake+more+miss)+"处 分别错:"+mistake+" 少:"+miss+" 多:"+more +" 正确率："+String.format("%.2f",((double)length-mistake-more-miss)*100/length)+"%";
-        playResultStr += model.equals("听打")?" 忽略符号:"+ignore:"";
+        playResultStr += "听打".equals(model)?" 忽略符号:"+ignore:"";
         graphics.drawString(playResultStr,moveX,moveYTop-10);
 
         String time =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());

@@ -18,7 +18,7 @@ public class LoginEvent {
             username = URLEncoder.encode(username, FinalConfig.ENCODING);
             JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(HttpAddr.LOGIN_ADDR, username, password));
 
-            if (jsonObject.getString(Constant.RESPONSE_MESSAGE).equals("登录成功")) {
+            if ("登录成功".equals(jsonObject.getString(Constant.RESPONSE_MESSAGE))) {
                 UserState.loginState = true;
                 UserState.token = jsonObject.getString(Constant.RESPONSE_RESULT);
                 TypeNumManagerThread.getInstance().setLocalNumFromServer();

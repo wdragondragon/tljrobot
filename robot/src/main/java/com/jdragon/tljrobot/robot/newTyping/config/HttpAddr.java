@@ -41,6 +41,8 @@ public class HttpAddr {
 
     public final static String QUERY_TLJ_ALL_TYPE_INFO = SERVER_ADDR + ROBOT_HOME + QUERY_ADDR + "/tljAllTypeInfo";
 
+    public final static String QUERY_TLJ_TYPE_INFO_LIST_ORDER_BY_SPEED = SERVER_ADDR + ROBOT_HOME + QUERY_ADDR +"/tljTypeInfoListOrderBySpeed";
+
     public final static String QUERY_GROUP_MAP = SERVER_ADDR + ROBOT_HOME + QUERY_ADDR + "/getGroupMap";
 
     public final static String CHAT_ADD_NUM_ADDR = SERVER_ADDR + ROBOT_HOME + CHAT_ADDR + "/addNum";

@@ -27,11 +27,13 @@ public class SystemUtil {
     }
     public static boolean isWindows(){
         String systemName = getSystemName();
-        if(systemName!=null&&systemName.length()>=7&&systemName.substring(0,7).equals("Windows")){
+        if(systemName!=null&&systemName.length()>=7&& "Windows".equals(systemName.substring(0,7))){
             System.out.println("win");
             return true;
         }
 
-        else return false;
+        else {
+            return false;
+        }
     }
 }

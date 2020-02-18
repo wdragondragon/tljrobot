@@ -21,11 +21,13 @@ public class TypeNumManagerThread extends Thread {
     private static TypeNumManagerThread typeNumManagerThread = null;
     private TypeNumManagerThread(){}
     public static TypeNumManagerThread getInstance() {
-        if(typeNumManagerThread ==null||!typeNumManagerThread.isAlive())
+        if(typeNumManagerThread ==null||!typeNumManagerThread.isAlive()) {
             typeNumManagerThread = new TypeNumManagerThread();
+        }
         return typeNumManagerThread;
     }
     int numTemp;
+    @Override
     public void run() {
         while(UserState.loginState) {
             try {
@@ -59,7 +61,7 @@ public class TypeNumManagerThread extends Thread {
             field.set(clazz, jsonObject.getIntValue(field.getName()));
         }
         numTemp = NumState.num;
-        SwingSingleton.NumberRecordLabel().setText("总:" + NumState.num +
+        SwingSingleton.numberRecordLabel().setText("总:" + NumState.num +
                 " 对:" + NumState.rightNum +
                 " 错:" + NumState.misNum +
                 " 今:" + NumState.dateNum);

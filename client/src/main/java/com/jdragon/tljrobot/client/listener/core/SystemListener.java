@@ -116,13 +116,13 @@ public class SystemListener implements ActionListener, MouseListener, MouseMotio
             int i =   point.x - pressedPoint.x;// 计算变化坐标
             int j =  point.y - pressedPoint.y;
 
-            Layout.addSize(i,j,win,SwingSingleton.TypingAndWatching());// 改变窗体大小
-            Layout.addSize(i,0,SwingSingleton.TypingProgress());
-            Layout.addLocation(i,j,SwingSingleton.SizeButton());
-            Layout.addLocation(0,j,SwingSingleton.QQNameLabel(),SwingSingleton.NumberRecordLabel(),
-                    SwingSingleton.TipsLabel(),SwingSingleton.SendArticleLabel(),
-                    SwingSingleton.NumberLabel(),SwingSingleton.TypingProgress());
-            Layout.addLocation(i,0,SwingSingleton.CloseButton(),SwingSingleton.MaxButton(),SwingSingleton.MinButton());
+            Layout.addSize(i,j,win,SwingSingleton.typingAndWatching());// 改变窗体大小
+            Layout.addSize(i,0,SwingSingleton.typingProgress());
+            Layout.addLocation(i,j,SwingSingleton.sizeButton());
+            Layout.addLocation(0,j,SwingSingleton.qQNameLabel(),SwingSingleton.numberRecordLabel(),
+                    SwingSingleton.tipsLabel(),SwingSingleton.sendArticleLabel(),
+                    SwingSingleton.numberLabel(),SwingSingleton.typingProgress());
+            Layout.addLocation(i,0,SwingSingleton.closeButton(),SwingSingleton.maxButton(),SwingSingleton.minButton());
             LocalConfig.windowWidth += i;
             LocalConfig.windowHeight += j;
         }

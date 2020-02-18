@@ -34,18 +34,22 @@ public class TimingList<T> extends ArrayList<T> {
             super.remove((T) key);
         }
     }
+    @Override
     public boolean add(T t){
         timingMap.put((String)t,System.currentTimeMillis() + expireTime);
         return super.add(t);
     }
+    @Override
     public T remove(int i){
         timingMap.remove(super.get(i));
         return super.remove(i);
     }
+    @Override
     public boolean remove(Object o){
         timingMap.remove(o);
         return super.remove((T)o);
     }
+    @Override
     public void clear(){
         super.clear();
         timingMap.clear();

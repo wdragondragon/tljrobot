@@ -2,18 +2,162 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="client:jar" />
+      <artifact name="robot:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="560566ca-4c25-4104-974e-54a248fc5e69" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/HelpAndTips.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/PackBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/entry/Article.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/dto/TljAvgTypeInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/css/bootstrap-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/css/bootstrap-theme.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/css/bootstrap-theme.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/css/bootstrap-theme.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/img/tljico1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/js/npm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/window/MainFra.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/window/MainFra.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/test/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/JMenuComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/JMenuComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/SwingSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/SwingSingleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/FinalConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/FinalConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/VersionConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/VersionConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/entry/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/entry/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/entry/TypingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/entry/TypingState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ChangeQQGroupEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ChangeQQGroupEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/QQGetArticleEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/QQGetArticleEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ReplayEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ReplayEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/SendAchievementEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/SendAchievementEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/SendArticleEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/SendArticleEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ShareArticleEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ShareArticleEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/TypingPauseEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/TypingPauseEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/HistoryEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/HistoryEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/KeepALiveThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/KeepALiveThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/LoginEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/LoginEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/LogoutEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/LogoutEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/TypeNumManagerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/TypeNumManagerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/other/ListenPlayEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/other/ListenPlayEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/threadEvent/CountMatchThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/threadEvent/CountMatchThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/threadEvent/DelayedOperationThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/threadEvent/DelayedOperationThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/threadEvent/DynamicSpeedThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/threadEvent/DynamicSpeedThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/ArticleTreeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/ArticleTreeListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/HistoryTableListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/HistoryTableListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/MixListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/MixListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/SetBackgroundListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/SetBackgroundListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/TypingListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/TypingListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/core/SystemListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/core/SystemListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/test/TestEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/test/TestEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/test/TestJNA.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/test/TestJNA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/ArticleRegex.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/ArticleRegex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/ChangeTxtThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/ChangeTxtThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/ChooseFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/ChooseFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/Clipboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/Clipboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/Code.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/Code.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/DateNumInitThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/DateNumInitThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/DoCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/DoCheck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/DrawUnLookPlayResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/DrawUnLookPlayResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/JTextPaneFont.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/JTextPaneFont.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/KeyboardHookThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/KeyboardHookThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/core/Layout.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/core/Layout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/MainFra.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/MainFra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/HistoryDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/HistoryDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/LogonDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/LogonDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/SendArticleDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/SendArticleDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/SetDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/SetDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/ShowArticleDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/ShowArticleDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/TljMatchRank.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/TljMatchRank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/component/JmenuComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/component/JmenuComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/robot_jar/robot.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/robot_jar/robot.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/EntoZh/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/EntoZh/Translate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/CommandSay.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/CommandSay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/ownUse.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/ownUse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/OneATwoB/O2TCarry.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/OneATwoB/O2TCarry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/P2P/handle/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/P2P/handle/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/PlayCards/CardCarry.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/PlayCards/CardCarry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/PlayCards/CardClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/PlayCards/CardClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/PlayCards/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/PlayCards/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/QueryUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/QueryUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/RobotGroupClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/RobotGroupClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/config/HttpAddr.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/config/HttpAddr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/DrawImg.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/DrawImg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/GroupCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/GroupCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/Regex.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/Regex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Automatic_Inclusion.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Automatic_Inclusion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/RobotGroupClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/RobotGroupClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/CommandVersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/CommandVersion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/AllUserNum.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/AllUserNum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/OutConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/OutConn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/GroupFollowTeamWar/GroupFollowTeamThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/GroupFollowTeamWar/GroupFollowTeamThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/GroupWar/Count.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/GroupWar/Count.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/GroupWar/GroupThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/GroupWar/GroupThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/MessageMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/MessageMove.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/RamdomLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/RamdomLoad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/RegexText.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/RegexText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/SortMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/SortMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/initGroupList.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/initGroupList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/ArticleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/ArticleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/HttpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/HttpUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/KeyPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/KeyPassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/Local.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/Local.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/SystemUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/SystemUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/TimingList.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/TimingList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/MdUploadImg.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/MdUploadImg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/editor/MdEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/editor/MdEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/GroupChatWordsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/GroupChatWordsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/GroupMatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/GroupMatchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/QueryUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/QueryUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/RobotHistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/RobotHistoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/TljMatchInRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/TljMatchInRobotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/UnionMatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/UnionMatchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/tlj/HistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/tlj/HistoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/tlj/TljMatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/tlj/TljMatchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/tlj/UpdateNumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/tlj/UpdateNumController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/getIpAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/getIpAddress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/home/Security.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/home/Security.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/interceptor/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/interceptor/LoginInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/mappers/HistroyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/mappers/HistroyMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/mappers/RobotHistoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/mappers/RobotHistoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/RobotService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/RobotService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/serviceImpl/RobotServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/serviceImpl/RobotServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/serviceImpl/TljServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/serviceImpl/TljServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/test/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/test/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/ueditor/define/BaseState.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/ueditor/define/BaseState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/static/img/tljico.png" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/img/tljico.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/allUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/allUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/blog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/MDEditor.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/MDEditor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/editor.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/editor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/updateMD.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/updateMD.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/updateUEditor.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/updateUEditor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/introduce.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/introduce.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/manageBlog.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/manageBlog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/model/full.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/model/full.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/moreBlog.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/moreBlog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/myAllHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/myAllHistory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/myInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/myInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/showBlog.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/showBlog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/showHeadImg.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/showHeadImg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/uploadCiku.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/uploadCiku.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/uploadHeadImg.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/uploadHeadImg.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +226,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../YogurtCat/YogurtCat-Parent" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/robot/lib" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -96,15 +240,15 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.1969532" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\static\css" />
       <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\static\js" />
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\static\fonts" />
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\static\css" />
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\static" />
       <recent name="C:\Users\10619\IdeaProjects\tljrobot\robot\src\main" />
-      <recent name="C:\Users\10619\IdeaProjects\tljrobot\client" />
-      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\templates\editor" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.jdragon.tljrobot.tlj" />
@@ -124,13 +268,40 @@
       <recent name="C:\Users\10619\IdeaProjects\tljrobot" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Application">
+  <component name="RestServicesNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="Found 71 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+        </path>
+        <path>
+          <item name="Found 71 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+          <item name="tlj" type="c588b436:RestServiceStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="RunManager" selected="Application.CodeLength">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.Application" />
       <module name="client" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.jdragon.tljrobot.client.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.Client" />
+      <module name="client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jdragon.tljrobot.client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -151,12 +322,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DrawUnLookPlayResult" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.utils.common.DrawUnLookPlayResult" />
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.Server" />
       <module name="client" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.jdragon.tljrobot.client.utils.common.*" />
+          <option name="PATTERN" value="com.jdragon.tljrobot.client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -164,30 +335,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="KeyboardHookThread" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.utils.common.KeyboardHookThread" />
-      <module name="client" />
+    <configuration name="test.mdt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tlj" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.jdragon.tljrobot.client.test.*" />
+          <option name="PATTERN" value="com.jdragon.tljrobot.tlj.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestEnum.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="client" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.jdragon.tljrobot.client.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.jdragon.tljrobot.client.test" />
-      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.test.TestEnum" />
-      <option name="METHOD_NAME" value="test" />
+      <option name="PACKAGE_NAME" value="com.jdragon.tljrobot.tlj.test" />
+      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.tlj.test.test" />
+      <option name="METHOD_NAME" value="mdt" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -203,18 +361,18 @@
     <list>
       <item itemvalue="Application.CodeLength" />
       <item itemvalue="Application.Application" />
-      <item itemvalue="Application.KeyboardHookThread" />
-      <item itemvalue="Application.DrawUnLookPlayResult" />
-      <item itemvalue="JUnit.TestEnum.test" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Client" />
+      <item itemvalue="JUnit.test.mdt" />
       <item itemvalue="Spring Boot.TljApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Application" />
         <item itemvalue="Application.CodeLength" />
-        <item itemvalue="Application.DrawUnLookPlayResult" />
-        <item itemvalue="JUnit.TestEnum.test" />
-        <item itemvalue="Application.KeyboardHookThread" />
+        <item itemvalue="JUnit.test.mdt" />
+        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Application" />
       </list>
     </recent_temporary>
   </component>
@@ -302,7 +460,16 @@
       <workItem from="1581320949280" duration="15395000" />
       <workItem from="1581357910043" duration="1275000" />
       <workItem from="1581398221648" duration="24942000" />
-      <workItem from="1581481823827" duration="13129000" />
+      <workItem from="1581481823827" duration="36525000" />
+      <workItem from="1581652985050" duration="18121000" />
+      <workItem from="1581952898343" duration="2685000" />
+      <workItem from="1582007761420" duration="609000" />
+      <workItem from="1582008607375" duration="20000" />
+      <workItem from="1582020384318" duration="645000" />
+      <workItem from="1582021785488" duration="1442000" />
+      <workItem from="1582023257645" duration="1337000" />
+      <workItem from="1582026051295" duration="2485000" />
+      <workItem from="1582030124439" duration="6317000" />
     </task>
     <task id="LOCAL-00001" summary="用直接跳转页面替换ajax交互嵌入">
       <created>1577584125492</created>
@@ -465,7 +632,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581528431447</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="改动机器人：1、修复联赛成绩和长流成绩无法定时发送到长流群中。2、添加下载地址和bug提交区的关键字呼出。3、更改了部分帮助内容。">
+      <created>1581529646295</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1581529646295</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -492,7 +666,8 @@
     <MESSAGE value="v2.06 增加看打与听打的图片成绩生成，改变菜单中的看打听打子菜单，更改选择听打文件item位置。" />
     <MESSAGE value="v2.07 增加成绩可选择性发送某些参数，可设置输入法与个签，在设置中添加分类选项卡。" />
     <MESSAGE value="v2.08 1、修复听打模式跟打框不去空情况。2、修复听打模式加载录音后前3秒切换模式，录音还继续播放。" />
-    <option name="LAST_COMMIT_MESSAGE" value="v2.08 1、修复听打模式跟打框不去空情况。2、修复听打模式加载录音后前3秒切换模式，录音还继续播放。" />
+    <MESSAGE value="改动机器人：1、修复联赛成绩和长流成绩无法定时发送到长流群中。2、添加下载地址和bug提交区的关键字呼出。3、更改了部分帮助内容。" />
+    <option name="LAST_COMMIT_MESSAGE" value="改动机器人：1、修复联赛成绩和长流成绩无法定时发送到长流群中。2、添加下载地址和bug提交区的关键字呼出。3、更改了部分帮助内容。" />
   </component>
   <component name="WindowStateProjectService">
     <state x="412" y="120" key="#Auto_Import" timestamp="1578823323325">
@@ -500,18 +675,20 @@
     </state>
     <state x="3112" y="436" key="#Auto_Import/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578668349254" />
     <state x="412" y="120" key="#Auto_Import/62.0.1218.800@62.0.1218.800" timestamp="1578823323325" />
-    <state x="370" y="80" key="#Inspections" timestamp="1579356474398">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="381" y="80" key="#Inspections" timestamp="1582045240343">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="264" y="59" key="#Inspections/62.0.1218.800@62.0.1218.800" timestamp="1578884066400" />
     <state x="370" y="80" key="#Inspections/62.0.1858.1080@62.0.1858.1080" timestamp="1579356474398" />
-    <state x="299" y="298" width="1377" height="682" key="#Project_Structure" timestamp="1580979080463">
+    <state x="381" y="80" key="#Inspections/75.0.1845.1080@75.0.1845.1080" timestamp="1582045240343" />
+    <state x="299" y="298" width="900" height="525" key="#Project_Structure" timestamp="1582046523165">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="3014" y="485" width="1335" height="682" key="#Project_Structure/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578666907536" />
     <state x="265" y="63" key="#Project_Structure/62.0.1218.800@62.0.1218.800" timestamp="1579247047607" />
     <state x="62" y="85" width="1858" height="921" key="#Project_Structure/62.0.1858.1080@62.0.1858.1080" timestamp="1580795416454" />
-    <state x="299" y="298" width="1377" height="682" key="#Project_Structure/75.0.1845.1080@75.0.1845.1080" timestamp="1580979080463" />
+    <state x="221" y="221" width="900" height="525" key="#Project_Structure/75.0.1205.800@75.0.1205.800" timestamp="1582021874180" />
+    <state x="299" y="298" width="1377" height="682" key="#Project_Structure/75.0.1845.1080@75.0.1845.1080" timestamp="1582046523165" />
     <state x="3250" y="532" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1578710429391">
       <screen x="2560" y="252" width="1920" height="1050" />
     </state>
@@ -525,17 +702,19 @@
     </state>
     <state x="127" y="56" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1218.800@62.0.1218.800" timestamp="1579171820516" />
     <state x="161" y="76" key="#com.intellij.execution.impl.EditConfigurationsDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1579351630167" />
-    <state x="724" y="337" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580795169690">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="732" y="337" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581657119410">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="3244" y="580" key="#com.intellij.fileTypes.FileTypeChooser/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578639549063" />
     <state x="724" y="337" key="#com.intellij.fileTypes.FileTypeChooser/62.0.1858.1080@62.0.1858.1080" timestamp="1580795169690" />
-    <state x="802" y="242" key="#com.intellij.ide.util.MemberChooser" timestamp="1581420081714">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="732" y="337" key="#com.intellij.fileTypes.FileTypeChooser/75.0.1845.1080@75.0.1845.1080" timestamp="1581657119410" />
+    <state x="810" y="242" key="#com.intellij.ide.util.MemberChooser" timestamp="1582045085969">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="3325" y="487" key="#com.intellij.ide.util.MemberChooser/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578710435732" />
     <state x="547" y="179" key="#com.intellij.ide.util.MemberChooser/62.0.1218.800@62.0.1218.800" timestamp="1579331808389" />
     <state x="802" y="242" key="#com.intellij.ide.util.MemberChooser/62.0.1858.1080@62.0.1858.1080" timestamp="1581420081714" />
+    <state x="810" y="242" key="#com.intellij.ide.util.MemberChooser/75.0.1845.1080@75.0.1845.1080" timestamp="1582045085969" />
     <state x="593" y="259" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1580978826981">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
@@ -543,6 +722,14 @@
     <state x="404" y="192" key="#com.intellij.ide.util.TreeClassChooserDialog/62.0.1218.800@62.0.1218.800" timestamp="1579247032941" />
     <state x="584" y="259" key="#com.intellij.ide.util.TreeClassChooserDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1580795398207" />
     <state x="593" y="259" key="#com.intellij.ide.util.TreeClassChooserDialog/75.0.1845.1080@75.0.1845.1080" timestamp="1580978826981" />
+    <state x="529" y="289" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1582021899401">
+      <screen x="75" y="0" width="1205" height="800" />
+    </state>
+    <state x="529" y="289" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/75.0.1205.800@75.0.1205.800" timestamp="1582021899401" />
+    <state x="260" y="56" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor" timestamp="1582021896908">
+      <screen x="75" y="0" width="1205" height="800" />
+    </state>
+    <state x="260" y="56" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor/75.0.1205.800@75.0.1205.800" timestamp="1582021896908" />
     <state x="671" y="267" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1579417464246">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
@@ -557,12 +744,12 @@
     </state>
     <state x="359" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/62.0.1218.800@62.0.1218.800" timestamp="1579270265828" />
     <state x="515" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1581331270741" />
-    <state x="590" y="198" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580989303846">
+    <state x="590" y="198" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1581656809212">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="402" y="147" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/62.0.1218.800@62.0.1218.800" timestamp="1579251150876" />
     <state x="581" y="198" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1579955228071" />
-    <state x="590" y="198" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/75.0.1845.1080@75.0.1845.1080" timestamp="1580989303846" />
+    <state x="590" y="198" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/75.0.1845.1080@75.0.1845.1080" timestamp="1581656809212" />
     <state x="717" y="394" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1580978900785">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
@@ -571,79 +758,80 @@
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="420" y="249" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/62.0.1218.800@62.0.1218.800" timestamp="1577503398719" />
-    <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2" timestamp="1581528430152">
+    <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2" timestamp="1581529680468">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="62" y="0" key="CommitChangelistDialog2/62.0.1218.800@62.0.1218.800" timestamp="1579188400057" />
-    <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2/62.0.1858.1080@62.0.1858.1080" timestamp="1581528430152" />
+    <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2/62.0.1858.1080@62.0.1858.1080" timestamp="1581529680468" />
     <state x="384" y="96" key="CommitChangelistDialog2/75.0.1845.1080@75.0.1845.1080" timestamp="1581088489224" />
     <state x="155" y="93" width="1031" height="613" key="DiffContextDialog" timestamp="1578846678181">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="155" y="93" width="1031" height="613" key="DiffContextDialog/62.0.1218.800@62.0.1218.800" timestamp="1578846678181" />
-    <state x="133" y="207" key="FileChooserDialogImpl" timestamp="1581150194349">
+    <state x="133" y="207" key="FileChooserDialogImpl" timestamp="1582043950513">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="2620" y="453" key="FileChooserDialogImpl/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578666889282" />
     <state x="100" y="153" key="FileChooserDialogImpl/62.0.1218.800@62.0.1218.800" timestamp="1579247042726" />
     <state x="120" y="207" key="FileChooserDialogImpl/62.0.1858.1080@62.0.1858.1080" timestamp="1580795401865" />
-    <state x="133" y="207" key="FileChooserDialogImpl/75.0.1845.1080@75.0.1845.1080" timestamp="1581150194349" />
-    <state width="1815" height="292" key="GridCell.Tab.0.bottom" timestamp="1581529525513">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="113" y="153" key="FileChooserDialogImpl/75.0.1205.800@75.0.1205.800" timestamp="1582021889779" />
+    <state x="133" y="207" key="FileChooserDialogImpl/75.0.1845.1080@75.0.1845.1080" timestamp="1582043950513" />
+    <state width="1802" height="142" key="GridCell.Tab.0.bottom" timestamp="1582046466485">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.bottom/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.bottom/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.bottom/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
-    <state width="1815" height="292" key="GridCell.Tab.0.bottom/62.0.1858.1080@62.0.1858.1080" timestamp="1581529525513" />
-    <state width="1802" height="292" key="GridCell.Tab.0.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1581170726348" />
-    <state width="1815" height="292" key="GridCell.Tab.0.center" timestamp="1581529525513">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state width="1340" height="302" key="GridCell.Tab.0.bottom/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
+    <state width="1802" height="142" key="GridCell.Tab.0.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1582046466485" />
+    <state width="1802" height="142" key="GridCell.Tab.0.center" timestamp="1582046466484">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.center/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.center/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.center/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
-    <state width="1815" height="292" key="GridCell.Tab.0.center/62.0.1858.1080@62.0.1858.1080" timestamp="1581529525513" />
-    <state width="1802" height="292" key="GridCell.Tab.0.center/75.0.1845.1080@75.0.1845.1080" timestamp="1581170726345" />
-    <state width="1815" height="292" key="GridCell.Tab.0.left" timestamp="1581529525512">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state width="1340" height="302" key="GridCell.Tab.0.center/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
+    <state width="1802" height="142" key="GridCell.Tab.0.center/75.0.1845.1080@75.0.1845.1080" timestamp="1582046466484" />
+    <state width="1802" height="142" key="GridCell.Tab.0.left" timestamp="1582046466484">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.left/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.left/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.left/62.0.1218.800@62.0.1218.800" timestamp="1580479234951" />
-    <state width="1815" height="292" key="GridCell.Tab.0.left/62.0.1858.1080@62.0.1858.1080" timestamp="1581529525512" />
-    <state width="1802" height="292" key="GridCell.Tab.0.left/75.0.1845.1080@75.0.1845.1080" timestamp="1581170726344" />
-    <state width="1815" height="292" key="GridCell.Tab.0.right" timestamp="1581529525513">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state width="1340" height="302" key="GridCell.Tab.0.left/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490070" />
+    <state width="1802" height="142" key="GridCell.Tab.0.left/75.0.1845.1080@75.0.1845.1080" timestamp="1582046466484" />
+    <state width="1802" height="142" key="GridCell.Tab.0.right" timestamp="1582046466484">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.right/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.right/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.right/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
-    <state width="1815" height="292" key="GridCell.Tab.0.right/62.0.1858.1080@62.0.1858.1080" timestamp="1581529525513" />
-    <state width="1802" height="292" key="GridCell.Tab.0.right/75.0.1845.1080@75.0.1845.1080" timestamp="1581170726345" />
-    <state width="1815" height="292" key="GridCell.Tab.1.bottom" timestamp="1581424954961">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state width="1340" height="302" key="GridCell.Tab.0.right/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
+    <state width="1802" height="142" key="GridCell.Tab.0.right/75.0.1845.1080@75.0.1845.1080" timestamp="1582046466484" />
+    <state width="1802" height="140" key="GridCell.Tab.1.bottom" timestamp="1581668313174">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1176" height="132" key="GridCell.Tab.1.bottom/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
-    <state width="1815" height="292" key="GridCell.Tab.1.bottom/62.0.1858.1080@62.0.1858.1080" timestamp="1581424954961" />
-    <state width="1815" height="302" key="GridCell.Tab.1.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1581137585996" />
-    <state width="1815" height="292" key="GridCell.Tab.1.center" timestamp="1581424954960">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state width="1340" height="302" key="GridCell.Tab.1.bottom/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
+    <state width="1802" height="140" key="GridCell.Tab.1.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1581668313174" />
+    <state width="1802" height="140" key="GridCell.Tab.1.center" timestamp="1581668313173">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1176" height="132" key="GridCell.Tab.1.center/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
-    <state width="1815" height="292" key="GridCell.Tab.1.center/62.0.1858.1080@62.0.1858.1080" timestamp="1581424954960" />
-    <state width="1815" height="302" key="GridCell.Tab.1.center/75.0.1845.1080@75.0.1845.1080" timestamp="1581137585996" />
-    <state width="1815" height="292" key="GridCell.Tab.1.left" timestamp="1581424954960">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state width="1340" height="302" key="GridCell.Tab.1.center/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
+    <state width="1802" height="140" key="GridCell.Tab.1.center/75.0.1845.1080@75.0.1845.1080" timestamp="1581668313173" />
+    <state width="1802" height="140" key="GridCell.Tab.1.left" timestamp="1581668313173">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1176" height="132" key="GridCell.Tab.1.left/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
-    <state width="1815" height="292" key="GridCell.Tab.1.left/62.0.1858.1080@62.0.1858.1080" timestamp="1581424954960" />
-    <state width="1815" height="302" key="GridCell.Tab.1.left/75.0.1845.1080@75.0.1845.1080" timestamp="1581137585996" />
-    <state width="1815" height="292" key="GridCell.Tab.1.right" timestamp="1581424954960">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state width="1340" height="302" key="GridCell.Tab.1.left/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
+    <state width="1802" height="140" key="GridCell.Tab.1.left/75.0.1845.1080@75.0.1845.1080" timestamp="1581668313173" />
+    <state width="1802" height="140" key="GridCell.Tab.1.right" timestamp="1581668313174">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1176" height="132" key="GridCell.Tab.1.right/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
-    <state width="1815" height="292" key="GridCell.Tab.1.right/62.0.1858.1080@62.0.1858.1080" timestamp="1581424954960" />
-    <state width="1815" height="302" key="GridCell.Tab.1.right/75.0.1845.1080@75.0.1845.1080" timestamp="1581137585996" />
+    <state width="1340" height="302" key="GridCell.Tab.1.right/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
+    <state width="1802" height="140" key="GridCell.Tab.1.right/75.0.1845.1080@75.0.1845.1080" timestamp="1581668313174" />
     <state width="1815" height="302" key="GridCell.Tab.2.bottom" timestamp="1580921280680">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
@@ -677,35 +865,37 @@
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="637" y="238" key="NewModule_or_Project.wizard/75.0.1845.1080@75.0.1845.1080" timestamp="1581078251700" />
-    <state x="75" y="112" width="1218" height="713" key="SettingsEditor" timestamp="1581091927844">
+    <state x="227" y="160" width="912" height="706" key="SettingsEditor" timestamp="1582042695585">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="2740" y="312" key="SettingsEditor/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578631290323" />
     <state x="62" y="83" width="1218" height="713" key="SettingsEditor/62.0.1218.800@62.0.1218.800" timestamp="1578971209485" />
     <state x="62" y="112" key="SettingsEditor/62.0.1858.1080@62.0.1858.1080" timestamp="1579451436454" />
-    <state x="75" y="112" key="SettingsEditor/75.0.1845.1080@75.0.1845.1080" timestamp="1581091927844" />
+    <state x="75" y="83" width="912" height="706" key="SettingsEditor/75.0.1205.800@75.0.1205.800" timestamp="1582027189370" />
+    <state x="227" y="160" key="SettingsEditor/75.0.1845.1080@75.0.1845.1080" timestamp="1582042695585" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1579346721229">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/62.0.1858.1080@62.0.1858.1080" timestamp="1579346721229" />
-    <state x="370" y="185" key="Vcs.Push.Dialog.v2" timestamp="1581490559683">
+    <state x="370" y="185" key="Vcs.Push.Dialog.v2" timestamp="1581529696427">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="264" y="137" key="Vcs.Push.Dialog.v2/62.0.1218.800@62.0.1218.800" timestamp="1578847066652" />
-    <state x="370" y="185" key="Vcs.Push.Dialog.v2/62.0.1858.1080@62.0.1858.1080" timestamp="1581490559683" />
+    <state x="370" y="185" key="Vcs.Push.Dialog.v2/62.0.1858.1080@62.0.1858.1080" timestamp="1581529696427" />
     <state x="381" y="185" key="Vcs.Push.Dialog.v2/75.0.1845.1080@75.0.1845.1080" timestamp="1581088511101" />
     <state x="473" y="178" key="chooseDestDirectoryDialog" timestamp="1579055606183">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="473" y="178" key="chooseDestDirectoryDialog/62.0.1218.800@62.0.1218.800" timestamp="1579055606183" />
-    <state x="529" y="309" key="com.intellij.ide.util.TipDialog" timestamp="1581481856788">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="378" y="229" key="com.intellij.ide.util.TipDialog" timestamp="1582030153628">
+      <screen x="75" y="0" width="1205" height="800" />
     </state>
     <state x="368" y="229" key="com.intellij.ide.util.TipDialog/62.0.1218.800/2560.252.1080.1890@62.0.1218.800" timestamp="1578230305634" />
     <state x="3042" y="553" key="com.intellij.ide.util.TipDialog/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578706140340" />
     <state x="368" y="229" key="com.intellij.ide.util.TipDialog/62.0.1218.800@62.0.1218.800" timestamp="1579249325128" />
     <state x="529" y="309" key="com.intellij.ide.util.TipDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1581481856787" />
-    <state x="539" y="309" key="com.intellij.ide.util.TipDialog/75.0.1845.1080@75.0.1845.1080" timestamp="1581161653377" />
+    <state x="378" y="229" key="com.intellij.ide.util.TipDialog/75.0.1205.800@75.0.1205.800" timestamp="1582030153628" />
+    <state x="539" y="309" key="com.intellij.ide.util.TipDialog/75.0.1845.1080@75.0.1845.1080" timestamp="1581952996869" />
     <state x="783" y="457" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579430982812">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
@@ -739,24 +929,17 @@
     </state>
     <state x="375" y="28" key="refactoring.ChangeSignatureDialog/62.0.1218.800@62.0.1218.800" timestamp="1579098782225" />
     <state x="539" y="38" key="refactoring.ChangeSignatureDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1580916926949" />
-    <state x="485" y="258" key="run.anything.popup" timestamp="1580889507323">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="495" y="258" width="672" height="677" key="run.anything.popup" timestamp="1582045947666">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="2984" y="492" key="run.anything.popup/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578631462186" />
     <state x="339" y="191" key="run.anything.popup/62.0.1218.800@62.0.1218.800" timestamp="1579170386957" />
     <state x="485" y="258" key="run.anything.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1580889507323" />
+    <state x="495" y="258" width="672" height="677" key="run.anything.popup/75.0.1845.1080@75.0.1845.1080" timestamp="1582045947666" />
     <state x="339" y="127" width="672" height="678" key="search.everywhere.popup" timestamp="1579252678714">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="2989" y="412" width="1060" height="890" key="search.everywhere.popup/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578664277157" />
     <state x="339" y="127" width="672" height="678" key="search.everywhere.popup/62.0.1218.800@62.0.1218.800" timestamp="1579252678714" />
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="LocalConfig.typePageCount" language="JAVA" />
-        <watch expression="(heightFontNum - 1) * (widthFontNum + 1) + (widthFontNum + 1) / 3" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

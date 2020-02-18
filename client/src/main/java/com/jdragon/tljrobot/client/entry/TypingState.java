@@ -85,8 +85,11 @@ public class TypingState {
         return doubleKeyTwo((1.00*typeLength)/minute);
     }
     public static double getKeyLength(){
-        if(typeLength==0)return keyNumber;
-        else return doubleKeyTwo(1.00*keyNumber/typeLength);
+        if(typeLength==0) {
+            return keyNumber;
+        } else {
+            return doubleKeyTwo(1.00*keyNumber/typeLength);
+        }
     }
     public static double getKeySpeed(){
         return doubleKeyTwo(1.00*keyNumber/timer.getSecond());

@@ -15,7 +15,7 @@ public class Translate extends IcqListener {
     public void Carry(EventMessage event) {
         String message = event.getMessage();
         String s[] = message.split("\r\n");
-        if(message.equals("语言指令"))
+        if(message.equals("语言指令")) {
             event.respond(
                     "zh\t中文\n" +
                     "en\t英语\n" +
@@ -45,15 +45,16 @@ public class Translate extends IcqListener {
                     "hu\t匈牙利语\n" +
                     "cht\t繁体中文\n" +
                     "vie\t越南语");
+        }
         if(s.length==2){
             String str = "";
             if(s[0].equals("中转英"))
                 str = api.getTransResult(s[1], "auto", "en");
-            else if(s[0].equals("英转中"))
+            else if(s[0].equals("英转中")) {
                 str = api.getTransResult(s[1], "auto", "zh");
-            else if(s[0].equals("中转粤"))
+            } else if(s[0].equals("中转粤")) {
                 str = api.getTransResult(s[1], "auto", "yue");
-            else {
+            } else {
                 String t[] = s[0].split(" ");
                 if(t.length==3&&t[0].equals("翻译")){
                     str = api.getTransResult(s[1], t[1], t[2]);

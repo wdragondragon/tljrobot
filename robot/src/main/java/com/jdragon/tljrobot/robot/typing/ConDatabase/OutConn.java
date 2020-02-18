@@ -61,7 +61,9 @@ public class OutConn {
     private static String getShowNameStr(ResultSet rs){
         try {
             String name = rs.getString("name");
-            if(name==null)name="（未设置名片） ";
+            if(name==null) {
+                name="（未设置名片） ";
+            }
             return "用户名："+ name +" Q号："+rs.getLong("id")+
                     "\n上屏赛文成绩次数："+rs.getInt("n")+
                     "\n平均速度："+ RegexText.FourOutFiveIn(rs.getDouble("speedaver"))+
@@ -107,7 +109,9 @@ public class OutConn {
                     message += type + " "+ aid +" "+ title + " 字数:" +num +"\n";
                     sign = true;
                 }
-                if (!sign)message = "无该类文章";
+                if (!sign) {
+                    message = "无该类文章";
+                }
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -137,11 +141,13 @@ public class OutConn {
                     String saiwen = rs.getString("saiwen");
                     message = title+"\n"+saiwen+"\n-----第1段-共"+saiwen.length()+"字";
                 }
-                else
+                else {
                     message = groupname+"在这一天没有赛文";
+                }
             }
-            else
+            else {
                 message =  "没有"+groupname+"这个群";
+            }
             conn.close();
         }catch (Exception e){
             e.printStackTrace();
@@ -170,18 +176,21 @@ public class OutConn {
                 while(rs.next()){
                     i++;
                     String name = initGroupList.GroupMemberCardMap.get(groupid).get(rs.getLong("id"));
-                    if(name.equals(""))
+                    if(name.equals("")) {
                         name = ""+rs.getLong("id");
+                    }
                     message += i+ " "+rs.getDouble("speed")+" "+
                             rs.getDouble("keyspeed")+" "+
                             rs.getDouble("keylength")+"：" +name + "\n";
                     System.out.println(i);
                 }
-                if(i==0)
+                if(i==0) {
                     message = groupname+"在这一天没有赛文成绩";
+                }
             }
-            else
+            else {
                 message =  "没有"+groupname+"这个群";
+            }
             conn.close();
         }catch (Exception e){
             e.printStackTrace();
@@ -202,8 +211,9 @@ public class OutConn {
                 long id = rs.getLong("author");
                 message = title+" 投稿自QQ号："+id+"\n"+saiwen+"\n-----第9999段-共"+saiwen.length()+"字";
             }
-            else
+            else {
                 message =  "今日无联赛";
+            }
             conn.close();
         }catch (Exception e){
             e.printStackTrace();
@@ -221,8 +231,9 @@ public class OutConn {
             PreparedStatement ptmt = Conn.getPtmt(con,sql);
             ptmt.setString(1,groupname);
             ResultSet rs = ptmt.executeQuery();
-            if(rs.next())groupid=rs.getLong("groupid");
-            else{ con.close();return "无该群映射列表，发送指令（群映射列表）来查看可以查询的群名";}
+            if(rs.next()) {
+                groupid=rs.getLong("groupid");
+            } else{ con.close();return "无该群映射列表，发送指令（群映射列表）来查看可以查询的群名";}
             sql = "select * from robothistory where id=? and groupid=? and date=?";
             ptmt = Conn.getPtmt(con,sql);
             ptmt.setLong(1,id);
@@ -241,12 +252,10 @@ public class OutConn {
             while(rs.next()){
                 keylist.add(RegexText.FourOutFiveIn(rs.getDouble("keyspeed")));
                 keylenthlist.add(RegexText.FourOutFiveIn(rs.getDouble("keylength")));
-                contentArray.add(Arrays.asList(new String[]{
-                        idname
+                contentArray.add(Arrays.asList(idname
                         ,String.valueOf(RegexText.FourOutFiveIn(rs.getDouble("speed")))
                         ,String.valueOf(RegexText.FourOutFiveIn(rs.getDouble("keyspeed")))
-                                ,String.valueOf(RegexText.FourOutFiveIn(rs.getDouble("keylength")))
-                }));
+                        ,String.valueOf(RegexText.FourOutFiveIn(rs.getDouble("keylength")))));
                 have = true;
             }
             if(have==false)
@@ -267,23 +276,26 @@ public class OutConn {
     }
     public static long getTodayMaxByGroupId(long groupid,double sudu,int duan){
         String sql;
-        if(duan==999)
-            sql = "select speed,id from groupsaiwenmax where date=? and groupid=? order by speed desc limit 1";
-        else
+        if (duan != 999) {
             sql = "select sudu,id from allgroupsaiwenchengji where saiwendate=? order by sudu desc limit 1";
+        } else {
+            sql = "select speed,id from groupsaiwenmax where date=? and groupid=? order by speed desc limit 1";
+        }
         try{
             Connection con = Conn.getConnection();
             PreparedStatement ptmt = Conn.getPtmt(con,sql);
             ptmt.setDate(1,Conn.getdate());
-            if(duan==999)
+            if(duan==999) {
                 ptmt.setLong(2,groupid);
+            }
             ResultSet rs = ptmt.executeQuery();
             if(rs.next()){
                 double speed;
-                if(duan==999)
+                if(duan==999) {
                     speed = rs.getDouble(("speed"));
-                else
+                } else {
                     speed = rs.getDouble(("sudu"));
+                }
                 if(speed<sudu){
                     long ret= rs.getLong("id");
                     con.close();
@@ -308,7 +320,9 @@ public class OutConn {
                 String saiwen = rs.getString("saiwen");
                 message += "日期："+date+" 标题："+title+" 字数："+saiwen.length()+"\n";
             }
-            if(message.equals(""))message = "你未投稿任何一篇赛文";
+            if(message.equals("")) {
+                message = "你未投稿任何一篇赛文";
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -326,7 +340,9 @@ public class OutConn {
                 String saiwen = rs.getString("saiwen");
                 message += "日期："+date+" 标题："+title+" 字数："+saiwen.length()+"\n";
             }
-            if(message.equals(""))message = "今天之后没有联赛赛文";
+            if(message.equals("")) {
+                message = "今天之后没有联赛赛文";
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -365,8 +381,9 @@ public class OutConn {
                 long author = rs.getLong("author");
                 message = title+" 投稿自QQ号："+author+"\n"+saiwen+"\n-----第9999段-共"+saiwen.length()+"字";
             }
-            else
+            else {
                 message =  "无";
+            }
             con.close();
         }catch (Exception e){
             e.printStackTrace();
@@ -433,7 +450,9 @@ public class OutConn {
             while(rs.next()){
                 num += rs.getInt("num");
                 datenum += rs.getInt("datenum");
-                if(rs.getInt("online")==1)onlinenum++;
+                if(rs.getInt("online")==1) {
+                    onlinenum++;
+                }
                 people++;
             }
             year = (int)time/(60*60*24*30*12);

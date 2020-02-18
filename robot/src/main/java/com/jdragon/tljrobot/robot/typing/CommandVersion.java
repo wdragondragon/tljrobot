@@ -11,6 +11,7 @@ public class CommandVersion implements EverywhereCommand // 实现EverywhereComm
 {
     // 指令属性
 
+    @Override
     public CommandProperties properties()
     {
         // 这个括号里填指令名和其他名称, 指令名必须至少有一个
@@ -20,6 +21,7 @@ public class CommandVersion implements EverywhereCommand // 实现EverywhereComm
 
     // 机器人接到指令后会执行这个方法 ( 实现不同的接口的话方法名不一定一样 )
 
+    @Override
     public String run(EventMessage event, User sender, String command, ArrayList<String> args)
     {
         // 处理, 返回值会自动回复回去

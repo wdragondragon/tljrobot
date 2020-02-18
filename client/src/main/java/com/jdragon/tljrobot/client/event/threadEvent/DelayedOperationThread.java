@@ -32,7 +32,6 @@ public class DelayedOperationThread extends Thread {
         while (true) {
             try {
                 sleep(10);
-
                 if (QQGetArticleEvent.isGetArticleSign){
                     QQGetArticleEvent.isGetArticleSign = false;
                     ArticleRegex.regexStringToArticle(Objects.requireNonNull(Clipboard.get()));
@@ -45,9 +44,9 @@ public class DelayedOperationThread extends Thread {
                         TypingListener.getInstance().changeAllFontColor();
                     else if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)){
                         hashMapList = Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(),
-                                SwingSingleton.TypingText().getText());
+                                SwingSingleton.typingText().getText());
                         TypingListener.getInstance().changeLookPlayFontColor(hashMapList);
-                        SwingSingleton.SpeedButton().setText(String.format("%.2f",
+                        SwingSingleton.speedButton().setText(String.format("%.2f",
                                 TypingState.getSpeed()));
                     }
                     sleep(200);

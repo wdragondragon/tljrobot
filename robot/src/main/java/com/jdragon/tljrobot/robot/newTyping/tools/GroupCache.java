@@ -49,7 +49,9 @@ public class GroupCache {
                     String nickName = rGroupMemberInfo.getNickname();
                     if(card==null||card.equals("")){
                         groupMemberMap.put(qq,nickName);
-                    }else groupMemberMap.put(qq,card);
+                    }else {
+                        groupMemberMap.put(qq,card);
+                    }
                 }
                 groupCardCache.put(groupId,groupMemberMap);
             }

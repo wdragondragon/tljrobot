@@ -36,12 +36,16 @@ public class MixListener implements ActionListener {
         }
         else if(model.equals("全局乱序")){
             ArticleTreeListener.all = mix(ArticleTreeListener.all);
-            if(ArticleTreeListener.all==null)return;
+            if(ArticleTreeListener.all==null) {
+                return;
+            }
             ArticleTreeListener.showContent();
         }
     }
     public static String mix(String str){
-        if(str==null)return null;
+        if(str==null) {
+            return null;
+        }
         String mix = "";
         List list = new ArrayList<>();
         char [] a = str.toCharArray();
@@ -49,15 +53,17 @@ public class MixListener implements ActionListener {
             list.add(a[i]);
         }
         Collections.shuffle(list);
-        for(int i=0;i<str.length();i++)
+        for(int i=0;i<str.length();i++) {
             mix = mix +(list.get(i));
+        }
         return mix;
     }
     public static String mixstr(List chouqulist,int y){
         Collections.shuffle(chouqulist);
         String str = "";
-        for(int i=0;i<(chouqulist.size()<y?chouqulist.size():y);i++)
+        for(int i=0;i<(chouqulist.size()<y?chouqulist.size():y);i++) {
             str += chouqulist.get(i);
+        }
         return str;
     }
 //    public static String EnglishMix(){

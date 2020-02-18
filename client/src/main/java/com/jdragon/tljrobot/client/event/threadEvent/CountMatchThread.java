@@ -15,7 +15,7 @@ public class CountMatchThread extends Thread {
 			for(int i = 5;i>=0;i--){//双方准备后倒数
 				try {
 					sleep(1000);
-					SwingSingleton.WatchingText().setText(String.valueOf(i));
+					SwingSingleton.watchingText().setText(String.valueOf(i));
 				} catch (InterruptedException e) {System.out.println("倒数失败");}
 			}
 			ReplayEvent.start();

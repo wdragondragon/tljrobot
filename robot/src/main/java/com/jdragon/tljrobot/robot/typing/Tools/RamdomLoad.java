@@ -1,7 +1,5 @@
 package com.jdragon.tljrobot.robot.typing.Tools;
 
-import com.jdragon.tljrobot.robot.typing.Tools.RegexText;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -34,8 +32,9 @@ public class RamdomLoad {
 			BufferedReader bufferRead = new BufferedReader(in);
 			String str = "";
 			String temp = null;
-			while((temp = bufferRead.readLine())!=null)
+			while((temp = bufferRead.readLine())!=null) {
 				str+=temp;
+			}
 //			System.out.println(str);
 			return str;
 		}catch(Exception e){

@@ -39,40 +39,50 @@ public class DrawImg {
             String SpeedStr = String.valueOf(robotHistory.getSpeed());
 
             String keySpeedStr = String.valueOf(keySpeed);
-            if(keySpeedStr.equals("-1.0"))
+            if(keySpeedStr.equals("-1.0")) {
                 keySpeedStr = "无";
-            else if(keyLength<4)
-                keySpeedList.add(keySpeed);
+            } else {
+                if (keyLength >= 4) {
+                } else {
+                    keySpeedList.add(keySpeed);
+                }
+            }
 
             String keyLengthStr = String.valueOf(keyLength);
-            if(keyLengthStr.equals("-1.0"))
+            if(keyLengthStr.equals("-1.0")) {
                 keyLengthStr = "无";
-            else if(keySpeed>4)
+            } else if(keySpeed>4) {
                 keyLengthList.add(keyLength);
+            }
 
             String typeNumStr = String.valueOf(robotHistory.getTypeNum());
 
             String deleteNumStr = String.valueOf(robotHistory.getDeleteNum());
-            if (deleteNumStr.equals("-1"))
+            if (deleteNumStr.equals("-1")) {
                 deleteNumStr = "无";
+            }
 
             String deleteTextStr = String.valueOf(robotHistory.getDeleteText());
-            if(deleteTextStr.equals("-1"))
+            if(deleteTextStr.equals("-1")) {
                 deleteTextStr = "无";
+            }
 
             String repeatNumStr = String.valueOf(robotHistory.getRepeatNum());
-            if(repeatNumStr.equals("-1"))
+            if(repeatNumStr.equals("-1")) {
                 repeatNumStr = "无";
+            }
 
             String mistakeStr = String.valueOf(robotHistory.getMistake());
-            if(mistakeStr.equals("-1"))
+            if(mistakeStr.equals("-1")) {
                 mistakeStr = "无";
+            }
 
             String keyAccuracyStr = String.valueOf(robotHistory.getKeyAccuracy());
-            if(keyAccuracyStr.equals("-1.0"))
+            if(keyAccuracyStr.equals("-1.0")) {
                 keyAccuracyStr = "无";
-            else
+            } else {
                 keyAccuracyStr += "%";
+            }
             contentArray.add(Arrays.asList(name,groupName,SpeedStr,keySpeedStr,keyLengthStr,deleteNumStr,deleteTextStr,repeatNumStr,mistakeStr,keyAccuracyStr,typeNumStr));
         }
         allValue.add(contentArray);
@@ -115,8 +125,11 @@ public class DrawImg {
             String keyMethod = String.valueOf(tljHistory.getKeyMethod());
             String wordRate = String.valueOf(tljHistory.getWordRate());
             String equipment;
-            if(tljHistory.isMobile())equipment = "手机端";
-            else equipment = "PC端";
+            if(tljHistory.isMobile()) {
+                equipment = "手机端";
+            } else {
+                equipment = "PC端";
+            }
             keySpeedList.add(tljHistory.getKeySpeed());
             keyLengthList.add(tljHistory.getKeyLength());
             contentArray.add(Arrays.asList(name,speed,keySpeed,keyLength,deleteNum,deleteText,mistake,repeatNum,keyAccuracy,keyMethod,wordRate,equipment));

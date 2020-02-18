@@ -30,7 +30,9 @@ public class ListenPlayEvent {
             return;
         }
         fileName = ChooseFile.getFileName();
-        if(fileName==null)return;
+        if(fileName==null) {
+            return;
+        }
         fileName = fileName.contains(".") ? fileName.substring(0, fileName.lastIndexOf(".")) : null;
         if(fileName==null){
             JOptionPane.showMessageDialog(MainFra.getInstance(),"格式错误");
@@ -66,8 +68,9 @@ public class ListenPlayEvent {
     }
     public static void replay(){
         stop();
-        if(!isRead)start();
-        else{
+        if(!isRead) {
+            start();
+        } else{
             soundRecordThread = new SoundRecordThread();
             soundRecordThread.start();
         }

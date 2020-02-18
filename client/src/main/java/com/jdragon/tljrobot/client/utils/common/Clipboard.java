@@ -16,7 +16,6 @@ public class Clipboard {
         // 把文本内容设置到系统剪贴板
         clipboard.setContents(trans, null);
         clipboard.getContents(null);
-        clipboard = null;
     }
 
     public static String get() {
@@ -49,14 +48,17 @@ public class Clipboard {
         private Image image; //得到图片或者图片流
         public TransferableImages(Image image) {this.image = image;}
 
+        @Override
         public DataFlavor[] getTransferDataFlavors() {
             return new DataFlavor[]{DataFlavor.imageFlavor};
         }
 
+        @Override
         public boolean isDataFlavorSupported(DataFlavor flavor) {
             return DataFlavor.imageFlavor.equals(flavor);
         }
 
+        @Override
         public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
             if (!DataFlavor.imageFlavor.equals(flavor)) {throw new UnsupportedFlavorException(flavor);}
             return image;

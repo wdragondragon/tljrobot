@@ -51,8 +51,9 @@ public class CardClient {
             Room room = RoomList.get(roomid);
             room.removeMemeber(id);
             Allmember.remove(id);
-            if(isNull(roomid))
+            if(isNull(roomid)) {
                 RoomList.remove(roomid);
+            }
             return true;
         }
     }
@@ -107,8 +108,9 @@ public class CardClient {
             String handcard = "地主是"+room.getLandlord()+
                     "\n"+"地主牌是："+lordcard+"\n"+
                     "你的手牌：";
-            for(Integer n:handcards)
+            for(Integer n:handcards) {
                 handcard += NumToCard.get(n);
+            }
             System.out.println(handcard);
             event.getHttpApi().sendPrivateMsg(k,handcard);//发送手牌
         }
@@ -124,16 +126,18 @@ public class CardClient {
         Room room = RoomList.get(roomid);
         if(room.getMemberList().size()==0)
             return true;
-        else
+        else {
             return false;
+        }
     }
     //是否满人
     boolean isFull(int roomid){
         Map<Long,Member> memberList = RoomList.get(roomid).getMemberList();
         if(memberList.size()>=3)
             return true;
-        else
+        else {
             return false;
+        }
     }
     //是否全部准备
     boolean isAllReady(Long id){
@@ -182,8 +186,9 @@ public class CardClient {
             NumToCard.put(i,String.valueOf(i));
         }
         for(int i = 3;i<=15;i++){
-            for(int j = 0;j<4;j++)
+            for(int j = 0;j<4;j++) {
                 Allcards.add(i);
+            }
         }
         Allcards.add(16);
         Allcards.add(17);

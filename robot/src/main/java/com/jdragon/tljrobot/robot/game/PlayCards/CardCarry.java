@@ -15,41 +15,45 @@ public class CardCarry extends IcqListener {
         String idcard = event.getSender().getInfo().getNickname();
         String type = "QQ";
 
-        if(message.equals("斗地主创房")){
+        if("斗地主创房".equals(message)){
             int roomnum = c.CreatRoom(id,idcard,type);
-            if(roomnum==-1)
+            if(roomnum==-1) {
                 event.respond("创建失败");
-            else
+            } else {
                 event.respond("创建成功，房间号"+roomnum);
+            }
         }
-        else if(s.length==2&&s[0].equals("加入斗地主房间")){
+        else if(s.length==2&& "加入斗地主房间".equals(s[0])){
             int roomnum = Integer.valueOf(s[1]);
             if(!c.isFull(roomnum)){
-                if (c.JoinRoom(id, idcard, type, roomnum))
+                if (c.JoinRoom(id, idcard, type, roomnum)) {
                     event.respond("加入" + roomnum + "房成功");
-                else
+                } else {
                     event.respond("加入失败");
+                }
             }
             else{
                 event.respond("房间已满");
             }
         }
-        else if (message.equals("退出斗地主房间")){
+        else if ("退出斗地主房间".equals(message)){
             if(c.OutRoom(id)) {
                 event.respond("退出成功");
             }
-            else
+            else {
                 event.respond("退出失败");
+            }
         }
-        else if(message.equals("准备")){
+        else if("准备".equals(message)){
             if(c.ChangeReady(id)){
                 event.respond("准备");
             }
             else {
                 event.respond("操作失败");
             }
-            if(c.isAllReady(id))
+            if(c.isAllReady(id)) {
                 c.start(id);
+            }
         }
     }
 }

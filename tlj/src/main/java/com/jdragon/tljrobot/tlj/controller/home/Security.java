@@ -4,6 +4,7 @@ import com.alibaba.nacos.common.util.Md5Utils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jdragon.tljrobot.tlj.mappers.UserMapper;
 import com.jdragon.tljrobot.tlj.pojo.User;
+import com.jdragon.tljrobot.tljutils.DateUtil;
 import com.jdragon.tljrobot.tljutils.Local;
 import com.jdragon.tljrobot.tljutils.Result;
 import com.jdragon.tljrobot.tljutils.TimingMap;
@@ -35,9 +36,11 @@ public class Security {
     @PostMapping("loginState/{userId}")
     @ApiOperation(value = "验证登录状态")
     public Result LoginState(@PathVariable String userId){
-        if(Local.getSession(userId)!=null)
+        if(Local.getSession(userId)!=null) {
             return Result.success("已登录");
-        else return Result.success("未登录");
+        } else {
+            return Result.success("未登录");
+        }
     }
     @PostMapping(value = "/login/{username}/{password}")
     @ApiOperation(value = "登录接口")
@@ -55,6 +58,7 @@ public class Security {
             if(userId==null) {
                 userId = Local.login(user);
             }
+            user.setLastLoginDate(DateUtil.now());
             user.setToken(userId);
             user.updateById();
             return Result.success("登录成功").setResult(userId);
@@ -93,7 +97,7 @@ public class Security {
     @PostMapping(value = "/logout/{userId}")
     @ApiOperation("退出登录")
     @ResponseBody
-    public Result Logout(@ApiParam(name = "userId",value = "使用userId退出")@PathVariable String userId){
+    public Result logout(@ApiParam(name = "userId",value = "使用userId退出")@PathVariable String userId){
         User user = (User)Local.getSession(userId);
         if(user!=null) {
             user.setToken("");

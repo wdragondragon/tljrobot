@@ -58,9 +58,6 @@ class Member {
         return ready;
     }
     void setReadysign() {
-        if(ready)
-            ready = false;
-        else
-            ready = true;
+        ready = !ready;
     }
 }

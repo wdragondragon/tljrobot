@@ -15,7 +15,9 @@ import javax.swing.*;
 public class ShareArticleEvent {
     @SneakyThrows
     public static void start(){
-        if(LocalConfig.lurk)return;
+        if(LocalConfig.lurk) {
+            return;
+        }
         if(TypingState.dailyCompetition){
             JOptionPane.showMessageDialog(null,"先结束日赛");
             return;
@@ -28,6 +30,6 @@ public class ShareArticleEvent {
             share += "-余"+(ArticleTreeListener.length-ArticleTreeListener.fontweizhi)+"字";
         }
         Clipboard.set(share);
-        QqOperation.start(QqOperation.SEND_ACHIEVEMENT, SwingSingleton.QQNameLabel().getText());
+        QqOperation.start(QqOperation.SEND_ACHIEVEMENT, SwingSingleton.qQNameLabel().getText());
     }
 }

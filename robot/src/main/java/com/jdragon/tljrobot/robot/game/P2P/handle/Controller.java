@@ -75,8 +75,9 @@ public class Controller {
                     roommap.remove(thisQQroom);//移除房间
                 } else {
                     for (String sendtoid : roommember1) {
-                        if (!sendtoid.equals(id))
+                        if (!sendtoid.equals(id)) {
                             adapter.SendMsgToID(message, sendtoid, member.get(sendtoid).getType());
+                        }
                     }
                 }
             }

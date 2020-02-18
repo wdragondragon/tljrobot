@@ -46,8 +46,9 @@ public class HistoryTableListener implements MouseListener {
             String articleId = String.valueOf(jTable.getValueAt(selectedRow,1));
             int paragraph = (int) jTable.getValueAt(selectedRow,15);
             JSONObject articleJson = getArticleJson(articleId,paragraph);
-            if(articleJson!=null)
+            if(articleJson!=null) {
                 ShowArticleDialog.getInstance(articleJson.getString("content")).setVisible(true);
+            }
         });
         m_popupMenu.add(replay);
         m_popupMenu.add(getArticle);

@@ -3,6 +3,7 @@ package com.jdragon.tljrobot.tlj.controller.conditional.robot;
 import com.jdragon.tljrobot.tlj.mappers.HistroyMapper;
 import com.jdragon.tljrobot.tlj.pojo.History2;
 import com.jdragon.tljrobot.tljutils.Result;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,31 +24,36 @@ public class TljMatchInRobotController {
     HistroyMapper histroyMapper;
 
     @PostMapping("/getTljMatchAchByDate/{date}")
+    @ApiOperation("根据日期获取跟打器赛文成绩")
     @ResponseBody
     public Result getTljMatchAchByDate(@PathVariable Date date){
         List<History2> historyList = histroyMapper.selectTljMatchAchByDate(date);
-        if(historyList.size()>0)
+        if(historyList.size()>0) {
             return Result.success("获取成功").setResult(historyList);
-        else
+        } else {
             return Result.success("今日无成绩");
+        }
     }
+    @ApiOperation("根据日期获取跟打器手机端赛文成绩")
     @PostMapping("/getMobileTljMatchAchByDate/{date}")
     @ResponseBody
     public Result getMobileTljMatchAchByDate(@PathVariable Date date){
         List<History2> historyList = histroyMapper.selectMobileTljMatchAchByDate(date);
-        if(historyList.size()>0)
+        if(historyList.size()>0) {
             return Result.success("获取成功").setResult(historyList);
-        else
+        } else {
             return Result.success("今日无成绩");
+        }
     }
-
+    @ApiOperation("根据然获取跟打器PC端赛文成绩")
     @PostMapping("/getPCTljMatchAchByDate/{date}")
     @ResponseBody
     public Result getPCTljMatchAchByDate(@PathVariable Date date){
         List<History2> historyList = histroyMapper.selectPCTljMatchAchByDate(date);
-        if(historyList.size()>0)
+        if(historyList.size()>0) {
             return Result.success("获取成功").setResult(historyList);
-        else
+        } else {
             return Result.success("今日无成绩");
+        }
     }
 }

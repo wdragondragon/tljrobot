@@ -31,8 +31,9 @@ public class initGroupList {
                 Map<Long, String> memberlist = new HashMap<Long, String>();
                 for (RGroupMemberInfo key : s) {
                     memberlist.put(key.getUserId(), key.getCard());
-                    if(QQlist.get(key.getUserId())==null||QQlist.get(key.getUserId()).equals(""))
+                    if(QQlist.get(key.getUserId())==null||QQlist.get(key.getUserId()).equals("")) {
                         QQlist.put(key.getUserId(),key.getCard());
+                    }
                 }
                 GroupMemberCardMap.put(GroupID, memberlist);
             }
@@ -41,8 +42,9 @@ public class initGroupList {
         for(long GroupID :Grouplist.keySet()) {
             List<RGroupMemberInfo> s = httpApi.getGroupMemberList(GroupID).getData();
             for (RGroupMemberInfo key : s) {
-                if(QQlist.get(key.getUserId())==null||QQlist.get(key.getUserId()).equals(""))
+                if(QQlist.get(key.getUserId())==null||QQlist.get(key.getUserId()).equals("")) {
                     QQlist.put(key.getUserId(),key.getNickname());
+                }
             }
         }
         //添加String,long群列表

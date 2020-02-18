@@ -27,7 +27,9 @@ public class Application {
 
 
         new DelayedOperationThread().start();//载文线程
-        if(LocalConfig.runLogin) LogonDialog.doLogin();
+        if(LocalConfig.runLogin) {
+            LogonDialog.doLogin();
+        }
         new DateNumInitThread().start();
         KeyboardHookThread kbhook = new KeyboardHookThread();
         new Thread(kbhook).start();

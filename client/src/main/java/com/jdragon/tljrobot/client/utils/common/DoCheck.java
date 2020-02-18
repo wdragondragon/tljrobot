@@ -10,8 +10,9 @@ public class DoCheck {
     public static String buildCheckStr(String str, String model){
         char[] d = str.toCharArray();
         char[] c = model.toCharArray();
-        for (int i = 0; i < d.length; i++)
+        for (int i = 0; i < d.length; i++) {
             d[i] = (char) (d[i] ^ c[i%5]);
+        }
         return new String(d);
     }
     public static boolean check(String str, String model){
@@ -22,8 +23,9 @@ public class DoCheck {
             Matcher m = pattern.matcher(str);//判断是否符合匹配
             if (m.find()) {
                 String temp = m.group(1);
-                if (temp.contains("/"))
+                if (temp.contains("/")) {
                     temp = temp.split("/")[0];
+                }
                 a += Double.parseDouble(String.format("%.2f", Double.parseDouble((temp))));
 
             }

@@ -41,7 +41,9 @@ public class HttpUtil {
                 System.out.println("响应内容长度为:" + responseEntity.getContentLength());
                 result = EntityUtils.toString(responseEntity);
                 System.out.println("响应内容为:" + result);
-            }else result = "无返回";
+            }else {
+                result = "无返回";
+            }
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         } finally {
@@ -186,7 +188,9 @@ public class HttpUtil {
                 System.out.println("响应内容长度为:" + responseEntity.getContentLength());
                 result = EntityUtils.toString(responseEntity);
                 System.out.println("响应内容为:" + result);
-            }else result = "无返回";
+            }else {
+                result = "无返回";
+            }
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         } finally {
@@ -230,7 +234,9 @@ public class HttpUtil {
                 System.out.println("响应内容长度为:" + responseEntity.getContentLength());
                 result = EntityUtils.toString(responseEntity);
                 System.out.println("响应内容为:" + result);
-            }else result = "无返回";
+            }else {
+                result = "无返回";
+            }
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         } finally {
@@ -280,7 +286,9 @@ public class HttpUtil {
                 System.out.println("响应内容长度为:" + responseEntity.getContentLength());
                 result = EntityUtils.toString(responseEntity);
                 System.out.println("响应内容为:" + result);
-            }else result = "无返回";
+            }else {
+                result = "无返回";
+            }
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         } finally {

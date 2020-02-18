@@ -23,12 +23,18 @@ public class Automatic_Inclusion extends Thread {
 
                     IcqHttpApi icqHttpApi = robot.getInstance().getAccountManager().getNonAccountSpecifiedApi();
                     String path = com.jdragon.tljrobot.robot.newTyping.RobotGroupClient.resultUnionJson(false);
-                    if(path.equals("无该天赛文成绩")) icqHttpApi.sendGroupMsg(robot.tljGroupNum,path);
-                    else icqHttpApi.sendGroupMsg(robot.tljGroupNum,new ComponentImage(path).toString());
+                    if(path.equals("无该天赛文成绩")) {
+                        icqHttpApi.sendGroupMsg(robot.tljGroupNum,path);
+                    } else {
+                        icqHttpApi.sendGroupMsg(robot.tljGroupNum,new ComponentImage(path).toString());
+                    }
 
                     path = com.jdragon.tljrobot.robot.newTyping.RobotGroupClient.resultTljJson();
-                    if(path.equals("无该天赛文成绩"))icqHttpApi.sendGroupMsg(robot.tljGroupNum,path);
-                    else icqHttpApi.sendGroupMsg(robot.tljGroupNum,new ComponentImage(path).toString());
+                    if(path.equals("无该天赛文成绩")) {
+                        icqHttpApi.sendGroupMsg(robot.tljGroupNum,path);
+                    } else {
+                        icqHttpApi.sendGroupMsg(robot.tljGroupNum,new ComponentImage(path).toString());
+                    }
                 }
                 sleep(60000);
             } catch (InterruptedException e) {

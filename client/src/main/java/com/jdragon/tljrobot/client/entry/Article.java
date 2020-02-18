@@ -15,10 +15,12 @@ public class Article {
         return articleSingleton;
     }
     public static Article getArticleSingleton(int paragraph1,String title1,String article1){
-        if(LocalConfig.replace)
+        if(LocalConfig.replace) {
             article1 = ArticleUtil.replace(article1);
-        if(LocalConfig.clearSpace)
+        }
+        if(LocalConfig.clearSpace) {
             article1 = ArticleUtil.clearSpace(article1);
+        }
         getArticleSingleton().setArticleSingleton(paragraph1,title1,article1);
         return articleSingleton;
     }

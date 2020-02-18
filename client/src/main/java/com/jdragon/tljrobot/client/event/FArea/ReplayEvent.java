@@ -18,38 +18,38 @@ public class ReplayEvent {
             return;
         }
         if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){
-            TypingText().setText("");
-            WatchingText().setText(""); // 清空文本框
+            typingText().setText("");
+            watchingText().setText(""); // 清空文本框
             TypingState.init();//打字状态初始化
             ListenPlayEvent.replay();
         }else {
-            TypingText().setText("");
+            typingText().setText("");
             TypingListener.getInstance().changeFontColor();
-            SpeedButton().setText("0.00");
-            KeySpeedButton().setText("0.00");
-            KeyLengthButton().setText("0.00");
-            NumberLabel().setText("字数:" + Article.getArticleSingleton().getArticle().length()
+            speedButton().setText("0.00");
+            keySpeedButton().setText("0.00");
+            keyLengthButton().setText("0.00");
+            numberLabel().setText("字数:" + Article.getArticleSingleton().getArticle().length()
                     + "/已打:0/错:0");
             TypingState.init();//打字状态初始化
             //文本框初始化
-            WatchingText().setCaretPosition(0);
-            WatchingJSP().getVerticalScrollBar().setValue(0);
+            watchingText().setCaretPosition(0);
+            watchingJsp().getVerticalScrollBar().setValue(0);
             //进度条初始化
             int articleLength = Article.getArticleSingleton().getArticle().length();
-            TypingProgress().setMinimum(0);
-            TypingProgress().setMaximum(articleLength);
-            TypingProgress().setValue(0);
+            typingProgress().setMinimum(0);
+            typingProgress().setMaximum(articleLength);
+            typingProgress().setValue(0);
 
-            TypingText().setEditable(true);
-            TypingText().requestFocusInWindow();
+            typingText().setEditable(true);
+            typingText().requestFocusInWindow();
 
             if (!TypingState.dailyCompetition)
                 TypingListener.getInstance().changeTipLabel(0);//提示第一个字
 
-            TheoreticalCodeLengthButton().setText(String.valueOf(Article.getArticleSingleton().getShortCodeEntity().getArticleAverCodes()));
+            theoreticalCodeLengthButton().setText(String.valueOf(Article.getArticleSingleton().getShortCodeEntity().getArticleAverCodes()));
 
             TypingState.pause = false;
-            TypingText().requestFocusInWindow();
+            typingText().requestFocusInWindow();
         }
     }
 }

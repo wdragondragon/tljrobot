@@ -29,14 +29,16 @@ public class O2TCarry extends IcqListener {
             if(room.getRightstr().length()==message.length()){
                 Set<Character> set = new HashSet<>();
                 char[] chars = message.toCharArray();
-                for(char c:chars)
+                for(char c:chars) {
                     set.add(c);
+                }
                 if(set.size()!=message.length()){
                     event.respond(at+"不可有重复数字");
                 }else {
                     message = room.judge(message);
-                    if (message.equals("恭喜正确！"))
+                    if (message.equals("恭喜正确！")) {
                         roomHashMap.remove(id);
+                    }
                     event.respond(at+message);
                 }
             }
@@ -45,8 +47,9 @@ public class O2TCarry extends IcqListener {
                 event.respond("你已启动过1A2B");
             }else {
                 int level = Integer.valueOf(s[1]);
-                if(level<4||level>9)event.respond("难度在4到9之间");
-                else {
+                if(level<4||level>9) {
+                    event.respond("难度在4到9之间");
+                } else {
                     roomHashMap.put(id, new Room(level));
                     event.respond("1A2B开始！");
                 }

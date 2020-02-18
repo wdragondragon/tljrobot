@@ -85,9 +85,9 @@ public class GroupFollowTeamThread {
     public void addID(int GroupNum,Long id,String name){
         String at = "[CQ:at,qq="+id+"]\n";
         int i = isEmpty(id);
-        if(i!=-1)
+        if(i!=-1) {
             event.respond(at+"你已加入了"+(i)+"队，请勿重复加入队伍");
-        else {
+        } else {
             Member.get(GroupNum).add(id);
             speedlist.put(id, 0.0);
             namelist.put(id,name);
@@ -103,8 +103,9 @@ public class GroupFollowTeamThread {
             namelist.remove(id);
             event.respond(at + "已退出" + (i) + "队");
         }
-        else
+        else {
             event.respond(at + "你未曾加入何人队伍");
+        }
     }
     public Map<Integer,Integer> getMath(){
         return math;

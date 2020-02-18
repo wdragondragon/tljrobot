@@ -24,8 +24,9 @@ public class ArticleUtil {
             i++;
         }
         clearSpace(str1);
-        if(str1.length()>600)
+        if(str1.length()>600) {
             str1 = str1.substring(0,599);
+        }
         str1 = replace(str1);
 //			System.out.println(str1);
         return str1;
@@ -56,8 +57,9 @@ public class ArticleUtil {
             BufferedReader bufferRead = new BufferedReader(in);
             String str = "";
             String temp;
-            while((temp = bufferRead.readLine())!=null)
+            while((temp = bufferRead.readLine())!=null) {
                 str+=temp;
+            }
 //			System.out.println(str);
             return str;
         }catch(Exception e){
@@ -72,9 +74,11 @@ public class ArticleUtil {
         char[] a = str.toCharArray();
         int b ;
         char[] y = afterChar.toCharArray();
-        for(int i =0;i<a.length;i++)
-            if((b = initChar.indexOf(a[i]))!=-1)
+        for(int i =0;i<a.length;i++) {
+            if((b = initChar.indexOf(a[i]))!=-1) {
                 a[i] = y[b];
+            }
+        }
         str = String.valueOf(a);
         return str;
     }

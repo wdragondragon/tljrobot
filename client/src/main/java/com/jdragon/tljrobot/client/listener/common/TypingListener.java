@@ -28,7 +28,9 @@ public class TypingListener implements DocumentListener, KeyListener {
     private static TypingListener typingListener;
     public TypingListener(){}
     public static TypingListener getInstance(){
-        if(typingListener==null) typingListener = new TypingListener();
+        if(typingListener==null) {
+            typingListener = new TypingListener();
+        }
         return typingListener;
     }
     public static boolean delaySendResultSign;//跟打标志，作延迟用
@@ -47,12 +49,15 @@ public class TypingListener implements DocumentListener, KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         try {
-            if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)|| Article.getArticleSingleton().getArticle()==null)return;
+            if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)|| Article.getArticleSingleton().getArticle()==null) {
+                return;
+            }
 //            if(TypingText().getText().length()==0)return;
-            if (e.getKeyChar() != '\b')
-                typeStr = TypingText().getText() + e.getKeyChar();
-            else
-                typeStr = TypingText().getText();
+            if (e.getKeyChar() != '\b') {
+                typeStr = typingText().getText() + e.getKeyChar();
+            } else {
+                typeStr = typingText().getText();
+            }
             articleStr = Article.getArticleSingleton().getArticle();
 
             typeChars = typeStr.toCharArray();
@@ -101,7 +106,7 @@ public class TypingListener implements DocumentListener, KeyListener {
             if (typingState)
                 changeFontColor();//改变颜色
             if (LocalConfig.progress)// 进度条
-                TypingProgress().setValue(TypingText().getText().length() + 1 - mistake);
+                typingProgress().setValue(typingText().getText().length() + 1 - mistake);
             /**
              * 改变编码提示框
              */
@@ -110,7 +115,7 @@ public class TypingListener implements DocumentListener, KeyListener {
 
             }
             changePosition();// 文本自动翻页
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {ignored.printStackTrace();}
     }
 
     @Override
@@ -180,7 +185,7 @@ public class TypingListener implements DocumentListener, KeyListener {
     public void changedUpdate(DocumentEvent e) {
         try {
             if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)||Article.getArticleSingleton().getArticle()==null)return;
-            typeStr = TypingText().getText();
+            typeStr = typingText().getText();
             articleStr = Article.getArticleSingleton().getArticle();
             typeLength = typeStr.length();
             if (!typingState&&typeLength > 0) {
@@ -194,7 +199,7 @@ public class TypingListener implements DocumentListener, KeyListener {
             if (typeStr.length() == articleStr.length() && typingLastIndexWord.equals(articleLastIndexWord)
                     && !(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN))) // 两文本长度相等且最后一字相同时执行
             {
-                TypingText().setEditable(false); // 设置不可打字状态
+                typingText().setEditable(false); // 设置不可打字状态
                 delaySendResultSign = true;
             }
         } catch (Exception exp) {exp.printStackTrace();}
@@ -242,12 +247,12 @@ public class TypingListener implements DocumentListener, KeyListener {
             wordsCode = codeEntity.getWordsCode();
             tipStr.append("  "+ words+ ":" + wordsCode);
         }
-        TipsLabel().setText(tipStr.toString());// 单字编码提示更改
+        tipsLabel().setText(tipStr.toString());// 单字编码提示更改
         int chineseLength = word.length()+words.length();//中文长度
         int englishLength = wordCode.length()+wordsCode.length();//英文长度
-        int subWidth = chineseLength*12+(englishLength+4)*8-TipsLabel().getWidth();//用中英文长度来计算改变的提示宽度
-        Layout.addSize(subWidth,0,TipsLabel());
-        Layout.addLocation(subWidth,0,SendArticleLabel());
+        int subWidth = chineseLength*12+(englishLength+4)*8- tipsLabel().getWidth();//用中英文长度来计算改变的提示宽度
+        Layout.addSize(subWidth,0, tipsLabel());
+        Layout.addLocation(subWidth,0, sendArticleLabel());
     }
     /**
      * @Author: Jdragon on 2020.01.12 下午 9:53
@@ -276,7 +281,7 @@ public class TypingListener implements DocumentListener, KeyListener {
     String typeDocName = LocalConfig.typeDocName;
     public void changeAllFontColor() {
         try {
-            WatchingText().setText(""); // 清空文本框
+            watchingText().setText(""); // 清空文本框
             try {
                 System.out.println(articleChars.length+":"+articleStr.length());
                 for (n = 0; n < articleStr.length(); n++) { // 统计错误字数，向文本框添加字体
@@ -317,7 +322,7 @@ public class TypingListener implements DocumentListener, KeyListener {
             lastIndex = articleStr.length();
         }
         thisPageTypeStr = typeStr.substring(pageCount * thisPageNum);
-        WatchingText().setText(""); // 清空文本框
+        watchingText().setText(""); // 清空文本框
         try {
             if (thisPageNum > 0)
                 n = thisPageNum * pageCount - (widthFontNum + 1) / 3;
@@ -432,7 +437,7 @@ public class TypingListener implements DocumentListener, KeyListener {
     }
 
     public void changeLookPlayFontColor(List<HashMap<String,Integer>> strList){
-        WatchingText().setText(""); // 清空文本框
+        watchingText().setText(""); // 清空文本框
         for(HashMap<String,Integer> hashMap:strList){
             for(Map.Entry<String,Integer> entry:hashMap.entrySet()){
                 if(entry.getValue()==0){
@@ -455,7 +460,7 @@ public class TypingListener implements DocumentListener, KeyListener {
     }
     public void changeListenPlayFontColor(List<HashMap<String,Integer>> strList){
         int length = 0;
-        WatchingText().setText(""); // 清空文本框
+        watchingText().setText(""); // 清空文本框
         for(HashMap<String,Integer> hashMap:strList){
             for(Map.Entry<String,Integer> entry:hashMap.entrySet()){
                 length++;
@@ -489,16 +494,17 @@ public class TypingListener implements DocumentListener, KeyListener {
      */
     int widthFontNum;// 一行字数
     int cursor = 116;//光标所在位置
+    int maxPageNum;
     void changePosition() {// 自动滚动条翻页方法
         int fontSize = LocalConfig.fontSize;
         int pageCount = LocalConfig.typePageCount;
         int fontWidth = fontSize + 59; // 一个字横分辨率
         int fontHeight = fontSize + 14;// 一个字竖分辨率
-        int heightFontNum = TypingAndWatching().getDividerLocation() / fontHeight; // 行数
+        int heightFontNum = typingAndWatching().getDividerLocation() / fontHeight; // 行数
         int temp;
-        widthFontNum = (TypingAndWatching().getWidth() - fontWidth) / fontSize;//行字数
+        widthFontNum = (typingAndWatching().getWidth() - fontWidth) / fontSize;//行字数
         cursor = cursor % (LocalConfig.typePageCount + (widthFontNum + 1) / 3);
-        int maxPageNum = (heightFontNum-1) * (widthFontNum + 1);
+        maxPageNum = (heightFontNum-1) * (widthFontNum + 1);
         if (thisPageNum == 0) {
             while (thisPageTypeStr.length()+maxPageNum/2 > cursor&&cursor!=pageCount-1) {
                 if (heightFontNum > 2)
@@ -535,15 +541,15 @@ public class TypingListener implements DocumentListener, KeyListener {
             } else {
                 cursor = (widthFontNum + 1)/2 - (widthFontNum + 1) / 3;
             }
-            WatchingJSP().getVerticalScrollBar().setValue(0);
+            watchingJsp().getVerticalScrollBar().setValue(0);
         }
-        WatchingText().setCaretPosition(cursor);
+        watchingText().setCaretPosition(cursor);
     }
     public void updateNumShow(){
-        NumberLabel().setText("字数:" + articleStr.length() + "/已打:" + typeStr.length() + "/错:"
+        numberLabel().setText("字数:" + articleStr.length() + "/已打:" + typeStr.length() + "/错:"
                 + mistake);
 
-        NumberRecordLabel().setText("总:" + NumState.num + " 对:"
+        numberRecordLabel().setText("总:" + NumState.num + " 对:"
                 + NumState.rightNum + " 错:"
                 + NumState.misNum + " 今:"
                 + NumState.dateNum);

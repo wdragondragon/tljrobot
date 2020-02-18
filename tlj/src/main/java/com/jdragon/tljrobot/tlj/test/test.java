@@ -30,7 +30,7 @@ public class test {
     @ApiIgnore
     @RequestMapping("/testDate")
     public String testDate() {
-        return new DateUtil().now().toString();
+        return DateUtil.now().toString();
     }
     @GetMapping("/bestTyping/{str}")
     @ApiOperation(value = "获取最佳编码详细json")
@@ -44,7 +44,7 @@ public class test {
     }
     @Test
     public void mdt(){
-        System.out.println(Md5Utils.getMD5("12345678".getBytes()));
+        System.out.println(Md5Utils.getMD5("IHLQRHXBRUUV".getBytes()));
         String str = "21342";
         str = str.substring(0, Math.min(str.length(), 10));
         System.out.println(str);

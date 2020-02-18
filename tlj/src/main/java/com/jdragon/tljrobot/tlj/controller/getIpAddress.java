@@ -16,8 +16,7 @@ public class getIpAddress {
     public String test(HttpServletRequest request){
 
         //获取IP地址
-        String ipAddress = IpUtil.getIpAddr(request);
 
-        return ipAddress;
+        return IpUtil.getIpAddr(request);
     }
 }

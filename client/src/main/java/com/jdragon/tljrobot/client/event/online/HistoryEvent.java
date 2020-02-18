@@ -27,14 +27,14 @@ public class HistoryEvent {
         params.put("isMobile","0");
         JSONObject jsonObject = JSON.parseObject(HttpUtil.doGetParam(HttpAddr.MATCH_GET_TODAY, params,UserState.token));
         String message = jsonObject.getString(Constant.RESPONSE_MESSAGE);
-        if(message.equals("获取成功")){
+        if("获取成功".equals(message)){
             /**
              * 获取数据示范
              * {"code":200,"message":"获取成功","result":{"id":0,"holdDate":"2020-01-18","article":{"id":1,"title":"1","content":"1"}}}
              */
             JSONObject article = jsonObject.getJSONObject("result").getJSONObject("article");
             Article.getArticleSingleton(0,article.getString("title"),article.getString("content"));
-            SwingSingleton.TypingText().setEditable(false);
+            SwingSingleton.typingText().setEditable(false);
             new CountMatchThread().start();
         }else{
             JOptionPane.showMessageDialog(null,message);

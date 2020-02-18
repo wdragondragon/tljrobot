@@ -44,12 +44,12 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                 Article article = Article.getArticleSingleton();
                 fontweizhi = 0;
                 article.setTitle(node.toString());
-                if(article.getTitle().equals("随机一文")){
+                if("随机一文".equals(article.getTitle())){
                     all = ArticleUtil.getRandomContent2();
-                }else if(article.getTitle().equals("剪贴板")){
+                }else if("剪贴板".equals(article.getTitle())){
                     all = Clipboard.get();
                 }else{
-                    if (article.getTitle().substring(0, 4).equals("跟打进度")) {
+                    if ("跟打进度".equals(article.getTitle().substring(0, 4))) {
                         readjindu();
                     }
                     open = new File("文章//" + node.getParent(), article.getTitle());
@@ -59,10 +59,12 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                     in.readFully(s);
                     all = new String(s);
                 }
-                if(LocalConfig.clearSpace)
+                if(LocalConfig.clearSpace) {
                     all = ArticleUtil.clearSpace(all);
-                if(LocalConfig.replace)
+                }
+                if(LocalConfig.replace) {
                     all = ArticleUtil.replace(all);
+                }
                 length = all.length();
                 SendArticleDialog.getInstance().setTitle("文章总长度:"+length);
                 getNumber();
@@ -79,16 +81,18 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
         }
     }
     public static void showContent() {
-        if (fontnum > all.length())
+        if (fontnum > all.length()) {
             wen = all.substring(fontweizhi);
-        else
+        } else {
             wen = all.substring(fontweizhi, fontweizhi + fontnum);
-        if(wen.length()>500)
+        }
+        if(wen.length()>500) {
             SendArticleDialog.wenben.setText(wen.substring(0,500));
-        else
+        } else {
             SendArticleDialog.wenben.setText(wen);
+        }
         // fontweizhi += fontnum;
-        SwingSingleton.SendArticleLabel().setText(fontweizhi
+        SwingSingleton.sendArticleLabel().setText(fontweizhi
                 + "/"
                 + all.length()
                 + ":"
@@ -114,22 +118,24 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
         showContent();
         article.setArticle(wen);//设置跟打内容
         if (article.getArticle() == null
-                || article.getArticle().equals(""))
+                || "".equals(article.getArticle())) {
             return;
+        }
         ReplayEvent.start();
         TypingState.sendArticle = 1; // 顺序发文标志
         article.setParagraph(1);//设置段号
         fontweizhi += fontnum;
-        SwingSingleton.SendArticleLabel().setVisible(true);
+        SwingSingleton.sendArticleLabel().setVisible(true);
         SendArticleDialog.getInstance().setVisible(false);
-        if (!LocalConfig.lurk)
+        if (!LocalConfig.lurk) {
             ShareArticleEvent.start();
+        }
     }
     public void nextOrder(){
         try {
             if (fontweizhi >= all.length()) {
                 JOptionPane.showMessageDialog(new JTextArea(), "发文结束");
-                SwingSingleton.SendArticleLabel().setVisible(false);
+                SwingSingleton.sendArticleLabel().setVisible(false);
                 TypingState.sendArticle = 0;
                 return;
             }
@@ -144,7 +150,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
             article.setArticle(wen);
             article.addParagraph();// 发文增段
             ReplayEvent.start();
-            SwingSingleton.SendArticleLabel().setText(fontweizhi
+            SwingSingleton.sendArticleLabel().setText(fontweizhi
                     + "/"
                     + all.length()
                     + ":"
@@ -180,8 +186,9 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
         Article article = Article.getArticleSingleton();
         getNumber();
         article.setArticle(randomCommon(all, fontnum));
-        if (article.getArticle() == null)
+        if (article.getArticle() == null) {
             return;
+        }
         if (model.equals("抽取模式发文")) {
             SendArticleDialog.getInstance().setVisible(false);
             article.setParagraph(1);
@@ -225,7 +232,9 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
             Collections.shuffle(chouqulist);
             // System.out.println(chouqulist.size()+" "+y);
             wordNum = Integer.parseInt(String.valueOf(SendArticleDialog.cishu.getValue()));
-            if(wordNum==0)wordNum = 200;
+            if(wordNum==0) {
+                wordNum = 200;
+            }
             for (int i = 0; i < (Math.min(chouqulist.size(), wordNum)); i++) {
                 temp.append(chouqulist.get(i));
                 chouqubufenlist.add(chouqulist.get(i));
@@ -283,26 +292,29 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
             case "发送全文":
                 sendAll();
                 break;
+            default:break;
         }
-        SwingSingleton.TypingText().requestFocusInWindow();
+        SwingSingleton.typingText().requestFocusInWindow();
     }
     public void sendAll() {
         Article article = Article.getArticleSingleton();
         article.setArticle(all);//设置跟打内容
         if (article.getArticle() == null
-                || article.getArticle().equals(""))
+                || "".equals(article.getArticle())) {
             return;
+        }
         ReplayEvent.start();
         TypingState.sendArticle = 1; // 顺序发文标志
         article.setParagraph(1);//设置段号
         fontweizhi += fontnum;
-        SwingSingleton.SendArticleLabel().setVisible(true);
+        SwingSingleton.sendArticleLabel().setVisible(true);
         SendArticleDialog.getInstance().setVisible(false);
         ShareArticleEvent.start();
     }
     public static String randomCommon(String wen, int n) {
-        if (wen == null)
+        if (wen == null) {
             return null;
+        }
         int min = 0;
         int max = wen.length();
         char[] c = wen.toCharArray();
@@ -326,7 +338,9 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                 count++;
             }
         }
-        for (int value : result) resultstr.append(c[value]);
+        for (int value : result) {
+            resultstr.append(c[value]);
+        }
         return resultstr.toString();
     }
 }

@@ -1,6 +1,5 @@
 package com.jdragon.tljrobot.client.test;
 
-import com.jdragon.tljrobot.client.Constant;
 import org.junit.jupiter.api.Test;
 
 /**

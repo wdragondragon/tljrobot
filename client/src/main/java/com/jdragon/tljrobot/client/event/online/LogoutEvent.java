@@ -13,7 +13,7 @@ import com.jdragon.tljrobot.tljutils.HttpUtil;
 public class LogoutEvent {
     public static boolean start(){
         JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(HttpAddr.LOGOUT_ADDR,UserState.token));
-        if(jsonObject.getString(Constant.RESPONSE_MESSAGE).equals("退出成功")) {
+        if("退出成功".equals(jsonObject.getString(Constant.RESPONSE_MESSAGE))) {
             UserState.loginState = false;
             UserState.token = "";
             return true;

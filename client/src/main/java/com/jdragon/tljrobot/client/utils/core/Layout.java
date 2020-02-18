@@ -35,18 +35,18 @@ public class Layout {
     }
     public static void resetBounds(){
         MainFra mainFra = MainFra.getInstance();
-        SwingSingleton.CloseButton().setBounds(mainFra.getWidth()-20,0,20,10);
-        SwingSingleton.MaxButton().setBounds(mainFra.getWidth()-42,0,20,10);
-        SwingSingleton.MinButton().setBounds(mainFra.getWidth()-63,0,20,10);
-        SwingSingleton.SizeButton().setBounds(mainFra.getWidth()-10,mainFra.getHeight()-10,10,10);
-        TypingAndWatching().setBounds(10,
-                columnAddSpacing(SwingSingleton.SpeedButton(),10),mainFra.getWidth()-10, mainFra.getHeight()-100);
-        SwingSingleton.TypingProgress().setBounds(10,
-                columnAddSpacing(TypingAndWatching(),0),mainFra.getWidth()-10,10);
-        SwingSingleton.QQNameLabel().setBounds(TypingAndWatching().getX(),columnAddSpacing(TypingAndWatching(),10),120,40);
-        SwingSingleton.NumberLabel().setBounds(rowAddSpacing(QQNameLabel(),10),columnAddSpacing(TypingAndWatching(),10),120,40);
-        SwingSingleton.NumberRecordLabel().setBounds(rowAddSpacing(NumberLabel(),10),columnAddSpacing(TypingAndWatching(),10),120,40);
-        SwingSingleton.TipsLabel().setBounds(rowAddSpacing(NumberRecordLabel(),10),columnAddSpacing(TypingAndWatching(),10),120,40);
-        SwingSingleton.SendArticleLabel().setBounds(rowAddSpacing(TipsLabel(),10),columnAddSpacing(TypingAndWatching(),10),120,40);
+        SwingSingleton.closeButton().setBounds(mainFra.getWidth()-20,0,20,10);
+        SwingSingleton.maxButton().setBounds(mainFra.getWidth()-42,0,20,10);
+        SwingSingleton.minButton().setBounds(mainFra.getWidth()-63,0,20,10);
+        SwingSingleton.sizeButton().setBounds(mainFra.getWidth()-10,mainFra.getHeight()-10,10,10);
+        typingAndWatching().setBounds(10,
+                columnAddSpacing(SwingSingleton.speedButton(),10),mainFra.getWidth()-10, mainFra.getHeight()-100);
+        SwingSingleton.typingProgress().setBounds(10,
+                columnAddSpacing(typingAndWatching(),0),mainFra.getWidth()-10,10);
+        SwingSingleton.qQNameLabel().setBounds(typingAndWatching().getX(),columnAddSpacing(typingAndWatching(),10),120,40);
+        SwingSingleton.numberLabel().setBounds(rowAddSpacing(qQNameLabel(),10),columnAddSpacing(typingAndWatching(),10),120,40);
+        SwingSingleton.numberRecordLabel().setBounds(rowAddSpacing(numberLabel(),10),columnAddSpacing(typingAndWatching(),10),120,40);
+        SwingSingleton.tipsLabel().setBounds(rowAddSpacing(numberRecordLabel(),10),columnAddSpacing(typingAndWatching(),10),120,40);
+        SwingSingleton.sendArticleLabel().setBounds(rowAddSpacing(tipsLabel(),10),columnAddSpacing(typingAndWatching(),10),120,40);
     }
 }

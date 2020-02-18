@@ -17,27 +17,31 @@ public class MessageMove  extends IcqListener {
             if(ID==1061917196L) {
                 open = true;
                 event.respond("小鹤双拼练习一群，二群聊天转发开启");
-            }else
+            }else {
                 event.respond("无操作权限");
+            }
             return ;
         } else if (message.equals("关闭转发")) {
             if(ID==1061917196L) {
                 open = false;
                 event.respond("小鹤双拼练习一群，二群聊天转发关闭");
-            }else
+            }else {
                 event.respond("无操作权限");
+            }
             return ;
         }
         String returnMes = ID+"\n"+message;
         String temp = "";
 
-        if(message.length()>5)
+        if(message.length()>5) {
             temp = message.substring(0,4);
+        }
         if(open&&ID!=207938707L&&!temp.equals("第999段")) {
-            if (GroupID == 522394334L)
+            if (GroupID == 522394334L) {
                 event.getHttpApi().sendGroupMsg(723795668L, returnMes);
-            else if (GroupID == 723795668L)
+            } else if (GroupID == 723795668L) {
                 event.getHttpApi().sendGroupMsg(522394334L, returnMes);
+            }
         }
     }
 }

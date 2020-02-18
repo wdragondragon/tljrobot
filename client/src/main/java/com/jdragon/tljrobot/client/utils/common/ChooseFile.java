@@ -9,6 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+/**
+ * @author 10619
+ */
 public class ChooseFile implements ActionListener{
 	public static String cizufilename = LocalConfig.codeTable;
 	@Override
@@ -32,10 +35,9 @@ public class ChooseFile implements ActionListener{
 		    }else if(file.isFile()){  
 		        System.out.println("文件:"+file.getAbsolutePath());  
 		    }
-		    String str = file.getAbsolutePath();
-//		    str = str.replace("\\", "/");
+			//		    str = str.replace("\\", "/");
 //		    System.out.println("选择词码表:"+str);
-			return str;
+			return file.getAbsolutePath();
 	    }
 	    return null;
 	}

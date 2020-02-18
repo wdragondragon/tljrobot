@@ -1,4 +1,4 @@
-package com.jdragon.tljrobot.client;
+package com.jdragon.tljrobot.client.test;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -6,6 +6,7 @@ import com.jdragon.tljrobot.tlj.pojo.RobotHistory;
 import com.jdragon.tljrobot.tlj.pojo.UnionMatch;
 import com.jdragon.tljrobot.tlj.service.RobotService;
 import com.jdragon.tljrobot.tljutils.Result;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,37 +27,45 @@ public class UnionMatchController {
     RobotService robotService;
 
     @PostMapping("/uploadUnionMatch")
+    @ApiOperation("上传联赛赛文")
     public Result uploadUnionMatch(@RequestParam String author, @RequestBody Article article){
-        if(robotService.uploadUnionMatch(article,author)){
-            return Result.success("上传成功");
+        Date matchDate = robotService.uploadUnionMatch(article,author);
+        if(matchDate!=null){
+            return Result.success("上传成功:进行日期"+matchDate);
         }
         return Result.error("上传失败");
     }
 
     @PostMapping("/getUnionMatch/{date}")
+    @ApiOperation("根据日期获取联赛赛文")
     public Result getUnionMatch(@PathVariable Date date){
         UnionMatch unionMatch = unionMatchMapper.selectUnionMatchByDate(date);
-        if(unionMatch!=null)
+        if(unionMatch!=null) {
             return Result.success("获取成功").setResult(unionMatch);
-        else
+        } else {
             return Result.error("无赛文");
+        }
     }
 
     @PostMapping("/getUnionAchRank/{date}")
+    @ApiOperation("根据日期获取联赛排行")
     public Result getUnionAchRank(@PathVariable Date date){
         List<RobotHistory> robotHistoryList = robotService.getUnionMatchRank(date);
-        if(robotHistoryList.size()!=0)
+        if(robotHistoryList.size()!=0) {
             return Result.success("获取成功").setResult(robotHistoryList);
-        else
+        } else {
             return Result.success("今天尚未有人提交成绩");
+        }
     }
     @PostMapping("/getUnionFirstAchRank/{date}")
+    @ApiOperation("根据日期获取联赛首打排行")
     public Result getUnionFirstAchRank(@PathVariable Date date){
         List<RobotHistory> robotHistoryList = robotService.getUnionFirstMatchRank(date);
-        if(robotHistoryList.size()!=0)
+        if(robotHistoryList.size()!=0) {
             return Result.success("获取成功").setResult(robotHistoryList);
-        else
+        } else {
             return Result.success("今天尚未有人提交成绩");
+        }
     }
     /**
      * 赛文成绩上传在合并到robotHistoryController

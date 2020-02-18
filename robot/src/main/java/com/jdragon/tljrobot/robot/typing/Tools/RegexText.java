@@ -4,6 +4,8 @@ package com.jdragon.tljrobot.robot.typing.Tools;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.util.regex.Pattern.compile;
+
 public class RegexText {
 	private int gang = 0;
 	private int kong = 0;
@@ -32,8 +34,9 @@ public class RegexText {
 				}
 				gang=0;
 			}
-			if(sign1!=0)
+			if(sign1!=0) {
 				break;
+			}
 
 		}
 		for(j=sign1;j>0;j--){
@@ -43,22 +46,27 @@ public class RegexText {
 				a[j]='#';
 				if(kong>=2){
 					sign2  = j;
-					while(a[j]!='\n'&&j>0)
+					while(a[j]!='\n'&&j>0) {
 						j--;
-					if(j>0)
+					}
+					if(j>0) {
 						a[j]='#';
-					else
+					} else {
 						j=-1;
-					for(j=j+1;j<sign2;j++)
+					}
+					for(j=j+1;j<sign2;j++) {
 						title+=String.valueOf(a[j]);
+					}
 					kong = 0;
 					break;}
 			}
 		}
-		for(i=0;i<sign2;i++)
+		for(i=0;i<sign2;i++) {
 			a[i]='#';
-		for(i=sign1;i<length;i++)
+		}
+		for(i=sign1;i<length;i++) {
 			a[i]='#';
+		}
 		
 		sign2=0;
 		sign1=0;
@@ -87,7 +95,9 @@ public class RegexText {
 			int SpeedSign = event.indexOf("速度");
 			int SpeedEnd = event.indexOf(" ", SpeedSign);
 			int temp = event.indexOf("/", SpeedSign);
-			if (temp < SpeedEnd && temp != -1) SpeedEnd = temp;
+			if (temp < SpeedEnd && temp != -1) {
+				SpeedEnd = temp;
+			}
 			int keylengthSign = event.indexOf("码长");
 			int keySpeedSign = event.indexOf("击键");
 			int delete = event.indexOf("退格");
@@ -96,7 +106,9 @@ public class RegexText {
 			int mistake = event.indexOf("错字");
 			int rightkeyper = event.indexOf("键准");
 			Grade[0] = Double.parseDouble(event.substring(SpeedSign + 2, SpeedEnd));
-			if(Grade[0]>1000)Grade[0] = 0;
+			if(Grade[0]>1000) {
+				Grade[0] = 0;
+			}
 			if (keylengthSign != -1) {
 				int keySpeedEnd = event.indexOf(" ", keySpeedSign);
 				Grade[1] = Double.parseDouble(event.substring(keySpeedSign + 2, keySpeedEnd));
@@ -112,10 +124,11 @@ public class RegexText {
 			if (deletetext != -1) {
 				int deletetextEnd1 = event.indexOf(" ", deletetext);
 				int deletetextEnd2 = event.indexOf("(",deletetext);
-				if(deletetextEnd1>deletetextEnd2&&deletetextEnd2!=-1)
+				if(deletetextEnd1>deletetextEnd2&&deletetextEnd2!=-1) {
 					Grade[4] = Double.parseDouble(event.substring(deletetext + 2, deletetextEnd2));
-				else if(deletetextEnd1!=-1)
+				} else if(deletetextEnd1!=-1) {
 					Grade[4] = Double.parseDouble(event.substring(deletetext + 2, deletetextEnd1));
+				}
 			}
 			if (mistake != -1) {
 				int mistakeEnd = event.indexOf(" ", mistake);
@@ -155,24 +168,26 @@ public class RegexText {
 	}
 	public static Matcher isAt(String str){
 		String regex = "\\[CQ:at,qq=(.*?)\\]";//正则匹配出<p>与</p>之间
-		Pattern pattern = Pattern.compile(regex);//匹配模式
+		Pattern pattern = compile(regex);//匹配模式
 		Matcher m = pattern.matcher(str);//判断是否符合匹配
 		return  m;
 	}
 	public static int returnduan(String str) {
-		Pattern p = Pattern.compile("第(.*?)段");//正则表达式，取=和|之间的字符串，不包括=和|
+		Pattern p = compile("第(.*?)段");//正则表达式，取=和|之间的字符串，不包括=和|
 		Matcher m = p.matcher(str);
 		if (m.find()) {
 			//m.group(1)不包括这两个字符
 			System.out.println(Integer.valueOf(m.group(1)));
-			return Integer.valueOf(m.group(1));
-		} else return -1;
+			return Integer.parseInt(m.group(1));
+		} else {
+			return -1;
+		}
 	}
 	public static String biaoding(String str){
 		char []a = str.toCharArray();
 		String ding = "，。、！?↓,.!?";
 		for(int i=0;i<a.length-1;i++){
-			if(a[i]=='_'&&ding.indexOf(String.valueOf(a[i+1]))!=-1){
+			if(a[i]=='_'&& ding.contains(String.valueOf(a[i + 1]))){
 				a[i]='#';
 			}
 		}

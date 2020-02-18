@@ -16,8 +16,9 @@ public class Code {
     public HashMap<String,Integer> firstTable = new HashMap<>();
     private static Code code = null;
     public static Code getInstance(String ciZuFileName){
-        if(code==null)
+        if(code==null) {
             code = new Code(ciZuFileName);
+        }
         return code;
     }
     private Code(String ciZuFileName){
@@ -30,13 +31,17 @@ public class Code {
             String regex = "234567890";
             while((str=bufferRead.readLine())!=null){
                 String[] splited = str.split("\\s+");
-                if(splited.length!=2)continue;
+                if(splited.length!=2) {
+                    continue;
+                }
                 String ch = splited[0];
                 String bm = splited[1];
                 String temp;
                 int length = splited[1].length();
                 temp = bm.substring(bm.length()-1);
-                if(temp.equals("_")||regex.contains(temp))length -= 1;
+                if("_".equals(temp)||regex.contains(temp)) {
+                    length -= 1;
+                }
                 if(allTable.containsKey(splited[0])){
                     if(allTable.get(splited[0])>length){
                         allTable.put(ch, length);

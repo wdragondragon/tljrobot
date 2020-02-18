@@ -27,8 +27,9 @@ public class ArticleRegex {
                 }
                 gang=0;
             }
-            if(sign1!=0)
+            if(sign1!=0) {
                 break;
+            }
         }
         for(j=sign1;j>0;j--){
             if(articleChars[j]=='\n')
@@ -37,14 +38,17 @@ public class ArticleRegex {
                 articleChars[j]='#';
                 if(space>=2){
                     sign2  = j;
-                    while(articleChars[j]!='\n'&&j>0)
+                    while(articleChars[j]!='\n'&&j>0) {
                         j--;
-                    if(j>0)
+                    }
+                    if(j>0) {
                         articleChars[j]='#';
-                    else
+                    } else {
                         j=-1;
-                    for(j=j+1;j<sign2;j++)
+                    }
+                    for(j=j+1;j<sign2;j++) {
                         title.append(articleChars[j]);
+                    }
                     break;}
             }
         }

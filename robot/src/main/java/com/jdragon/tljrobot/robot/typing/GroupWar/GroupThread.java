@@ -22,6 +22,7 @@ public class GroupThread extends Thread {
         this.event = event;
         this.groupid = groupid;
     }
+    @Override
     public void run(){
         //获取文章
         String art = "";
@@ -50,12 +51,13 @@ public class GroupThread extends Thread {
                         if (count.getTime() == 0) {
                             if (!setsign) { //防止等于0时重复发送赛文
                                 for (Long k : IDlist.keySet()) {
-                                    if (nowtime * onelength < length)
+                                    if (nowtime * onelength < length) {
                                         message = art.substring((nowtime - 1) * onelength, nowtime * onelength);
-                                    else if ((nowtime - 1) * onelength < length)
+                                    } else if ((nowtime - 1) * onelength < length) {
                                         message = art.substring((nowtime - 1) * onelength, length);
-                                    else if (nowtime * onelength > length)
+                                    } else if (nowtime * onelength > length) {
                                         start = false;
+                                    }
                                     if (start) {
                                         event.getHttpApi().sendPrivateMsg(k, message);
                                         System.out.println(nowtime+" "+message);

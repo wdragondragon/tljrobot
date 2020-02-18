@@ -2,6 +2,7 @@ package com.jdragon.tljrobot.client.utils.common;
 
 import javax.swing.*;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -14,6 +15,7 @@ public class ChangeTxtThread extends Thread{
 public ChangeTxtThread(String filename){
 		this.filename = filename;
 	}
+	@Override
 	public void run(){
 		try {
 			changetxt();
@@ -26,50 +28,57 @@ public ChangeTxtThread(String filename){
 		File one = new File("编码文件/生成码表.txt");
 		
 //		more = new File(filename);
-		Set<String> strlist = new TreeSet<String>();
+		Set<String> strlist = new TreeSet<>();
 		boolean sign = true;
 		StringBuilder all = new StringBuilder();
 		String str;
-		int jin = 0;
-		int length = 0;
-		int xuan = 0;
-		String temp = "";
+		int length;
+		int xuan;
+		String temp;
 		Timer comp = new Timer ();
 
 			FileInputStream fis = new FileInputStream(filename); 
-	        InputStreamReader read = new InputStreamReader(fis, "UTF-8");
+	        InputStreamReader read = new InputStreamReader(fis, StandardCharsets.UTF_8);
 			BufferedReader  bufferRead = new BufferedReader(read);
 			
 			
 			FileOutputStream fos = new FileOutputStream(one); 
-	        OutputStreamWriter writer = new OutputStreamWriter(fos, "UTF-8");
+	        OutputStreamWriter writer = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
 			BufferedWriter  bufferWriter = new BufferedWriter(writer);
 			
 //			LookChange look = new LookChange();
 			comp.timeStart();
 			while((str=bufferRead.readLine())!=null){
-				if(str.indexOf("---")!=-1)continue;
+				if(str.contains("---")) {
+					continue;
+				}
 				int i = str.indexOf('#');
 				int n = str.indexOf('$');
-				if(i!=-1)
-					if(str.toCharArray()[i+1]=='序'||str.toCharArray()[i+1]=='用'||str.toCharArray()[i+1]=='固')
+				if(i!=-1) {
+					if(str.toCharArray()[i+1]=='序'||str.toCharArray()[i+1]=='用'||str.toCharArray()[i+1]=='固') {
 						str = str.substring(0, i);
-					else continue;
-				else if(n!=-1)continue;
+					} else {
+						continue;
+					}
+				} else if(n!=-1) {
+					continue;
+				}
 				String[] splited = str.split("\\s+");
 				length = splited[1].length();
 				temp = splited[1];
 				xuan = 2;
-				if(strlist.contains(splited[1]))
+				if(strlist.contains(splited[1])) {
 					sign = false;
-				while(strlist.contains(temp+String.valueOf(xuan))){
+				}
+				while(strlist.contains(temp+ xuan)){
 					xuan++;
 					sign = false;
 				}
-				if(sign)
+				if(sign) {
 					strlist.add(splited[1]);
-				else
-					strlist.add(splited[1]+String.valueOf(xuan));
+				} else {
+					strlist.add(splited[1]+ xuan);
+				}
 				if(length<4&&sign){
 					str = splited[0]+"\t"+splited[1];
 					str += "_"+"\r\n";
@@ -79,7 +88,7 @@ public ChangeTxtThread(String filename){
 					str += "\r\n";
 				}
 				else {
-					str = splited[0]+"\t"+splited[1]+String.valueOf(xuan);
+					str = splited[0]+"\t"+splited[1]+ xuan;
 					str += "\r\n";
 				}
 				all.append(str);

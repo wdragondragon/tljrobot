@@ -40,10 +40,11 @@ public class MdEditor {
         blog.setPublishTime(DateUtil.now());
         User user = (User)Local.getSession(userId);
         blog.setAuthor(user.getUsername());
-        if(blogMapper.insert(blog)>0)
+        if(blogMapper.insert(blog)>0) {
             return Result.success("上传成功").setResult(blog.getId());
-        else
+        } else {
             return Result.error("上传失败");
+        }
     }
     @PostMapping("/getMdContent/{articleId}/{userId}")
     @ResponseBody
@@ -72,11 +73,15 @@ public class MdEditor {
     public Result delete(@PathVariable int articleId, @PathVariable String userId){
         Blog blog = blogMapper.selectById(articleId);
         User user = (User)Local.getSession(userId);
-        if(blog ==null)return Result.error("无该文章");
-        else if(blog.getAuthor().equals(user.getUsername())) {
+        if(blog ==null) {
+            return Result.error("无该文章");
+        } else if(blog.getAuthor().equals(user.getUsername())) {
             int i = blogMapper.deleteById(articleId);
-            if(i>0)return Result.success("删除成功");
-            else return Result.error("删除失败");
+            if(i>0) {
+                return Result.success("删除成功");
+            } else {
+                return Result.error("删除失败");
+            }
         }else{
             return Result.error("你不能删除别人的文章");
         }
@@ -87,11 +92,15 @@ public class MdEditor {
     public Result update(@RequestBody Blog blog, @PathVariable String userId){
         Blog oldBlog = blogMapper.selectById(blog.getId());
         User user = (User)Local.getSession(userId);
-        if(oldBlog ==null)return Result.error("无该文章无法修改");
-        else if(oldBlog.getAuthor().equals(user.getUsername())) {
+        if(oldBlog ==null) {
+            return Result.error("无该文章无法修改");
+        } else if(oldBlog.getAuthor().equals(user.getUsername())) {
             int i = blogMapper.updateById(blog);
-            if (i > 0) return Result.success("更新成功");
-            else return Result.error("更新失败");
+            if (i > 0) {
+                return Result.success("更新成功");
+            } else {
+                return Result.error("更新失败");
+            }
         }else{
             return Result.error("你不能修改别人的文章");
         }

@@ -32,7 +32,9 @@ public class SendArticleDialog {
     public static JSpinner spinnerSpeed,spinnerKey,spinnerKeyLength;
     public static JPanel p = new JPanel();
     public static JDialog getInstance() {
-        if (sendArticleDialog == null) init();
+        if (sendArticleDialog == null) {
+            init();
+        }
         sendArticleDialog.setBounds(mainFra.getX()+mainFra.getWidth()/4,mainFra.getY()+mainFra.getHeight()/4,605, 430);
         return sendArticleDialog;
     }
@@ -97,7 +99,7 @@ public class SendArticleDialog {
         cichang1.setModel(new SpinnerNumberModel(0, 0, 50, 1));
         cichang2 = new JSpinner();
         cichang2.setModel(new SpinnerNumberModel(0, 0, 50, 1));
-        weizhi = new JComboBox<String>() ;
+        weizhi = new JComboBox<>() ;
         weizhi.addItem("全部");
         weizhi.addItem("首选");
         weizhi.addItem("次选");
@@ -152,7 +154,7 @@ public class SendArticleDialog {
 
 
         lable4.setBounds(spinnerKeyLength.getX()+spinnerKeyLength.getWidth()+10, lable1.getY(),50,30);
-        caozuo = new JComboBox<String>();
+        caozuo = new JComboBox<>();
         caozuo.addItem("不操作");
         caozuo.addItem("乱序");
         caozuo.addItem("重打");
@@ -182,11 +184,12 @@ public class SendArticleDialog {
                 int keyChar = e.getKeyChar();
                 if (keyChar >= KeyEvent.VK_0
                         && keyChar <= KeyEvent.VK_9|| keyChar == '\b') {
-                    articleTreeListener.getNumber();
-                    articleTreeListener.showContent();
+                    ArticleTreeListener.getNumber();
+                    ArticleTreeListener.showContent();
                 }
-                else
+                else {
                     e.consume();
+                }
             }
             @Override
             public void keyTyped(KeyEvent e) {
@@ -218,17 +221,21 @@ public class SendArticleDialog {
                 .list(), yingwenFileName = yingwenDir.list();
         root.add(new DefaultMutableTreeNode("剪贴板"));
         root.add(new DefaultMutableTreeNode("随机一文"));
-        for (int i = 0; i < danziFileName.length; i++)
+        for (int i = 0; i < danziFileName.length; i++) {
             if (danziFile[i].isFile()) {
                 danzilei.add(new DefaultMutableTreeNode(danziFileName[i]));
             }
-        for (int i = 0; i < wenzhangFileName.length; i++)
-            if (wenzhangFile[i].isFile())
+        }
+        for (int i = 0; i < wenzhangFileName.length; i++) {
+            if (wenzhangFile[i].isFile()) {
                 wenzhanglei
                         .add(new DefaultMutableTreeNode(wenzhangFileName[i]));
+            }
+        }
         for (int i = 0; i < yingwenFileName.length; i++) {
-            if (yingwenFile[i].isFile())
+            if (yingwenFile[i].isFile()) {
                 yingwenlei.add(new DefaultMutableTreeNode(yingwenFileName[i]));
+            }
         }
         root.add(danzilei);
         root.add(wenzhanglei);

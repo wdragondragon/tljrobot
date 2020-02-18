@@ -20,13 +20,13 @@ public class SendArticleEvent {
             if (n == JOptionPane.YES_OPTION) {
                 // ......
                 ArticleTreeListener.fontweizhi = 0;
-                SwingSingleton.SendArticleLabel().setVisible(false);
+                SwingSingleton.sendArticleLabel().setVisible(false);
                 TypingState.sendArticle = 0;
-            } else if (n == JOptionPane.NO_OPTION) {
-                // ......
-            }
+            }  // ......
+
         }
-        else
+        else {
             SendArticleDialog.getInstance().setVisible(true);
+        }
     }
 }

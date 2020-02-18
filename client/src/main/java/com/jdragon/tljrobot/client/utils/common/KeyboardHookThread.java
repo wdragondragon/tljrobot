@@ -33,12 +33,15 @@ public class KeyboardHookThread implements Runnable {
                 String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
                 System.out.println(time + " KEY: " + event.vkCode+":"+ (char)event.vkCode+":"+nCode);
                 // 按下ESC退出
-                if (event.vkCode == 27) KeyboardHookThread.this.setHookOff();
+                if (event.vkCode == 27) {
+                    KeyboardHookThread.this.setHookOff();
+                }
             }
             return User32.INSTANCE.CallNextHookEx(hhk, nCode, wParam, null);
         }
     };//MyBlog @See http://blog.csdn.net/shenpibaipao
 
+    @Override
     public void run() {
         setHookOn();
     }

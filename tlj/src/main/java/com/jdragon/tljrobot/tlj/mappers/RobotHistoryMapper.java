@@ -38,4 +38,6 @@ public interface RobotHistoryMapper extends BaseMapper<RobotHistory> {
     @Select("select COUNT(0) as num,AVG(speed) as speed,AVG(keySpeed) as keySpeed,AVG(keyLength) as keyLength " +
             "from robot_history GROUP BY qq HAVING qq=#{qq}")
     public Map<String,Object> selectAvgGroupTypeInfo(long qq);
+
+    
 }

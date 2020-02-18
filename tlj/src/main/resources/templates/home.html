@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" >
+    <meta charset="UTF-8" name="viewport" content="width-device-width,initial-scale=1">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <script src="/js/jquery.min.js"></script>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -59,7 +59,8 @@
                 <div class="panel-body">
                     它的图标:
                     <div class="fakeimg" ><img src="/img/tljico.png" alt="imageico"/></div>
-                    为什么？为什么叫拖拉机？因为……拖拉机高端大气上档次，低调奢华有内涵！
+                    为什么？为什么叫长流？因为……这款跟打器让人口水长流？喔不杰瑞，你看这让人惊吓的答案，生怕你把我的吃了。
+                    其实，细水长流，比喻节约使用财物，使经常不缺用。也比喻一点一滴不间断地做某件事。打字也一样！
                 </div>
             </div>
             <hr class="hidden-sm hidden-md hidden-lg">
@@ -73,7 +74,7 @@
                     <p>F区快捷键F1、F2、F3、F4、F5对应发送成绩、
                         发文系统、重打、载文、换群 快捷键F7、F9对应对战中的准备按钮、
                         分享正在发文的文章。</p>
-                    <p>alt区快捷键ALT+L、ALT+P、ALT+Z对应文章乱序、发文中的下一段、更多设置呼出。</p>
+                    <p>ctrl区快捷键ctrl+L、ctrl+P、ctrl+Z对应文章乱序、发文中的下一段、更多设置呼出。</p>
                 </div>
             </div>
         </div>
@@ -93,7 +94,7 @@
                     <h3 class="panel-title">3、理论码长</h3>
                 </div>
                 <div class="panel-body">
-                    <p>理论码长与标点顶屏理论码长，载文后自动显示理论码长和标点顶屏理论码长
+                    <p>理论码长中是包含标点顶屏计算出的理论码长，各款跟打器中计算出的码长最短，载文后自动显示标点顶屏理论码长
                         ，点击理论码长的按钮可以获得文章的理论编码打法哦。</p>
                 </div>
             </div>
@@ -145,10 +146,10 @@
         <div class="col-sm-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">8、英打模式</h3>
+                    <h3 class="panel-title">8、英打模式（已删）</h3>
                 </div>
                 <div class="panel-body">
-                    <p>英打模式，将编码提示功能变更为英语单词翻译，发文中新增有英词练习功能，乱序时不会打乱字母顺序
+                    <p>听打模式，将编码提示功能变更为英语单词翻译，发文中新增有英词练习功能，乱序时不会打乱字母顺序
                         ，只会打乱单词顺序，而且英词练习功能打完提供英文词组翻译详情。</p>
                 </div>
             </div>
@@ -159,7 +160,19 @@
                     <h3 class="panel-title">9、看打模式</h3>
                 </div>
                 <div class="panel-body">
-                    <p>看打模式，将所有的辅助性关闭，实现全盲打，看打模式会统计错字，漏字，多字。alt+enter提交成绩。</p>
+                    <p>看打模式，将所有的辅助性关闭，实现全盲打，看打模式会统计错字，漏字，多字。ctrl+enter提交成绩，
+                        并且结束跟打后会自动生成成绩图片。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">9、听打模式（新增）</h3>
+                </div>
+                <div class="panel-body">
+                    <p>听打模式，将对照框设置为空，选择录音和文本，播放录音，对照文章，听打模式会统计错字，漏字，多字，和忽略符号。
+                        ctrl+enter提交成绩得出正确率，并且结束听打后会自动生成成绩图片</p>
                 </div>
             </div>
         </div>

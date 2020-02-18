@@ -18,7 +18,9 @@ public class TljMatchRank {
     private TljMatchRank(){}
     private static MainFra mainFra = MainFra.getInstance();
     public static JDialog getInstance() {
-        if (tljMatchRankDialog==null)init();
+        if (tljMatchRankDialog==null) {
+            init();
+        }
         clearTable();
         request();
         tljMatchRankDialog.setBounds(mainFra.getX()+mainFra.getWidth()/4,mainFra.getY()+mainFra.getHeight()/4,855,500);
@@ -77,7 +79,8 @@ public class TljMatchRank {
         }
     }
     public static void clearTable(){
-        while (table.getRowCount()>0)
+        while (table.getRowCount()>0) {
             tableM.removeRow(0);
+        }
     }
 }

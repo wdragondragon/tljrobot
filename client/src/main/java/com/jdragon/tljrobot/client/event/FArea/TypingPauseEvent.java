@@ -17,12 +17,12 @@ public class TypingPauseEvent {
         if(TypingState.pause) {
             TypingState.pause = false;
             TypingState.pauseEnd();
-            SwingSingleton.TypingText().setEditable(true);
+            SwingSingleton.typingText().setEditable(true);
 
         }else{
             TypingState.pause = true;
             TypingState.pauseStart();
-            SwingSingleton.TypingText().setEditable(false);
+            SwingSingleton.typingText().setEditable(false);
         }
     }
 }

@@ -6,6 +6,7 @@ import com.jdragon.tljrobot.tlj.pojo.RobotHistory;
 import com.jdragon.tljrobot.tlj.pojo.UnionMatch;
 import com.jdragon.tljrobot.tljutils.DateUtil;
 import com.jdragon.tljrobot.tljutils.Result;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +26,7 @@ public class RobotHistoryController {
     @Autowired
     RobotHistoryMapper robotHistoryMapper;
     @PostMapping("/uploadHistory")
+    @ApiOperation("收集群日赛上屏成绩")
     public Result uploadHistory(@RequestBody RobotHistory robotHistory){
         if(robotHistory.isMatch()) {
             UnionMatch unionMatch = unionMatchMapper.selectUnionMatchByDate(DateUtil.now());
@@ -33,11 +35,16 @@ public class RobotHistoryController {
             }
         }
         int typeTime = robotHistoryMapper.selectTypeTime(robotHistory.getQq(),robotHistory.getTypeDate(),robotHistory.isMatch());
-        if(typeTime==0)robotHistory.setFirst(true);
-        else robotHistory.setFirst(false);
+        if(typeTime==0) {
+            robotHistory.setFirst(true);
+        } else {
+            robotHistory.setFirst(false);
+        }
         if (robotHistory.insert()) {
             return Result.success("上传成功");
         }
-        else return Result.error("上传失败");
+        else {
+            return Result.error("上传失败");
+        }
     }
 }

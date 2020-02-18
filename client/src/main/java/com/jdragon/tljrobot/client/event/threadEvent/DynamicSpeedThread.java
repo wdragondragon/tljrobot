@@ -22,14 +22,14 @@ public class DynamicSpeedThread extends Thread {
                 if (TypingState.typingState&&!TypingState.pause) {//跟打时并没有暂停时才计算
                     TypingState.timer.timeEnd();
                     if(LocalConfig.typingPattern.equals(Constant.FOLLOW_PLAY_PATTERN))
-                        SwingSingleton.SpeedButton().setText(String.format("%.2f",
+                        SwingSingleton.speedButton().setText(String.format("%.2f",
                                 TypingState.getSpeed()));
                     else
-                        SwingSingleton.SpeedButton().setText(String.format("%.2f",
+                        SwingSingleton.speedButton().setText(String.format("%.2f",
                                 TypingState.getSpeedNoMistake()));
-                    SwingSingleton.KeySpeedButton().setText(String.format("%.2f",
+                    SwingSingleton.keySpeedButton().setText(String.format("%.2f",
                             TypingState.getKeySpeed()));
-                    SwingSingleton.KeyLengthButton().setText(String.format("%.2f",
+                    SwingSingleton.keyLengthButton().setText(String.format("%.2f",
                             TypingState.getKeyLength()));
                 }
             } catch (InterruptedException e) {

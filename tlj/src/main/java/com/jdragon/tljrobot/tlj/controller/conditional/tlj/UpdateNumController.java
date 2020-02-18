@@ -29,6 +29,8 @@ public class UpdateNumController {
         }
         else if(tljService.changeNum(userId,num,rightNum,misNum,dateNum)) {
             return Result.success("更新成功");
-        }else return Result.error("更新失败");
+        }else {
+            return Result.error("更新失败");
+        }
     }
 }

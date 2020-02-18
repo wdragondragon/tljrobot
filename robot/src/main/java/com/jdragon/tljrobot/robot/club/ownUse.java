@@ -11,14 +11,14 @@ public class ownUse extends IcqListener {
     public void carry(EventPrivateMessage event){
         if(event.getSender().getId()==1061917196L){
             if(sign){
-                if(event.getMessage().equals("#shell")){
+                if("#shell".equals(event.getMessage())){
                     sign = false;
                     event.respond("关闭shell");
                 }else {
                     event.respond(shell.getShellExecuted(event.getMessage()));
                 }
             }else {
-                if(event.getMessage().equals("#shell")){
+                if("#shell".equals(event.getMessage())){
                     sign = true;
                     event.respond("开启shell");
                 }

@@ -32,14 +32,19 @@ public class AllUserNum implements EverywhereCommand {
     }
     private String  fullStr(String str){
         if(str.length()<10){
-            for(int i = 0;i<10-str.length();i++)
-                str += "—";
+            StringBuilder strBuilder = new StringBuilder(str);
+            for(int i = 0; i<10- strBuilder.length(); i++) {
+                strBuilder.append("—");
+            }
+            str = strBuilder.toString();
         }
         return str;
     }
+    @Override
     public String run(EventMessage eventMessage, User user, String s, ArrayList<String> arrayList) {
         return getAllUser();
     }
+    @Override
     public CommandProperties properties() {
         return new CommandProperties("allnum", "n", "用户字数");
     }

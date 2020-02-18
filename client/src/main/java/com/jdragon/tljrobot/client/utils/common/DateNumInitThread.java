@@ -10,6 +10,7 @@ import java.sql.Date;
  */
 public class DateNumInitThread extends Thread {
     static Date date1, date2;
+    @Override
     public void run() {
         date1 = DateUtil.now();
         while (true) {
@@ -21,8 +22,9 @@ public class DateNumInitThread extends Thread {
             }
             date2 = date1;
             date1 = DateUtil.now();
-            if (date1.toString().equals(date2.toString())) continue;
-            else { NumState.dateNum = 0; }
+            if (!date1.toString().equals(date2.toString())) {
+                NumState.dateNum = 0;
+            }
         }
     }
 }

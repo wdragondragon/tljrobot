@@ -30,8 +30,11 @@ public class LogonDialog {
     private static JToggleButton runLoginButton;
     private static JPanel p = new JPanel();
     public static JDialog getInstance() {
-        if (logonDialog == null) init();
-        else logonDialog.setBounds(mainFra.getX()+mainFra.getWidth()/4,mainFra.getY()+mainFra.getHeight()/4,255,255);
+        if (logonDialog == null) {
+            init();
+        } else {
+            logonDialog.setBounds(mainFra.getX()+mainFra.getWidth()/4,mainFra.getY()+mainFra.getHeight()/4,255,255);
+        }
         return logonDialog;
     }
     private static void init(){
@@ -95,7 +98,7 @@ public class LogonDialog {
                 password.setEditable(false);
                 confirm.setText("退出登录");
                 logonDialog.dispose();
-                SwingSingleton.WatchingText().setText("登录成功" + "\n" + "欢迎：" + username.getText() + "\n长流交流群:974172771");
+                SwingSingleton.watchingText().setText("登录成功" + "\n" + "欢迎：" + username.getText() + "\n长流交流群:974172771");
                 JMenuComponent.getInstance().getLogin().setText(username.getText());
                 reg.setEnabled(false);
                 reset.setEnabled(false);

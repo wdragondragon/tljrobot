@@ -239,6 +239,7 @@ public class TestJNA {
         lpfn = new LowLevelKeyboardProc() {
             int count = 1;
 
+            @Override
             public LRESULT callback(int nCode, WPARAM wParam,
                                     KBDLLHOOKSTRUCT keyInfo) {
                 System.out.println("nCode =" + nCode + ", wParam =" + wParam

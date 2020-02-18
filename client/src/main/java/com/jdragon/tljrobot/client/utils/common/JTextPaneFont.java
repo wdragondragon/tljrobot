@@ -9,7 +9,9 @@ import java.util.List;
 public class JTextPaneFont {
     public static HashMap<String,StyledDocument> styleDocs = new HashMap<>();
     static public void creat(String styleName) {
-        if(styleDocs.containsKey(styleName))return;
+        if(styleDocs.containsKey(styleName)) {
+            return;
+        }
         StyledDocument styledDoc = new DefaultStyledDocument();
         styleDocs.put(styleName,styledDoc);
     }

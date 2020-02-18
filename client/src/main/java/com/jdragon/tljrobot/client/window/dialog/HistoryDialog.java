@@ -80,10 +80,11 @@ public class HistoryDialog {
         goLastPageButton.addActionListener(e->getTable(page=lastPage));
         goOtherPageButton.addActionListener(e -> {
             int goPage = Integer.valueOf(goOtherPage.getText());
-            if(goPage>lastPage||goPage<1)
+            if(goPage>lastPage||goPage<1) {
                 JOptionPane.showMessageDialog(null, "页数越界");
-            else
+            } else {
                 getTable(goPage);
+            }
 
         });
         goOtherPage.addKeyListener(new KeyboardInterceptorListener());
@@ -149,8 +150,9 @@ public class HistoryDialog {
         prePageButton.setEnabled(historyListEntry.isHasPreviousPage());
     }
     public static void clearTable(){
-        while (jtable.getRowCount()>0)
+        while (jtable.getRowCount()>0) {
             tableM.removeRow(0);
+        }
     }
     //配置窗口
     private static void configure(){

@@ -12,7 +12,9 @@ public class ShowArticleDialog{
     private ShowArticleDialog(){}
     private static MainFra mainFra = MainFra.getInstance();
     public static JDialog getInstance(String content) {
-        if (showArticleDialog == null) init();
+        if (showArticleDialog == null) {
+            init();
+        }
         setArticleText(content);
         showArticleDialog.setLocation(mainFra.getX()+mainFra.getWidth()/4,mainFra.getY()+mainFra.getHeight()/4);
         return showArticleDialog;

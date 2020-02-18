@@ -84,28 +84,31 @@ public class TljMatchController {
     @ResponseBody
     public Result getTljMatchAchByDate(@PathVariable Date date, @PathVariable String userId){
         List<History2> historyList = histroyMapper.selectTljMatchAchByDate(date);
-        if(historyList.size()>0)
+        if(historyList.size()>0) {
             return Result.success("获取成功").setResult(historyList);
-        else
+        } else {
             return Result.success("今日无成绩");
+        }
     }
     @PostMapping("/getMobileTljMatchAchByDate/{date}/{userId}")
     @ResponseBody
     public Result getMobileTljMatchAchByDate(@PathVariable Date date, @PathVariable String userId){
         List<History2> historyList = histroyMapper.selectMobileTljMatchAchByDate(date);
-        if(historyList.size()>0)
+        if(historyList.size()>0) {
             return Result.success("获取成功").setResult(historyList);
-        else
+        } else {
             return Result.success("今日无成绩");
+        }
     }
 
     @PostMapping("/getPCTljMatchAchByDate/{date}/{userId}")
     @ResponseBody
     public Result getPCTljMatchAchByDate(@PathVariable Date date, @PathVariable String userId){
         List<History2> historyList = histroyMapper.selectPCTljMatchAchByDate(date);
-        if(historyList.size()>0)
+        if(historyList.size()>0) {
             return Result.success("获取成功").setResult(historyList);
-        else
+        } else {
             return Result.success("今日无成绩");
+        }
     }
 }

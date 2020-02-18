@@ -15,14 +15,14 @@ import com.jdragon.tljrobot.client.utils.common.QqOperation;
 import com.jdragon.tljrobot.tljutils.SystemUtil;
 import lombok.SneakyThrows;
 
-import static com.jdragon.tljrobot.client.component.SwingSingleton.QQNameLabel;
-import static com.jdragon.tljrobot.client.component.SwingSingleton.SpeedButton;
+import static com.jdragon.tljrobot.client.component.SwingSingleton.qQNameLabel;
+import static com.jdragon.tljrobot.client.component.SwingSingleton.speedButton;
 import static com.jdragon.tljrobot.client.entry.TypingState.*;
 
 public class SendAchievementEvent {
     @SneakyThrows
     public static void start()  {
-        System.out.println(SwingSingleton.TypingText().getText().length());
+        System.out.println(SwingSingleton.typingText().getText().length());
         String result;
         if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){
             int length = ListenPlayEvent.getLength();
@@ -36,7 +36,7 @@ public class SendAchievementEvent {
             NumState.misNum += mistake;
             NumState.rightNum += length-mistake;
             TypingListener.getInstance().updateNumShow();
-            SpeedButton().setText(String.format("%.2f",((double)length-mistake)/length*100)+"%");
+            speedButton().setText(String.format("%.2f",((double)length-mistake)/length*100)+"%");
             Clipboard.set(result);
         }else {
             Article article = Article.getArticleSingleton();
@@ -77,6 +77,6 @@ public class SendAchievementEvent {
         }
         Clipboard.set(result);
         if(LocalConfig.lurk||!SystemUtil.isWindows())return;
-        QqOperation.start(QqOperation.SEND_ACHIEVEMENT,QQNameLabel().getText());
+        QqOperation.start(QqOperation.SEND_ACHIEVEMENT, qQNameLabel().getText());
     }
 }

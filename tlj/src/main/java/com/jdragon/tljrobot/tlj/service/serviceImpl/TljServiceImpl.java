@@ -44,7 +44,9 @@ public class TljServiceImpl implements TljService {
         if(!Md5Utils.getMD5((num+rightNum+misNum+dateNum+secret).getBytes()).equals(numKey)){
             return false;
         }
-        else return true;
+        else {
+            return true;
+        }
     }
 
     @Override
@@ -55,8 +57,7 @@ public class TljServiceImpl implements TljService {
         user.setMisNum(misNum);
         user.setDateNum(dateNum);
         int i = userMapper.updateById(user);
-        if(i>0)return true;
-        else return false;
+        return i > 0;
     }
 
     @Transactional
@@ -69,10 +70,14 @@ public class TljServiceImpl implements TljService {
             Article article = articleMapper.selectArticleByContent(title,random);
             if(article==null){
                 article = new Article(title,random);
-                if(!article.insert())return null;
+                if(!article.insert()) {
+                    return null;
+                }
             }
             tljMatch = new TljMatch(article,DateUtil.now(),"随机生成");
-            if(!tljMatch.insert())return null;
+            if(!tljMatch.insert()) {
+                return null;
+            }
         }
         return tljMatch;
     }
@@ -92,12 +97,12 @@ public class TljServiceImpl implements TljService {
         if(article==null) {
             if (articleTemp.insert()) {
                 article = articleTemp;
-            } else return false;
+            } else {
+                return false;
+            }
         }
         history.setArticleId(article.getId());
         history.setUserId(userId);
-        if (history.insert())
-            return true;
-        else return false;
+        return history.insert();
     }
 }
