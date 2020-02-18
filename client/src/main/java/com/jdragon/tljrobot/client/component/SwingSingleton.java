@@ -3,8 +3,10 @@ package com.jdragon.tljrobot.client.component;
 
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.entry.Article;
+import com.jdragon.tljrobot.client.entry.TypingState;
 import com.jdragon.tljrobot.client.utils.common.JTextPaneFont;
 import com.jdragon.tljrobot.client.window.CirecordFra;
+import com.jdragon.tljrobot.client.window.MainFra;
 import com.jdragon.tljrobot.client.window.dialog.ShowArticleDialog;
 
 import javax.swing.*;
@@ -133,7 +135,14 @@ public class SwingSingleton {
     }
     public static JTextPane watchingText(){
         if (watchingText==null) {
-            watchingText = new JTextPane(JTextPaneFont.getStyledDocument(LocalConfig.typeDocName));
+            watchingText = new JTextPane(JTextPaneFont.getStyledDocument(LocalConfig.typeDocName)) {
+                @Override
+                public void copy() {
+                    if (TypingState.dailyCompetition) {
+                        JOptionPane.showMessageDialog(MainFra.getInstance(), "日赛中不允许复制");
+                    }
+                }
+            };
             watchingText.setText("F5换群，F4载文，F3重打，F2发文，F1发送成绩，默认自动发送成绩。");
             watchingText.setFont(normalFont);
             watchingText.setEditable(false);
@@ -143,7 +152,18 @@ public class SwingSingleton {
     }
     public static JTextArea typingText(){
         if (typingText==null) {
-            typingText = new JTextArea();
+            typingText = new JTextArea(){
+                @Override
+                public void copy() {
+                    if (TypingState.dailyCompetition) {
+                        JOptionPane.showMessageDialog(MainFra.getInstance(), "日赛中不允许复制");
+                    }
+                }
+                @Override
+                public void paste() {
+                    JOptionPane.showMessageDialog(MainFra.getInstance(), "不允许粘贴");
+                }
+            };
             typingText.setFont(normalFont);
             typingText.setLineWrap(true);
             typingText.setBackground(LocalConfig.typingBackgroundColor);

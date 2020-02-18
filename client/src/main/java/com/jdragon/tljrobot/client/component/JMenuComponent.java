@@ -3,6 +3,7 @@ package com.jdragon.tljrobot.client.component;
 import com.jdragon.tljrobot.client.config.FinalConfig;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.config.HttpAddr;
+import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.UserState;
 import com.jdragon.tljrobot.client.event.FArea.*;
@@ -32,12 +33,17 @@ import java.net.URISyntaxException;
 
 import static com.jdragon.tljrobot.client.component.SwingSingleton.typingText;
 
+/**
+ * @author 10619
+ */
 @Data
 public class JMenuComponent {
     private static JMenuComponent jMenuComponent = null;
     private JMenuComponent(){}
     public static JMenuComponent getInstance() {
-        if(jMenuComponent==null)jMenuComponent = new JMenuComponent();
+        if(jMenuComponent==null) {
+            jMenuComponent = new JMenuComponent();
+        }
         return jMenuComponent;
     }
     public JMenu menu, base, onlineMenu, otherMenu, rankingMenu, sendArticleMenu;
@@ -227,8 +233,11 @@ public class JMenuComponent {
             if(!UserState.loginState){
                 JOptionPane.showMessageDialog(MainFra.getInstance(),"请先登录");
                 return;
+            }else if(!LocalConfig.typingPattern.equals(Constant.FOLLOW_PLAY_PATTERN)){
+                JOptionPane.showMessageDialog(MainFra.getInstance(),"请切换跟打模式");
+                return;
             }
-            int n = JOptionPane.showConfirmDialog(null, "日赛一天只能获取一次，请问做好准备跟打?", "日赛获取询问", JOptionPane.YES_NO_OPTION);
+            int n = JOptionPane.showConfirmDialog(MainFra.getInstance(), "日赛一天只能获取一次，请问做好准备跟打?", "日赛获取询问", JOptionPane.YES_NO_OPTION);
             if (n == JOptionPane.YES_OPTION) {HistoryEvent.getMatch();}
         });
         getHistory.addActionListener(e-> HistoryDialog.getInstance().setVisible(true));
@@ -256,7 +265,9 @@ public class JMenuComponent {
             }
         });
         lookPlay.addActionListener(e->{
-            if(SwingSingleton.typingText().getText().length()==0)return;
+            if(SwingSingleton.typingText().getText().length()==0) {
+                return;
+            }
             typingText().setEditable(false); // 设置不可打字状态
             TypingListener.delaySendResultSign = true;
         });

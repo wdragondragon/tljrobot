@@ -28,7 +28,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
     private static ArticleTreeListener articleTreeListener = new ArticleTreeListener();
     private ArticleTreeListener(){}
     public static ArticleTreeListener getInstance(){return articleTreeListener;}
-    public static int fontnum = 0, fontweizhi = 0;
+    public static int fontnum = 0, fontweizhi = 0,startParagraph = 1;
     byte[] s;
     public static String all, wen;
     public static long length = 0;
@@ -76,6 +76,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
     public static void getNumber() {
         try {
             fontnum = Integer.parseInt(SendArticleDialog.number.getText());
+            startParagraph = Integer.parseInt(SendArticleDialog.paragraph.getText());
         } catch (Exception e) {
 //			JOptionPane.showMessageDialog(new JTextArea(), "字数框输入数字");
         }
@@ -123,7 +124,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
         }
         ReplayEvent.start();
         TypingState.sendArticle = 1; // 顺序发文标志
-        article.setParagraph(1);//设置段号
+        article.setParagraph(startParagraph);//设置段号
         fontweizhi += fontnum;
         SwingSingleton.sendArticleLabel().setVisible(true);
         SendArticleDialog.getInstance().setVisible(false);
@@ -191,7 +192,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
         }
         if (model.equals("抽取模式发文")) {
             SendArticleDialog.getInstance().setVisible(false);
-            article.setParagraph(1);
+            article.setParagraph(startParagraph);
             TypingState.sendArticle = Constant.SEND_EXTRACT;
         }else if(model.equals("下一段")){
             article.addParagraph(); // 发文增段
@@ -240,7 +241,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                 chouqubufenlist.add(chouqulist.get(i));
             }
             article.setArticle(temp.toString());
-            article.setParagraph(1);
+            article.setParagraph(startParagraph);
             ReplayEvent.start();
             TypingState.sendArticle = Constant.SEND_WORDS;
             SendArticleDialog.getInstance().setVisible(false);
@@ -305,7 +306,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
         }
         ReplayEvent.start();
         TypingState.sendArticle = 1; // 顺序发文标志
-        article.setParagraph(1);//设置段号
+        article.setParagraph(startParagraph);//设置段号
         fontweizhi += fontnum;
         SwingSingleton.sendArticleLabel().setVisible(true);
         SendArticleDialog.getInstance().setVisible(false);

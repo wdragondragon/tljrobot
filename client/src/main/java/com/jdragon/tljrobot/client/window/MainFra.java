@@ -145,6 +145,7 @@ public class MainFra extends JFrame {
                             DrawUnLookPlayResult.drawUnFollowPlayResultImg(ListenPlayEvent.getTitle(),hashMapList,"听打");
                         }
                         break;
+                    default:break;
                 }
                 typingText().requestFocusInWindow();
             }

@@ -7,157 +7,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="560566ca-4c25-4104-974e-54a248fc5e69" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/PackBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/entry/Article.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/dto/TljAvgTypeInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/css/bootstrap-theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/css/bootstrap-theme.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/css/bootstrap-theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/css/bootstrap-theme.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/css/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/img/tljico1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/js/npm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/test/Constant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/JMenuComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/JMenuComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/SwingSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/SwingSingleton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/FinalConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/FinalConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/VersionConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/VersionConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/entry/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/entry/Article.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/entry/TypingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/entry/TypingState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ChangeQQGroupEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ChangeQQGroupEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/QQGetArticleEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/QQGetArticleEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ReplayEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ReplayEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/SendAchievementEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/SendAchievementEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/SendArticleEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/SendArticleEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ShareArticleEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ShareArticleEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/TypingPauseEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/TypingPauseEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/HistoryEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/HistoryEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/KeepALiveThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/KeepALiveThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/LoginEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/LoginEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/LogoutEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/LogoutEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/TypeNumManagerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/TypeNumManagerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/other/ListenPlayEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/other/ListenPlayEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/threadEvent/CountMatchThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/threadEvent/CountMatchThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/threadEvent/DelayedOperationThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/threadEvent/DelayedOperationThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/threadEvent/DynamicSpeedThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/threadEvent/DynamicSpeedThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/ArticleTreeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/ArticleTreeListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/HistoryTableListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/HistoryTableListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/MixListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/MixListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/SetBackgroundListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/SetBackgroundListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/TypingListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/TypingListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/core/SystemListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/core/SystemListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/test/TestEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/test/TestEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/test/TestJNA.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/test/TestJNA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/ArticleRegex.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/ArticleRegex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/ChangeTxtThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/ChangeTxtThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/ChooseFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/ChooseFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/Clipboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/Clipboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/Code.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/Code.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/DateNumInitThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/DateNumInitThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/DoCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/DoCheck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/DrawUnLookPlayResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/DrawUnLookPlayResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/JTextPaneFont.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/JTextPaneFont.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/KeyboardHookThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/KeyboardHookThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/core/Layout.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/core/Layout.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/MainFra.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/MainFra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/HistoryDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/HistoryDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/LogonDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/LogonDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/SendArticleDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/SendArticleDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/SetDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/SetDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/ShowArticleDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/ShowArticleDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/TljMatchRank.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/TljMatchRank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/Application.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/component/JmenuComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/component/JmenuComponent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/robot_jar/robot.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/robot_jar/robot.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/EntoZh/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/EntoZh/Translate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/CommandSay.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/CommandSay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/ownUse.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/ownUse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/OneATwoB/O2TCarry.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/OneATwoB/O2TCarry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/P2P/handle/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/P2P/handle/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/PlayCards/CardCarry.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/PlayCards/CardCarry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/PlayCards/CardClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/PlayCards/CardClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/PlayCards/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/game/PlayCards/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/QueryUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/QueryUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/RobotGroupClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/RobotGroupClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/config/HttpAddr.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/config/HttpAddr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/DrawImg.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/DrawImg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/GroupCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/GroupCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/Regex.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/Regex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Automatic_Inclusion.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Automatic_Inclusion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/CommandVersion.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/CommandVersion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/AllUserNum.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/AllUserNum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/OutConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/OutConn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/GroupFollowTeamWar/GroupFollowTeamThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/GroupFollowTeamWar/GroupFollowTeamThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/GroupWar/Count.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/GroupWar/Count.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/GroupWar/GroupThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/GroupWar/GroupThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/MessageMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/MessageMove.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/RamdomLoad.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/RamdomLoad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/RegexText.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/RegexText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/SortMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/SortMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/initGroupList.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/initGroupList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/ArticleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/ArticleUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/HttpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/HttpUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/KeyPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/KeyPassword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/Local.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/Local.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/SystemUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/SystemUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/TimingList.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/TimingList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/MdUploadImg.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/MdUploadImg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/editor/MdEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/editor/MdEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/GroupChatWordsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/GroupChatWordsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/GroupMatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/GroupMatchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/QueryUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/QueryUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/RobotHistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/RobotHistoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/TljMatchInRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/TljMatchInRobotController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/UnionMatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/UnionMatchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/tlj/HistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/tlj/HistoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/tlj/TljMatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/tlj/TljMatchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/tlj/UpdateNumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/tlj/UpdateNumController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/getIpAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/getIpAddress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/home/Security.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/home/Security.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/interceptor/LoginInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/interceptor/LoginInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/mappers/HistroyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/mappers/HistroyMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/mappers/RobotHistoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/mappers/RobotHistoryMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/RobotService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/RobotService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/serviceImpl/RobotServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/serviceImpl/RobotServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/serviceImpl/TljServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/service/serviceImpl/TljServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/test/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/test/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/ueditor/define/BaseState.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/ueditor/define/BaseState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/static/img/tljico.png" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/static/img/tljico.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/allUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/allUser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/blog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/MDEditor.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/MDEditor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/editor.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/editor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/updateMD.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/updateMD.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/updateUEditor.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/editor/updateUEditor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/introduce.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/introduce.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/manageBlog.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/manageBlog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/model/full.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/model/full.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/moreBlog.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/moreBlog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/myAllHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/myAllHistory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/myInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/myInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/showBlog.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/showBlog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/showHeadImg.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/showHeadImg.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/uploadCiku.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/uploadCiku.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/uploadHeadImg.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/uploadHeadImg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/entry/Article.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/entry/Article.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/entry/TypingState$WordsState.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/entry/TypingState$WordsState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/entry/TypingState.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/entry/TypingState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/listener/core/SystemListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/listener/core/SystemListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/ArticleRegex.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/ArticleRegex.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/Clipboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/Clipboard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/JTextPaneFont.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/JTextPaneFont.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/core/Layout.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/core/Layout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/window/MainFra.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/window/MainFra.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +94,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/robot/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../genda" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -282,7 +150,7 @@
       <select />
     </treeState>
   </component>
-  <component name="RunManager" selected="Application.CodeLength">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.Application" />
       <module name="client" />
@@ -368,11 +236,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Application" />
         <item itemvalue="Application.CodeLength" />
         <item itemvalue="JUnit.test.mdt" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
-        <item itemvalue="Application.Application" />
       </list>
     </recent_temporary>
   </component>
@@ -469,7 +337,8 @@
       <workItem from="1582021785488" duration="1442000" />
       <workItem from="1582023257645" duration="1337000" />
       <workItem from="1582026051295" duration="2485000" />
-      <workItem from="1582030124439" duration="6317000" />
+      <workItem from="1582030124439" duration="8366000" />
+      <workItem from="1582050702847" duration="1286000" />
     </task>
     <task id="LOCAL-00001" summary="用直接跳转页面替换ajax交互嵌入">
       <created>1577584125492</created>
@@ -639,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581529646295</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="改动机器人：增设联赛投稿">
+      <created>1582048169082</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1582048169083</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -667,7 +543,8 @@
     <MESSAGE value="v2.07 增加成绩可选择性发送某些参数，可设置输入法与个签，在设置中添加分类选项卡。" />
     <MESSAGE value="v2.08 1、修复听打模式跟打框不去空情况。2、修复听打模式加载录音后前3秒切换模式，录音还继续播放。" />
     <MESSAGE value="改动机器人：1、修复联赛成绩和长流成绩无法定时发送到长流群中。2、添加下载地址和bug提交区的关键字呼出。3、更改了部分帮助内容。" />
-    <option name="LAST_COMMIT_MESSAGE" value="改动机器人：1、修复联赛成绩和长流成绩无法定时发送到长流群中。2、添加下载地址和bug提交区的关键字呼出。3、更改了部分帮助内容。" />
+    <MESSAGE value="改动机器人：增设联赛投稿" />
+    <option name="LAST_COMMIT_MESSAGE" value="改动机器人：增设联赛投稿" />
   </component>
   <component name="WindowStateProjectService">
     <state x="412" y="120" key="#Auto_Import" timestamp="1578823323325">
@@ -758,56 +635,56 @@
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="420" y="249" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/62.0.1218.800@62.0.1218.800" timestamp="1577503398719" />
-    <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2" timestamp="1581529680468">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="384" y="96" width="1460" height="776" key="CommitChangelistDialog2" timestamp="1582048160135">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="62" y="0" key="CommitChangelistDialog2/62.0.1218.800@62.0.1218.800" timestamp="1579188400057" />
     <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2/62.0.1858.1080@62.0.1858.1080" timestamp="1581529680468" />
-    <state x="384" y="96" key="CommitChangelistDialog2/75.0.1845.1080@75.0.1845.1080" timestamp="1581088489224" />
+    <state x="384" y="96" key="CommitChangelistDialog2/75.0.1845.1080@75.0.1845.1080" timestamp="1582048160135" />
     <state x="155" y="93" width="1031" height="613" key="DiffContextDialog" timestamp="1578846678181">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="155" y="93" width="1031" height="613" key="DiffContextDialog/62.0.1218.800@62.0.1218.800" timestamp="1578846678181" />
-    <state x="133" y="207" key="FileChooserDialogImpl" timestamp="1582043950513">
+    <state x="133" y="207" key="FileChooserDialogImpl" timestamp="1582048388388">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="2620" y="453" key="FileChooserDialogImpl/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578666889282" />
     <state x="100" y="153" key="FileChooserDialogImpl/62.0.1218.800@62.0.1218.800" timestamp="1579247042726" />
     <state x="120" y="207" key="FileChooserDialogImpl/62.0.1858.1080@62.0.1858.1080" timestamp="1580795401865" />
     <state x="113" y="153" key="FileChooserDialogImpl/75.0.1205.800@75.0.1205.800" timestamp="1582021889779" />
-    <state x="133" y="207" key="FileChooserDialogImpl/75.0.1845.1080@75.0.1845.1080" timestamp="1582043950513" />
-    <state width="1802" height="142" key="GridCell.Tab.0.bottom" timestamp="1582046466485">
+    <state x="133" y="207" key="FileChooserDialogImpl/75.0.1845.1080@75.0.1845.1080" timestamp="1582048388388" />
+    <state width="1802" height="274" key="GridCell.Tab.0.bottom" timestamp="1582051906205">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.bottom/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.bottom/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.bottom/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1340" height="302" key="GridCell.Tab.0.bottom/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
-    <state width="1802" height="142" key="GridCell.Tab.0.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1582046466485" />
-    <state width="1802" height="142" key="GridCell.Tab.0.center" timestamp="1582046466484">
+    <state width="1802" height="274" key="GridCell.Tab.0.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1582051906205" />
+    <state width="1802" height="274" key="GridCell.Tab.0.center" timestamp="1582051906205">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.center/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.center/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.center/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1340" height="302" key="GridCell.Tab.0.center/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
-    <state width="1802" height="142" key="GridCell.Tab.0.center/75.0.1845.1080@75.0.1845.1080" timestamp="1582046466484" />
-    <state width="1802" height="142" key="GridCell.Tab.0.left" timestamp="1582046466484">
+    <state width="1802" height="274" key="GridCell.Tab.0.center/75.0.1845.1080@75.0.1845.1080" timestamp="1582051906205" />
+    <state width="1802" height="274" key="GridCell.Tab.0.left" timestamp="1582051906204">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.left/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.left/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.left/62.0.1218.800@62.0.1218.800" timestamp="1580479234951" />
     <state width="1340" height="302" key="GridCell.Tab.0.left/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490070" />
-    <state width="1802" height="142" key="GridCell.Tab.0.left/75.0.1845.1080@75.0.1845.1080" timestamp="1582046466484" />
-    <state width="1802" height="142" key="GridCell.Tab.0.right" timestamp="1582046466484">
+    <state width="1802" height="274" key="GridCell.Tab.0.left/75.0.1845.1080@75.0.1845.1080" timestamp="1582051906204" />
+    <state width="1802" height="274" key="GridCell.Tab.0.right" timestamp="1582051906205">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.right/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.right/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.right/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1340" height="302" key="GridCell.Tab.0.right/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
-    <state width="1802" height="142" key="GridCell.Tab.0.right/75.0.1845.1080@75.0.1845.1080" timestamp="1582046466484" />
+    <state width="1802" height="274" key="GridCell.Tab.0.right/75.0.1845.1080@75.0.1845.1080" timestamp="1582051906205" />
     <state width="1802" height="140" key="GridCell.Tab.1.bottom" timestamp="1581668313174">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
@@ -877,12 +754,12 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/62.0.1858.1080@62.0.1858.1080" timestamp="1579346721229" />
-    <state x="370" y="185" key="Vcs.Push.Dialog.v2" timestamp="1581529696427">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="381" y="185" key="Vcs.Push.Dialog.v2" timestamp="1582048180005">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="264" y="137" key="Vcs.Push.Dialog.v2/62.0.1218.800@62.0.1218.800" timestamp="1578847066652" />
     <state x="370" y="185" key="Vcs.Push.Dialog.v2/62.0.1858.1080@62.0.1858.1080" timestamp="1581529696427" />
-    <state x="381" y="185" key="Vcs.Push.Dialog.v2/75.0.1845.1080@75.0.1845.1080" timestamp="1581088511101" />
+    <state x="381" y="185" key="Vcs.Push.Dialog.v2/75.0.1845.1080@75.0.1845.1080" timestamp="1582048180005" />
     <state x="473" y="178" key="chooseDestDirectoryDialog" timestamp="1579055606183">
       <screen x="62" y="0" width="1218" height="800" />
     </state>

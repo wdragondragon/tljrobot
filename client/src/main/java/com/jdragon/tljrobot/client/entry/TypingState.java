@@ -8,42 +8,90 @@ import java.util.List;
 
 public class TypingState {
     private TypingState(){}
-    public static boolean typingState;//跟打状态
+    /**
+     * 跟打状态
+     */
+    public static boolean typingState;
     public static int typeLength;
-    public static int keyNumber;//键数
+    /**
+     *  键数
+     */
+
+    public static int keyNumber;
 
 //    public static double speed;//速度
 //    public static double keySpeed;//击键
 //    public static double keyLength;//码长
-
-    public static int lookMore;//看打多字
-    public static int lookMiss;//看打少字
-    public static int lookMis;//看打错字
-
-    public static int mistake;//一共错字
-    public static int deleteNumber;//退格
-    public static int deleteTextNumber;//回改
-    public static int repeat;//选重
-    public static int typeWordsNum;//打词数
-    //计算键法变量
-    public static int left;//左键数
-    public static int right;//右键数
-    public static int space;//空格
-
-    public static boolean pause;//暂停状态
-
-    public static int sendArticle;//发文状态
-
-    public static Boolean dailyCompetition = false;//日赛状态
-
-    public final static Timer timer = new Timer();//计时器
-    //击键记录
+    /**
+    看打多字
+     */
+    public static int lookMore;
+    /**
+    看打少字
+     */
+    public static int lookMiss;
+    /**
+    看打错字
+     */
+    public static int lookMis;
+    /**
+     *   一共错字
+     */
+    public static int mistake;
+    /**
+        退格
+     */
+    public static int deleteNumber;
+    /**
+        回改
+     */
+    public static int deleteTextNumber;
+    /**
+        选重
+     */
+    public static int repeat;
+    /**
+        打词数
+     */
+    public static int typeWordsNum;
+    /**
+     *    计算键法变量
+     *    左键数
+     *    右键数
+     *    空格
+     */
+    public static int left;
+    public static int right;
+    public static int space;
+    /**
+        暂停状态
+     */
+    public static boolean pause;
+    /**
+        发文状态
+     */
+    public static int sendArticle;
+    /**
+        日赛状态
+     */
+    public static Boolean dailyCompetition = false;
+    /**
+        计时器
+     */
+    public final static Timer timer = new Timer();
+    /**
+        击键记录
+     */
     public static StringBuilder record = new StringBuilder();
-    //错误记录
+    /**
+        错误记录
+     */
     public static List<String> mistakeList = new ArrayList<>();
-    //
+
     public static List<WordsState> typeWordsList = new ArrayList<>();
-    //记录打词
+    /**
+        记录打词
+     */
     public static void init(){
         typingState = false;
         keyNumber = 0;
