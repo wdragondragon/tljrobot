@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.client.utils.common;
 
+import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.window.MainFra;
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef.HWND;
@@ -40,11 +41,14 @@ public class QqOperation {
                 robot.keyPress(KeyEvent.VK_CONTROL);
                 robot.keyPress(KeyEvent.VK_V);
                 robot.keyRelease(KeyEvent.VK_V);
-                robot.keyRelease(KeyEvent.VK_CONTROL);
-//
+                if(!LocalConfig.ctrlSendAchToQQ) {
+                    robot.keyRelease(KeyEvent.VK_CONTROL);
+                }
                 robot.keyPress(KeyEvent.VK_ENTER);
                 robot.keyRelease(KeyEvent.VK_ENTER);
-
+                if(LocalConfig.ctrlSendAchToQQ) {
+                    robot.keyRelease(KeyEvent.VK_CONTROL);
+                }
             }
             Thread.sleep(300);
             User32.INSTANCE.SetForegroundWindow(genda);

@@ -53,6 +53,14 @@ public class LogonDialog {
         forget = new JButton("忘记密码");
         runLoginButton = new JToggleButton("自动登录");
 
+        username.setFont(SwingSingleton.tipFont());
+        password.setFont(SwingSingleton.tipFont());
+        confirm.setFont(SwingSingleton.tipFont());
+        reset.setFont(SwingSingleton.tipFont());
+        reg.setFont(SwingSingleton.tipFont());
+        forget.setFont(SwingSingleton.tipFont());
+        runLoginButton.setFont(SwingSingleton.tipFont());
+
         runLoginButton.setSelected(LocalConfig.runLogin);
 
         Layout.addOnBounds(p,username,20,20,190,30);

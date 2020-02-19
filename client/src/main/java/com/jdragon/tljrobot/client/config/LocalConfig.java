@@ -68,7 +68,7 @@ public class LocalConfig {
     public static Boolean checkCode = true;
     public static Boolean personalTagSign = false;
     public static Boolean typeWritingSign = false;
-
+    public static Boolean ctrlSendAchToQQ = false;
     public static void readConfig(){
         IniAccess.readIni(iniFilePath);
     }

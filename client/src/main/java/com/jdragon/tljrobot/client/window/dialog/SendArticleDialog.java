@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.client.window.dialog;
 
+import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
 import com.jdragon.tljrobot.client.listener.common.MixListener;
 import com.jdragon.tljrobot.client.window.MainFra;
@@ -60,18 +61,21 @@ public class SendArticleDialog {
 
     private static void addOrder() {
         send = new JButton("顺序模式发文");
+        send.setFont(SwingSingleton.tipFont());
         send.setBounds(5, 310, 100, 30);
         p.add(send);
         send.addActionListener(articleTreeListener);
     }
     private static void addMix() {
         mix = new JButton("全局乱序");
+        mix.setFont(SwingSingleton.tipFont());
         mix.setBounds(110, 310, 70, 30);
         p.add(mix);
         mix.addActionListener(MixListener.getInstance());
     }
     private static void addNoOrder() {
         chouqu = new JButton("抽取模式发文");
+        chouqu.setFont(SwingSingleton.tipFont());
         chouqu.setBounds(185, 310, 100, 30);
         p.add(chouqu);
         chouqu.addActionListener(articleTreeListener);
@@ -79,13 +83,14 @@ public class SendArticleDialog {
 
     private static void addSendAll(){
         sendAll = new JButton("发送全文");
+        sendAll.setFont(SwingSingleton.tipFont());
         sendAll.setBounds(365, 310, 90, 30);
         p.add(sendAll);
         sendAll.addActionListener(articleTreeListener);
     }
     private static void addcikuchouqu() {
         cikuchouqu = new JButton("词库练习");
-
+        cikuchouqu.setFont(SwingSingleton.tipFont());
         cikuchouqu.setBounds(290, 310, 70, 30);
 
         JLabel lable1 = new JLabel("码长");
@@ -93,6 +98,10 @@ public class SendArticleDialog {
         JLabel lable3 = new JLabel("词长");
         JLabel lable4 = new JLabel("次首选 ");
 
+        lable1.setFont(SwingSingleton.tipFont());
+        lable2.setFont(SwingSingleton.tipFont());
+        lable3.setFont(SwingSingleton.tipFont());
+        lable4.setFont(SwingSingleton.tipFont());
 
         machang1 = new JSpinner();
         machang1.setModel(new SpinnerNumberModel(0, 0, 6, 1));
@@ -142,6 +151,11 @@ public class SendArticleDialog {
         JLabel lable2 = new JLabel("击键≥");
         JLabel lable3 = new JLabel("键准≥");
         JLabel lable4 = new JLabel("未达标时");
+        lable1.setFont(SwingSingleton.tipFont());
+        lable2.setFont(SwingSingleton.tipFont());
+        lable3.setFont(SwingSingleton.tipFont());
+        lable4.setFont(SwingSingleton.tipFont());
+
         lable1.setBounds(5, 390, 40, 30);
         spinnerSpeed = new JSpinner();
         spinnerSpeed.setModel(new SpinnerNumberModel(0, 0, 999, 0.1));
@@ -203,6 +217,8 @@ public class SendArticleDialog {
         };
         JLabel label1 = new JLabel("段字数");
         JLabel label2 = new JLabel("起始段号");
+        label1.setFont(SwingSingleton.tipFont());
+        label2.setFont(SwingSingleton.tipFont());
         number = new JTextField("10");
         paragraph = new JTextField("1");
 

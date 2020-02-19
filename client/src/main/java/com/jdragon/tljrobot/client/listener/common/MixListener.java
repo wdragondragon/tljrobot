@@ -21,7 +21,6 @@ public class MixListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-//		Window.wenben.setText(mix(Window.wenben.getText()));
         mixButton(e.getActionCommand());
     }
     public void mixButton(String model){

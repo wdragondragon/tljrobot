@@ -9,6 +9,7 @@ import com.jdragon.tljrobot.client.event.FArea.ReplayEvent;
 import com.jdragon.tljrobot.client.event.FArea.ShareArticleEvent;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
 import com.jdragon.tljrobot.client.utils.common.Code;
+import com.jdragon.tljrobot.client.utils.core.Layout;
 import com.jdragon.tljrobot.client.window.dialog.SendArticleDialog;
 import com.jdragon.tljrobot.tljutils.ArticleUtil;
 
@@ -295,6 +296,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                 break;
             default:break;
         }
+        Layout.resetBounds();
         SwingSingleton.typingText().requestFocusInWindow();
     }
     public void sendAll() {

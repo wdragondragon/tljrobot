@@ -115,16 +115,16 @@ public class SystemListener implements ActionListener, MouseListener, MouseMotio
             Point point = e.getPoint();// 获取当前坐标
             int i =   point.x - pressedPoint.x;// 计算变化坐标
             int j =  point.y - pressedPoint.y;
-
-            Layout.addSize(i,j,win,SwingSingleton.typingAndWatching());// 改变窗体大小
-            Layout.addSize(i,0,SwingSingleton.typingProgress());
-            Layout.addLocation(i,j,SwingSingleton.sizeButton());
-            Layout.addLocation(0,j,SwingSingleton.qQNameLabel(),SwingSingleton.numberRecordLabel(),
-                    SwingSingleton.tipsLabel(),SwingSingleton.sendArticleLabel(),
-                    SwingSingleton.numberLabel(),SwingSingleton.typingProgress());
-            Layout.addLocation(i,0,SwingSingleton.closeButton(),SwingSingleton.maxButton(),SwingSingleton.minButton());
+//            Layout.addSize(i,0,SwingSingleton.typingProgress());
+//            Layout.addLocation(i,j,SwingSingleton.sizeButton());
+//            Layout.addLocation(0,j,SwingSingleton.qQNameLabel(),SwingSingleton.numberRecordLabel(),
+//                    SwingSingleton.tipsLabel(),SwingSingleton.sendArticleLabel(),
+//                    SwingSingleton.numberLabel(),SwingSingleton.typingProgress());
+//            Layout.addLocation(i,0,SwingSingleton.closeButton(),SwingSingleton.maxButton(),SwingSingleton.minButton());
             LocalConfig.windowWidth += i;
             LocalConfig.windowHeight += j;
+            Layout.addSize(i,j,win, SwingSingleton.typingAndWatching());// 改变窗体大小
+            Layout.resetBounds();
         }
     }
 

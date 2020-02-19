@@ -41,7 +41,7 @@ public class RobotServiceImpl implements RobotService {
         Date date = DateUtil.now();
         //判断赛文最大日期，添加赛文时往最大日期后加。
         //若最大日期小于今天，则加在今天，以防添加赛文在今天之前。
-        if(unionMatch!=null&&date.getTime()<unionMatch.getHoldDate().getTime()){
+        if(unionMatch!=null&&date.getTime()<=unionMatch.getHoldDate().getTime()){
             date = unionMatch.getHoldDate();
             Calendar calendar = new GregorianCalendar();
             calendar.setTime(date);

@@ -40,7 +40,7 @@ public class SetDialog{
     private static JPanel sendAchSetPanel = new JPanel();
     private static JToggleButton shortCodesNumButton,articleLengthButton,deleteTextNumberButton,deleteNumberButton,
             mistakeButton,keyNumberButton,repeatButton,keyAccuracyButton,keyMethodButton,wordRateButton,repeatRateButton,
-            changLiuVersionButton,systemVersionButton,checkCodeButton,personalTagButton,typeWritingButton;
+            changLiuVersionButton,systemVersionButton,checkCodeButton,personalTagButton,typeWritingButton,ctrlSendAchToQQ;
     private static ArrayList<JToggleButton> achJToggleButtonList = new ArrayList<>();
     private static JTextField personalTagText,typeWritingText;
     private static JButton achSelectAll,reverseSelect,achCancelAll;
@@ -73,9 +73,18 @@ public class SetDialog{
         achJToggleButtonList.add(personalTagButton = new JToggleButton("个性签名"));
 
         achJToggleButtonList.add(typeWritingButton = new JToggleButton("输入法"));
+        achJToggleButtonList.add(ctrlSendAchToQQ = new JToggleButton("ctrl发送"));
         achSelectAll = new JButton("全选");
         reverseSelect = new JButton("反选");
         achCancelAll = new JButton("全不选");
+
+        for(JToggleButton jToggleButton:achJToggleButtonList){
+            jToggleButton.setFont(SwingSingleton.tipFont());
+        }
+        achCancelAll.setFont(SwingSingleton.tipFont());
+        reverseSelect.setFont(SwingSingleton.tipFont());
+        achCancelAll.setFont(SwingSingleton.tipFont());
+
 
         personalTagText = new JTextField(LocalConfig.personalTag);
         typeWritingText = new JTextField(LocalConfig.typeWriting);
@@ -124,7 +133,7 @@ public class SetDialog{
         personalTagButton.setSelected(LocalConfig.personalTagSign);
 
         typeWritingButton.setSelected(LocalConfig.typeWritingSign);
-
+        ctrlSendAchToQQ.setSelected(LocalConfig.ctrlSendAchToQQ);
         /**
          * 初始化位置
          */
@@ -147,7 +156,8 @@ public class SetDialog{
         addOnBounds(sendAchSetPanel,personalTagButton,rowAddSpacing(checkCodeButton,10),checkCodeButton.getY(),80,20);
 
         addOnBounds(sendAchSetPanel,typeWritingButton,repeatRateButton.getX(),columnAddSpacing(repeatRateButton,10),80,20);
-        addOnBounds(sendAchSetPanel,achSelectAll,rowAddSpacing(typeWritingButton,10),typeWritingButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel,ctrlSendAchToQQ,rowAddSpacing(typeWritingButton,10),typeWritingButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel,achSelectAll,rowAddSpacing(ctrlSendAchToQQ,10),ctrlSendAchToQQ.getY(),80,20);
         addOnBounds(sendAchSetPanel,reverseSelect,rowAddSpacing(achSelectAll,10),achSelectAll.getY(),80,20);
         addOnBounds(sendAchSetPanel,achCancelAll,rowAddSpacing(reverseSelect,10),reverseSelect.getY(),80,20);
 
@@ -175,6 +185,7 @@ public class SetDialog{
         personalTagButton.addChangeListener(e->LocalConfig.personalTagSign=personalTagButton.isSelected());
 
         typeWritingButton.addChangeListener(e->LocalConfig.typeWritingSign=typeWritingButton.isSelected());
+        ctrlSendAchToQQ.addChangeListener(e->LocalConfig.ctrlSendAchToQQ=ctrlSendAchToQQ.isSelected());
 
         achSelectAll.addActionListener(e->{
             for(JToggleButton jToggleButton:achJToggleButtonList){
@@ -191,7 +202,7 @@ public class SetDialog{
                 jToggleButton.setSelected(!jToggleButton.isSelected());
             }
         });
-        tabbedPane.add("成绩设置",sendAchSetPanel);
+        tabbedPane.add("发送设置",sendAchSetPanel);
     }
     private static void addBaseSet(){
         baseSetPanel.setLayout(null);
@@ -202,6 +213,11 @@ public class SetDialog{
         replaceButton = new JToggleButton("符号替换");
         clearSpaceButton = new JToggleButton("去除空格");
 
+        progressButton.setFont(SwingSingleton.tipFont());
+        tipButton.setFont(SwingSingleton.tipFont());
+        lurkButton.setFont(SwingSingleton.tipFont());
+        replaceButton.setFont(SwingSingleton.tipFont());
+        clearSpaceButton.setFont(SwingSingleton.tipFont());
 
         progressButton.setSelected(LocalConfig.progress);
         tipButton.setSelected(LocalConfig.tip);
@@ -225,34 +241,42 @@ public class SetDialog{
 
 
         JButton RightcolorSet = new JButton("打对字颜色");
+        RightcolorSet.setFont(SwingSingleton.tipFont());
         RightcolorSet.setBounds(10,40,100,30);
         baseSetPanel.add(RightcolorSet);
 
         JButton MistakecolorSet = new JButton("打错字颜色");
+        MistakecolorSet.setFont(SwingSingleton.tipFont());
         MistakecolorSet.setBounds(RightcolorSet.getX()+RightcolorSet.getWidth()+10,RightcolorSet.getY(),100,30);
         baseSetPanel.add(MistakecolorSet);
 
         JButton WenbenBackgroundSet = new JButton("文本框背景颜色");
+        WenbenBackgroundSet.setFont(SwingSingleton.tipFont());
         WenbenBackgroundSet.setBounds(MistakecolorSet.getX()+MistakecolorSet.getWidth()+10,RightcolorSet.getY(),140,30);
         baseSetPanel.add(WenbenBackgroundSet);
 
         JButton qmccolorset = new JButton("全码词颜色");
+        qmccolorset.setFont(SwingSingleton.tipFont());
         qmccolorset.setBounds(WenbenBackgroundSet.getX()+WenbenBackgroundSet.getWidth()+10,RightcolorSet.getY(),140,30);
         baseSetPanel.add(qmccolorset);
 
         JButton BackgroundSet = new JButton("整体界面颜色");
+        BackgroundSet.setFont(SwingSingleton.tipFont());
         BackgroundSet.setBounds(RightcolorSet.getX(),RightcolorSet.getY()+RightcolorSet.getHeight()+10,140,30);
         baseSetPanel.add(BackgroundSet);
 
         JButton DaziBackgroundSet = new JButton("打字框背景颜色");
+        DaziBackgroundSet.setFont(SwingSingleton.tipFont());
         DaziBackgroundSet.setBounds(BackgroundSet.getX()+BackgroundSet.getWidth()+10,RightcolorSet.getHeight()+RightcolorSet.getY()+10,140,30);
         baseSetPanel.add(DaziBackgroundSet);
 
         JButton emccolorset = new JButton("二码词颜色");
+        emccolorset.setFont(SwingSingleton.tipFont());
         emccolorset.setBounds(DaziBackgroundSet.getX()+DaziBackgroundSet.getWidth()+10,RightcolorSet.getHeight()+RightcolorSet.getY()+10,100,30);
         baseSetPanel.add(emccolorset);
 
         JButton smccolorset = new JButton("三码词颜色");
+        smccolorset.setFont(SwingSingleton.tipFont());
         smccolorset.setBounds(emccolorset.getX()+emccolorset.getWidth()+10,RightcolorSet.getHeight()+RightcolorSet.getY()+10,100,30);
         baseSetPanel.add(smccolorset);
 
@@ -279,6 +303,7 @@ public class SetDialog{
         baseSetPanel.add(fontSizeText);
 
         JButton changeFontSize = new JButton("保存字体大小");
+        changeFontSize.setFont(SwingSingleton.tipFont());
         changeFontSize.setBounds(fontSizeText.getX()+ fontSizeText.getWidth()+10,BackgroundSet.getY()+BackgroundSet.getHeight()+10,90,30);
         baseSetPanel.add(changeFontSize);
 
@@ -305,14 +330,16 @@ public class SetDialog{
         baseSetPanel.add(typePageCountText);
 
         JButton spliteButton = new JButton("保存页字数");
+        spliteButton.setFont(SwingSingleton.tipFont());
         spliteButton.setBounds(typePageCountText.getX()+ typePageCountText.getWidth()+10,BackgroundSet.getY()+BackgroundSet.getHeight()+10,90,30);
         baseSetPanel.add(spliteButton);
 
         JButton codeTableButton = new JButton("全码表选择");
+        codeTableButton.setFont(SwingSingleton.tipFont());
         codeTableButton.setBounds(spliteButton.getX()+spliteButton.getWidth()+10,BackgroundSet.getY()+BackgroundSet.getHeight()+10,100,30);
         baseSetPanel.add(codeTableButton);
 
-        family = new JComboBox<String>();
+        family = new JComboBox<>();
         GraphicsEnvironment ge=GraphicsEnvironment.getLocalGraphicsEnvironment();
         String [] fontName=ge.getAvailableFontFamilyNames();
         for (String s : fontName) {
@@ -322,6 +349,7 @@ public class SetDialog{
         baseSetPanel.add(family);
 
         JButton familyChange = new JButton("修改字型");
+        familyChange.setFont(SwingSingleton.tipFont());
         familyChange.setBounds(family.getX()+family.getWidth()+10, fontSizeText.getY()+ fontSizeText.getHeight()+10,90,30);
         baseSetPanel.add(familyChange);
 

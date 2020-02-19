@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.client.window.dialog;
 
+import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.entry.History;
 import com.jdragon.tljrobot.client.entry.HistoryList;
 import com.jdragon.tljrobot.client.entry.UserState;
@@ -59,6 +60,14 @@ public class HistoryDialog {
         thisPageNum = new JButton("");
         goOtherPageButton = new JButton("跳转");
         goOtherPage = new JTextField("1");
+
+        prePageButton.setFont(SwingSingleton.tipFont());
+        nextPageButton.setFont(SwingSingleton.tipFont());
+        goFirstPageButton.setFont(SwingSingleton.tipFont());
+        goLastPageButton.setFont(SwingSingleton.tipFont());
+        thisPageNum.setFont(SwingSingleton.tipFont());
+        goOtherPageButton.setFont(SwingSingleton.tipFont());
+
         newTable();
     }
     private static void setAllBounds(){

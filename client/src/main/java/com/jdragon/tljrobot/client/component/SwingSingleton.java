@@ -26,6 +26,9 @@ public class SwingSingleton {
     private static JProgressBar typingProgress;
     private static JButton closeButton, maxButton, sizeButton, minButton;
     private static JLabel qqNameLabel,numberLabel,numberRecordLabel,sendArticleLabel,tipsLabel;
+    public static Font tipFont(){
+        return tipsFont;
+    }
     public static JLabel numberRecordLabel(){
         if (numberRecordLabel==null){
             numberRecordLabel = new JLabel("总:" + 0 +

@@ -3,6 +3,7 @@ package com.jdragon.tljrobot.client.event.FArea;
 import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.entry.TypingState;
 import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
+import com.jdragon.tljrobot.client.utils.core.Layout;
 import com.jdragon.tljrobot.client.window.MainFra;
 import com.jdragon.tljrobot.client.window.dialog.SendArticleDialog;
 
@@ -21,6 +22,7 @@ public class SendArticleEvent {
                 // ......
                 ArticleTreeListener.fontweizhi = 0;
                 SwingSingleton.sendArticleLabel().setVisible(false);
+                Layout.resetBounds();
                 TypingState.sendArticle = 0;
             }  // ......
 

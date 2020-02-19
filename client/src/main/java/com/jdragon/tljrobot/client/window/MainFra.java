@@ -71,32 +71,34 @@ public class MainFra extends JFrame {
 
         jMenu().add(JMenuComponent.getInstance().getMenu());
         addOnBounds(this, jMenu(),5, 10, 45, 32);
+        int topButtonWidth = (LocalConfig.windowWidth-(jMenu().getX()+jMenu().getWidth()+40))/4;
         addOnBounds(this, speedButton(),
-                rowAddSpacing(jMenu(),7),10,150,30);
+                rowAddSpacing(jMenu(),7),10,topButtonWidth,30);
         addOnBounds(this, keySpeedButton(),
-                rowAddSpacing(speedButton(),10),10,150,30);
+                rowAddSpacing(speedButton(),10),10,topButtonWidth,30);
         addOnBounds(this, keyLengthButton(),
-                rowAddSpacing(keySpeedButton(),10),10,150,30);
+                rowAddSpacing(keySpeedButton(),10),10,topButtonWidth,30);
         addOnBounds(this, theoreticalCodeLengthButton(),
-                rowAddSpacing(keyLengthButton(),10),10,150,30);
+                rowAddSpacing(keyLengthButton(),10),10,topButtonWidth,30);
 
-        addOnBounds(this, typingAndWatching(),10,
-                columnAddSpacing(speedButton(),10),getWidth()-10, getHeight()-100);
+        addOnBounds(this, typingAndWatching(),0,
+                columnAddSpacing(speedButton(),5),getWidth(), getHeight()-95);
         typingAndWatching().setDividerLocation(400);
 
-        addOnBounds(this, typingProgress(),10,
-                columnAddSpacing(typingAndWatching(),0),getWidth()-10,10);
+        addOnBounds(this, typingProgress(),0,
+                columnAddSpacing(typingAndWatching(),0),getWidth(),10);
 
         addOnBounds(this, closeButton(),this.getWidth()-20,0,20,10);
         addOnBounds(this, maxButton(),this.getWidth()-42,0,20,10);
         addOnBounds(this, minButton(),this.getWidth()-63,0,20,10);
         addOnBounds(this, sizeButton(),this.getWidth()-10,this.getHeight()-10,10,10);
 
-        addOnBounds(this, qQNameLabel(), typingAndWatching().getX(),columnAddSpacing(typingAndWatching(),10),120,40);
-        addOnBounds(this, numberLabel(),rowAddSpacing(qQNameLabel(),10),columnAddSpacing(typingAndWatching(),10),150,40);
-        addOnBounds(this, numberRecordLabel(),rowAddSpacing(numberLabel(),10),columnAddSpacing(typingAndWatching(),10),250,40);
-        addOnBounds(this, tipsLabel(),rowAddSpacing(numberRecordLabel(),10),columnAddSpacing(typingAndWatching(),10),120,40);
-        addOnBounds(this, sendArticleLabel(),rowAddSpacing(tipsLabel(),10),columnAddSpacing(typingAndWatching(),10),120,40);
+        int baseBottomLabelWidth = (LocalConfig.windowWidth-15)/8;
+        addOnBounds(this, qQNameLabel(), typingAndWatching().getX(),columnAddSpacing(typingAndWatching(),10),baseBottomLabelWidth*3/2,40);
+        addOnBounds(this, numberLabel(),rowAddSpacing(qQNameLabel(),5),qQNameLabel().getY(),baseBottomLabelWidth*3/2,40);
+        addOnBounds(this, numberRecordLabel(),rowAddSpacing(numberLabel(),5),qQNameLabel().getY(),3*baseBottomLabelWidth,40);
+        addOnBounds(this, tipsLabel(),rowAddSpacing(numberRecordLabel(),5),qQNameLabel().getY(),2*baseBottomLabelWidth,40);
+        addOnBounds(this, sendArticleLabel(),rowAddSpacing(tipsLabel(),5),qQNameLabel().getY(),0,40);
     }
     int preButton;
     public void addListener(){
@@ -112,7 +114,9 @@ public class MainFra extends JFrame {
 
 
         manager.addKeyEventPostProcessor(event->{
-            if (event.getID() != KeyEvent.KEY_PRESSED) return false;
+            if (event.getID() != KeyEvent.KEY_PRESSED) {
+                return false;
+            }
             if(preButton==17){
                 switch (event.getKeyCode()){
                     case 'Z': SetDialog.getInstance().setVisible(true);break;
@@ -132,7 +136,9 @@ public class MainFra extends JFrame {
                         SwitchFollowPlayEvent.start();break;
                     case KeyEvent.VK_ENTER:
                         if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)) {
-                            if(SwingSingleton.typingText().getText().length()==0)break;
+                            if(SwingSingleton.typingText().getText().length()==0) {
+                                break;
+                            }
                             typingText().setEditable(false); // 设置不可打字状态
                             TypingListener.delaySendResultSign = true;
                         }else if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){
@@ -161,10 +167,11 @@ public class MainFra extends JFrame {
                     ReplayEvent.start();
                     break;
                 case KeyEvent.VK_F4:
-                    if(!LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN))
+                    if(!LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
                         QQGetArticleEvent.start();
-                    else
+                    } else {
                         ListenPlayEvent.start();
+                    }
                     break;
                 case KeyEvent.VK_F5:
                     ChangeQQGroupEvent.start();
