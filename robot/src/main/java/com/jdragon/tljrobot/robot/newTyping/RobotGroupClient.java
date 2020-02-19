@@ -36,11 +36,14 @@ public class RobotGroupClient extends IcqListener {
         if (qq==robot.xiaochaiQ) {
             RegexText rgt = new RegexText();
             String[] Com = rgt.CarryCom(eventGroupMessage.getMessage());
-            if(!"999".equals(Com[2])) {
-                return;
+            if(!"-1".equals(Com[2])) {
+                Article article = new Article(Integer.parseInt(Com[2]),Com[0],Com[1]);
+                HashMap<String,String> postParams = new HashMap<>();
+                postParams.put("groupId", String.valueOf(groupId));
+                JSONObject.parseObject(HttpUtil.doPostObjectAndParams(HttpAddr.UPLOAD_GROUP_ARTICLE_CACHE,postParams,article));
             }
             System.out.println("捕获赛文");
-            if ("999".equals(Com[2])) {
+            if ("999".equals(Com[2])&&GroupCache.typeGroupMap.containsKey(groupId)) {
                 System.out.println("捕获赛文");
                 JSONObject articleJson = new JSONObject();
                 articleJson.put("title",Com[0]);

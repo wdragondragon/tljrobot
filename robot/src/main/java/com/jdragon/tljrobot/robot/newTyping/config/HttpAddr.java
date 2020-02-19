@@ -17,6 +17,8 @@ public class HttpAddr {
 
     private final static String CHAT_ADDR = "/chat";
 
+    private final static String GROUP_ARTICLE = "/groupArticleCache";
+
     public final static String UPLOAD_HISTORY = SERVER_ADDR + ROBOT_HOME + "/uploadHistory";
 
     public final static String GROUP_MATCH_ADDR = "/groupMatch";
@@ -46,4 +48,7 @@ public class HttpAddr {
     public final static String QUERY_GROUP_MAP = SERVER_ADDR + ROBOT_HOME + QUERY_ADDR + "/getGroupMap";
 
     public final static String CHAT_ADD_NUM_ADDR = SERVER_ADDR + ROBOT_HOME + CHAT_ADDR + "/addNum";
+
+    public final static String UPLOAD_GROUP_ARTICLE_CACHE = SERVER_ADDR + ROBOT_HOME + GROUP_ARTICLE + "/uploadArticle";
+
 }

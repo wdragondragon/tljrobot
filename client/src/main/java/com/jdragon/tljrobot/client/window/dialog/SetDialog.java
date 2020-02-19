@@ -44,6 +44,10 @@ public class SetDialog{
     private static ArrayList<JToggleButton> achJToggleButtonList = new ArrayList<>();
     private static JTextField personalTagText,typeWritingText;
     private static JButton achSelectAll,reverseSelect,achCancelAll;
+
+    private static JPanel getArticleSetPanel = new JPanel();
+    private static JToggleButton getArticleOnNet;
+    private static ArrayList<JToggleButton> getArticleJToggleButtonList = new ArrayList<>();
     private static void init(){
         setDialog = new JDialog(mainFra, "设置",
                 Dialog.ModalityType.DOCUMENT_MODAL);
@@ -51,6 +55,19 @@ public class SetDialog{
         setDialog.add(tabbedPane);
         addBaseSet();
         addSendAchSet();
+        addGetArticleSet();
+    }
+    private static void addGetArticleSet(){
+        getArticleSetPanel.setLayout(null);
+        getArticleJToggleButtonList.add(getArticleOnNet = new JToggleButton("网络载文"));
+        for (JToggleButton jToggleButton:getArticleJToggleButtonList){
+            jToggleButton.setFont(SwingSingleton.tipFont());
+        }
+        getArticleOnNet.addChangeListener(e->LocalConfig.getArticleOnNet=getArticleOnNet.isSelected());
+
+        addOnBounds(getArticleSetPanel,getArticleOnNet,40,10,80,20);
+
+        tabbedPane.add("载文设置",getArticleSetPanel);
     }
     private static void addSendAchSet(){
         sendAchSetPanel.setLayout(null);

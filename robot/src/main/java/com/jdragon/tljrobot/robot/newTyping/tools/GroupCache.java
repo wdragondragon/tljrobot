@@ -15,9 +15,10 @@ import java.util.Map;
 
 /**
  * Create by Jdragon on 2020.02.05
+ * @author 10619
  */
 public class GroupCache {
-    public static  HashMap<Long,HashMap<Long,String>> groupCardCache;//群名片cache
+    public static HashMap<Long,HashMap<Long,String>> groupCardCache;//群名片cache
     public static Map<Long,String> typeGroupMap = getGroupMap();
     @Test
     public void test(){

@@ -67,7 +67,7 @@ public class RegexText {
 		for(i=sign1;i<length;i++) {
 			a[i]='#';
 		}
-		
+
 		sign2=0;
 		sign1=0;
 		str = String.valueOf(a);
@@ -76,11 +76,14 @@ public class RegexText {
 //		str = qukong(str);
 //		str = huanfu(str);
 		duan = duan.replaceAll(regex,"");
-		duan1 = Integer.parseInt(duan);
+		try{
+			duan1 = Integer.parseInt(duan);
+		}catch (Exception e){
+			duan1 = -1;
+		}
 		comarti[0] = title;
 		comarti[1] = str;
 		comarti[2] = String.valueOf(duan1);
-//		System.out.println("标题:"+title+"\n"+str);
 		return comarti;
 	}
 	public static Long getGroupID(String event){
