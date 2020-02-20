@@ -59,78 +59,11 @@ public class QueryUser extends IcqListener {
                 eventGroupMessage.respond(retMessage);
             }
         }else if(message.equals("#长流均速排名")){
-            JSONObject jsonObject = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.QUERY_TLJ_TYPE_INFO_LIST_ORDER_BY_SPEED));
-            String retMessage = jsonObject.getString("message");
-            if(retMessage.equals("获取成功")){
-                String title = "长流均速排行";
-                String[] head = new String[]{"序号","名字","跟打次数","平均速度","平均击键","平均码长","总字数","对字数","错字数","日字数"};
-
-                List<List<List<String>>> allValue = new ArrayList<>();
-                List<List<String>> contentArray = new ArrayList<>();
-                List<String[]> heads = new ArrayList<>();
-                List<String> titles = new ArrayList<>();
-                heads.add(head);
-                titles.add(title);
-                List<Double> keySpeedRankList = new ArrayList<>();
-                List<Double> keyLengthRankList = new ArrayList<>();
-                List<Double> numRankList = new ArrayList<>();
-                List<Double> rightNumRankList = new ArrayList<>();
-                List<Double> misNumRankList = new ArrayList<>();
-                List<Double> dateNumRankList = new ArrayList<>();
-                List<Double> countRankList = new ArrayList<>();
-                JSONArray TljAvgTypeInfoListJson = jsonObject.getJSONArray("result");
-                for(Object object:TljAvgTypeInfoListJson){
-                    JSONObject TljAvgTypeInfo = (JSONObject)object;
-                    String username = TljAvgTypeInfo.getString("username");
-                    int count = TljAvgTypeInfo.getIntValue("count");
-                    double speed = TljAvgTypeInfo.getDoubleValue("speed");
-                    double keySpeed = TljAvgTypeInfo.getDoubleValue("keySpeed");
-                    double keyLength  = TljAvgTypeInfo.getDoubleValue("keyLength");
-                    int num = TljAvgTypeInfo.getIntValue("num");
-                    int rightNum = TljAvgTypeInfo.getIntValue("rightNum");
-                    int misNum = TljAvgTypeInfo.getIntValue("misNum");
-                    int dateNum = TljAvgTypeInfo.getIntValue("dateNum");
-                    keySpeedRankList.add(keySpeed);
-                    keyLengthRankList.add(keyLength);
-                    numRankList.add((double) num);
-                    rightNumRankList.add((double) rightNum);
-                    misNumRankList.add((double) misNum);
-                    dateNumRankList.add((double) dateNum);
-                    countRankList.add((double) count);
-                    contentArray.add(Arrays.asList(username,String.valueOf(count),String.format("%.2f",speed),String.format("%.2f",keySpeed),String.format("%.2f",keyLength)
-                            ,String.valueOf(num),String.valueOf(rightNum),String.valueOf(misNum),String.valueOf(dateNum)));
-                }
-                keySpeedRankList.sort(Collections.reverseOrder());
-                Collections.sort(keyLengthRankList);
-                numRankList.sort(Collections.reverseOrder());
-                rightNumRankList.sort(Collections.reverseOrder());
-                misNumRankList.sort(Collections.reverseOrder());
-                dateNumRankList.sort(Collections.reverseOrder());
-                countRankList.sort(Collections.reverseOrder());
-                allValue.add(contentArray);
-                HashMap<Integer, List<Double>> rankMap = new HashMap<>();
-                rankMap.put(2,countRankList);
-                rankMap.put(4,keySpeedRankList);
-                rankMap.put(5,keyLengthRankList);
-                rankMap.put(6,numRankList);
-                rankMap.put(7,rightNumRankList);
-                rankMap.put(8,misNumRankList);
-                rankMap.put(9,dateNumRankList);
-                String path;
-                try {
-                    path = Createimg.graphicsGeneration(allValue,titles,heads,null,heads.get(0).length,rankMap);
-                } catch (Exception e) {
-                    path = "生成图片出错";
-                    e.printStackTrace();
-                }
-                if(path.equals("生成图片出错")){
-                    eventGroupMessage.respond(path);
-                }else{
-                    eventGroupMessage.respond(new ComponentImage(path).toString());
-                }
-            }else{
-                eventGroupMessage.respond(retMessage);
-            }
+            eventGroupMessage.respond(queryTljTypeInfoListByModel("0"));
+        }else if(message.equals("#长流赛文均速排名")){
+            eventGroupMessage.respond(queryTljTypeInfoListByModel("1"));
+        }else if(message.equals("#长流生稿均速排名")){
+            eventGroupMessage.respond(queryTljTypeInfoListByModel("2"));
         }
         String[] s = message.split(" ");
         if(s.length==2){
@@ -195,6 +128,85 @@ public class QueryUser extends IcqListener {
                 }
                 default:break;
             }
+        }
+    }
+
+    /**
+     *
+     * @param model 获取的模式、全部(0)、所有赛文(1)、生稿赛(2)
+     */
+    private String queryTljTypeInfoListByModel(String model){
+        JSONObject jsonObject = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.QUERY_TLJ_TYPE_INFO_LIST_ORDER_BY_SPEED,model));
+        String retMessage = jsonObject.getString("message");
+        if(retMessage.equals("获取成功")){
+            String title = "长流均速排行";
+            String[] head = new String[]{"序号","名字","跟打次数","平均速度","平均击键","平均码长","总字数","对字数","错字数","日字数"};
+
+            List<List<List<String>>> allValue = new ArrayList<>();
+            List<List<String>> contentArray = new ArrayList<>();
+            List<String[]> heads = new ArrayList<>();
+            List<String> titles = new ArrayList<>();
+            heads.add(head);
+            titles.add(title);
+            List<Double> keySpeedRankList = new ArrayList<>();
+            List<Double> keyLengthRankList = new ArrayList<>();
+            List<Double> numRankList = new ArrayList<>();
+            List<Double> rightNumRankList = new ArrayList<>();
+            List<Double> misNumRankList = new ArrayList<>();
+            List<Double> dateNumRankList = new ArrayList<>();
+            List<Double> countRankList = new ArrayList<>();
+            JSONArray TljAvgTypeInfoListJson = jsonObject.getJSONArray("result");
+            for(Object object:TljAvgTypeInfoListJson){
+                JSONObject TljAvgTypeInfo = (JSONObject)object;
+                String username = TljAvgTypeInfo.getString("username");
+                int count = TljAvgTypeInfo.getIntValue("count");
+                double speed = TljAvgTypeInfo.getDoubleValue("speed");
+                double keySpeed = TljAvgTypeInfo.getDoubleValue("keySpeed");
+                double keyLength  = TljAvgTypeInfo.getDoubleValue("keyLength");
+                int num = TljAvgTypeInfo.getIntValue("num");
+                int rightNum = TljAvgTypeInfo.getIntValue("rightNum");
+                int misNum = TljAvgTypeInfo.getIntValue("misNum");
+                int dateNum = TljAvgTypeInfo.getIntValue("dateNum");
+                keySpeedRankList.add(keySpeed);
+                keyLengthRankList.add(keyLength);
+                numRankList.add((double) num);
+                rightNumRankList.add((double) rightNum);
+                misNumRankList.add((double) misNum);
+                dateNumRankList.add((double) dateNum);
+                countRankList.add((double) count);
+                contentArray.add(Arrays.asList(username,String.valueOf(count),String.format("%.2f",speed),String.format("%.2f",keySpeed),String.format("%.2f",keyLength)
+                        ,String.valueOf(num),String.valueOf(rightNum),String.valueOf(misNum),String.valueOf(dateNum)));
+            }
+            keySpeedRankList.sort(Collections.reverseOrder());
+            Collections.sort(keyLengthRankList);
+            numRankList.sort(Collections.reverseOrder());
+            rightNumRankList.sort(Collections.reverseOrder());
+            misNumRankList.sort(Collections.reverseOrder());
+            dateNumRankList.sort(Collections.reverseOrder());
+            countRankList.sort(Collections.reverseOrder());
+            allValue.add(contentArray);
+            HashMap<Integer, List<Double>> rankMap = new HashMap<>();
+            rankMap.put(2,countRankList);
+            rankMap.put(4,keySpeedRankList);
+            rankMap.put(5,keyLengthRankList);
+            rankMap.put(6,numRankList);
+            rankMap.put(7,rightNumRankList);
+            rankMap.put(8,misNumRankList);
+            rankMap.put(9,dateNumRankList);
+            String path;
+            try {
+                path = Createimg.graphicsGeneration(allValue,titles,heads,null,heads.get(0).length,rankMap);
+            } catch (Exception e) {
+                path = "生成图片出错";
+                e.printStackTrace();
+            }
+            if(path.equals("生成图片出错")){
+                return path;
+            }else{
+                return new ComponentImage(path).toString();
+            }
+        }else{
+           return retMessage;
         }
     }
 }

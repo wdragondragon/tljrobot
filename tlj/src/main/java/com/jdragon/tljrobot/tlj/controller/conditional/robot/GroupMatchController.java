@@ -42,10 +42,15 @@ public class GroupMatchController {
         GroupMatch oldGroupMatch = groupMatchMapper.selectOne(queryWrapper.
                 eq(GroupMatch.Def.GROUP_ID, groupMatch.getGroupId()).
                 eq(GroupMatch.Def.HOLD_DATE, groupMatch.getHoldDate()));
-        if (oldGroupMatch == null) {
+        if (oldGroupMatch == null||oldGroupMatch.getArticleId()!=articleId) {
             groupMatch.setArticleId(articleId);
-            boolean result = groupMatch.insert();
-            if (result) {
+            int result;
+            if(oldGroupMatch == null) {
+                result = groupMatchMapper.insert(groupMatch);
+            }else {
+                result = groupMatchMapper.updateById(groupMatch);
+            }
+            if (result>0) {
                 return Result.success("上传成功");
             } else {
                 return Result.success("上传失败");

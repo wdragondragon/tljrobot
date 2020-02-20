@@ -33,6 +33,7 @@ public class LocalConfig {
     public static String family = "微软雅黑";//字型
     public static Integer fontSize = 30;//字体大小
     public static Integer typePageCount = 500;//页字数
+    public static Integer readyFont = 0;//预读字数
 
     public static String codeTable = CODE_TABLE;//码表
     public static String typingPattern = FOLLOW_PLAY_PATTERN;//打字模式
@@ -71,6 +72,7 @@ public class LocalConfig {
     public static Boolean ctrlSendAchToQQ = false;
 
     public static Boolean getArticleOnNet = false;
+
     public static void readConfig(){
         IniAccess.readIni(iniFilePath);
     }

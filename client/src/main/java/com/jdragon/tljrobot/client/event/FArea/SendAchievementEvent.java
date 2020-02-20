@@ -3,15 +3,20 @@ package com.jdragon.tljrobot.client.event.FArea;
 
 import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.config.FinalConfig;
+import com.jdragon.tljrobot.client.config.HttpAddr;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.NumState;
+import com.jdragon.tljrobot.client.entry.SendRobotMessageDto;
+import com.jdragon.tljrobot.client.entry.UserState;
 import com.jdragon.tljrobot.client.event.other.ListenPlayEvent;
 import com.jdragon.tljrobot.client.listener.common.TypingListener;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
 import com.jdragon.tljrobot.client.utils.common.DoCheck;
+import com.jdragon.tljrobot.client.utils.common.NetArticleTools;
 import com.jdragon.tljrobot.client.utils.common.QqOperation;
+import com.jdragon.tljrobot.tljutils.HttpUtil;
 import com.jdragon.tljrobot.tljutils.SystemUtil;
 import lombok.SneakyThrows;
 
@@ -76,7 +81,13 @@ public class SendAchievementEvent {
                             (LocalConfig.checkCode? " 校验码" + checkCode:"");
         }
         Clipboard.set(result);
-        if(LocalConfig.lurk||!SystemUtil.isWindows())return;
-        QqOperation.start(QqOperation.SEND_ACHIEVEMENT, qQNameLabel().getText());
+        if(LocalConfig.lurk||!SystemUtil.isWindows()) {
+            return;
+        }
+        if(LocalConfig.getArticleOnNet){
+            HttpUtil.doPostObject(HttpAddr.SEND_ROBOT_ARTICLE_ACH,new SendRobotMessageDto(result,NetArticleTools.getSelectGroupId(),UserState.token));
+        }else {
+            QqOperation.start(QqOperation.SEND_ACHIEVEMENT, qQNameLabel().getText());
+        }
     }
 }

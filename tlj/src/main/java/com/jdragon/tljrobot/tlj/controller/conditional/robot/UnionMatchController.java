@@ -6,6 +6,7 @@ import com.jdragon.tljrobot.tlj.pojo.RobotHistory;
 import com.jdragon.tljrobot.tlj.pojo.UnionMatch;
 import com.jdragon.tljrobot.tlj.service.RobotService;
 import com.jdragon.tljrobot.tljutils.Result;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/robot/unionMatch")
+@Api(tags = "机器人联赛")
 public class UnionMatchController {
 
     @Autowired

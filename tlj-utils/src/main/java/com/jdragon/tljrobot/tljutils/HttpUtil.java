@@ -172,7 +172,7 @@ public class HttpUtil {
         for(Map.Entry entry:params.entrySet()){
             url += entry.getKey()+"="+entry.getValue()+"&";
         }
-        url = url.substring(0,url.length() - 2);
+        url = url.substring(0,url.length() - 1);
         // 创建Post请求
         HttpPost httpPost = new HttpPost(url);
         // 响应模型
@@ -265,7 +265,7 @@ public class HttpUtil {
         for(Map.Entry entry:params.entrySet()){
             url += entry.getKey()+"="+entry.getValue()+"&";
         }
-        url = url.substring(0,url.length() - 2);
+        url = url.substring(0,url.length() - 1);
 
         String jsonString = JSON.toJSONString(object);
         StringEntity entity = new StringEntity(jsonString,"UTF-8");

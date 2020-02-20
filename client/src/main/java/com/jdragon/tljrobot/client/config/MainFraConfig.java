@@ -3,10 +3,14 @@ package com.jdragon.tljrobot.client.config;
 import com.jdragon.tljrobot.client.listener.core.MoveFraListener;
 import com.jdragon.tljrobot.client.utils.core.IniAccess;
 import com.jdragon.tljrobot.client.window.MainFra;
+import com.jdragon.tljrobot.client.window.dialog.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import static com.jdragon.tljrobot.client.config.LocalConfig.UIBackgroundColor;
 
@@ -36,6 +40,9 @@ public class MainFraConfig {
         ImageIcon icon = new ImageIcon("images\\installer_repair_1.png"); // xxx代表图片存放路径，2.png图片名称及格式
         mainFra.setIconImage(icon.getImage());
         onSystem();
+        LogonDialog.getInstance();
+        SendArticleDialog.getInstance();
+        SetDialog.getInstance();
         //设置可见
         mainFra.setVisible(true);
     }
@@ -49,6 +56,7 @@ public class MainFraConfig {
             Image image = Toolkit.getDefaultToolkit().getImage(
                     "images\\config_3.png");// 载入图片 图片位置是程序所在的目录
             ActionListener listener = new ActionListener() {
+                @Override
                 public void actionPerformed(ActionEvent e) {
                     // 创建一个窗体
                     mainFra.setVisible(true);
@@ -63,6 +71,7 @@ public class MainFraConfig {
 
             MenuItem exitItem = new MenuItem("exit");
             exitItem.addActionListener(new ActionListener() {
+                @Override
                 public void actionPerformed(ActionEvent e) {
                     System.exit(0);
                 }

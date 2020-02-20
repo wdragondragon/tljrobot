@@ -4,12 +4,15 @@ import com.jdragon.tljrobot.tlj.ueditor.ActionEnter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
 @RestController
 @RequestMapping
+@ApiIgnore
 public class UEditorConfig {
     @RequestMapping("/UEditorConfig")
     @ResponseBody

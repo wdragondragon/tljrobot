@@ -15,6 +15,7 @@ public class DynamicSpeedThread extends Thread {
         return dynamicSpeedThread;
     }
     private DynamicSpeedThread(){}
+    @Override
     public void run() {
         while (true) {
             try {

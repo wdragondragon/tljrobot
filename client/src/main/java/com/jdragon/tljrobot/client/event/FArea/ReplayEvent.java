@@ -43,8 +43,9 @@ public class ReplayEvent {
             typingText().setEditable(true);
             typingText().requestFocusInWindow();
 
-            if (!TypingState.dailyCompetition)
+            if (!TypingState.dailyCompetition) {
                 TypingListener.getInstance().changeTipLabel(0);//提示第一个字
+            }
 
             theoreticalCodeLengthButton().setText(String.valueOf(Article.getArticleSingleton().getShortCodeEntity().getArticleAverCodes()));
 

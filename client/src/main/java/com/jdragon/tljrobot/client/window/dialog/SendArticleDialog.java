@@ -20,7 +20,7 @@ import static com.jdragon.tljrobot.client.utils.core.Layout.rowAddSpacing;
  */
 public class SendArticleDialog {
     private SendArticleDialog(){}
-    private static MainFra mainFra = MainFra.getInstance();
+    private static MainFra mainFra;
     private static ArticleTreeListener articleTreeListener = ArticleTreeListener.getInstance();;
     private static JDialog sendArticleDialog = null;
     public static JTree tree;
@@ -37,6 +37,7 @@ public class SendArticleDialog {
     public static JPanel p = new JPanel();
     public static JDialog getInstance() {
         if (sendArticleDialog == null) {
+            mainFra = MainFra.getInstance();
             init();
         }
         sendArticleDialog.setBounds(mainFra.getX()+mainFra.getWidth()/4,mainFra.getY()+mainFra.getHeight()/4,605, 470);

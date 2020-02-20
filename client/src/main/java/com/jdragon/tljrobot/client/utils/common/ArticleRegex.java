@@ -52,10 +52,12 @@ public class ArticleRegex {
                     break;}
             }
         }
-        for(i=0;i<sign2;i++)
+        for(i=0;i<sign2;i++) {
             articleChars[i]='#';
-        for(i=sign1;i<length;i++)
+        }
+        for(i=sign1;i<length;i++) {
             articleChars[i]='#';
+        }
         
         ArticleStr = String.valueOf(articleChars);
         String regex = "[^0123456789]+";
@@ -65,7 +67,9 @@ public class ArticleRegex {
             int paragraphNum = Integer.parseInt(paragraphStr.toString());
             System.out.println("段号"+paragraphNum+",标题:"+title+"\n"+ArticleStr);
             return Article.getArticleSingleton(paragraphNum, title.toString(),ArticleStr);
-        }else return null;
+        }else {
+            return null;
+        }
 
     }
 

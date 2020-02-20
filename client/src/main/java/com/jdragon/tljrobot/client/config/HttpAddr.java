@@ -38,6 +38,9 @@ public class HttpAddr {
     public final static String QUERY_GROUP_MAP = SERVER_ADDR + ROBOT_HOME + "/query" + "/getGroupMap";
 
     public final static String GET_GROUP_ARTICLE_CACHE = SERVER_ADDR + ROBOT_HOME + GROUP_ARTICLE + "/getArticle";
+    public final static String SEND_ROBOT_ARTICLE_ACH = SERVER_ADDR + ROBOT_HOME + GROUP_ARTICLE + "/sendRobotAch";
+
+    public final static String SEND_ROBOT_ARTICLE = SERVER_ADDR + ROBOT_HOME + GROUP_ARTICLE + "/sendRobotArticle";
 
 
 }

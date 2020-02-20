@@ -33,20 +33,20 @@ public class RobotGroupClient extends IcqListener {
         String message = eventGroupMessage.getMessage();
         long qq = eventGroupMessage.getSenderId();
         long groupId = eventGroupMessage.getGroupId();
+        RegexText rgt = new RegexText();
+        String[] Com = rgt.CarryCom(eventGroupMessage.getMessage());
+        if(!"-1".equals(Com[2])) {
+            Article article = new Article(Integer.parseInt(Com[2]),Com[0],Com[1]);
+            HashMap<String,String> postParams = new HashMap<>();
+            postParams.put("groupId", String.valueOf(groupId));
+            JSONObject.parseObject(HttpUtil.doPostObjectAndParams(HttpAddr.UPLOAD_GROUP_ARTICLE_CACHE,postParams,article));
+        }
         if (qq==robot.xiaochaiQ) {
-            RegexText rgt = new RegexText();
-            String[] Com = rgt.CarryCom(eventGroupMessage.getMessage());
-            if(!"-1".equals(Com[2])) {
-                Article article = new Article(Integer.parseInt(Com[2]),Com[0],Com[1]);
-                HashMap<String,String> postParams = new HashMap<>();
-                postParams.put("groupId", String.valueOf(groupId));
-                JSONObject.parseObject(HttpUtil.doPostObjectAndParams(HttpAddr.UPLOAD_GROUP_ARTICLE_CACHE,postParams,article));
-            }
             System.out.println("捕获赛文");
             if ("999".equals(Com[2])&&GroupCache.typeGroupMap.containsKey(groupId)) {
                 System.out.println("捕获赛文");
                 JSONObject articleJson = new JSONObject();
-                articleJson.put("title",Com[0]);
+                articleJson.put("title", Com[0]);
                 articleJson.put("content",Com[1]);
                 JSONObject groupMatchJson = new JSONObject();
                 groupMatchJson.put("holdDate",DateUtil.now().toString());
@@ -100,10 +100,10 @@ public class RobotGroupClient extends IcqListener {
         String[] params = message.split("\\s");
         if(params.length==2){
             if("#历史赛文".equals(params[0])){
-                JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(HttpAddr.GET_GROUP_MATCH_ADDR,"522394334",params[1]));
+                JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(HttpAddr.GET_GROUP_MATCH_ADDR, String.valueOf(groupId),params[1]));
                 String retMessage = jsonObject.getString("message");
-                JSONObject articleJson = jsonObject.getJSONObject("result").getJSONObject("article");
                 if("获取成功".equals(retMessage)){
+                    JSONObject articleJson = jsonObject.getJSONObject("result").getJSONObject("article");
                     String title = articleJson.getString("title");
                     String content = articleJson.getString("content");
                     String respond = title+"\n"+content+"\n-----第1段-共"+content.length()+"字";

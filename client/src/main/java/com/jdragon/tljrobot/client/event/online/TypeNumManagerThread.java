@@ -66,4 +66,7 @@ public class TypeNumManagerThread extends Thread {
                 " 错:" + NumState.misNum +
                 " 今:" + NumState.dateNum);
     }
+    public void init(){
+        numTemp = 0;
+    }
 }

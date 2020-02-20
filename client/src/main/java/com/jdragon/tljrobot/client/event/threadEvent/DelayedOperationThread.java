@@ -28,6 +28,7 @@ import java.util.Objects;
  * Create by Jdragon on 2020.01.13
  */
 public class DelayedOperationThread extends Thread {
+    @Override
     public void run(){
         while (true) {
             try {
@@ -40,9 +41,9 @@ public class DelayedOperationThread extends Thread {
                 if (TypingListener.delaySendResultSign){
                     List<HashMap<String,Integer>> hashMapList = null;
                     TypingListener.delaySendResultSign = false;
-                    if(LocalConfig.typingPattern.equals(Constant.FOLLOW_PLAY_PATTERN))
+                    if(LocalConfig.typingPattern.equals(Constant.FOLLOW_PLAY_PATTERN)) {
                         TypingListener.getInstance().changeAllFontColor();
-                    else if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)){
+                    } else if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)){
                         hashMapList = Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(),
                                 SwingSingleton.typingText().getText());
                         TypingListener.getInstance().changeLookPlayFontColor(hashMapList);
@@ -63,7 +64,9 @@ public class DelayedOperationThread extends Thread {
                             ReplayEvent.start();
                         }else{
                            HistoryEvent.uploadHistory();
-                           if(TypingState.sendArticle==0)continue;
+                           if(TypingState.sendArticle==0) {
+                               continue;
+                           }
                             //自动下一段判断
                             double nextSpeed = Double.parseDouble(String.valueOf(SendArticleDialog.spinnerSpeed.getValue()));
                             double nextKey = Double.parseDouble(String.valueOf(SendArticleDialog.spinnerKey.getValue()));
@@ -95,6 +98,7 @@ public class DelayedOperationThread extends Thread {
                                         case "重打":
                                             ReplayEvent.start();
                                             break;
+                                        default:break;
                                     }
                                 }
                             }

@@ -24,10 +24,16 @@ public class SwingSingleton {
     private static JScrollPane watchingJSP, typingJSP;
     private static JSplitPane typingAndWatching;
     private static JProgressBar typingProgress;
-    private static JButton closeButton, maxButton, sizeButton, minButton;
+    private static JButton closeButton, maxButton, sizeButton, minButton,tipButton;
     private static JLabel qqNameLabel,numberLabel,numberRecordLabel,sendArticleLabel,tipsLabel;
     public static Font tipFont(){
         return tipsFont;
+    }
+    public static JButton tipButton(){
+        if(tipButton==null){
+            tipButton = new JButton();
+        }
+        return tipButton;
     }
     public static JLabel numberRecordLabel(){
         if (numberRecordLabel==null){

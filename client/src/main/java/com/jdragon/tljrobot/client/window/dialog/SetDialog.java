@@ -22,7 +22,7 @@ import static com.jdragon.tljrobot.client.utils.core.Layout.*;
 public class SetDialog{
     private SetDialog(){}
     private static JDialog setDialog = null;
-    public static Dialog getInstance(){
+    public static JDialog getInstance(){
         if(setDialog==null) {
             init();
         }
@@ -48,6 +48,9 @@ public class SetDialog{
     private static JPanel getArticleSetPanel = new JPanel();
     private static JToggleButton getArticleOnNet;
     private static ArrayList<JToggleButton> getArticleJToggleButtonList = new ArrayList<>();
+    public static JToggleButton getTipsButton(){
+        return tipButton;
+    }
     private static void init(){
         setDialog = new JDialog(mainFra, "设置",
                 Dialog.ModalityType.DOCUMENT_MODAL);
@@ -66,6 +69,8 @@ public class SetDialog{
         getArticleOnNet.addChangeListener(e->LocalConfig.getArticleOnNet=getArticleOnNet.isSelected());
 
         addOnBounds(getArticleSetPanel,getArticleOnNet,40,10,80,20);
+
+        getArticleOnNet.setSelected(LocalConfig.getArticleOnNet);
 
         tabbedPane.add("载文设置",getArticleSetPanel);
     }
@@ -253,52 +258,55 @@ public class SetDialog{
         lurkButton.addChangeListener(e-> LocalConfig.lurk=lurkButton.isSelected());
         clearSpaceButton.addChangeListener(e-> LocalConfig.clearSpace=clearSpaceButton.isSelected());
         replaceButton.addChangeListener(e->LocalConfig.replace=replaceButton.isSelected());
-        tipButton.addChangeListener(e->LocalConfig.tip=tipButton.isSelected());
+        tipButton.addChangeListener(e->{
+            LocalConfig.tip=tipButton.isSelected();
+            TypingListener.getInstance().changeFontColor();
+        });
         progressButton.addChangeListener(e->LocalConfig.progress=progressButton.isSelected());
 
 
-        JButton RightcolorSet = new JButton("打对字颜色");
-        RightcolorSet.setFont(SwingSingleton.tipFont());
-        RightcolorSet.setBounds(10,40,100,30);
-        baseSetPanel.add(RightcolorSet);
+        JButton rightcolorSet = new JButton("打对字颜色");
+        rightcolorSet.setFont(SwingSingleton.tipFont());
+        rightcolorSet.setBounds(10,40,100,30);
+        baseSetPanel.add(rightcolorSet);
 
-        JButton MistakecolorSet = new JButton("打错字颜色");
-        MistakecolorSet.setFont(SwingSingleton.tipFont());
-        MistakecolorSet.setBounds(RightcolorSet.getX()+RightcolorSet.getWidth()+10,RightcolorSet.getY(),100,30);
-        baseSetPanel.add(MistakecolorSet);
+        JButton mistakecolorSet = new JButton("打错字颜色");
+        mistakecolorSet.setFont(SwingSingleton.tipFont());
+        mistakecolorSet.setBounds(rightcolorSet.getX()+rightcolorSet.getWidth()+10,rightcolorSet.getY(),100,30);
+        baseSetPanel.add(mistakecolorSet);
 
-        JButton WenbenBackgroundSet = new JButton("文本框背景颜色");
-        WenbenBackgroundSet.setFont(SwingSingleton.tipFont());
-        WenbenBackgroundSet.setBounds(MistakecolorSet.getX()+MistakecolorSet.getWidth()+10,RightcolorSet.getY(),140,30);
-        baseSetPanel.add(WenbenBackgroundSet);
+        JButton wenbenBackgroundSet = new JButton("文本框背景颜色");
+        wenbenBackgroundSet.setFont(SwingSingleton.tipFont());
+        wenbenBackgroundSet.setBounds(mistakecolorSet.getX()+mistakecolorSet.getWidth()+10,rightcolorSet.getY(),140,30);
+        baseSetPanel.add(wenbenBackgroundSet);
 
         JButton qmccolorset = new JButton("全码词颜色");
         qmccolorset.setFont(SwingSingleton.tipFont());
-        qmccolorset.setBounds(WenbenBackgroundSet.getX()+WenbenBackgroundSet.getWidth()+10,RightcolorSet.getY(),140,30);
+        qmccolorset.setBounds(wenbenBackgroundSet.getX()+wenbenBackgroundSet.getWidth()+10,rightcolorSet.getY(),140,30);
         baseSetPanel.add(qmccolorset);
 
-        JButton BackgroundSet = new JButton("整体界面颜色");
-        BackgroundSet.setFont(SwingSingleton.tipFont());
-        BackgroundSet.setBounds(RightcolorSet.getX(),RightcolorSet.getY()+RightcolorSet.getHeight()+10,140,30);
-        baseSetPanel.add(BackgroundSet);
+        JButton backgroundSet = new JButton("整体界面颜色");
+        backgroundSet.setFont(SwingSingleton.tipFont());
+        backgroundSet.setBounds(rightcolorSet.getX(),rightcolorSet.getY()+rightcolorSet.getHeight()+10,140,30);
+        baseSetPanel.add(backgroundSet);
 
-        JButton DaziBackgroundSet = new JButton("打字框背景颜色");
-        DaziBackgroundSet.setFont(SwingSingleton.tipFont());
-        DaziBackgroundSet.setBounds(BackgroundSet.getX()+BackgroundSet.getWidth()+10,RightcolorSet.getHeight()+RightcolorSet.getY()+10,140,30);
-        baseSetPanel.add(DaziBackgroundSet);
+        JButton daziBackgroundSet = new JButton("打字框背景颜色");
+        daziBackgroundSet.setFont(SwingSingleton.tipFont());
+        daziBackgroundSet.setBounds(backgroundSet.getX()+backgroundSet.getWidth()+10,rightcolorSet.getHeight()+rightcolorSet.getY()+10,140,30);
+        baseSetPanel.add(daziBackgroundSet);
 
         JButton emccolorset = new JButton("二码词颜色");
         emccolorset.setFont(SwingSingleton.tipFont());
-        emccolorset.setBounds(DaziBackgroundSet.getX()+DaziBackgroundSet.getWidth()+10,RightcolorSet.getHeight()+RightcolorSet.getY()+10,100,30);
+        emccolorset.setBounds(daziBackgroundSet.getX()+daziBackgroundSet.getWidth()+10,rightcolorSet.getHeight()+rightcolorSet.getY()+10,100,30);
         baseSetPanel.add(emccolorset);
 
         JButton smccolorset = new JButton("三码词颜色");
         smccolorset.setFont(SwingSingleton.tipFont());
-        smccolorset.setBounds(emccolorset.getX()+emccolorset.getWidth()+10,RightcolorSet.getHeight()+RightcolorSet.getY()+10,100,30);
+        smccolorset.setBounds(emccolorset.getX()+emccolorset.getWidth()+10,rightcolorSet.getHeight()+rightcolorSet.getY()+10,100,30);
         baseSetPanel.add(smccolorset);
 
         fontSizeText = new JTextField();
-        fontSizeText.setBounds(BackgroundSet.getX(),BackgroundSet.getY()+BackgroundSet.getHeight()+10,70,30);
+        fontSizeText.setBounds(backgroundSet.getX(),backgroundSet.getY()+backgroundSet.getHeight()+10,70,30);
         fontSizeText.addKeyListener(		//只能输入数字
                 new KeyListener(){
                     @Override
@@ -321,25 +329,27 @@ public class SetDialog{
 
         JButton changeFontSize = new JButton("保存字体大小");
         changeFontSize.setFont(SwingSingleton.tipFont());
-        changeFontSize.setBounds(fontSizeText.getX()+ fontSizeText.getWidth()+10,BackgroundSet.getY()+BackgroundSet.getHeight()+10,90,30);
+        changeFontSize.setBounds(fontSizeText.getX()+ fontSizeText.getWidth()+10,backgroundSet.getY()+backgroundSet.getHeight()+10,90,30);
         baseSetPanel.add(changeFontSize);
 
         typePageCountText = new JTextField();
-        typePageCountText.setBounds(changeFontSize.getX()+changeFontSize.getWidth()+10,BackgroundSet.getY()+BackgroundSet.getHeight()+10,70,30);
+        typePageCountText.setBounds(changeFontSize.getX()+changeFontSize.getWidth()+10,backgroundSet.getY()+backgroundSet.getHeight()+10,70,30);
         typePageCountText.addKeyListener(		//只能输入数字
                 new KeyListener(){
                     @Override
-                    public void keyPressed(KeyEvent arg0) {}
+                    public void keyPressed(KeyEvent e) {}
                     @Override
-                    public void keyReleased(KeyEvent arg0) {}
-                    @Override
-                    public void keyTyped(KeyEvent e) {
+                    public void keyReleased(KeyEvent e) {
                         // TODO Auto-generated method stub
                         int keyChar = e.getKeyChar();
                         if(keyChar>=KeyEvent.VK_0&&keyChar<=KeyEvent.VK_9){}
                         else {
                             e.consume();
                         }
+                    }
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+
                     }
                 }
         );
@@ -348,12 +358,12 @@ public class SetDialog{
 
         JButton spliteButton = new JButton("保存页字数");
         spliteButton.setFont(SwingSingleton.tipFont());
-        spliteButton.setBounds(typePageCountText.getX()+ typePageCountText.getWidth()+10,BackgroundSet.getY()+BackgroundSet.getHeight()+10,90,30);
+        spliteButton.setBounds(typePageCountText.getX()+ typePageCountText.getWidth()+10,backgroundSet.getY()+backgroundSet.getHeight()+10,90,30);
         baseSetPanel.add(spliteButton);
 
         JButton codeTableButton = new JButton("全码表选择");
         codeTableButton.setFont(SwingSingleton.tipFont());
-        codeTableButton.setBounds(spliteButton.getX()+spliteButton.getWidth()+10,BackgroundSet.getY()+BackgroundSet.getHeight()+10,100,30);
+        codeTableButton.setBounds(spliteButton.getX()+spliteButton.getWidth()+10,backgroundSet.getY()+backgroundSet.getHeight()+10,100,30);
         baseSetPanel.add(codeTableButton);
 
         family = new JComboBox<>();
@@ -362,7 +372,7 @@ public class SetDialog{
         for (String s : fontName) {
             family.addItem(s);
         }
-        family.setBounds(RightcolorSet.getX(), fontSizeText.getY()+ fontSizeText.getHeight()+10,120,30);
+        family.setBounds(rightcolorSet.getX(), fontSizeText.getY()+ fontSizeText.getHeight()+10,120,30);
         baseSetPanel.add(family);
 
         JButton familyChange = new JButton("修改字型");
@@ -370,22 +380,27 @@ public class SetDialog{
         familyChange.setBounds(family.getX()+family.getWidth()+10, fontSizeText.getY()+ fontSizeText.getHeight()+10,90,30);
         baseSetPanel.add(familyChange);
 
-        readyFont = new JTextField("0");
+        readyFont = new JTextField();
+        readyFont.setText(String.valueOf(LocalConfig.readyFont));
         readyFont.setBounds(familyChange.getX()+familyChange.getWidth()+10, fontSizeText.getY()+ fontSizeText.getHeight()+10,90,30);
         readyFont.addKeyListener(		//只能输入数字
                 new KeyListener(){
                     @Override
-                    public void keyPressed(KeyEvent arg0) {}
+                    public void keyPressed(KeyEvent e) {}
                     @Override
-                    public void keyReleased(KeyEvent arg0) {}
-                    @Override
-                    public void keyTyped(KeyEvent e) {
+                    public void keyReleased(KeyEvent e) {
                         // TODO Auto-generated method stub
                         int keyChar = e.getKeyChar();
-                        if(keyChar>=KeyEvent.VK_0&&keyChar<=KeyEvent.VK_9){}
+                        if(keyChar>=KeyEvent.VK_0&&keyChar<=KeyEvent.VK_9){
+                            LocalConfig.readyFont = Integer.valueOf(readyFont.getText());
+                        }
                         else {
                             e.consume();
                         }
+                    }
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+
                     }
                 }
         );
@@ -395,11 +410,11 @@ public class SetDialog{
 
         SetBackgroundListener setbackgroundListener = new SetBackgroundListener();
 
-        WenbenBackgroundSet.addActionListener(setbackgroundListener);
-        RightcolorSet.addActionListener(setbackgroundListener);
-        MistakecolorSet.addActionListener(setbackgroundListener);
-        DaziBackgroundSet.addActionListener(setbackgroundListener);
-        BackgroundSet.addActionListener(setbackgroundListener);
+        wenbenBackgroundSet.addActionListener(setbackgroundListener);
+        rightcolorSet.addActionListener(setbackgroundListener);
+        mistakecolorSet.addActionListener(setbackgroundListener);
+        daziBackgroundSet.addActionListener(setbackgroundListener);
+        backgroundSet.addActionListener(setbackgroundListener);
         qmccolorset.addActionListener(setbackgroundListener);
         emccolorset.addActionListener(setbackgroundListener);
         smccolorset.addActionListener(setbackgroundListener);

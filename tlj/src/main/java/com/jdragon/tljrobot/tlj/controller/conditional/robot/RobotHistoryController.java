@@ -6,6 +6,7 @@ import com.jdragon.tljrobot.tlj.pojo.RobotHistory;
 import com.jdragon.tljrobot.tlj.pojo.UnionMatch;
 import com.jdragon.tljrobot.tljutils.DateUtil;
 import com.jdragon.tljrobot.tljutils.Result;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/robot")
+@Api(tags = "群历史跟打")
 public class RobotHistoryController {
 
     @Autowired

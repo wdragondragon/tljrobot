@@ -82,6 +82,7 @@ public class User extends Model<User> {
         public static final String USER_NUM = "num";
         public static final String USERNAME = "username";
     }
+    @Override
     public String toString(){
         return "[username:"+username+",num:"+num+",rightNum:"+rightNum+",misNum:"+misNum+"]";
     }

@@ -1,6 +1,7 @@
 package com.jdragon.tljrobot.tlj.controller.conditional.robot;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.jdragon.tljrobot.tlj.constant.GetTljTypeInfoModel;
 import com.jdragon.tljrobot.tlj.dto.TljAvgTypeInfo;
 import com.jdragon.tljrobot.tlj.mappers.*;
 import com.jdragon.tljrobot.tlj.pojo.RobotUser;
@@ -49,10 +50,17 @@ public class QueryUserController {
         result.put("chatNum",chatNum);
         return Result.success("获取成功").setResult(result);
     }
-    @PostMapping("/tljTypeInfoListOrderBySpeed")
+    @PostMapping("/tljTypeInfoListOrderBySpeed/{model}")
     @ApiOperation("获取跟打器用户平均速度排名列表")
-    public Result queryTljTypeInfoList(){
-        List<TljAvgTypeInfo> tljAvgTypeInfoList = histroyMapper.selectTljAvgTypeInfoList();
+    public Result queryTljTypeInfoList(@PathVariable int model){
+        List<TljAvgTypeInfo> tljAvgTypeInfoList ;
+        if(model== GetTljTypeInfoModel.全部成绩.getModel()) {
+           tljAvgTypeInfoList = histroyMapper.selectTljAvgTypeInfoList();
+        }else if(model==GetTljTypeInfoModel.赛文成绩.getModel()){
+            tljAvgTypeInfoList = histroyMapper.selectTljAllMatchAvgTypeInfoList();
+        }else{
+            tljAvgTypeInfoList = histroyMapper.selectTljMatchAvgTypeInfoList();
+        }
         for(TljAvgTypeInfo tljAvgTypeInfo:tljAvgTypeInfoList){
             tljAvgTypeInfo.setUserNum(userMapper.selectOne(new QueryWrapper<User>().eq(User.Def.USERNAME,tljAvgTypeInfo.getUsername())));
         }

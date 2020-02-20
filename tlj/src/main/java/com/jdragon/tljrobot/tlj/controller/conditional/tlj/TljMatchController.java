@@ -12,6 +12,7 @@ import com.jdragon.tljrobot.tljutils.Local;
 import com.jdragon.tljrobot.tljutils.Result;
 import com.jdragon.tljrobot.tljutils.TimingMap;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/tljMatch")
-@Api(tags = "拖拉机赛文相关（需登录）")
+@Api(tags = "生稿文相关（需登录）")
 public class TljMatchController {
 
     private static TimingMap<String,Integer> openTljMatchUserList = new TimingMap<>();
@@ -39,6 +40,7 @@ public class TljMatchController {
     @Autowired
     TljMatchMapper tljMatchMapper;
     @GetMapping("/today/{userId}")
+    @ApiOperation("获取今日生稿赛文")
     @ResponseBody
     public Result getTodayMatch(@ApiParam(name = "userId",value = "使用userId获取") @PathVariable String userId,
                                 @ApiParam(name = "isMobile",value = "是否为手机")  @RequestParam boolean isMobile) {
@@ -64,6 +66,7 @@ public class TljMatchController {
     }
 
     @PostMapping("/uploadTljMatchAch/{userId}")
+    @ApiOperation("上传生稿赛成绩")
     @ResponseBody
     public Result uploadTljMatchAch(@ApiParam(name = "userId",value = "使用userId上传")@PathVariable String userId
             ,@ApiParam(name = "history",value = "历史成绩Json") @RequestBody History history){
@@ -81,6 +84,7 @@ public class TljMatchController {
         }
     }
     @PostMapping("/getTljMatchAchByDate/{date}/{userId}")
+    @ApiOperation("根据日期获取生稿赛成绩排名")
     @ResponseBody
     public Result getTljMatchAchByDate(@PathVariable Date date, @PathVariable String userId){
         List<History2> historyList = histroyMapper.selectTljMatchAchByDate(date);
@@ -91,6 +95,7 @@ public class TljMatchController {
         }
     }
     @PostMapping("/getMobileTljMatchAchByDate/{date}/{userId}")
+    @ApiOperation("根据日期获取生稿赛手机成绩排名")
     @ResponseBody
     public Result getMobileTljMatchAchByDate(@PathVariable Date date, @PathVariable String userId){
         List<History2> historyList = histroyMapper.selectMobileTljMatchAchByDate(date);
@@ -102,6 +107,7 @@ public class TljMatchController {
     }
 
     @PostMapping("/getPCTljMatchAchByDate/{date}/{userId}")
+    @ApiOperation("根据日期获取生稿赛电脑成绩排名")
     @ResponseBody
     public Result getPCTljMatchAchByDate(@PathVariable Date date, @PathVariable String userId){
         List<History2> historyList = histroyMapper.selectPCTljMatchAchByDate(date);

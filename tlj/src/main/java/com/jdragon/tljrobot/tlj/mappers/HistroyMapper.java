@@ -41,6 +41,16 @@ public interface HistroyMapper extends BaseMapper<History> {
             "from tlj_history as h join tlj_user as u on u.id=h.userId group by username order by speed desc")
     List<TljAvgTypeInfo> selectTljAvgTypeInfoList();
 
+    @Select("select username,count(0) as count,AVG(speed) as speed ,AVG(keyLength) as keyLength,AVG(keySpeed) as keySpeed " +
+            "from tlj_history as h join tlj_user as u on u.id=h.userId where h.paragraph=0 " +
+            "group by username  order by speed desc")
+    List<TljAvgTypeInfo> selectTljMatchAvgTypeInfoList();
+
+    @Select("select username,count(0) as count,AVG(speed) as speed ,AVG(keyLength) as keyLength,AVG(keySpeed) as keySpeed " +
+            "from tlj_history as h join tlj_user as u on u.id=h.userId where h.paragraph=999 or h.paragraph=0 or h.paragraph=9999 " +
+            "group by username  order by speed desc")
+    List<TljAvgTypeInfo> selectTljAllMatchAvgTypeInfoList();
+
     @Select("SELECT count(0) as count,SUM(number) as number,SUM(time) as time from tlj_history")
     HashMap<String,Object> selectTljAvgTypeInfo();
 }

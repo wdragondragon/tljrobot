@@ -1,35 +1,40 @@
 package com.jdragon.tljrobot.robot.typing.Tools;
 
 
+import org.junit.Test;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static java.util.regex.Pattern.compile;
 
 public class RegexText {
-	private int gang = 0;
-	private int kong = 0;
-	private int i,j,k,length,sign1=0,sign2=0;
-	private char [] a;
-	private String duan;
-	public static int duan1;
-	public String[] CarryCom(String str){
-		String comarti[] = new String[3];
-		String title = "";
-		a = str.toCharArray();
-		length = str.length();
+//	private int gang = 0;
+//	private int kong = 0;
+//	private int i,j,k,length,sign1=0,sign2=0;
+//	private char [] a;
+//	private String duan;
+//	public static int duan1;
+	public String[] CarryCom(String ArticleStr){
+		int gang = 0,space = 0;
+		int i,j,k,sign1=0,sign2=0;
+
+		StringBuilder paragraphStr = new StringBuilder();
+		StringBuilder title = new StringBuilder();
+		char [] articleChars = ArticleStr.toCharArray();
+		int length = ArticleStr.length();
+
 		for(j=length-1;j>0;j--){
-			if(a[j]=='第'){
+			if(articleChars[j]=='第'){
 				for(k=j-1;k>=j-5;k--){
-					if(a[k]=='-'){gang++;}
+					if(articleChars[k]=='-'){gang++;}
 				}
 				if(gang>=5){
 					sign1 = k;
-					kong=0;
-//					duan = String.copyValueOf(a, j+1,5);
-					duan = "";
-					while(a[j]!='段'){
-						duan = duan+a[j];j++;
+					space = 0;
+					paragraphStr = new StringBuilder();
+					while(articleChars[j]!='段'){
+						paragraphStr.append(articleChars[j]);j++;
 					}
 				}
 				gang=0;
@@ -37,54 +42,55 @@ public class RegexText {
 			if(sign1!=0) {
 				break;
 			}
-
 		}
 		for(j=sign1;j>0;j--){
-			if(a[j]=='\n')
+			if(articleChars[j]=='\n')
 			{
-				kong++;
-				a[j]='#';
-				if(kong>=2){
+				space++;
+				articleChars[j]='#';
+				if(space>=2){
 					sign2  = j;
-					while(a[j]!='\n'&&j>0) {
+					while(articleChars[j]!='\n'&&j>0) {
 						j--;
 					}
 					if(j>0) {
-						a[j]='#';
+						articleChars[j]='#';
 					} else {
 						j=-1;
 					}
 					for(j=j+1;j<sign2;j++) {
-						title+=String.valueOf(a[j]);
+						title.append(articleChars[j]);
 					}
-					kong = 0;
 					break;}
 			}
 		}
 		for(i=0;i<sign2;i++) {
-			a[i]='#';
+			articleChars[i]='#';
 		}
 		for(i=sign1;i<length;i++) {
-			a[i]='#';
+			articleChars[i]='#';
 		}
 
-		sign2=0;
-		sign1=0;
-		str = String.valueOf(a);
+		ArticleStr = String.valueOf(articleChars);
 		String regex = "[^0123456789]+";
-		str = str.replaceAll("#","");
-//		str = qukong(str);
-//		str = huanfu(str);
-		duan = duan.replaceAll(regex,"");
-		try{
-			duan1 = Integer.parseInt(duan);
-		}catch (Exception e){
-			duan1 = -1;
+		ArticleStr = ArticleStr.replaceAll("#","");
+		paragraphStr = new StringBuilder(paragraphStr.toString().replaceAll(regex, ""));
+		String[] comarti = {"-1","-1","-1"};
+		if(paragraphStr.length()>0){
+			int paragraphNum = Integer.parseInt(paragraphStr.toString());
+			System.out.println("段号"+paragraphNum+",标题:"+title+"\n"+ArticleStr);
+			comarti[0] = title.toString();
+			comarti[1] = ArticleStr;
+			comarti[2] = String.valueOf(paragraphNum);
 		}
-		comarti[0] = title;
-		comarti[1] = str;
-		comarti[2] = String.valueOf(duan1);
 		return comarti;
+	}
+	@Test
+	public void test(){
+		String[]com = new RegexText().CarryCom("十八岁出门远行.txt\n" +
+				"。这个时候我看到坡上有五个骑着自行车下来，每辆自行车后座上都用一根扁担绑着两只很大的箩筐，我想他们大概是附近的农民，大概是卖菜回来。看到有人下来，我心里十分高兴，便迎上去喊道：“老乡，你们好。”那五个\n" +
+				"-----第25段-余2056字");
+		System.out.println(com[0]+":"+com[1]+":"+com[2]);
 	}
 	public static Long getGroupID(String event){
 		int begin = event.indexOf("groupId=");

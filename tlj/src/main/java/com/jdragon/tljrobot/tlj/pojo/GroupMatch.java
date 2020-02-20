@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
@@ -34,5 +35,9 @@ public class GroupMatch extends Model<GroupMatch> {
     public static class Def{
         public static final String GROUP_ID = "groupId";
         public static final String HOLD_DATE = "holdDate";
+    }
+    @Override
+    protected Serializable pkVal() {
+        return this.holdDate;
     }
 }

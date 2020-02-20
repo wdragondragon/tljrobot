@@ -55,21 +55,12 @@ public class MainFra extends JFrame {
                     .generalNoTranslucencyShadow;
             BeautyEyeLNFHelper.launchBeautyEyeLNF();
             UIManager.put("RootPane.setupButtonVisible", false);
-        } catch (Exception e) {
-//            e.printStackTrace();
-        }
+        } catch (Exception ignored) {}
         init();
     }
     public void init(){
-//        addOnBounds(this,F1(),0,0,0,0);
-//        addOnBounds(this,F2(),0,0,0,0);
-//        addOnBounds(this,F3(),0,0,0,0);
-//        addOnBounds(this,F4(),0,0,0,0);
-//        addOnBounds(this,F5(),0,0,0,0);
-//        addOnBounds(this,F6(),0,0,0,0);
-//        addOnBounds(this,F7(),0,0,0,0);
-
         jMenu().add(JMenuComponent.getInstance().getMenu());
+        addOnBounds(this,tipButton(),50,0,20,10);
         addOnBounds(this, jMenu(),5, 10, 45, 32);
         int topButtonWidth = (LocalConfig.windowWidth-(jMenu().getX()+jMenu().getWidth()+40))/4;
         addOnBounds(this, speedButton(),
@@ -102,6 +93,7 @@ public class MainFra extends JFrame {
     }
     int preButton;
     public void addListener(){
+        tipButton().addActionListener(e->SetDialog.getTipsButton().setSelected(!SetDialog.getTipsButton().isSelected()));
         closeButton().addActionListener(SystemListener.getInstance());
         maxButton().addActionListener(SystemListener.getInstance());
         minButton().addActionListener(SystemListener.getInstance());
