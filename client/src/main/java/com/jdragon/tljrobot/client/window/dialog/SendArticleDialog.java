@@ -195,11 +195,10 @@ public class SendArticleDialog {
         KeyListener keyListener = new KeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
-                keyReleased(e);
+
             }
             @Override
             public void keyReleased(KeyEvent e) {
-//						keyTyped(e);
                 int keyChar = e.getKeyChar();
                 if (keyChar >= KeyEvent.VK_0
                         && keyChar <= KeyEvent.VK_9|| keyChar == '\b') {
@@ -212,8 +211,6 @@ public class SendArticleDialog {
             }
             @Override
             public void keyTyped(KeyEvent e) {
-                // TODO Auto-generated method stub
-                keyReleased(e);
             }
         };
         JLabel label1 = new JLabel("段字数");

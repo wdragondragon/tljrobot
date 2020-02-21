@@ -46,7 +46,7 @@ public class SetDialog{
     private static JButton achSelectAll,reverseSelect,achCancelAll;
 
     private static JPanel getArticleSetPanel = new JPanel();
-    private static JToggleButton getArticleOnNet;
+    private static JToggleButton getArticleOnNet,mouseGetArticle;
     private static ArrayList<JToggleButton> getArticleJToggleButtonList = new ArrayList<>();
     public static JToggleButton getTipsButton(){
         return tipButton;
@@ -62,15 +62,19 @@ public class SetDialog{
     }
     private static void addGetArticleSet(){
         getArticleSetPanel.setLayout(null);
-        getArticleJToggleButtonList.add(getArticleOnNet = new JToggleButton("网络载文"));
+        getArticleJToggleButtonList.add(getArticleOnNet = new JToggleButton("网络模式"));
+        getArticleJToggleButtonList.add(mouseGetArticle = new JToggleButton("鼠标载文"));
         for (JToggleButton jToggleButton:getArticleJToggleButtonList){
             jToggleButton.setFont(SwingSingleton.tipFont());
         }
         getArticleOnNet.addChangeListener(e->LocalConfig.getArticleOnNet=getArticleOnNet.isSelected());
+        mouseGetArticle.addChangeListener(e->LocalConfig.mouseGetArticle=mouseGetArticle.isSelected());
 
         addOnBounds(getArticleSetPanel,getArticleOnNet,40,10,80,20);
+        addOnBounds(getArticleSetPanel,mouseGetArticle,rowAddSpacing(getArticleOnNet,10),getArticleOnNet.getY(),80,20);
 
         getArticleOnNet.setSelected(LocalConfig.getArticleOnNet);
+        mouseGetArticle.setSelected(LocalConfig.mouseGetArticle);
 
         tabbedPane.add("载文设置",getArticleSetPanel);
     }

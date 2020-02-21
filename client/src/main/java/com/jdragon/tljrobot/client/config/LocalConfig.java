@@ -73,6 +73,8 @@ public class LocalConfig {
 
     public static Boolean getArticleOnNet = false;
 
+    public static Boolean mouseGetArticle = true;
+
     public static void readConfig(){
         IniAccess.readIni(iniFilePath);
     }

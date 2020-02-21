@@ -5,6 +5,7 @@ import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
+import com.jdragon.tljrobot.client.entry.TypingState;
 import com.jdragon.tljrobot.client.event.FArea.*;
 import com.jdragon.tljrobot.client.event.other.ListenPlayEvent;
 import com.jdragon.tljrobot.client.event.other.SwitchFollowPlayEvent;
@@ -112,7 +113,14 @@ public class MainFra extends JFrame {
             if(preButton==17){
                 switch (event.getKeyCode()){
                     case 'Z': SetDialog.getInstance().setVisible(true);break;
-                    case 'P': ArticleTreeListener.getInstance().nextOrder();break;
+                    case 'P':
+                        if (TypingState.sendArticle == Constant.SEND_EXTRACT) {
+                            ArticleTreeListener.getInstance().chouqu("下一段");
+                        } else if (TypingState.sendArticle == Constant.SEND_ORDER) {
+                            ArticleTreeListener.getInstance().nextOrder();
+                        } else if (TypingState.sendArticle == Constant.SEND_WORDS) {
+                            ArticleTreeListener.getInstance().ciKuNext();
+                        }break;
                     case 'S': ArticleTreeListener.getInstance().save();break;
                     case 'L':
                         MixListener.getInstance().mixButton("该段乱序");break;
