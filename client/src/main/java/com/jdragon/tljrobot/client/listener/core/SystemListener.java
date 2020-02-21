@@ -29,9 +29,6 @@ public class SystemListener implements ActionListener, MouseListener, MouseMotio
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         if(e.getActionCommand().equals("关")){
-            if(MaxSign==1){
-                JOptionPane.showMessageDialog(new JTextArea(),"请先关闭全屏模式");return;
-            }
             UIManager.put("OptionPane.yesButtonText", "关闭");
             UIManager.put("OptionPane.noButtonText", "隐藏");
             int n = JOptionPane.showConfirmDialog(MainFra.getInstance(), "要关闭跟打器，还是选择隐藏到托盘", "关闭提示", JOptionPane.YES_NO_OPTION);

@@ -1,0 +1,30 @@
+[20-02-21 13:13:18] [PicqBotX] [INFO] 
+[20-02-21 13:13:18] [PicqBotX] [INFO]     ____  _            ____        __ _  __
+[20-02-21 13:13:18] [PicqBotX] [INFO]    / __ \(_)________ _/ __ )____  / /| |/ /
+[20-02-21 13:13:18] [PicqBotX] [INFO]   / /_/ / / ___/ __ `/ __  / __ \/ __/   /
+[20-02-21 13:13:18] [PicqBotX] [INFO]  / ____/ / /__/ /_/ / /_/ / /_/ / /_/   |
+[20-02-21 13:13:18] [PicqBotX] [INFO] /_/   /_/\___/\__, /_____/\____/\__/_/|_|
+[20-02-21 13:13:18] [PicqBotX] [INFO]                 /_/         v4.10.1.928
+[20-02-21 13:13:18] [PicqBotX] [INFO] 日志管理器     初始化完成 [******] ...(93.47 ms)
+[20-02-21 13:13:19] [PicqBotX] [INFO] 缓存管理器     初始化完成 [******] ...(4.49 ms)
+[20-02-21 13:13:19] [PicqBotX] [INFO] DEBUG设置     初始化完成 [******] ...(0.04 ms)
+[20-02-21 13:13:19] [PicqBotX] [INFO] 事件管理器     初始化完成 [******] ...(96.63 ms)
+[20-02-21 13:13:19] [PicqBotX] [INFO] 账号管理器     初始化完成 [******] ...(2.38 ms)
+[20-02-21 13:13:19] [PicqBotX] [INFO] HTTP监听服务器 初始化完成 [******] ...(4.43 ms)
+[20-02-21 13:13:21] [PicqBotX] [INFO] 指令管理器     初始化完成 [******] ...(5.19 ms)
+[20-02-21 13:13:21] [PicqBotX] [INFO] 账号 Bot01:   版本验证完成!
+[20-02-21 13:13:21] [PicqBotX] [INFO] 正在启动...
+[20-02-21 13:13:27] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-21 13:13:27] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":44141552,"group_id":26053477,"message":"第999段 速度181.13 击键7.28 码长2.41 标顶理论2.22 字数373 回改2 退格12 错字0 键数899 选重23 键准96.84% 键法110.72%(左382:右345:空格159) 打词率50.67% 选重率6.17% 输入法:小鹤音形 长流v2.11 Windows 10版 校验码V\\^JYU","message_id":3037,"message_type":"group","post_type":"message","raw_message":"第999段 速度181.13 击键7.28 码长2.41 标顶理论2.22 字数373 回改2 退格12 错字0 键数899 选重23 键准96.84% 键法110.72%(左382:右345:空格159) 打词率50.67% 选重率6.17% 输入法:小鹤音形 长流v2.11 Windows 10版 校验码V\\^JYU","self_id":1061917110,"sender":{"age":27,"area":"湖州","card":"【浙江】♂飘风 ","level":"高手","nickname":"飘风SLG","role":"member","sex":"unknown","title":"","user_id":869151501},"sub_type":"normal","time":1582262007,"user_id":869151501}
+[20-02-21 13:14:13] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-21 13:14:13] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":77719600,"group_id":26053477,"message":"#成绩","message_id":3039,"message_type":"group","post_type":"message","raw_message":"#成绩","self_id":1061917110,"sender":{"age":27,"area":"湖州","card":"【浙江】♂飘风 ","level":"高手","nickname":"飘风SLG","role":"member","sex":"unknown","title":"","user_id":869151501},"sub_type":"normal","time":1582262030,"user_id":869151501}
+[20-02-21 13:14:29] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-21 13:14:29] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":44510512,"group_id":26053477,"message":"[CQ:image,file=BF7E6E5233857EBE8A33D8B1711D46A8.png,url=https://gchat.qpic.cn/gchatpic_new/207938707/2106053477-3122947525-BF7E6E5233857EBE8A33D8B1711D46A8/0?term=2]","message_id":3040,"message_type":"group","post_type":"message","raw_message":"[CQ:image,file=BF7E6E5233857EBE8A33D8B1711D46A8.png]","self_id":1061917110,"sender":{"age":6,"area":"北京","card":"【北京】♀小拆","level":"圣手","nickname":"小拆","role":"admin","sex":"male","title":"","user_id":207938707},"sub_type":"normal","time":1582262033,"user_id":207938707}
+[20-02-21 13:14:33] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-21 13:14:33] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":44141520,"group_id":974172771,"message":"哈哈","message_id":3042,"message_type":"group","post_type":"message","raw_message":"哈哈","self_id":1061917110,"sender":{"age":21,"area":"","card":"榜眼","level":"吐槽","nickname":"咸德弹腾","role":"member","sex":"unknown","title":"","user_id":477691374},"sub_type":"normal","time":1582262061,"user_id":477691374}
+[20-02-21 13:14:34] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-21 13:14:34] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":6626168,"group_id":974172771,"message":"好惨","message_id":3043,"message_type":"group","post_type":"message","raw_message":"好惨","self_id":1061917110,"sender":{"age":21,"area":"","card":"榜眼","level":"吐槽","nickname":"咸德弹腾","role":"member","sex":"unknown","title":"","user_id":477691374},"sub_type":"normal","time":1582262065,"user_id":477691374}
+[20-02-21 13:14:36] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-21 13:14:36] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":77719472,"group_id":522394334,"message":"#发","message_id":3044,"message_type":"group","post_type":"message","raw_message":"#发","self_id":1061917110,"sender":{"age":8,"area":"广州","card":"谭宇-神键手","level":"小白","nickname":"0 4 . 2 2","role":"admin","sex":"unknown","title":"神键手","user_id":1061917196},"sub_type":"normal","time":1582262072,"user_id":1061917196}
+[20-02-21 13:14:39] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] 收到新请求: CQHttp/4.10.1
+[20-02-21 13:14:39] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] - 数据: {"anonymous":null,"font":44510704,"group_id":522394334,"message":"常用单字前五百\r\n推候市地品\r\n-----第20645段-乱序--c.fw.1.5","message_id":3045,"message_type":"group","post_type":"message","raw_message":"常用单字前五百\r\n推候市地品\r\n-----第20645段-乱序--c.fw.1.5","self_id":1061917110,"sender":{"age":6,"area":"北京","card":"","level":"小白","nickname":"小拆","role":"member","sex":"male","title":"","user_id":207938707},"sub_type":"normal","time":1582262073,"user_id":207938707}

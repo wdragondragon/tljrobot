@@ -74,12 +74,13 @@ public class RegexText {
 		ArticleStr = String.valueOf(articleChars);
 		String regex = "[^0123456789]+";
 		ArticleStr = ArticleStr.replaceAll("#","");
+		ArticleStr = ArticleStr.replaceAll("\r","");
 		paragraphStr = new StringBuilder(paragraphStr.toString().replaceAll(regex, ""));
 		String[] comarti = {"-1","-1","-1"};
 		if(paragraphStr.length()>0){
 			int paragraphNum = Integer.parseInt(paragraphStr.toString());
 			System.out.println("段号"+paragraphNum+",标题:"+title+"\n"+ArticleStr);
-			comarti[0] = title.toString();
+			comarti[0] = title.toString().replaceAll("\r","");
 			comarti[1] = ArticleStr;
 			comarti[2] = String.valueOf(paragraphNum);
 		}

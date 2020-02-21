@@ -48,11 +48,7 @@ public class Layout {
         }else{
             baseBottomLabelWidth = (mainFra.getWidth()-15)/8;
         }
-        qQNameLabel().setBounds(qQNameLabel().getX(),columnAddSpacing(typingAndWatching(),10),baseBottomLabelWidth*3/2,qQNameLabel().getHeight());
-        numberLabel().setBounds(rowAddSpacing(qQNameLabel(),5),qQNameLabel().getY(),baseBottomLabelWidth*3/2,qQNameLabel().getHeight());
-        numberRecordLabel().setBounds(rowAddSpacing(numberLabel(),5),qQNameLabel().getY(),3*baseBottomLabelWidth,qQNameLabel().getHeight());
-        tipsLabel().setBounds(rowAddSpacing(numberRecordLabel(),5),qQNameLabel().getY(),2*baseBottomLabelWidth,qQNameLabel().getHeight());
-        sendArticleLabel().setLocation(rowAddSpacing(tipsLabel(),5),qQNameLabel().getY());
+
 
         closeButton().setBounds(mainFra.getWidth()-20,0,20,10);
         maxButton().setBounds(mainFra.getWidth()-42,0,20,10);
@@ -62,6 +58,11 @@ public class Layout {
                 columnAddSpacing(SwingSingleton.speedButton(),5),mainFra.getWidth(), mainFra.getHeight()-95);
         typingProgress().setBounds(0,
                 columnAddSpacing(typingAndWatching(),0),mainFra.getWidth(),10);
+        qQNameLabel().setBounds(qQNameLabel().getX(),columnAddSpacing(typingAndWatching(),10),baseBottomLabelWidth*3/2,qQNameLabel().getHeight());
+        numberLabel().setBounds(rowAddSpacing(qQNameLabel(),5),qQNameLabel().getY(),baseBottomLabelWidth*3/2,qQNameLabel().getHeight());
+        numberRecordLabel().setBounds(rowAddSpacing(numberLabel(),5),qQNameLabel().getY(),3*baseBottomLabelWidth,qQNameLabel().getHeight());
+        tipsLabel().setBounds(rowAddSpacing(numberRecordLabel(),5),qQNameLabel().getY(),2*baseBottomLabelWidth,qQNameLabel().getHeight());
+        sendArticleLabel().setLocation(rowAddSpacing(tipsLabel(),5),qQNameLabel().getY());
 //        qQNameLabel().setBounds(typingAndWatching().getX(),columnAddSpacing(typingAndWatching(),10),120,40);
 //        numberLabel().setBounds(rowAddSpacing(qQNameLabel(),10),columnAddSpacing(typingAndWatching(),10),120,40);
 //        numberRecordLabel().setBounds(rowAddSpacing(numberLabel(),10),columnAddSpacing(typingAndWatching(),10),120,40);

@@ -1,6 +1,7 @@
 package com.jdragon.tljrobot.tljutils;
 
 import com.alibaba.fastjson.JSON;
+import lombok.SneakyThrows;
 import org.apache.http.HttpEntity;
 import org.apache.http.ParseException;
 import org.apache.http.client.config.RequestConfig;
@@ -13,6 +14,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.Map;
 
 /**
@@ -161,7 +163,8 @@ public class HttpUtil {
         }
         return result;
     }
-    public static String doPostParams(String url,Map<String,String> params,String...urlParams) {
+    @SneakyThrows
+    public static String doPostParams(String url, Map<String,String> params, String...urlParams) {
         String result = "请求错误";
         // 获得Http客户端(可以理解为:你得先有一个浏览器;注意:实际上HttpClient与浏览器是不一样的)
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -170,7 +173,7 @@ public class HttpUtil {
         }
         url += "?";
         for(Map.Entry entry:params.entrySet()){
-            url += entry.getKey()+"="+entry.getValue()+"&";
+            url += entry.getKey()+"="+URLEncoder.encode(String.valueOf(entry.getValue()),"utf8")+"&";
         }
         url = url.substring(0,url.length() - 1);
         // 创建Post请求
@@ -254,16 +257,17 @@ public class HttpUtil {
         }
         return result;
     }
-    public static String doPostObjectAndParams(String url,Map<String,String> params,Object object,String...urlParams) {
+    @SneakyThrows
+    public static String doPostObjectAndParams(String url, Map<String,String> params, Object object, String...urlParams) {
         String result = "请求错误";
         // 获得Http客户端(可以理解为:你得先有一个浏览器;注意:实际上HttpClient与浏览器是不一样的)
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         for(String param:urlParams){
-            url += "/"+param;
+            url += "/"+ URLEncoder.encode(param,"utf8");
         }
         url += "?";
         for(Map.Entry entry:params.entrySet()){
-            url += entry.getKey()+"="+entry.getValue()+"&";
+            url += entry.getKey()+"="+URLEncoder.encode(String.valueOf(entry.getValue()),"utf8")+"&";
         }
         url = url.substring(0,url.length() - 1);
 

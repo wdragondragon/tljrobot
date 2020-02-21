@@ -19,6 +19,7 @@ import com.jdragon.tljrobot.robot.newTyping.tools.Regex;
 import com.jdragon.tljrobot.robot.typing.Tools.RegexText;
 import com.jdragon.tljrobot.tljutils.DateUtil;
 import com.jdragon.tljrobot.tljutils.HttpUtil;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +29,13 @@ import java.util.List;
  * Create by Jdragon on 2020.01.21
  */
 public class RobotGroupClient extends IcqListener {
+    @Test
+    public void test(){
+        String[] Com = new RegexText().CarryCom("常用单字前五百\n" +
+                "微报老来怎\n" +
+                "-----第20638段-乱序--c.fw.1.5");
+        System.out.println(Com);
+    }
     @EventHandler
     public void carryGroupMessage(EventGroupMessage eventGroupMessage){
         String message = eventGroupMessage.getMessage();
