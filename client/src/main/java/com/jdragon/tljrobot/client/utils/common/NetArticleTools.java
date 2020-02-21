@@ -44,7 +44,7 @@ public class NetArticleTools {
         return false;
     }
     public static long getSelectGroupId(){
-        for(Map.Entry<Long,String> entry:typeGroupMap.entrySet()){
+        for(Map.Entry<Long,String> entry:getGroupMap().entrySet()){
             System.out.println(entry.getValue());
             if(entry.getValue().equals(SwingSingleton.qQNameLabel().getText())){
                 System.out.println(entry.getKey());

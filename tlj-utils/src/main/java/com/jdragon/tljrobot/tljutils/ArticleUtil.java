@@ -69,8 +69,8 @@ public class ArticleUtil {
         return "";
     }
     public static String replace(String str){
-        String initChar = ";:,.!?";
-        String afterChar = "；：，。！？";
+        String initChar = ";:,.!?()";
+        String afterChar = "；：，。！？（）";
         char[] a = str.toCharArray();
         int b ;
         char[] y = afterChar.toCharArray();

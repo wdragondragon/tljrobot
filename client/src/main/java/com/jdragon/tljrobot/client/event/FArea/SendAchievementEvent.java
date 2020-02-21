@@ -85,7 +85,7 @@ public class SendAchievementEvent {
             return;
         }
         if(LocalConfig.getArticleOnNet){
-            HttpUtil.doPostObject(HttpAddr.SEND_ROBOT_ARTICLE_ACH,new SendRobotMessageDto(result,NetArticleTools.getSelectGroupId(),UserState.token));
+            HttpUtil.doPostObject(HttpAddr.SEND_ROBOT_ARTICLE_ACH, new SendRobotMessageDto(result, NetArticleTools.getSelectGroupId(), UserState.token));
         }else {
             QqOperation.start(QqOperation.SEND_ACHIEVEMENT, qQNameLabel().getText());
         }

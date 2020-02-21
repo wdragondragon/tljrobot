@@ -53,9 +53,6 @@ public class DelayedOperationThread extends Thread {
                     sleep(200);
                     TypingState.typingState = false;//跟打结束标志使DynamicSpeed中计算停止
                     SendAchievementEvent.start();
-                    if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)){
-                        DrawUnLookPlayResult.drawUnFollowPlayResultImg(Article.getArticleSingleton().getTitle(), hashMapList,"看打");
-                    }
                     if(UserState.loginState) {//联网操作，发送跟打历史或发送0段赛文成绩
                         if (TypingState.dailyCompetition) {
                             HistoryEvent.uploadMatchAch();
@@ -64,43 +61,43 @@ public class DelayedOperationThread extends Thread {
                             ReplayEvent.start();
                         }else{
                            HistoryEvent.uploadHistory();
-                           if(TypingState.sendArticle==0) {
-                               continue;
-                           }
-                            //自动下一段判断
-                            double nextSpeed = Double.parseDouble(String.valueOf(SendArticleDialog.spinnerSpeed.getValue()));
-                            double nextKey = Double.parseDouble(String.valueOf(SendArticleDialog.spinnerKey.getValue()));
-                            double nextKeyAccuracy = Double.parseDouble(String.valueOf(SendArticleDialog.spinnerKeyLength.getValue()));
-                            double speed = TypingState.getSpeed();
-                            double keySpeed = TypingState.getKeySpeed();
-                            double keyAccuracy = TypingState.getKeyAccuracy();
-                            if(TypingState.sendArticle!=0) {
-                                if (!(nextSpeed == 0 && nextKey == 0 && nextKeyAccuracy == 0)
-                                        && (nextSpeed == 0 || speed >= nextSpeed)
-                                        && (nextKey == 0 || keySpeed >= nextKey)
-                                        && (nextKeyAccuracy == 0 || keyAccuracy >= nextKeyAccuracy)
-                                ) {
-                                    if (TypingState.sendArticle == Constant.SEND_EXTRACT) {
-                                        ArticleTreeListener.getInstance().chouqu("下一段");
-                                    } else if (TypingState.sendArticle == Constant.SEND_ORDER) {
-                                        ArticleTreeListener.getInstance().nextOrder();
-                                    } else if (TypingState.sendArticle == Constant.SEND_WORDS) {
-                                        ArticleTreeListener.getInstance().ciKuNext();
-                                    }
-                                } else if (!(nextSpeed == 0 && nextKey == 0 && nextKeyAccuracy == 0)) {
-                                    String caoZuo = SendArticleDialog.caozuo.getSelectedItem().toString();
-                                    switch (caoZuo) {
-                                        case "不操作":
-                                            break;
-                                        case "乱序":
-                                            MixListener.getInstance().mixButton("该段乱序");
-                                            break;
-                                        case "重打":
-                                            ReplayEvent.start();
-                                            break;
-                                        default:break;
-                                    }
-                                }
+                        }
+                    }
+                    if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)){
+                        DrawUnLookPlayResult.drawUnFollowPlayResultImg(Article.getArticleSingleton().getTitle(), hashMapList,"看打");
+                    }
+                    //自动下一段判断
+                    if(TypingState.sendArticle!=0) {
+                        double nextSpeed = Double.parseDouble(String.valueOf(SendArticleDialog.spinnerSpeed.getValue()));
+                        double nextKey = Double.parseDouble(String.valueOf(SendArticleDialog.spinnerKey.getValue()));
+                        double nextKeyAccuracy = Double.parseDouble(String.valueOf(SendArticleDialog.spinnerKeyLength.getValue()));
+                        double speed = TypingState.getSpeed();
+                        double keySpeed = TypingState.getKeySpeed();
+                        double keyAccuracy = TypingState.getKeyAccuracy();
+                        if (!(nextSpeed == 0 && nextKey == 0 && nextKeyAccuracy == 0)
+                                && (nextSpeed == 0 || speed >= nextSpeed)
+                                && (nextKey == 0 || keySpeed >= nextKey)
+                                && (nextKeyAccuracy == 0 || keyAccuracy >= nextKeyAccuracy)
+                        ) {
+                            if (TypingState.sendArticle == Constant.SEND_EXTRACT) {
+                                ArticleTreeListener.getInstance().chouqu("下一段");
+                            } else if (TypingState.sendArticle == Constant.SEND_ORDER) {
+                                ArticleTreeListener.getInstance().nextOrder();
+                            } else if (TypingState.sendArticle == Constant.SEND_WORDS) {
+                                ArticleTreeListener.getInstance().ciKuNext();
+                            }
+                        } else if (!(nextSpeed == 0 && nextKey == 0 && nextKeyAccuracy == 0)) {
+                            String caoZuo = SendArticleDialog.caozuo.getSelectedItem().toString();
+                            switch (caoZuo) {
+                                case "不操作":
+                                    break;
+                                case "乱序":
+                                    MixListener.getInstance().mixButton("该段乱序");
+                                    break;
+                                case "重打":
+                                    ReplayEvent.start();
+                                    break;
+                                default:break;
                             }
                         }
                     }

@@ -125,7 +125,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
         }
         ReplayEvent.start();
         TypingState.sendArticle = 1; // 顺序发文标志
-        article.setParagraph(startParagraph);//设置段号
+        article.setParagraph(startParagraph=Integer.parseInt(SendArticleDialog.paragraph.getText()));//设置段号
         fontweizhi += fontnum;
         SwingSingleton.sendArticleLabel().setVisible(true);
         SendArticleDialog.getInstance().setVisible(false);
@@ -193,7 +193,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
         }
         if (model.equals("抽取模式发文")) {
             SendArticleDialog.getInstance().setVisible(false);
-            article.setParagraph(startParagraph);
+            article.setParagraph(startParagraph=Integer.parseInt(SendArticleDialog.paragraph.getText()));
             TypingState.sendArticle = Constant.SEND_EXTRACT;
         }else if(model.equals("下一段")){
             article.addParagraph(); // 发文增段
@@ -242,7 +242,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                 chouqubufenlist.add(chouqulist.get(i));
             }
             article.setArticle(temp.toString());
-            article.setParagraph(startParagraph);
+            article.setParagraph(startParagraph=Integer.parseInt(SendArticleDialog.paragraph.getText()));
             ReplayEvent.start();
             TypingState.sendArticle = Constant.SEND_WORDS;
             SendArticleDialog.getInstance().setVisible(false);
@@ -308,7 +308,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
         }
         ReplayEvent.start();
         TypingState.sendArticle = 1; // 顺序发文标志
-        article.setParagraph(startParagraph);//设置段号
+        article.setParagraph(startParagraph=Integer.parseInt(SendArticleDialog.paragraph.getText()));//设置段号
         fontweizhi += fontnum;
         SwingSingleton.sendArticleLabel().setVisible(true);
         SendArticleDialog.getInstance().setVisible(false);
