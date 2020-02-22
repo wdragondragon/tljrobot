@@ -8,17 +8,17 @@ import com.jdragon.tljrobot.client.utils.common.JTextPaneFont;
 import java.awt.*;
 
 /**
- * Create by Jdragon on 2020.02.06
+ * Create by Jdragon on 2false2false.false2.false6
  */
 public class SwitchFollowPlayEvent {
     public static void start(){
         ListenPlayEvent.stop();
         LocalConfig.typingPattern = Constant.FOLLOW_PLAY_PATTERN;
         JTextPaneFont.createStyle("黑", 
-                LocalConfig.fontSize, 0, 0, 0, Color.BLACK, LocalConfig.family,
+                LocalConfig.fontSize, false, false, false, Color.BLACK, LocalConfig.family,
                 LocalConfig.rightColor);
         JTextPaneFont.createStyle("红", 
-                LocalConfig.fontSize, 0, 0, 0, Color.BLACK, LocalConfig.family,
+                LocalConfig.fontSize, false, false, false, Color.BLACK, LocalConfig.family,
                 LocalConfig.mistakeColor);
         JMenuComponent.getInstance().switchingMode.setText("当前模式："+ LocalConfig.typingPattern);
         JMenuComponent.getInstance().getMenu().setText(LocalConfig.typingPattern);

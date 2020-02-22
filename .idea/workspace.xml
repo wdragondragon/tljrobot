@@ -7,20 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="560566ca-4c25-4104-974e-54a248fc5e69" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/test/swing/JTextPaneTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/test/swing/JpaneText.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/JTextPanelEditorKit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/SwingSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/SwingSingleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/FinalConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/FinalConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/JTextPaneFontConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/JTextPaneFontConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ShareArticleEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ShareArticleEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ReplayEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/ReplayEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/other/SwitchFollowPlayEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/other/SwitchFollowPlayEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/other/SwitchWatchPlayEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/other/SwitchWatchPlayEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/ArticleTreeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/ArticleTreeListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/SetBackgroundListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/SetBackgroundListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/TypingListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/TypingListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/JTextPaneFont.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/JTextPaneFont.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/MainFra.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/MainFra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/SetDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/dialog/SetDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/JTextPaneFont.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/JTextPaneFont.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/编码文件/生成码表.txt" beforeDir="false" afterPath="$PROJECT_DIR$/编码文件/生成码表.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/window/MainFra.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/window/MainFra.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -342,7 +344,7 @@
       <workItem from="1582132618977" duration="8848000" />
       <workItem from="1582174864937" duration="19944000" />
       <workItem from="1582213120983" duration="34993000" />
-      <workItem from="1582344082830" duration="4290000" />
+      <workItem from="1582344082830" duration="18526000" />
     </task>
     <task id="LOCAL-00001" summary="用直接跳转页面替换ajax交互嵌入">
       <created>1577584125492</created>
@@ -568,7 +570,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582287637988</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="v2.14预备 1、修复下一段光标不回到跟打框。2、更改词提展示层的内部结构。">
+      <created>1582349287092</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1582349287092</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -576,7 +585,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="拖拉机生稿赛系统完成" />
     <MESSAGE value="拖拉机上传历史成绩，生稿赛成绩，创建文章独立表消除冗余。" />
     <MESSAGE value="UPDATE README" />
     <MESSAGE value="发文系统，心跳保活，跟打过程详情，理论编码获取" />
@@ -601,7 +609,8 @@
     <MESSAGE value="v2.12修正 1、解决网络载文尾带\r的bug。2、解决最大化底部消失bug。3、取消了最大化不可关闭的限制" />
     <MESSAGE value="v2.13 1、修复发文段号在某些键盘上少最后一位数字" />
     <MESSAGE value="v2.13 1、修复发文段号在某些键盘上少最后一位数字。2、修复抽取发文能发完。3、修复发文段号有时无法修改。4、载文设置中增加鼠标载文" />
-    <option name="LAST_COMMIT_MESSAGE" value="v2.13 1、修复发文段号在某些键盘上少最后一位数字。2、修复抽取发文能发完。3、修复发文段号有时无法修改。4、载文设置中增加鼠标载文" />
+    <MESSAGE value="v2.14预备 1、修复下一段光标不回到跟打框。2、更改词提展示层的内部结构。" />
+    <option name="LAST_COMMIT_MESSAGE" value="v2.14预备 1、修复下一段光标不回到跟打框。2、更改词提展示层的内部结构。" />
   </component>
   <component name="WindowStateProjectService">
     <state x="412" y="120" key="#Auto_Import" timestamp="1578823323325">
@@ -692,12 +701,12 @@
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="420" y="249" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/62.0.1218.800@62.0.1218.800" timestamp="1577503398719" />
-    <state x="384" y="96" width="1460" height="776" key="CommitChangelistDialog2" timestamp="1582287632443">
+    <state x="384" y="96" width="1460" height="776" key="CommitChangelistDialog2" timestamp="1582349284305">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="62" y="0" key="CommitChangelistDialog2/62.0.1218.800@62.0.1218.800" timestamp="1579188400057" />
     <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2/62.0.1858.1080@62.0.1858.1080" timestamp="1581529680468" />
-    <state x="384" y="96" key="CommitChangelistDialog2/75.0.1845.1080@75.0.1845.1080" timestamp="1582287632443" />
+    <state x="384" y="96" key="CommitChangelistDialog2/75.0.1845.1080@75.0.1845.1080" timestamp="1582349284305" />
     <state x="155" y="93" width="1031" height="613" key="DiffContextDialog" timestamp="1578846678181">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
@@ -710,62 +719,62 @@
     <state x="120" y="207" key="FileChooserDialogImpl/62.0.1858.1080@62.0.1858.1080" timestamp="1580795401865" />
     <state x="113" y="153" key="FileChooserDialogImpl/75.0.1205.800@75.0.1205.800" timestamp="1582021889779" />
     <state x="133" y="207" key="FileChooserDialogImpl/75.0.1845.1080@75.0.1845.1080" timestamp="1582301140190" />
-    <state width="1802" height="227" key="GridCell.Tab.0.bottom" timestamp="1582348984176">
+    <state width="1802" height="227" key="GridCell.Tab.0.bottom" timestamp="1582362310518">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.bottom/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.bottom/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.bottom/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1340" height="302" key="GridCell.Tab.0.bottom/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
-    <state width="1802" height="227" key="GridCell.Tab.0.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1582348984176" />
-    <state width="1802" height="227" key="GridCell.Tab.0.center" timestamp="1582348984175">
+    <state width="1802" height="227" key="GridCell.Tab.0.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1582362310518" />
+    <state width="1802" height="227" key="GridCell.Tab.0.center" timestamp="1582362310517">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.center/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.center/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.center/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1340" height="302" key="GridCell.Tab.0.center/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
-    <state width="1802" height="227" key="GridCell.Tab.0.center/75.0.1845.1080@75.0.1845.1080" timestamp="1582348984175" />
-    <state width="1802" height="227" key="GridCell.Tab.0.left" timestamp="1582348984175">
+    <state width="1802" height="227" key="GridCell.Tab.0.center/75.0.1845.1080@75.0.1845.1080" timestamp="1582362310517" />
+    <state width="1802" height="227" key="GridCell.Tab.0.left" timestamp="1582362310516">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.left/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.left/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.left/62.0.1218.800@62.0.1218.800" timestamp="1580479234951" />
     <state width="1340" height="302" key="GridCell.Tab.0.left/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490070" />
-    <state width="1802" height="227" key="GridCell.Tab.0.left/75.0.1845.1080@75.0.1845.1080" timestamp="1582348984175" />
-    <state width="1802" height="227" key="GridCell.Tab.0.right" timestamp="1582348984175">
+    <state width="1802" height="227" key="GridCell.Tab.0.left/75.0.1845.1080@75.0.1845.1080" timestamp="1582362310516" />
+    <state width="1802" height="227" key="GridCell.Tab.0.right" timestamp="1582362310517">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.right/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
     <state width="1176" height="366" key="GridCell.Tab.0.right/62.0.1218.800/2560.252.1920.1050@62.0.1218.800" timestamp="1578643078799" />
     <state width="1176" height="132" key="GridCell.Tab.0.right/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1340" height="302" key="GridCell.Tab.0.right/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
-    <state width="1802" height="227" key="GridCell.Tab.0.right/75.0.1845.1080@75.0.1845.1080" timestamp="1582348984175" />
-    <state width="1802" height="227" key="GridCell.Tab.1.bottom" timestamp="1582306941312">
+    <state width="1802" height="227" key="GridCell.Tab.0.right/75.0.1845.1080@75.0.1845.1080" timestamp="1582362310517" />
+    <state width="1802" height="340" key="GridCell.Tab.1.bottom" timestamp="1582359673298">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1176" height="132" key="GridCell.Tab.1.bottom/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1340" height="302" key="GridCell.Tab.1.bottom/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
-    <state width="1802" height="227" key="GridCell.Tab.1.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1582306941312" />
-    <state width="1802" height="227" key="GridCell.Tab.1.center" timestamp="1582306941312">
+    <state width="1802" height="340" key="GridCell.Tab.1.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1582359673298" />
+    <state width="1802" height="340" key="GridCell.Tab.1.center" timestamp="1582359673296">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1176" height="132" key="GridCell.Tab.1.center/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1340" height="302" key="GridCell.Tab.1.center/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
-    <state width="1802" height="227" key="GridCell.Tab.1.center/75.0.1845.1080@75.0.1845.1080" timestamp="1582306941312" />
-    <state width="1802" height="227" key="GridCell.Tab.1.left" timestamp="1582306941312">
+    <state width="1802" height="340" key="GridCell.Tab.1.center/75.0.1845.1080@75.0.1845.1080" timestamp="1582359673296" />
+    <state width="1802" height="340" key="GridCell.Tab.1.left" timestamp="1582359673296">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1176" height="132" key="GridCell.Tab.1.left/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1340" height="302" key="GridCell.Tab.1.left/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
-    <state width="1802" height="227" key="GridCell.Tab.1.left/75.0.1845.1080@75.0.1845.1080" timestamp="1582306941312" />
-    <state width="1802" height="227" key="GridCell.Tab.1.right" timestamp="1582306941312">
+    <state width="1802" height="340" key="GridCell.Tab.1.left/75.0.1845.1080@75.0.1845.1080" timestamp="1582359673296" />
+    <state width="1802" height="340" key="GridCell.Tab.1.right" timestamp="1582359673297">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1176" height="132" key="GridCell.Tab.1.right/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1340" height="302" key="GridCell.Tab.1.right/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
-    <state width="1802" height="227" key="GridCell.Tab.1.right/75.0.1845.1080@75.0.1845.1080" timestamp="1582306941312" />
+    <state width="1802" height="340" key="GridCell.Tab.1.right/75.0.1845.1080@75.0.1845.1080" timestamp="1582359673297" />
     <state width="1802" height="280" key="GridCell.Tab.2.bottom" timestamp="1582306941291">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
@@ -821,12 +830,12 @@
     </state>
     <state width="498" height="446" key="SwitcherDM/62.0.1858.1080@62.0.1858.1080" timestamp="1579346721229" />
     <state width="498" height="446" key="SwitcherDM/75.0.1845.1080@75.0.1845.1080" timestamp="1582348108575" />
-    <state x="381" y="185" key="Vcs.Push.Dialog.v2" timestamp="1582287699241">
+    <state x="381" y="185" key="Vcs.Push.Dialog.v2" timestamp="1582349299069">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="264" y="137" key="Vcs.Push.Dialog.v2/62.0.1218.800@62.0.1218.800" timestamp="1578847066652" />
     <state x="370" y="185" key="Vcs.Push.Dialog.v2/62.0.1858.1080@62.0.1858.1080" timestamp="1581529696427" />
-    <state x="381" y="185" key="Vcs.Push.Dialog.v2/75.0.1845.1080@75.0.1845.1080" timestamp="1582287699241" />
+    <state x="381" y="185" key="Vcs.Push.Dialog.v2/75.0.1845.1080@75.0.1845.1080" timestamp="1582349299069" />
     <state x="473" y="178" key="chooseDestDirectoryDialog" timestamp="1579055606183">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
@@ -890,6 +899,9 @@
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="sendRobotMessageDto.getGroupId()" language="JAVA" />
+      </configuration>
+      <configuration name="Application">
+        <watch expression="typingState" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

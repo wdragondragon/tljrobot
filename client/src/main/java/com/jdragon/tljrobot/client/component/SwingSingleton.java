@@ -4,11 +4,15 @@ package com.jdragon.tljrobot.client.component;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.TypingState;
+import com.jdragon.tljrobot.client.utils.common.JTextPanelEditorKit;
 import com.jdragon.tljrobot.client.window.CirecordFra;
 import com.jdragon.tljrobot.client.window.MainFra;
 import com.jdragon.tljrobot.client.window.dialog.ShowArticleDialog;
 
 import javax.swing.*;
+import javax.swing.text.MutableAttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
 import java.awt.*;
 
 
@@ -31,6 +35,7 @@ public class SwingSingleton {
     public static JButton tipButton(){
         if(tipButton==null){
             tipButton = new JButton();
+            tipButton.setSelected(LocalConfig.tip);
         }
         return tipButton;
     }
@@ -151,6 +156,10 @@ public class SwingSingleton {
                     }
                 }
             };
+            MutableAttributeSet paragraph = new SimpleAttributeSet();
+            StyleConstants.setLineSpacing(paragraph, 0.5f); //此处设定行间距
+            watchingText.setEditorKit(new JTextPanelEditorKit());
+            watchingText.setParagraphAttributes(paragraph,false);
             watchingText.setText("F5换群，F4载文，F3重打，F2发文，F1发送成绩，默认自动发送成绩。");
             watchingText.setFont(normalFont);
             watchingText.setEditable(false);

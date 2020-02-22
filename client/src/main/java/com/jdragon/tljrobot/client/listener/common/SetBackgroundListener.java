@@ -36,7 +36,7 @@ public class SetBackgroundListener implements ActionListener {
 			tempColor = JColorChooser.showDialog(win, "调色板", Color.gray);
 			if(tempColor!=null) {
 				rightColor = tempColor;
-				JTextPaneFont.createStyle("黑",  fontSize, 0, 0, 0, Color.BLACK, family, rightColor);
+				JTextPaneFont.createStyle("黑",  fontSize, false, false, false, Color.BLACK, family, rightColor);
 			}
 		}
 		else if(e.getActionCommand()=="打错字颜色"){
@@ -44,7 +44,7 @@ public class SetBackgroundListener implements ActionListener {
 			if(tempColor!=null) {
 				mistakeColor = tempColor;
 			}
-				JTextPaneFont.createStyle("红",  fontSize, 0, 0, 0, Color.BLACK, family, mistakeColor);
+				JTextPaneFont.createStyle("红",  fontSize, false, false, false, Color.BLACK, family, mistakeColor);
 		}
 		else if(e.getActionCommand()=="整体界面颜色"){
 			tempColor = JColorChooser.showDialog(win, "调色板", Color.red);
@@ -57,20 +57,20 @@ public class SetBackgroundListener implements ActionListener {
 			tempColor = JColorChooser.showDialog(win, "调色板",new Color(128,138,135));
 			if(tempColor!=null){
 				fourCodeColor = tempColor;
-				JTextPaneFont.createStyle("绿粗",  fontSize, 1, 0, 0, fourCodeColor, family, mistakeColor);//GRAY
-				JTextPaneFont.createStyle("绿",  fontSize, 0, 0, 0, fourCodeColor, family, mistakeColor);//GRAY
-				JTextPaneFont.createStyle("绿斜",  fontSize, 0, 1, 0, fourCodeColor, family, mistakeColor);//GRAY
-				JTextPaneFont.createStyle("绿粗斜",  fontSize, 1, 1, 0, fourCodeColor, family, mistakeColor);//GRAY
+				JTextPaneFont.createStyle("绿粗",  fontSize, true, false, false, fourCodeColor, family, mistakeColor);//GRAY
+				JTextPaneFont.createStyle("绿",  fontSize, false, false, false, fourCodeColor, family, mistakeColor);//GRAY
+				JTextPaneFont.createStyle("绿斜",  fontSize, false, true, false, fourCodeColor, family, mistakeColor);//GRAY
+				JTextPaneFont.createStyle("绿粗斜",  fontSize, true, true, false, fourCodeColor, family, mistakeColor);//GRAY
 			}	
 		}
 		else if(e.getActionCommand()=="二码词颜色"){
 			tempColor = JColorChooser.showDialog(win, "调色板", Color.ORANGE);
 			if(tempColor!=null){
 				twoCodeColor  = tempColor;
-				JTextPaneFont.createStyle("粉粗",  fontSize, 1, 0, 0, twoCodeColor, family, mistakeColor);//GRAY
-				JTextPaneFont.createStyle("粉",  fontSize, 0, 0, 0, twoCodeColor, family, mistakeColor);///GRAY
-				JTextPaneFont.createStyle("粉斜",  fontSize, 1, 0, 0, twoCodeColor, family, mistakeColor);///GRAY
-				JTextPaneFont.createStyle("粉粗斜",  fontSize, 1, 0, 0, twoCodeColor, family, mistakeColor);///GRAY
+				JTextPaneFont.createStyle("粉粗",  fontSize, true, false, false, twoCodeColor, family, mistakeColor);//GRAY
+				JTextPaneFont.createStyle("粉",  fontSize, false, false, false, twoCodeColor, family, mistakeColor);///GRAY
+				JTextPaneFont.createStyle("粉斜",  fontSize, true, false, false, twoCodeColor, family, mistakeColor);///GRAY
+				JTextPaneFont.createStyle("粉粗斜",  fontSize, true, false, false, twoCodeColor, family, mistakeColor);///GRAY
 			}
 				
 		}
@@ -78,10 +78,10 @@ public class SetBackgroundListener implements ActionListener {
 			tempColor = JColorChooser.showDialog(win, "调色板",Color.BLUE);
 			if(tempColor!=null){
 				threeCodeColor  = tempColor;
-				JTextPaneFont.createStyle("蓝粗",  fontSize, 1, 0, 0, threeCodeColor, family, mistakeColor);//GRAY
-				JTextPaneFont.createStyle("蓝",  fontSize, 0, 0, 0, threeCodeColor, family, mistakeColor);///GRAY
-				JTextPaneFont.createStyle("蓝斜",  fontSize, 1, 0, 0, threeCodeColor, family, mistakeColor);///GRAY
-				JTextPaneFont.createStyle("蓝粗斜",  fontSize, 1, 0, 0, threeCodeColor, family, mistakeColor);///GRAY//GRAY
+				JTextPaneFont.createStyle("蓝粗",  fontSize, true, false, false, threeCodeColor, family, mistakeColor);//GRAY
+				JTextPaneFont.createStyle("蓝",  fontSize, false, false, false, threeCodeColor, family, mistakeColor);///GRAY
+				JTextPaneFont.createStyle("蓝斜",  fontSize, true, false, false, threeCodeColor, family, mistakeColor);///GRAY
+				JTextPaneFont.createStyle("蓝粗斜",  fontSize, true, false, false, threeCodeColor, family, mistakeColor);///GRAY//GRAY
 			}
 		}
 	}

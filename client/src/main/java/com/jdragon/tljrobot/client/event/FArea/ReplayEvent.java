@@ -24,6 +24,7 @@ public class ReplayEvent {
             ListenPlayEvent.replay();
         }else {
             typingText().setText("");
+            TypingListener.getInstance().setThisPageNum(-1);
             TypingListener.getInstance().changeFontColor();
             speedButton().setText("0.00");
             keySpeedButton().setText("0.00");

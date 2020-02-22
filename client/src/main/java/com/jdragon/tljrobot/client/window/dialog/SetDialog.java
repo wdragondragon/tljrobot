@@ -265,6 +265,7 @@ public class SetDialog{
         tipButton.addChangeListener(e->{
             LocalConfig.tip=tipButton.isSelected();
             TypingListener.getInstance().changeFontColor();
+            TypingListener.getInstance().changePosition();
         });
         progressButton.addChangeListener(e->LocalConfig.progress=progressButton.isSelected());
 

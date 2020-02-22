@@ -19,22 +19,45 @@ public class JTextPaneFont {
             System.err.println("BadLocationException: " + e);
         }
     }
-    static public void createStyle(String styleName, int size, int bold, int italic, int underline,
+    static public void updateOneDocStyleByStyleName(int index, String styleName, boolean replace){
+        MutableAttributeSet style = styleSets.get(styleName);
+        if(style!=null){
+            updateDocStyleOnStyleName(index,1,styleName,replace);
+        }
+    }
+    static public void updateDocStyleOnStyleName(int index,int length,String styleName,boolean replace){
+        MutableAttributeSet style = styleSets.get(styleName);
+        if(style!=null){
+            updateDocStyle(index,length,style,replace);
+        }
+    }
+    static public void updateDocStyle(int index,int length,MutableAttributeSet style,boolean replace){
+        StyledDocument doc = (StyledDocument) SwingSingleton.watchingText().getDocument();
+        doc.setCharacterAttributes(index,length,style,replace);
+    }
+    static public void createStyle(String styleName, int size, boolean bold, boolean italic, boolean underline,
                                    Color color, String fontFamily, Color backColor) {
         MutableAttributeSet styledDocument = styleSets.get(styleName);;
         if(styledDocument!=null) {
             styleSets.remove(styleName);
-        }else {
-            styleSets.put(styleName,styledDocument = new SimpleAttributeSet());
         }
+        styleSets.put(styleName,styledDocument = new SimpleAttributeSet());
         StyleConstants.setFontSize(styledDocument, size); // 大小
-        StyleConstants.setBold(styledDocument, bold == 1); // 粗体
-        StyleConstants.setItalic(styledDocument, italic == 1); // 斜体
-        StyleConstants.setUnderline(styledDocument, underline == 1); // 下划线
+        StyleConstants.setBold(styledDocument, bold); // 粗体
+        StyleConstants.setItalic(styledDocument, italic); // 斜体
+        StyleConstants.setUnderline(styledDocument, underline); // 下划线
         StyleConstants.setForeground(styledDocument, color); // 颜色
         StyleConstants.setFontFamily(styledDocument, fontFamily);// 字体
+//        if(underline) {
+//            styledDocument.addAttribute("Underline-Color", color);
+//        }
         List<String> colorBackgroundList = Arrays.asList("黑","红","对","错原","忽略");
         if (colorBackgroundList.contains(styleName))
             StyleConstants.setBackground(styledDocument, backColor);
     }
+//    static public void createStyle(String styleName, int size, boolean bold, boolean italic, boolean underline,
+//                                   Color color, String fontFamily, Color backColor,String number) {
+//        createStyle(styleName,size,bold,italic,underline,color,fontFamily,backColor);
+//        styleSets.get(styleName).addAttribute("Number",number);
+//    }
 }

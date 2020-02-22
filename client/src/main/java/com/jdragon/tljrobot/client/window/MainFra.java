@@ -94,7 +94,10 @@ public class MainFra extends JFrame {
     }
     int preButton;
     public void addListener(){
-        tipButton().addActionListener(e->SetDialog.getTipsButton().setSelected(!SetDialog.getTipsButton().isSelected()));
+        tipButton().addActionListener(e->{
+            tipButton().setSelected(!tipButton().isSelected());
+            SetDialog.getTipsButton().setSelected(!SetDialog.getTipsButton().isSelected());
+        });
         closeButton().addActionListener(SystemListener.getInstance());
         maxButton().addActionListener(SystemListener.getInstance());
         minButton().addActionListener(SystemListener.getInstance());
