@@ -14,10 +14,10 @@ public class SwitchFollowPlayEvent {
     public static void start(){
         ListenPlayEvent.stop();
         LocalConfig.typingPattern = Constant.FOLLOW_PLAY_PATTERN;
-        JTextPaneFont.createStyle("黑", LocalConfig.typeDocName,
+        JTextPaneFont.createStyle("黑", 
                 LocalConfig.fontSize, 0, 0, 0, Color.BLACK, LocalConfig.family,
                 LocalConfig.rightColor);
-        JTextPaneFont.createStyle("红", LocalConfig.typeDocName,
+        JTextPaneFont.createStyle("红", 
                 LocalConfig.fontSize, 0, 0, 0, Color.BLACK, LocalConfig.family,
                 LocalConfig.mistakeColor);
         JMenuComponent.getInstance().switchingMode.setText("当前模式："+ LocalConfig.typingPattern);

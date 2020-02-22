@@ -292,10 +292,10 @@ public class TypingListener implements DocumentListener, KeyListener {
             try {
                 for (n = 0; n < articleStr.length(); n++) { // 统计错误字数，向文本框添加字体
                     if (typeChars.length>n&&typeChars[n] != articleChars[n]) {
-                        JTextPaneFont.insertDoc(typeDocName,
+                        JTextPaneFont.insertDoc(
                                 String.valueOf(articleChars[n]), "红");
                     } else {
-                        JTextPaneFont.insertDoc(typeDocName,
+                        JTextPaneFont.insertDoc(
                                 String.valueOf(articleChars[n]), "黑");
                     }
                     System.out.println(articleChars[n]);
@@ -339,10 +339,10 @@ public class TypingListener implements DocumentListener, KeyListener {
 
             for (; n < (Math.min(typeStr.length(), articleStr.length())); n++) { // 统计错误字数，向文本框添加字体
                 if (typeChars[n] != articleChars[n] && typingState) {
-                    JTextPaneFont.insertDoc(typeDocName,
+                    JTextPaneFont.insertDoc(
                             String.valueOf(articleChars[n]), "红");
                 } else if (typingState) {
-                    JTextPaneFont.insertDoc(typeDocName,
+                    JTextPaneFont.insertDoc(
                             String.valueOf(articleChars[n]), "黑");
                 }
             }
@@ -353,7 +353,7 @@ public class TypingListener implements DocumentListener, KeyListener {
             n = 0;
         }
 
-        JTextPaneFont.createStyle("预读", LocalConfig.typeDocName,
+        JTextPaneFont.createStyle("预读", 
                 LocalConfig.fontSize, 0, 0, 0,
                 LocalConfig.watchingBackgroundColor,LocalConfig.family, null);
         int readyFontNum = Integer.parseInt(SetDialog.readyFont.getText());
@@ -363,7 +363,7 @@ public class TypingListener implements DocumentListener, KeyListener {
                 tempReady = lastIndex;
             }
             for (; n < tempReady; n++) {
-                JTextPaneFont.insertDoc(typeDocName,String.valueOf(articleChars[n]), "预读");
+                JTextPaneFont.insertDoc(String.valueOf(articleChars[n]), "预读");
             }
         }
 
@@ -375,7 +375,7 @@ public class TypingListener implements DocumentListener, KeyListener {
             }
            if (!LocalConfig.tip || TypingState.dailyCompetition
                     || LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)) {
-                JTextPaneFont.insertDoc(typeDocName,String.valueOf(articleChars[n]), "灰");
+                JTextPaneFont.insertDoc(String.valueOf(articleChars[n]), "灰");
             }else {
                 int type = codeEntities[n].getType();
                 boolean isBold = codeEntities[n].isBold();
@@ -384,43 +384,43 @@ public class TypingListener implements DocumentListener, KeyListener {
                     switch (type) {
                         case 0:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(typeDocName,
+                                JTextPaneFont.insertDoc(
                                         String.valueOf(articleChars[index]), "灰");
                             }
                             break;
                         case 1:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(typeDocName,
+                                JTextPaneFont.insertDoc(
                                         String.valueOf(articleChars[index]), "绿");
                             }
                             break;
                         case 2:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(typeDocName,
+                                JTextPaneFont.insertDoc(
                                         String.valueOf(articleChars[index]), "绿斜");
                             }
                             break;
                         case 3:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(typeDocName,
+                                JTextPaneFont.insertDoc(
                                         String.valueOf(articleChars[index]), "蓝");
                             }
                             break;
                         case 4:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(typeDocName,
+                                JTextPaneFont.insertDoc(
                                         String.valueOf(articleChars[index]), "蓝斜");
                             }
                             break;
                         case 5:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(typeDocName,
+                                JTextPaneFont.insertDoc(
                                         String.valueOf(articleChars[index]), "粉");
                             }
                             break;
                         case 6:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(typeDocName,
+                                JTextPaneFont.insertDoc(
                                         String.valueOf(articleChars[index]), "粉斜");
                             }
                             break;
@@ -430,43 +430,43 @@ public class TypingListener implements DocumentListener, KeyListener {
                     switch (type) {
                         case 0:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(typeDocName,
+                                JTextPaneFont.insertDoc(
                                         String.valueOf(articleChars[index]), "灰");
                             }
                             break;
                         case 1:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(typeDocName,
+                                JTextPaneFont.insertDoc(
                                         String.valueOf(articleChars[index]), "绿粗");
                             }
                             break;
                         case 2:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(typeDocName,
+                                JTextPaneFont.insertDoc(
                                         String.valueOf(articleChars[index]), "绿粗斜");
                             }
                             break;
                         case 3:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(typeDocName,
+                                JTextPaneFont.insertDoc(
                                         String.valueOf(articleChars[index]), "蓝粗");
                             }
                             break;
                         case 4:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(typeDocName,
+                                JTextPaneFont.insertDoc(
                                         String.valueOf(articleChars[index]), "蓝粗斜");
                             }
                             break;
                         case 5:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(typeDocName,
+                                JTextPaneFont.insertDoc(
                                         String.valueOf(articleChars[index]), "粉粗");
                             }
                             break;
                         case 6:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(typeDocName,
+                                JTextPaneFont.insertDoc(
                                         String.valueOf(articleChars[index]), "粉粗斜");
                             }
                             break;
@@ -483,18 +483,18 @@ public class TypingListener implements DocumentListener, KeyListener {
         for(HashMap<String,Integer> hashMap:strList){
             for(Map.Entry<String,Integer> entry:hashMap.entrySet()){
                 if(entry.getValue()==0){
-                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "对");
+                    JTextPaneFont.insertDoc( entry.getKey(), "对");
                 }else if(entry.getValue()==1){
                     lookMiss++;
-                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "少");
+                    JTextPaneFont.insertDoc( entry.getKey(), "少");
                 }else if(entry.getValue()==2){
                     lookMore++;
-                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "多");
+                    JTextPaneFont.insertDoc( entry.getKey(), "多");
                 }else if(entry.getValue()==3){
                     lookMis++;
-                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "错");
+                    JTextPaneFont.insertDoc( entry.getKey(), "错");
                 }else{
-                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "错原");
+                    JTextPaneFont.insertDoc( entry.getKey(), "错原");
                 }
             }
         }
@@ -507,20 +507,20 @@ public class TypingListener implements DocumentListener, KeyListener {
             for(Map.Entry<String,Integer> entry:hashMap.entrySet()){
                 length++;
                 if(entry.getValue()==0){
-                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "对");
+                    JTextPaneFont.insertDoc( entry.getKey(), "对");
                 }else if(entry.getValue()==1){
                     lookMiss++;
-                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "少");
+                    JTextPaneFont.insertDoc( entry.getKey(), "少");
                 }else if(entry.getValue()==2){
                     lookMore++;
-                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "多");
+                    JTextPaneFont.insertDoc( entry.getKey(), "多");
                 }else if(entry.getValue()==3){
                     lookMis++;
-                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "错");
+                    JTextPaneFont.insertDoc( entry.getKey(), "错");
                 }else if(entry.getValue()==4){
-                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "错原");
+                    JTextPaneFont.insertDoc( entry.getKey(), "错原");
                 }else{
-                    JTextPaneFont.insertDoc(typeDocName, entry.getKey(), "忽略");
+                    JTextPaneFont.insertDoc( entry.getKey(), "忽略");
                     length--;
                 }
             }

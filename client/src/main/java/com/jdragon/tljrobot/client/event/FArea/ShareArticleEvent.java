@@ -17,6 +17,8 @@ import lombok.SneakyThrows;
 
 import javax.swing.*;
 
+import static com.jdragon.tljrobot.client.component.SwingSingleton.typingText;
+
 public class ShareArticleEvent {
     @SneakyThrows
     public static void start(){
@@ -40,5 +42,6 @@ public class ShareArticleEvent {
             Clipboard.set(share);
             QqOperation.start(QqOperation.SEND_ACHIEVEMENT, SwingSingleton.qQNameLabel().getText());
         }
+        typingText().requestFocusInWindow();
     }
 }

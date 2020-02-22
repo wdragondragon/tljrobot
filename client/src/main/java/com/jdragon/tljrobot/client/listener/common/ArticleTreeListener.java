@@ -151,7 +151,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
             Article article = Article.getArticleSingleton();
             article.setArticle(wen);
             article.addParagraph();// 发文增段
-            ReplayEvent.start();
+
             SwingSingleton.sendArticleLabel().setText(fontweizhi
                     + "/"
                     + all.length()
@@ -159,6 +159,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                     + String.format("%.2f", (double) fontweizhi * 100
                     / all.length()) + "%");
             ShareArticleEvent.start();
+            ReplayEvent.start();
         } catch (Exception ex) {
             System.out.println("发文处失败");
         }
@@ -198,8 +199,8 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
         }else if(model.equals("下一段")){
             article.addParagraph(); // 发文增段
         }
-        ReplayEvent.start();
         ShareArticleEvent.start();
+        ReplayEvent.start();
     }
     public static int wordNum;
     public void ciKu(){
@@ -261,8 +262,8 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
             }
             Article.getArticleSingleton().setArticle(str.toString());
             Article.getArticleSingleton().addParagraph();
-            ReplayEvent.start();
             ShareArticleEvent.start();
+            ReplayEvent.start();
         }
     }
     @Override
