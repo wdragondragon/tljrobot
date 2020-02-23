@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.tlj.controller.conditional.tlj;
 
+import com.jdragon.tljrobot.tlj.dto.HistoryAndArticle;
 import com.jdragon.tljrobot.tlj.pojo.Article;
 import com.jdragon.tljrobot.tlj.pojo.History;
 import com.jdragon.tljrobot.tlj.pojo.User;
@@ -22,8 +23,25 @@ public class HistoryController {
     @Autowired
     TljService tljService;
 
+    @PostMapping("/uploadHistoryAndArticle/{userId}")
+    @ApiOperation("上传历史记录(带文章修正解决文章过长不能上传)")
+    @ResponseBody
+    public Result uploadHistoryAndArticle(@PathVariable String userId, @RequestBody HistoryAndArticle historyAndArticle){
+        History history = historyAndArticle.getHistory();
+        Article article = historyAndArticle.getArticle();
+        User user = (User) Local.getSession(userId);
+        if(history.getParagraph()==0) {
+            history.setParagraph(1);
+        }
+        if(tljService.uploadHistory(user.getId(),history,article)){
+            return Result.success("上传成功");
+        }else{
+            return Result.error("上传失败");
+        }
+    }
+
     @PostMapping("/uploadHistory/{userId}")
-    @ApiOperation("上传历史记录")
+    @ApiOperation("上传历史记录(兼容旧版本)")
     @ResponseBody
     public Result uploadHistory(@PathVariable String userId,
                                 @RequestParam String title,

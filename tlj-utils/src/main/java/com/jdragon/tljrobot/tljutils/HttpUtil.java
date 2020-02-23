@@ -262,6 +262,9 @@ public class HttpUtil {
         String result = "请求错误";
         // 获得Http客户端(可以理解为:你得先有一个浏览器;注意:实际上HttpClient与浏览器是不一样的)
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+        RequestConfig requestConfig = RequestConfig.custom()
+                .setConnectTimeout(10000).setConnectionRequestTimeout(10000)
+                .setSocketTimeout(10000).build();
         for(String param:urlParams){
             url += "/"+ URLEncoder.encode(param,"utf8");
         }
@@ -277,6 +280,8 @@ public class HttpUtil {
         HttpPost httpPost = new HttpPost(url);
         httpPost.setEntity(entity);
         httpPost.setHeader("Content-Type", "application/json;charset=utf8");
+        httpPost.setConfig(requestConfig);
+//        Header header = new BasicHeader("Range", "bytes=" + startIndex + "-" + endIndex);
         // 响应模型
         CloseableHttpResponse response = null;
         try {
@@ -295,18 +300,17 @@ public class HttpUtil {
             }
         } catch (ParseException | IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                // 释放资源
-                if (httpClient != null) {
-                    httpClient.close();
-                }
-                if (response != null) {
-                    response.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+        }
+        try {
+            // 释放资源
+            if (httpClient != null) {
+                httpClient.close();
             }
+            if (response != null) {
+                response.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return result;
     }

@@ -87,14 +87,19 @@ public class JMenuComponent {
     public JMenuItem nextEnglish;
     public JMenuItem update;
 
-    public JMenu switchingMode;//切换模式
-    public JMenu watchModeJMenu = new JMenu("看打模式 ctrl+K");
-    public JMenu listenModeJMenu = new JMenu("听打模式 ctrl+Q");
-    public JMenuItem followMode = new JMenuItem("跟打模式 ctrl+G");
+    public JMenuItem thisHistory = new JMenuItem("本次跟打记录");
 
+    public JMenu switchingMode;//切换模式
+    public JMenuItem followMode = new JMenuItem("跟打模式 ctrl+G");
+    public JMenu watchModeJMenu = new JMenu("看打模式");
+    public JMenuItem switchingWatch = new JMenu("切换模式 ctrl+K");
+    public JMenuItem sendWatchPlayImageResult = new JMenuItem("发送看打图片成绩");
+
+    public JMenu listenModeJMenu = new JMenu("听打模式");
+    public JMenuItem switchingListen = new JMenu("切换模式 ctrl+Q");
     public JMenuItem soundRecordPlay = new JMenuItem("听打选择文件");//
     public JMenuItem sendListenPlayImageResult = new JMenuItem("发送听打图片成绩");
-    public JMenuItem sendWatchPlayImageResult = new JMenuItem("发送看打图片成绩");
+
     public JMenu getMenu(){
         if(menu==null) {
             menu = new JMenu(LocalConfig.typingPattern);
@@ -195,9 +200,10 @@ public class JMenuComponent {
         otherMenu.add(createCodeTable);
 //        otherMenu.add(randomArticle);
 
-
+        watchModeJMenu.add(switchingWatch);
         watchModeJMenu.add(sendWatchPlayImageResult);
 
+        listenModeJMenu.add(switchingListen);
         listenModeJMenu.add(soundRecordPlay);
         listenModeJMenu.add(sendListenPlayImageResult);
 
@@ -210,7 +216,7 @@ public class JMenuComponent {
         menu.add(base);
         menu.add(onlineMenu);
         menu.add(otherMenu);
-//
+        menu.add(thisHistory);
         menu.add(help);
 //        menu.add(helpAuthor);
         menu.add(moreSetUp);
@@ -286,8 +292,8 @@ public class JMenuComponent {
                 System.exit(0);
             }catch(Exception ignored){}
         });
-        watchModeJMenu.addActionListener(e-> SwitchWatchPlayEvent.start());
-        listenModeJMenu.addActionListener(e-> SwitchListenPlayEvent.start());
+        switchingWatch.addActionListener(e-> SwitchWatchPlayEvent.start());
+        switchingListen.addActionListener(e-> SwitchListenPlayEvent.start());
         followMode.addActionListener(e-> SwitchFollowPlayEvent.start());
         soundRecordPlay.addActionListener(e-> ListenPlayEvent.start());
         sendListenPlayImageResult.addActionListener(e-> DrawUnLookPlayResult.drawUnFollowPlayResultImg(ListenPlayEvent.getTitle(),
@@ -296,5 +302,7 @@ public class JMenuComponent {
 
         sendWatchPlayImageResult.addActionListener(e->DrawUnLookPlayResult.drawUnFollowPlayResultImg(Article.getArticleSingleton().getTitle(),
                 Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(), typingText().getText()),"看打"));
+
+        thisHistory.addActionListener(e->ThisHistoryDialog.getInstance().setVisible(true));
     }
 }

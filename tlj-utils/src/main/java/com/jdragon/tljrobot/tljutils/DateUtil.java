@@ -19,4 +19,9 @@ public class DateUtil {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
         return df.format(day);
     }
+    public static String nowStringToS2(){
+        Date day=new Date();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return df.format(day);
+    }
 }

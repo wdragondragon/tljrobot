@@ -114,7 +114,7 @@ public class TypingListener implements DocumentListener, KeyListener {
                 changeTipLabel(typeStr.length());
             }
             changePosition();// 文本自动翻页
-        } catch (Exception ignored) {ignored.printStackTrace();}
+        } catch (Exception ignored) {}
     }
 
     @Override

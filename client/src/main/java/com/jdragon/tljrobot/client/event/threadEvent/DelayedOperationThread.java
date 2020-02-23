@@ -17,6 +17,7 @@ import com.jdragon.tljrobot.client.utils.common.ArticleRegex;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
 import com.jdragon.tljrobot.client.utils.common.DrawUnLookPlayResult;
 import com.jdragon.tljrobot.client.window.dialog.SendArticleDialog;
+import com.jdragon.tljrobot.client.window.dialog.ThisHistoryDialog;
 import com.jdragon.tljrobot.tljutils.string.Comparison;
 
 import java.util.HashMap;
@@ -52,6 +53,7 @@ public class DelayedOperationThread extends Thread {
                     }
                     sleep(200);
                     TypingState.typingState = false;//跟打结束标志使DynamicSpeed中计算停止
+                    ThisHistoryDialog.addRow();
                     SendAchievementEvent.start();
                     if(UserState.loginState) {//联网操作，发送跟打历史或发送0段赛文成绩
                         if (TypingState.dailyCompetition) {
@@ -60,7 +62,7 @@ public class DelayedOperationThread extends Thread {
                             TypingState.dailyCompetition = false;
                             ReplayEvent.start();
                         }else{
-                           HistoryEvent.uploadHistory();
+                            HistoryEvent.uploadHistory();
                         }
                     }
                     if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)){

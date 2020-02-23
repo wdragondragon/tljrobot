@@ -43,6 +43,7 @@ public class MainFraConfig {
         LogonDialog.getInstance();
         SendArticleDialog.getInstance();
         SetDialog.getInstance();
+        ThisHistoryDialog.getInstance();
         //设置可见
         mainFra.setVisible(true);
     }

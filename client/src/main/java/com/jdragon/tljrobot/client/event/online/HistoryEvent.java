@@ -16,7 +16,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Create by Jdragon on 2020.01.18
@@ -47,10 +46,9 @@ public class HistoryEvent {
     }
     public static String uploadHistory(){
         History history = getHistoryEntry();
-        Map<String,String> params = new HashMap();
-        params.put("content",Article.getArticleSingleton().getArticle());
-        params.put("title",Article.getArticleSingleton().getTitle());
-        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObjectAndParams(HttpAddr.HISTORY_UPLOAD_HISTORY,params,history,UserState.token));
+        ArticleDto articleDto = new ArticleDto(0,Article.getArticleSingleton().getTitle(),Article.getArticleSingleton().getArticle());
+        HistoryDto historyDto = new HistoryDto(articleDto,history);
+        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObject(HttpAddr.HISTORY_UPLOAD_HISTORY_ARTICLE,historyDto,UserState.token));
         System.out.println(jsonObject.toJSONString());
         return jsonObject.getString("message");
     }
@@ -64,7 +62,6 @@ public class HistoryEvent {
         history.setDeleteText(TypingState.deleteTextNumber);
         history.setKeyAccuracy(TypingState.getKeyAccuracy());
         history.setKeyMethod(TypingState.getKeyMethod());
-        history.setParagraph(0);
         history.setMistake(TypingState.mistake);
         history.setRepeatNum(TypingState.repeat);
         history.setTime(TypingState.timer.getSecond());
