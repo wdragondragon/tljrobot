@@ -8,7 +8,6 @@ import com.jdragon.tljrobot.client.config.HttpAddr;
 import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.*;
 import com.jdragon.tljrobot.client.event.threadEvent.CountMatchThread;
-import com.jdragon.tljrobot.tljutils.DateUtil;
 import com.jdragon.tljrobot.tljutils.HttpUtil;
 
 import javax.swing.*;
@@ -38,37 +37,6 @@ public class HistoryEvent {
         }else{
             JOptionPane.showMessageDialog(null,message);
         }
-    }
-    public static String uploadMatchAch(){
-        History history = getHistoryEntry();
-        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObject(HttpAddr.MATCH_UPLOAD_TLJ_MATCH_ACH,history, UserState.token));
-        return jsonObject.getString("message");
-    }
-    public static String uploadHistory(){
-        History history = getHistoryEntry();
-        ArticleDto articleDto = new ArticleDto(0,Article.getArticleSingleton().getTitle(),Article.getArticleSingleton().getArticle());
-        HistoryDto historyDto = new HistoryDto(articleDto,history);
-        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObject(HttpAddr.HISTORY_UPLOAD_HISTORY_ARTICLE,historyDto,UserState.token));
-        System.out.println(jsonObject.toJSONString());
-        return jsonObject.getString("message");
-    }
-    public static History getHistoryEntry(){
-        History history = new History();
-        history.setSpeed(TypingState.getSpeed());
-        history.setKeySpeed(TypingState.getKeySpeed());
-        history.setKeyLength(TypingState.getKeyLength());
-        history.setNumber(Article.getArticleSingleton().getArticle().length());
-        history.setDeleteNum(TypingState.deleteNumber);
-        history.setDeleteText(TypingState.deleteTextNumber);
-        history.setKeyAccuracy(TypingState.getKeyAccuracy());
-        history.setKeyMethod(TypingState.getKeyMethod());
-        history.setMistake(TypingState.mistake);
-        history.setRepeatNum(TypingState.repeat);
-        history.setTime(TypingState.timer.getSecond());
-        history.setWordRate(TypingState.getWordRate());
-        history.setParagraph(Article.getArticleSingleton().getParagraph());
-        history.setTypeDate(DateUtil.now());
-        return history;
     }
     public static HistoryList getHistoryByPage(int page){
         List<History> historyList = new ArrayList<>();

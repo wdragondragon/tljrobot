@@ -33,6 +33,7 @@ public class SendArticleDialog {
     public static JScrollPane wenben1;
     public static JSpinner machang1,machang2,cishu,cichang1,cichang2;
     public static JComboBox<String> caozuo,weizhi;
+    public static JToggleButton automatic;
     public static JSpinner spinnerSpeed,spinnerKey,spinnerKeyLength;
     public static JPanel p = new JPanel();
     public static JDialog getInstance() {
@@ -180,7 +181,8 @@ public class SendArticleDialog {
         caozuo.addItem("重打");
         caozuo.setBounds(lable4.getX()+lable4.getWidth()+10,  lable1.getY(), 100, 30);
 
-
+        automatic = new JToggleButton("开启");
+        addOnBounds(p,automatic,rowAddSpacing(caozuo,10),caozuo.getY(),80,30);
 
         p.add(spinnerSpeed);
         p.add(spinnerKey);

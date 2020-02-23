@@ -9,7 +9,8 @@ import com.jdragon.tljrobot.client.entry.UserState;
 import com.jdragon.tljrobot.client.event.FArea.QQGetArticleEvent;
 import com.jdragon.tljrobot.client.event.FArea.ReplayEvent;
 import com.jdragon.tljrobot.client.event.FArea.SendAchievementEvent;
-import com.jdragon.tljrobot.client.event.online.HistoryEvent;
+import com.jdragon.tljrobot.client.event.online.UploadHistory;
+import com.jdragon.tljrobot.client.event.online.UploadMatchAch;
 import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
 import com.jdragon.tljrobot.client.listener.common.MixListener;
 import com.jdragon.tljrobot.client.listener.common.TypingListener;
@@ -57,12 +58,12 @@ public class DelayedOperationThread extends Thread {
                     SendAchievementEvent.start();
                     if(UserState.loginState) {//联网操作，发送跟打历史或发送0段赛文成绩
                         if (TypingState.dailyCompetition) {
-                            HistoryEvent.uploadMatchAch();
+                            new Synchronous(new UploadMatchAch()).start();
                             Article.getArticleSingleton(1, "日赛跟打完毕", "日赛跟打完毕");
                             TypingState.dailyCompetition = false;
                             ReplayEvent.start();
                         }else{
-                            HistoryEvent.uploadHistory();
+                            new Synchronous(new UploadHistory()).start();
                         }
                     }
                     if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)){
@@ -76,8 +77,7 @@ public class DelayedOperationThread extends Thread {
                         double speed = TypingState.getSpeed();
                         double keySpeed = TypingState.getKeySpeed();
                         double keyAccuracy = TypingState.getKeyAccuracy();
-                        if (!(nextSpeed == 0 && nextKey == 0 && nextKeyAccuracy == 0)
-                                && (nextSpeed == 0 || speed >= nextSpeed)
+                        if (SendArticleDialog.automatic.isSelected()&& (nextSpeed == 0 || speed >= nextSpeed)
                                 && (nextKey == 0 || keySpeed >= nextKey)
                                 && (nextKeyAccuracy == 0 || keyAccuracy >= nextKeyAccuracy)
                         ) {
@@ -88,7 +88,7 @@ public class DelayedOperationThread extends Thread {
                             } else if (TypingState.sendArticle == Constant.SEND_WORDS) {
                                 ArticleTreeListener.getInstance().ciKuNext();
                             }
-                        } else if (!(nextSpeed == 0 && nextKey == 0 && nextKeyAccuracy == 0)) {
+                        } else if (SendArticleDialog.automatic.isSelected()) {
                             String caoZuo = SendArticleDialog.caozuo.getSelectedItem().toString();
                             switch (caoZuo) {
                                 case "不操作":

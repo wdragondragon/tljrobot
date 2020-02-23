@@ -1,7 +1,7 @@
 package com.jdragon.tljrobot.client.window.dialog;
 
 import com.jdragon.tljrobot.client.entry.History;
-import com.jdragon.tljrobot.client.event.online.HistoryEvent;
+import com.jdragon.tljrobot.client.utils.common.HistoryUtil;
 import com.jdragon.tljrobot.client.window.MainFra;
 import com.jdragon.tljrobot.tljutils.DateUtil;
 
@@ -43,7 +43,7 @@ public class ThisHistoryDialog {
         historyList.clear();
     }
     public static void addRow(){
-        History history = HistoryEvent.getHistoryEntry();
+        History history = HistoryUtil.getHistoryEntry();
         historyList.add(history);
         Vector vRow1 = new Vector();
         vRow1.add(historyList.size());

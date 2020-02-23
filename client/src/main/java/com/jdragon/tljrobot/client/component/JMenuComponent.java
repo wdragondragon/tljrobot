@@ -92,11 +92,11 @@ public class JMenuComponent {
     public JMenu switchingMode;//切换模式
     public JMenuItem followMode = new JMenuItem("跟打模式 ctrl+G");
     public JMenu watchModeJMenu = new JMenu("看打模式");
-    public JMenuItem switchingWatch = new JMenu("切换模式 ctrl+K");
+    public JMenuItem switchingWatch = new JMenuItem("切换模式 ctrl+K");
     public JMenuItem sendWatchPlayImageResult = new JMenuItem("发送看打图片成绩");
 
     public JMenu listenModeJMenu = new JMenu("听打模式");
-    public JMenuItem switchingListen = new JMenu("切换模式 ctrl+Q");
+    public JMenuItem switchingListen = new JMenuItem("切换模式 ctrl+Q");
     public JMenuItem soundRecordPlay = new JMenuItem("听打选择文件");//
     public JMenuItem sendListenPlayImageResult = new JMenuItem("发送听打图片成绩");
 

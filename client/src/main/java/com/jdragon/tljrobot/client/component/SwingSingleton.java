@@ -148,11 +148,14 @@ public class SwingSingleton {
     }
     public static JTextPane watchingText(){
         if (watchingText==null) {
-            watchingText = new JTextPane() {
+            watchingText = new JTextPane()
+            {
                 @Override
                 public void copy() {
                     if (TypingState.dailyCompetition) {
                         JOptionPane.showMessageDialog(MainFra.getInstance(), "日赛中不允许复制");
+                    }else {
+                        super.copy();
                     }
                 }
             };
