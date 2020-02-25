@@ -87,15 +87,16 @@ public class TljServiceImpl implements TljService {
         TljMatch tljMatch = tljMatchMapper.selectTljMatchByDate(DateUtil.now());
         history.setArticleId(tljMatch.getArticle().getId());
         history.setUserId(userId);
-        return history.updateById();
+        return histroyMapper.updateById(history)>0;
     }
 
     @Transactional
     @Override
     public boolean uploadHistory(int userId, History history,Article articleTemp) {
+        if(history.getTime()<0)return false;
         Article article = articleMapper.selectArticleByContent(articleTemp.getTitle(),articleTemp.getContent());
         if(article==null) {
-            if (articleTemp.insert()) {
+            if (articleMapper.insert(articleTemp)>0) {
                 article = articleTemp;
             } else {
                 return false;
@@ -103,6 +104,6 @@ public class TljServiceImpl implements TljService {
         }
         history.setArticleId(article.getId());
         history.setUserId(userId);
-        return history.insert();
+        return histroyMapper.insert(history)>0;
     }
 }

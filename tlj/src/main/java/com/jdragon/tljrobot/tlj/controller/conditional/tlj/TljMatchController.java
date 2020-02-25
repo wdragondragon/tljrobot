@@ -54,7 +54,7 @@ public class TljMatchController {
                 emptyHistory.setUserId(user.getId());
                 emptyHistory.setArticleId(tljMatch.getArticle().getId());
                 emptyHistory.setMobile(isMobile);
-                if (emptyHistory.insert()) {
+                if (histroyMapper.insert(emptyHistory)>0) {
                     openTljMatchUserList.put(userId, emptyHistory.getId());
                     return Result.success("获取成功").setResult(tljMatch);
                 }

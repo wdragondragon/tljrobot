@@ -42,7 +42,7 @@ public class RobotHistoryController {
         } else {
             robotHistory.setFirst(false);
         }
-        if (robotHistory.insert()) {
+        if (robotHistoryMapper.insert(robotHistory)>0) {
             return Result.success("上传成功");
         }
         else {

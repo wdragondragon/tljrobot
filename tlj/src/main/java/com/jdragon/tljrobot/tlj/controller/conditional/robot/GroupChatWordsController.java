@@ -27,10 +27,10 @@ public class GroupChatWordsController {
         RobotUser robotUser = robotUserMapper.selectOne(robotUserQueryWrapper.eq(RobotUser.Def.QQ,qq));
         if(robotUser==null){
             robotUser = new RobotUser(qq,addNum);
-            robotUser.insert();
+            robotUserMapper.insert(robotUser);
         }else{
             robotUser.addChatNum(addNum);
-            robotUser.updateById();
+            robotUserMapper.updateById(robotUser);
         }
     }
 }

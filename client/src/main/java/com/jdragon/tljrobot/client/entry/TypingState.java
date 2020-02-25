@@ -111,6 +111,7 @@ public class TypingState {
         timer.setEndTime(0L);
         mistakeList.clear();
         typeWordsList.clear();
+        pause = false;
     }
     public static void typingStart(){
         timer.timeStart();

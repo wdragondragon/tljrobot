@@ -50,7 +50,7 @@ public class ReplayEvent {
 
             theoreticalCodeLengthButton().setText(String.valueOf(Article.getArticleSingleton().getShortCodeEntity().getArticleAverCodes()));
 
-            TypingState.pause = false;
+            TypingListener.getInstance().setOldTypeStrLength(-1);
             typingText().requestFocusInWindow();
         }
     }

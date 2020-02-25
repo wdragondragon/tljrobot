@@ -60,7 +60,7 @@ public class Security {
             }
             user.setLastLoginDate(DateUtil.now());
             user.setToken(userId);
-            user.updateById();
+            userMapper.updateById(user);
             return Result.success("登录成功").setResult(userId);
         }
     }
@@ -80,7 +80,7 @@ public class Security {
                 userId = Local.login(user);
             }
             user.setToken(userId);
-            user.updateById();
+            userMapper.updateById(user);
             return Result.success("登录成功").setResult(userId);
         }
     }
@@ -101,7 +101,7 @@ public class Security {
         User user = (User)Local.getSession(userId);
         if(user!=null) {
             user.setToken("");
-            user.updateById();
+            userMapper.updateById(user);
             Local.logout(userId);
         }
         return Result.success("退出成功");
@@ -116,7 +116,7 @@ public class Security {
         User user = userMapper.selectOne(new QueryWrapper<User>().eq(User.Def.USERNAME,username));
         if(user==null){
             user = new User(username, password);
-            if(user.insert())
+            if(userMapper.insert(user)>0)
                 return Result.success("注册成功");
             else
                 return Result.error("注册失败");

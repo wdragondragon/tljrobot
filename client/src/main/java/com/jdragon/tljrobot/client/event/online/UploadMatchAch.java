@@ -12,6 +12,7 @@ public class UploadMatchAch implements SynchronousOperation {
     @Override
     public void start() {
         History history = HistoryUtil.getHistoryEntry();
+        history.setParagraph(0);
         JSON.parseObject(HttpUtil.doPostObject(HttpAddr.MATCH_UPLOAD_TLJ_MATCH_ACH,history, UserState.token));
     }
 }
