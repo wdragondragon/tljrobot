@@ -2,15 +2,16 @@ package com.jdragon.tljrobot.client.config;
 
 import com.jdragon.tljrobot.client.listener.core.MoveFraListener;
 import com.jdragon.tljrobot.client.utils.core.IniAccess;
+import com.jdragon.tljrobot.client.utils.core.Layout;
 import com.jdragon.tljrobot.client.window.MainFra;
-import com.jdragon.tljrobot.client.window.dialog.*;
+import com.jdragon.tljrobot.client.window.dialog.LogonDialog;
+import com.jdragon.tljrobot.client.window.dialog.SendArticleDialog;
+import com.jdragon.tljrobot.client.window.dialog.SetDialog;
+import com.jdragon.tljrobot.client.window.dialog.ThisHistoryDialog;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 
 import static com.jdragon.tljrobot.client.config.LocalConfig.UIBackgroundColor;
 
@@ -37,6 +38,12 @@ public class MainFraConfig {
                 IniAccess.writeIni(LocalConfig.iniFilePath);
             }
         });
+        mainFra.addComponentListener(new ComponentAdapter(){
+            @Override
+            public void componentResized(ComponentEvent e){
+                Layout.resetBounds();
+            }
+        });
         ImageIcon icon = new ImageIcon("images\\installer_repair_1.png"); // xxx代表图片存放路径，2.png图片名称及格式
         mainFra.setIconImage(icon.getImage());
         onSystem();
@@ -46,6 +53,7 @@ public class MainFraConfig {
         ThisHistoryDialog.getInstance();
         //设置可见
         mainFra.setVisible(true);
+        mainFra.setOpacity(LocalConfig.windowsOpacity);
     }
     //创建系统托盘
     private static void onSystem(){

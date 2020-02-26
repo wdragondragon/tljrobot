@@ -75,6 +75,9 @@ public class LocalConfig {
 
     public static Boolean mouseGetArticle = true;
 
+    public static Float windowsOpacity = 0.8f;
+    public static String windowsTheme = "长流默认";
+
     public static void readConfig(){
         IniAccess.readIni(iniFilePath);
     }

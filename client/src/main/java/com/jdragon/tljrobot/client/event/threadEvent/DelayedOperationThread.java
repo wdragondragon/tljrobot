@@ -3,9 +3,7 @@ package com.jdragon.tljrobot.client.event.threadEvent;
 import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
-import com.jdragon.tljrobot.client.entry.Article;
-import com.jdragon.tljrobot.client.entry.TypingState;
-import com.jdragon.tljrobot.client.entry.UserState;
+import com.jdragon.tljrobot.client.entry.*;
 import com.jdragon.tljrobot.client.event.FArea.QQGetArticleEvent;
 import com.jdragon.tljrobot.client.event.FArea.ReplayEvent;
 import com.jdragon.tljrobot.client.event.FArea.SendAchievementEvent;
@@ -17,6 +15,7 @@ import com.jdragon.tljrobot.client.listener.common.TypingListener;
 import com.jdragon.tljrobot.client.utils.common.ArticleRegex;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
 import com.jdragon.tljrobot.client.utils.common.DrawUnLookPlayResult;
+import com.jdragon.tljrobot.client.utils.common.HistoryUtil;
 import com.jdragon.tljrobot.client.window.dialog.SendArticleDialog;
 import com.jdragon.tljrobot.client.window.dialog.ThisHistoryDialog;
 import com.jdragon.tljrobot.tljutils.string.Comparison;
@@ -58,12 +57,15 @@ public class DelayedOperationThread extends Thread {
                     SendAchievementEvent.start();
                     if(UserState.loginState) {//联网操作，发送跟打历史或发送0段赛文成绩
                         if (TypingState.dailyCompetition) {
-                            new Synchronous(new UploadMatchAch()).start();
+                            new Synchronous(new UploadMatchAch(HistoryUtil.getHistoryEntry())).start();
                             Article.getArticleSingleton(1, "日赛跟打完毕", "日赛跟打完毕");
                             TypingState.dailyCompetition = false;
                             ReplayEvent.start();
                         }else{
-                            new Synchronous(new UploadHistory()).start();
+                            History history = HistoryUtil.getHistoryEntry();
+                            ArticleDto articleDto = new ArticleDto(0, Article.getArticleSingleton().getTitle(),Article.getArticleSingleton().getArticle());
+                            HistoryDto historyDto = new HistoryDto(articleDto,history);
+                            new Synchronous(new UploadHistory(historyDto)).start();
                         }
                     }
                     if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)){

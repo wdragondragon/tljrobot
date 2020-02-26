@@ -2,6 +2,7 @@ package com.jdragon.tljrobot.client.window;
 
 import com.jdragon.tljrobot.client.component.JMenuComponent;
 import com.jdragon.tljrobot.client.component.SwingSingleton;
+import com.jdragon.tljrobot.client.config.FinalConfig;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
@@ -24,8 +25,10 @@ import com.jdragon.tljrobot.client.window.dialog.SetDialog;
 import com.jdragon.tljrobot.client.window.dialog.ShowArticleDialog;
 import com.jdragon.tljrobot.tljutils.ArticleUtil;
 import com.jdragon.tljrobot.tljutils.string.Comparison;
+import freeseawind.lf.LittleLuckLookAndFeel;
 import lombok.Data;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
+import org.jvnet.substance.SubstanceLookAndFeel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,15 +50,35 @@ public class MainFra extends JFrame {
     }
     private Point pressedPoint;
     public MainFra(){
-        this.setTitle("tlj");
+        this.setTitle("长流跟打器"+ FinalConfig.VERSION);
         this.setBounds(LocalConfig.windowX,LocalConfig.windowY,
                 LocalConfig.windowWidth,LocalConfig.windowHeight);
         //美化UI
-        try {
-            BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle
-                    .generalNoTranslucencyShadow;
-            BeautyEyeLNFHelper.launchBeautyEyeLNF();
-            UIManager.put("RootPane.setupButtonVisible", false);
+        try{
+            switch (LocalConfig.windowsTheme){
+                case "长流默认":
+                    BeautyEyeLNFHelper.translucencyAtFrameInactive = false;
+                    BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle
+                            .generalNoTranslucencyShadow;
+                    BeautyEyeLNFHelper.launchBeautyEyeLNF();
+                    UIManager.put("RootPane.setupButtonVisible", false);
+                    break;
+                case "系统默认":
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                    UIManager.put("ToolBar.isPaintPlainBackground",true);
+                    break;
+                case "蓝白":
+                    UIManager.setLookAndFeel(LittleLuckLookAndFeel.class.getName());
+                    break;
+                case "黑白":
+                    UIManager.setLookAndFeel("org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel");
+                    SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
+                    break;
+                case "灰白":
+                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+                    break;
+                default:break;
+            }
         } catch (Exception ignored) {}
         init();
     }

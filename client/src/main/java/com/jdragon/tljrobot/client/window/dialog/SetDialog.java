@@ -48,6 +48,12 @@ public class SetDialog{
     private static JPanel getArticleSetPanel = new JPanel();
     private static JToggleButton getArticleOnNet,mouseGetArticle;
     private static ArrayList<JToggleButton> getArticleJToggleButtonList = new ArrayList<>();
+
+    public static JPanel windowsSetPanel = new JPanel();
+    private static JLabel opacityLabel,themeSelectLabel;
+    private static JSlider windowsOpacitySlider;
+    private static JComboBox<String> windowsThemeSelect;
+
     public static JToggleButton getTipsButton(){
         return tipButton;
     }
@@ -59,6 +65,33 @@ public class SetDialog{
         addBaseSet();
         addSendAchSet();
         addGetArticleSet();
+        addWindowsSetPanel();
+    }
+    private static void addWindowsSetPanel(){
+        windowsSetPanel.setLayout(null);
+
+        opacityLabel = new JLabel("窗体透明");
+        themeSelectLabel = new JLabel("主题选择");
+        windowsOpacitySlider = new JSlider(0, 100, (int)(LocalConfig.windowsOpacity*100));
+        windowsThemeSelect = new JComboBox<>();
+        windowsThemeSelect.addItem("长流默认");
+        windowsThemeSelect.addItem("系统默认");
+        windowsThemeSelect.addItem("蓝白");
+        windowsThemeSelect.addItem("黑白");
+        windowsThemeSelect.addItem("灰白");
+
+        windowsThemeSelect.setSelectedItem(LocalConfig.windowsTheme);
+
+
+        windowsOpacitySlider.addChangeListener(e->mainFra.setOpacity(LocalConfig.windowsOpacity = windowsOpacitySlider.getValue()/100f));
+        windowsThemeSelect.addItemListener(e->LocalConfig.windowsTheme = windowsThemeSelect.getSelectedItem().toString());
+
+        addOnBounds(windowsSetPanel,opacityLabel,40,10,50,30);
+        addOnBounds(windowsSetPanel,windowsOpacitySlider,rowAddSpacing(opacityLabel,10),opacityLabel.getY(),200,30);
+        addOnBounds(windowsSetPanel,themeSelectLabel,opacityLabel.getX(),columnAddSpacing(opacityLabel,10),50,30);
+        addOnBounds(windowsSetPanel, windowsThemeSelect,rowAddSpacing(themeSelectLabel,10),themeSelectLabel.getY(),120,30);
+
+        tabbedPane.add("窗体设置",windowsSetPanel);
     }
     private static void addGetArticleSet(){
         getArticleSetPanel.setLayout(null);
