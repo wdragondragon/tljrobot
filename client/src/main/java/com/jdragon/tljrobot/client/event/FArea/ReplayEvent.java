@@ -21,6 +21,7 @@ public class ReplayEvent {
             typingText().setText("");
             watchingText().setText(""); // 清空文本框
             TypingState.init();//打字状态初始化
+            typingText().setEditable(true);
             ListenPlayEvent.replay();
         }else {
             typingText().setText("");

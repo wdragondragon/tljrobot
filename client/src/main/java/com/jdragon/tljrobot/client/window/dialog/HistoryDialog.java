@@ -30,7 +30,7 @@ public class HistoryDialog {
         else{
             getTable(page);
         }
-        historyDialog.setLocation(mainFra.getX()+mainFra.getWidth()/4,mainFra.getY()+mainFra.getHeight()/4);
+        historyDialog.setLocation(mainFra.getX()-mainFra.getWidth()/4,mainFra.getY()+mainFra.getHeight()/4);
         return historyDialog;
     }
     private static JDialog historyDialog;
@@ -72,15 +72,15 @@ public class HistoryDialog {
     }
     private static void setAllBounds(){
         p.setLayout(null);
-        historyDialog.setBounds(mainFra.getX()+mainFra.getWidth()/4,mainFra.getY()+mainFra.getHeight()/4,800,600);
+        historyDialog.setBounds(mainFra.getX()-mainFra.getWidth()/4,mainFra.getY()+mainFra.getHeight()/4,1200,650);
         table.setBounds(0,0,historyDialog.getWidth()-10,historyDialog.getHeight()-70);
         prePageButton.setBounds(10, table.getY() + table.getHeight(), 120, 30);
-        thisPageNum.setBounds(140, table.getY() + table.getHeight(), 60, 30);
-        nextPageButton.setBounds(210, table.getY() + table.getHeight(), 120, 30);
-        goOtherPage.setBounds(340, table.getY() + table.getHeight(), 60, 30);
-        goOtherPageButton.setBounds(410, table.getY() + table.getHeight(), 60, 30);
-        goFirstPageButton.setBounds(480, table.getY() + table.getHeight(), 100, 30);
-        goLastPageButton.setBounds(590, table.getY() + table.getHeight(), 100, 30);
+        thisPageNum.setBounds(140, table.getY() + table.getHeight(), 120, 30);
+        nextPageButton.setBounds(270, table.getY() + table.getHeight(), 120, 30);
+        goOtherPage.setBounds(400, table.getY() + table.getHeight(), 60, 30);
+        goOtherPageButton.setBounds(470, table.getY() + table.getHeight(), 60, 30);
+        goFirstPageButton.setBounds(540, table.getY() + table.getHeight(), 100, 30);
+        goLastPageButton.setBounds(650, table.getY() + table.getHeight(), 100, 30);
     }
     private static void addListener(){
         nextPageButton.addActionListener(e -> getTable(++page));
@@ -131,7 +131,7 @@ public class HistoryDialog {
         clearTable();
         HistoryList historyListEntry = HistoryEvent.getHistoryByPage(page);
         List<History> historyList = historyListEntry.getHistoryList();
-        int i = 1;
+        int i = (page-1)*20+1;
         for(History history:historyList){
             //增加表格行
             Vector vRow = new Vector();

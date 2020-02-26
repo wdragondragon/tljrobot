@@ -160,6 +160,10 @@ public class MainFra extends JFrame {
                         SwitchWatchPlayEvent.start();break;
                     case 'G':
                         SwitchFollowPlayEvent.start();break;
+                    case 'W':
+                        Article.getArticleSingleton(1,"随机一文",ArticleUtil.getRandomContent2());
+                        ReplayEvent.start();
+                        break;
                     case KeyEvent.VK_ENTER:
                         if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)) {
                             if(SwingSingleton.typingText().getText().length()==0) {

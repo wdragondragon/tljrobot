@@ -384,83 +384,80 @@ public class TypingListener implements DocumentListener, KeyListener {
                 int type = codeEntities[n].getType();
                 boolean isBold = codeEntities[n].isBold();
                 int next = codeEntities[n].getNext();
+                StringBuilder insertStr = new StringBuilder();
                 if(!isBold) {
                     switch (type) {
                         case 0:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(
-                                        String.valueOf(articleChars[index]), "灰");
+                                insertStr.append(articleChars[index]);
                             }
+                            JTextPaneFont.insertDoc(insertStr.toString(), "灰");
                             break;
                         case 1:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(
-                                        String.valueOf(articleChars[index]), "绿");
+                                insertStr.append(articleChars[index]);
                             }
+                            JTextPaneFont.insertDoc(insertStr.toString(), "绿");
                             break;
                         case 2:
                             String codes = codeEntities[n].getWordsCode();
                             if(codes!=null) {
                                 for (int index = n; index <= next; index++) {
-                                    JTextPaneFont.insertDoc(
-                                            String.valueOf(articleChars[index]), "绿");
+                                    insertStr.append(articleChars[index]);
                                 }
                                 String number = codes.substring(codes.length() - 1);
                                 attrs.addAttribute("Number", number);
-                                JTextPaneFont.updateDocStyle(n, next - n + 1, attrs, false);
+                                JTextPaneFont.insertDoc(insertStr.toString(), "绿",attrs);
                             }else {
-                                for (int index = n; index <= next; index++) {
-                                    JTextPaneFont.insertDoc(
-                                            String.valueOf(articleChars[index]), "绿斜");
+                                for(int index = n;index<=next;index++) {
+                                    insertStr.append(articleChars[index]);
                                 }
+                                JTextPaneFont.insertDoc(insertStr.toString(), "绿斜");
                             }
 
                             break;
                         case 3:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(
-                                        String.valueOf(articleChars[index]), "蓝");
+                                insertStr.append(articleChars[index]);
                             }
+                            JTextPaneFont.insertDoc(insertStr.toString(), "蓝");
                             break;
                         case 4:
                             String codes1 = codeEntities[n].getWordsCode();
                             if(codes1!=null) {
                                 for (int index = n; index <= next; index++) {
-                                    JTextPaneFont.insertDoc(
-                                            String.valueOf(articleChars[index]), "蓝");
+                                    insertStr.append(articleChars[index]);
                                 }
                                 String number1 = codes1.substring(codes1.length() - 1);
                                 attrs.addAttribute("Number", number1);
-                                JTextPaneFont.updateDocStyle(n, next - n + 1, attrs, false);
+                                JTextPaneFont.insertDoc(insertStr.toString(), "蓝",attrs);
                             }else {
-                                for (int index = n; index <= next; index++) {
-                                    JTextPaneFont.insertDoc(
-                                            String.valueOf(articleChars[index]), "蓝斜");
+                                for(int index = n;index<=next;index++) {
+                                    insertStr.append(articleChars[index]);
                                 }
+                                JTextPaneFont.insertDoc(insertStr.toString(), "蓝斜");
                             }
-
                             break;
                         case 5:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(
-                                        String.valueOf(articleChars[index]), "粉");
+                                insertStr.append(articleChars[index]);
                             }
+                            JTextPaneFont.insertDoc(insertStr.toString(), "粉");
                             break;
                         case 6:
                             String codes2 = codeEntities[n].getWordsCode();
                             if(codes2!=null) {
                                 for (int index = n; index <= next; index++) {
-                                    JTextPaneFont.insertDoc(
-                                            String.valueOf(articleChars[index]), "粉");
+                                    insertStr.append(articleChars[index]);
                                 }
                                 String number2 = codes2.substring(codes2.length() - 1);
                                 attrs.addAttribute("Number", number2);
-                                JTextPaneFont.updateDocStyle(n, next - n + 1, attrs, false);
+                                JTextPaneFont.insertDoc(insertStr.toString(), "粉",attrs);
                             }else {
-                                for (int index = n; index <= next; index++) {
-                                    JTextPaneFont.insertDoc(
-                                            String.valueOf(articleChars[index]), "粉斜");
+                                for(int index = n;index<=next;index++) {
+                                    insertStr.append(articleChars[index]);
                                 }
+                                JTextPaneFont.insertDoc(insertStr.toString(), "粉斜");
                             }
                             break;
                         default:break;
@@ -469,77 +466,74 @@ public class TypingListener implements DocumentListener, KeyListener {
                     switch (type) {
                         case 0:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(
-                                        String.valueOf(articleChars[index]), "灰");
+                                insertStr.append(articleChars[index]);
                             }
+                            JTextPaneFont.insertDoc(insertStr.toString(), "灰");
                             break;
                         case 1:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(
-                                        String.valueOf(articleChars[index]), "绿粗");
+                                insertStr.append(articleChars[index]);
                             }
+                            JTextPaneFont.insertDoc(insertStr.toString(), "绿粗");
                             break;
                         case 2:
                             String codes = codeEntities[n].getWordsCode();
                             if(codes!=null) {
                                 for (int index = n; index <= next; index++) {
-                                    JTextPaneFont.insertDoc(
-                                            String.valueOf(articleChars[index]), "绿粗");
+                                    insertStr.append(articleChars[index]);
                                 }
                                 String number = codes.substring(codes.length() - 1);
                                 attrs.addAttribute("Number", number);
-                                JTextPaneFont.updateDocStyle(n, next - n + 1, attrs, false);
+                                JTextPaneFont.insertDoc(insertStr.toString(), "绿粗",attrs);
                             }else {
-                                for (int index = n; index <= next; index++) {
-                                    JTextPaneFont.insertDoc(
-                                            String.valueOf(articleChars[index]), "绿粗斜");
+                                for(int index = n;index<=next;index++) {
+                                    insertStr.append(articleChars[index]);
                                 }
+                                JTextPaneFont.insertDoc(insertStr.toString(), "绿粗斜");
                             }
                             break;
                         case 3:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(
-                                        String.valueOf(articleChars[index]), "蓝粗");
+                                insertStr.append(articleChars[index]);
                             }
+                            JTextPaneFont.insertDoc(insertStr.toString(), "蓝粗");
                             break;
                         case 4:
                             String codes1 = codeEntities[n].getWordsCode();
                             if(codes1!=null) {
                                 for (int index = n; index <= next; index++) {
-                                    JTextPaneFont.insertDoc(
-                                            String.valueOf(articleChars[index]), "蓝粗");
+                                    insertStr.append(articleChars[index]);
                                 }
                                 String number1 = codes1.substring(codes1.length() - 1);
                                 attrs.addAttribute("Number", number1);
-                                JTextPaneFont.updateDocStyle(n, next - n + 1, attrs, false);
+                                JTextPaneFont.insertDoc(insertStr.toString(), "蓝粗",attrs);
                             }else {
-                                for (int index = n; index <= next; index++) {
-                                    JTextPaneFont.insertDoc(
-                                            String.valueOf(articleChars[index]), "蓝粗斜");
+                                for(int index = n;index<=next;index++) {
+                                    insertStr.append(articleChars[index]);
                                 }
+                                JTextPaneFont.insertDoc(insertStr.toString(), "蓝粗斜");
                             }
                             break;
                         case 5:
                             for(int index = n;index<=next;index++) {
-                                JTextPaneFont.insertDoc(
-                                        String.valueOf(articleChars[index]), "粉粗");
+                                insertStr.append(articleChars[index]);
                             }
+                            JTextPaneFont.insertDoc(insertStr.toString(), "粉粗");
                             break;
                         case 6:
                             String codes2 = codeEntities[n].getWordsCode();
                             if(codes2!=null) {
                                 for (int index = n; index <= next; index++) {
-                                    JTextPaneFont.insertDoc(
-                                            String.valueOf(articleChars[index]), "粉粗");
+                                    insertStr.append(articleChars[index]);
                                 }
                                 String number2 = codes2.substring(codes2.length() - 1);
                                 attrs.addAttribute("Number", number2);
-                                JTextPaneFont.updateDocStyle(n, next - n + 1, attrs, false);
+                                JTextPaneFont.insertDoc(insertStr.toString(), "粉粗",attrs);
                             }else {
-                                for (int index = n; index <= next; index++) {
-                                    JTextPaneFont.insertDoc(
-                                            String.valueOf(articleChars[index]), "粉粗斜");
+                                for(int index = n;index<=next;index++) {
+                                    insertStr.append(articleChars[index]);
                                 }
+                                JTextPaneFont.insertDoc(insertStr.toString(), "粉粗斜");
                             }
                             break;
                         default:break;

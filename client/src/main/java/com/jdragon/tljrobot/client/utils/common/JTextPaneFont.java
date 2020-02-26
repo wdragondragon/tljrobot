@@ -19,6 +19,16 @@ public class JTextPaneFont {
             System.err.println("BadLocationException: " + e);
         }
     }
+    static public void insertDoc(String content,String styleName,MutableAttributeSet mutableAttributeSet){
+        try {
+            MutableAttributeSet styledDoc = new SimpleAttributeSet(styleSets.get(styleName));
+            styledDoc.addAttributes(mutableAttributeSet);
+            StyledDocument doc = (StyledDocument) SwingSingleton.watchingText().getDocument();
+            doc.insertString(doc.getLength(), content,styledDoc);
+        } catch (BadLocationException e) {
+            System.err.println("BadLocationException: " + e);
+        }
+    }
     static public void updateOneDocStyleByStyleName(int index, String styleName, boolean replace){
         MutableAttributeSet style = styleSets.get(styleName);
         if(style!=null){

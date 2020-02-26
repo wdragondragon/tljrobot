@@ -21,6 +21,7 @@ import com.jdragon.tljrobot.client.utils.common.Clipboard;
 import com.jdragon.tljrobot.client.utils.common.DrawUnLookPlayResult;
 import com.jdragon.tljrobot.client.window.*;
 import com.jdragon.tljrobot.client.window.dialog.*;
+import com.jdragon.tljrobot.tljutils.ArticleUtil;
 import com.jdragon.tljrobot.tljutils.SystemUtil;
 import com.jdragon.tljrobot.tljutils.string.Comparison;
 import lombok.Data;
@@ -135,7 +136,7 @@ public class JMenuComponent {
         nonOrder = new JMenuItem("该段乱序 ctrl+L");
 
         getArticleByClipboard = new JMenuItem("剪贴板载文 ctrl+E");
-        randomArticle = new JMenuItem("随机一文");
+        randomArticle = new JMenuItem("随机一文  ctrl+W");
 
         createCodeTable = new JMenuItem("生成码表");
         moreSetUp = new JMenuItem("更多设置 ctrl+Z");
@@ -190,6 +191,7 @@ public class JMenuComponent {
         onlineMenu.add(rankingMenu);
 //        onlineMenu.add(battleOnline);
         onlineMenu.add(getHistory);
+        onlineMenu.add(randomArticle);
         onlineMenu.add(everydayMatch);
 //        onlineMenu.add(email);
 //        onlineMenu.add(friendSys);
@@ -304,5 +306,9 @@ public class JMenuComponent {
                 Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(), typingText().getText()),"看打"));
 
         thisHistory.addActionListener(e->ThisHistoryDialog.getInstance().setVisible(true));
+        randomArticle.addActionListener(e->{
+            Article.getArticleSingleton(1,"随机一文",ArticleUtil.getRandomContent2());
+            ReplayEvent.start();
+        });
     }
 }
