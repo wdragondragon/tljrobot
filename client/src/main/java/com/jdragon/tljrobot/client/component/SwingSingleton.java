@@ -22,7 +22,7 @@ public class SwingSingleton {
     private static Font tipsFont = new Font(LocalConfig.family, Font.PLAIN, 12);
     private static JMenuBar jMenu;
     private static JButton speedButton,keySpeedButton,keyLengthButton,theoreticalCodeLength;
-    private static JTextArea typingText;
+    private static JTextPane typingText;
     private static JTextPane watchingText;
     private static JScrollPane watchingJSP, typingJSP;
     private static JSplitPane typingAndWatching;
@@ -170,9 +170,9 @@ public class SwingSingleton {
         }
         return watchingText;
     }
-    public static JTextArea typingText(){
+    public static JTextPane typingText(){
         if (typingText==null) {
-            typingText = new JTextArea(){
+            typingText = new JTextPane(){
                 @Override
                 public void copy() {
                     if (TypingState.dailyCompetition) {
@@ -185,7 +185,7 @@ public class SwingSingleton {
                 }
             };
             typingText.setFont(normalFont);
-            typingText.setLineWrap(true);
+//            typingText.setLineWrap(true);
             typingText.setBackground(LocalConfig.typingBackgroundColor);
         }
         return typingText;
