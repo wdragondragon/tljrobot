@@ -68,5 +68,6 @@ public class Layout {
 //        numberRecordLabel().setBounds(rowAddSpacing(numberLabel(),10),columnAddSpacing(typingAndWatching(),10),120,40);
 //        tipsLabel().setBounds(rowAddSpacing(numberRecordLabel(),10),columnAddSpacing(typingAndWatching(),10),120,40);
 //        sendArticleLabel().setBounds(rowAddSpacing(tipsLabel(),10),columnAddSpacing(typingAndWatching(),10),120,40);
+        typingAndWatching().validate();
     }
 }

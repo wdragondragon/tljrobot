@@ -330,7 +330,7 @@ public class TypingListener implements DocumentListener, KeyListener {
         int lastIndex;
         int pageMore = (widthFontNum + 1) / 3;
         int moreSign = thisPageNum>=1?1:0;
-        if (articleStr.length() - pageCount * thisPageNum > pageCount) {
+        if (articleStr.length() - pageCount * thisPageNum > pageCount+pageMore) {
             lastIndex = (thisPageNum + 1) * pageCount + pageMore;
         } else {
             lastIndex = articleStr.length();
@@ -354,6 +354,7 @@ public class TypingListener implements DocumentListener, KeyListener {
                 }
             }
         } catch (Exception e) {
+            e.printStackTrace();
             n = 0;
         }
         if (!typingState) {

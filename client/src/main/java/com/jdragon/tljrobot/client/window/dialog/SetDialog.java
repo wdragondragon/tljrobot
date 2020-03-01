@@ -76,9 +76,11 @@ public class SetDialog{
         windowsThemeSelect = new JComboBox<>();
         windowsThemeSelect.addItem("长流默认");
         windowsThemeSelect.addItem("系统默认");
-        windowsThemeSelect.addItem("蓝白");
-        windowsThemeSelect.addItem("黑白");
-        windowsThemeSelect.addItem("灰白");
+        windowsThemeSelect.addItem("LittleLuck蓝白");
+        windowsThemeSelect.addItem("Substance黑白");
+        windowsThemeSelect.addItem("Nimbus灰白");
+//        windowsThemeSelect.addItem("WebLaf黑白");
+
 
         windowsThemeSelect.setSelectedItem(LocalConfig.windowsTheme);
 

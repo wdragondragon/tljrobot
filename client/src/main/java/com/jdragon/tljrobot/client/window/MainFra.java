@@ -67,17 +67,26 @@ public class MainFra extends JFrame {
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                     UIManager.put("ToolBar.isPaintPlainBackground",true);
                     break;
-                case "蓝白":
+                case "LittleLuck蓝白":
                     UIManager.setLookAndFeel(LittleLuckLookAndFeel.class.getName());
                     break;
-                case "黑白":
+                case "Substance黑白":
                     UIManager.setLookAndFeel("org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel");
                     SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
                     break;
-                case "灰白":
+                case "Nimbus灰白":
                     UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
                     break;
-                default:break;
+//                case "WebLaf黑白":
+//                    UIManager.setLookAndFeel ( new WebLookAndFeel() );
+//                    break;
+                default:
+                    BeautyEyeLNFHelper.translucencyAtFrameInactive = false;
+                    BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle
+                            .generalNoTranslucencyShadow;
+                    BeautyEyeLNFHelper.launchBeautyEyeLNF();
+                    UIManager.put("RootPane.setupButtonVisible", false);
+                    break;
             }
         } catch (Exception ignored) {}
         init();

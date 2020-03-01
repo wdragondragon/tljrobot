@@ -18,7 +18,7 @@ import java.sql.Date;
  */
 @RestController
 @RequestMapping("/robot/groupMatch")
-@Api("机器人群赛接口")
+@Api(tags = "机器人群赛接口")
 public class GroupMatchController {
     @Autowired
     GroupMatchMapper groupMatchMapper;
