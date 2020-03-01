@@ -13,7 +13,9 @@ import com.jdragon.tljrobot.client.utils.core.Layout;
 import com.jdragon.tljrobot.client.window.dialog.SetDialog;
 import com.jdragon.tljrobot.tljutils.compShortCode.simpleEntry.CodeEntity;
 import lombok.Data;
+import org.junit.jupiter.api.Test;
 
+import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.MutableAttributeSet;
@@ -321,31 +323,34 @@ public class TypingListener implements DocumentListener, KeyListener {
     int thisPageNum = -1;
     public void changeFontColor() {
         int pageCount = LocalConfig.typePageCount;
-//        if(thisPageNum==typeStr.length() / pageCount)return;
-//        compPositionParams();
         articleStr = Article.getArticleSingleton().getArticle()!=null?Article.getArticleSingleton().getArticle():"";
         articleChars = articleStr.toCharArray();
+        int prePageNum = thisPageNum;
         thisPageNum = typeStr.length() / pageCount;
         int lastIndex;
+        int pageMore = (widthFontNum + 1) / 3;
+        int moreSign = thisPageNum>=1?1:0;
         if (articleStr.length() - pageCount * thisPageNum > pageCount) {
-            lastIndex = (thisPageNum + 1) * pageCount + (widthFontNum + 1) / 3;
+            lastIndex = (thisPageNum + 1) * pageCount + pageMore;
         } else {
             lastIndex = articleStr.length();
         }
         thisPageTypeStr = typeStr.substring(pageCount * thisPageNum);
-        watchingText().setText(""); // 清空文本框
         try {
             if (thisPageNum > 0) {
-                n = thisPageNum * pageCount - (widthFontNum + 1) / 3;
+                n = thisPageNum * pageCount - pageMore;
             } else {
                 n = thisPageNum * pageCount;
             }
-
+            if(thisPageNum!=prePageNum||watchingText().getText().length()!=lastIndex-n){
+                watchingText().setText(articleStr.substring(n,lastIndex)); // 清空文本框
+                watchingText().setCaretPosition(0);
+            }
             for (; n < (Math.min(typeStr.length(), articleStr.length())); n++) { // 统计错误字数，向文本框添加字体
                 if (typeChars[n] != articleChars[n] && typingState) {
-                    JTextPaneFont.insertDoc(String.valueOf(articleChars[n]),"红");
+                    JTextPaneFont.updateOneDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,"红",true);
                 } else if (typingState) {
-                    JTextPaneFont.insertDoc(String.valueOf(articleChars[n]),"黑");
+                    JTextPaneFont.updateOneDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,"黑",true);
                 }
             }
         } catch (Exception e) {
@@ -354,7 +359,6 @@ public class TypingListener implements DocumentListener, KeyListener {
         if (!typingState) {
             n = 0;
         }
-
         JTextPaneFont.createStyle("预读",
                 LocalConfig.fontSize, false, false, false,
                 LocalConfig.watchingBackgroundColor,LocalConfig.family, null);
@@ -365,7 +369,7 @@ public class TypingListener implements DocumentListener, KeyListener {
                 tempReady = lastIndex;
             }
             for (; n < tempReady; n++) {
-                JTextPaneFont.insertDoc(String.valueOf(articleChars[n]), "预读");
+                JTextPaneFont.updateOneDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,"预读",true);
             }
         }
         MutableAttributeSet attrs = new SimpleAttributeSet();
@@ -379,85 +383,57 @@ public class TypingListener implements DocumentListener, KeyListener {
             }
             if (!LocalConfig.tip || TypingState.dailyCompetition
                     || LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)) {
-                JTextPaneFont.insertDoc(String.valueOf(articleChars[n]), "灰");
+                JTextPaneFont.updateOneDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,"灰",true);
             }else {
                 int type = codeEntities[n].getType();
                 boolean isBold = codeEntities[n].isBold();
                 int next = codeEntities[n].getNext();
-                StringBuilder insertStr = new StringBuilder();
                 if(!isBold) {
                     switch (type) {
                         case 0:
-                            for(int index = n;index<=next;index++) {
-                                insertStr.append(articleChars[index]);
-                            }
-                            JTextPaneFont.insertDoc(insertStr.toString(), "灰");
+                            JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"灰",true);
                             break;
                         case 1:
-                            for(int index = n;index<=next;index++) {
-                                insertStr.append(articleChars[index]);
-                            }
-                            JTextPaneFont.insertDoc(insertStr.toString(), "绿");
+                            JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"绿",true);
                             break;
                         case 2:
                             String codes = codeEntities[n].getWordsCode();
                             if(codes!=null) {
-                                for (int index = n; index <= next; index++) {
-                                    insertStr.append(articleChars[index]);
-                                }
                                 String number = codes.substring(codes.length() - 1);
                                 attrs.addAttribute("Number", number);
-                                JTextPaneFont.insertDoc(insertStr.toString(), "绿",attrs);
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"绿",true);
+                                JTextPaneFont.updateDocStyle(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,attrs,false);
                             }else {
-                                for(int index = n;index<=next;index++) {
-                                    insertStr.append(articleChars[index]);
-                                }
-                                JTextPaneFont.insertDoc(insertStr.toString(), "绿斜");
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"绿斜",true);
                             }
 
                             break;
                         case 3:
-                            for(int index = n;index<=next;index++) {
-                                insertStr.append(articleChars[index]);
-                            }
-                            JTextPaneFont.insertDoc(insertStr.toString(), "蓝");
+                            JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"蓝",true);
                             break;
                         case 4:
                             String codes1 = codeEntities[n].getWordsCode();
                             if(codes1!=null) {
-                                for (int index = n; index <= next; index++) {
-                                    insertStr.append(articleChars[index]);
-                                }
                                 String number1 = codes1.substring(codes1.length() - 1);
                                 attrs.addAttribute("Number", number1);
-                                JTextPaneFont.insertDoc(insertStr.toString(), "蓝",attrs);
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"蓝",true);
+                                JTextPaneFont.updateDocStyle(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,attrs,false);
                             }else {
-                                for(int index = n;index<=next;index++) {
-                                    insertStr.append(articleChars[index]);
-                                }
-                                JTextPaneFont.insertDoc(insertStr.toString(), "蓝斜");
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"蓝斜",true);
                             }
                             break;
                         case 5:
-                            for(int index = n;index<=next;index++) {
-                                insertStr.append(articleChars[index]);
-                            }
-                            JTextPaneFont.insertDoc(insertStr.toString(), "粉");
+                            JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"粉",true);
                             break;
                         case 6:
                             String codes2 = codeEntities[n].getWordsCode();
                             if(codes2!=null) {
-                                for (int index = n; index <= next; index++) {
-                                    insertStr.append(articleChars[index]);
-                                }
                                 String number2 = codes2.substring(codes2.length() - 1);
                                 attrs.addAttribute("Number", number2);
-                                JTextPaneFont.insertDoc(insertStr.toString(), "粉",attrs);
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"粉",true);
+                                JTextPaneFont.updateDocStyle(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,attrs,false);
                             }else {
-                                for(int index = n;index<=next;index++) {
-                                    insertStr.append(articleChars[index]);
-                                }
-                                JTextPaneFont.insertDoc(insertStr.toString(), "粉斜");
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"粉斜",true);
                             }
                             break;
                         default:break;
@@ -465,75 +441,48 @@ public class TypingListener implements DocumentListener, KeyListener {
                 }else{
                     switch (type) {
                         case 0:
-                            for(int index = n;index<=next;index++) {
-                                insertStr.append(articleChars[index]);
-                            }
-                            JTextPaneFont.insertDoc(insertStr.toString(), "灰");
+                            JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"灰",true);
                             break;
                         case 1:
-                            for(int index = n;index<=next;index++) {
-                                insertStr.append(articleChars[index]);
-                            }
-                            JTextPaneFont.insertDoc(insertStr.toString(), "绿粗");
+                            JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"绿粗",true);
                             break;
                         case 2:
                             String codes = codeEntities[n].getWordsCode();
                             if(codes!=null) {
-                                for (int index = n; index <= next; index++) {
-                                    insertStr.append(articleChars[index]);
-                                }
                                 String number = codes.substring(codes.length() - 1);
                                 attrs.addAttribute("Number", number);
-                                JTextPaneFont.insertDoc(insertStr.toString(), "绿粗",attrs);
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"绿粗",true);
+                                JTextPaneFont.updateDocStyle(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,attrs,false);
                             }else {
-                                for(int index = n;index<=next;index++) {
-                                    insertStr.append(articleChars[index]);
-                                }
-                                JTextPaneFont.insertDoc(insertStr.toString(), "绿粗斜");
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"绿粗斜",true);
                             }
                             break;
                         case 3:
-                            for(int index = n;index<=next;index++) {
-                                insertStr.append(articleChars[index]);
-                            }
-                            JTextPaneFont.insertDoc(insertStr.toString(), "蓝粗");
+                            JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"蓝粗",true);
                             break;
                         case 4:
                             String codes1 = codeEntities[n].getWordsCode();
                             if(codes1!=null) {
-                                for (int index = n; index <= next; index++) {
-                                    insertStr.append(articleChars[index]);
-                                }
                                 String number1 = codes1.substring(codes1.length() - 1);
                                 attrs.addAttribute("Number", number1);
-                                JTextPaneFont.insertDoc(insertStr.toString(), "蓝粗",attrs);
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"蓝粗",true);
+                                JTextPaneFont.updateDocStyle(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,attrs,false);
                             }else {
-                                for(int index = n;index<=next;index++) {
-                                    insertStr.append(articleChars[index]);
-                                }
-                                JTextPaneFont.insertDoc(insertStr.toString(), "蓝粗斜");
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"蓝粗斜",true);
                             }
                             break;
                         case 5:
-                            for(int index = n;index<=next;index++) {
-                                insertStr.append(articleChars[index]);
-                            }
-                            JTextPaneFont.insertDoc(insertStr.toString(), "粉粗");
+                            JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"粉粗",true);
                             break;
                         case 6:
                             String codes2 = codeEntities[n].getWordsCode();
                             if(codes2!=null) {
-                                for (int index = n; index <= next; index++) {
-                                    insertStr.append(articleChars[index]);
-                                }
                                 String number2 = codes2.substring(codes2.length() - 1);
                                 attrs.addAttribute("Number", number2);
-                                JTextPaneFont.insertDoc(insertStr.toString(), "粉粗",attrs);
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"粉粗",true);
+                                JTextPaneFont.updateDocStyle(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,attrs,false);
                             }else {
-                                for(int index = n;index<=next;index++) {
-                                    insertStr.append(articleChars[index]);
-                                }
-                                JTextPaneFont.insertDoc(insertStr.toString(), "粉粗斜");
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"粉粗斜",true);
                             }
                             break;
                         default:break;
@@ -605,7 +554,6 @@ public class TypingListener implements DocumentListener, KeyListener {
     int maxPageNum;
     int pageCount,fontSize;
     public void changePosition() {// 自动滚动条翻页方法
-        int temp;
         fontSize = LocalConfig.fontSize;
         pageCount = LocalConfig.typePageCount;
         int fontWidth = fontSize + 59; // 一个字横分辨率
@@ -614,51 +562,16 @@ public class TypingListener implements DocumentListener, KeyListener {
         widthFontNum = (typingAndWatching().getWidth() - fontWidth) / fontSize;//行字数
         cursor = cursor % (LocalConfig.typePageCount + (widthFontNum + 1) / 3);
         maxPageNum = (heightFontNum-1) * (widthFontNum + 1);
-        if (thisPageNum == 0) {
-            while (thisPageTypeStr.length()+maxPageNum/2 > cursor&&cursor!=pageCount-1) {
-                if (heightFontNum > 2) {
-                    temp = widthFontNum;
-                } else {
-                    temp = widthFontNum + 1;
-                }
-                if (cursor + temp > pageCount) {
-                    cursor = pageCount - 1;
-                } else {
-                    cursor = cursor + temp;
-                }
-            }
-        }else {
-            while (thisPageTypeStr.length() +maxPageNum/2 + (widthFontNum + 1) / 3 > cursor&&cursor!=pageCount + (widthFontNum + 1) / 3 - 1) {
-                if (heightFontNum > 2) {
-                    temp = widthFontNum;
-                } else {
-                    temp = widthFontNum + 1;
-                }
-                if (cursor + temp > pageCount) {
-                    cursor = pageCount + (widthFontNum + 1) / 3 - 1;
-                } else {
-                    cursor = cursor + temp;
-                }
-            }
+        JScrollBar jsb = watchingJsp().getVerticalScrollBar();
+        int pageTotal = Math.min(pageCount, watchingText().getText().length());
+        if(pageTotal>maxPageNum) {
+            jsb.setValue((int) (((thisPageTypeStr.length() - maxPageNum / 2) / (double) (pageTotal - maxPageNum)) * (jsb
+                    .getMaximum() - jsb.getHeight())));
         }
-        if (thisPageTypeStr.length() == 1) {
-            if (heightFontNum > 1) {
-                cursor = maxPageNum/2 + (widthFontNum + 1) / 3;
-            } else {
-                cursor = (widthFontNum + 1)/2 - (widthFontNum + 1) / 3;
-            }
-        } else if (thisPageTypeStr.length() == 0) {
-            if (heightFontNum > 1) {
-                cursor = maxPageNum/2+ (widthFontNum + 1) / 3;
-            } else {
-                cursor = (widthFontNum + 1)/2 - (widthFontNum + 1) / 3;
-            }
-            watchingJsp().getVerticalScrollBar().setValue(0);
-        }
-        try{
-            watchingText().setCaretPosition(cursor);
-        }catch (Exception ignored){}
-
+    }
+    @Test
+    public void text(){
+        System.out.println(((300-150)/(double)500)*(900));
     }
     public void updateNumShow(){
         numberLabel().setText("字数:" + articleStr.length() + "/已打:" + typeStr.length() + "/错:"

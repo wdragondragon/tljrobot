@@ -75,7 +75,7 @@ public class LocalConfig {
 
     public static Boolean mouseGetArticle = true;
 
-    public static Float windowsOpacity = 0.8f;
+    public static Float windowsOpacity = 1.0f;
     public static String windowsTheme = "长流默认";
 
     public static void readConfig(){

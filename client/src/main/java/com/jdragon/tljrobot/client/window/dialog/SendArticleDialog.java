@@ -110,7 +110,7 @@ public class SendArticleDialog {
         machang2 = new JSpinner();
         machang2.setModel(new SpinnerNumberModel(0, 0, 6, 1));
         cishu = new JSpinner();
-        cishu.setModel(new SpinnerNumberModel(0, 0, 1000, 1));
+        cishu.setModel(new SpinnerNumberModel(0, 0, 999999, 1));
         cichang1 = new JSpinner();
         cichang1.setModel(new SpinnerNumberModel(0, 0, 50, 1));
         cichang2 = new JSpinner();

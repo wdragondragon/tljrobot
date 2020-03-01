@@ -52,6 +52,9 @@ public class QqOperation {
                 if(!LocalConfig.ctrlSendAchToQQ) {
                     robot.keyRelease(KeyEvent.VK_CONTROL);
                 }
+//                Thread.sleep(300);
+//                User32.INSTANCE.PostMessage(hWnd,User32.WM_KEYDOWN,new WinDef.WPARAM('\r'),new WinDef.LPARAM(0));
+//                User32.INSTANCE.PostMessage(hWnd,User32.WM_KEYUP,new WinDef.WPARAM('\r'),new WinDef.LPARAM(0));
                 robot.keyPress(KeyEvent.VK_ENTER);
                 robot.keyRelease(KeyEvent.VK_ENTER);
                 if(LocalConfig.ctrlSendAchToQQ) {

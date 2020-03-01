@@ -236,7 +236,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
             // System.out.println(chouqulist.size()+" "+y);
             wordNum = Integer.parseInt(String.valueOf(SendArticleDialog.cishu.getValue()));
             if(wordNum==0) {
-                wordNum = 200;
+                wordNum = chouqulist.size();
             }
             for (int i = 0; i < (Math.min(chouqulist.size(), wordNum)); i++) {
                 temp.append(chouqulist.get(i));

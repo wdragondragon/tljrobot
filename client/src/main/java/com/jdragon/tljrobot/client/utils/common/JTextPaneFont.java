@@ -29,15 +29,20 @@ public class JTextPaneFont {
             System.err.println("BadLocationException: " + e);
         }
     }
-    static public void updateOneDocStyleByStyleName(int index, String styleName, boolean replace){
+    static public void updateOneDocStyleByStyleName(int index, String styleName, boolean replace,MutableAttributeSet...mutableAttributeSet){
         MutableAttributeSet style = styleSets.get(styleName);
         if(style!=null){
-            updateDocStyleOnStyleName(index,1,styleName,replace);
+            updateDocStyleByStyleName(index,1,styleName,replace,mutableAttributeSet);
         }
     }
-    static public void updateDocStyleOnStyleName(int index,int length,String styleName,boolean replace){
-        MutableAttributeSet style = styleSets.get(styleName);
-        if(style!=null){
+    static public void updateDocStyleByStyleName(int index,int length,String styleName,boolean replace,MutableAttributeSet...mutableAttributeSet){
+        if(styleSets.get(styleName)!=null){
+            MutableAttributeSet style =  new SimpleAttributeSet(styleSets.get(styleName));
+            if(mutableAttributeSet!=null){
+                for(MutableAttributeSet set:mutableAttributeSet) {
+                    style.addAttributes(set);
+                }
+            }
             updateDocStyle(index,length,style,replace);
         }
     }
@@ -65,9 +70,4 @@ public class JTextPaneFont {
         if (colorBackgroundList.contains(styleName))
             StyleConstants.setBackground(styledDocument, backColor);
     }
-//    static public void createStyle(String styleName, int size, boolean bold, boolean italic, boolean underline,
-//                                   Color color, String fontFamily, Color backColor,String number) {
-//        createStyle(styleName,size,bold,italic,underline,color,fontFamily,backColor);
-//        styleSets.get(styleName).addAttribute("Number",number);
-//    }
 }
