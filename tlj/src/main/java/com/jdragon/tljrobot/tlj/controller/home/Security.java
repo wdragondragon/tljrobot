@@ -102,7 +102,7 @@ public class Security {
         if(user!=null) {
             user.setToken("");
             userMapper.updateById(user);
-            Local.logout(userId);
+//            Local.logout(userId);
         }
         return Result.success("退出成功");
     }

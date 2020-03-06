@@ -25,15 +25,12 @@ public class SystemUtil {
 //            return null;
 //        }
     }
+    public static boolean isLinux(){
+        String systemName = getSystemName();
+        return systemName != null && systemName.toLowerCase().contains("linux");
+    }
     public static boolean isWindows(){
         String systemName = getSystemName();
-        if(systemName!=null&&systemName.length()>=7&& "Windows".equals(systemName.substring(0,7))){
-            System.out.println("win");
-            return true;
-        }
-
-        else {
-            return false;
-        }
+        return systemName != null && systemName.length() >= 7 && "Windows".equals(systemName.substring(0, 7));
     }
 }

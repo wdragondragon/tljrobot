@@ -52,7 +52,6 @@ public class KeyboardHookThread implements Runnable {
 
         WinDef.HMODULE hMod = Kernel32.INSTANCE.GetModuleHandle(null);
         hhk = User32.INSTANCE.SetWindowsHookEx(User32.WH_KEYBOARD_LL, keyboardProc, hMod, 0);
-
         int result;
         WinUser.MSG msg = new WinUser.MSG();
         while ((result = User32.INSTANCE.GetMessage(msg, null, 0, 0)) != 0) {

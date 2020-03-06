@@ -5,6 +5,7 @@ import com.jdragon.tljrobot.client.config.JTextPaneFontConfig;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.listener.common.SetBackgroundListener;
 import com.jdragon.tljrobot.client.listener.common.TypingListener;
+import com.jdragon.tljrobot.client.utils.common.BetterTypingSingleton;
 import com.jdragon.tljrobot.client.utils.common.ChooseFile;
 import com.jdragon.tljrobot.client.window.MainFra;
 
@@ -26,7 +27,7 @@ public class SetDialog{
         if(setDialog==null) {
             init();
         }
-        setDialog.setBounds(mainFra.getX()+mainFra.getWidth()/4,mainFra.getY()+mainFra.getHeight()/4,535,300);
+        setDialog.setBounds(mainFra.getX()+mainFra.getWidth()/4,mainFra.getY()+mainFra.getHeight()/4,535,330);
         return setDialog;
     }
     private static MainFra mainFra = MainFra.getInstance();
@@ -53,6 +54,7 @@ public class SetDialog{
     private static JLabel opacityLabel,themeSelectLabel;
     private static JSlider windowsOpacitySlider;
     private static JComboBox<String> windowsThemeSelect;
+    private static JToggleButton undecoratedButton;
 
     public static JToggleButton getTipsButton(){
         return tipButton;
@@ -72,6 +74,7 @@ public class SetDialog{
 
         opacityLabel = new JLabel("窗体透明");
         themeSelectLabel = new JLabel("主题选择");
+
         windowsOpacitySlider = new JSlider(0, 100, (int)(LocalConfig.windowsOpacity*100));
         windowsThemeSelect = new JComboBox<>();
         windowsThemeSelect.addItem("长流默认");
@@ -79,19 +82,21 @@ public class SetDialog{
         windowsThemeSelect.addItem("LittleLuck蓝白");
         windowsThemeSelect.addItem("Substance黑白");
         windowsThemeSelect.addItem("Nimbus灰白");
-//        windowsThemeSelect.addItem("WebLaf黑白");
-
-
         windowsThemeSelect.setSelectedItem(LocalConfig.windowsTheme);
+
+        undecoratedButton = new JToggleButton("去边框");
+        undecoratedButton.setSelected(LocalConfig.undecorated);
 
 
         windowsOpacitySlider.addChangeListener(e->mainFra.setOpacity(LocalConfig.windowsOpacity = windowsOpacitySlider.getValue()/100f));
         windowsThemeSelect.addItemListener(e->LocalConfig.windowsTheme = windowsThemeSelect.getSelectedItem().toString());
+        undecoratedButton.addChangeListener(e->LocalConfig.undecorated=undecoratedButton.isSelected());
 
         addOnBounds(windowsSetPanel,opacityLabel,40,10,50,30);
         addOnBounds(windowsSetPanel,windowsOpacitySlider,rowAddSpacing(opacityLabel,10),opacityLabel.getY(),200,30);
         addOnBounds(windowsSetPanel,themeSelectLabel,opacityLabel.getX(),columnAddSpacing(opacityLabel,10),50,30);
         addOnBounds(windowsSetPanel, windowsThemeSelect,rowAddSpacing(themeSelectLabel,10),themeSelectLabel.getY(),120,30);
+        addOnBounds(windowsSetPanel,undecoratedButton,rowAddSpacing(windowsThemeSelect,10),windowsThemeSelect.getY(),60,30);
 
         tabbedPane.add("窗体设置",windowsSetPanel);
     }
@@ -413,6 +418,7 @@ public class SetDialog{
             family.addItem(s);
         }
         family.setBounds(rightcolorSet.getX(), fontSizeText.getY()+ fontSizeText.getHeight()+10,120,30);
+        family.setSelectedItem(LocalConfig.family);
         baseSetPanel.add(family);
 
         JButton familyChange = new JButton("修改字型");
@@ -444,6 +450,14 @@ public class SetDialog{
                     }
                 }
         );
+
+        JTextField regex = new JTextField(LocalConfig.regex);
+        JButton changeRegex = new JButton("修改选重键");
+        addOnBounds(baseSetPanel,regex,family.getX(),columnAddSpacing(family,10),100,30);
+        addOnBounds(baseSetPanel,changeRegex,rowAddSpacing(regex,10),regex.getY(),90,30);
+
+        changeRegex.addActionListener(e-> BetterTypingSingleton.setBetterTypingRegex(LocalConfig.regex = regex.getText()));
+
         baseSetPanel.add(readyFont);
 
         tabbedPane.add("基本设置", baseSetPanel);

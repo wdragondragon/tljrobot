@@ -78,6 +78,9 @@ public class LocalConfig {
     public static Float windowsOpacity = 1.0f;
     public static String windowsTheme = "长流默认";
 
+    public static Boolean undecorated = false;
+
+    public static String regex = "23456789";
     public static void readConfig(){
         IniAccess.readIni(iniFilePath);
     }

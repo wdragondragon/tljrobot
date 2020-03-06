@@ -18,6 +18,7 @@ public class BetterTyping {
     private ArrayList<String> symbolEntry;
     private ArrayList<HashMap<String,String>> wordsCodeList;//词组码表
     private StringBuilder allCode;
+    private String regex = "234567890";
     enum Type{
         //1全 2次全 3三简 4 次三简 5二简  6次二简
         q(1),cq(2),sj(3),csj(4),ej(5),cej(6);
@@ -50,7 +51,13 @@ public class BetterTyping {
         fis.close();
     }
     public BetterTyping(String ciZuFileName){
-        String regex = "234567890";
+        init(ciZuFileName);
+    }
+    public BetterTyping(String ciZuFileName,String regex){
+        this.regex = regex;
+        init(ciZuFileName);
+    }
+    private void init(String ciZuFileName){
         String topSymbol = "，。";
         String str;
         File more = new File(ciZuFileName);
@@ -279,7 +286,6 @@ public class BetterTyping {
     private int getType(String codeTemp){
         int lengthTemp = codeTemp.length();
         String lastStr = codeTemp.substring(lengthTemp-1,lengthTemp);	//获取编码最后一个字符
-        String regex = "234567890";
         int nonPreferred;//非首选标记
         if(lastStr.equals("_")){
             lengthTemp -= 1;

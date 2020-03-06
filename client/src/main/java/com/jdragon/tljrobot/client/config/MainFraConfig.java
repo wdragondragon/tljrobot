@@ -25,7 +25,8 @@ public class MainFraConfig {
         // 设置无边框，用鼠标控制窗体移动
         mainFra.getContentPane().setLayout(null);
         mainFra.setLocationRelativeTo(null);
-        mainFra.setUndecorated(true);
+//        if(LocalConfig.undecorated)
+        mainFra.setUndecorated(LocalConfig.undecorated);
         mainFra.setMinimumSize(new Dimension(100, 100));
 //		setOpacity(0.95f);
         mainFra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// 设置关闭按钮
@@ -42,6 +43,13 @@ public class MainFraConfig {
             @Override
             public void componentResized(ComponentEvent e){
                 Layout.resetBounds();
+            }
+        });
+        mainFra.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                IniAccess.writeIni(LocalConfig.iniFilePath);
+                super.windowClosing(e);
             }
         });
         ImageIcon icon = new ImageIcon("images\\installer_repair_1.png"); // xxx代表图片存放路径，2.png图片名称及格式

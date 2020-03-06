@@ -1,5 +1,7 @@
 package com.jdragon.tljrobot.client.utils.common;
 
+import com.jdragon.tljrobot.client.config.LocalConfig;
+
 import javax.swing.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -32,6 +34,7 @@ public ChangeTxtThread(String filename){
 		boolean sign = true;
 		StringBuilder all = new StringBuilder();
 		String str;
+		char[] regex = LocalConfig.regex.toCharArray();
 		int length;
 		int xuan;
 		String temp;
@@ -70,13 +73,15 @@ public ChangeTxtThread(String filename){
 				if(strlist.contains(splited[1])) {
 					sign = false;
 				}
-				while(strlist.contains(temp+ xuan)){
+				while(xuan<=10&&strlist.contains(temp+ regex[xuan-2])){
 					xuan++;
 					sign = false;
 				}
 				if(sign) {
 					strlist.add(splited[1]);
-				} else {
+				} else if(xuan<=10){
+					strlist.add(splited[1]+ regex[xuan-2]);
+				}else{
 					strlist.add(splited[1]+ xuan);
 				}
 				if(length<4&&sign){
@@ -87,7 +92,10 @@ public ChangeTxtThread(String filename){
 					str = splited[0]+"\t"+splited[1];
 					str += "\r\n";
 				}
-				else {
+				else if(xuan<=10){
+					str = splited[0]+"\t"+splited[1]+ regex[xuan-2];
+					str += "\r\n";
+				}else{
 					str = splited[0]+"\t"+splited[1]+ xuan;
 					str += "\r\n";
 				}

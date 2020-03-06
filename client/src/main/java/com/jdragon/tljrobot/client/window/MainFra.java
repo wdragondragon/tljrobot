@@ -107,15 +107,21 @@ public class MainFra extends JFrame {
 
         addOnBounds(this, typingAndWatching(),0,
                 columnAddSpacing(speedButton(),5),getWidth(), getHeight()-95);
+
         typingAndWatching().setDividerLocation(400);
 
         addOnBounds(this, typingProgress(),0,
                 columnAddSpacing(typingAndWatching(),0),getWidth(),10);
 
-        addOnBounds(this, closeButton(),this.getWidth()-20,0,20,10);
-        addOnBounds(this, maxButton(),this.getWidth()-42,0,20,10);
-        addOnBounds(this, minButton(),this.getWidth()-63,0,20,10);
-        addOnBounds(this, sizeButton(),this.getWidth()-10,this.getHeight()-10,10,10);
+        addOnBounds(this, closeButton(), this.getWidth() - 20, 0, 20, 10);
+        addOnBounds(this, maxButton(), this.getWidth() - 42, 0, 20, 10);
+        addOnBounds(this, minButton(), this.getWidth() - 63, 0, 20, 10);
+        addOnBounds(this, sizeButton(), this.getWidth() - 10, this.getHeight() - 10, 10, 10);
+
+        closeButton().setVisible(LocalConfig.undecorated);
+        maxButton().setVisible(LocalConfig.undecorated);
+        minButton().setVisible(LocalConfig.undecorated);
+        sizeButton().setVisible(LocalConfig.undecorated);
 
         int baseBottomLabelWidth = (LocalConfig.windowWidth-15)/8;
         addOnBounds(this, qQNameLabel(), typingAndWatching().getX(),columnAddSpacing(typingAndWatching(),10),baseBottomLabelWidth*3/2,40);
