@@ -25,11 +25,16 @@ public class MainFraConfig {
         // 设置无边框，用鼠标控制窗体移动
         mainFra.getContentPane().setLayout(null);
         mainFra.setLocationRelativeTo(null);
-//        if(LocalConfig.undecorated)
-        mainFra.setUndecorated(LocalConfig.undecorated);
+        try {
+            mainFra.setUndecorated(LocalConfig.undecorated);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,"设置边框"+
+                    LocalConfig.undecorated+"失败！请检查配置文件");
+        }
         mainFra.setMinimumSize(new Dimension(100, 100));
+        mainFra.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 //		setOpacity(0.95f);
-        mainFra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// 设置关闭按钮
+//        mainFra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// 设置关闭按钮
         //设置鼠标拖动
         mainFra.addMouseListener(MoveFraListener.getInstance());
         mainFra.addMouseMotionListener(MoveFraListener.getInstance());
@@ -37,6 +42,7 @@ public class MainFraConfig {
             @Override
             public void windowClosing(WindowEvent e) {
                 IniAccess.writeIni(LocalConfig.iniFilePath);
+                System.exit(0);
             }
         });
         mainFra.addComponentListener(new ComponentAdapter(){
@@ -49,7 +55,7 @@ public class MainFraConfig {
             @Override
             public void windowClosing(WindowEvent e) {
                 IniAccess.writeIni(LocalConfig.iniFilePath);
-                super.windowClosing(e);
+                System.exit(0);
             }
         });
         ImageIcon icon = new ImageIcon("images\\installer_repair_1.png"); // xxx代表图片存放路径，2.png图片名称及格式

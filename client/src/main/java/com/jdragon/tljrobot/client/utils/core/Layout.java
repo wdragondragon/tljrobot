@@ -66,6 +66,8 @@ public class Layout {
         numberRecordLabel().setBounds(rowAddSpacing(numberLabel(),5),qQNameLabel().getY(),3*baseBottomLabelWidth,qQNameLabel().getHeight());
         tipsLabel().setBounds(rowAddSpacing(numberRecordLabel(),5),qQNameLabel().getY(),2*baseBottomLabelWidth,qQNameLabel().getHeight());
         sendArticleLabel().setLocation(rowAddSpacing(tipsLabel(),5),qQNameLabel().getY());
+        LocalConfig.windowWidth = mainFra.getWidth();
+        LocalConfig.windowHeight = mainFra.getHeight();
         typingAndWatching().validate();
     }
 }

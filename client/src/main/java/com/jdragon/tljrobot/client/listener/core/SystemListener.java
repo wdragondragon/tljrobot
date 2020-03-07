@@ -109,8 +109,8 @@ public class SystemListener implements ActionListener, MouseListener, MouseMotio
             Point point = e.getPoint();// 获取当前坐标
             int i =   point.x - pressedPoint.x;// 计算变化坐标
             int j =  point.y - pressedPoint.y;
-            LocalConfig.windowWidth += i;
-            LocalConfig.windowHeight += j;
+//            LocalConfig.windowWidth += i;
+//            LocalConfig.windowHeight += j;
             Layout.addSize(i,j,win, SwingSingleton.typingAndWatching());// 改变窗体大小
 //            Layout.resetBounds();
         }

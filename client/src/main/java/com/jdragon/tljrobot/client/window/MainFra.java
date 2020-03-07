@@ -166,6 +166,10 @@ public class MainFra extends JFrame {
                     case 'L':
                         MixListener.getInstance().mixButton("该段乱序");break;
                     case 'E':
+                        if(TypingState.sendArticle!=0){
+                            JOptionPane.showMessageDialog(mainFra,"请先结束发文");
+                            break;
+                        }
                         Article.getArticleSingleton(1,"剪贴板载文", Clipboard.get());
                         ReplayEvent.start();
                         break;
@@ -212,6 +216,10 @@ public class MainFra extends JFrame {
                     ReplayEvent.start();
                     break;
                 case KeyEvent.VK_F4:
+                    if(TypingState.sendArticle!=0){
+                        JOptionPane.showMessageDialog(mainFra,"请先结束发文");
+                        break;
+                    }
                     if(!LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
                         QQGetArticleEvent.start();
                     } else {
