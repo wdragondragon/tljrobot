@@ -402,8 +402,7 @@ public class TypingListener implements DocumentListener, KeyListener {
                             if(codes!=null) {
                                 String number = codes.substring(codes.length() - 1);
                                 attrs.addAttribute("Number", number);
-                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"绿",true);
-                                JTextPaneFont.updateDocStyle(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,attrs,false);
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"绿",true,attrs);
                             }else {
                                 JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"绿斜",true);
                             }
@@ -417,8 +416,7 @@ public class TypingListener implements DocumentListener, KeyListener {
                             if(codes1!=null) {
                                 String number1 = codes1.substring(codes1.length() - 1);
                                 attrs.addAttribute("Number", number1);
-                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"蓝",true);
-                                JTextPaneFont.updateDocStyle(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,attrs,false);
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"蓝",true,attrs);
                             }else {
                                 JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"蓝斜",true);
                             }
@@ -431,8 +429,7 @@ public class TypingListener implements DocumentListener, KeyListener {
                             if(codes2!=null) {
                                 String number2 = codes2.substring(codes2.length() - 1);
                                 attrs.addAttribute("Number", number2);
-                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"粉",true);
-                                JTextPaneFont.updateDocStyle(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,attrs,false);
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"粉",true,attrs);
                             }else {
                                 JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"粉斜",true);
                             }
@@ -452,8 +449,7 @@ public class TypingListener implements DocumentListener, KeyListener {
                             if(codes!=null) {
                                 String number = codes.substring(codes.length() - 1);
                                 attrs.addAttribute("Number", number);
-                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"绿粗",true);
-                                JTextPaneFont.updateDocStyle(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,attrs,false);
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"绿粗",true,attrs);
                             }else {
                                 JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"绿粗斜",true);
                             }
@@ -466,8 +462,7 @@ public class TypingListener implements DocumentListener, KeyListener {
                             if(codes1!=null) {
                                 String number1 = codes1.substring(codes1.length() - 1);
                                 attrs.addAttribute("Number", number1);
-                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"蓝粗",true);
-                                JTextPaneFont.updateDocStyle(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,attrs,false);
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"蓝粗",true,attrs);
                             }else {
                                 JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"蓝粗斜",true);
                             }
@@ -480,8 +475,7 @@ public class TypingListener implements DocumentListener, KeyListener {
                             if(codes2!=null) {
                                 String number2 = codes2.substring(codes2.length() - 1);
                                 attrs.addAttribute("Number", number2);
-                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"粉粗",true);
-                                JTextPaneFont.updateDocStyle(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,attrs,false);
+                                JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"粉粗",true,attrs);
                             }else {
                                 JTextPaneFont.updateDocStyleByStyleName(n-pageCount*thisPageNum+moreSign*pageMore,next-n+1,"粉粗斜",true);
                             }

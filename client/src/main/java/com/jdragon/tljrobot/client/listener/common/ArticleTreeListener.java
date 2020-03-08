@@ -171,7 +171,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                 JOptionPane.showMessageDialog(new JTextArea(), "随机一文暂时不支持保存进度");
                 return;
             }
-            String jindufile = "跟打进度" + article.getTitle() + ".txt";
+            String jindufile = "跟打进度" + article.getTitle();
             open = new File("文章//文章类", jindufile);
             FileOutputStream testfile = new FileOutputStream(open);
             testfile.write("".getBytes());
@@ -260,6 +260,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                 str.append(chouqulist.get(i));
                 chouqubufenlist.add(chouqulist.get(i));
             }
+            Article.getArticleSingleton().setTitle("词库练习");
             Article.getArticleSingleton().setArticle(str.toString());
             Article.getArticleSingleton().addParagraph();
             ShareArticleEvent.start();
@@ -268,8 +269,13 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(e.getActionCommand());
+        DefaultMutableTreeNode node = (DefaultMutableTreeNode) SendArticleDialog.tree
+                .getLastSelectedPathComponent();
+        if(node.isLeaf()){
+            Article.getArticleSingleton().setTitle(node.toString());
+        }
         switch (e.getActionCommand()) {
+
             case "下一段":
                 if (TypingState.sendArticle == Constant.SEND_ORDER) {
                     nextOrder();
@@ -286,7 +292,6 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                 chouqu(e.getActionCommand());
                 break;
             case "词库练习":
-                System.out.println(e.getActionCommand() + "!!!");
                 ciKu();
                 break;
             case "保存进度":

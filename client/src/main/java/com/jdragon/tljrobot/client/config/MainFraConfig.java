@@ -25,12 +25,7 @@ public class MainFraConfig {
         // 设置无边框，用鼠标控制窗体移动
         mainFra.getContentPane().setLayout(null);
         mainFra.setLocationRelativeTo(null);
-        try {
-            mainFra.setUndecorated(LocalConfig.undecorated);
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null,"设置边框"+
-                    LocalConfig.undecorated+"失败！请检查配置文件");
-        }
+        mainFra.setUndecorated(LocalConfig.undecorated!=null?LocalConfig.undecorated:false);
         mainFra.setMinimumSize(new Dimension(100, 100));
         mainFra.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 //		setOpacity(0.95f);
