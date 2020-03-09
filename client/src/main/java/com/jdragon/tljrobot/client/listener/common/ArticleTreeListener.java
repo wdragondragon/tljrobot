@@ -271,8 +271,8 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
     public void actionPerformed(ActionEvent e) {
         DefaultMutableTreeNode node = (DefaultMutableTreeNode) SendArticleDialog.tree
                 .getLastSelectedPathComponent();
-        if(node.isLeaf()){
-            Article.getArticleSingleton().setTitle(node.toString());
+        if(node!=null&&node.isLeaf()){
+            Article.getArticleSingleton().setTitle(node.toString().replaceAll("跟打进度",""));
         }
         switch (e.getActionCommand()) {
 
@@ -304,6 +304,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
         }
         Layout.resetBounds();
         SwingSingleton.typingText().requestFocusInWindow();
+
     }
     public void sendAll() {
         Article article = Article.getArticleSingleton();

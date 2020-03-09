@@ -6,6 +6,7 @@ import cc.moecraft.icq.event.events.message.EventGroupMessage;
 import cc.moecraft.icq.event.events.message.EventMessage;
 import cc.moecraft.icq.event.events.message.EventPrivateMessage;
 import cc.moecraft.icq.event.events.notice.groupmember.EventNoticeGroupMemberChange;
+import cc.moecraft.icq.event.events.request.EventGroupInviteRequest;
 import cc.moecraft.icq.sender.IcqHttpApi;
 import cc.moecraft.icq.sender.message.MessageBuilder;
 import cc.moecraft.icq.sender.message.components.ComponentAt;
@@ -54,6 +55,11 @@ public class RobotGroupClient extends IcqListener {
 
 //        loadCodeFile();
         betterTypingHashMap.put("词组提示码表",new BetterTyping("编码文件"+separator+"输入法编码"+separator+"词组提示码表.txt"));
+    }
+    @EventHandler void groupAdd(EventGroupInviteRequest eventGroupInviteRequest){
+        eventGroupInviteRequest.accept();
+        eventGroupInviteRequest.getBot().getAccountManager().refreshCache();
+        initGroupList.init(eventGroupInviteRequest.getHttpApi());
     }
     @EventHandler void peopleAdd(EventNoticeGroupMemberChange event){
         event.getBot().getAccountManager().refreshCache();
