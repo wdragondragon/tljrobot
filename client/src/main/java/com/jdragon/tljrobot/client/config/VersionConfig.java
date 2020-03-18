@@ -14,7 +14,9 @@ public class VersionConfig {
             if ("获取成功".equals(retMessage)) {
                 return jsonObject.getJSONObject("result").getString("version");
             }
-        }catch (Exception e){}
+        }catch (Exception e){
+
+        }
         return "获取失败";
     }
 }

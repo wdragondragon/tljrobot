@@ -10,7 +10,7 @@ import com.jdragon.tljrobot.robot.newTyping.ChatWords;
 import com.jdragon.tljrobot.robot.newTyping.QueryUser;
 import com.jdragon.tljrobot.robot.newTyping.tools.GroupCache;
 import com.jdragon.tljrobot.robot.typing.CommandVersion;
-import com.jdragon.tljrobot.robot.typing.ConDatabase.AllUserNum;
+//import com.jdragon.tljrobot.robot.typing.ConDatabase.AllUserNum;
 import com.jdragon.tljrobot.robot.typing.ConDatabase.HeartCon;
 import com.jdragon.tljrobot.robot.typing.RobotGroupClient;
 
@@ -40,7 +40,8 @@ public class robot
         PicqConfig c = new PicqConfig(9999);
         c.setDebug(true);
         // 添加一个机器人账户 ( 名字, 发送URL, 发送端口 )
-        bot.addAccount("Bot01", "127.0.0.1", 5700);
+//        bot.addAccount("Bot01", "127.0.0.1", 5700);
+        bot.addAccount("Bot01","127.0.0.1",5701);
 //        PointClient pointClient = new PointClient(bot.getAccountManager().getNonAccountSpecifiedApi());
         // 注册事件监听器, 可以注册多个监听器
         bot.getEventManager().registerListeners(
@@ -63,8 +64,8 @@ public class robot
         // 注册指令, 可以注册多个指令
         bot.getCommandManager().registerCommands(
                 new CommandSay(),//返回自己名字
-                new CommandVersion(),//返回版本
-                new AllUserNum()
+                new CommandVersion()//返回版本
+//                new AllUserNum()
         );
         // 启动机器人, 不会占用主线程
         bot.startBot();

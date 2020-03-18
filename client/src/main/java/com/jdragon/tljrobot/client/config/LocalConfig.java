@@ -81,6 +81,8 @@ public class LocalConfig {
     public static Boolean undecorated = false;
 
     public static String regex = "23456789";
+
+//    public static String serviceAddr = FinalConfig.TLJ_ADDR;
     public static void readConfig(){
         IniAccess.readIni(iniFilePath);
     }

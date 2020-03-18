@@ -93,11 +93,11 @@ public class BetterTyping {
                         if(wordCode.get(splited[0]).length()>length){
                             wordCode.put(ch, bm);
                         }
-                        else if(wordCode.get(splited[0]).length()==length&&length==4){
-                            if(!regex.contains(temp)){
-                                wordCode.put(ch, bm);
-                            }
-                        }
+//                        else if(wordCode.get(splited[0]).length()==length&&length==4){
+//                            if(!regex.contains(temp)){
+//                                wordCode.put(ch, bm);
+//                            }
+//                        }
                     }
                     else{
                         wordCode.put(ch, bm);
@@ -171,8 +171,9 @@ public class BetterTyping {
                         &&codeTemp.substring(codeTemp.length()-1).equals("_")
                         && symbol.contains(subscriptInstances[i + 1].getWord())
                         &&!(articleLength>i+2
-                        &&symbolEntry.contains(subscriptInstances[i+1].getWord()
-                        +subscriptInstances[i+2].getWord())))
+                            &&symbolEntry.contains(subscriptInstances[i+1].getWord()
+                            +subscriptInstances[i+2].getWord()))
+                        )
                 {
                     codeTemp = codeTemp.substring(0,codeTemp.length()-1);
                 }

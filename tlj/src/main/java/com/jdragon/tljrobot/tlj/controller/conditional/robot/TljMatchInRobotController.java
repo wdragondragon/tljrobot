@@ -1,16 +1,16 @@
 package com.jdragon.tljrobot.tlj.controller.conditional.robot;
 
 import com.jdragon.tljrobot.tlj.mappers.HistroyMapper;
+import com.jdragon.tljrobot.tlj.mappers.TljMatchMapper;
 import com.jdragon.tljrobot.tlj.pojo.History2;
+import com.jdragon.tljrobot.tlj.pojo.TljMatch;
+import com.jdragon.tljrobot.tljutils.DateUtil;
 import com.jdragon.tljrobot.tljutils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.util.List;
@@ -25,6 +25,23 @@ public class TljMatchInRobotController {
     @Autowired
     HistroyMapper histroyMapper;
 
+    @Autowired
+    TljMatchMapper tljMatchMapper;
+
+    @GetMapping("/getTljMatch/{date}")
+    @ApiOperation("根据日期获取跟打器赛文")
+    @ResponseBody
+    public Result getTljMatchDate(@PathVariable Date date){
+        if(date.after(DateUtil.now())){
+            return Result.error("还没发布呢，不能获取今天之后的赛文哦");
+        }
+        TljMatch tljMatch = tljMatchMapper.selectTljMatchByDate(DateUtil.now());
+        if(tljMatch==null){
+            return Result.success(date+"无赛文");
+        }else{
+            return Result.success("获取成功").setResult(tljMatch);
+        }
+    }
     @PostMapping("/getTljMatchAchByDate/{date}")
     @ApiOperation("根据日期获取跟打器赛文成绩")
     @ResponseBody

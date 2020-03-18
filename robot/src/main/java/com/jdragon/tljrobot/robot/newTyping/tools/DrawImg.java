@@ -32,6 +32,7 @@ public class DrawImg {
             HashMap<Long,String> groupMemberCardList = GroupCache.groupCardCache.get(groupId);
             if(groupMemberCardList!=null&&GroupCache.typeGroupMap.containsKey(groupId)) {
                 name = groupMemberCardList.get(robotHistory.getQq());
+                if(name==null)name= String.valueOf(robotHistory.getQq());
                 groupName = GroupCache.typeGroupMap.get(groupId);
             }
             Double keySpeed = robotHistory.getKeySpeed();

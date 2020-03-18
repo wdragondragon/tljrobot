@@ -27,8 +27,8 @@ public class Createimg {
                 rows += (2+typeV.size());
             }
             for (List<String> strings : typeV) {
-                maxfont = strings.get(0).getBytes().length>maxfont?strings.get(0).getBytes().length:maxfont;
-                if(strings.get(0).indexOf("%")!=-1) {
+                maxfont = Math.max(strings.get(0).getBytes().length, maxfont);
+                if(strings.get(0).contains("%")) {
                     String s[] = strings.get(0).split("%");
                     QQdo.put(s[0], s[1]);
                     strings.set(0,s[0]);
@@ -167,7 +167,7 @@ public class Createimg {
                             graphics.drawString(String.valueOf(n+1), rightLine+(numwidth-strWidth)/2-5,
                                     startHeight + rowheight * (n + startH) - 8);
                         }else {
-                             strWidth = graphics.getFontMetrics().stringWidth(arr.get(l-1));
+                            strWidth = graphics.getFontMetrics().stringWidth(arr.get(l - 1));
                             if(l==1) {
                                 graphics.drawString(arr.get(l - 1), rightLine,
                                         startHeight + rowheight * (n + startH) - 8);
@@ -184,7 +184,7 @@ public class Createimg {
                                 }
                             }
                             else
-                                graphics.drawString(arr.get(l - 1).toString(), rightLine+(otherwidth-strWidth)/2-5,
+                                graphics.drawString(arr.get(l - 1), rightLine+(otherwidth-strWidth)/2-5,
                                         startHeight + rowheight * (n + startH) - 8);
                         }
                         //画下标

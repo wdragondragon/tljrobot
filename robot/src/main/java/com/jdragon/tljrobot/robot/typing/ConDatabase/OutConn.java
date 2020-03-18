@@ -2,80 +2,14 @@ package com.jdragon.tljrobot.robot.typing.ConDatabase;
 
 import com.jdragon.tljrobot.robot.typing.Tools.Createimg;
 import com.jdragon.tljrobot.robot.typing.Tools.RegexText;
-import com.jdragon.tljrobot.robot.typing.Tools.initGroupList;
 
+import java.sql.Connection;
 import java.sql.Date;
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.*;
 
 public class OutConn {
-    public static String insteadName(Long id){
-        try{
-            String sql = "select name from robotclient where id=?";
-            Connection con = Conn.getConnection();
-            PreparedStatement ptmt = Conn.getPtmt(con,sql);
-            ptmt.setLong(1,id);
-            ResultSet rs = ptmt.executeQuery();
-            con.close();
-            if(rs.next()){
-                return rs.getString("name");
-            }
-            else{
-                return "未设名";
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-            return "获取错误";
-        }
-    }
-    public static String ShowName(String name){
-        String message;
-        String sql = "select * from robotclient where name=?";
-        String sql1 = "select * from robotclient where id=?";
-        try {
-            Connection con = Conn.getConnection();
-            PreparedStatement ptmt = Conn.getPtmt(con, sql);
-            ptmt.setString(1, name);
-            ResultSet rs = ptmt.executeQuery();
-            if(rs.next()) {
-                message =  getShowNameStr(rs);
-            }
-            else{
-                ptmt = Conn.getPtmt(con,sql1);
-                ptmt.setLong(1,Long.parseLong(name));
-                rs = ptmt.executeQuery();
-                if(rs.next()) {
-                    message =  getShowNameStr(rs);
-                }
-                else {
-                    message =  "获取失败，无收录成绩";
-                }
-            }
-            con.close();
-        }catch (Exception e){
-            e.printStackTrace();
-            message = "获取失败，无收录成绩";
-        }
-        return message;
-    }
-    private static String getShowNameStr(ResultSet rs){
-        try {
-            String name = rs.getString("name");
-            if(name==null) {
-                name="（未设置名片） ";
-            }
-            return "用户名："+ name +" Q号："+rs.getLong("id")+
-                    "\n上屏赛文成绩次数："+rs.getInt("n")+
-                    "\n平均速度："+ RegexText.FourOutFiveIn(rs.getDouble("speedaver"))+
-                    " 平均击键："+RegexText.FourOutFiveIn(rs.getDouble("keyspeedaver"))+
-                    " 平均码长："+RegexText.FourOutFiveIn(rs.getDouble("keylengthaver"))+
-                    "\n水群字数："+rs.getInt("cheatnum");
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return "";
-        }
-    }
     public static String ShowRobotSaiwen(String type ,int aid ,int model){
         String message = "";
         try {
@@ -119,108 +53,7 @@ public class OutConn {
         }
         return message;
     }
-    public static String ShowGroupSaiwen(String groupname,Date date){
-        String message = "";
-        Long groupid;
-        try{
-            String sql = "select groupid from groupmap where groupname=?";
-            Connection conn = Conn.getConnection();
-            PreparedStatement ptmt = Conn.getPtmt(conn,sql);
-            ptmt.setString(1,groupname);
-            ResultSet rs = ptmt.executeQuery();
-
-            if(rs.next()) {
-                groupid = rs.getLong("groupid");
-                sql = "select * from groupsaiwen where groupid=? and saiwendate=?";
-                ptmt = Conn.getPtmt(conn,sql);
-                ptmt.setLong(1,groupid);
-                ptmt.setDate(2,date);
-                rs = ptmt.executeQuery();
-                if(rs.next()){
-                    String title = rs.getString("title");
-                    String saiwen = rs.getString("saiwen");
-                    message = title+"\n"+saiwen+"\n-----第1段-共"+saiwen.length()+"字";
-                }
-                else {
-                    message = groupname+"在这一天没有赛文";
-                }
-            }
-            else {
-                message =  "没有"+groupname+"这个群";
-            }
-            conn.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return message;
-    }
-
-    public static String ShowGroupSaiwenMath(String groupname,Date date){
-        String message = "";
-        Long groupid;
-        try{
-            String sql = "select groupid from groupmap where groupname=?";
-            Connection conn = Conn.getConnection();
-            PreparedStatement ptmt = Conn.getPtmt(conn,sql);
-            ptmt.setString(1,groupname);
-            ResultSet rs = ptmt.executeQuery();
-            if(rs.next()) {
-                groupid = rs.getLong("groupid");
-                sql = "select * from groupsaiwenmax where groupid=? and date=? order by speed DESC";
-                ptmt = Conn.getPtmt(conn,sql);
-                System.out.println(groupid+":"+date);
-                ptmt.setLong(1,groupid);
-                ptmt.setDate(2,date);
-                rs = ptmt.executeQuery();
-                int i = 0;
-                while(rs.next()){
-                    i++;
-                    String name = initGroupList.GroupMemberCardMap.get(groupid).get(rs.getLong("id"));
-                    if(name.equals("")) {
-                        name = ""+rs.getLong("id");
-                    }
-                    message += i+ " "+rs.getDouble("speed")+" "+
-                            rs.getDouble("keyspeed")+" "+
-                            rs.getDouble("keylength")+"：" +name + "\n";
-                    System.out.println(i);
-                }
-                if(i==0) {
-                    message = groupname+"在这一天没有赛文成绩";
-                }
-            }
-            else {
-                message =  "没有"+groupname+"这个群";
-            }
-            conn.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return message;
-    }
-    public static String ShowAllGroupSaiwen(Date date){
-        String message = "";
-        try{
-            String sql = "select * from allgroupsaiwen where saiwendate=?";
-            Connection conn = Conn.getConnection();
-            PreparedStatement ptmt = Conn.getPtmt(conn,sql);
-            ptmt.setDate(1,date);
-            ResultSet rs = ptmt.executeQuery();
-            if(rs.next()) {
-                String title = rs.getString("title");
-                String saiwen = rs.getString("saiwen");
-                long id = rs.getLong("author");
-                message = title+" 投稿自QQ号："+id+"\n"+saiwen+"\n-----第9999段-共"+saiwen.length()+"字";
-            }
-            else {
-                message =  "今日无联赛";
-            }
-            conn.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return message;
-    }
-    public static String ShowGroupIdMath(Long id,String groupname,Date date,String idname) {
+    public static String ShowGroupIdMath(Long id, String groupname, Date date, String idname) {
         boolean have = false;
         String message = date+"\n用户名："+idname+" 群："+groupname;
 //        String sql = "select id from robotclient where name=?";
@@ -328,68 +161,6 @@ public class OutConn {
         }
         return message;
     }
-    public static String lookAllGroupSaiwen(){
-        String sql = "select * from allgroupsaiwen where saiwendate>=now()";
-        String message = "";
-        try{
-            Connection con = Conn.getConnection();
-            ResultSet rs = Conn.getStmtSet(con,sql);
-            while(rs.next()){
-                String date = String.valueOf(rs.getDate("saiwendate"));
-                String title = rs.getString("title");
-                String saiwen = rs.getString("saiwen");
-                message += "日期："+date+" 标题："+title+" 字数："+saiwen.length()+"\n";
-            }
-            if(message.equals("")) {
-                message = "今天之后没有联赛赛文";
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return message;
-    }
-    public static String getAllAllGroupSaiwenWait(){
-        String sql = "select * from allgroupsaiwenwait ORDER BY id DESC";
-        StringBuffer str = new StringBuffer();
-        try{
-            Connection con = Conn.getConnection();
-            ResultSet rs = Conn.getStmtSet(con,sql);
-            while(rs.next()){
-                String id = String.valueOf(rs.getInt("id"));
-                String title = rs.getString("title");
-                String saiwen = rs.getString("saiwen");
-                Long author = rs.getLong("author");
-                str.append(id+" 标题："+title+" 字数："+saiwen.length()+" 投稿人："+author+"\n");
-            }
-            con.close();
-            return str.toString();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return "无需审核投稿";
-        }
-
-    }
-    public static String getAllGroupSaiwenWatiById(int id){
-        String message = "";
-        try{
-            String sql = "select * from allgroupsaiwenwait where id="+id;
-            Connection con = Conn.getConnection();
-            ResultSet rs = Conn.getStmtSet(con,sql);
-            if(rs.next()) {
-                String title = rs.getString("title");
-                String saiwen = rs.getString("saiwen");
-                long author = rs.getLong("author");
-                message = title+" 投稿自QQ号："+author+"\n"+saiwen+"\n-----第9999段-共"+saiwen.length()+"字";
-            }
-            else {
-                message =  "无";
-            }
-            con.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return message;
-    }
     public static HashMap<Long,Boolean> getGroupList(){
         HashMap<Long,Boolean> grouplist = new HashMap();
         String sql  = "select * from groupmap";
@@ -420,57 +191,5 @@ public class OutConn {
         }finally {
             return groupmap;
         }
-    }
-    public static String tljinfo(){
-        String message = "";
-        String sql = "select * from history";
-        String sql1 = "select * from client";
-        int wordnum = 0;
-        double time = 0;
-        int num = 0;
-        int datenum = 0;
-        int n = 0;
-        int people = 0;
-        int year;
-        int month;
-        int day;
-        int hour;
-        int minte;
-        int second;
-        int onlinenum = 0;
-        try{
-            Connection con = Conn.getConnection();
-            ResultSet rs = Conn.getStmtSet(con,sql);
-            while(rs.next()){
-                wordnum += rs.getInt("number");
-                time += rs.getDouble("time");
-                n++;
-            }
-            rs = Conn.getStmtSet(con,sql1);
-            while(rs.next()){
-                num += rs.getInt("num");
-                datenum += rs.getInt("datenum");
-                if(rs.getInt("online")==1) {
-                    onlinenum++;
-                }
-                people++;
-            }
-            year = (int)time/(60*60*24*30*12);
-            month = ((int)time/(60*60*24*30))%12;
-            day = ((int)time/(60*60*24))%30;
-            hour = ((int)time/(60*60))%60;
-            minte = ((int)time/60)%60;
-            second = ((int)time)%60;
-            message = "拖拉机详情：\n注册有"+people+"个账号" +
-                    "\n现在线人数：" + onlinenum +
-                    "\n跟打器跟打总字数：" + num +
-                    "\n跟打器今日跟打总字数：" + datenum +
-                    "\n全体平均速度：" + String.format("%.2f",(wordnum/time)*60) +
-                    "\n全体共跟打次数：" + n +
-                    "\n全体在跟打上累计的有效时间：" + String.format("%.2f",time) + "秒"+
-                    "\n换算时间："+year+"年"+month+"月"+day+"天"+hour+"时"+minte+"分"+second+"秒";
-            con.close();
-        }catch (Exception e){e.printStackTrace();}
-        return message;
     }
 }

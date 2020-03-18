@@ -3,6 +3,7 @@ package com.jdragon.tljrobot.robot.typing;
 import cc.moecraft.icq.sender.IcqHttpApi;
 import cc.moecraft.icq.sender.message.components.ComponentImage;
 import com.jdragon.tljrobot.robot.club.robot;
+import com.jdragon.tljrobot.tljutils.DateUtil;
 
 import java.util.Calendar;
 
@@ -22,14 +23,14 @@ public class Automatic_Inclusion extends Thread {
                     }
 
                     IcqHttpApi icqHttpApi = robot.getInstance().getAccountManager().getNonAccountSpecifiedApi();
-                    String path = com.jdragon.tljrobot.robot.newTyping.RobotGroupClient.resultUnionJson(false);
+                    String path = com.jdragon.tljrobot.robot.newTyping.RobotGroupClient.resultUnionJson(DateUtil.now(),false);
                     if(path.equals("无该天赛文成绩")) {
                         icqHttpApi.sendGroupMsg(robot.tljGroupNum,path);
                     } else {
                         icqHttpApi.sendGroupMsg(robot.tljGroupNum,new ComponentImage(path).toString());
                     }
 
-                    path = com.jdragon.tljrobot.robot.newTyping.RobotGroupClient.resultTljJson();
+                    path = com.jdragon.tljrobot.robot.newTyping.RobotGroupClient.resultTljJson(DateUtil.now());
                     if(path.equals("无该天赛文成绩")) {
                         icqHttpApi.sendGroupMsg(robot.tljGroupNum,path);
                     } else {

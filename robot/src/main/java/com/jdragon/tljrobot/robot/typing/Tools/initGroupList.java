@@ -18,7 +18,7 @@ public class initGroupList {
     public static ArrayList<Long> adminList;
     public static void init(IcqHttpApi httpApi){
         QQlist = new HashMap<>();
-        GroupMemberCardMap= new HashMap<Long, Map<Long, String>>();
+        GroupMemberCardMap= new HashMap<>();
         QQDomap = new HashMap<>();
         QQGroupNameMap = new HashMap<>();
         adminList = new ArrayList<>();

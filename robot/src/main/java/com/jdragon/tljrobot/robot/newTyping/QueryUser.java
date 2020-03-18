@@ -46,7 +46,7 @@ public class QueryUser extends IcqListener {
                 int hour = ((int)time/(60*60))%60;
                 int minute = ((int)time/60)%60;
                 int second = ((int)time)%60;
-                eventGroupMessage.respond("拖拉机详情：\n注册有"+userNum+"个账号" +
+                eventGroupMessage.respond("长流详情：\n注册有"+userNum+"个账号" +
                         "\n现在线人数：" + onlineNum +
                         "\n跟打器跟打总字数：" + userTypeNum + " 对：" +userRightNum +" 错："+userMisNum +
                         "\n跟打器今日跟打总字数：" + userDateNum +

@@ -5,6 +5,7 @@ import com.jdragon.tljrobot.tlj.pojo.Article;
 import com.jdragon.tljrobot.tlj.pojo.RobotHistory;
 import com.jdragon.tljrobot.tlj.pojo.UnionMatch;
 import com.jdragon.tljrobot.tlj.service.RobotService;
+import com.jdragon.tljrobot.tljutils.DateUtil;
 import com.jdragon.tljrobot.tljutils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -41,6 +42,9 @@ public class UnionMatchController {
     @PostMapping("/getUnionMatch/{date}")
     @ApiOperation("根据日期获取联赛赛文")
     public Result getUnionMatch(@PathVariable Date date){
+        if(date.after(DateUtil.now())){
+            return Result.error("还没发布呢，不能获取今天之后的赛文哦");
+        }
         UnionMatch unionMatch = unionMatchMapper.selectUnionMatchByDate(date);
         if(unionMatch!=null) {
             return Result.success("获取成功").setResult(unionMatch);
@@ -56,7 +60,7 @@ public class UnionMatchController {
         if(robotHistoryList.size()!=0) {
             return Result.success("获取成功").setResult(robotHistoryList);
         } else {
-            return Result.success("今天尚未有人提交成绩");
+            return Result.success(date+"尚未有人提交成绩");
         }
     }
     @PostMapping("/getUnionFirstAchRank/{date}")
@@ -66,7 +70,7 @@ public class UnionMatchController {
         if(robotHistoryList.size()!=0) {
             return Result.success("获取成功").setResult(robotHistoryList);
         } else {
-            return Result.success("今天尚未有人提交成绩");
+            return Result.success(date+"尚未有人提交成绩");
         }
     }
     /**

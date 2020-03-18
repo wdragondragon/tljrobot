@@ -81,22 +81,6 @@ public class RobotGroupClient extends IcqListener {
             event.respond("标点顶点屏理论码长："+ RegexText.FourOutFiveIn(betterTyping.getDingKeylength())+" 总键数"+betterTyping.getDingalllength()
                     +"\n"+new ComponentImage(Createimg.drawTipImg(betterTyping.getSubscriptInstances())));
         }
-//        else if(message.contains("？")&&betterTypingHashMap.containsKey(message.substring(0,message.indexOf("？")))){
-//            BetterTyping betterTyping = betterTypingHashMap.get(message.substring(0,message.indexOf("？")));
-//            betterTyping.changecolortip(message.substring(message.indexOf("？")+1));
-//            betterTyping.compalllength();
-//            event.respond(message.substring(0,message.indexOf("？"))+" 标点顶点屏理论码长："+ RegexText.FourOutFiveIn(betterTyping.getDingKeylength())+" 总键数："+betterTyping.getDingalllength()
-//                    +"\n"+new ComponentImage(Createimg.drawTipImg(betterTyping.getSubscriptInstances())));
-//        }else if(message.equals("#更新词库")){
-//            loadCodeFile();
-//        }else if(message.equals("#词库列表")){
-//            List<String> codeNameList = CodeFilesName.getCodeFilesName();
-//            StringBuffer stringBuffer = new StringBuffer();
-//            for(String codeName : codeNameList)
-//                stringBuffer.append(codeName+"\n");
-//            event.respond(stringBuffer.toString());
-//        }
-//        BetterTyping.setSubscriptInstanceNull();
     }
     @EventHandler
     public void CarryPrivate(EventPrivateMessage event){
@@ -156,14 +140,6 @@ public class RobotGroupClient extends IcqListener {
             e.printStackTrace();
         }
     }
-//    public void loadCodeFile(){
-//        List<String> codeNameList = CodeFilesName.getCodeFilesName();
-//
-//        //最佳编码码表加载
-//        for(String codeName : codeNameList){
-//            betterTypingHashMap.put(codeName,new BetterTyping(codeName));
-//        }
-//    }
     public void grouphistory(EventGroupMessage event){
         String message = event.getMessage();
         long groupid = event.getGroupId();
@@ -234,7 +210,6 @@ public class RobotGroupClient extends IcqListener {
                 event.getGroup().refreshInfo();
                 event.getBot().getAccountManager().refreshCache();
                 initGroupList.init(event.getHttpApi());
-//                event.respond("刷新成功，你现在的群名片为"+event.getGroupSender().getInfo().getCard());
                 event.respond("刷新成功，你现在的群名片为"+event.getHttpApi().getGroupMemberInfo(event.getGroupId(),id).getData().getCard());
                 respondSign = true;
             }
@@ -257,7 +232,6 @@ public class RobotGroupClient extends IcqListener {
                 if(GroupID!=726064238L)
                     InConn.AddRobotHistory(SendID, GroupID, Grade);
                 InConn.addMaxComMath(SendID, GroupID, Grade);
-//                event.getHttpApi().sendPrivateMsg(1061917196L, message);
                 respondSign = true;
             }else if(RegexText.returnduan(event.getMessage())==1&&chanllgelist.containsKey(SendID)){
                 System.out.println("挑战段");

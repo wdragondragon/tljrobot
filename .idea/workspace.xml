@@ -2,21 +2,43 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="client:jar" />
+      <artifact name="robot:jar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="560566ca-4c25-4104-974e-54a248fc5e69" name="Default Changelist" comment="v2.24 1、修复载文后发文标题错误。2、尝试修复词提bug（无法复现修改了逻辑自己去探究修好了没）。">
-      <change afterPath="$PROJECT_DIR$/文章/文章类/跟打进度我的文章.txt" afterDir="false" />
+    <list default="true" id="560566ca-4c25-4104-974e-54a248fc5e69" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/test/jdk8Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/ArticleTreeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/listener/common/ArticleTreeListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/client/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/FinalConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/FinalConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/HttpAddr.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/HttpAddr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/LocalConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/LocalConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/VersionConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/VersionConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/test/ClimbNews.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/test/ClimbNews.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/component/JmenuComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/component/JmenuComponent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/config/MainFraConfig$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/config/MainFraConfig$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/config/MainFraConfig$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/config/MainFraConfig$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/config/MainFraConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/config/MainFraConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/window/MainFra.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/window/MainFra.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/robot_jar/robot.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/robot_jar/robot.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/robot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/QueryUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/QueryUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/RobotGroupClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/RobotGroupClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/config/HttpAddr.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/config/HttpAddr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/DrawImg.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/DrawImg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Automatic_Inclusion.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Automatic_Inclusion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/AllUserNum.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/AllUserNum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/ComArti.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/ComArti.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/InConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/InConn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/OutConn.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/ConDatabase/OutConn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/RobotGroupClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/RobotGroupClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/Createimg.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/Createimg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/SortMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/SortMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/initGroupList.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/Tools/initGroupList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/typing/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/compShortCode/BetterTyping.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/compShortCode/BetterTyping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/TljMatchInRobotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/TljMatchInRobotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/UnionMatchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/UnionMatchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/public/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/public/footer.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +108,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/main/resourese" />
+    <property name="last_opened_file_path" value="$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot/2.1.7.RELEASE/spring-boot-2.1.7.RELEASE.jar!/" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -100,18 +122,18 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.1969532" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\static\js" />
-      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\static\fonts" />
-      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\static\css" />
-      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\static" />
-      <recent name="C:\Users\10619\IdeaProjects\tljrobot\robot\src\main" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.jdragon.tljrobot.tlj" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\images" />
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\client\lib" />
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\client" />
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj" />
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.jdragon.tljrobot.client.entry" />
@@ -120,12 +142,12 @@
       <recent name="com.jdragon.tljrobot.client.utils.common" />
       <recent name="com.jdragon.tljrobot.client.listener.common" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\10619\IdeaProjects\tljrobot\images" />
-      <recent name="C:\Users\10619\IdeaProjects\tljrobot\client\lib" />
-      <recent name="C:\Users\10619\IdeaProjects\tljrobot\client" />
-      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj" />
-      <recent name="C:\Users\10619\IdeaProjects\tljrobot" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\static\js" />
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\static\fonts" />
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\static\css" />
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\tlj\src\main\resources\static" />
+      <recent name="C:\Users\10619\IdeaProjects\tljrobot\robot\src\main" />
     </key>
   </component>
   <component name="RestServicesNavigator">
@@ -142,7 +164,7 @@
       <select />
     </treeState>
   </component>
-  <component name="RunManager" selected="Application.Application">
+  <component name="RunManager" selected="JUnit.test.test">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.Application" />
       <module name="client" />
@@ -169,38 +191,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JTextPaneTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.test.swing.JTextPaneTest" />
+    <configuration name="jdk8Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.test.jdk8Test" />
       <module name="client" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.jdragon.tljrobot.client.test.swing.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JpaneText (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.test.swing.JpaneText" />
-      <module name="client" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.jdragon.tljrobot.client.test.swing.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JpaneText" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.client.test.swing.JpaneText" />
-      <module name="client" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.jdragon.tljrobot.client.test.swing.*" />
+          <option name="PATTERN" value="com.jdragon.tljrobot.client.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -224,6 +220,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="robot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jdragon.tljrobot.robot.typing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.jdragon.tljrobot.robot.typing" />
+      <option name="MAIN_CLASS_NAME" value="com.jdragon.tljrobot.robot.typing.test" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TljApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="tlj" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.jdragon.tljrobot.tlj.TljApplication" />
@@ -232,21 +244,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.JpaneText" />
       <item itemvalue="Application.Application" />
-      <item itemvalue="Application.JTextPaneTest" />
-      <item itemvalue="Application.JpaneText (1)" />
       <item itemvalue="Application.CodeLength" />
+      <item itemvalue="Application.jdk8Test" />
       <item itemvalue="JUnit.TypingListener.text" />
       <item itemvalue="Spring Boot.TljApplication" />
+      <item itemvalue="JUnit.test.test" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Application" />
+        <item itemvalue="JUnit.test.test" />
         <item itemvalue="Application.CodeLength" />
+        <item itemvalue="Application.Application" />
+        <item itemvalue="Application.jdk8Test" />
         <item itemvalue="JUnit.TypingListener.text" />
-        <item itemvalue="Application.JpaneText (1)" />
-        <item itemvalue="Application.JTextPaneTest" />
       </list>
     </recent_temporary>
   </component>
@@ -358,7 +369,20 @@
       <workItem from="1583453944541" duration="3519000" />
       <workItem from="1583488204143" duration="11012000" />
       <workItem from="1583562950190" duration="9467000" />
-      <workItem from="1583735835685" duration="4178000" />
+      <workItem from="1583735835685" duration="5067000" />
+      <workItem from="1583829326026" duration="205000" />
+      <workItem from="1583834099641" duration="1594000" />
+      <workItem from="1583909724605" duration="1107000" />
+      <workItem from="1583914625841" duration="635000" />
+      <workItem from="1583997860795" duration="3602000" />
+      <workItem from="1584012541067" duration="2720000" />
+      <workItem from="1584062190985" duration="11873000" />
+      <workItem from="1584101902316" duration="11999000" />
+      <workItem from="1584197295562" duration="618000" />
+      <workItem from="1584248594567" duration="9581000" />
+      <workItem from="1584279328724" duration="2527000" />
+      <workItem from="1584333108624" duration="10854000" />
+      <workItem from="1584505594709" duration="4239000" />
     </task>
     <task id="LOCAL-00001" summary="用直接跳转页面替换ajax交互嵌入">
       <created>1577584125492</created>
@@ -675,7 +699,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583658796298</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="v2.25 1、修复跟打进度保存的错误。">
+      <created>1583767754054</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1583767754054</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -683,7 +714,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="v2.07 增加成绩可选择性发送某些参数，可设置输入法与个签，在设置中添加分类选项卡。" />
     <MESSAGE value="v2.08 1、修复听打模式跟打框不去空情况。2、修复听打模式加载录音后前3秒切换模式，录音还继续播放。" />
     <MESSAGE value="改动机器人：1、修复联赛成绩和长流成绩无法定时发送到长流群中。2、添加下载地址和bug提交区的关键字呼出。3、更改了部分帮助内容。" />
     <MESSAGE value="改动机器人：增设联赛投稿" />
@@ -708,7 +738,8 @@
     <MESSAGE value="v2.22 1、增加窗体设置显示边框。2、自定义选重键，解决数字为码元的词库词提问题。3、取消抓取间接钩子（移除全局F3完善后回归）。4、解决登录时网页或跟打器其中一端退出后另一端也退出登录导致另一方需登录操作无法完成。" />
     <MESSAGE value="v2.23 1、修复在有边框模式下，保存窗口大小失效。2、修复在发文过程中可载文导致的发文标志变更。" />
     <MESSAGE value="v2.24 1、修复载文后发文标题错误。2、尝试修复词提bug（无法复现修改了逻辑自己去探究修好了没）。" />
-    <option name="LAST_COMMIT_MESSAGE" value="v2.24 1、修复载文后发文标题错误。2、尝试修复词提bug（无法复现修改了逻辑自己去探究修好了没）。" />
+    <MESSAGE value="v2.25 1、修复跟打进度保存的错误。" />
+    <option name="LAST_COMMIT_MESSAGE" value="v2.25 1、修复跟打进度保存的错误。" />
   </component>
   <component name="WindowStateProjectService">
     <state x="412" y="120" key="#Auto_Import" timestamp="1578823323325">
@@ -734,10 +765,11 @@
       <screen x="2560" y="252" width="1920" height="1050" />
     </state>
     <state x="3250" y="532" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578710429391" />
-    <state x="350" y="290" width="795" height="290" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1578802194296">
-      <screen x="62" y="0" width="1218" height="800" />
+    <state x="791" y="462" width="931" height="386" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1584094029301">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="350" y="290" width="795" height="290" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/62.0.1218.800@62.0.1218.800" timestamp="1578802194296" />
+    <state x="791" y="462" width="931" height="386" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/75.0.1845.1080@75.0.1845.1080" timestamp="1584094029301" />
     <state x="161" y="76" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579351630167">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
@@ -749,13 +781,13 @@
     <state x="3244" y="580" key="#com.intellij.fileTypes.FileTypeChooser/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578639549063" />
     <state x="724" y="337" key="#com.intellij.fileTypes.FileTypeChooser/62.0.1858.1080@62.0.1858.1080" timestamp="1580795169690" />
     <state x="732" y="337" key="#com.intellij.fileTypes.FileTypeChooser/75.0.1845.1080@75.0.1845.1080" timestamp="1581657119410" />
-    <state x="810" y="242" key="#com.intellij.ide.util.MemberChooser" timestamp="1583456524398">
+    <state x="810" y="242" key="#com.intellij.ide.util.MemberChooser" timestamp="1584091278258">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="3325" y="487" key="#com.intellij.ide.util.MemberChooser/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578710435732" />
     <state x="547" y="179" key="#com.intellij.ide.util.MemberChooser/62.0.1218.800@62.0.1218.800" timestamp="1579331808389" />
     <state x="802" y="242" key="#com.intellij.ide.util.MemberChooser/62.0.1858.1080@62.0.1858.1080" timestamp="1581420081714" />
-    <state x="810" y="242" key="#com.intellij.ide.util.MemberChooser/75.0.1845.1080@75.0.1845.1080" timestamp="1583456524398" />
+    <state x="810" y="242" key="#com.intellij.ide.util.MemberChooser/75.0.1845.1080@75.0.1845.1080" timestamp="1584091278258" />
     <state x="593" y="259" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1583078935145">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
@@ -781,6 +813,10 @@
     </state>
     <state x="736" y="399" width="525" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/62.0.1858.1080@62.0.1858.1080" timestamp="1580808127543" />
     <state x="744" y="399" width="491" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/75.0.1845.1080@75.0.1845.1080" timestamp="1581062720258" />
+    <state x="774" y="373" key="#com.intellij.refactoring.move.moveInner.MoveInnerDialog" timestamp="1584066617975">
+      <screen x="75" y="0" width="1845" height="1080" />
+    </state>
+    <state x="774" y="373" key="#com.intellij.refactoring.move.moveInner.MoveInnerDialog/75.0.1845.1080@75.0.1845.1080" timestamp="1584066617975" />
     <state x="515" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581331270741">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
@@ -800,25 +836,25 @@
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="420" y="249" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/62.0.1218.800@62.0.1218.800" timestamp="1577503398719" />
-    <state x="75" y="165" width="1460" height="776" key="CommitChangelistDialog2" timestamp="1583767422277">
+    <state x="466" y="194" width="1460" height="776" key="CommitChangelistDialog2" timestamp="1584509987448">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="62" y="0" key="CommitChangelistDialog2/62.0.1218.800@62.0.1218.800" timestamp="1579188400057" />
     <state x="373" y="96" width="1460" height="776" key="CommitChangelistDialog2/62.0.1858.1080@62.0.1858.1080" timestamp="1581529680468" />
-    <state x="75" y="165" key="CommitChangelistDialog2/75.0.1845.1080@75.0.1845.1080" timestamp="1583767422277" />
+    <state x="466" y="194" key="CommitChangelistDialog2/75.0.1845.1080@75.0.1845.1080" timestamp="1584509987448" />
     <state x="155" y="93" width="1031" height="613" key="DiffContextDialog" timestamp="1578846678181">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="155" y="93" width="1031" height="613" key="DiffContextDialog/62.0.1218.800@62.0.1218.800" timestamp="1578846678181" />
-    <state x="133" y="207" key="FileChooserDialogImpl" timestamp="1583078941093">
+    <state x="133" y="207" key="FileChooserDialogImpl" timestamp="1584101570938">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="2620" y="453" key="FileChooserDialogImpl/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578666889282" />
     <state x="100" y="153" key="FileChooserDialogImpl/62.0.1218.800@62.0.1218.800" timestamp="1579247042726" />
     <state x="120" y="207" key="FileChooserDialogImpl/62.0.1858.1080@62.0.1858.1080" timestamp="1580795401865" />
     <state x="113" y="153" key="FileChooserDialogImpl/75.0.1205.800@75.0.1205.800" timestamp="1583066317090" />
-    <state x="133" y="207" key="FileChooserDialogImpl/75.0.1845.1080@75.0.1845.1080" timestamp="1583078941093" />
-    <state width="1802" height="208" key="GridCell.Tab.0.bottom" timestamp="1583767666619">
+    <state x="133" y="207" key="FileChooserDialogImpl/75.0.1845.1080@75.0.1845.1080" timestamp="1584101570938" />
+    <state width="1802" height="208" key="GridCell.Tab.0.bottom" timestamp="1584509987513">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.bottom/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
@@ -826,8 +862,8 @@
     <state width="1176" height="132" key="GridCell.Tab.0.bottom/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1340" height="302" key="GridCell.Tab.0.bottom/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
     <state width="1163" height="208" key="GridCell.Tab.0.bottom/75.0.1205.800@75.0.1205.800" timestamp="1583563803558" />
-    <state width="1802" height="208" key="GridCell.Tab.0.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1583767666619" />
-    <state width="1802" height="208" key="GridCell.Tab.0.center" timestamp="1583767666618">
+    <state width="1802" height="208" key="GridCell.Tab.0.bottom/75.0.1845.1080@75.0.1845.1080" timestamp="1584509987513" />
+    <state width="1802" height="208" key="GridCell.Tab.0.center" timestamp="1584509987513">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.center/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
@@ -835,8 +871,8 @@
     <state width="1176" height="132" key="GridCell.Tab.0.center/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1340" height="302" key="GridCell.Tab.0.center/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
     <state width="1163" height="208" key="GridCell.Tab.0.center/75.0.1205.800@75.0.1205.800" timestamp="1583563803558" />
-    <state width="1802" height="208" key="GridCell.Tab.0.center/75.0.1845.1080@75.0.1845.1080" timestamp="1583767666618" />
-    <state width="1802" height="208" key="GridCell.Tab.0.left" timestamp="1583767666617">
+    <state width="1802" height="208" key="GridCell.Tab.0.center/75.0.1845.1080@75.0.1845.1080" timestamp="1584509987513" />
+    <state width="1802" height="208" key="GridCell.Tab.0.left" timestamp="1584509987512">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.left/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
@@ -844,8 +880,8 @@
     <state width="1176" height="132" key="GridCell.Tab.0.left/62.0.1218.800@62.0.1218.800" timestamp="1580479234951" />
     <state width="1340" height="302" key="GridCell.Tab.0.left/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490070" />
     <state width="1163" height="208" key="GridCell.Tab.0.left/75.0.1205.800@75.0.1205.800" timestamp="1583563803558" />
-    <state width="1802" height="208" key="GridCell.Tab.0.left/75.0.1845.1080@75.0.1845.1080" timestamp="1583767666617" />
-    <state width="1802" height="208" key="GridCell.Tab.0.right" timestamp="1583767666618">
+    <state width="1802" height="208" key="GridCell.Tab.0.left/75.0.1845.1080@75.0.1845.1080" timestamp="1584509987512" />
+    <state width="1802" height="208" key="GridCell.Tab.0.right" timestamp="1584509987513">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="1877" height="267" key="GridCell.Tab.0.right/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578708252677" />
@@ -853,7 +889,7 @@
     <state width="1176" height="132" key="GridCell.Tab.0.right/62.0.1218.800@62.0.1218.800" timestamp="1580479234952" />
     <state width="1340" height="302" key="GridCell.Tab.0.right/62.0.1858.1080@62.0.1858.1080" timestamp="1581623490071" />
     <state width="1163" height="208" key="GridCell.Tab.0.right/75.0.1205.800@75.0.1205.800" timestamp="1583563803558" />
-    <state width="1802" height="208" key="GridCell.Tab.0.right/75.0.1845.1080@75.0.1845.1080" timestamp="1583767666618" />
+    <state width="1802" height="208" key="GridCell.Tab.0.right/75.0.1845.1080@75.0.1845.1080" timestamp="1584509987513" />
     <state width="1802" height="144" key="GridCell.Tab.1.bottom" timestamp="1583683370999">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
@@ -924,30 +960,30 @@
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="637" y="238" key="NewModule_or_Project.wizard/75.0.1845.1080@75.0.1845.1080" timestamp="1581078251700" />
-    <state x="457" y="295" width="912" height="706" key="SettingsEditor" timestamp="1583375952372">
+    <state x="761" y="306" width="912" height="706" key="SettingsEditor" timestamp="1584110442301">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="2740" y="312" key="SettingsEditor/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578631290323" />
     <state x="62" y="83" width="1218" height="713" key="SettingsEditor/62.0.1218.800@62.0.1218.800" timestamp="1578971209485" />
     <state x="62" y="112" key="SettingsEditor/62.0.1858.1080@62.0.1858.1080" timestamp="1579451436454" />
     <state x="75" y="83" width="912" height="706" key="SettingsEditor/75.0.1205.800@75.0.1205.800" timestamp="1582027189370" />
-    <state x="457" y="295" key="SettingsEditor/75.0.1845.1080@75.0.1845.1080" timestamp="1583375952372" />
+    <state x="761" y="306" key="SettingsEditor/75.0.1845.1080@75.0.1845.1080" timestamp="1584110442301" />
     <state width="498" height="456" key="SwitcherDM" timestamp="1582884256058">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/62.0.1858.1080@62.0.1858.1080" timestamp="1579346721229" />
     <state width="498" height="456" key="SwitcherDM/75.0.1845.1080@75.0.1845.1080" timestamp="1582884256058" />
-    <state x="381" y="185" key="Vcs.Push.Dialog.v2" timestamp="1583658815816">
+    <state x="381" y="185" key="Vcs.Push.Dialog.v2" timestamp="1583767983881">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="264" y="137" key="Vcs.Push.Dialog.v2/62.0.1218.800@62.0.1218.800" timestamp="1578847066652" />
     <state x="370" y="185" key="Vcs.Push.Dialog.v2/62.0.1858.1080@62.0.1858.1080" timestamp="1581529696427" />
-    <state x="381" y="185" key="Vcs.Push.Dialog.v2/75.0.1845.1080@75.0.1845.1080" timestamp="1583658815816" />
+    <state x="381" y="185" key="Vcs.Push.Dialog.v2/75.0.1845.1080@75.0.1845.1080" timestamp="1583767983881" />
     <state x="473" y="178" key="chooseDestDirectoryDialog" timestamp="1579055606183">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="473" y="178" key="chooseDestDirectoryDialog/62.0.1218.800@62.0.1218.800" timestamp="1579055606183" />
-    <state x="539" y="309" key="com.intellij.ide.util.TipDialog" timestamp="1583735844811">
+    <state x="539" y="309" key="com.intellij.ide.util.TipDialog" timestamp="1584505594233">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="368" y="229" key="com.intellij.ide.util.TipDialog/62.0.1218.800/2560.252.1080.1890@62.0.1218.800" timestamp="1578230305634" />
@@ -955,7 +991,7 @@
     <state x="368" y="229" key="com.intellij.ide.util.TipDialog/62.0.1218.800@62.0.1218.800" timestamp="1579249325128" />
     <state x="529" y="309" key="com.intellij.ide.util.TipDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1581481856787" />
     <state x="378" y="229" key="com.intellij.ide.util.TipDialog/75.0.1205.800@75.0.1205.800" timestamp="1583562953316" />
-    <state x="539" y="309" key="com.intellij.ide.util.TipDialog/75.0.1845.1080@75.0.1845.1080" timestamp="1583735844811" />
+    <state x="539" y="309" key="com.intellij.ide.util.TipDialog/75.0.1845.1080@75.0.1845.1080" timestamp="1584505594233" />
     <state x="783" y="457" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579430982812">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
@@ -968,50 +1004,42 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="721" y="305" key="extract.method.dialog/62.0.1858.1080@62.0.1858.1080" timestamp="1580647023745" />
-    <state x="620" y="0" width="1175" height="1080" key="find.popup" timestamp="1583495184703">
+    <state x="745" y="0" width="1175" height="1080" key="find.popup" timestamp="1584253867722">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="3127" y="327" width="786" height="900" key="find.popup/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578712106387" />
     <state x="422" y="0" width="775" height="800" key="find.popup/62.0.1218.800@62.0.1218.800" timestamp="1579232317735" />
     <state x="611" y="0" width="1183" height="1080" key="find.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1580825462570" />
-    <state x="620" y="0" width="1175" height="1080" key="find.popup/75.0.1845.1080@75.0.1845.1080" timestamp="1583495184703" />
+    <state x="745" y="0" width="1175" height="1080" key="find.popup/75.0.1845.1080@75.0.1845.1080" timestamp="1584253867722" />
     <state x="682" y="331" key="git4idea.merge.GitPullDialog" timestamp="1581344178013">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="682" y="331" key="git4idea.merge.GitPullDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1581344178013" />
-    <state x="372" y="150" key="new project wizard" timestamp="1581078189518">
+    <state x="372" y="150" key="new project wizard" timestamp="1584188037519">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="61" y="17" key="new project wizard/62.0.1218.800@62.0.1218.800" timestamp="1577632040170" />
-    <state x="372" y="150" key="new project wizard/75.0.1845.1080@75.0.1845.1080" timestamp="1581078189518" />
+    <state x="372" y="150" key="new project wizard/75.0.1845.1080@75.0.1845.1080" timestamp="1584188037519" />
     <state x="539" y="38" key="refactoring.ChangeSignatureDialog" timestamp="1580916926949">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="375" y="28" key="refactoring.ChangeSignatureDialog/62.0.1218.800@62.0.1218.800" timestamp="1579098782225" />
     <state x="539" y="38" key="refactoring.ChangeSignatureDialog/62.0.1858.1080@62.0.1858.1080" timestamp="1580916926949" />
-    <state x="495" y="258" width="672" height="677" key="run.anything.popup" timestamp="1582441891496">
+    <state x="495" y="258" width="672" height="677" key="run.anything.popup" timestamp="1584103095523">
       <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="2984" y="492" key="run.anything.popup/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578631462186" />
     <state x="339" y="191" key="run.anything.popup/62.0.1218.800@62.0.1218.800" timestamp="1579170386957" />
     <state x="485" y="258" key="run.anything.popup/62.0.1858.1080@62.0.1858.1080" timestamp="1580889507323" />
-    <state x="495" y="258" width="672" height="677" key="run.anything.popup/75.0.1845.1080@75.0.1845.1080" timestamp="1582441891496" />
-    <state x="339" y="127" width="672" height="678" key="search.everywhere.popup" timestamp="1579252678714">
-      <screen x="62" y="0" width="1218" height="800" />
+    <state x="495" y="258" width="672" height="677" key="run.anything.popup/75.0.1845.1080@75.0.1845.1080" timestamp="1584103095523" />
+    <state x="495" y="171" width="1018" height="916" key="search.everywhere.popup" timestamp="1584261522143">
+      <screen x="75" y="0" width="1845" height="1080" />
     </state>
     <state x="2989" y="412" width="1060" height="890" key="search.everywhere.popup/62.0.1218.800/2560.252.1920.1050@2560.252.1920.1050" timestamp="1578664277157" />
     <state x="339" y="127" width="672" height="678" key="search.everywhere.popup/62.0.1218.800@62.0.1218.800" timestamp="1579252678714" />
+    <state x="495" y="171" width="1018" height="916" key="search.everywhere.popup/75.0.1845.1080@75.0.1845.1080" timestamp="1584261522143" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/online/HistoryEvent.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="sendRobotMessageDto.getGroupId()" language="JAVA" />

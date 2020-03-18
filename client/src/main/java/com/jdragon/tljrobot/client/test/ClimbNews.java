@@ -41,6 +41,7 @@ public class ClimbNews {
             }
         }
     }
+    
     @SneakyThrows
     private static NewEntry getNewEntryByParentHref(HrefEntry hrefEntry){
         java.net.URL url = new URL(hrefEntry.getUrl());
