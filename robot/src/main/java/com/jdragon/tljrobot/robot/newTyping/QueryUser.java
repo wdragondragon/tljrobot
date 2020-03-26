@@ -64,6 +64,8 @@ public class QueryUser extends IcqListener {
             eventGroupMessage.respond(queryTljTypeInfoListByModel("1"));
         }else if(message.equals("#长流生稿均速排名")){
             eventGroupMessage.respond(queryTljTypeInfoListByModel("2"));
+        }else if(message.equals("#查询")){
+            eventGroupMessage.respond(queryRobotInfoByQQ(eventGroupMessage.getSenderId()));
         }
         String[] s = message.split(" ");
         if(s.length==2){
@@ -73,24 +75,7 @@ public class QueryUser extends IcqListener {
                     if (m.find()) {
                         System.out.println(m.group(1));
                         long queryQq = Long.parseLong(m.group(1));
-                        JSONObject jsonObject = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.QUERY_GROUP_AVR_TYPE_INFO, String.valueOf(queryQq)));
-                        String retMessage = jsonObject.getString("message");
-                        if (retMessage.equals("获取成功")) {
-                            JSONObject result = jsonObject.getJSONObject("result");
-                            double keyLength = result.getDoubleValue("keyLength");
-                            double keySpeed = result.getDoubleValue("keySpeed");
-                            double speed = result.getDoubleValue("speed");
-                            int num = result.getIntValue("num");
-                            int chatNum = result.getIntValue("chatNum");
-                            eventGroupMessage.respond("Q号：" + queryQq +
-                                    "\n上屏赛文成绩次数：" + num +
-                                    "\n平均速度：" + RegexText.FourOutFiveIn(speed) +
-                                    " 平均击键：" + RegexText.FourOutFiveIn(keySpeed) +
-                                    " 平均码长：" + RegexText.FourOutFiveIn(keyLength) +
-                                    "\n水群字数：" + chatNum);
-                        } else {
-                            eventGroupMessage.respond(retMessage);
-                        }
+                        eventGroupMessage.respond(queryRobotInfoByQQ(queryQq));
                     }
                     break;
                 }
@@ -130,7 +115,26 @@ public class QueryUser extends IcqListener {
             }
         }
     }
-
+    private String queryRobotInfoByQQ(Long queryQq){
+        JSONObject jsonObject = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.QUERY_GROUP_AVR_TYPE_INFO, String.valueOf(queryQq)));
+        String retMessage = jsonObject.getString("message");
+        if (retMessage.equals("获取成功")) {
+            JSONObject result = jsonObject.getJSONObject("result");
+            double keyLength = result.getDoubleValue("keyLength");
+            double keySpeed = result.getDoubleValue("keySpeed");
+            double speed = result.getDoubleValue("speed");
+            int num = result.getIntValue("num");
+            int chatNum = result.getIntValue("chatNum");
+            return "Q号：" + queryQq +
+                    "\n上屏赛文成绩次数：" + num +
+                    "\n平均速度：" + RegexText.FourOutFiveIn(speed) +
+                    " 平均击键：" + RegexText.FourOutFiveIn(keySpeed) +
+                    " 平均码长：" + RegexText.FourOutFiveIn(keyLength) +
+                    "\n水群字数：" + chatNum;
+        } else {
+            return retMessage;
+        }
+    }
     /**
      *
      * @param model 获取的模式、全部(0)、所有赛文(1)、生稿赛(2)

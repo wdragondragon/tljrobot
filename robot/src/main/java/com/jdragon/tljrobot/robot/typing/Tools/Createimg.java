@@ -29,7 +29,7 @@ public class Createimg {
             for (List<String> strings : typeV) {
                 maxfont = Math.max(strings.get(0).getBytes().length, maxfont);
                 if(strings.get(0).contains("%")) {
-                    String s[] = strings.get(0).split("%");
+                    String[] s = strings.get(0).split("%");
                     QQdo.put(s[0], s[1]);
                     strings.set(0,s[0]);
                 }
@@ -132,7 +132,7 @@ public class Createimg {
             if (typeV != null && typeV.size() > 0) {
                 String[] headCells = headers.get(i);
                 for (int m = 0; m < headCells.length; m++) {
-                    strWidth = graphics.getFontMetrics().stringWidth(headCells[m].toString());
+                    strWidth = graphics.getFontMetrics().stringWidth(headCells[m]);
                     rightLine = getRightMargin(m,startWidth, namewidth,otherwidth,imageWidth,totalcol);
                     if(m==0)
                         rightLine = rightLine + (numwidth-strWidth)/2;
@@ -140,7 +140,7 @@ public class Createimg {
                         rightLine = rightLine + (namewidth-strWidth)/2;
                     else
                         rightLine = rightLine + (otherwidth-strWidth)/2;
-                    graphics.drawString(headCells[m].toString(), rightLine,
+                    graphics.drawString(headCells[m], rightLine,
                             startHeight + rowheight * startH - 10);
                 }
                 startH+=2+typeV.size();
@@ -247,7 +247,7 @@ public class Createimg {
         List<List<String>> contentArray1 = new ArrayList<>();
 
         for(int i = 0;i<10;i++){
-            contentArray1.add(Arrays.asList(new String[]{"无聊就是个弟弟","300","5.00","1.00","1234","1234","1234","100"}));
+            contentArray1.add(Arrays.asList("无聊就是个弟弟","300","5.00","1.00","1234","1234","1234","100"));
         }
 //        contentArray1.add(content1);
 //        contentArray1.add(content2);

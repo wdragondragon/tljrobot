@@ -6,13 +6,15 @@ import cc.moecraft.icq.PicqConfig;
 import com.jdragon.tljrobot.robot.EntoZh.Translate;
 import com.jdragon.tljrobot.robot.HelpAndTips;
 import com.jdragon.tljrobot.robot.game.OneATwoB.O2TCarry;
+import com.jdragon.tljrobot.robot.game.draw.Draw;
 import com.jdragon.tljrobot.robot.newTyping.ChatWords;
 import com.jdragon.tljrobot.robot.newTyping.QueryUser;
 import com.jdragon.tljrobot.robot.newTyping.tools.GroupCache;
 import com.jdragon.tljrobot.robot.typing.CommandVersion;
-//import com.jdragon.tljrobot.robot.typing.ConDatabase.AllUserNum;
 import com.jdragon.tljrobot.robot.typing.ConDatabase.HeartCon;
 import com.jdragon.tljrobot.robot.typing.RobotGroupClient;
+
+//import com.jdragon.tljrobot.robot.typing.ConDatabase.AllUserNum;
 
 //import com.jdragon.tljrobot.robot.game.P2P.PointClient;
 
@@ -57,6 +59,7 @@ public class robot
                 ,new QueryUser()
                 ,new ChatWords()
                 ,new HelpAndTips()
+                ,new Draw()
         );
         // 启用指令管理器
         // 这些字符串是指令前缀, 比如指令"!help"的前缀就是"!"

@@ -6,6 +6,7 @@ import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.TypingState;
 import com.jdragon.tljrobot.client.event.other.ListenPlayEvent;
 import com.jdragon.tljrobot.client.listener.common.TypingListener;
+import com.jdragon.tljrobot.client.utils.common.QqOperation;
 
 import javax.swing.*;
 
@@ -52,7 +53,10 @@ public class ReplayEvent {
             theoreticalCodeLengthButton().setText(String.valueOf(Article.getArticleSingleton().getShortCodeEntity().getArticleAverCodes()));
 
             TypingListener.getInstance().setOldTypeStrLength(-1);
-            typingText().requestFocusInWindow();
+        }
+        typingText().requestFocusInWindow();
+        if(LocalConfig.mouseGetArticle) {
+            QqOperation.requestFocusInWindow();
         }
     }
 }

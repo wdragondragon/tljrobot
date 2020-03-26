@@ -6,10 +6,7 @@ import com.jdragon.tljrobot.client.config.FinalConfig;
 import com.jdragon.tljrobot.client.config.HttpAddr;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
-import com.jdragon.tljrobot.client.entry.Article;
-import com.jdragon.tljrobot.client.entry.NumState;
-import com.jdragon.tljrobot.client.entry.SendRobotMessageDto;
-import com.jdragon.tljrobot.client.entry.UserState;
+import com.jdragon.tljrobot.client.entry.*;
 import com.jdragon.tljrobot.client.event.other.ListenPlayEvent;
 import com.jdragon.tljrobot.client.listener.common.TypingListener;
 import com.jdragon.tljrobot.client.utils.common.Clipboard;
@@ -27,6 +24,7 @@ import static com.jdragon.tljrobot.client.entry.TypingState.*;
 public class SendAchievementEvent {
     @SneakyThrows
     public static void start()  {
+        if(typingState)return;
         System.out.println(SwingSingleton.typingText().getText().length());
         String result;
         if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){

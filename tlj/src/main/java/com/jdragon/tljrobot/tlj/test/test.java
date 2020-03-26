@@ -44,7 +44,7 @@ public class test {
     }
     @Test
     public void mdt(){
-        System.out.println(Md5Utils.getMD5("IHLQRHXBRUUV".getBytes()));
+        System.out.println(Md5Utils.getMD5("mhs3210".getBytes()));
         String str = "21342";
         str = str.substring(0, Math.min(str.length(), 10));
         System.out.println(str);

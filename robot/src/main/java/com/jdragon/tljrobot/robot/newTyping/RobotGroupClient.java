@@ -112,7 +112,7 @@ public class RobotGroupClient extends IcqListener {
                 }else{
                     eventGroupMessage.respond(retMessage);
                 }
-            }else if("#联赛赛文".equals(params[0])){
+            }else if("#联赛".equals(params[0])){
                 eventGroupMessage.respond(getUnionArticle(date));
             }else if("#联赛成绩".equals(params[0])){
                 eventGroupMessage.respond(resultUnionJson(date,false));
@@ -163,7 +163,7 @@ public class RobotGroupClient extends IcqListener {
             String author = resultJson.getString("author");
             String title = articleJson.getString("title");
             String content = articleJson.getString("content");
-            String respond = title+" 投稿自QQ号："+author+"\n"+content+"\n-----第9999段-共"+content.length()+"字";
+            String respond = title+" 投稿自QQ号："+author+"\n"+content+"\n-----第"+((date.equals(DateUtil.now()))?"9999":"1")+"段-共"+content.length()+"字";
             return respond;
         }else{
             return retMessage;
@@ -210,9 +210,9 @@ public class RobotGroupClient extends IcqListener {
              **/
             JSONObject retJson;
             if(isFirst) {
-                retJson = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.GET_UNION_FIRST_MATCH_RANK, DateUtil.now().toString()));
+                retJson = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.GET_UNION_FIRST_MATCH_RANK, date.toString()));
             } else {
-                retJson = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.GET_UNION_MATCH_RANK, DateUtil.now().toString()));
+                retJson = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.GET_UNION_MATCH_RANK, date.toString()));
             }
             retMessage = retJson.getString("message");
             if("获取成功".equals(retMessage)){

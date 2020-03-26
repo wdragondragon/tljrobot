@@ -32,10 +32,10 @@ public class TljMatchInRobotController {
     @ApiOperation("根据日期获取跟打器赛文")
     @ResponseBody
     public Result getTljMatchDate(@PathVariable Date date){
-        if(date.after(DateUtil.now())){
+        if(date.after(DateUtil.now())||date.equals(DateUtil.now())){
             return Result.error("还没发布呢，不能获取今天之后的赛文哦");
         }
-        TljMatch tljMatch = tljMatchMapper.selectTljMatchByDate(DateUtil.now());
+        TljMatch tljMatch = tljMatchMapper.selectTljMatchByDate(date);
         if(tljMatch==null){
             return Result.success(date+"无赛文");
         }else{

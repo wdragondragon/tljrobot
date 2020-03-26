@@ -1,6 +1,7 @@
 package com.jdragon.tljrobot.client.utils.common;
 
 import com.jdragon.tljrobot.client.config.LocalConfig;
+import com.jdragon.tljrobot.client.config.LocalSystem;
 import com.jdragon.tljrobot.client.window.MainFra;
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef;
@@ -63,6 +64,22 @@ public class QqOperation {
             }
             Thread.sleep(300);
             User32.INSTANCE.SetForegroundWindow(genda);
+        }
+    }
+    public static void requestFocusInWindow(){
+        if(LocalSystem.isWindows()){
+            try {
+                Robot robot = null;
+                robot = new Robot();
+                HWND genda = User32.INSTANCE.FindWindow(null, MainFra.getInstance().getTitle());
+                WinDef.RECT rect = new WinDef.RECT();
+                User32.INSTANCE.GetWindowRect(genda,rect);
+                robot.mouseMove(rect.left+20,rect.bottom-80);
+                robot.mousePress(KeyEvent.BUTTON1_MASK);
+                robot.mouseRelease(KeyEvent.BUTTON1_MASK);
+            } catch (AWTException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
