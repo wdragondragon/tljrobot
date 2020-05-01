@@ -27,6 +27,6 @@ public class ChangeQQGroupEvent {
             }
             SwingSingleton.qQNameLabel().setText(QQWindowsName.get(i++));
             i = i % (QQWindowsName.size());
-        }catch(Exception e){ i=0;SwingSingleton.qQNameLabel().setText("获取QQ窗口错误");}
+        }catch(Exception e){ i=0;SwingSingleton.qQNameLabel().setText("获取QQ窗口错误");e.printStackTrace();}
     }
 }

@@ -72,8 +72,8 @@ public class LocalConfig {
     public static Boolean ctrlSendAchToQQ = false;
 
     public static Boolean getArticleOnNet = false;
-
     public static Boolean mouseGetArticle = true;
+    public static Boolean requestFocusInWindow = false;
 
     public static Float windowsOpacity = 1.0f;
     public static String windowsTheme = "长流默认";

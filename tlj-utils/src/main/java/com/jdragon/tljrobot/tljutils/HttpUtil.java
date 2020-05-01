@@ -21,6 +21,9 @@ import java.util.Map;
  * Create by Jdragon on 2020.01.14
  */
 public class HttpUtil {
+    private static RequestConfig requestConfig = RequestConfig.custom()
+            .setConnectTimeout(10000).setConnectionRequestTimeout(10000)
+            .setSocketTimeout(10000).build();
     public static String doPost(String url,String...params) {
         String result = "请求错误";
         // 获得Http客户端(可以理解为:你得先有一个浏览器;注意:实际上HttpClient与浏览器是不一样的)
@@ -28,8 +31,10 @@ public class HttpUtil {
         for(String param:params){
             url += "/"+param;
         }
+
         // 创建Post请求
         HttpPost httpPost = new HttpPost(url);
+        httpPost.setConfig(requestConfig);
         // 响应模型
         CloseableHttpResponse response = null;
         try {
@@ -73,7 +78,7 @@ public class HttpUtil {
         }
         // 创建Get请求
         HttpGet httpGet = new HttpGet(url);
-
+        httpGet.setConfig(requestConfig);
         // 响应模型
         CloseableHttpResponse response = null;
         try {
@@ -118,7 +123,7 @@ public class HttpUtil {
         url = url.substring(0,url.length() - 1);
         // 创建Get请求
         HttpGet httpGet = new HttpGet(url);
-
+        httpGet.setConfig(requestConfig);
         // 响应模型
         CloseableHttpResponse response = null;
         try {
@@ -178,6 +183,7 @@ public class HttpUtil {
         url = url.substring(0,url.length() - 1);
         // 创建Post请求
         HttpPost httpPost = new HttpPost(url);
+        httpPost.setConfig(requestConfig);
         // 响应模型
         CloseableHttpResponse response = null;
         try {
@@ -222,6 +228,7 @@ public class HttpUtil {
         StringEntity entity = new StringEntity(jsonString,"UTF-8");
         // 创建Post请求
         HttpPost httpPost = new HttpPost(url);
+        httpPost.setConfig(requestConfig);
         httpPost.setEntity(entity);
         httpPost.setHeader("Content-Type", "application/json;charset=utf8");
         // 响应模型
@@ -262,9 +269,7 @@ public class HttpUtil {
         String result = "请求错误";
         // 获得Http客户端(可以理解为:你得先有一个浏览器;注意:实际上HttpClient与浏览器是不一样的)
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-        RequestConfig requestConfig = RequestConfig.custom()
-                .setConnectTimeout(10000).setConnectionRequestTimeout(10000)
-                .setSocketTimeout(10000).build();
+
         for(String param:urlParams){
             url += "/"+ URLEncoder.encode(param,"utf8");
         }
@@ -278,9 +283,9 @@ public class HttpUtil {
         StringEntity entity = new StringEntity(jsonString,"UTF-8");
         // 创建Post请求
         HttpPost httpPost = new HttpPost(url);
+        httpPost.setConfig(requestConfig);
         httpPost.setEntity(entity);
         httpPost.setHeader("Content-Type", "application/json;charset=utf8");
-        httpPost.setConfig(requestConfig);
 //        Header header = new BasicHeader("Range", "bytes=" + startIndex + "-" + endIndex);
         // 响应模型
         CloseableHttpResponse response = null;

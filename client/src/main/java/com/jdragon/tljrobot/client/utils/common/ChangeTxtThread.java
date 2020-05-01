@@ -52,7 +52,7 @@ public ChangeTxtThread(String filename){
 //			LookChange look = new LookChange();
 			comp.timeStart();
 			while((str=bufferRead.readLine())!=null){
-				if(str.contains("---")) {
+				if(str.contains("---")||"".equals(str.replaceAll("\\s+",""))) {
 					continue;
 				}
 				int i = str.indexOf('#');
@@ -67,6 +67,9 @@ public ChangeTxtThread(String filename){
 					continue;
 				}
 				String[] splited = str.split("\\s+");
+				if(splited.length!=2){
+					continue;
+				}
 				length = splited[1].length();
 				temp = splited[1];
 				xuan = 2;

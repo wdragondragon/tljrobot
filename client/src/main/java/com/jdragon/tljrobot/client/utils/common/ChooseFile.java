@@ -18,9 +18,9 @@ public class ChooseFile implements ActionListener{
 	public void actionPerformed(ActionEvent e) {  
         // TODO Auto-generated method stub 
 		cizufilename = getFileName();
-		if(cizufilename==null)
-			return;
-		BetterTypingSingleton.setBetterTyping(cizufilename);
+		if(cizufilename!=null) {
+			BetterTypingSingleton.setBetterTyping(cizufilename);
+		}
 	}
 	public static String getFileName(){
 		JFileChooser jfc;

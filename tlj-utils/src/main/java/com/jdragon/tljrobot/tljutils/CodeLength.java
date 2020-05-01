@@ -8,7 +8,7 @@ public class CodeLength {
     static int strLength = 0;
     static StringBuilder strAll = new StringBuilder();
     public static void main(String[] args) throws IOException {
-        String path  = "C:\\Users\\10619\\IdeaProjects\\tljrobot";
+        String path  = "C:\\Users\\10619\\IdeaProjects\\ownPro\\tljrobot";
         folderMethod2(path);
         strLength = strAll.length();
         System.out.println("一共"+n+"个类");
@@ -25,7 +25,7 @@ public class CodeLength {
 //                        System.out.println("文件夹:" + file2.getAbsolutePath());
                         folderMethod2(file2.getAbsolutePath());
                     } else {
-                        if(file2.getAbsolutePath().contains(".java")||file2.getAbsolutePath().contains("templates")) {
+                        if(file2.getAbsolutePath().contains(".java")) {
                             int strNumTemp = 0;
                             int strLengthTemp = 0;
                             String str;

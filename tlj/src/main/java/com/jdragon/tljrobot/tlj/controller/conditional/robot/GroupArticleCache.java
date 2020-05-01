@@ -68,7 +68,7 @@ public class GroupArticleCache {
         }
     }
     private void getRobotHttpSendMessage(String message,long groupId) throws IOException {
-        String URL = "http://127.0.0.1:5700/send_group_msg?message=" + message + "&group_id="+groupId;
+        String URL = "http://xlboy.cn:5701/send_group_msg?message=" + message + "&group_id="+groupId;
         System.out.println(URL);
         java.net.URL url = new URL(URL);
         URLConnection urlcon = url.openConnection();

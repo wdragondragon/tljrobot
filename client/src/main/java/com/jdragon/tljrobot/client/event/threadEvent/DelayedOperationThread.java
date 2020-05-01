@@ -24,6 +24,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
+import static com.jdragon.tljrobot.client.component.SwingSingleton.typingText;
+
 
 /**
  * Create by Jdragon on 2020.01.13
@@ -51,6 +53,7 @@ public class DelayedOperationThread extends Thread {
                         SwingSingleton.speedButton().setText(String.format("%.2f",
                                 TypingState.getSpeed()));
                     }
+                    typingText().setEditable(false); // 设置不可打字状态
                     sleep(200);
                     TypingState.typingState = false;//跟打结束标志使DynamicSpeed中计算停止
                     ThisHistoryDialog.addRow();

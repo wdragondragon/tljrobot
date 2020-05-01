@@ -38,5 +38,7 @@ public class JTextPaneTest {
 
         f.pack();
         f.setVisible(true);
+
+
     }
 }

@@ -47,7 +47,7 @@ public class SetDialog{
     private static JButton achSelectAll,reverseSelect,achCancelAll;
 
     private static JPanel getArticleSetPanel = new JPanel();
-    private static JToggleButton getArticleOnNet,mouseGetArticle;
+    private static JToggleButton getArticleOnNet,mouseGetArticle,requestFocusInWindowButton;
     private static ArrayList<JToggleButton> getArticleJToggleButtonList = new ArrayList<>();
 
     public static JPanel windowsSetPanel = new JPanel();
@@ -104,17 +104,22 @@ public class SetDialog{
         getArticleSetPanel.setLayout(null);
         getArticleJToggleButtonList.add(getArticleOnNet = new JToggleButton("网络模式"));
         getArticleJToggleButtonList.add(mouseGetArticle = new JToggleButton("鼠标载文"));
+        getArticleJToggleButtonList.add(requestFocusInWindowButton = new JToggleButton("鼠标焦点"));
         for (JToggleButton jToggleButton:getArticleJToggleButtonList){
             jToggleButton.setFont(SwingSingleton.tipFont());
         }
         getArticleOnNet.addChangeListener(e->LocalConfig.getArticleOnNet=getArticleOnNet.isSelected());
         mouseGetArticle.addChangeListener(e->LocalConfig.mouseGetArticle=mouseGetArticle.isSelected());
+        requestFocusInWindowButton.addChangeListener(e->LocalConfig.requestFocusInWindow=requestFocusInWindowButton.isSelected());
+
 
         addOnBounds(getArticleSetPanel,getArticleOnNet,40,10,80,20);
         addOnBounds(getArticleSetPanel,mouseGetArticle,rowAddSpacing(getArticleOnNet,10),getArticleOnNet.getY(),80,20);
+        addOnBounds(getArticleSetPanel,requestFocusInWindowButton,rowAddSpacing(mouseGetArticle,10),getArticleOnNet.getY(),80,20);
 
         getArticleOnNet.setSelected(LocalConfig.getArticleOnNet);
         mouseGetArticle.setSelected(LocalConfig.mouseGetArticle);
+        requestFocusInWindowButton.setSelected(LocalConfig.requestFocusInWindow);
 
         tabbedPane.add("载文设置",getArticleSetPanel);
     }

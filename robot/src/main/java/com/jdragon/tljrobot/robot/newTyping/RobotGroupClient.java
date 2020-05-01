@@ -20,12 +20,15 @@ import com.jdragon.tljrobot.robot.typing.Tools.RegexText;
 import com.jdragon.tljrobot.tljutils.DateUtil;
 import com.jdragon.tljrobot.tljutils.HttpUtil;
 
+import java.io.File;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static java.io.File.separator;
 
 /**
  * Create by Jdragon on 2020.01.21
@@ -87,8 +90,6 @@ public class RobotGroupClient extends IcqListener {
             robotHistory.setMatch(Regex.getParagraph(message)==9999);
             JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObject(HttpAddr.UPLOAD_HISTORY,robotHistory));
             System.out.println(jsonObject);
-        }else if("#刷新名片".equals(message)){
-            GroupCache.refreshCardCache(eventGroupMessage.getHttpApi());
         }
         String[] params = message.split("\\s");
         if(params.length==2){
@@ -122,6 +123,15 @@ public class RobotGroupClient extends IcqListener {
                 eventGroupMessage.respond(resultTljJson(date));
             }else if("#长生赛文".equals(params[0])){
                 eventGroupMessage.respond(getTljArticle(date));
+            }else if("#历史成绩".equals(params[0])){
+                params[1] = RegexText.AddZero(params[1]);
+                String image = "typinggroup" + separator + groupId + "-" + params[1] + ".jpg";
+                String path = "/root/coolq/data/image/" + image;
+                if(new File(path).exists()){
+                    eventGroupMessage.respond("[CQ:image,file=" + image + "]");
+                }else{
+                    eventGroupMessage.respond("无记录");
+                }
             }
         }else if(params.length==3){
             if(groupId==robot.matchGroupNum&&"#投稿".equals(params[0])){
@@ -135,6 +145,10 @@ public class RobotGroupClient extends IcqListener {
                             "\n-----第9999段-共"+article.getContent().length()+"字";
                 }
                 eventGroupMessage.respond(retMessage);
+            }else if("#历史成绩".equals(params[0])){
+                params[2] = RegexText.AddZero(params[2]);
+                String image = "typinggroup" + separator + GroupCache.typeGroupMap.get(params[1]) + "-" + params[2] + ".jpg";
+                eventGroupMessage.respond("[CQ:image,file=" + image + "]");
             }
         }
     }

@@ -7,6 +7,7 @@ import com.jdragon.tljrobot.robot.EntoZh.Translate;
 import com.jdragon.tljrobot.robot.HelpAndTips;
 import com.jdragon.tljrobot.robot.game.OneATwoB.O2TCarry;
 import com.jdragon.tljrobot.robot.game.draw.Draw;
+import com.jdragon.tljrobot.robot.game.jb.JbRegCode;
 import com.jdragon.tljrobot.robot.newTyping.ChatWords;
 import com.jdragon.tljrobot.robot.newTyping.QueryUser;
 import com.jdragon.tljrobot.robot.newTyping.tools.GroupCache;
@@ -60,6 +61,7 @@ public class robot
                 ,new ChatWords()
                 ,new HelpAndTips()
                 ,new Draw()
+                ,new JbRegCode()
         );
         // 启用指令管理器
         // 这些字符串是指令前缀, 比如指令"!help"的前缀就是"!"

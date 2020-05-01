@@ -8,28 +8,19 @@ import cc.moecraft.icq.event.events.message.EventPrivateMessage;
 import cc.moecraft.icq.event.events.notice.groupmember.EventNoticeGroupMemberChange;
 import cc.moecraft.icq.event.events.request.EventGroupInviteRequest;
 import cc.moecraft.icq.sender.IcqHttpApi;
-import cc.moecraft.icq.sender.message.MessageBuilder;
-import cc.moecraft.icq.sender.message.components.ComponentAt;
 import cc.moecraft.icq.sender.message.components.ComponentImage;
 import com.jdragon.tljrobot.robot.club.robot;
 import com.jdragon.tljrobot.robot.newTyping.tools.GroupCache;
-import com.jdragon.tljrobot.robot.typing.ConDatabase.ComArti;
-import com.jdragon.tljrobot.robot.typing.ConDatabase.Conn;
-import com.jdragon.tljrobot.robot.typing.ConDatabase.InConn;
-import com.jdragon.tljrobot.robot.typing.ConDatabase.OutConn;
 import com.jdragon.tljrobot.robot.typing.GroupFollowTeamWar.GroupFollowTeamThread;
 import com.jdragon.tljrobot.robot.typing.GroupFollowWar.GroupFollowThread;
 import com.jdragon.tljrobot.robot.typing.GroupWar.GroupThread;
 import com.jdragon.tljrobot.robot.typing.Tools.Createimg;
 import com.jdragon.tljrobot.robot.typing.Tools.RegexText;
 import com.jdragon.tljrobot.robot.typing.Tools.SortMap;
-import com.jdragon.tljrobot.robot.typing.Tools.initGroupList;
 import com.jdragon.tljrobot.tljutils.compShortCode.BetterTyping;
 import com.jdragon.tljrobot.tljutils.downLoad.DownloadMsg;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -39,31 +30,28 @@ import static java.io.File.separator;
 
 public class RobotGroupClient extends IcqListener {
     boolean respondSign;
-    boolean init = false;
     boolean noticesign = false;
     public static boolean automati_inclusion_sign;//收集赛文成绩标记
-    public static HashMap<Long,Boolean> grouplist;//判断群是否已收
+    public static HashMap<Long,Boolean> grouplist = new HashMap<>();//判断群是否已收
 
 
     HashMap<String, BetterTyping> betterTypingHashMap = new HashMap<>();
     public RobotGroupClient(){
         //定时收集赛文程序
-        grouplist = OutConn.getGroupList();
         automati_inclusion_sign = false;
         Automatic_Inclusion automatic_inclusion = new Automatic_Inclusion();
         automatic_inclusion.start();
 
-//        loadCodeFile();
         betterTypingHashMap.put("词组提示码表",new BetterTyping("编码文件"+separator+"输入法编码"+separator+"词组提示码表.txt"));
     }
     @EventHandler void groupAdd(EventGroupInviteRequest eventGroupInviteRequest){
         eventGroupInviteRequest.accept();
         eventGroupInviteRequest.getBot().getAccountManager().refreshCache();
-        initGroupList.init(eventGroupInviteRequest.getHttpApi());
+        GroupCache.refreshCardCache(eventGroupInviteRequest.getHttpApi());
     }
     @EventHandler void peopleAdd(EventNoticeGroupMemberChange event){
         event.getBot().getAccountManager().refreshCache();
-        initGroupList.init(event.getHttpApi());
+        GroupCache.refreshCardCache(event.getHttpApi());
     }
     @EventHandler
     public void CarryBoth(EventMessage event) throws IOException {
@@ -74,92 +62,40 @@ public class RobotGroupClient extends IcqListener {
             betterTyping.compalllength();
             event.respond("标点顶点屏理论码长："+ RegexText.FourOutFiveIn(betterTyping.getDingKeylength())+" 总键数"+betterTyping.getDingalllength()
                     +"\n"+new ComponentImage(Createimg.drawTipImg(betterTyping.getSubscriptInstances())));
-        }else if(message.length()>5&&message.substring(0,5).equals("#一词不漏 ")){
-            BetterTyping betterTyping = betterTypingHashMap.get("词组提示码表");
-            betterTyping.changecolortip(message.substring(5));
-            betterTyping.compalllength();
-            event.respond("标点顶点屏理论码长："+ RegexText.FourOutFiveIn(betterTyping.getDingKeylength())+" 总键数"+betterTyping.getDingalllength()
-                    +"\n"+new ComponentImage(Createimg.drawTipImg(betterTyping.getSubscriptInstances())));
         }
     }
     @EventHandler
     public void CarryPrivate(EventPrivateMessage event){
         String message = event.getMessage();
-        if(message.equals("#我的投稿")){
-            event.respond(OutConn.lookmeAllGroupSaiwen(event.getSenderId()));
-        }else if(message.equals("#取消广播")){
+        if(message.equals("#取消广播")){
             noticesign = false;
             event.respond("广播被关闭");
         }else if (message.equals("#广播")){
             noticesign = true;
             event.respond("广播开启");
-        }else if(noticesign&&initGroupList.adminList.contains(event.senderId)){
+        }else if(noticesign&&GroupCache.adminList.contains(event.senderId)){
             for (Long aLong : grouplist.keySet()) {
                 event.getHttpApi().sendGroupMsg(aLong,message);
             }
         }
-        String []s = message.split("\\s+");
     }
     @EventHandler
     public void Carry(EventGroupMessage event)
     {
         IcqHttpApi httpApi = event.getHttpApi();
         try {
-            if (!init) {
-                initGroupList.init(httpApi);
-                init = true;
-            }
-            respondSign = false;
-            CarryName(event);
-            if (!respondSign)
-                CarryComGrade(event);//收集赛文成绩
-            if (!respondSign)
-                CarryComShow(event);//发送成绩和赛文
-            if (!respondSign)
-                ShowGroupList(event);//群映射列表
             //每天收图
             if (automati_inclusion_sign) {
                 Automatic_inclusion(event);
             }
-            //发送各群的历史成绩
-            if (!respondSign)
-                grouphistory(event);
             //创建比赛场地
             if (!respondSign) {
                 CreateCijicom(event);//创建跟打战场
                 CreateFollowCom(event);//创建跟打战场
                 CreateFollowTeamCom(event);//创建团队跟打战场
             }
-            if(chanllgelist.containsKey(event.getSenderId())&&!respondSign){
-                event.respond("[CQ:at,qq=" + event.getSenderId() + "]你还有文章未完成，如果不想打了请输入指令：\n#取消上传\n若你使用该指令时对群友造成骚扰，会对你进行拉黑。");
-            }
-            if(!respondSign&&RegexText.returnduan(event.getMessage())==-1){
-                InConn.AddGroupCheatNum(event.getMessage().length(),event.getSenderId());
-            }
         }catch (Exception e){
             e.printStackTrace();
-        }
-    }
-    public void grouphistory(EventGroupMessage event){
-        String message = event.getMessage();
-        long groupid = event.getGroupId();
-        String []s = message.split(" ");
-        if(s[0].equals("#历史成绩")){
-            if(s.length==2) {
-                s[1] = RegexText.AddZero(s[1]);
-                String image = "typinggroup" + separator + groupid + "-" + s[1] + ".jpg";
-                event.respond("[CQ:image,file=" + image + "]");
-                respondSign = true;
-            }else if(s.length==3){
-                if(initGroupList.QQGroupNameMap.containsKey(s[1])) {
-                    s[2] = RegexText.AddZero(s[2]);
-                    String image = "typinggroup" + separator + initGroupList.QQGroupNameMap.get(s[1]) + "-" + s[2] + ".jpg";
-                    event.respond("[CQ:image,file=" + image + "]");
-                    respondSign = true;
-                }else{
-                    event.respond("无该群");
-                }
-            }
         }
     }
     private void Automatic_inclusion(EventGroupMessage event){
@@ -174,13 +110,13 @@ public class RobotGroupClient extends IcqListener {
                 System.out.println(grouplist.get(groupid));
                 message = message.substring(imageindex + 4, message.length() - 1);
                 String filename = "typinggroup/"+groupid +"-"+ new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()) + ".jpg";
-                    String image = "/root/coolq/data/image/" + filename;
-                System.out.println(image);
+                String image = "/root/coolq/data/image/" + filename;
+                System.out.println("群赛收图："+image);
                 DownloadMsg.downloadMsg(message, image);
                 grouplist.put(groupid,false);
                 event.getHttpApi().sendGroupMsg(robot.tljGroupNum, "[CQ:image,file="+filename+"]");
                 for (Long o : grouplist.keySet()) {
-                    if(grouplist.get(o)==false){
+                    if(!grouplist.get(o)){
                         automati_inclusion_sign = false;
                     }else {
                         automati_inclusion_sign = true;
@@ -190,7 +126,7 @@ public class RobotGroupClient extends IcqListener {
             }else if(message.equals("没有找到今天的比赛成绩！")){
                 grouplist.put(groupid,false);
                 for (Long o : grouplist.keySet()) {
-                    if(grouplist.get(o)==false){
+                    if(!grouplist.get(o)){
                         automati_inclusion_sign = false;
                     }else {
                         automati_inclusion_sign = true;
@@ -199,119 +135,6 @@ public class RobotGroupClient extends IcqListener {
                 }
             }
         }
-    }
-    private void CarryName(EventGroupMessage event){
-        try {
-            System.out.println("名片操作");
-            Long id = event.getSenderId();
-            String message = "[CQ:at,qq=" + id + "]\n";
-            if(event.getMessage().equals("#刷新缓存")){
-                event.getGroupSender().refreshInfo();
-                event.getGroup().refreshInfo();
-                event.getBot().getAccountManager().refreshCache();
-                initGroupList.init(event.getHttpApi());
-                event.respond("刷新成功，你现在的群名片为"+event.getHttpApi().getGroupMemberInfo(event.getGroupId(),id).getData().getCard());
-                respondSign = true;
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-    private void CarryComGrade(EventMessage event){
-        try {
-            Long GroupID = RegexText.getGroupID(event.toString());
-            Long SendID = event.getSenderId();
-            if (event.getMessage().length()>5&&event.getMessage().substring(0, 5).equals("第999段")) {
-                double Grade[] = RegexText.getGrade(event.getMessage());
-                String message = "群号:" + GroupID + "用户:" + SendID + "\n速度:" + Grade[0] + " 击键:" + Grade[1] + " 码长:" + Grade[2];
-                System.out.println(message);
-                long MaxQQ = OutConn.getTodayMaxByGroupId(GroupID,Grade[0],RegexText.returnduan(event.getMessage()));
-                if(MaxQQ!=0L&&MaxQQ!=SendID){
-                    event.respond(new MessageBuilder().add(new ComponentAt(MaxQQ)).add("你第一被抢了").toString());
-                }
-                if(GroupID!=726064238L)
-                    InConn.AddRobotHistory(SendID, GroupID, Grade);
-                InConn.addMaxComMath(SendID, GroupID, Grade);
-                respondSign = true;
-            }else if(RegexText.returnduan(event.getMessage())==1&&chanllgelist.containsKey(SendID)){
-                System.out.println("挑战段");
-                double Grade[] = RegexText.getGrade(event.getMessage());
-                event.respond(InConn.addRobotSaiwenMath(SendID,GroupID,Grade,
-                        event.getSender().getInfo().getNickname(),
-                        chanllgelist.get(SendID)));
-                chanllgelist.remove(SendID);
-                respondSign = true;
-            }else if(event.getMessage().equals("#取消上传")){
-                if(chanllgelist.containsKey(SendID)) {
-                    chanllgelist.remove(SendID);
-                    event.respond("取消成功");
-                }
-                else
-                    event.respond("取消你妹，你都没开始！");
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-    HashMap<Long,String> chanllgelist = new HashMap<>();
-    private void CarryComShow(EventGroupMessage event){
-        try {
-            String message = event.getMessage();
-            System.out.println("赛文和成绩操作");
-            Long QQnum = event.getSenderId();
-            if(message.equals("#成绩")){
-                String path = OutConn.ShowGroupIdMath(QQnum, GroupCache.typeGroupMap.get(event.getGroupId()), Conn.getdate(),event.getHttpApi().getGroupMemberInfo(event.getGroupId(),QQnum).getData().getCard());
-                if(path.equals("无收录成绩"))event.respond(path);
-                else event.respond("[CQ:image,file="+ path +"]");
-            }else if(message.equals("#统计成绩")){
-                String path =  ComArti.responseStr(Conn.getdate().toString(), QQnum, Conn.getdate(), 4);
-                if(path.equals("无该天赛文成绩"))event.respond(path);
-                else event.respond("[CQ:image,file="+ path +"]");
-                respondSign = true;
-            }
-            String s[] = message.split(" ");
-            if(s.length==2&&s[0].equals("#文章")){
-                event.respond(OutConn.ShowRobotSaiwen(s[1],0,1));
-                respondSign = true;
-            }
-            else if(s.length==3&&s[0].equals("#文章")){
-                chanllgelist.put(QQnum,s[1]+"%"+s[2]);
-                event.respond(OutConn.ShowRobotSaiwen(s[1],Integer.valueOf(s[2]),2));
-                respondSign = true;
-            }else if (s.length==3&&s[0].equals("#文章成绩")){
-                String path = ComArti.getRobotArMathImgPath(s[1],Integer.valueOf(s[2]));
-                if(path.equals("没有该文章成绩"))event.respond(path);
-                else event.respond("[CQ:image,file="+path+"]");
-                respondSign = true;
-            }
-            if(respondSign==true)return;
-        }catch (Exception e){
-//            e.printStackTrace();
-        }
-    }
-    private void ShowGroupList(EventMessage event){
-        try {
-            StringBuilder message = new StringBuilder(event.getMessage());
-            System.out.println("群映射操作");
-            boolean sessced = false;
-            if (message.toString().equals("#群映射列表")) {
-                try {
-                    String sql = "select * from groupmap";
-                    Connection con = Conn.getConnection();
-                    ResultSet rs = Conn.getStmtSet(con, sql);
-                    message = new StringBuilder();
-                    while (rs.next()) {
-                        message.append(rs.getString("groupname")).append("：").append(rs.getString("groupid")).append("\n");
-                        sessced = true;
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                if (sessced)
-                    event.respond(message.substring(0, message.length() - 1));
-                respondSign = true;
-            }
-        }catch (Exception ignored){}
     }
 
     static HashMap<Long, GroupThread> GroupWarList = new HashMap<>();

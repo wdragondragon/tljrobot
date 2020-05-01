@@ -29,7 +29,7 @@ public class Home {
         QueryWrapper<User> queryWrapper = new QueryWrapper<User>();
         queryWrapper.orderByDesc(User.Def.USER_NUM);
         List<User> users = userMapper.selectList(queryWrapper);
-        PageInfo<User> pageInfo = new PageInfo<User>(users);
+        PageInfo<User> pageInfo = new PageInfo<>(users);
         return Result.success("获取成功").setResult(pageInfo);
     }
     @GetMapping("/introduce")

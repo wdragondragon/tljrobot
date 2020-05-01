@@ -67,7 +67,7 @@ public class QqOperation {
         }
     }
     public static void requestFocusInWindow(){
-        if(LocalSystem.isWindows()){
+        if(LocalSystem.isWindows()&&LocalConfig.requestFocusInWindow){
             try {
                 Robot robot = null;
                 robot = new Robot();

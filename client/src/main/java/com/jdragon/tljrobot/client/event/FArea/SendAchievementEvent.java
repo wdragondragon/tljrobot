@@ -24,7 +24,9 @@ import static com.jdragon.tljrobot.client.entry.TypingState.*;
 public class SendAchievementEvent {
     @SneakyThrows
     public static void start()  {
-        if(typingState)return;
+        if(typingState){
+            return;
+        }
         System.out.println(SwingSingleton.typingText().getText().length());
         String result;
         if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){

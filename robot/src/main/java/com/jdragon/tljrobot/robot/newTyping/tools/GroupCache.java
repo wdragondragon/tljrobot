@@ -9,6 +9,7 @@ import com.jdragon.tljrobot.robot.newTyping.config.HttpAddr;
 import com.jdragon.tljrobot.tljutils.HttpUtil;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,8 @@ import java.util.Map;
 public class GroupCache {
     public static HashMap<Long,HashMap<Long,String>> groupCardCache;//群名片cache
     public static Map<Long,String> typeGroupMap = getGroupMap();
+    public static ArrayList<Long> adminList;//管理员名单
+    public static Map<Long,String> QQDoMap;//捐赠名单
     @Test
     public void test(){
 
@@ -57,5 +60,22 @@ public class GroupCache {
                 groupCardCache.put(groupId,groupMemberMap);
             }
         }
+        adminList = new ArrayList<>();
+        QQDoMap = new HashMap<>();
+
+        adminList.add(1061917196L);
+        adminList.add(2623495687L);
+
+        QQDoMap.put(1045865146L,"酥");
+        QQDoMap.put(1157477506L,"空");
+        QQDoMap.put(2963900463L,"木");
+        QQDoMap.put(1816436708L,"圈");
+        QQDoMap.put(2297714857L,"风");
+        QQDoMap.put(2524098743L,"焕");
+        QQDoMap.put(1061917196L,"谭");
+        QQDoMap.put(29141847L,"白");
+        QQDoMap.put(710596517L,"桂");
+        QQDoMap.put(779855010L,"无");
     }
+
 }

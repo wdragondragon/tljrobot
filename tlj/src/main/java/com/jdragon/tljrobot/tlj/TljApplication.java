@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-//@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
+//@SpringBootApplication(exclude= {DataSourceAutoConfigurat`ion.class})
 @SpringBootApplication
 @MapperScan("com.jdragon.tljrobot.tlj.mappers")
 @EnableTransactionManagement

@@ -195,6 +195,7 @@ public class TypingListener implements DocumentListener, KeyListener {
             }
             typeStr = typingText().getText();
             articleStr = Article.getArticleSingleton().getArticle();
+            System.out.println(typeStr+"1111"+articleStr);
             typeLength = typeStr.length();
             if (!typingState&&typeLength > 0) {
                 init();//打字状态初始化
@@ -209,7 +210,6 @@ public class TypingListener implements DocumentListener, KeyListener {
             if (typeStr.length() == articleStr.length() && typingLastIndexWord.equals(articleLastIndexWord)
                     && !(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN))) // 两文本长度相等且最后一字相同时执行
             {
-                typingText().setEditable(false); // 设置不可打字状态
                 delaySendResultSign = true;
             }
         } catch (Exception exp) {exp.printStackTrace();}

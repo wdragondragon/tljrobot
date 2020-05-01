@@ -24,48 +24,70 @@ public class QueryUser extends IcqListener {
     public void carryGroupMessage(EventGroupMessage eventGroupMessage) throws Exception {
         String message = eventGroupMessage.getMessage();
         long groupId = eventGroupMessage.getGroupId();
-        if(message.equals("#长流详情")){
-            JSONObject jsonObject = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.QUERY_TLJ_ALL_TYPE_INFO));
-            String retMessage = jsonObject.getString("message");
-            if(retMessage.equals("获取成功")){
-                JSONObject result = jsonObject.getJSONObject("result");
-                int count = result.getIntValue("count");
-                int onlineNum = result.getIntValue("onlineNum");
-                int userMaxNum = result.getIntValue("userMaxNum");
-                String username = result.getString("username");
-                int userNum = result.getIntValue("userNum");
-                int userTypeNum = result.getIntValue("userTypeNum");
-                int userRightNum = result.getIntValue("userRightNum");
-                int userMisNum = result.getIntValue("userMisNum");
-                int userDateNum = result.getIntValue("userDateNum");
-                int number = result.getIntValue("number");
-                double time = result.getDoubleValue("time");
-                int year = (int)time/(60*60*24*30*12);
-                int month = ((int)time/(60*60*24*30))%12;
-                int day = ((int)time/(60*60*24))%30;
-                int hour = ((int)time/(60*60))%60;
-                int minute = ((int)time/60)%60;
-                int second = ((int)time)%60;
-                eventGroupMessage.respond("长流详情：\n注册有"+userNum+"个账号" +
-                        "\n现在线人数：" + onlineNum +
-                        "\n跟打器跟打总字数：" + userTypeNum + " 对：" +userRightNum +" 错："+userMisNum +
-                        "\n跟打器今日跟打总字数：" + userDateNum +
-                        "\n全体平均速度：" + String.format("%.2f",(number/time)*60) +
-                        "\n全体共跟打次数：" + count +
-                        "\n全体在跟打上累计的有效时间：" + String.format("%.2f",time) + "秒"+
-                        "\n换算时间："+year+"年"+month+"月"+day+"天"+hour+"时"+minute+"分"+second+"秒"+
-                        "\n今日跟打最多："+username + "打了"+userMaxNum+"字");
-            }else{
-                eventGroupMessage.respond(retMessage);
-            }
-        }else if(message.equals("#长流均速排名")){
-            eventGroupMessage.respond(queryTljTypeInfoListByModel("0"));
-        }else if(message.equals("#长流赛文均速排名")){
-            eventGroupMessage.respond(queryTljTypeInfoListByModel("1"));
-        }else if(message.equals("#长流生稿均速排名")){
-            eventGroupMessage.respond(queryTljTypeInfoListByModel("2"));
-        }else if(message.equals("#查询")){
-            eventGroupMessage.respond(queryRobotInfoByQQ(eventGroupMessage.getSenderId()));
+        long qq = eventGroupMessage.getSenderId();
+        switch (message) {
+            case "#长流详情":
+                JSONObject jsonObject = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.QUERY_TLJ_ALL_TYPE_INFO));
+                String retMessage = jsonObject.getString("message");
+                if (retMessage.equals("获取成功")) {
+                    JSONObject result = jsonObject.getJSONObject("result");
+                    int count = result.getIntValue("count");
+                    int onlineNum = result.getIntValue("onlineNum");
+                    int userMaxNum = result.getIntValue("userMaxNum");
+                    String username = result.getString("username");
+                    int userNum = result.getIntValue("userNum");
+                    int userTypeNum = result.getIntValue("userTypeNum");
+                    int userRightNum = result.getIntValue("userRightNum");
+                    int userMisNum = result.getIntValue("userMisNum");
+                    int userDateNum = result.getIntValue("userDateNum");
+                    int number = result.getIntValue("number");
+                    double time = result.getDoubleValue("time");
+                    int year = (int) time / (60 * 60 * 24 * 30 * 12);
+                    int month = ((int) time / (60 * 60 * 24 * 30)) % 12;
+                    int day = ((int) time / (60 * 60 * 24)) % 30;
+                    int hour = ((int) time / (60 * 60)) % 60;
+                    int minute = ((int) time / 60) % 60;
+                    int second = ((int) time) % 60;
+                    eventGroupMessage.respond("长流详情：\n注册有" + userNum + "个账号" +
+                            "\n现在线人数：" + onlineNum +
+                            "\n跟打器跟打总字数：" + userTypeNum + " 对：" + userRightNum + " 错：" + userMisNum +
+                            "\n跟打器今日跟打总字数：" + userDateNum +
+                            "\n全体平均速度：" + String.format("%.2f", (number / time) * 60) +
+                            "\n全体共跟打次数：" + count +
+                            "\n全体在跟打上累计的有效时间：" + String.format("%.2f", time) + "秒" +
+                            "\n换算时间：" + year + "年" + month + "月" + day + "天" + hour + "时" + minute + "分" + second + "秒" +
+                            "\n今日跟打最多：" + username + "打了" + userMaxNum + "字");
+                } else {
+                    eventGroupMessage.respond(retMessage);
+                }
+                break;
+            case "#长流均速排名":
+                eventGroupMessage.respond(queryTljTypeInfoListByModel("0"));
+                break;
+            case "#长流赛文均速排名":
+                eventGroupMessage.respond(queryTljTypeInfoListByModel("1"));
+                break;
+            case "#长流生稿均速排名":
+                eventGroupMessage.respond(queryTljTypeInfoListByModel("2"));
+                break;
+            case "#查询":
+                eventGroupMessage.respond(queryRobotInfoByQQ(eventGroupMessage.getSenderId()));
+                break;
+            case "#刷新名片":
+                eventGroupMessage.getGroupSender().refreshInfo();
+                eventGroupMessage.getGroup().refreshInfo();
+                eventGroupMessage.getBot().getAccountManager().refreshCache();
+                GroupCache.refreshCardCache(eventGroupMessage.getHttpApi());
+                eventGroupMessage.respond("刷新成功，你现在的群名片为" + GroupCache.groupCardCache.get(groupId).get(qq));
+                break;
+            case "#群映射列表":
+                StringBuilder ret = new StringBuilder();
+                Map<Long, String> typeGroupMap = GroupCache.typeGroupMap;
+                for (Map.Entry<Long, String> entry : typeGroupMap.entrySet()) {
+                    ret.append(entry.getKey()).append("：").append(entry.getValue()).append("\n");
+                }
+                eventGroupMessage.respond(ret.substring(0, ret.length() - 1));
+                break;
         }
         String[] s = message.split(" ");
         if(s.length==2){
