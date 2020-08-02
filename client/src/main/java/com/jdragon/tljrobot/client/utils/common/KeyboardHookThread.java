@@ -25,6 +25,7 @@ public class KeyboardHookThread implements Runnable {
                 WinDef.HWND hWnd = User32.INSTANCE.FindWindow(null, MainFra.getInstance().getTitle());
 //                        User32.INSTANCE.FindWindow("TXGuiFoundation", SwingSingleton.QQNameLabel().getText());
                 if(preButton==114){
+                    System.out.println(hWnd);
                     User32.INSTANCE.SetForegroundWindow(hWnd);
                 }
 //                WinDef.RECT rect = new WinDef.RECT();

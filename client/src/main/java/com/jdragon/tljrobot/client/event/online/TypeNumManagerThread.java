@@ -27,13 +27,15 @@ public class TypeNumManagerThread extends Thread {
         return typeNumManagerThread;
     }
     int numTemp;
+    int failNum = 0;
     @Override
     public void run() {
         while(UserState.loginState) {
             try {
-                if (numTemp != NumState.num) {
+                sleep(60 * 1000);
+                if (numTemp != NumState.num&&failNum < 60*24) {
                     Map<String,String> params = new HashMap<>();
-                    Class clazz = NumState.class;
+                    Class<NumState> clazz = NumState.class;
                     Field[] fields = clazz.getDeclaredFields();
                     for(Field field:fields){
                         params.put(field.getName(), String.valueOf(field.get(clazz)));
@@ -44,9 +46,12 @@ public class TypeNumManagerThread extends Thread {
                     if(resultJson.getString(Constant.RESPONSE_MESSAGE).equals("更新成功")){
                         numTemp = NumState.num;
                     }
+                }else if(failNum>= 60*24){
+                    LogoutEvent.start();
+                    failNum = 0;
                 }
-                sleep(1000);
             } catch (Exception e) {
+                failNum++;
                 e.printStackTrace();
             }
         }

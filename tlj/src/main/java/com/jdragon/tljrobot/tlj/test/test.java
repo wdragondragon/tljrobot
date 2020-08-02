@@ -64,7 +64,7 @@ public class test {
         GlobalConfig config = new GlobalConfig();
         config.setActiveRecord(true)//是否支持AR模式
                 .setAuthor("Jdragon")//作者
-                .setOutputDir("D:\\workspaces\\testMp")//生成路径
+                .setOutputDir("C:\\Users\\10619\\Desktop\\项目\\昊方\\MP")//生成路径
                 .setFileOverride(true)//文件覆盖
                 .setIdType(IdType.AUTO)//逐渐策略
                 .setServiceName("%sService")//设置生成的service接口名字格式
@@ -74,15 +74,15 @@ public class test {
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
         dataSourceConfig.setDbType(DbType.MYSQL)
                         .setDriverName("com.mysql.cj.jdbc.Driver")
-                        .setUrl("jdbc:mysql://localhost:3306/tljrobot?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8")
+                        .setUrl("jdbc:mysql://localhost:3306/haofangerp?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8")
                         .setUsername("root")
                         .setPassword("951753");
         //3. 策略配置
         StrategyConfig strategyConfig = new StrategyConfig();
         strategyConfig.setCapitalMode(true)//全局大写
                 .setNaming(NamingStrategy.underline_to_camel)
-                .setTablePrefix("");
-//                .setInclude("tbl_employee");//生成的表
+                .setTablePrefix("base","system","warehouse");
+//                .setInclude("base");//生成的表
         //4.包名策略配置
         PackageConfig packageConfig = new PackageConfig();
         packageConfig.setParent("src.main.java.com.jdragon.testMp")

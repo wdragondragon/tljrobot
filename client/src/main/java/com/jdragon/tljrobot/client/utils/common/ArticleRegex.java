@@ -62,7 +62,7 @@ public class ArticleRegex {
         ArticleStr = String.valueOf(articleChars);
         String regex = "[^0123456789]+";
         ArticleStr = ArticleStr.replaceAll("#","");
-        ArticleStr = ArticleStr.replaceAll("\r","");
+//        ArticleStr = ArticleStr.replaceAll("\r","");
         paragraphStr = new StringBuilder(paragraphStr.toString().replaceAll(regex, ""));
         if(paragraphStr.length()>0){
             int paragraphNum = Integer.parseInt(paragraphStr.toString());

@@ -34,7 +34,7 @@ public class SetDialog{
     private static JTabbedPane tabbedPane = new JTabbedPane();
 
     private static JPanel baseSetPanel = new JPanel();
-    private static JToggleButton progressButton,tipButton,lurkButton,replaceButton,clearSpaceButton;
+    private static JToggleButton progressButton,tipButton,lurkButton,replaceButton,clearSpaceButton,quotationMarkReplacementButton;
     public static JTextField typePageCountText, fontSizeText,readyFont;
     public static JComboBox<String> family;
 
@@ -47,7 +47,7 @@ public class SetDialog{
     private static JButton achSelectAll,reverseSelect,achCancelAll;
 
     private static JPanel getArticleSetPanel = new JPanel();
-    private static JToggleButton getArticleOnNet,mouseGetArticle,requestFocusInWindowButton;
+    private static JToggleButton getArticleOnNet,mouseGetArticle,requestFocusInWindowButton,globalReplayButton;
     private static ArrayList<JToggleButton> getArticleJToggleButtonList = new ArrayList<>();
 
     public static JPanel windowsSetPanel = new JPanel();
@@ -105,21 +105,26 @@ public class SetDialog{
         getArticleJToggleButtonList.add(getArticleOnNet = new JToggleButton("网络模式"));
         getArticleJToggleButtonList.add(mouseGetArticle = new JToggleButton("鼠标载文"));
         getArticleJToggleButtonList.add(requestFocusInWindowButton = new JToggleButton("鼠标焦点"));
+        getArticleJToggleButtonList.add(globalReplayButton = new JToggleButton("全局F3"));
+
         for (JToggleButton jToggleButton:getArticleJToggleButtonList){
             jToggleButton.setFont(SwingSingleton.tipFont());
         }
         getArticleOnNet.addChangeListener(e->LocalConfig.getArticleOnNet=getArticleOnNet.isSelected());
         mouseGetArticle.addChangeListener(e->LocalConfig.mouseGetArticle=mouseGetArticle.isSelected());
         requestFocusInWindowButton.addChangeListener(e->LocalConfig.requestFocusInWindow=requestFocusInWindowButton.isSelected());
+        globalReplayButton.addChangeListener(e->LocalConfig.globalReplay =globalReplayButton.isSelected());
 
 
         addOnBounds(getArticleSetPanel,getArticleOnNet,40,10,80,20);
         addOnBounds(getArticleSetPanel,mouseGetArticle,rowAddSpacing(getArticleOnNet,10),getArticleOnNet.getY(),80,20);
         addOnBounds(getArticleSetPanel,requestFocusInWindowButton,rowAddSpacing(mouseGetArticle,10),getArticleOnNet.getY(),80,20);
+        addOnBounds(getArticleSetPanel,globalReplayButton,rowAddSpacing(requestFocusInWindowButton,10),getArticleOnNet.getY(),80,20);
 
         getArticleOnNet.setSelected(LocalConfig.getArticleOnNet);
         mouseGetArticle.setSelected(LocalConfig.mouseGetArticle);
         requestFocusInWindowButton.setSelected(LocalConfig.requestFocusInWindow);
+        globalReplayButton.setSelected(LocalConfig.globalReplay);
 
         tabbedPane.add("载文设置",getArticleSetPanel);
     }
@@ -283,26 +288,29 @@ public class SetDialog{
         lurkButton = new JToggleButton("潜水");
         replaceButton = new JToggleButton("符号替换");
         clearSpaceButton = new JToggleButton("去除空格");
+        quotationMarkReplacementButton = new JToggleButton("引号替换");
+
 
         progressButton.setFont(SwingSingleton.tipFont());
         tipButton.setFont(SwingSingleton.tipFont());
         lurkButton.setFont(SwingSingleton.tipFont());
         replaceButton.setFont(SwingSingleton.tipFont());
         clearSpaceButton.setFont(SwingSingleton.tipFont());
+        quotationMarkReplacementButton.setFont(SwingSingleton.tipFont());
 
         progressButton.setSelected(LocalConfig.progress);
         tipButton.setSelected(LocalConfig.tip);
         lurkButton.setSelected(LocalConfig.lurk);
         replaceButton.setSelected(LocalConfig.replace);
         clearSpaceButton.setSelected(LocalConfig.clearSpace);
-
+        quotationMarkReplacementButton.setSelected(LocalConfig.quotationMarkReplacement);
 
         addOnBounds(baseSetPanel,lurkButton,10,10,50,20);
         addOnBounds(baseSetPanel,clearSpaceButton,rowAddSpacing(lurkButton,10),10,80,20);
         addOnBounds(baseSetPanel,replaceButton,rowAddSpacing(clearSpaceButton,10),10,80,20);
         addOnBounds(baseSetPanel,tipButton,rowAddSpacing(replaceButton,10),10,80,20);
         addOnBounds(baseSetPanel,progressButton,rowAddSpacing(tipButton,10),10,80,20);
-
+        addOnBounds(baseSetPanel,quotationMarkReplacementButton,rowAddSpacing(progressButton,10),10,80,20);
 
         lurkButton.addChangeListener(e-> LocalConfig.lurk=lurkButton.isSelected());
         clearSpaceButton.addChangeListener(e-> LocalConfig.clearSpace=clearSpaceButton.isSelected());
@@ -313,7 +321,7 @@ public class SetDialog{
             TypingListener.getInstance().changePosition();
         });
         progressButton.addChangeListener(e->LocalConfig.progress=progressButton.isSelected());
-
+        quotationMarkReplacementButton.addChangeListener(e->LocalConfig.quotationMarkReplacement=quotationMarkReplacementButton.isSelected());
 
         JButton rightcolorSet = new JButton("打对字颜色");
         rightcolorSet.setFont(SwingSingleton.tipFont());

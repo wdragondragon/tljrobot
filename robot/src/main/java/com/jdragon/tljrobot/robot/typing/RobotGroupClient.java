@@ -7,7 +7,6 @@ import cc.moecraft.icq.event.events.message.EventMessage;
 import cc.moecraft.icq.event.events.message.EventPrivateMessage;
 import cc.moecraft.icq.event.events.notice.groupmember.EventNoticeGroupMemberChange;
 import cc.moecraft.icq.event.events.request.EventGroupInviteRequest;
-import cc.moecraft.icq.sender.IcqHttpApi;
 import cc.moecraft.icq.sender.message.components.ComponentImage;
 import com.jdragon.tljrobot.robot.club.robot;
 import com.jdragon.tljrobot.robot.newTyping.tools.GroupCache;
@@ -29,7 +28,6 @@ import java.util.Map;
 import static java.io.File.separator;
 
 public class RobotGroupClient extends IcqListener {
-    boolean respondSign;
     boolean noticesign = false;
     public static boolean automati_inclusion_sign;//收集赛文成绩标记
     public static HashMap<Long,Boolean> grouplist = new HashMap<>();//判断群是否已收
@@ -74,7 +72,8 @@ public class RobotGroupClient extends IcqListener {
             noticesign = true;
             event.respond("广播开启");
         }else if(noticesign&&GroupCache.adminList.contains(event.senderId)){
-            for (Long aLong : grouplist.keySet()) {
+            for (Long aLong : GroupCache.typeGroupMap.keySet()) {
+                System.out.println(event.senderId+"发送"+event.getMessage()+"到"+aLong);
                 event.getHttpApi().sendGroupMsg(aLong,message);
             }
         }
@@ -82,21 +81,14 @@ public class RobotGroupClient extends IcqListener {
     @EventHandler
     public void Carry(EventGroupMessage event)
     {
-        IcqHttpApi httpApi = event.getHttpApi();
-        try {
-            //每天收图
-            if (automati_inclusion_sign) {
-                Automatic_inclusion(event);
-            }
-            //创建比赛场地
-            if (!respondSign) {
-                CreateCijicom(event);//创建跟打战场
-                CreateFollowCom(event);//创建跟打战场
-                CreateFollowTeamCom(event);//创建团队跟打战场
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+        //每天收图
+        if (automati_inclusion_sign) {
+            Automatic_inclusion(event);
         }
+        //创建比赛场地
+        CreateCijicom(event);//创建跟打战场
+        CreateFollowCom(event);//创建跟打战场
+        CreateFollowTeamCom(event);//创建团队跟打战场
     }
     private void Automatic_inclusion(EventGroupMessage event){
         System.out.println("收图");

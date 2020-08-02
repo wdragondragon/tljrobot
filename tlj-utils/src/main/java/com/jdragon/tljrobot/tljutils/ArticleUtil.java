@@ -82,6 +82,9 @@ public class ArticleUtil {
         str = String.valueOf(a);
         return str;
     }
+    public static String quotationMarkReplacement(String str){
+        return str.replaceAll("[“”]","\"");
+    }
     public static String clearSpace(String str){
         str = str.replaceAll("\\s", "");
         str = str.replaceAll("　","");

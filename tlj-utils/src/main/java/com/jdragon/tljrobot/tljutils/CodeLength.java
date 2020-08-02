@@ -8,7 +8,8 @@ public class CodeLength {
     static int strLength = 0;
     static StringBuilder strAll = new StringBuilder();
     public static void main(String[] args) throws IOException {
-        String path  = "C:\\Users\\10619\\IdeaProjects\\ownPro\\tljrobot";
+//        String path  = "C:\\Users\\10619\\IdeaProjects\\otherPro\\haofangerp";
+        String path = "D:\\HBuilderProjects\\HaoFangErp-UI\\src";
         folderMethod2(path);
         strLength = strAll.length();
         System.out.println("一共"+n+"个类");
@@ -25,7 +26,7 @@ public class CodeLength {
 //                        System.out.println("文件夹:" + file2.getAbsolutePath());
                         folderMethod2(file2.getAbsolutePath());
                     } else {
-                        if(file2.getAbsolutePath().contains(".java")) {
+                        if(file2.getAbsolutePath().contains(".vue")) {
                             int strNumTemp = 0;
                             int strLengthTemp = 0;
                             String str;

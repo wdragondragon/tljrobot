@@ -5,7 +5,7 @@ package com.jdragon.tljrobot.robot.newTyping.config;
  */
 public class HttpAddr {
 //    private final static String SERVER_ADDR = "http://localhost:8081";
-    private final static String SERVER_ADDR = "https://tlj.wiki";
+    private final static String SERVER_ADDR = "https://cl.tyu.wiki";
 //    private final static String SERVER_ADDR = "39.96.83.89:8081";
 
     private final static String ROBOT_HOME = "/robot";

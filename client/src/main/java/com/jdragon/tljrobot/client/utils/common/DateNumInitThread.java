@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.client.utils.common;
 
+import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.entry.NumState;
 import com.jdragon.tljrobot.client.event.online.TypeNumManagerThread;
 import com.jdragon.tljrobot.tljutils.DateUtil;
@@ -25,6 +26,7 @@ public class DateNumInitThread extends Thread {
             date1 = DateUtil.now();
             if (!date1.toString().equals(date2.toString())) {
                 NumState.dateNum = 0;
+                LocalConfig.localDateNum = 0;
                 TypeNumManagerThread.getInstance().init();
             }
         }

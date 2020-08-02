@@ -8,7 +8,6 @@ import com.jdragon.tljrobot.client.entry.UserState;
 import com.jdragon.tljrobot.tljutils.HttpUtil;
 
 import java.net.URLEncoder;
-import java.util.Arrays;
 
 /**
  * Create by Jdragon on 2020.01.14
@@ -29,7 +28,7 @@ public class LoginEvent {
             return jsonObject.getString(Constant.RESPONSE_MESSAGE);
         }catch (Exception e){
             e.printStackTrace();
-            return "请求出错:"+ Arrays.toString(e.getStackTrace());
+            return "登录失败";
         }
     }
 }

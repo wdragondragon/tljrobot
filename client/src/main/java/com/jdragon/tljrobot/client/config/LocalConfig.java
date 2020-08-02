@@ -75,12 +75,21 @@ public class LocalConfig {
     public static Boolean mouseGetArticle = true;
     public static Boolean requestFocusInWindow = false;
 
+    public static Boolean globalReplay = false;//全局F3
+
     public static Float windowsOpacity = 1.0f;
     public static String windowsTheme = "长流默认";
 
     public static Boolean undecorated = false;
 
     public static String regex = "23456789";
+
+    public static Integer localNum = 0;
+    public static Integer localRightNum = 0;
+    public static Integer localMisNum = 0;
+    public static Integer localDateNum = 0;
+
+    public static Boolean quotationMarkReplacement = false;//中文引号替换成英文引号
 
 //    public static String serviceAddr = FinalConfig.TLJ_ADDR;
     public static void readConfig(){

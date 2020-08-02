@@ -21,6 +21,9 @@ public class Article {
         if(LocalConfig.clearSpace) {
             article1 = ArticleUtil.clearSpace(article1);
         }
+        if(LocalConfig.quotationMarkReplacement){
+            article1 = ArticleUtil.quotationMarkReplacement(article1);
+        }
         getArticleSingleton().setArticleSingleton(paragraph1,title1,article1);
         return articleSingleton;
     }

@@ -1,9 +1,6 @@
 package com.jdragon.tljrobot.client.test.jdk8Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -29,6 +26,10 @@ public class StreamTest {
         characters.forEach(System.out::println);
 
 
+        List<HashMap<String,Integer>> numberMapList = numbers.stream()
+                .map(i-> new HashMap<String,Integer>(){{put("value",i);}})
+                .collect(Collectors.toList());
+        System.out.println(numberMapList);
     }
     public static Stream<Character> filterCharacter(String str){
         List<Character> list = new ArrayList<>();

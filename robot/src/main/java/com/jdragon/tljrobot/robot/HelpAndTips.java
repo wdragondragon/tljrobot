@@ -13,11 +13,11 @@ public class HelpAndTips extends IcqListener {
     public void carry(EventGroupMessage eventGroupMessage) {
         String message = eventGroupMessage.getMessage();
         if (message.contains("跟打器") && message.contains("下载")) {
-            eventGroupMessage.respond(new ComponentAt(eventGroupMessage.getSenderId()).toString() + "\n长流跟打器，你值得拥有,跟打器地址：\nhttps://tlj.wiki");
+            eventGroupMessage.respond(new ComponentAt(eventGroupMessage.getSenderId()).toString() + "\n长流跟打器，你值得拥有,跟打器地址：\nhttps://cl.tyu.wiki");
         } else if (message.contains("长流")
                 && (message.contains("错误") || message.contains("不行") || message.contains("用不了") || message.contains("打不开") || message
                 .contains("问题"))) {
-            eventGroupMessage.respond(new ComponentAt(eventGroupMessage.getSenderId()).toString() + "\n先上长流官网看看有没有解决方案吧！\nhttps://tlj.wiki/home/blog");
+            eventGroupMessage.respond(new ComponentAt(eventGroupMessage.getSenderId()).toString() + "\n先上长流官网看看有没有解决方案吧！\nhttps://cl.tyu.wiki/home/blog");
         } else if (message.equals("#人工智障帮助")) {
             eventGroupMessage.respond("群映射列表 = 查询各大跟打群映射的缩写名字\n" +
                     "#查询 = 查询自己的赛文上屏成绩概况" +

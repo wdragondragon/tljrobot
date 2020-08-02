@@ -6,6 +6,7 @@ import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.NumState;
 import com.jdragon.tljrobot.client.entry.TypingState;
 import com.jdragon.tljrobot.client.entry.TypingState.*;
+import com.jdragon.tljrobot.client.entry.UserState;
 import com.jdragon.tljrobot.client.event.other.ListenPlayEvent;
 import com.jdragon.tljrobot.client.utils.common.JTextPaneFont;
 import com.jdragon.tljrobot.client.utils.common.Timer;
@@ -58,7 +59,6 @@ public class TypingListener implements DocumentListener, KeyListener {
             if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)|| Article.getArticleSingleton().getArticle()==null) {
                 return;
             }
-//            if(TypingText().getText().length()==0)return;
             if (e.getKeyChar() != '\b') {
                 typeStr = typingText().getText() + e.getKeyChar();
             } else {
@@ -73,12 +73,16 @@ public class TypingListener implements DocumentListener, KeyListener {
              */
             if (typeStr.length() > oldTypeStrLength) {
                 if (articleChars[typeStr.length() - 1] == e.getKeyChar()) {
+                    LocalConfig.localRightNum++;
                     NumState.rightNum++;
                 }else {
                     NumState.misNum++;
+                    LocalConfig.localMisNum++;
                 }
                 NumState.num++;
                 NumState.dateNum++;
+                LocalConfig.localNum++;
+                LocalConfig.localDateNum++;
             }
             /**
              * 计算打词率
@@ -91,10 +95,6 @@ public class TypingListener implements DocumentListener, KeyListener {
             for (n = 0; n < typeStr.length(); n++) { // 统计错误字数，向文本框添加字体
                 if (articleChars.length-1<n||typeChars[n] != articleChars[n]) {
                     mistake++;
-//                    String mistakeStr = "\"" + articleChars[n] + "\"在第"
-//                            + (n + 1) + "个字\n";
-//                    mistakeList.add(mistakeStr);
-//                    missign.add(n);
                 }
             }
             /**
@@ -571,11 +571,17 @@ public class TypingListener implements DocumentListener, KeyListener {
     public void updateNumShow(){
         numberLabel().setText("字数:" + articleStr.length() + "/已打:" + typeStr.length() + "/错:"
                 + mistake);
-
-        numberRecordLabel().setText("总:" + NumState.num + " 对:"
-                + NumState.rightNum + " 错:"
-                + NumState.misNum + " 今:"
-                + NumState.dateNum);
+        if(UserState.loginState) {
+            numberRecordLabel().setText("总:" + NumState.num + " 对:"
+                    + NumState.rightNum + " 错:"
+                    + NumState.misNum + " 今:"
+                    + NumState.dateNum);
+        }else {
+            numberRecordLabel().setText("总:" + LocalConfig.localNum + " 对:"
+                    + LocalConfig.localRightNum + " 错:"
+                    + LocalConfig.localMisNum + " 今:"
+                    + LocalConfig.localDateNum);
+        }
     }
     @Override
     public void insertUpdate(DocumentEvent e) {

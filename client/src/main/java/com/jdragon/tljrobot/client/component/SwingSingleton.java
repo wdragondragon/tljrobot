@@ -41,10 +41,10 @@ public class SwingSingleton {
     }
     public static JLabel numberRecordLabel(){
         if (numberRecordLabel==null){
-            numberRecordLabel = new JLabel("总:" + 0 +
-                    " 对:" + 0 +
-                    " 错:" + 0 +
-                    " 今:" + 0);
+            numberRecordLabel = new JLabel("总:" + LocalConfig.localNum +
+                    " 对:" + LocalConfig.localRightNum +
+                    " 错:" + LocalConfig.localMisNum +
+                    " 今:" + LocalConfig.localDateNum);
             numberRecordLabel.setBorder(BorderFactory.createTitledBorder("跟打记录"));
             numberRecordLabel.setFont(tipsFont);
         }

@@ -16,6 +16,7 @@ public class LogoutEvent {
         if("退出成功".equals(jsonObject.getString(Constant.RESPONSE_MESSAGE))) {
             UserState.loginState = false;
             UserState.token = "";
+            TypeNumManagerThread.getInstance().stop();
             return true;
         }else{
             return false;

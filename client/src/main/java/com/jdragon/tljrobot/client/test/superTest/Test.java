@@ -2,6 +2,7 @@ package com.jdragon.tljrobot.client.test.superTest;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * @Author: Jdragon
@@ -29,6 +30,7 @@ public class Test {
         C c = (C)constructor.newInstance(parameters);
         C c1 = (C)constructor1.newInstance(bs);
 
-
+        Method  method = C.class.getMethod("go",String.class,String.class);
+        method.invoke(c,"no","no2");
     }
 }

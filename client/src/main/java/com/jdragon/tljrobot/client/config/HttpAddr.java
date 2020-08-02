@@ -6,7 +6,7 @@ package com.jdragon.tljrobot.client.config;
 public class HttpAddr {
     public  static String NEW_VERSION = VersionConfig.start();//最新版本编号
 //    private final static String SERVER_ADDR = "http://localhost:8081";
-    private final static String SERVER_ADDR = "https://tlj.wiki";
+    private final static String SERVER_ADDR = "https://cl.tyu.wiki";
 
     private final static String HOME_ADDR = "/home";
     private final static String ROBOT_HOME = "/robot";

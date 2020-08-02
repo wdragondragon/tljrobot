@@ -131,8 +131,12 @@ public class DrawImg {
             } else {
                 equipment = "PC端";
             }
-            keySpeedList.add(tljHistory.getKeySpeed());
-            keyLengthList.add(tljHistory.getKeyLength());
+            if(tljHistory.getKeyLength()<=5){
+                keySpeedList.add(tljHistory.getKeySpeed());
+            }
+            if(tljHistory.getKeySpeed()>=4){
+                keyLengthList.add(tljHistory.getKeyLength());
+            }
             contentArray.add(Arrays.asList(name,speed,keySpeed,keyLength,deleteNum,deleteText,mistake,repeatNum,keyAccuracy,keyMethod,wordRate,equipment));
         }
         allValue.add(contentArray);

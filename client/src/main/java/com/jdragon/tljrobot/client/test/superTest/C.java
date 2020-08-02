@@ -16,4 +16,8 @@ public class C {
     public C(B b1,B b2){
         System.out.println("非可变构造器");
     }
+    public void go(String str1,String str2){
+        System.out.println(str1+str2);
+    }
+
 }
