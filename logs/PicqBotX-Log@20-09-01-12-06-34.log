@@ -1,0 +1,25 @@
+[20-09-01 12:06:34] [PicqBotX] [INFO] 
+[20-09-01 12:06:34] [PicqBotX] [INFO]     ____  _            ____        __ _  __
+[20-09-01 12:06:34] [PicqBotX] [INFO]    / __ \(_)________ _/ __ )____  / /| |/ /
+[20-09-01 12:06:34] [PicqBotX] [INFO]   / /_/ / / ___/ __ `/ __  / __ \/ __/   /
+[20-09-01 12:06:34] [PicqBotX] [INFO]  / ____/ / /__/ /_/ / /_/ / /_/ / /_/   |
+[20-09-01 12:06:34] [PicqBotX] [INFO] /_/   /_/\___/\__, /_____/\____/\__/_/|_|
+[20-09-01 12:06:34] [PicqBotX] [INFO]                 /_/         v4.15.0.1058
+[20-09-01 12:06:34] [PicqBotX] [INFO] 日志管理器     初始化完成 [******] ...(59.6 ms)
+[20-09-01 12:06:34] [PicqBotX] [INFO] 缓存管理器     初始化完成 [******] ...(3.63 ms)
+[20-09-01 12:06:34] [PicqBotX] [INFO] DEBUG设置     初始化完成 [******] ...(0.02 ms)
+[20-09-01 12:06:34] [PicqBotX] [INFO] 事件管理器     初始化完成 [******] ...(63.28 ms)
+[20-09-01 12:06:34] [PicqBotX] [INFO] 账号管理器     初始化完成 [******] ...(1.32 ms)
+[20-09-01 12:06:34] [PicqBotX] [INFO] HTTP监听服务器 初始化完成 [******] ...(2.54 ms)
+[20-09-01 12:06:34] [PicqBotX] [INFO] 指令管理器     初始化完成 [******] ...(3.36 ms)
+[20-09-01 12:06:35] [PicqBotX] [INFO] 账号 Bot01:   版本验证完成!
+[20-09-01 12:06:35] [PicqBotX] [INFO] 正在启动...
+[20-09-01 12:09:44] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] Http Failed: INCORRECT_REQUEST_METHOD: Not POST
+[20-09-01 12:09:47] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] Http Failed: INCORRECT_REQUEST_METHOD: Not POST
+[20-09-01 12:09:50] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] Http Failed: INCORRECT_REQUEST_METHOD: Not POST
+[20-09-01 12:09:53] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] Http Failed: INCORRECT_REQUEST_METHOD: Not POST
+[20-09-01 12:09:56] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] Http Failed: INCORRECT_REQUEST_METHOD: Not POST
+[20-09-01 12:09:59] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] Http Failed: INCORRECT_REQUEST_METHOD: Not POST
+[20-09-01 12:10:02] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] Http Failed: INCORRECT_REQUEST_METHOD: Not POST
+[20-09-01 12:10:05] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] Http Failed: INCORRECT_REQUEST_METHOD: Not POST
+[20-09-01 12:10:08] [PicqBotX] [DEBUG(java.lang.Thread.run:748)] Http Failed: INCORRECT_REQUEST_METHOD: Not POST

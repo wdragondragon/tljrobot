@@ -88,6 +88,9 @@ public class QueryUser extends IcqListener {
                 }
                 eventGroupMessage.respond(ret.substring(0, ret.length() - 1));
                 break;
+            case "刷新词提":
+                com.jdragon.tljrobot.robot.typing.RobotGroupClient.initTypingTip();
+                eventGroupMessage.respond("刷新成功");
         }
         String[] s = message.split(" ");
         if(s.length==2){

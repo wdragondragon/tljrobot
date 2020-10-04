@@ -68,6 +68,11 @@ public class RobotGroupClient extends IcqListener {
                 }
             }
         }else if("#联赛".equals(message)){
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             //{"code":200,"message":"获取成功","result":{"id":0,"holdDate":"2020-01-22","articleId":1,"author":"321321","article":{"id":1,"title":"1","content":"1"}}}
             eventGroupMessage.respond(getUnionArticle(DateUtil.now()));
         }else if("#联赛成绩".equals(message)){
@@ -97,7 +102,7 @@ public class RobotGroupClient extends IcqListener {
             try {
                 date = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(RegexText.AddZero(params[1])).getTime());
             } catch (ParseException e) {
-                eventGroupMessage.respond("日期格式错误:"+params[1]);
+//                eventGroupMessage.respond("日期格式错误:"+params[1]);
                 return;
             }
             System.out.println("判断"+date.toString());
@@ -128,7 +133,7 @@ public class RobotGroupClient extends IcqListener {
                 String image = "typinggroup" + separator + groupId + "-" + params[1] + ".jpg";
                 String path = "/root/coolq/data/image/" + image;
                 if(new File(path).exists()){
-                    eventGroupMessage.respond("[CQ:image,file=" + image + "]");
+                    eventGroupMessage.respond("[CQ:image,file=" + path + "]");
                 }else{
                     eventGroupMessage.respond("无记录");
                 }
@@ -148,7 +153,8 @@ public class RobotGroupClient extends IcqListener {
             }else if("#历史成绩".equals(params[0])){
                 params[2] = RegexText.AddZero(params[2]);
                 String image = "typinggroup" + separator + GroupCache.typeGroupMap.get(params[1]) + "-" + params[2] + ".jpg";
-                eventGroupMessage.respond("[CQ:image,file=" + image + "]");
+                String path = "/root/coolq/data/image/" + image;
+                eventGroupMessage.respond("[CQ:image,file=" + path + "]");
             }
         }
     }

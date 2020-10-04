@@ -25,7 +25,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         /*
            如果为允许访问的地址或携带已登录userId则通过
          */
-        List allow = Arrays.asList("error","home","swagger-ui.html","webjars","swagger-resources","test","editor","ueditor","UEditorConfig","static","robot","tljVersion","fonts");
+        List allow = Arrays.asList("error","home","swagger-ui.html","webjars","swagger-resources","test","editor","ueditor","UEditorConfig","static","robot","tljVersion","fonts","uploadCiku");
         List allow2 = Arrays.asList("img","css","js","png","jpg","txt","ico");
         String pattern = "(?<=/)(.*?)(?=/)|(?<=/)(.*)";
         Pattern r = Pattern.compile(pattern);

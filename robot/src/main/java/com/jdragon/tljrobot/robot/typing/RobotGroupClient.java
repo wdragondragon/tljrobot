@@ -33,13 +33,16 @@ public class RobotGroupClient extends IcqListener {
     public static HashMap<Long,Boolean> grouplist = new HashMap<>();//判断群是否已收
 
 
-    HashMap<String, BetterTyping> betterTypingHashMap = new HashMap<>();
+    public static HashMap<String, BetterTyping> betterTypingHashMap = new HashMap<>();
     public RobotGroupClient(){
         //定时收集赛文程序
         automati_inclusion_sign = false;
         Automatic_Inclusion automatic_inclusion = new Automatic_Inclusion();
         automatic_inclusion.start();
 
+        initTypingTip();
+    }
+    public static void initTypingTip(){
         betterTypingHashMap.put("词组提示码表",new BetterTyping("编码文件"+separator+"输入法编码"+separator+"词组提示码表.txt"));
     }
     @EventHandler void groupAdd(EventGroupInviteRequest eventGroupInviteRequest){
@@ -71,9 +74,9 @@ public class RobotGroupClient extends IcqListener {
         }else if (message.equals("#广播")){
             noticesign = true;
             event.respond("广播开启");
-        }else if(noticesign&&GroupCache.adminList.contains(event.senderId)){
+        }else if(noticesign&&GroupCache.adminList.contains(event.getSenderId())){
             for (Long aLong : GroupCache.typeGroupMap.keySet()) {
-                System.out.println(event.senderId+"发送"+event.getMessage()+"到"+aLong);
+                System.out.println(event.getSenderId()+"发送"+event.getMessage()+"到"+aLong);
                 event.getHttpApi().sendGroupMsg(aLong,message);
             }
         }
@@ -106,7 +109,7 @@ public class RobotGroupClient extends IcqListener {
                 System.out.println("群赛收图："+image);
                 DownloadMsg.downloadMsg(message, image);
                 grouplist.put(groupid,false);
-                event.getHttpApi().sendGroupMsg(robot.tljGroupNum, "[CQ:image,file="+filename+"]");
+                event.getHttpApi().sendGroupMsg(robot.tljGroupNum, "[CQ:image,file="+image+"]");
                 for (Long o : grouplist.keySet()) {
                     if(!grouplist.get(o)){
                         automati_inclusion_sign = false;

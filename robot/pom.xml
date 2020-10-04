@@ -64,7 +64,7 @@
         <dependency>
             <groupId>com.github.hydevelop</groupId>
             <artifactId>PicqBotX</artifactId>
-            <version>4.10.1.928</version>
+            <version>4.15.0.1058</version>
         </dependency>
 
         <dependency>

@@ -212,7 +212,7 @@ public class Createimg {
         else
             localPath= "/root/coolq/data/image/" + path;
         ImageIO.write(image, "png", new File(localPath));
-        return path;
+        return localPath;
     }
 
     /**
@@ -381,7 +381,7 @@ public class Createimg {
         else
             localPath= "/root/coolq/data/image/" + path;
         ImageIO.write(image, "png", new File(localPath));
-        return path;
+        return localPath;
     }
     public static void main(String[] args) throws IOException {
         BetterTyping betterTyping = new BetterTyping("词组提示码表");
