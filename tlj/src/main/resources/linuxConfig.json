@@ -1,5 +1,5 @@
 {
-    "basePath" : "/var/java/UEditor",
+    "basePath" : "/UEditor",
     "imageActionName": "uploadimage",
     "imageFieldName": "upfile",
     "imageMaxSize": 2048000,

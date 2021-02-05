@@ -23,27 +23,27 @@ import static com.jdragon.tljrobot.client.entry.TypingState.*;
 
 public class SendAchievementEvent {
     @SneakyThrows
-    public static void start()  {
-        if(typingState){
+    public static void start() {
+        if (typingState) {
             return;
         }
         System.out.println(SwingSingleton.typingText().getText().length());
         String result;
-        if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){
+        if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
             int length = ListenPlayEvent.getLength();
             result = ListenPlayEvent.getTitle() +
-                    " 文章长度" + length + " 正确率" + String.format("%.2f",((double)length-mistake)/length*100)+"%"+
+                    " 文章长度" + length + " 正确率" + String.format("%.2f", ((double) length - mistake) / length * 100) + "%" +
                     " 听打模式" + " 错:" + lookMis + " 多:" + lookMore + " 少:" + lookMiss +
-                    " 长流" + (LocalConfig.changLiuVersion?FinalConfig.VERSION:"") +
-                    (LocalConfig.systemVersion?" " + SystemUtil.getSystemName() + "版" :"");
+                    " 长流" + (LocalConfig.changLiuVersion ? FinalConfig.VERSION : "") +
+                    (LocalConfig.systemVersion ? " " + SystemUtil.getSystemName() + "版" : "");
             NumState.num += length;
             NumState.dateNum += length;
             NumState.misNum += mistake;
-            NumState.rightNum += length-mistake;
+            NumState.rightNum += length - mistake;
             TypingListener.getInstance().updateNumShow();
-            speedButton().setText(String.format("%.2f",((double)length-mistake)/length*100)+"%");
+            speedButton().setText(String.format("%.2f", ((double) length - mistake) / length * 100) + "%");
             Clipboard.set(result);
-        }else {
+        } else {
             Article article = Article.getArticleSingleton();
             int paragraph = article.getParagraph();
             double speed = getSpeed();
@@ -54,6 +54,12 @@ public class SendAchievementEvent {
             double shortCodesNum = (article.getShortCodeEntity().getArticleAverCodes());
             String check = String.format("%.2f", speed + keySpeed + keyLength);
             String checkCode = DoCheck.buildCheckStr(check, "genda");
+            String hash = DoCheck.hmacSHA1Encrypt(
+                    paragraph + "-" +
+                            String.format("%.2f", speed) + "-" +
+                            String.format("%.2f", keySpeed) + "-" +
+                            String.format("%.2f", keyLength));
+
             String noMisSpeedStr = mistake == 0 ? "" : ("/" + String.format("%.2f", noMisSpeed));
             String lookPlayStr = LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)
                     ? " 看打模式 错:" + lookMis + " 多:" + lookMore + " 少:" + lookMiss + "" : "";
@@ -62,31 +68,32 @@ public class SendAchievementEvent {
                             " 速度" + String.format("%.2f", speed) + noMisSpeedStr +
                             " 击键" + String.format("%.2f", keySpeed) +
                             " 码长" + String.format("%.2f", keyLength) +
-                            (LocalConfig.shortCodesNum?" 标顶理论" + String.format("%.2f", shortCodesNum):"") +
-                            (LocalConfig.articleLength? " 字数" + articleLength:"") +
-                            (LocalConfig.deleteTextNumber?" 回改" + deleteTextNumber:"") +
-                            (LocalConfig.deleteNumber?" 退格" + deleteNumber:"") +
-                            (LocalConfig.mistake? " 错字" + mistake :"")+
-                            (LocalConfig.keyNumber?" 键数" + keyNumber:"") +
-                            (LocalConfig.repeat?" 选重" + repeat:"") +
-                            (LocalConfig.keyAccuracy?" 键准" + String.format("%.2f", getKeyAccuracy()) + "%":"") +
-                            (LocalConfig.keyMethod? " 键法" + String.format("%.2f", getKeyMethod()) + "%" +
-                            "(左" + left + ":右" + right + ":空格" + space + ")":"") +
-                            (LocalConfig.wordRate?" 打词率" + String.format("%.2f", getWordRate()) + "%":"") +
-                            (LocalConfig.repeatRate?" 选重率" + String.format("%.2f", getRepeatRate()) + "%":"") + lookPlayStr +
-                            (LocalConfig.typeWritingSign?" 输入法:"+LocalConfig.typeWriting:"")+
-                            (LocalConfig.personalTagSign?" 个签:"+LocalConfig.personalTag:"")+
-                            " 长流" + (LocalConfig.changLiuVersion?FinalConfig.VERSION:"") +
-                            (LocalConfig.systemVersion?" " + SystemUtil.getSystemName() + "版":"") +
-                            (LocalConfig.checkCode? " 校验码" + checkCode:"");
+                            (LocalConfig.shortCodesNum ? " 标顶理论" + String.format("%.2f", shortCodesNum) : "") +
+                            (LocalConfig.articleLength ? " 字数" + articleLength : "") +
+                            (LocalConfig.deleteTextNumber ? " 回改" + deleteTextNumber : "") +
+                            (LocalConfig.deleteNumber ? " 退格" + deleteNumber : "") +
+                            (LocalConfig.mistake ? " 错字" + mistake : "") +
+                            (LocalConfig.keyNumber ? " 键数" + keyNumber : "") +
+                            (LocalConfig.repeat ? " 选重" + repeat : "") +
+                            (LocalConfig.keyAccuracy ? " 键准" + String.format("%.2f", getKeyAccuracy()) + "%" : "") +
+                            (LocalConfig.keyMethod ? " 键法" + String.format("%.2f", getKeyMethod()) + "%" +
+                                    "(左" + left + ":右" + right + ":空格" + space + ")" : "") +
+                            (LocalConfig.wordRate ? " 打词率" + String.format("%.2f", getWordRate()) + "%" : "") +
+                            (LocalConfig.repeatRate ? " 选重率" + String.format("%.2f", getRepeatRate()) + "%" : "") + lookPlayStr +
+                            (LocalConfig.typeWritingSign ? " 输入法:" + LocalConfig.typeWriting : "") +
+                            (LocalConfig.personalTagSign ? " 个签:" + LocalConfig.personalTag : "") +
+                            (LocalConfig.checkCode ? " 校验码" + checkCode : "") +
+                            " 哈希" + hash +
+                            " 长流" + (LocalConfig.changLiuVersion ? FinalConfig.VERSION : "") +
+                            (LocalConfig.systemVersion ? " " + SystemUtil.getSystemName() + "版" : "");
         }
         Clipboard.set(result);
-        if(LocalConfig.lurk||!SystemUtil.isWindows()) {
+        if (LocalConfig.lurk || !SystemUtil.isWindows()) {
             return;
         }
-        if(LocalConfig.getArticleOnNet){
+        if (LocalConfig.getArticleOnNet) {
             HttpUtil.doPostObject(HttpAddr.SEND_ROBOT_ARTICLE_ACH, new SendRobotMessageDto(result, NetArticleTools.getSelectGroupId(), UserState.token));
-        }else {
+        } else {
             QqOperation.start(QqOperation.SEND_ACHIEVEMENT, qQNameLabel().getText());
         }
     }

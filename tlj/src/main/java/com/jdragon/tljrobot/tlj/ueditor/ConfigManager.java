@@ -1,22 +1,15 @@
 package com.jdragon.tljrobot.tlj.ueditor;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.URISyntaxException;
-import java.util.HashMap;
-import java.util.Map;
-
+import com.jdragon.tljrobot.tlj.ueditor.define.ActionMap;
 import com.jdragon.tljrobot.tljutils.SystemUtil;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.jdragon.tljrobot.tlj.ueditor.define.ActionMap;
+import java.io.*;
+import java.net.URISyntaxException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 配置管理器
@@ -177,7 +170,8 @@ public final class ConfigManager {
 		try{
 		if(SystemUtil.isWindows())
 			return this.getClass().getClassLoader().getResource("config.json").toURI().getPath();
-		else return "/var/java/UEditor/linuxConfig.json";
+		else return "/UEditor/linuxConfig.json";
+//		else return this.getClass().getClassLoader().getResource("linuxConfig.json").toURI().getPath();
 		}catch (URISyntaxException e){
 			return null;
 		}

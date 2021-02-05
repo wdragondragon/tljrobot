@@ -43,7 +43,7 @@ public class robot
 //        PicqConfig c = new PicqConfig(9999);
 //        c.setDebug(true);
         // 添加一个机器人账户 ( 名字, 发送URL, 发送端口 )
-        bot.addAccount("Bot01", "127.0.0.1", 5700);
+        bot.addAccount("Bot01", "robot-app", 5700);
 //        bot.addAccount("Bot01","127.0.0.1",5701);
 //        PointClient pointClient = new PointClient(bot.getAccountManager().getNonAccountSpecifiedApi());
         // 注册事件监听器, 可以注册多个监听器

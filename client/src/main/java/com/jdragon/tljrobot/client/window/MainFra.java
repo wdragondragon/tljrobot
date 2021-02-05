@@ -25,10 +25,8 @@ import com.jdragon.tljrobot.client.window.dialog.SetDialog;
 import com.jdragon.tljrobot.client.window.dialog.ShowArticleDialog;
 import com.jdragon.tljrobot.tljutils.ArticleUtil;
 import com.jdragon.tljrobot.tljutils.string.Comparison;
-import freeseawind.lf.LittleLuckLookAndFeel;
 import lombok.Data;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
-import org.jvnet.substance.SubstanceLookAndFeel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,39 +53,36 @@ public class MainFra extends JFrame {
                 LocalConfig.windowWidth,LocalConfig.windowHeight);
         //美化UI
         try{
-            switch (LocalConfig.windowsTheme){
-                case "长流默认":
+//            switch (LocalConfig.windowsTheme){
+//                case "长流默认":
                     BeautyEyeLNFHelper.translucencyAtFrameInactive = false;
                     BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle
                             .generalNoTranslucencyShadow;
                     BeautyEyeLNFHelper.launchBeautyEyeLNF();
                     UIManager.put("RootPane.setupButtonVisible", false);
-                    break;
-                case "系统默认":
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                    UIManager.put("ToolBar.isPaintPlainBackground",true);
-                    break;
-                case "LittleLuck蓝白":
-                    UIManager.setLookAndFeel(LittleLuckLookAndFeel.class.getName());
-                    break;
-                case "Substance黑白":
-                    UIManager.setLookAndFeel("org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel");
-                    SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
-                    break;
-                case "Nimbus灰白":
-                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-                    break;
-//                case "WebLaf黑白":
-//                    UIManager.setLookAndFeel ( new WebLookAndFeel() );
 //                    break;
-                default:
-                    BeautyEyeLNFHelper.translucencyAtFrameInactive = false;
-                    BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle
-                            .generalNoTranslucencyShadow;
-                    BeautyEyeLNFHelper.launchBeautyEyeLNF();
-                    UIManager.put("RootPane.setupButtonVisible", false);
-                    break;
-            }
+//                case "系统默认":
+//                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//                    UIManager.put("ToolBar.isPaintPlainBackground",true);
+//                    break;
+//                case "LittleLuck蓝白":
+//                    UIManager.setLookAndFeel(LittleLuckLookAndFeel.class.getName());
+//                    break;
+//                case "Substance黑白":
+//                    UIManager.setLookAndFeel("org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel");
+//                    SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
+//                    break;
+//                case "Nimbus灰白":
+//                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+//                    break;
+//                default:
+//                    BeautyEyeLNFHelper.translucencyAtFrameInactive = false;
+//                    BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle
+//                            .generalNoTranslucencyShadow;
+//                    BeautyEyeLNFHelper.launchBeautyEyeLNF();
+//                    UIManager.put("RootPane.setupButtonVisible", false);
+//                    break;
+//            }
         } catch (Exception ignored) {}
         init();
     }

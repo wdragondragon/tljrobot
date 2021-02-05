@@ -26,13 +26,18 @@ public class DrawImg {
         heads.add(head);
         for(RobotHistory robotHistory:robotHistories) {
             String name = "未知";
-            String groupName = "未知";
+            String groupName = "其他";
 
             long groupId = robotHistory.getGroupId();
             HashMap<Long,String> groupMemberCardList = GroupCache.groupCardCache.get(groupId);
-            if(groupMemberCardList!=null&&GroupCache.typeGroupMap.containsKey(groupId)) {
-                name = groupMemberCardList.get(robotHistory.getQq());
-                if(name==null)name= String.valueOf(robotHistory.getQq());
+            if(groupMemberCardList!=null) {
+                if(groupMemberCardList.containsKey(robotHistory.getQq())){
+                    name = groupMemberCardList.get(robotHistory.getQq());
+                }else{
+                    name= String.valueOf(robotHistory.getQq());
+                }
+            }
+            if(GroupCache.typeGroupMap.containsKey(groupId)){
                 groupName = GroupCache.typeGroupMap.get(groupId);
             }
             Double keySpeed = robotHistory.getKeySpeed();

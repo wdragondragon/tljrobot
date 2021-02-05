@@ -265,7 +265,7 @@ public class JMenuComponent {
             Desktop desktop = Desktop.getDesktop();
             if (Desktop.isDesktopSupported() && desktop.isSupported(Desktop.Action.BROWSE)) {
                 try {
-                    URI uri = new URI("https://tlj.wiki/home/allUser");
+                    URI uri = new URI("https://tyu.wiki/home/allUser");
                     desktop.browse(uri);
                 } catch (IOException | URISyntaxException ex) {
                     ex.printStackTrace();

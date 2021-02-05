@@ -4,9 +4,9 @@ import java.util.*;
 
 public class TimingMap<K, V> extends HashMap<K, V> {
     // 存放过期日期的map
-    private Map<String, Long> timingMap;
+    private final Map<String, Long> timingMap = new HashMap<>();
     // 过期时间
-    private final long expireTime = 60*60*1000;
+    private final long expireTime = 60 * 60 * 1000;
 
     /**
      * 重写put方法
@@ -23,21 +23,20 @@ public class TimingMap<K, V> extends HashMap<K, V> {
     public TimingMap() {
         super();
         Timer timer = new Timer();
-        timingMap = new HashMap<String, Long>();
         TimerTask task = new TimerTask() { // 创建一个新的计时器任务。
             @Override
             public void run() {
-            List<String> removeList = new ArrayList<String>();
-            for (String key : timingMap.keySet()) {
-                long currentTime = System.currentTimeMillis();
-                if (currentTime > timingMap.get(key)) {
-                    removeList.add(key);
+                List<String> removeList = new ArrayList<String>();
+                for (String key : timingMap.keySet()) {
+                    long currentTime = System.currentTimeMillis();
+                    if (currentTime > timingMap.get(key)) {
+                        removeList.add(key);
+                    }
                 }
-            }
-            removeExpireData(removeList);
+                removeExpireData(removeList);
             }
         };
-        timer.schedule(task, 1000, 60*1000); // 一分钟刷新一次
+        timer.schedule(task, 1000, 60 * 1000); // 一分钟刷新一次
     }
 
     /**
@@ -63,7 +62,7 @@ public class TimingMap<K, V> extends HashMap<K, V> {
 //            super.remove(key);
 //            return null;
 //        }
-        timingMap.put((String)key,currentTime+expireTime);
+        timingMap.put((String) key, currentTime + expireTime);
         return super.get(key);
     }
 

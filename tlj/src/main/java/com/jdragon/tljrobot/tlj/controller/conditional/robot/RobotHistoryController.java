@@ -37,11 +37,7 @@ public class RobotHistoryController {
             }
         }
         int typeTime = robotHistoryMapper.selectTypeTime(robotHistory.getQq(),robotHistory.getTypeDate(),robotHistory.isMatch());
-        if(typeTime==0) {
-            robotHistory.setFirst(true);
-        } else {
-            robotHistory.setFirst(false);
-        }
+        robotHistory.setFirst(typeTime == 0);
         if (robotHistoryMapper.insert(robotHistory)>0) {
             return Result.success("上传成功");
         }

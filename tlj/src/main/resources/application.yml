@@ -6,7 +6,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql-network:3306/tljrobot?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://mysql:3306/tljrobot?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 951753
   thymeleaf:
@@ -38,7 +38,7 @@ mybatis-plus:
     map-underscore-to-camel-case: false
 editor:
   windowsPath: D:/WEB/MEditor/
-  linuxPath: /var/java/MEditor/
+  linuxPath: /MEditor/
   MdPrefixUrl: /static/MEditor/
 
 

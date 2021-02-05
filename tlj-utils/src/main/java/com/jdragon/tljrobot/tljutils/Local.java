@@ -6,7 +6,7 @@ import java.util.UUID;
 
 @Data
 public class Local {
-    private static TimingMap<String,Object> loginMap = new TimingMap();
+    private static TimingMap<String,Object> loginMap = new TimingMap<>();
     public static TimingMap<String, Object> getTokenMap(){
         return loginMap;
     }

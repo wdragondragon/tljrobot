@@ -62,7 +62,9 @@ public class MainFraConfig {
         ThisHistoryDialog.getInstance();
         //设置可见
         mainFra.setVisible(true);
-        mainFra.setOpacity(LocalConfig.windowsOpacity);
+        if (mainFra.isUndecorated()) {
+            mainFra.setOpacity(LocalConfig.windowsOpacity);
+        }
     }
     //创建系统托盘
     private static void onSystem(){

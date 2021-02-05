@@ -40,6 +40,7 @@ public class WebConfig extends WebMvcConfigurationSupport{
                 .version("1.0.0")
                 .build();
     }
+
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
@@ -57,11 +58,11 @@ public class WebConfig extends WebMvcConfigurationSupport{
         }
         else {
             registry.addResourceHandler("/static/UEditor/**")
-                    .addResourceLocations("file:/var/java/UEditor/");
+                    .addResourceLocations("file:/UEditor/");
             registry.addResourceHandler("/static/MEditor/**")
-                    .addResourceLocations("file:/var/java/MEditor/");
+                    .addResourceLocations("file:/MEditor/");
             registry.addResourceHandler("/static/tlj/**")
-                    .addResourceLocations("file:/var/java/tlj/");
+                    .addResourceLocations("file:/download/");
         }
         super.addResourceHandlers(registry);
     }

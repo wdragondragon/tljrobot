@@ -3,7 +3,6 @@ package com.jdragon.tljrobot.robot.newTyping;
 import cc.moecraft.icq.event.EventHandler;
 import cc.moecraft.icq.event.IcqListener;
 import cc.moecraft.icq.event.events.message.EventGroupMessage;
-import cc.moecraft.icq.sender.message.components.ComponentAt;
 import cc.moecraft.icq.sender.message.components.ComponentImage;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -34,57 +33,57 @@ import static java.io.File.separator;
  * Create by Jdragon on 2020.01.21
  * 该监听抓取与赛文有关
  * 包括：
- *  1、联赛，群日赛的成绩收取
- *  2、联赛，日赛当日与历史成绩的图片发送
- *  3、上传联赛赛文
+ * 1、联赛，群日赛的成绩收取
+ * 2、联赛，日赛当日与历史成绩的图片发送
+ * 3、上传联赛赛文
  */
 public class RobotGroupClient extends IcqListener {
     @EventHandler
-    public void carryGroupMessage(EventGroupMessage eventGroupMessage){
+    public void carryGroupMessage(EventGroupMessage eventGroupMessage) {
         String message = eventGroupMessage.getMessage();
         long qq = eventGroupMessage.getSenderId();
         long groupId = eventGroupMessage.getGroupId();
         RegexText rgt = new RegexText();
         String[] Com = rgt.CarryCom(eventGroupMessage.getMessage());
-        if(!"-1".equals(Com[2])) {
-            Article article = new Article(Integer.parseInt(Com[2]),Com[0],Com[1]);
-            HashMap<String,String> postParams = new HashMap<>();
+        if (!"-1".equals(Com[2])) {
+            Article article = new Article(Integer.parseInt(Com[2]), Com[0], Com[1]);
+            HashMap<String, String> postParams = new HashMap<>();
             postParams.put("groupId", String.valueOf(groupId));
-            JSONObject.parseObject(HttpUtil.doPostObjectAndParams(HttpAddr.UPLOAD_GROUP_ARTICLE_CACHE,postParams,article));
+            JSONObject.parseObject(HttpUtil.doPostObjectAndParams(HttpAddr.UPLOAD_GROUP_ARTICLE_CACHE, postParams, article));
         }
-        if (qq==robot.xiaochaiQ) {
-            if ("999".equals(Com[2])&&GroupCache.typeGroupMap.containsKey(groupId)) {
+        if (qq == robot.xiaochaiQ) {
+            if ("999".equals(Com[2]) && GroupCache.typeGroupMap.containsKey(groupId)) {
                 JSONObject articleJson = new JSONObject();
                 articleJson.put("title", Com[0]);
-                articleJson.put("content",Com[1]);
+                articleJson.put("content", Com[1]);
                 JSONObject groupMatchJson = new JSONObject();
-                groupMatchJson.put("holdDate",DateUtil.now().toString());
-                groupMatchJson.put("groupId",groupId);
-                groupMatchJson.put("article",articleJson);
-                JSONObject jsonObject = JSONObject.parseObject(HttpUtil.doPostObject(HttpAddr.UPLOAD_GROUP_MATCH_ADDR,groupMatchJson));
+                groupMatchJson.put("holdDate", DateUtil.now().toString());
+                groupMatchJson.put("groupId", groupId);
+                groupMatchJson.put("article", articleJson);
+                JSONObject jsonObject = JSONObject.parseObject(HttpUtil.doPostObject(HttpAddr.UPLOAD_GROUP_MATCH_ADDR, groupMatchJson));
                 String retMessage = jsonObject.getString("message");
-                if("上传成功".equals(retMessage)){
+                if ("上传成功".equals(retMessage)) {
                     eventGroupMessage.respond("今日该群赛文收录成功");
                 }
             }
-        }else if("#联赛".equals(message)){
+        } else if ("#联赛".equals(message)) {
             try {
-                Thread.sleep(1500);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             //{"code":200,"message":"获取成功","result":{"id":0,"holdDate":"2020-01-22","articleId":1,"author":"321321","article":{"id":1,"title":"1","content":"1"}}}
             eventGroupMessage.respond(getUnionArticle(DateUtil.now()));
-        }else if("#联赛成绩".equals(message)){
-            eventGroupMessage.respond(resultUnionJson(DateUtil.now(),false));
-        }else if("#联赛首打".equals(message)){
-            eventGroupMessage.respond(resultUnionJson(DateUtil.now(),true));
-        }else if ("#长生成绩".equals(message)){
+        } else if ("#联赛成绩".equals(message)) {
+            eventGroupMessage.respond(resultUnionJson(DateUtil.now(), false));
+        } else if ("#联赛首打".equals(message)) {
+            eventGroupMessage.respond(resultUnionJson(DateUtil.now(), true));
+        } else if ("#长生成绩".equals(message)) {
             //{"id":173,"userId":1,"typeDate":"2020-02-04","speed":123.0,"keySpeed":123.0,"keyLength":123.0,
             // "number":123,"deleteText":123,"deleteNum":123,"mistake":123,"repeatNum":123,"keyAccuracy":123.0,
             // "keyMethod":123.0,"wordRate":123.0,"time":123.0,"articleId":123,"paragraph":0,"userName":"谭宇"}
             eventGroupMessage.respond(resultTljJson(DateUtil.now()));
-        }else if(Regex.getParagraph(message)==999||Regex.getParagraph(message)==9999){
+        } else if (Regex.getParagraph(message) == 999 || Regex.getParagraph(message) == 9999) {
             if(!GroupCache.typeGroupMap.containsKey(groupId)) {
                 return;
             }
@@ -92,12 +91,12 @@ public class RobotGroupClient extends IcqListener {
             robotHistory.setQq(qq);
             robotHistory.setGroupId(groupId);
             robotHistory.setTypeDate(DateUtil.now());
-            robotHistory.setMatch(Regex.getParagraph(message)==9999);
-            JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObject(HttpAddr.UPLOAD_HISTORY,robotHistory));
+            robotHistory.setMatch(Regex.getParagraph(message) == 9999);
+            JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObject(HttpAddr.UPLOAD_HISTORY, robotHistory));
             System.out.println(jsonObject);
         }
         String[] params = message.split("\\s");
-        if(params.length==2){
+        if (params.length == 2) {
             Date date;
             try {
                 date = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(RegexText.AddZero(params[1])).getTime());
@@ -105,121 +104,172 @@ public class RobotGroupClient extends IcqListener {
 //                eventGroupMessage.respond("日期格式错误:"+params[1]);
                 return;
             }
-            System.out.println("判断"+date.toString());
-            if("#历史赛文".equals(params[0])){
-                JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(HttpAddr.GET_GROUP_MATCH_ADDR, String.valueOf(groupId),params[1]));
+            System.out.println("判断" + date.toString());
+            if ("#历史赛文".equals(params[0])) {
+                JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(HttpAddr.GET_GROUP_MATCH_ADDR, String.valueOf(groupId), params[1]));
                 String retMessage = jsonObject.getString("message");
-                if("获取成功".equals(retMessage)){
+                if ("获取成功".equals(retMessage)) {
                     JSONObject articleJson = jsonObject.getJSONObject("result").getJSONObject("article");
                     String title = articleJson.getString("title");
                     String content = articleJson.getString("content");
-                    String respond = title+"\n"+content+"\n-----第1段-共"+content.length()+"字";
+                    String respond = title + "\n" + content + "\n-----第1段-共" + content.length() + "字";
                     eventGroupMessage.respond(respond);
-                }else{
+                } else {
                     eventGroupMessage.respond(retMessage);
                 }
-            }else if("#联赛".equals(params[0])){
+            } else if ("#联赛".equals(params[0])) {
                 eventGroupMessage.respond(getUnionArticle(date));
-            }else if("#联赛成绩".equals(params[0])){
-                eventGroupMessage.respond(resultUnionJson(date,false));
-            }else if("#联赛首打".equals(params[0])){
-                eventGroupMessage.respond(resultUnionJson(date,true));
-            }else if("#长生成绩".equals(params[0])){
+            } else if ("#联赛成绩".equals(params[0])) {
+                eventGroupMessage.respond(resultUnionJson(date, false));
+            } else if ("#联赛首打".equals(params[0])) {
+                eventGroupMessage.respond(resultUnionJson(date, true));
+            } else if ("#长生成绩".equals(params[0])) {
                 eventGroupMessage.respond(resultTljJson(date));
-            }else if("#长生赛文".equals(params[0])){
+            } else if ("#长生赛文".equals(params[0])) {
                 eventGroupMessage.respond(getTljArticle(date));
-            }else if("#历史成绩".equals(params[0])){
+            } else if ("#历史成绩".equals(params[0])) {
                 params[1] = RegexText.AddZero(params[1]);
                 String image = "typinggroup" + separator + groupId + "-" + params[1] + ".jpg";
                 String path = "/root/coolq/data/image/" + image;
-                if(new File(path).exists()){
+                if (new File(path).exists()) {
                     eventGroupMessage.respond("[CQ:image,file=" + path + "]");
-                }else{
+                } else {
                     eventGroupMessage.respond("无记录");
                 }
             }
-        }else if(params.length==3){
-            if(groupId==robot.matchGroupNum&&"#投稿".equals(params[0])){
-                Article article = new Article(params[1],params[2]);
-                HashMap<String,String> postParams = new HashMap<>();
-                postParams.put("author", String.valueOf(qq));
-                JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObjectAndParams(HttpAddr.UPLOAD_UNION_MATCH,postParams,article));
-                String retMessage = jsonObject.getString("message");
-                if(retMessage.contains("上传成功")){
-                    retMessage = new ComponentAt(qq) + retMessage + "\n"+article.getTitle()+" 投稿自QQ号："+qq+"\n"+article.getContent()+
-                            "\n-----第9999段-共"+article.getContent().length()+"字";
-                }
-                eventGroupMessage.respond(retMessage);
-            }else if("#历史成绩".equals(params[0])){
+        } else if (params.length == 3) {
+            if (groupId == robot.matchGroupNum && "#投稿".equals(params[0])) {
+                Article uploadArticle = new Article(params[1], params[2]);
+                eventGroupMessage.respond(uploadUnionMatch(uploadArticle, qq) + "，文章长度:" + params[2].length());
+            } else if ("#历史成绩".equals(params[0])) {
                 params[2] = RegexText.AddZero(params[2]);
                 String image = "typinggroup" + separator + GroupCache.typeGroupMap.get(params[1]) + "-" + params[2] + ".jpg";
                 String path = "/root/coolq/data/image/" + image;
                 eventGroupMessage.respond("[CQ:image,file=" + path + "]");
             }
+        } else if (params.length == 4) {
+            if (groupId == robot.matchGroupNum && "#投稿".equals(params[0])) {
+                int splitNum; //需要以多少句为分隔
+                try {
+                    splitNum = Integer.parseInt(params[3]);
+                } catch (Exception e) {
+                    eventGroupMessage.respond("参数错误");
+                    return;
+                }
+                String[] articleArray = params[2].split("。");
+
+                int splitNumTemp = 0; //已拼接了多少句
+                StringBuilder addStr;
+                ArrayList<StringBuilder> articleList = new ArrayList<>();
+                for (String article : articleArray) {
+                    if (splitNumTemp == 0) {
+                        addStr = new StringBuilder();
+                        articleList.add(addStr);
+                    }
+                    splitNumTemp++;
+                    articleList.get(articleList.size() - 1).append(article); //把句子添加到最后一个文章中
+                    if (splitNumTemp == splitNum) {
+                        splitNumTemp = 0;
+                    }
+                }
+                //把拼接起来的文章都投稿
+                int i = 0; //投稿数
+                int success = 0; //投稿成功数
+                for (StringBuilder article : articleList) {
+                    String articleStr = article.toString();
+                    Article uploadArticle = new Article(params[1] + i++, articleStr);
+                    String retMessage = uploadUnionMatch(uploadArticle, qq);
+                    if (retMessage.contains("上传成功")) {
+                        success++;
+                        eventGroupMessage.respond(retMessage + "，文章长度:" + articleStr.length());
+                    }
+                }
+                eventGroupMessage.respond("分" + i + "段，投稿成功数：" + success);
+            }
         }
     }
-    public static String getTljArticle(Date date){
+
+    public static String uploadUnionMatch(Article article, long qq) {
+        HashMap<String, String> postParams = new HashMap<>();
+        postParams.put("author", String.valueOf(qq));
+        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPostObjectAndParams(HttpAddr.UPLOAD_UNION_MATCH, postParams, article));
+        return jsonObject.getString("message");
+//        if (retMessage.contains("上传成功")) {
+//            return new ComponentAt(qq) + retMessage + "\n" + article.getTitle() + " 投稿自QQ号：" + qq + "\n" + article.getContent() +
+//                    "\n-----第9999段-共" + article.getContent().length() + "字";
+//        } else {
+//            return new ComponentAt(qq) + "上传失败";
+//        }
+    }
+
+    public static String getTljArticle(Date date) {
         JSONObject retJson = JSON.parseObject(HttpUtil.doGet(HttpAddr.MATCH_GET_TODAY, date.toString()));
         String retMessage = retJson.getString("message");
-        if("获取成功".equals(retMessage)) {
+        if ("获取成功".equals(retMessage)) {
             JSONObject resultJson = retJson.getJSONObject("result");
             JSONObject articleJson = resultJson.getJSONObject("article");
             String author = resultJson.getString("author");
             String title = articleJson.getString("title");
             String content = articleJson.getString("content");
-            String respond = title+":"+author+"\n"+content+"\n-----第1段-共"+content.length()+"字";
+            String respond = title + ":" + author + "\n" + content + "\n-----第1段-共" + content.length() + "字";
             return respond;
-        }else{
+        } else {
             return retMessage;
         }
     }
-    public static String getUnionArticle(Date date){
+
+    public static String getUnionArticle(Date date) {
         JSONObject retJson = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.GET_UNION_MATCH, date.toString()));
         String retMessage = retJson.getString("message");
-        if("获取成功".equals(retMessage)) {
+        if ("获取成功".equals(retMessage)) {
             System.out.println(retJson);
             JSONObject resultJson = retJson.getJSONObject("result");
             JSONObject articleJson = resultJson.getJSONObject("article");
             String author = resultJson.getString("author");
             String title = articleJson.getString("title");
             String content = articleJson.getString("content");
-            String respond = title+" 投稿自QQ号："+author+"\n"+content+"\n-----第"+((date.equals(DateUtil.now()))?"9999":"1")+"段-共"+content.length()+"字";
+            String respond = title + " 投稿自QQ号：" + author + "\n" + content + "\n-----第" + ((date.equals(DateUtil.now())) ? "9999" : "1") + "段-共" + content
+                    .length() + "字";
             return respond;
-        }else{
+        } else {
             return retMessage;
         }
     }
-    public static String resultTljJson(Date date){
+
+    public static String resultTljJson(Date date) {
         String resoleResult;
         String title = date.toString();
-        String[] head = new String[]{"序号","名字","成绩","击键","码长","退格","回改","错字","选重","键准","键法","打词","设备"};
+        String[] head = new String[]{"序号", "名字", "成绩", "击键", "码长", "退格", "回改", "错字", "选重", "键准", "键法", "打词", "设备"};
         JSONObject retJson = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.GET_TLJ_MATCH_RANK_ALL, title));
         String retMessage = retJson.getString("message");
-        if("获取成功".equals(retMessage)) {
+        if ("获取成功".equals(retMessage)) {
             List<TljHistory> tljHistories = new ArrayList<>();
             JSONArray resultJson = retJson.getJSONArray("result");
-            for(Object achObj:resultJson){
+            for (Object achObj : resultJson) {
                 JSON achJson = JSON.parseObject(achObj.toString());
-                tljHistories.add(JSON.toJavaObject(achJson,TljHistory.class));
+                tljHistories.add(JSON.toJavaObject(achJson, TljHistory.class));
             }
-            String drawPath = DrawImg.tljMatchByHistories(title,head,tljHistories);
-            if("生成图片出错".equals(drawPath)) {
+            String drawPath = DrawImg.tljMatchByHistories(title, head, tljHistories);
+            if ("生成图片出错".equals(drawPath)) {
                 resoleResult = drawPath;
             } else {
                 resoleResult = new ComponentImage(drawPath).toString();
             }
-        }else{
+        } else {
             resoleResult = retMessage;
         }
         return resoleResult;
     }
-    public static String resultUnionJson(Date date,boolean isFirst){
+
+    public static String resultUnionJson(Date date, boolean isFirst) {
         String resoleResult;
         JSONObject articleJson = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.GET_UNION_MATCH, date.toString()));
         String retMessage = articleJson.getString("message");
-        if("获取成功".equals(retMessage)){
-            String title = date.toString()+":"+articleJson.getJSONObject("result").getJSONObject("article").getString("title");
-            String[] head = new String[]{"序号","名字","来自","成绩","击键","码长","退格","回改","选重","错字","键准","重打"};
+        if ("获取成功".equals(retMessage)) {
+            String title = date.toString() + ":" + articleJson.getJSONObject("result")
+                    .getJSONObject("article")
+                    .getString("title");
+            String[] head = new String[]{"序号", "名字", "来自", "成绩", "击键", "码长", "退格", "回改", "选重", "错字", "键准", "重打"};
             /**
              * {
              * "result":
@@ -229,30 +279,30 @@ public class RobotGroupClient extends IcqListener {
              * }
              **/
             JSONObject retJson;
-            if(isFirst) {
+            if (isFirst) {
                 retJson = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.GET_UNION_FIRST_MATCH_RANK, date.toString()));
             } else {
                 retJson = JSONObject.parseObject(HttpUtil.doPost(HttpAddr.GET_UNION_MATCH_RANK, date.toString()));
             }
             retMessage = retJson.getString("message");
-            if("获取成功".equals(retMessage)){
+            if ("获取成功".equals(retMessage)) {
                 List<RobotHistory> robotHistories = new ArrayList<>();
                 JSONArray resultJson = retJson.getJSONArray("result");
-                for(Object achObj:resultJson){
+                for (Object achObj : resultJson) {
                     JSON achJson = JSON.parseObject(achObj.toString());
-                    robotHistories.add(JSON.toJavaObject(achJson,RobotHistory.class));
+                    robotHistories.add(JSON.toJavaObject(achJson, RobotHistory.class));
                 }
-                String drawPath = DrawImg.unionMatchByHistories(title,head,robotHistories);
+                String drawPath = DrawImg.unionMatchByHistories(title, head, robotHistories);
 
-                if("生成图片出错".equals(drawPath)) {
+                if ("生成图片出错".equals(drawPath)) {
                     resoleResult = drawPath;
                 } else {
                     resoleResult = new ComponentImage(drawPath).toString();
                 }
-            }else {
+            } else {
                 resoleResult = retMessage;
             }
-        }else {
+        } else {
             resoleResult = retMessage;
         }
         return resoleResult;
