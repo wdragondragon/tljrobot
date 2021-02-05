@@ -51,59 +51,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="560566ca-4c25-4104-974e-54a248fc5e69" name="Default Changelist" comment="机器人更换机器">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/client_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/client_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/robot_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/robot_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="560566ca-4c25-4104-974e-54a248fc5e69" name="Default Changelist" comment="更改地址">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/JMenuComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/component/JMenuComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/FinalConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/FinalConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/MainFraConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/config/MainFraConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/SendAchievementEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/event/FArea/SendAchievementEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/DoCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/utils/common/DoCheck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/MainFra.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/MainFra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/Application.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/component/JmenuComponent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/config/LocalConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/config/LocalSystem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/config/MainFraConfig$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/config/MainFraConfig$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/config/MainFraConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/constant/Constant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/entry/Article.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/entry/TypingState$WordsState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/entry/TypingState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/listener/core/MoveFraListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/listener/core/SystemListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/ArticleRegex.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/Clipboard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/JTextPaneFont.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/QqOperation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/Timer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/common/WindowAPI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/utils/core/Layout.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/classes/com/jdragon/tljrobot/client/window/MainFra.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/client-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/target/test-classes/com/jdragon/tljrobot/AppTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/club/robot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/RobotGroupClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/RobotGroupClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/DrawImg.java" beforeDir="false" afterPath="$PROJECT_DIR$/robot/src/main/java/com/jdragon/tljrobot/robot/newTyping/tools/DrawImg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/Local.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/Local.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/TimingMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj-utils/src/main/java/com/jdragon/tljrobot/tljutils/TimingMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/RobotHistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/conditional/robot/RobotHistoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/home/Security.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/controller/home/Security.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/ueditor/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/java/com/jdragon/tljrobot/tlj/ueditor/ConfigManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/linuxConfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/linuxConfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tlj/src/main/resources/templates/showBlog.html" beforeDir="false" afterPath="$PROJECT_DIR$/tlj/src/main/resources/templates/showBlog.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -603,14 +553,7 @@
       <workItem from="1611765020263" duration="297000" />
       <workItem from="1611765357485" duration="642000" />
       <workItem from="1612456049240" duration="732000" />
-      <workItem from="1612488824840" duration="3003000" />
-    </task>
-    <task id="LOCAL-00003" summary="跟打器重构进度：组建F5换群，F4载文，F3重打与跟打过程标灰标红">
-      <created>1578846507696</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1578846507697</updated>
+      <workItem from="1612488824840" duration="3194000" />
     </task>
     <task id="LOCAL-00004" summary="Revert &quot;Update and rename .gttattributes to .gitattributes&quot;&#10;&#10;This reverts commit e9beaff0">
       <created>1578846648219</created>
@@ -948,7 +891,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601778933232</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="更改地址">
+      <created>1612504138128</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1612504138128</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -980,7 +930,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="v2.11 1、增设网络载文（在更多设置中，使用在机器人服务器上获取文章来取代本地物理方式获取）" />
     <MESSAGE value="v2.12 1、强制预读回归。2、首页词提开关会馆。3、修复潜水模式bug。4、机器人修复重复收集赛文" />
     <MESSAGE value="v2.12修正 1、解决网络载文尾带\r的bug。2、解决最大化底部消失bug。3、取消了最大化不可关闭的限制" />
     <MESSAGE value="v2.13 1、修复发文段号在某些键盘上少最后一位数字" />
@@ -1005,7 +954,8 @@
     <MESSAGE value="v2.29 修tm的机器人，修tm的烂bug" />
     <MESSAGE value="v2.31 域名修改" />
     <MESSAGE value="机器人更换机器" />
-    <option name="LAST_COMMIT_MESSAGE" value="机器人更换机器" />
+    <MESSAGE value="更改地址" />
+    <option name="LAST_COMMIT_MESSAGE" value="更改地址" />
   </component>
   <component name="WindowStateProjectService">
     <state x="471" y="114" key="#Project_Structure" timestamp="1611752453481">
@@ -1068,6 +1018,10 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="492" y="184" key="SettingsEditor/1951.-317.1249.800/62.0.1858.1080@62.0.1858.1080" timestamp="1611751257181" />
+    <state x="264" y="133" key="Vcs.Push.Dialog.v2" timestamp="1612504147192">
+      <screen x="62" y="0" width="1218" height="800" />
+    </state>
+    <state x="264" y="133" key="Vcs.Push.Dialog.v2/62.0.1218.800@62.0.1218.800" timestamp="1612504147192" />
     <state width="500" height="350" key="documentation.popup.size" timestamp="1611751471405">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
@@ -1077,10 +1031,10 @@
     </state>
     <state x="611" y="0" width="1186" height="1080" key="find.popup/1951.-317.1249.800/62.0.1858.1080@62.0.1858.1080" timestamp="1611752564664" />
     <state x="611" y="0" width="1186" height="1080" key="find.popup/1951.-374.1249.800/62.0.1858.1080@62.0.1858.1080" timestamp="1609163345309" />
-    <state x="524" y="325" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1606975013665">
+    <state x="524" y="325" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1612504214878">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
-    <state x="524" y="325" key="git4idea.remote.GitConfigureRemotesDialog/62.0.1218.800@62.0.1218.800" timestamp="1606975013665" />
+    <state x="524" y="325" key="git4idea.remote.GitConfigureRemotesDialog/62.0.1218.800@62.0.1218.800" timestamp="1612504214878" />
     <state x="334" y="122" width="672" height="678" key="search.everywhere.popup" timestamp="1608522566884">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
