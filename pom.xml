@@ -15,7 +15,7 @@
     <modules>
         <module>tlj</module>
         <module>tlj-utils</module>
-        <module>robot</module>
+<!--        <module>robot</module>-->
         <module>client</module>
     </modules>
 </project>
