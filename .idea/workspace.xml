@@ -53,7 +53,6 @@
   <component name="ChangeListManager">
     <list default="true" id="560566ca-4c25-4104-974e-54a248fc5e69" name="Default Changelist" comment="更改地址">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/MainFra.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/com/jdragon/tljrobot/client/window/MainFra.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +81,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -115,7 +115,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/main/resourese" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -553,14 +553,9 @@
       <workItem from="1611765020263" duration="297000" />
       <workItem from="1611765357485" duration="642000" />
       <workItem from="1612456049240" duration="732000" />
-      <workItem from="1612488824840" duration="3194000" />
-    </task>
-    <task id="LOCAL-00004" summary="Revert &quot;Update and rename .gttattributes to .gitattributes&quot;&#10;&#10;This reverts commit e9beaff0">
-      <created>1578846648219</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1578846648219</updated>
+      <workItem from="1612488824840" duration="3674000" />
+      <workItem from="1612505272915" duration="68000" />
+      <workItem from="1612686850845" duration="62000" />
     </task>
     <task id="LOCAL-00005" summary="跟打器重构进度：组建F5换群，F4载文，F3重打与跟打过程标灰标红">
       <created>1578847056250</created>
@@ -898,7 +893,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612504138128</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="更改地址">
+      <created>1612504280308</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1612504280308</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1014,14 +1016,19 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="364" key="GridCell.Tab.1.right/1951.-317.1249.800/62.0.1858.1080@62.0.1858.1080" timestamp="1611752872151" />
-    <state x="492" y="184" key="SettingsEditor" timestamp="1611751257181">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="333" y="146" key="SettingsEditor" timestamp="1613721301067">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
+    <state x="333" y="146" key="SettingsEditor/0.0.1440.860@0.0.1440.860" timestamp="1613721301067" />
     <state x="492" y="184" key="SettingsEditor/1951.-317.1249.800/62.0.1858.1080@62.0.1858.1080" timestamp="1611751257181" />
-    <state x="264" y="133" key="Vcs.Push.Dialog.v2" timestamp="1612504147192">
+    <state x="264" y="133" key="Vcs.Push.Dialog.v2" timestamp="1612504283003">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
-    <state x="264" y="133" key="Vcs.Push.Dialog.v2/62.0.1218.800@62.0.1218.800" timestamp="1612504147192" />
+    <state x="264" y="133" key="Vcs.Push.Dialog.v2/62.0.1218.800@62.0.1218.800" timestamp="1612504283003" />
+    <state x="516" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1613721400096">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="516" y="347" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860@0.0.1440.860" timestamp="1613721400096" />
     <state width="500" height="350" key="documentation.popup.size" timestamp="1611751471405">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
@@ -1031,10 +1038,18 @@
     </state>
     <state x="611" y="0" width="1186" height="1080" key="find.popup/1951.-317.1249.800/62.0.1858.1080@62.0.1858.1080" timestamp="1611752564664" />
     <state x="611" y="0" width="1186" height="1080" key="find.popup/1951.-374.1249.800/62.0.1858.1080@62.0.1858.1080" timestamp="1609163345309" />
+    <state x="417" y="221" key="git4idea.merge.GitPullDialog" timestamp="1613721518718">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="417" y="221" key="git4idea.merge.GitPullDialog/0.0.1440.860@0.0.1440.860" timestamp="1613721518718" />
     <state x="524" y="325" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1612504214878">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
     <state x="524" y="325" key="git4idea.remote.GitConfigureRemotesDialog/62.0.1218.800@62.0.1218.800" timestamp="1612504214878" />
+    <state x="330" y="182" key="run.anything.popup" timestamp="1612686868409">
+      <screen x="62" y="0" width="1218" height="800" />
+    </state>
+    <state x="330" y="182" key="run.anything.popup/62.0.1218.800@62.0.1218.800" timestamp="1612686868409" />
     <state x="334" y="122" width="672" height="678" key="search.everywhere.popup" timestamp="1608522566884">
       <screen x="62" y="0" width="1218" height="800" />
     </state>
