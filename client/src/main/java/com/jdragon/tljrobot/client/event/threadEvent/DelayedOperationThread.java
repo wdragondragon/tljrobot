@@ -66,7 +66,7 @@ public class DelayedOperationThread extends Thread {
                             ReplayEvent.start();
                         }else{
                             History history = HistoryUtil.getHistoryEntry();
-                            ArticleDto articleDto = new ArticleDto(0, Article.getArticleSingleton().getTitle(),Article.getArticleSingleton().getArticle());
+                            ArticleDto articleDto = new ArticleDto(null, Article.getArticleSingleton().getTitle(),Article.getArticleSingleton().getArticle());
                             HistoryDto historyDto = new HistoryDto(articleDto,history);
                             new Synchronous(new UploadHistory(historyDto)).start();
                         }

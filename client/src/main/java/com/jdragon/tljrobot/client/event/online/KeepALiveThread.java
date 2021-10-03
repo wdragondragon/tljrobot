@@ -13,7 +13,7 @@ public class KeepALiveThread extends Thread{
         while(UserState.loginState) {
             try {
                 Thread.sleep(30*60*1000);
-                HttpUtil.doPost(HttpAddr.ME_KEEP_A_LIVE_ADDR,UserState.token);
+//                HttpUtil.doPost(HttpAddr.ME_KEEP_A_LIVE_ADDR,UserState.token);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

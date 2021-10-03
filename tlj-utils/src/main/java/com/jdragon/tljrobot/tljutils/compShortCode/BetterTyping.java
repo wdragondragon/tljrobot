@@ -88,21 +88,21 @@ public class BetterTyping {
                 temp = bm.substring(bm.length()-1);
                 if(temp.equals("_")||regex.contains(temp))length -= 1;
                 int i = -1;
-                if(chlength==1){
-                    if(wordCode.containsKey(splited[0])){
-                        if(wordCode.get(splited[0]).length()>length){
+                    if(chlength==1){
+                        if(wordCode.containsKey(splited[0])){
+                            if(wordCode.get(splited[0]).length()>length){
+                                wordCode.put(ch, bm);
+                            }
+    //                        else if(wordCode.get(splited[0]).length()==length&&length==4){
+    //                            if(!regex.contains(temp)){
+    //                                wordCode.put(ch, bm);
+    //                            }
+    //                        }
+                        }
+                        else{
                             wordCode.put(ch, bm);
                         }
-//                        else if(wordCode.get(splited[0]).length()==length&&length==4){
-//                            if(!regex.contains(temp)){
-//                                wordCode.put(ch, bm);
-//                            }
-//                        }
                     }
-                    else{
-                        wordCode.put(ch, bm);
-                    }
-                }
                 else if(chlength>=2&&chlength<=11){
                     i = chlength - 2;
                 }

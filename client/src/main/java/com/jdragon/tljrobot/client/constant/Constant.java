@@ -20,4 +20,8 @@ public class Constant {
     public static final int SEND_ORDER = 1;//顺序发文
     public static final int SEND_EXTRACT = 2;//随机发文
     public static final int SEND_WORDS = 3;//词语练习
+
+
+    public final static String PAGE_NUM = "pageNum";
+    public final static String PAGE_SIZE = "pageSize";
 }

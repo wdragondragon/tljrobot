@@ -126,7 +126,7 @@ public class Security {
     }
 
     public static void main(String[] args) {
-        String md5 = Md5Utils.getMD5("000000".getBytes());
+        String md5 = Md5Utils.getMD5("mhs4560".getBytes());
         System.out.println(md5);
     }
 }

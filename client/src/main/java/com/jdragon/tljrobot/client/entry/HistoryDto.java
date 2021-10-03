@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class HistoryDto {
-    ArticleDto article;
-    History history;
+    ArticleDto articleDto;
+    History typeHistoryDto;
 }

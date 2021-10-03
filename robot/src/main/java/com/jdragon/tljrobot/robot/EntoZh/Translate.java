@@ -14,7 +14,7 @@ public class Translate extends IcqListener {
     @EventHandler
     public void Carry(EventMessage event) {
         String message = event.getMessage();
-        String s[] = message.split("\r\n");
+        String s[] = message.split("#");
         if(message.equals("语言指令")) {
             event.respond(
                     "zh\t中文\n" +
