@@ -42,7 +42,7 @@ public class History2 {
 
     private int paragraph;
 
-    private boolean isMobile;
+    private boolean mobile;
 
     private String userName;
 

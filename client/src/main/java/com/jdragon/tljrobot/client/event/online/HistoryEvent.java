@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.swing.*;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -72,15 +73,21 @@ public class HistoryEvent {
     }
 
     public static List<History2> getTljMatchAchList(Date date) {
-        List<History2> historyList = new ArrayList<>();
-        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(HttpAddr.MATCH_GET_MATCH_ACH_BY_DATE, String.valueOf(date), UserState.token));
-        JSONArray result = jsonObject.getJSONArray("result");
-        if (jsonObject.getString("message").equals("获取成功")) {
-            for (Object historyJson : result) {
-                JSON json = JSON.parseObject(historyJson.toString());
-                historyList.add(JSONObject.toJavaObject(json, History2.class));
-            }
+        HttpUtils httpUtils = HttpUtils.initJson();
+        httpUtils.setMethod(RequestMethod.GET);
+        httpUtils.setHeader(HttpHeaders.AUTHORIZATION, UserState.token);
+        httpUtils.setParam("mobile", "0");
+        httpUtils.setParam("matchType", "1");
+        httpUtils.setParam("date", new SimpleDateFormat("yyyy-MM-dd").format(date));
+        String s = httpUtils.checkExec(HttpAddr.MATCH_GET_MATCH_ACH_BY_DATE);
+        Result<PageTable<History2>> result = JSONObject.parseObject(s, new TypeReference<Result<PageTable<History2>>>() {
+        });
+        if (result.result()) {
+            PageTable<History2> pageTable = result.getResult();
+            return pageTable.getTable().getBodies();
+        } else {
+            JOptionPane.showMessageDialog(null, result.getMessage());
+            throw new RuntimeException(result.getMessage());
         }
-        return historyList;
     }
 }

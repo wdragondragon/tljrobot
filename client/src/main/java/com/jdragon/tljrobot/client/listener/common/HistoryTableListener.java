@@ -2,13 +2,19 @@ package com.jdragon.tljrobot.client.listener.common;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.jdragon.tljrobot.client.config.HttpAddr;
 import com.jdragon.tljrobot.client.entry.Article;
+import com.jdragon.tljrobot.client.entry.ArticleDto;
 import com.jdragon.tljrobot.client.entry.UserState;
 import com.jdragon.tljrobot.client.event.FArea.ReplayEvent;
 import com.jdragon.tljrobot.client.window.dialog.HistoryDialog;
 import com.jdragon.tljrobot.client.window.dialog.ShowArticleDialog;
 import com.jdragon.tljrobot.tljutils.HttpUtil;
+import com.jdragon.tljrobot.tljutils.HttpUtils;
+import com.jdragon.tljrobot.tljutils.response.Result;
+import org.springframework.http.HttpHeaders;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -19,23 +25,26 @@ import java.awt.event.MouseListener;
  */
 public class HistoryTableListener implements MouseListener {
     JTable jTable;
-    public HistoryTableListener(JTable jTable){
+
+    public HistoryTableListener(JTable jTable) {
         this.jTable = jTable;
     }
+
     private JPopupMenu m_popupMenu;
+
     private void createPopupMenu() {
         m_popupMenu = new JPopupMenu();
         JMenuItem replay = new JMenuItem("重打该段");
         JMenuItem getArticle = new JMenuItem("查看文章");
 
 
-        replay.addActionListener(e->{
+        replay.addActionListener(e -> {
             int selectedRow = jTable.getSelectedRow();
-            String articleId = String.valueOf(jTable.getValueAt(selectedRow,1));
-            int paragraph = (int) jTable.getValueAt(selectedRow,15);
-            JSONObject articleJson = getArticleJson(articleId,paragraph);
-            if(articleJson!=null) {
-                Article.getArticleSingleton(paragraph, articleJson.getString("title"), articleJson.getString("content"));
+            String articleId = String.valueOf(jTable.getValueAt(selectedRow, 1));
+            int paragraph = (int) jTable.getValueAt(selectedRow, 15);
+            ArticleDto articleJson = getArticleJson(articleId, paragraph);
+            if (articleJson != null) {
+                Article.getArticleSingleton(paragraph, articleJson.getTitle(), articleJson.getContent());
                 HistoryDialog.getInstance().setVisible(false);
                 ReplayEvent.start();
             }
@@ -43,34 +52,41 @@ public class HistoryTableListener implements MouseListener {
 
         getArticle.addActionListener(e -> {
             int selectedRow = jTable.getSelectedRow();
-            String articleId = String.valueOf(jTable.getValueAt(selectedRow,1));
-            int paragraph = (int) jTable.getValueAt(selectedRow,15);
-            JSONObject articleJson = getArticleJson(articleId,paragraph);
-            if(articleJson!=null) {
-                ShowArticleDialog.getInstance(articleJson.getString("content")).setVisible(true);
+            String articleId = String.valueOf(jTable.getValueAt(selectedRow, 1));
+            int paragraph = (int) jTable.getValueAt(selectedRow, 15);
+            ArticleDto articleJson = getArticleJson(articleId, paragraph);
+            if (articleJson != null) {
+                ShowArticleDialog.getInstance(articleJson.getContent()).setVisible(true);
             }
         });
         m_popupMenu.add(replay);
         m_popupMenu.add(getArticle);
     }
-    private JSONObject getArticleJson(String articleId,int paragraph){
-        JSONObject jsonObject = JSON.parseObject(HttpUtil.doPost(HttpAddr.HISTORY_ARTICLE,articleId, UserState.token));
-        String message = jsonObject.getString("message");
-        if(paragraph==0){
+
+    private ArticleDto getArticleJson(String articleId, int paragraph) {
+        if (paragraph == 0) {
             JOptionPane.showMessageDialog(null, "0段无法再次获取");
             return null;
         }
-        if(message.equals("获取成功")){
-            JSONObject article = jsonObject.getJSONObject("result");
-            return article;
-        }else{
-            JOptionPane.showMessageDialog(null, message);
+        HttpUtils httpUtils = HttpUtils.initJson();
+        httpUtils.setMethod(RequestMethod.GET);
+        httpUtils.setHeader(HttpHeaders.AUTHORIZATION, UserState.token);
+        httpUtils.setParam("articleId", articleId);
+        String s = httpUtils.checkExec(HttpAddr.HISTORY_ARTICLE);
+        Result<ArticleDto> result = JSONObject.parseObject(s, new TypeReference<Result<ArticleDto>>() {
+        });
+        if (result.result()) {
+            return result.getResult();
+        } else {
+            JOptionPane.showMessageDialog(null, result.getMessage());
             return null;
         }
     }
+
     private void jTable1MouseClicked(java.awt.event.MouseEvent e) {
         mouseRightButtonClick(e);
     }
+
     private void mouseRightButtonClick(java.awt.event.MouseEvent e) {
         //判断是否为鼠标的BUTTON3按钮，BUTTON3为鼠标右键
         if (e.getButton() == java.awt.event.MouseEvent.BUTTON3) {
@@ -85,6 +101,7 @@ public class HistoryTableListener implements MouseListener {
             m_popupMenu.show(jTable, e.getX(), e.getY());
         }
     }
+
     @Override
     public void mouseClicked(MouseEvent e) {
         createPopupMenu();
