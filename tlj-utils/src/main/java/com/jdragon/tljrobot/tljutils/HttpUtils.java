@@ -174,8 +174,13 @@ public class HttpUtils {
     public HttpUtils setBody(Object body) {
         if (body != null) {
             String bodyStr = JSON.toJSONString(body);
+            JSONObject jsonObject = JSONObject.parseObject(bodyStr);
+            if (this.bodyJson == null) {
+                bodyJson = new JSONObject();
+            }
+            bodyJson.putAll(jsonObject);
             if (StringUtils.isNotBlank(bodyStr)) {
-                this.httpEntity = new StringEntity(bodyStr, charset);
+                this.httpEntity = new StringEntity(JSON.toJSONString(bodyJson), charset);
             }
         }
         return this;

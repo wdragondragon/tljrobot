@@ -8,7 +8,7 @@ public class HttpAddr {
 
     private final static String SERVER_ADDR = "https://cl.tyu.wiki";
 
-    private final static String SERVER_ADDR_NEW = "http://192.168.10.150:9527";
+    public final static String SERVER_ADDR_NEW = "http://192.168.10.150:9527";
 
     private final static String ROBOT_HOME = "/robot";
     private final static String MATCH_ADDR = "/tljMatch";
