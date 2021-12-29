@@ -4,12 +4,17 @@ import com.alibaba.fastjson.JSONObject;
 import com.jdragon.tljrobot.client.api.body.AccountDto;
 import com.jdragon.tljrobot.client.config.HttpAddr;
 import com.jdragon.tljrobot.client.constant.Constant;
+import com.jdragon.tljrobot.client.entry.ArticleDto;
 import com.jdragon.tljrobot.client.entry.History;
+import com.jdragon.tljrobot.client.entry.History2;
+import com.jdragon.tljrobot.client.entry.HistoryDto;
 import com.jdragon.tljrobot.client.entry.TypingMatchVO;
 import com.jdragon.tljrobot.client.event.online.TypeNumManagerThread;
 import com.jdragon.tljrobot.tljutils.response.table.PageTable;
 import com.jdragon.tljrobot.tljutils.zFeign.ZFeign;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 /**
  * <p></p>
@@ -17,24 +22,39 @@ import org.springframework.web.bind.annotation.*;
  *
  * @author : Jdragon
  */
-@ZFeign(baseUrl = HttpAddr.SERVER_ADDR_NEW, depth = "result", fallback = GlobalFallback.class)
+@ZFeign(baseUrl = HttpAddr.SERVER_ADDR_NEW, basePath = "/account", depth = "result", fallback = GlobalFallback.class)
 public interface AccountApi {
-    @PostMapping("/account/login")
+    @PostMapping("/login")
     String login(@RequestBody AccountDto accountDto);
 
-    @PostMapping("/account/register")
+    @PostMapping("/register")
     String register(@RequestBody AccountDto accountDto);
 
-    @GetMapping("/account/type/info")
+    @GetMapping("/type/info")
     JSONObject getMyInfo();
 
-    @GetMapping("/account/type/history")
+    @GetMapping("/type/history")
     PageTable<History> getMyTypeHistory(@RequestParam(Constant.PAGE_NUM) Integer pageNum,
                                         @RequestParam(Constant.PAGE_SIZE) Integer pageSize);
 
-    @PostMapping("/account/type/changeNum")
+    @PostMapping("/type/changeNum")
     TypeNumManagerThread.NumTemp changeNum(@RequestBody TypeNumManagerThread.NumTemp numTemp);
 
-    @GetMapping("/account/match/today")
+    @GetMapping("/match/today")
     TypingMatchVO getTodayMatch(@RequestParam("mobile") Boolean mobile);
+
+    @PostMapping("/match/uploadTljMatchAch")
+    String uploadTljMatchAch(@RequestBody History history);
+
+    @GetMapping("/match/getPCTljMatchAchByDate")
+    PageTable<History2> getPCTljMatchAchByDate(@RequestParam("date") Date date,
+                                               @RequestParam("matchType") Integer matchType,
+                                               @RequestParam("mobile") Boolean mobile);
+
+    @PostMapping("/history/uploadHistoryAndArticle")
+    String uploadHistoryAndArticle(@RequestBody HistoryDto historyDto);
+
+    @GetMapping("/article/getHistoryArticle")
+    ArticleDto getArticleById(@RequestParam("articleId") Integer articleId);
+
 }

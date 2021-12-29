@@ -59,21 +59,7 @@ public class HistoryEvent {
     }
 
     public static List<History2> getTljMatchAchList(Date date) {
-        HttpUtils httpUtils = HttpUtils.initJson();
-        httpUtils.setMethod(RequestMethod.GET);
-        httpUtils.setHeader(HttpHeaders.AUTHORIZATION, UserState.token);
-        httpUtils.setParam("mobile", "0");
-        httpUtils.setParam("matchType", "1");
-        httpUtils.setParam("date", new SimpleDateFormat("yyyy-MM-dd").format(date));
-        String s = httpUtils.checkExec(HttpAddr.MATCH_GET_MATCH_ACH_BY_DATE);
-        Result<PageTable<History2>> result = JSONObject.parseObject(s, new TypeReference<Result<PageTable<History2>>>() {
-        });
-        if (result.result()) {
-            PageTable<History2> pageTable = result.getResult();
-            return pageTable.getTable().getBodies();
-        } else {
-            JOptionPane.showMessageDialog(null, result.getMessage());
-            throw new RuntimeException(result.getMessage());
-        }
+        PageTable<History2> pageTable = accountApi.getPCTljMatchAchByDate(date, 1, false);
+        return pageTable.getTable().getBodies();
     }
 }

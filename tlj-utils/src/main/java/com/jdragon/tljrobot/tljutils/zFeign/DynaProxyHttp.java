@@ -1,12 +1,24 @@
 package com.jdragon.tljrobot.tljutils.zFeign;
 
 import com.alibaba.fastjson.JSONException;
+import com.alibaba.fastjson.JSONObject;
 import com.jdragon.tljrobot.tljutils.FastJsonMemory;
 import com.jdragon.tljrobot.tljutils.HttpUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.apache.commons.text.StringEscapeUtils;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.lang.reflect.*;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.lang.reflect.Proxy;
+import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -20,6 +32,8 @@ public class DynaProxyHttp implements InvocationHandler {
     private final static Map<Class<?>, Object> proxyMap = new HashMap<>();
 
     private final static Map<Class<?>, Map<String, String>> globalParam = new HashMap<>();
+
+    private final static String DATE_FORMAT = "yyyy-MM-dd hh:mm:ss";
 
     static {
         globalParam.put(RequestHeader.class, new HashMap<>());
@@ -117,7 +131,8 @@ public class DynaProxyHttp implements InvocationHandler {
 
             for (int i = 0; i < parameters.length; i++) {
                 Parameter param = parameters[i];
-                String value = String.valueOf(args[i]);
+                String valueJson = JSONObject.toJSONStringWithDateFormat(args[i], DATE_FORMAT);
+                String value = JSONObject.parseObject(valueJson, String.class);
                 if (param.isAnnotationPresent(RequestParam.class)) {
                     if (value.equals("null")) continue;
                     params.put(param.getAnnotation(RequestParam.class).value(), value);

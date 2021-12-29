@@ -3,6 +3,7 @@ package com.jdragon.tljrobot.client.listener.common;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
+import com.jdragon.tljrobot.client.api.AccountApi;
 import com.jdragon.tljrobot.client.config.HttpAddr;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.ArticleDto;
@@ -13,6 +14,7 @@ import com.jdragon.tljrobot.client.window.dialog.ShowArticleDialog;
 import com.jdragon.tljrobot.tljutils.HttpUtil;
 import com.jdragon.tljrobot.tljutils.HttpUtils;
 import com.jdragon.tljrobot.tljutils.response.Result;
+import com.jdragon.tljrobot.tljutils.zFeign.DynaProxyHttp;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -24,6 +26,9 @@ import java.awt.event.MouseListener;
  * Create by Jdragon on 2020.01.20
  */
 public class HistoryTableListener implements MouseListener {
+
+    private final AccountApi accountApi = DynaProxyHttp.getInstance(AccountApi.class);
+
     JTable jTable;
 
     public HistoryTableListener(JTable jTable) {
@@ -68,19 +73,7 @@ public class HistoryTableListener implements MouseListener {
             JOptionPane.showMessageDialog(null, "0段无法再次获取");
             return null;
         }
-        HttpUtils httpUtils = HttpUtils.initJson();
-        httpUtils.setMethod(RequestMethod.GET);
-        httpUtils.setHeader(HttpHeaders.AUTHORIZATION, UserState.token);
-        httpUtils.setParam("articleId", articleId);
-        String s = httpUtils.checkExec(HttpAddr.HISTORY_ARTICLE);
-        Result<ArticleDto> result = JSONObject.parseObject(s, new TypeReference<Result<ArticleDto>>() {
-        });
-        if (result.result()) {
-            return result.getResult();
-        } else {
-            JOptionPane.showMessageDialog(null, result.getMessage());
-            return null;
-        }
+        return accountApi.getArticleById(Integer.valueOf(articleId));
     }
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent e) {
