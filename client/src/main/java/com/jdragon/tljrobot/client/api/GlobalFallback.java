@@ -14,7 +14,8 @@ import javax.swing.*;
 
 public class GlobalFallback implements ZFeignFallback {
     @Override
-    public void fallback(HttpException httpException) {
+    public Object fallback(HttpException httpException) {
         JOptionPane.showMessageDialog(null, httpException.getMessage());
+        return null;
     }
 }

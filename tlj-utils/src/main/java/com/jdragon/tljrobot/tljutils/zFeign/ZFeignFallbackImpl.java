@@ -8,7 +8,8 @@ package com.jdragon.tljrobot.tljutils.zFeign;
  */
 public class ZFeignFallbackImpl implements ZFeignFallback{
     @Override
-    public void fallback(HttpException httpException) {
+    public Object fallback(HttpException httpException) {
         // do nothing
+        return null;
     }
 }

@@ -12,14 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
-import java.lang.reflect.Proxy;
-import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.lang.reflect.*;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * jdk8动态代理
@@ -30,6 +25,9 @@ public class DynaProxyHttp implements InvocationHandler {
     private final static Map<Class<?>, Object> proxyMap = new HashMap<>();
 
     private final static Map<Class<?>, Map<String, String>> globalParam = new HashMap<>();
+
+    private final static List<String> noProxyMethod =
+            Arrays.stream(Object.class.getDeclaredMethods()).map(Method::getName).collect(Collectors.toList());
 
     private final static String DATE_FORMAT = "yyyy-MM-dd hh:mm:ss";
 
@@ -52,7 +50,9 @@ public class DynaProxyHttp implements InvocationHandler {
 
     private final String messageField;
 
-    private final ZFeignFallback zFeignFallback;
+    private final boolean methodFallback;
+
+    private final Object zFeignFallback;
 
     private final String[] headers;
 
@@ -68,6 +68,13 @@ public class DynaProxyHttp implements InvocationHandler {
         this.successField = zFeign.successField();
         this.messageField = zFeign.messageField();
         try {
+            if (proxyInterface.isAssignableFrom(zFeign.fallback())) {
+                this.methodFallback = true;
+            } else if (ZFeignFallback.class.isAssignableFrom(zFeign.fallback())) {
+                this.methodFallback = false;
+            } else {
+                throw new RuntimeException("fall back类异常");
+            }
             this.zFeignFallback = zFeign.fallback().newInstance();
         } catch (InstantiationException | IllegalAccessException e) {
             throw new RuntimeException(e);
@@ -98,8 +105,12 @@ public class DynaProxyHttp implements InvocationHandler {
             RequestMapping requestMapping = (RequestMapping) AnnotationUtils.getAllContainedAnnotationType(method, RequestMapping.class);
 
             if (requestMapping == null) {
-                log.warn("该feign方法没有映射请求路径[{},{}]", object.getName(), method.getName());
-                return null;
+                if (noProxyMethod.contains(method.getName())) {
+                    return method.invoke(object, args);
+                } else {
+                    log.warn("该feign方法没有映射请求路径[{},{}]", object.getName(), method.getName());
+                    return null;
+                }
             }
 
             //解析头
@@ -148,6 +159,22 @@ public class DynaProxyHttp implements InvocationHandler {
             return robotHandle(url, request[0], headerMap, body, params, method.getGenericReturnType());
         } catch (HttpException e) {
             log.error("远程服务调用异常[{}]", url);
+            Object obj = null;
+            if (methodFallback) {
+                try {
+                    obj = method.invoke(zFeignFallback, args);
+                    if (obj != null) {
+                        return obj;
+                    }
+                } catch (IllegalAccessException | InvocationTargetException illegalAccessException) {
+                    illegalAccessException.printStackTrace();
+                }
+            } else {
+                obj = ((ZFeignFallback) zFeignFallback).fallback(e);
+            }
+            if (obj != null) {
+                return obj;
+            }
             throw e;
         } catch (Exception e) {
             e.printStackTrace();
@@ -179,9 +206,6 @@ public class DynaProxyHttp implements InvocationHandler {
             Class<?> typeCls = (Class<?>) type;
             return typeCls.cast(str);
         } catch (HttpException e) {
-            if (zFeignFallback != null) {
-                zFeignFallback.fallback(e);
-            }
             throw e;
         } catch (Exception e) {
             e.printStackTrace();

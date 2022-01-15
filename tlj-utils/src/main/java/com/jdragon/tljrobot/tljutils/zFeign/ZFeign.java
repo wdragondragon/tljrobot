@@ -26,7 +26,7 @@ public @interface ZFeign {
 
     String[] headers() default {};
 
-    Class<? extends ZFeignFallback> fallback() default ZFeignFallbackImpl.class;
+    Class<?> fallback() default ZFeignFallbackImpl.class;
 
     String successCode() default "20000";
 

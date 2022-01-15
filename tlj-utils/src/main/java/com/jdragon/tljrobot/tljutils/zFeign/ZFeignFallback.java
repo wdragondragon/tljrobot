@@ -7,5 +7,5 @@ package com.jdragon.tljrobot.tljutils.zFeign;
  * @author : Jdragon
  */
 public interface ZFeignFallback {
-    void fallback(HttpException httpException);
+    Object fallback(HttpException httpException);
 }
