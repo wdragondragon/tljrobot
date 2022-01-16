@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @ZFeign(baseUrl = HttpAddr.SERVER_ADDR_NEW, basePath = "/version", depth = "result", fallback = VersionFallback.class)
 public interface VersionApi {
-    @GetMapping("/newVersion1")
+    @GetMapping("/newVersion")
     JSONObject getNewVersion();
 }
