@@ -25,7 +25,6 @@ public class Upload {
     private void executeUpload(String uploadDir, MultipartFile file) throws Exception
     {
         //文件后缀名
-        System.out.println(file.getOriginalFilename());
         String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("/")+1);
         //上传文件名
         String filename = file.getOriginalFilename();
@@ -69,7 +68,6 @@ public class Upload {
             // 随意
 
 //            String uploadDir= ResourceUtils.getURL("classpath:").getPath()+"/static/up/";
-            System.out.println(uploadDir);
             //如果目录不存在，自动创建文件夹
             File dir = new File(uploadDir);
             if(!dir.exists())
@@ -85,8 +83,6 @@ public class Upload {
         {
             //打印错误堆栈信息
             e.printStackTrace();
-            System.out.println("失败");
         }
-        System.out.println("成功");
     }
 }

@@ -29,6 +29,8 @@ import freeseawind.lf.LittleLuckLookAndFeel;
 import lombok.Data;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jvnet.substance.SubstanceLookAndFeel;
+import org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel;
+import org.jvnet.substance.theme.SubstanceAquaTheme;
 
 import javax.swing.*;
 import java.awt.*;
@@ -71,8 +73,9 @@ public class MainFra extends JFrame {
                     UIManager.setLookAndFeel(LittleLuckLookAndFeel.class.getName());
                     break;
                 case "Substance黑白":
-                    UIManager.setLookAndFeel("org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel");
-                    SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
+                    UIManager.setLookAndFeel(SubstanceBusinessBlackSteelLookAndFeel.class.getName());
+//                    SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceAquaTheme");
+                    SubstanceLookAndFeel.setCurrentTheme(SubstanceAquaTheme.class.getName());
                     break;
                 case "Nimbus灰白":
                     UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");

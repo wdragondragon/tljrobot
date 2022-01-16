@@ -7,7 +7,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.jdragon.tljrobot.client" level="info" />
+    <logger name="com.jdragon.tljrobot.client" level="debug" />
 
     <!-- 日志级别 -->
     <root>
