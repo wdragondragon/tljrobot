@@ -13,7 +13,7 @@ import java.awt.event.KeyListener;
 import java.io.File;
 
 import static com.jdragon.tljrobot.client.utils.core.Layout.addOnBounds;
-import static com.jdragon.tljrobot.client.utils.core.Layout.rowAddSpacing;
+import static com.jdragon.tljrobot.client.utils.core.Layout.xSpace;
 
 /**
  * Create by Jdragon on 2020.01.25
@@ -182,7 +182,7 @@ public class SendArticleDialog {
         caozuo.setBounds(lable4.getX()+lable4.getWidth()+10,  lable1.getY(), 100, 30);
 
         automatic = new JToggleButton("开启");
-        addOnBounds(p,automatic,rowAddSpacing(caozuo,10),caozuo.getY(),80,30);
+        addOnBounds(p,automatic, xSpace(caozuo,10),caozuo.getY(),80,30);
 
         p.add(spinnerSpeed);
         p.add(spinnerKey);
@@ -226,9 +226,9 @@ public class SendArticleDialog {
         paragraph.addKeyListener(keyListener);
 
         addOnBounds(p,label1,5,270,50,30);
-        addOnBounds(p,number,rowAddSpacing(label1,0),label1.getY(),50,30);
-        addOnBounds(p,label2,rowAddSpacing(number,10),number.getY(),50,30);
-        addOnBounds(p,paragraph,rowAddSpacing(label2,0),label2.getY(),50,30);
+        addOnBounds(p,number, xSpace(label1,0),label1.getY(),50,30);
+        addOnBounds(p,label2, xSpace(number,10),number.getY(),50,30);
+        addOnBounds(p,paragraph, xSpace(label2,0),label2.getY(),50,30);
     }
     private static void addinArea() {
         wenben = new JTextArea();

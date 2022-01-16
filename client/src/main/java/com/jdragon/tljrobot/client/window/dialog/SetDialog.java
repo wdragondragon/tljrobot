@@ -3,6 +3,7 @@ package com.jdragon.tljrobot.client.window.dialog;
 import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.config.JTextPaneFontConfig;
 import com.jdragon.tljrobot.client.config.LocalConfig;
+import com.jdragon.tljrobot.client.handle.ThemeManager;
 import com.jdragon.tljrobot.client.listener.common.SetBackgroundListener;
 import com.jdragon.tljrobot.client.listener.common.TypingListener;
 import com.jdragon.tljrobot.client.utils.common.BetterTypingSingleton;
@@ -77,11 +78,9 @@ public class SetDialog{
 
         windowsOpacitySlider = new JSlider(0, 100, (int)(LocalConfig.windowsOpacity*100));
         windowsThemeSelect = new JComboBox<>();
-        windowsThemeSelect.addItem("长流默认");
-        windowsThemeSelect.addItem("系统默认");
-        windowsThemeSelect.addItem("LittleLuck蓝白");
-        windowsThemeSelect.addItem("Substance黑白");
-        windowsThemeSelect.addItem("Nimbus灰白");
+        for (String themeName : ThemeManager.getAllTheme()) {
+            windowsThemeSelect.addItem(themeName);
+        }
         windowsThemeSelect.setSelectedItem(LocalConfig.windowsTheme);
 
         undecoratedButton = new JToggleButton("去边框");
@@ -93,10 +92,10 @@ public class SetDialog{
         undecoratedButton.addChangeListener(e->LocalConfig.undecorated=undecoratedButton.isSelected());
 
         addOnBounds(windowsSetPanel,opacityLabel,40,10,50,30);
-        addOnBounds(windowsSetPanel,windowsOpacitySlider,rowAddSpacing(opacityLabel,10),opacityLabel.getY(),200,30);
-        addOnBounds(windowsSetPanel,themeSelectLabel,opacityLabel.getX(),columnAddSpacing(opacityLabel,10),50,30);
-        addOnBounds(windowsSetPanel, windowsThemeSelect,rowAddSpacing(themeSelectLabel,10),themeSelectLabel.getY(),120,30);
-        addOnBounds(windowsSetPanel,undecoratedButton,rowAddSpacing(windowsThemeSelect,10),windowsThemeSelect.getY(),60,30);
+        addOnBounds(windowsSetPanel,windowsOpacitySlider, xSpace(opacityLabel,10),opacityLabel.getY(),200,30);
+        addOnBounds(windowsSetPanel,themeSelectLabel,opacityLabel.getX(), ySpace(opacityLabel,10),50,30);
+        addOnBounds(windowsSetPanel, windowsThemeSelect, xSpace(themeSelectLabel,10),themeSelectLabel.getY(),120,30);
+        addOnBounds(windowsSetPanel,undecoratedButton, xSpace(windowsThemeSelect,10),windowsThemeSelect.getY(),60,30);
 
         tabbedPane.add("窗体设置",windowsSetPanel);
     }
@@ -117,9 +116,9 @@ public class SetDialog{
 
 
         addOnBounds(getArticleSetPanel,getArticleOnNet,40,10,80,20);
-        addOnBounds(getArticleSetPanel,mouseGetArticle,rowAddSpacing(getArticleOnNet,10),getArticleOnNet.getY(),80,20);
-        addOnBounds(getArticleSetPanel,requestFocusInWindowButton,rowAddSpacing(mouseGetArticle,10),getArticleOnNet.getY(),80,20);
-        addOnBounds(getArticleSetPanel,globalReplayButton,rowAddSpacing(requestFocusInWindowButton,10),getArticleOnNet.getY(),80,20);
+        addOnBounds(getArticleSetPanel,mouseGetArticle, xSpace(getArticleOnNet,10),getArticleOnNet.getY(),80,20);
+        addOnBounds(getArticleSetPanel,requestFocusInWindowButton, xSpace(mouseGetArticle,10),getArticleOnNet.getY(),80,20);
+        addOnBounds(getArticleSetPanel,globalReplayButton, xSpace(requestFocusInWindowButton,10),getArticleOnNet.getY(),80,20);
 
         getArticleOnNet.setSelected(LocalConfig.getArticleOnNet);
         mouseGetArticle.setSelected(LocalConfig.mouseGetArticle);
@@ -214,31 +213,31 @@ public class SetDialog{
          * 初始化位置
          */
         addOnBounds(sendAchSetPanel,shortCodesNumButton,40,10,80,20);
-        addOnBounds(sendAchSetPanel,articleLengthButton,rowAddSpacing(shortCodesNumButton,10),shortCodesNumButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,deleteNumberButton,rowAddSpacing(articleLengthButton,10),articleLengthButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,deleteTextNumberButton,rowAddSpacing(deleteNumberButton,10),deleteNumberButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,mistakeButton,rowAddSpacing(deleteTextNumberButton,10),deleteTextNumberButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel,articleLengthButton, xSpace(shortCodesNumButton,10),shortCodesNumButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel,deleteNumberButton, xSpace(articleLengthButton,10),articleLengthButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel,deleteTextNumberButton, xSpace(deleteNumberButton,10),deleteNumberButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel,mistakeButton, xSpace(deleteTextNumberButton,10),deleteTextNumberButton.getY(),80,20);
 
-        addOnBounds(sendAchSetPanel,keyNumberButton,shortCodesNumButton.getX(),columnAddSpacing(shortCodesNumButton,10),80,20);
-        addOnBounds(sendAchSetPanel,repeatButton,rowAddSpacing(keyNumberButton,10),keyNumberButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,keyAccuracyButton,rowAddSpacing(repeatButton,10),repeatButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,keyMethodButton,rowAddSpacing(keyAccuracyButton,10),keyAccuracyButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,wordRateButton,rowAddSpacing(keyMethodButton,10),keyMethodButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel,keyNumberButton,shortCodesNumButton.getX(), ySpace(shortCodesNumButton,10),80,20);
+        addOnBounds(sendAchSetPanel,repeatButton, xSpace(keyNumberButton,10),keyNumberButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel,keyAccuracyButton, xSpace(repeatButton,10),repeatButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel,keyMethodButton, xSpace(keyAccuracyButton,10),keyAccuracyButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel,wordRateButton, xSpace(keyMethodButton,10),keyMethodButton.getY(),80,20);
 
-        addOnBounds(sendAchSetPanel,repeatRateButton,keyNumberButton.getX(),columnAddSpacing(keyNumberButton,10),80,20);
-        addOnBounds(sendAchSetPanel,changLiuVersionButton,rowAddSpacing(repeatRateButton,10),repeatRateButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,systemVersionButton,rowAddSpacing(changLiuVersionButton,10),changLiuVersionButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,checkCodeButton,rowAddSpacing(systemVersionButton,10),systemVersionButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,personalTagButton,rowAddSpacing(checkCodeButton,10),checkCodeButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel,repeatRateButton,keyNumberButton.getX(), ySpace(keyNumberButton,10),80,20);
+        addOnBounds(sendAchSetPanel,changLiuVersionButton, xSpace(repeatRateButton,10),repeatRateButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel,systemVersionButton, xSpace(changLiuVersionButton,10),changLiuVersionButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel,checkCodeButton, xSpace(systemVersionButton,10),systemVersionButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel,personalTagButton, xSpace(checkCodeButton,10),checkCodeButton.getY(),80,20);
 
-        addOnBounds(sendAchSetPanel,typeWritingButton,repeatRateButton.getX(),columnAddSpacing(repeatRateButton,10),80,20);
-        addOnBounds(sendAchSetPanel,ctrlSendAchToQQ,rowAddSpacing(typeWritingButton,10),typeWritingButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,achSelectAll,rowAddSpacing(ctrlSendAchToQQ,10),ctrlSendAchToQQ.getY(),80,20);
-        addOnBounds(sendAchSetPanel,reverseSelect,rowAddSpacing(achSelectAll,10),achSelectAll.getY(),80,20);
-        addOnBounds(sendAchSetPanel,achCancelAll,rowAddSpacing(reverseSelect,10),reverseSelect.getY(),80,20);
+        addOnBounds(sendAchSetPanel,typeWritingButton,repeatRateButton.getX(), ySpace(repeatRateButton,10),80,20);
+        addOnBounds(sendAchSetPanel,ctrlSendAchToQQ, xSpace(typeWritingButton,10),typeWritingButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel,achSelectAll, xSpace(ctrlSendAchToQQ,10),ctrlSendAchToQQ.getY(),80,20);
+        addOnBounds(sendAchSetPanel,reverseSelect, xSpace(achSelectAll,10),achSelectAll.getY(),80,20);
+        addOnBounds(sendAchSetPanel,achCancelAll, xSpace(reverseSelect,10),reverseSelect.getY(),80,20);
 
-        addOnBounds(sendAchSetPanel,typeWritingText,typeWritingButton.getX(),columnAddSpacing(typeWritingButton,10),215,30);
-        addOnBounds(sendAchSetPanel,personalTagText,rowAddSpacing(typeWritingText,10),typeWritingText.getY(),215,30);
+        addOnBounds(sendAchSetPanel,typeWritingText,typeWritingButton.getX(), ySpace(typeWritingButton,10),215,30);
+        addOnBounds(sendAchSetPanel,personalTagText, xSpace(typeWritingText,10),typeWritingText.getY(),215,30);
         /**
          * 添加监听
          */
@@ -306,11 +305,11 @@ public class SetDialog{
         quotationMarkReplacementButton.setSelected(LocalConfig.quotationMarkReplacement);
 
         addOnBounds(baseSetPanel,lurkButton,10,10,50,20);
-        addOnBounds(baseSetPanel,clearSpaceButton,rowAddSpacing(lurkButton,10),10,80,20);
-        addOnBounds(baseSetPanel,replaceButton,rowAddSpacing(clearSpaceButton,10),10,80,20);
-        addOnBounds(baseSetPanel,tipButton,rowAddSpacing(replaceButton,10),10,80,20);
-        addOnBounds(baseSetPanel,progressButton,rowAddSpacing(tipButton,10),10,80,20);
-        addOnBounds(baseSetPanel,quotationMarkReplacementButton,rowAddSpacing(progressButton,10),10,80,20);
+        addOnBounds(baseSetPanel,clearSpaceButton, xSpace(lurkButton,10),10,80,20);
+        addOnBounds(baseSetPanel,replaceButton, xSpace(clearSpaceButton,10),10,80,20);
+        addOnBounds(baseSetPanel,tipButton, xSpace(replaceButton,10),10,80,20);
+        addOnBounds(baseSetPanel,progressButton, xSpace(tipButton,10),10,80,20);
+        addOnBounds(baseSetPanel,quotationMarkReplacementButton, xSpace(progressButton,10),10,80,20);
 
         lurkButton.addChangeListener(e-> LocalConfig.lurk=lurkButton.isSelected());
         clearSpaceButton.addChangeListener(e-> LocalConfig.clearSpace=clearSpaceButton.isSelected());
@@ -466,8 +465,8 @@ public class SetDialog{
 
         JTextField regex = new JTextField(LocalConfig.regex);
         JButton changeRegex = new JButton("修改选重键");
-        addOnBounds(baseSetPanel,regex,family.getX(),columnAddSpacing(family,10),100,30);
-        addOnBounds(baseSetPanel,changeRegex,rowAddSpacing(regex,10),regex.getY(),90,30);
+        addOnBounds(baseSetPanel,regex,family.getX(), ySpace(family,10),100,30);
+        addOnBounds(baseSetPanel,changeRegex, xSpace(regex,10),regex.getY(),90,30);
 
         changeRegex.addActionListener(e-> BetterTypingSingleton.setBetterTypingRegex(LocalConfig.regex = regex.getText()));
 
