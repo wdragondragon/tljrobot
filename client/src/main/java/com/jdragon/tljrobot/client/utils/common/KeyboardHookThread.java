@@ -5,6 +5,7 @@ import com.sun.jna.platform.win32.Kernel32;
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinUser;
+import lombok.extern.slf4j.Slf4j;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.Date;
 /**
  * Create by Jdragon on 2020.02.07
  */
+@Slf4j
 public class KeyboardHookThread implements Runnable {
     private WinUser.HHOOK hhk;
     int preButton;
@@ -31,8 +33,7 @@ public class KeyboardHookThread implements Runnable {
 //                WinDef.RECT rect = new WinDef.RECT();
 //                User32.INSTANCE.GetWindowRect(hWnd,rect);
 //                Point mousePoint = MouseInfo.getPointerInfo().getLocation();
-                String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-                System.out.println(time + " KEY: " + event.vkCode+":"+ (char)event.vkCode+":"+nCode);
+                log.debug("hook：{}，code：{}", (char)event.vkCode,event.vkCode);
                 // 按下ESC退出
                 if (event.vkCode == 27) {
                     KeyboardHookThread.this.setHookOff();
