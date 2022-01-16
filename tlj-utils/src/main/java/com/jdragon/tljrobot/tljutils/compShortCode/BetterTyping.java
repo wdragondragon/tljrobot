@@ -89,7 +89,7 @@ public class BetterTyping {
             while ((str = bufferRead.readLine()) != null) {
                 String[] splited = str.split("\\s+");
                 if (splited.length == 1) {
-                    splited = new String[]{splited[0], "_"};
+                    splited = new String[]{splited[0], "? "};
                 }
                 if (splited.length != 2) continue;
                 String ch = splited[0];
