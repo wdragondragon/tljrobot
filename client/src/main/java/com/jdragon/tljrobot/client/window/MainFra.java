@@ -12,8 +12,8 @@ import com.jdragon.tljrobot.client.event.other.ListenPlayEvent;
 import com.jdragon.tljrobot.client.event.other.SwitchFollowPlayEvent;
 import com.jdragon.tljrobot.client.event.other.SwitchListenPlayEvent;
 import com.jdragon.tljrobot.client.event.other.SwitchWatchPlayEvent;
-import com.jdragon.tljrobot.client.handle.ThemeManager;
-import com.jdragon.tljrobot.client.handle.WindowThemeHandle;
+import com.jdragon.tljrobot.client.handle.theme.ThemeManager;
+import com.jdragon.tljrobot.client.handle.theme.WindowThemeHandler;
 import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
 import com.jdragon.tljrobot.client.listener.common.MixListener;
 import com.jdragon.tljrobot.client.listener.common.TypingListener;
@@ -27,16 +27,10 @@ import com.jdragon.tljrobot.client.window.dialog.SetDialog;
 import com.jdragon.tljrobot.client.window.dialog.ShowArticleDialog;
 import com.jdragon.tljrobot.tljutils.ArticleUtil;
 import com.jdragon.tljrobot.tljutils.string.Comparison;
-import freeseawind.lf.LittleLuckLookAndFeel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
-import org.jvnet.substance.SubstanceLookAndFeel;
-import org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel;
-import org.jvnet.substance.theme.SubstanceAquaTheme;
 
 import javax.swing.*;
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
@@ -64,7 +58,7 @@ public class MainFra extends JFrame {
         this.setBounds(LocalConfig.windowX, LocalConfig.windowY,
                 LocalConfig.windowWidth, LocalConfig.windowHeight);
         //美化UI
-        WindowThemeHandle theme = ThemeManager.getTheme(LocalConfig.windowsTheme);
+        WindowThemeHandler theme = ThemeManager.getTheme(LocalConfig.windowsTheme);
         theme.activation();
         init();
     }

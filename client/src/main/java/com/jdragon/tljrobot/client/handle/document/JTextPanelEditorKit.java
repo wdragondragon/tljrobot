@@ -1,4 +1,4 @@
-package com.jdragon.tljrobot.client.utils.common;
+package com.jdragon.tljrobot.client.handle.document;
 
 
 import com.jdragon.tljrobot.client.config.LocalConfig;
@@ -8,14 +8,15 @@ import javax.swing.text.*;
 import java.awt.*;
 
 
-public class JTextPanelEditorKit extends StyledEditorKit{
+public class JTextPanelEditorKit extends StyledEditorKit {
     public ViewFactory getViewFactory() {
         return new CustomUI();
     }
+
     static class CustomUI extends BasicTextPaneUI {
         @Override
         public View create(Element elem) {
-            View result = null;
+            View result;
             String kind = elem.getName();
             if (kind != null) {
                 if (kind.equals(AbstractDocument.ContentElementName)) {
@@ -37,6 +38,7 @@ public class JTextPanelEditorKit extends StyledEditorKit{
             return result;
         }
     }
+
     static class MyLabelView extends LabelView {
 
         public MyLabelView(Element arg0) {
@@ -47,27 +49,27 @@ public class JTextPanelEditorKit extends StyledEditorKit{
             super.paint(g, a);
             Color c = (Color) getElement().getAttributes().getAttribute(
                     "Underline-Color");
-            Boolean underlineOpen = (Boolean)getElement().getAttributes().getAttribute("UnderlineOpen");
+            Boolean underlineOpen = (Boolean) getElement().getAttributes().getAttribute("UnderlineOpen");
             String s = (String) getElement().getAttributes().getAttribute("Number");
-            Color foreground = (Color)getElement().getAttributes().getAttribute("foreground");
-            if (underlineOpen != null&&underlineOpen) {
-                int y = a.getBounds().y + (int) getGlyphPainter().getAscent(this) + LocalConfig.fontSize/4;
-                int x1 = a.getBounds().x + LocalConfig.fontSize/10;
-                int x2 = a.getBounds().width + x1 - LocalConfig.fontSize/4;
-                if(c==null) {
+            Color foreground = (Color) getElement().getAttributes().getAttribute("foreground");
+            if (underlineOpen != null && underlineOpen) {
+                int y = a.getBounds().y + (int) getGlyphPainter().getAscent(this) + LocalConfig.fontSize / 4;
+                int x1 = a.getBounds().x + LocalConfig.fontSize / 10;
+                int x2 = a.getBounds().width + x1 - LocalConfig.fontSize / 4;
+                if (c == null) {
                     g.setColor(foreground);
-                }else{
+                } else {
                     g.setColor(c);
                 }
                 g.drawLine(x1, y, x2, y);
             }
             if (s != null) {
-                int y = a.getBounds().y + (int) getGlyphPainter().getAscent(this) + LocalConfig.fontSize*3/4;
+                int y = a.getBounds().y + (int) getGlyphPainter().getAscent(this) + LocalConfig.fontSize * 3 / 4;
                 int x1 = a.getBounds().x;
                 int x2 = a.getBounds().width + x1;
 
                 g.setColor(Color.BLACK);
-                g.setFont(new Font(LocalConfig.family, Font.BOLD,  LocalConfig.fontSize/2));
+                g.setFont(new Font(LocalConfig.family, Font.BOLD, LocalConfig.fontSize / 2));
                 g.drawString(s, (x1 + x2) / 2, y);
             }
         }
