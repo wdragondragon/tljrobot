@@ -1,4 +1,4 @@
-package com.jdragon.tljrobot.client.handle;
+package com.jdragon.tljrobot.client.handle.theme;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
@@ -11,7 +11,7 @@ import javax.swing.*;
  * @author : Jdragon
  */
 
-public class BeautyEyeTheme extends WindowThemeHandle {
+public class BeautyEyeTheme extends WindowThemeHandler {
 
     BeautyEyeTheme() {
         super("长流默认", "org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper");

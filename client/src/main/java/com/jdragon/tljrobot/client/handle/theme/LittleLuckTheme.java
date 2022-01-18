@@ -1,4 +1,4 @@
-package com.jdragon.tljrobot.client.handle;
+package com.jdragon.tljrobot.client.handle.theme;
 
 import javax.swing.*;
 
@@ -8,7 +8,7 @@ import javax.swing.*;
  *
  * @author : Jdragon
  */
-public class LittleLuckTheme extends WindowThemeHandle{
+public class LittleLuckTheme extends WindowThemeHandler {
 
     LittleLuckTheme() {
         super("LittleLuck蓝白", "freeseawind.lf.LittleLuckLookAndFeel");

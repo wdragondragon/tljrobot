@@ -1,4 +1,4 @@
-package com.jdragon.tljrobot.client.handle;
+package com.jdragon.tljrobot.client.handle.theme;
 
 import javax.swing.*;
 
@@ -8,7 +8,7 @@ import javax.swing.*;
  *
  * @author : Jdragon
  */
-public class NimbusTheme extends WindowThemeHandle{
+public class NimbusTheme extends WindowThemeHandler {
     NimbusTheme() {
         super("Nimbus灰白", "javax.swing.plaf.nimbus.NimbusLookAndFeel");
     }

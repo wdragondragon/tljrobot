@@ -8,7 +8,7 @@ import com.jdragon.tljrobot.client.entry.TypingState;
 import com.jdragon.tljrobot.client.entry.TypingState.*;
 import com.jdragon.tljrobot.client.entry.UserState;
 import com.jdragon.tljrobot.client.event.other.ListenPlayEvent;
-import com.jdragon.tljrobot.client.utils.common.JTextPaneFont;
+import com.jdragon.tljrobot.client.handle.document.DocumentStyleHandler;
 import com.jdragon.tljrobot.client.utils.common.Timer;
 import com.jdragon.tljrobot.client.utils.core.Layout;
 import com.jdragon.tljrobot.client.window.dialog.SetDialog;
@@ -35,6 +35,8 @@ import static com.jdragon.tljrobot.client.entry.TypingState.*;
 @Slf4j
 public class TypingListener implements DocumentListener, KeyListener {
     private static TypingListener typingListener;
+
+    private final DocumentStyleHandler documentStyleHandler = DocumentStyleHandler.INSTANCE;
 
     public TypingListener() {
     }
@@ -309,10 +311,10 @@ public class TypingListener implements DocumentListener, KeyListener {
             try {
                 for (n = 0; n < articleStr.length(); n++) { // 统计错误字数，向文本框添加字体
                     if (typeChars.length > n && typeChars[n] != articleChars[n]) {
-                        JTextPaneFont.insertDoc(
+                        documentStyleHandler.insertDoc(
                                 String.valueOf(articleChars[n]), "红");
                     } else {
-                        JTextPaneFont.insertDoc(
+                        documentStyleHandler.insertDoc(
                                 String.valueOf(articleChars[n]), "黑");
                     }
                 }
@@ -361,9 +363,9 @@ public class TypingListener implements DocumentListener, KeyListener {
             }
             for (; n < (Math.min(typeStr.length(), articleStr.length())); n++) { // 统计错误字数，向文本框添加字体
                 if (typeChars[n] != articleChars[n] && typingState) {
-                    JTextPaneFont.updateOneDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, "红", true);
+                    documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, "红");
                 } else if (typingState) {
-                    JTextPaneFont.updateOneDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, "黑", true);
+                    documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, "黑");
                 }
             }
         } catch (Exception e) {
@@ -373,7 +375,7 @@ public class TypingListener implements DocumentListener, KeyListener {
         if (!typingState) {
             n = 0;
         }
-        JTextPaneFont.createStyle("预读",
+        DocumentStyleHandler.INSTANCE.defineStyle("预读",
                 LocalConfig.fontSize, false, false, false,
                 LocalConfig.watchingBackgroundColor, LocalConfig.family, null);
         int readyFontNum = Integer.parseInt(SetDialog.readyFont.getText());
@@ -383,7 +385,7 @@ public class TypingListener implements DocumentListener, KeyListener {
                 tempReady = lastIndex;
             }
             for (; n < tempReady; n++) {
-                JTextPaneFont.updateOneDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, "预读", true);
+                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, "预读");
             }
         }
         MutableAttributeSet attrs = new SimpleAttributeSet();
@@ -397,7 +399,7 @@ public class TypingListener implements DocumentListener, KeyListener {
             }
             if (!LocalConfig.tip || TypingState.dailyCompetition
                     || LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)) {
-                JTextPaneFont.updateOneDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, "灰", true);
+                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, "灰");
             } else {
                 int type = codeEntities[n].getType();
                 boolean isBold = codeEntities[n].isBold();
@@ -405,46 +407,46 @@ public class TypingListener implements DocumentListener, KeyListener {
                 if (!isBold) {
                     switch (type) {
                         case 0:
-                            JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "灰", true);
+                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "灰");
                             break;
                         case 1:
-                            JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "绿", true);
+                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "绿");
                             break;
                         case 2:
                             String codes = codeEntities[n].getWordsCode();
                             if (codes != null) {
                                 String number = codes.substring(codes.length() - 1);
                                 attrs.addAttribute("Number", number);
-                                JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "绿", true, attrs);
+                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "绿", attrs);
                             } else {
-                                JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "绿斜", true);
+                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "绿斜");
                             }
 
                             break;
                         case 3:
-                            JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "蓝", true);
+                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "蓝");
                             break;
                         case 4:
                             String codes1 = codeEntities[n].getWordsCode();
                             if (codes1 != null) {
                                 String number1 = codes1.substring(codes1.length() - 1);
                                 attrs.addAttribute("Number", number1);
-                                JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "蓝", true, attrs);
+                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "蓝", attrs);
                             } else {
-                                JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "蓝斜", true);
+                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "蓝斜");
                             }
                             break;
                         case 5:
-                            JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "粉", true);
+                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "粉");
                             break;
                         case 6:
                             String codes2 = codeEntities[n].getWordsCode();
                             if (codes2 != null) {
                                 String number2 = codes2.substring(codes2.length() - 1);
                                 attrs.addAttribute("Number", number2);
-                                JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "粉", true, attrs);
+                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "粉", attrs);
                             } else {
-                                JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "粉斜", true);
+                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "粉斜");
                             }
                             break;
                         default:
@@ -453,45 +455,45 @@ public class TypingListener implements DocumentListener, KeyListener {
                 } else {
                     switch (type) {
                         case 0:
-                            JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "灰", true);
+                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "灰");
                             break;
                         case 1:
-                            JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "绿粗", true);
+                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "绿粗");
                             break;
                         case 2:
                             String codes = codeEntities[n].getWordsCode();
                             if (codes != null) {
                                 String number = codes.substring(codes.length() - 1);
                                 attrs.addAttribute("Number", number);
-                                JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "绿粗", true, attrs);
+                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "绿粗", attrs);
                             } else {
-                                JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "绿粗斜", true);
+                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "绿粗斜");
                             }
                             break;
                         case 3:
-                            JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "蓝粗", true);
+                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "蓝粗");
                             break;
                         case 4:
                             String codes1 = codeEntities[n].getWordsCode();
                             if (codes1 != null) {
                                 String number1 = codes1.substring(codes1.length() - 1);
                                 attrs.addAttribute("Number", number1);
-                                JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "蓝粗", true, attrs);
+                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "蓝粗", attrs);
                             } else {
-                                JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "蓝粗斜", true);
+                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "蓝粗斜");
                             }
                             break;
                         case 5:
-                            JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "粉粗", true);
+                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "粉粗");
                             break;
                         case 6:
                             String codes2 = codeEntities[n].getWordsCode();
                             if (codes2 != null) {
                                 String number2 = codes2.substring(codes2.length() - 1);
                                 attrs.addAttribute("Number", number2);
-                                JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "粉粗", true, attrs);
+                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "粉粗", attrs);
                             } else {
-                                JTextPaneFont.updateDocStyleByStyleName(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "粉粗斜", true);
+                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + 1, "粉粗斜");
                             }
                             break;
                         default:
@@ -508,18 +510,18 @@ public class TypingListener implements DocumentListener, KeyListener {
         for (HashMap<String, Integer> hashMap : strList) {
             for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
                 if (entry.getValue() == 0) {
-                    JTextPaneFont.insertDoc(entry.getKey(), "对");
+                    documentStyleHandler.insertDoc(entry.getKey(), "对");
                 } else if (entry.getValue() == 1) {
                     lookMiss++;
-                    JTextPaneFont.insertDoc(entry.getKey(), "少");
+                    documentStyleHandler.insertDoc(entry.getKey(), "少");
                 } else if (entry.getValue() == 2) {
                     lookMore++;
-                    JTextPaneFont.insertDoc(entry.getKey(), "多");
+                    documentStyleHandler.insertDoc(entry.getKey(), "多");
                 } else if (entry.getValue() == 3) {
                     lookMis++;
-                    JTextPaneFont.insertDoc(entry.getKey(), "错");
+                    documentStyleHandler.insertDoc(entry.getKey(), "错");
                 } else {
-                    JTextPaneFont.insertDoc(entry.getKey(), "错原");
+                    documentStyleHandler.insertDoc(entry.getKey(), "错原");
                 }
             }
         }
@@ -533,20 +535,20 @@ public class TypingListener implements DocumentListener, KeyListener {
             for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
                 length++;
                 if (entry.getValue() == 0) {
-                    JTextPaneFont.insertDoc(entry.getKey(), "对");
+                    documentStyleHandler.insertDoc(entry.getKey(), "对");
                 } else if (entry.getValue() == 1) {
                     lookMiss++;
-                    JTextPaneFont.insertDoc(entry.getKey(), "少");
+                    documentStyleHandler.insertDoc(entry.getKey(), "少");
                 } else if (entry.getValue() == 2) {
                     lookMore++;
-                    JTextPaneFont.insertDoc(entry.getKey(), "多");
+                    documentStyleHandler.insertDoc(entry.getKey(), "多");
                 } else if (entry.getValue() == 3) {
                     lookMis++;
-                    JTextPaneFont.insertDoc(entry.getKey(), "错");
+                    documentStyleHandler.insertDoc(entry.getKey(), "错");
                 } else if (entry.getValue() == 4) {
-                    JTextPaneFont.insertDoc(entry.getKey(), "错原");
+                    documentStyleHandler.insertDoc(entry.getKey(), "错原");
                 } else {
-                    JTextPaneFont.insertDoc(entry.getKey(), "忽略");
+                    documentStyleHandler.insertDoc(entry.getKey(), "忽略");
                     length--;
                 }
             }

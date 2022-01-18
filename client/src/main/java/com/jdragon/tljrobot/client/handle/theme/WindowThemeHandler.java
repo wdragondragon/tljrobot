@@ -1,4 +1,4 @@
-package com.jdragon.tljrobot.client.handle;
+package com.jdragon.tljrobot.client.handle.theme;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -12,13 +12,13 @@ import lombok.extern.slf4j.Slf4j;
 
 @Getter
 @Slf4j
-public abstract class WindowThemeHandle {
+public abstract class WindowThemeHandler {
 
     protected final String themeName;
 
     protected final String className;
 
-    WindowThemeHandle(String themeName, String className) {
+    WindowThemeHandler(String themeName, String className) {
         this.themeName = themeName;
         this.className = className;
     }

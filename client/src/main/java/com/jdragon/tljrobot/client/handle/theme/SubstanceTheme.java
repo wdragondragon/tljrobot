@@ -1,4 +1,4 @@
-package com.jdragon.tljrobot.client.handle;
+package com.jdragon.tljrobot.client.handle.theme;
 
 import org.jvnet.substance.SubstanceLookAndFeel;
 
@@ -10,7 +10,7 @@ import javax.swing.*;
  *
  * @author : Jdragon
  */
-public class SubstanceTheme extends WindowThemeHandle{
+public class SubstanceTheme extends WindowThemeHandler {
     SubstanceTheme() {
         super("Substance黑白", "org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel");
     }

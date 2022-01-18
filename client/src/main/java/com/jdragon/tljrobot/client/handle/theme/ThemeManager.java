@@ -1,7 +1,6 @@
-package com.jdragon.tljrobot.client.handle;
+package com.jdragon.tljrobot.client.handle.theme;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -13,11 +12,11 @@ import java.util.Set;
  */
 public class ThemeManager {
 
-    private final static Map<String, WindowThemeHandle> themeHandleMap = new LinkedHashMap<>();
+    private final static Map<String, WindowThemeHandler> themeHandleMap = new LinkedHashMap<>();
 
     public final static ThemeManager INSTANCE = new ThemeManager();
 
-    private final static WindowThemeHandle defaultTheme = new BeautyEyeTheme();
+    private final static WindowThemeHandler defaultTheme = new BeautyEyeTheme();
 
     static {
         ThemeManager.INSTANCE.register(defaultTheme);
@@ -30,13 +29,13 @@ public class ThemeManager {
     private ThemeManager() {
     }
 
-    public void register(WindowThemeHandle windowThemeHandle) {
-        String themeName = windowThemeHandle.getThemeName();
-        themeHandleMap.put(themeName, windowThemeHandle);
+    public void register(WindowThemeHandler windowThemeHandler) {
+        String themeName = windowThemeHandler.getThemeName();
+        themeHandleMap.put(themeName, windowThemeHandler);
     }
 
-    public static WindowThemeHandle getTheme(String themeName) {
-        WindowThemeHandle theme = themeHandleMap.get(themeName);
+    public static WindowThemeHandler getTheme(String themeName) {
+        WindowThemeHandler theme = themeHandleMap.get(themeName);
         if (theme == null) {
             theme = defaultTheme;
         }

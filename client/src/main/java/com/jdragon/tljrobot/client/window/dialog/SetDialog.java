@@ -3,7 +3,7 @@ package com.jdragon.tljrobot.client.window.dialog;
 import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.config.JTextPaneFontConfig;
 import com.jdragon.tljrobot.client.config.LocalConfig;
-import com.jdragon.tljrobot.client.handle.ThemeManager;
+import com.jdragon.tljrobot.client.handle.theme.ThemeManager;
 import com.jdragon.tljrobot.client.listener.common.SetBackgroundListener;
 import com.jdragon.tljrobot.client.listener.common.TypingListener;
 import com.jdragon.tljrobot.client.utils.common.BetterTypingSingleton;

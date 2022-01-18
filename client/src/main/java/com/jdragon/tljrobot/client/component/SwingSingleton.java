@@ -4,7 +4,7 @@ package com.jdragon.tljrobot.client.component;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.TypingState;
-import com.jdragon.tljrobot.client.utils.common.JTextPanelEditorKit;
+import com.jdragon.tljrobot.client.handle.document.JTextPanelEditorKit;
 import com.jdragon.tljrobot.client.window.CirecordFra;
 import com.jdragon.tljrobot.client.window.MainFra;
 import com.jdragon.tljrobot.client.window.dialog.ShowArticleDialog;
