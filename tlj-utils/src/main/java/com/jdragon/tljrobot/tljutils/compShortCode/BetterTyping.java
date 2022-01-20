@@ -177,12 +177,13 @@ public class BetterTyping {
                     } else {
                         codeTemp = strTemp + "?";
                     }
+                    //顶，最后一码为空格码，下一码为顶屏码，并排除顶屏符合与后方组成符号词语的情况
                 } else if (articleLength > i + 1
-                        && codeTemp.substring(codeTemp.length() - 1).equals("_")
+                        && codeTemp.endsWith("_")
                         && symbol.contains(subscriptInstances[i + 1].getWord())
                         && !(articleLength > i + 2
-                        && symbolEntry.contains(subscriptInstances[i + 1].getWord()
-                        + subscriptInstances[i + 2].getWord()))
+                            && symbolEntry.contains(subscriptInstances[i + 1].getWord()
+                            + subscriptInstances[i + 2].getWord()))
                 ) {
                     codeTemp = codeTemp.substring(0, codeTemp.length() - 1);
                 }
@@ -209,7 +210,7 @@ public class BetterTyping {
                          */
                         codeTemp = wordsCodeList.get(i).get(strTemp);
 
-                        if (articleLength > j + i + 2 && codeTemp.substring(codeTemp.length() - 1).equals("_")
+                        if (articleLength > j + i + 2 && codeTemp.endsWith("_")
                                 && symbol.contains(subscriptInstances[j + i + 2].getWord())
                                 && !(articleLength > j + i + 3
                                 && symbolEntry.contains(subscriptInstances[j + i + 2].getWord()
