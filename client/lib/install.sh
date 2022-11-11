@@ -1,0 +1,16 @@
+mvn install:install-file -Dfile=./beautyeye_lnf.jar -DgroupId=local-lib -DartifactId=beautyeye_lnf -Dversion=0.0.1 -Dpackaging=jar
+mvn install:install-file -Dfile=./commons-net-1.4.1.jar -DgroupId=local-lib -DartifactId=commons-net -Dversion=1.4.1 -Dpackaging=jar
+mvn install:install-file -Dfile=./gnujaxp-1.0.0.jar -DgroupId=local-lib -DartifactId=gnujaxp-1.0.0.jar -Dversion=0.0.1 -Dpackaging=jar
+mvn install:install-file -Dfile=./javax.mail-1.6.0.jar -DgroupId=local-lib -DartifactId=javax.mail -Dversion=1.6.0 -Dpackaging=jar
+mvn install:install-file -Dfile=./jcommon-1.0.16.jar -DgroupId=local-lib -DartifactId=jcommon -Dversion=1.0.16 -Dpackaging=jar
+mvn install:install-file -Dfile=./jfreechart-1.0.19.jar -DgroupId=local-lib -DartifactId=jfreechart -Dversion=1.0.19 -Dpackaging=jar
+mvn install:install-file -Dfile=./jintellitype-1.3.9.jar -DgroupId=local-lib -DartifactId=jintellitype -Dversion=1.3.9 -Dpackaging=jar
+mvn install:install-file -Dfile=./jna-4.4.0.jar -DgroupId=local-lib -DartifactId=jna -Dversion=4.4.0 -Dpackaging=jar
+mvn install:install-file -Dfile=./jna-platform-4.4.0.jar -DgroupId=local-lib -DartifactId=jna-platform -Dversion=4.4.0 -Dpackaging=jar
+mvn install:install-file -Dfile=./JNative.jar -DgroupId=local-lib -DartifactId=JNative -Dversion=0.0.1 -Dpackaging=jar
+mvn install:install-file -Dfile=./jsoup-1.6.1.jar -DgroupId=local-lib -DartifactId=jsoup -Dversion=1.6.1 -Dpackaging=jar
+mvn install:install-file -Dfile=./littleluck.jar -DgroupId=local-lib -DartifactId=littleluck -Dversion=0.0.1 -Dpackaging=jar
+mvn install:install-file -Dfile=./ninepatch.jar -DgroupId=local-lib -DartifactId=ninepatch -Dversion=0.0.1 -Dpackaging=jar
+mvn install:install-file -Dfile=./substance.jar -DgroupId=local-lib -DartifactId=substance -Dversion=0.0.1 -Dpackaging=jar
+mvn install:install-file -Dfile=./SwingSet3.jar -DgroupId=local-lib -DartifactId=swingset3 -Dversion=0.0.1 -Dpackaging=jar
+mvn install:install-file -Dfile=./trident-7.0.jar -DgroupId=local-lib -DartifactId=trident -Dversion=7.0.0 -Dpackaging=jar
