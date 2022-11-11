@@ -9,7 +9,7 @@ public class HttpAddr {
     private final static String SERVER_ADDR = "https://cl.tyu.wiki";
 
 //    public final static String SERVER_ADDR_NEW = "http://192.168.10.150:9527";
-    public final static String SERVER_ADDR_NEW = "https://clgateway.tyu.wiki";
+    public final static String SERVER_ADDR_NEW = "https://bb-typing.tyu.wiki/typing-service";
 
     private final static String ROBOT_HOME = "/robot";
     private final static String GROUP_ARTICLE = "/groupArticleCache";
