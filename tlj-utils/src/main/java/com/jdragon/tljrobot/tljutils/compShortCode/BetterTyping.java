@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.tljutils.compShortCode;
 
+import com.jdragon.tljrobot.tljutils.CodePointString;
 import com.jdragon.tljrobot.tljutils.compShortCode.SubscriptInstance.PreInfo;
 
 import java.io.*;
@@ -95,12 +96,14 @@ public class BetterTyping {
                 String ch = splited[0];
                 String bm = splited[1];
                 String temp;
+                CodePointString codePointString = new CodePointString(splited[0]);
                 int chlength = splited[0].length();
                 int length = splited[1].length();
+                int codePointLength = codePointString.length();
                 temp = bm.substring(bm.length() - 1);
                 if (temp.equals("_") || regex.contains(temp)) length -= 1;
                 int i = -1;
-                if (chlength == 1) {
+                if (chlength == 1 || codePointLength == 1) {
                     if (wordCode.containsKey(splited[0])) {
                         if (wordCode.get(splited[0]).length() > length) {
                             wordCode.put(ch, bm);
@@ -114,7 +117,7 @@ public class BetterTyping {
                         wordCode.put(ch, bm);
                     }
                 } else if (chlength >= 2 && chlength <= 11) {
-                    i = chlength - 2;
+                    i = codePointLength - 2;
                 }
                 if (i != -1) {
                     if (wordsCodeList.get(i).containsKey(splited[0])) {
@@ -150,12 +153,13 @@ public class BetterTyping {
 
     private static SubscriptInstance[] subscriptInstances;
 
-    public void changecolortip(String article) {
-        int articleLength = article.length();
+    public void changecolortip(String articleStr) {
         String symbol = "。，";
         String codeTemp;
         String strTemp;
-        subscriptInstances = new SubscriptInstance[article.length()];
+        CodePointString article = new CodePointString(articleStr);
+        subscriptInstances = new SubscriptInstance[article.length];
+        int articleLength = article.length;
         try {
             /*
               创建article长度的SubscriptInstance数组
