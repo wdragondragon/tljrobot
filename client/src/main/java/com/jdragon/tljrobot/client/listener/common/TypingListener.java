@@ -446,10 +446,10 @@ public class TypingListener implements DocumentListener, KeyListener {
             } else {
                 n = thisPageNum * pageCount;
             }
-            if (thisPageNum != prePageNum || watchingText().getText().length() != lastIndex - n) {
-                watchingText().setText(""); // 清空文本框
-                watchingText().setCaretPosition(0);
-            }
+//            if (thisPageNum != prePageNum || watchingText().getText().length() != lastIndex - n) {
+//                watchingText().setText(""); // 清空文本框
+//                watchingText().setCaretPosition(0);
+//            }
             for (; n < (Math.min(typeStr.length(), articleStr.length())); n++) { // 统计错误字数，向文本框添加字体
                 if (!Objects.equals(typeCharCodePoint[n], articleCharCodePoint[n]) && typingState) {
 //                    documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, "红");
@@ -618,6 +618,7 @@ public class TypingListener implements DocumentListener, KeyListener {
                 n = next;
             }
         }
+        System.out.println("color change");
     }
 
     public void changeLookPlayFontColor(List<HashMap<String, Integer>> strList) {
@@ -695,8 +696,10 @@ public class TypingListener implements DocumentListener, KeyListener {
         JScrollBar jsb = watchingJsp().getVerticalScrollBar();
         int pageTotal = Math.min(pageCount, watchingText().getText().length());
         if (pageTotal > maxPageNum) {
-            jsb.setValue((int) (((thisPageTypeStr.length() - maxPageNum / 2) / (double) (pageTotal - maxPageNum)) * (jsb
-                    .getMaximum() - jsb.getHeight())));
+            int jsbValue = (int) (((thisPageTypeStr.length() - maxPageNum / 2) / (double) (pageTotal - maxPageNum)) * (jsb
+                    .getMaximum() - jsb.getHeight()));
+            jsbValue = Math.max(jsbValue, 0);
+            jsb.setValue(jsbValue);
         }
     }
 
