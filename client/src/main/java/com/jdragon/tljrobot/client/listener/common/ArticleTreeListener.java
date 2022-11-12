@@ -12,6 +12,7 @@ import com.jdragon.tljrobot.client.utils.common.Code;
 import com.jdragon.tljrobot.client.utils.core.Layout;
 import com.jdragon.tljrobot.client.window.dialog.SendArticleDialog;
 import com.jdragon.tljrobot.tljutils.ArticleUtil;
+import com.jdragon.tljrobot.tljutils.CodePointString;
 
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
@@ -183,8 +184,8 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
             JOptionPane.showMessageDialog(new JTextArea(), "保存进度失败");
         }
     }
-    public static List<String> chouqulist = new ArrayList<>();
-    public static List<String> chouqubufenlist = new ArrayList<>();
+    public static List<CodePointString> chouqulist = new ArrayList<>();
+    public static List<CodePointString> chouqubufenlist = new ArrayList<>();
     public void chouqu(String model){
         Article article = Article.getArticleSingleton();
         getNumber();
@@ -210,7 +211,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
         Article article = Article.getArticleSingleton();
         article.setTitle("词库练习");
         Code code = Code.getInstance(LocalConfig.codeTable);
-        HashMap<String,Integer> selectTable;
+        HashMap<CodePointString,Integer> selectTable;
         try {
             if(Objects.requireNonNull(SendArticleDialog.weizhi.getSelectedItem()).toString().equals("首选")){
                 selectTable = code.firstTable;
@@ -219,7 +220,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
             }else {
                 selectTable = code.allTable;
             }
-            for(Map.Entry<String,Integer> entry:selectTable.entrySet()){
+            for(Map.Entry<CodePointString,Integer> entry:selectTable.entrySet()){
                 int wordLength = entry.getKey().length();
                 int codeLength = entry.getValue();
                 int wordLength1 = Integer.parseInt(String.valueOf(SendArticleDialog.cichang1.getValue()));
