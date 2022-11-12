@@ -10,9 +10,7 @@ import com.jdragon.tljrobot.client.window.MainFra;
 import com.jdragon.tljrobot.client.window.dialog.ShowArticleDialog;
 
 import javax.swing.*;
-import javax.swing.text.MutableAttributeSet;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
+import javax.swing.text.*;
 import java.awt.*;
 
 
@@ -159,6 +157,12 @@ public class SwingSingleton {
                     }
                 }
             };
+            Caret caret = watchingText.getCaret();
+            if (caret instanceof DefaultCaret)
+            {
+                ( (DefaultCaret) caret).setUpdatePolicy(
+                        DefaultCaret.NEVER_UPDATE);
+            }
             MutableAttributeSet paragraph = new SimpleAttributeSet();
             StyleConstants.setLineSpacing(paragraph, 0.5f); //此处设定行间距
             watchingText.setEditorKit(new JTextPanelEditorKit());
@@ -203,6 +207,9 @@ public class SwingSingleton {
                 }
                 System.out.println(jsb.getMaximum()+":"+jsb.getMinimum()+":"+jsb.getValue());
                 System.out.println(jsb.getX()+":"+jsb.getY()+":"+jsb.getWidth()+":"+jsb.getHeight());
+
+                int caretPosition = watchingText().getCaretPosition();
+                System.out.println("caretPostition: " + caretPosition);
             });
         }
         return watchingJSP;

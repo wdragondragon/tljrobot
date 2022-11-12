@@ -64,6 +64,8 @@ public class CodePointString {
     public boolean equals(Object obj) {
         if (obj instanceof CodePointString) {
             return equals((CodePointString) obj);
+        } else if (obj instanceof String) {
+            return string.equals(obj);
         } else {
             return super.equals(obj);
         }
