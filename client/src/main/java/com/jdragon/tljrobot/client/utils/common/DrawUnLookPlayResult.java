@@ -12,6 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.*;
 
+import static com.jdragon.tljrobot.client.entry.TypingState.*;
+
 /**
  * Create by Jdragon on 2020.02.11
  */
@@ -102,7 +104,7 @@ public class DrawUnLookPlayResult {
         //偏移
         int moveX = 10;
         int moveYBottom = 30;
-        int moveYTop = 90;
+        int moveYTop = 110;
 
 
         BufferedImage image = new BufferedImage(imageWidth+2*moveX, imageHeight+moveYTop+moveYBottom, BufferedImage.TYPE_INT_RGB);
@@ -119,6 +121,16 @@ public class DrawUnLookPlayResult {
         graphics.drawString(title, (imageWidth+2*moveX-strWidth)/2, 40);
         //画颜色说明
         graphics.setFont(new Font("宋体", Font.BOLD, 15));
+
+        double speed = getSpeed();
+        double noMisSpeed = getSpeedNoMistake();
+        double keySpeed = getKeySpeed();
+        double keyLength = getKeyLength();
+        String noMisSpeedStr = mistake == 0 ? "" : ("/" + String.format("%.2f", noMisSpeed));
+        String playResultStr2 =  "速度" + String.format("%.2f", speed) + noMisSpeedStr +
+                " 击键" + String.format("%.2f", keySpeed) +
+                " 码长" + String.format("%.2f", keyLength);
+        graphics.drawString(playResultStr2,moveX,moveYTop-50);
 
         String help = "听打".equals(model)?
                 "黑色：对、白色：少、粉色：多、红色：错、蓝色：错原字、青色：忽略":"黑色：对、白色：少、粉色：多、红色：错、蓝色：错原字";
