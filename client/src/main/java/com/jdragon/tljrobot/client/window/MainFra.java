@@ -173,13 +173,8 @@ public class MainFra extends JFrame {
                             typingText().setEditable(false); // 设置不可打字状态
                             TypingListener.delaySendResultSign = true;
                         } else if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
-                            List<HashMap<String, Integer>> hashMapList =
-                                    Comparison.getComparisonListenResult(ListenPlayEvent.getContent(),
-                                            ArticleUtil.clearSpace(typingText().getText()), BetterTypingSingleton.getInstance().getSymbolCode());
-                            TypingListener.getInstance().changeListenPlayFontColor(hashMapList);
-                            SendAchievementEvent.start();
-                            ListenPlayEvent.stop();
-                            DrawUnLookPlayResult.drawUnFollowPlayResultImg(ListenPlayEvent.getTitle(), hashMapList, "听打");
+                            typingText().setEditable(false); // 设置不可打字状态
+                            TypingListener.delaySendResultSign = true;
                         }
                         break;
                     default:

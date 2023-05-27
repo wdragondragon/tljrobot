@@ -2,6 +2,7 @@ package com.jdragon.tljrobot.client.event.other;
 
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
+import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.event.FArea.ReplayEvent;
 import com.jdragon.tljrobot.client.event.threadEvent.SoundRecordThread;
 import com.jdragon.tljrobot.client.utils.common.ChooseFile;
@@ -63,6 +64,7 @@ public class ListenPlayEvent {
         }
         soundRecordThread = new SoundRecordThread(mp3);
         isRead = true;
+        Article.getArticleSingleton(1, title,content);
 //        soundRecord.start();
         ReplayEvent.start();
     }

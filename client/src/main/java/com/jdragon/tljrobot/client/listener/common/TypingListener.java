@@ -70,9 +70,6 @@ public class TypingListener implements DocumentListener, KeyListener {
     public void keyTyped(KeyEvent e) {
         try {
             log.debug("keyTyped：{},code：{}", e.getKeyChar(), e.getKeyCode());
-            if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN) || Article.getArticleSingleton().getArticle() == null) {
-                return;
-            }
             if (e.getKeyChar() != '\b') {
                 typeStr = new CodePointString(typingText().getText() + e.getKeyChar());
             } else {
@@ -119,6 +116,10 @@ public class TypingListener implements DocumentListener, KeyListener {
              */
             updateNumShow();
 
+            if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN) || Article.getArticleSingleton().getArticle() == null) {
+                return;
+            }
+
             if (typingState) {
                 changeFontColor();//改变颜色
             }
@@ -141,9 +142,9 @@ public class TypingListener implements DocumentListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         try {
             log.debug("keyPressed：{},code：{}", e.getKeyChar(), e.getKeyCode());
-            if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
-                return;
-            }
+//            if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
+//                return;
+//            }
             if (typeStr.length() > 0 && typeStr.length() <= oldTypeStrLength
                     && e.getKeyChar() == '\b') {// 触发按键时如果打字框长度减小并且按键为BackSpace，即为回改
                 TypingState.deleteTextNumber++;
@@ -172,9 +173,9 @@ public class TypingListener implements DocumentListener, KeyListener {
     public void keyReleased(KeyEvent e) {
         try {
             log.debug("keyReleased：{},code：{}", e.getKeyChar(), e.getKeyCode());
-            if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
-                return;
-            }
+//            if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
+//                return;
+//            }
             if (typeStr.length() > 0 && typingState) {
                 if (e.getKeyChar() == '\b') {
                     deleteNumber++;
@@ -206,9 +207,9 @@ public class TypingListener implements DocumentListener, KeyListener {
     @Override
     public void changedUpdate(DocumentEvent e) {
         try {
-            if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN) || Article.getArticleSingleton().getArticle() == null) {
-                return;
-            }
+//            if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN) || Article.getArticleSingleton().getArticle() == null) {
+//                return;
+//            }
             typeStr = new CodePointString(typingText().getText());
             articleStr = new CodePointString(Article.getArticleSingleton().getArticle());
             typeLength = typeStr.length();

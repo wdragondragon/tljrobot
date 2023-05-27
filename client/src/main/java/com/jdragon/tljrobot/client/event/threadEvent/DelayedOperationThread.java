@@ -9,15 +9,14 @@ import com.jdragon.tljrobot.client.event.FArea.ReplayEvent;
 import com.jdragon.tljrobot.client.event.FArea.SendAchievementEvent;
 import com.jdragon.tljrobot.client.event.online.UploadHistory;
 import com.jdragon.tljrobot.client.event.online.UploadMatchAch;
+import com.jdragon.tljrobot.client.event.other.ListenPlayEvent;
 import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
 import com.jdragon.tljrobot.client.listener.common.MixListener;
 import com.jdragon.tljrobot.client.listener.common.TypingListener;
-import com.jdragon.tljrobot.client.utils.common.ArticleRegex;
-import com.jdragon.tljrobot.client.utils.common.Clipboard;
-import com.jdragon.tljrobot.client.utils.common.DrawUnLookPlayResult;
-import com.jdragon.tljrobot.client.utils.common.HistoryUtil;
+import com.jdragon.tljrobot.client.utils.common.*;
 import com.jdragon.tljrobot.client.window.dialog.SendArticleDialog;
 import com.jdragon.tljrobot.client.window.dialog.ThisHistoryDialog;
+import com.jdragon.tljrobot.tljutils.ArticleUtil;
 import com.jdragon.tljrobot.tljutils.string.Comparison;
 
 import java.util.HashMap;
@@ -52,6 +51,13 @@ public class DelayedOperationThread extends Thread {
                         TypingListener.getInstance().changeLookPlayFontColor(hashMapList);
                         SwingSingleton.speedButton().setText(String.format("%.2f",
                                 TypingState.getSpeed()));
+                    } else if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){
+                        hashMapList =
+                                Comparison.getComparisonListenResult(ListenPlayEvent.getContent(),
+                                        ArticleUtil.clearSpace(typingText().getText()), BetterTypingSingleton.getInstance().getSymbolCode());
+                        TypingListener.getInstance().changeListenPlayFontColor(hashMapList);
+                        SendAchievementEvent.start();
+                        ListenPlayEvent.stop();
                     }
                     typingText().setEditable(false); // 设置不可打字状态
                     sleep(200);
@@ -73,6 +79,8 @@ public class DelayedOperationThread extends Thread {
                     }
                     if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)){
                         DrawUnLookPlayResult.drawUnFollowPlayResultImg(Article.getArticleSingleton().getTitle(), hashMapList,"看打");
+                    }else if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){
+                        DrawUnLookPlayResult.drawUnFollowPlayResultImg(ListenPlayEvent.getTitle(), hashMapList, "听打");
                     }
                     //自动下一段判断
                     if(TypingState.sendArticle!=0) {
