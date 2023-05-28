@@ -127,9 +127,11 @@ public class DrawUnLookPlayResult {
         double keySpeed = getKeySpeed();
         double keyLength = getKeyLength();
         String noMisSpeedStr = mistake == 0 ? "" : ("/" + String.format("%.2f", noMisSpeed));
-        String playResultStr2 =  "速度" + String.format("%.2f", speed) + noMisSpeedStr +
+        String playResultStr2 = "速度" + String.format("%.2f", speed) + noMisSpeedStr +
                 " 击键" + String.format("%.2f", keySpeed) +
-                " 码长" + String.format("%.2f", keyLength);
+                " 码长" + String.format("%.2f", keyLength) +
+                " 回改" + deleteTextNumber +
+                " 退格" + deleteNumber;
         graphics.drawString(playResultStr2,moveX,moveYTop-50);
 
         String help = "听打".equals(model)?
