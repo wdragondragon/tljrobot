@@ -17,6 +17,6 @@ public interface ArticlePoolMapper extends BaseMapper<ArticlePool> {
     @Select("select article_pool_url from article_pool_url limit 1")
     String selectArticlePoolUrl();
 
-    @Select("select exists(select content from article_pool where content=#{content}})")
+    @Select("select exists(select content from article_pool where content=#{content})")
     Boolean existsContent(String content);
 }
