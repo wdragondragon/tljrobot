@@ -27,7 +27,11 @@ public class ArticlePoolCollectCreator implements CommandLineRunner {
         ExecutorService executor = Executors.newFixedThreadPool(1); // 创建大小为1的线程池
         executor.submit(() -> {
             while (true) {
-                articlePoolService.insertNewContent();
+                try {
+                    articlePoolService.insertNewContent();
+                } catch (Exception e) {
+                    log.error("插入新文章失败", e);
+                }
             }
         }); // 提交任务到线程池
         log.info("开机定时任务启动成功。。。。。");
