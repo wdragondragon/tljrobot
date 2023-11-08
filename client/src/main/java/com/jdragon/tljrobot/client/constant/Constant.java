@@ -7,7 +7,7 @@ import static java.io.File.separator;
  */
 public class Constant {
     //codeTable
-    public static final String CODE_TABLE = "编码文件"+separator+"输入法编码"+separator+"词组提示码表.txt";
+    public static final String CODE_TABLE = "编码文件" + separator + "输入法编码" + separator + "词组提示码表.txt";
     //typingPattern
     public static final String FOLLOW_PLAY_PATTERN = "跟打";
     public static final String WATCH_PLAY_PATTERN = "看打";
@@ -20,4 +20,7 @@ public class Constant {
     public static final int SEND_ORDER = 1;//顺序发文
     public static final int SEND_EXTRACT = 2;//随机发文
     public static final int SEND_WORDS = 3;//词语练习
+
+    public static final int TEXT_MODE_CN = 1;//中文模式
+    public static final int TEXT_MODE_EN = 2;//英文模式
 }

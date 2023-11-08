@@ -104,13 +104,26 @@ public class TypingListener implements DocumentListener, KeyListener {
                 compTypingWords(e.getKeyChar());// 计算打词
             } catch (Exception ignored) {
             }
-            mistake = 0; // 错误字数清零
             oldTypeStrLength = typeStr.length();// 计算当前打字框长度
-            for (n = 0; n < typeStr.length(); n++) { // 统计错误字数，向文本框添加字体
-                if (articleCharCodePoint.length - 1 < n || !Objects.equals(typeCharCodePoint[n], articleCharCodePoint[n])) {
-                    mistake++;
+
+            if (Constant.TEXT_MODE_EN == LocalConfig.textMode) {
+                mistake = 0;
+                String[] typeSplit = typeStr.split(" ");
+                String[] articleSplit = articleStr.split(" ");
+                for (int i = 0; i < typeSplit.length; i++) {
+                    if (articleSplit.length - 1 < i || !Objects.equals(typeSplit[i], articleSplit[i])) {
+                        mistake++;
+                    }
+                }
+            } else {
+                mistake = 0; // 错误字数清零
+                for (n = 0; n < typeStr.length(); n++) { // 统计错误字数，向文本框添加字体
+                    if (articleCharCodePoint.length - 1 < n || !Objects.equals(typeCharCodePoint[n], articleCharCodePoint[n])) {
+                        mistake++;
+                    }
                 }
             }
+
             /**
              * 改变字数框
              */
@@ -212,16 +225,22 @@ public class TypingListener implements DocumentListener, KeyListener {
 //            }
             typeStr = new CodePointString(typingText().getText());
             articleStr = new CodePointString(Article.getArticleSingleton().getArticle());
-            typeLength = typeStr.length();
-            if (!typingState && typeLength > 0) {
+
+            if (Constant.TEXT_MODE_EN == LocalConfig.textMode) {
+                String[] s = typeStr.split(" ");
+                typeLength = s.length;
+            } else {
+                typeLength = typeStr.length();
+            }
+            if (!typingState && typeStr.length() > 0) {
                 init();//打字状态初始化
                 typingStart();// 计算第一键时间
                 typingState = true; //标记已开始跟打
             }
-            if (typeLength < 1) {
+            if (typeStr.length() < 1) {
                 return;
             }
-            String typingLastIndexWord = String.valueOf(typeStr.charAt(typeLength - 1));
+            String typingLastIndexWord = String.valueOf(typeStr.charAt(typeStr.length() - 1));
             String articleLastIndexWord = String.valueOf(articleStr.charAt(articleStr.length() - 1)); // 取两文本最后一个字
             if (typeStr.length() == articleStr.length() && typingLastIndexWord.equals(articleLastIndexWord)
                     && !(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN))) // 两文本长度相等且最后一字相同时执行

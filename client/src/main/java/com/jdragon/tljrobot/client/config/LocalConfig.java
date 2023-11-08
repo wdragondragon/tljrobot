@@ -91,6 +91,8 @@ public class LocalConfig {
 
     public static Boolean quotationMarkReplacement = false;//中文引号替换成英文引号
 
+    public static Integer textMode = 1;
+
 //    public static String serviceAddr = FinalConfig.TLJ_ADDR;
     public static void readConfig(){
         IniAccess.readIni(iniFilePath);

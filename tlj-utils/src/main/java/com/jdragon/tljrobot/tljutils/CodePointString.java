@@ -87,4 +87,8 @@ public class CodePointString {
     public String charAt(int index) {
         return chars[index];
     }
+
+    public String[] split(String regex) {
+        return string.split(regex);
+    }
 }

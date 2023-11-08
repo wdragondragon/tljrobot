@@ -8,10 +8,7 @@ import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.UserState;
 import com.jdragon.tljrobot.client.event.FArea.*;
 import com.jdragon.tljrobot.client.event.online.HistoryEvent;
-import com.jdragon.tljrobot.client.event.other.ListenPlayEvent;
-import com.jdragon.tljrobot.client.event.other.SwitchFollowPlayEvent;
-import com.jdragon.tljrobot.client.event.other.SwitchListenPlayEvent;
-import com.jdragon.tljrobot.client.event.other.SwitchWatchPlayEvent;
+import com.jdragon.tljrobot.client.event.other.*;
 import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
 import com.jdragon.tljrobot.client.listener.common.BuildChooseFileListener;
 import com.jdragon.tljrobot.client.listener.common.MixListener;
@@ -40,13 +37,17 @@ import static com.jdragon.tljrobot.client.component.SwingSingleton.typingText;
 @Data
 public class JMenuComponent {
     private static JMenuComponent jMenuComponent = null;
-    private JMenuComponent(){}
+
+    private JMenuComponent() {
+    }
+
     public static JMenuComponent getInstance() {
-        if(jMenuComponent==null) {
+        if (jMenuComponent == null) {
             jMenuComponent = new JMenuComponent();
         }
         return jMenuComponent;
     }
+
     public JMenu menu, base, onlineMenu, otherMenu, rankingMenu, sendArticleMenu;
     public JMenuItem Login;
     public JMenuItem sendAchievement;
@@ -76,7 +77,7 @@ public class JMenuComponent {
     public JMenuItem nonOrder;
     public JMenuItem orderNextParagraph;
     public JMenuItem save;
-//    public JMenuItem extractNextParagraph;
+    //    public JMenuItem extractNextParagraph;
     public JMenuItem email;
     public JMenuItem checkCode;
     public JMenuItem openCheat;
@@ -101,8 +102,12 @@ public class JMenuComponent {
     public JMenuItem soundRecordPlay = new JMenuItem("听打选择文件");//
     public JMenuItem sendListenPlayImageResult = new JMenuItem("发送听打图片成绩");
 
-    public JMenu getMenu(){
-        if(menu==null) {
+    public JMenu switchTextMode; //打字模式
+    public JMenuItem cnMode = new JMenuItem("中文模式");
+    public JMenuItem enMode = new JMenuItem("英文模式");
+
+    public JMenu getMenu() {
+        if (menu == null) {
             menu = new JMenu(LocalConfig.typingPattern);
             initItem();
             addListener();
@@ -110,7 +115,8 @@ public class JMenuComponent {
         }
         return menu;
     }
-    public void initItem(){
+
+    public void initItem() {
         base = new JMenu("基本操作");
         onlineMenu = new JMenu("联网操作");
         otherMenu = new JMenu("其他");
@@ -153,17 +159,19 @@ public class JMenuComponent {
         checkCode = new JMenuItem("检查编码");
         openCheat = new JMenuItem("隐藏功能");
         resert = new JMenuItem("错位复位");
-        update = new JMenuItem("版本"+ FinalConfig.VERSION+" 最新" + HttpAddr.NEW_VERSION);
+        update = new JMenuItem("版本" + FinalConfig.VERSION + " 最新" + HttpAddr.NEW_VERSION);
 
         lookPlay = new JMenuItem("看、听打成绩提交 ctrl+enter");
         check = new JMenuItem("看打检验");
 
         nextEnglish = new JMenuItem("英词下一段");
 
-        switchingMode = new JMenu("当前模式："+ LocalConfig.typingPattern);
+        switchingMode = new JMenu("当前模式：" + LocalConfig.typingPattern);
+        switchTextMode = new JMenu("当前模式：" + (LocalConfig.textMode == Constant.TEXT_MODE_CN ? "中文" : "英文"));
 
     }
-    private void addItem(){
+
+    private void addItem() {
         sendArticleMenu.add(nonOrder);
         sendArticleMenu.add(orderNextParagraph);
 //        sendArticleMenu.add(extractNextParagraph);
@@ -214,6 +222,9 @@ public class JMenuComponent {
         switchingMode.add(listenModeJMenu);
         switchingMode.add(lookPlay);
 
+        switchTextMode.add(cnMode);
+        switchTextMode.add(enMode);
+
         menu.add(Login);
         menu.add(base);
         menu.add(onlineMenu);
@@ -223,45 +234,49 @@ public class JMenuComponent {
 //        menu.add(helpAuthor);
         menu.add(moreSetUp);
         menu.add(switchingMode);
+        menu.add(switchTextMode);
 //        menu.add(openCheat);
 //        menu.add(resert);
         menu.add(update);
 
     }
-    public void addListener(){
-        Login.addActionListener(e-> LogonDialog.getInstance().setVisible(true));
-        sendAchievement.addActionListener(e-> SendAchievementEvent.start());
-        sendArticle.addActionListener(e-> SendArticleEvent.start());
-        replay.addActionListener(e-> ReplayEvent.start());
-        QQGetArticleItem.addActionListener(e -> QQGetArticleEvent.start());
-        groupChanging.addActionListener(e-> ChangeQQGroupEvent.start());
 
-        moreSetUp.addActionListener(e-> SetDialog.getInstance().setVisible(true));
-        everydayMatch.addActionListener(e-> {
-            if(!UserState.loginState){
-                JOptionPane.showMessageDialog(MainFra.getInstance(),"请先登录");
+    public void addListener() {
+        Login.addActionListener(e -> LogonDialog.getInstance().setVisible(true));
+        sendAchievement.addActionListener(e -> SendAchievementEvent.start());
+        sendArticle.addActionListener(e -> SendArticleEvent.start());
+        replay.addActionListener(e -> ReplayEvent.start());
+        QQGetArticleItem.addActionListener(e -> QQGetArticleEvent.start());
+        groupChanging.addActionListener(e -> ChangeQQGroupEvent.start());
+
+        moreSetUp.addActionListener(e -> SetDialog.getInstance().setVisible(true));
+        everydayMatch.addActionListener(e -> {
+            if (!UserState.loginState) {
+                JOptionPane.showMessageDialog(MainFra.getInstance(), "请先登录");
                 return;
-            }else if(!LocalConfig.typingPattern.equals(Constant.FOLLOW_PLAY_PATTERN)){
-                JOptionPane.showMessageDialog(MainFra.getInstance(),"请切换跟打模式");
+            } else if (!LocalConfig.typingPattern.equals(Constant.FOLLOW_PLAY_PATTERN)) {
+                JOptionPane.showMessageDialog(MainFra.getInstance(), "请切换跟打模式");
                 return;
             }
             int n = JOptionPane.showConfirmDialog(MainFra.getInstance(), "日赛一天只能获取一次，请问做好准备跟打?", "日赛获取询问", JOptionPane.YES_NO_OPTION);
-            if (n == JOptionPane.YES_OPTION) {HistoryEvent.getMatch();}
+            if (n == JOptionPane.YES_OPTION) {
+                HistoryEvent.getMatch();
+            }
         });
-        getHistory.addActionListener(e-> HistoryDialog.getInstance().setVisible(true));
+        getHistory.addActionListener(e -> HistoryDialog.getInstance().setVisible(true));
         orderNextParagraph.addActionListener(ArticleTreeListener.getInstance());
         save.addActionListener(ArticleTreeListener.getInstance());
         nonOrder.addActionListener(MixListener.getInstance());
         createCodeTable.addActionListener(new BuildChooseFileListener());
 
-        getArticleByClipboard.addActionListener(e-> {
-            Article.getArticleSingleton(1,"剪贴板载文", Clipboard.get());
+        getArticleByClipboard.addActionListener(e -> {
+            Article.getArticleSingleton(1, "剪贴板载文", Clipboard.get());
             ReplayEvent.start();
         });
 
-        help.addActionListener(e-> HelpDialog.showHelp());
-        everydayMatchRanking.addActionListener(e-> TljMatchRank.getInstance().setVisible(true));
-        moreRanking.addActionListener(e-> {
+        help.addActionListener(e -> HelpDialog.showHelp());
+        everydayMatchRanking.addActionListener(e -> TljMatchRank.getInstance().setVisible(true));
+        moreRanking.addActionListener(e -> {
             Desktop desktop = Desktop.getDesktop();
             if (Desktop.isDesktopSupported() && desktop.isSupported(Desktop.Action.BROWSE)) {
                 try {
@@ -272,42 +287,47 @@ public class JMenuComponent {
                 }
             }
         });
-        lookPlay.addActionListener(e->{
-            if(SwingSingleton.typingText().getText().length()==0) {
+        lookPlay.addActionListener(e -> {
+            if (SwingSingleton.typingText().getText().length() == 0) {
                 return;
             }
             typingText().setEditable(false); // 设置不可打字状态
             TypingListener.delaySendResultSign = true;
         });
 
-        update.addActionListener(e->{
-            try{
-                if(FinalConfig.VERSION.equals(HttpAddr.NEW_VERSION)){
-                    JOptionPane.showMessageDialog(MainFra.getInstance(),"已最新");
+        update.addActionListener(e -> {
+            try {
+                if (FinalConfig.VERSION.equals(HttpAddr.NEW_VERSION)) {
+                    JOptionPane.showMessageDialog(MainFra.getInstance(), "已最新");
                     return;
                 }
-                if(SystemUtil.isWindows()) {
+                if (SystemUtil.isWindows()) {
                     Runtime.getRuntime().exec("更新.exe");
                 } else {
                     Runtime.getRuntime().exec("java -jar update.jar");
                 }
                 System.exit(0);
-            }catch(Exception ignored){}
+            } catch (Exception ignored) {
+            }
         });
-        switchingWatch.addActionListener(e-> SwitchWatchPlayEvent.start());
-        switchingListen.addActionListener(e-> SwitchListenPlayEvent.start());
-        followMode.addActionListener(e-> SwitchFollowPlayEvent.start());
-        soundRecordPlay.addActionListener(e-> ListenPlayEvent.start());
-        sendListenPlayImageResult.addActionListener(e-> DrawUnLookPlayResult.drawUnFollowPlayResultImg(ListenPlayEvent.getTitle(),
+        switchingWatch.addActionListener(e -> SwitchWatchPlayEvent.start());
+        switchingListen.addActionListener(e -> SwitchListenPlayEvent.start());
+        followMode.addActionListener(e -> SwitchFollowPlayEvent.start());
+
+        cnMode.addActionListener(e -> SwitchTextModelEvent.start(1));
+        enMode.addActionListener(e -> SwitchTextModelEvent.start(2));
+
+        soundRecordPlay.addActionListener(e -> ListenPlayEvent.start());
+        sendListenPlayImageResult.addActionListener(e -> DrawUnLookPlayResult.drawUnFollowPlayResultImg(ListenPlayEvent.getTitle(),
                 Comparison.getComparisonListenResult(ListenPlayEvent.getContent(),
-                typingText().getText(), BetterTypingSingleton.getInstance().getSymbolCode()),"听打"));
+                        typingText().getText(), BetterTypingSingleton.getInstance().getSymbolCode()), "听打"));
 
-        sendWatchPlayImageResult.addActionListener(e->DrawUnLookPlayResult.drawUnFollowPlayResultImg(Article.getArticleSingleton().getTitle(),
-                Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(), typingText().getText()),"看打"));
+        sendWatchPlayImageResult.addActionListener(e -> DrawUnLookPlayResult.drawUnFollowPlayResultImg(Article.getArticleSingleton().getTitle(),
+                Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(), typingText().getText()), "看打"));
 
-        thisHistory.addActionListener(e->ThisHistoryDialog.getInstance().setVisible(true));
-        randomArticle.addActionListener(e->{
-            Article.getArticleSingleton(1,"随机一文",ArticleUtil.getRandomContent2());
+        thisHistory.addActionListener(e -> ThisHistoryDialog.getInstance().setVisible(true));
+        randomArticle.addActionListener(e -> {
+            Article.getArticleSingleton(1, "随机一文", ArticleUtil.getRandomContent2());
             ReplayEvent.start();
         });
     }

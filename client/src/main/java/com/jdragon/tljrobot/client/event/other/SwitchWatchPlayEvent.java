@@ -15,16 +15,17 @@ public class SwitchWatchPlayEvent {
 
     private static final DocumentStyleHandler documentStyleHandler = DocumentStyleHandler.INSTANCE;
 
-    public static void start(){
+    public static void start() {
         ListenPlayEvent.stop();
         LocalConfig.typingPattern = Constant.WATCH_PLAY_PATTERN;
-        documentStyleHandler.defineStyle("黑", 
+        SwitchTextModelEvent.start(Constant.TEXT_MODE_CN);
+        documentStyleHandler.defineStyle("黑",
                 LocalConfig.fontSize, false, false, false, Color.BLACK, LocalConfig.family,
                 LocalConfig.watchingBackgroundColor);
-        documentStyleHandler.defineStyle("红", 
+        documentStyleHandler.defineStyle("红",
                 LocalConfig.fontSize, false, false, false, Color.BLACK, LocalConfig.family,
                 LocalConfig.watchingBackgroundColor);
-        JMenuComponent.getInstance().switchingMode.setText("当前模式："+ LocalConfig.typingPattern);
+        JMenuComponent.getInstance().switchingMode.setText("当前模式：" + LocalConfig.typingPattern);
         JMenuComponent.getInstance().getMenu().setText(LocalConfig.typingPattern);
         ReplayEvent.start();
     }

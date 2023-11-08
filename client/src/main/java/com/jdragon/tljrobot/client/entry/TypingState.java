@@ -13,6 +13,12 @@ public class TypingState {
      */
     public static boolean typingState;
     public static int typeLength;
+
+    /**
+     * 英词长度
+     */
+    public static int enWordLength;
+
     /**
      *  键数
      */
@@ -38,6 +44,12 @@ public class TypingState {
      *   一共错字
      */
     public static int mistake;
+
+    /**
+     *  英词错词
+     */
+    public static int enMistake;
+
     /**
         退格
      */

@@ -50,7 +50,7 @@ public class SendAchievementEvent {
             double noMisSpeed = getSpeedNoMistake();
             double keySpeed = getKeySpeed();
             double keyLength = getKeyLength();
-            int articleLength = article.getArticle().length();
+            int articleLength = article.getArticleLength();
             double shortCodesNum = (article.getShortCodeEntity().getArticleAverCodes());
             String check = String.format("%.2f", speed + keySpeed + keyLength);
             String checkCode = DoCheck.buildCheckStr(check, "genda");
@@ -63,7 +63,7 @@ public class SendAchievementEvent {
             String noMisSpeedStr = mistake == 0 ? "" : ("/" + String.format("%.2f", noMisSpeed));
             String lookPlayStr = LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)
                     ? " 看打模式 错:" + lookMis + " 多:" + lookMore + " 少:" + lookMiss + "" : "";
-            result =
+             result =
                     "第" + paragraph + "段" +
                             " 速度" + String.format("%.2f", speed) + noMisSpeedStr +
                             " 击键" + String.format("%.2f", keySpeed) +
