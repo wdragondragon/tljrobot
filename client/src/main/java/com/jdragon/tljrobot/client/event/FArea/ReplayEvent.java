@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.client.event.FArea;
 
+import com.jdragon.tljrobot.client.config.FinalConfig;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
@@ -7,24 +8,25 @@ import com.jdragon.tljrobot.client.entry.TypingState;
 import com.jdragon.tljrobot.client.event.other.ListenPlayEvent;
 import com.jdragon.tljrobot.client.listener.common.TypingListener;
 import com.jdragon.tljrobot.client.utils.common.QqOperation;
+import com.jdragon.tljrobot.client.window.MainFra;
 
 import javax.swing.*;
 
 import static com.jdragon.tljrobot.client.component.SwingSingleton.*;
 
 public class ReplayEvent {
-    public static void start(){
-        if(TypingState.dailyCompetition){
-            JOptionPane.showMessageDialog(null,"先结束日赛");
+    public static void start() {
+        if (TypingState.dailyCompetition) {
+            JOptionPane.showMessageDialog(null, "先结束日赛");
             return;
         }
-        if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){
+        if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
             typingText().setText("");
             watchingText().setText(""); // 清空文本框
             TypingState.init();//打字状态初始化
             typingText().setEditable(true);
             ListenPlayEvent.replay();
-        }else {
+        } else {
             typingText().setText("");
             TypingListener.getInstance().setThisPageNum(-1);
             TypingListener.getInstance().changeFontColor();
@@ -53,9 +55,11 @@ public class ReplayEvent {
             theoreticalCodeLengthButton().setText(String.valueOf(Article.getArticleSingleton().getShortCodeEntity().getArticleAverCodes()));
 
             TypingListener.getInstance().setOldTypeStrLength(-1);
+
+            MainFra.getInstance().setTitle("长流跟打器" + FinalConfig.VERSION + " " + "文章长度：" + Article.getArticleSingleton().getArticleLength());
         }
         typingText().requestFocusInWindow();
-        if(LocalConfig.mouseGetArticle) {
+        if (LocalConfig.mouseGetArticle) {
             QqOperation.requestFocusInWindow();
         }
     }

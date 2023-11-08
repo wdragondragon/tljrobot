@@ -5,6 +5,7 @@ import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.TypingState;
 import com.jdragon.tljrobot.client.event.FArea.ReplayEvent;
+import com.jdragon.tljrobot.client.window.dialog.SendArticleDialog;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,13 +40,25 @@ public class MixListener implements ActionListener {
             if (TypingState.sendArticle == Constant.SEND_WORDS) {
                 article.setArticle(mixstr(ArticleTreeListener.chouqubufenlist, ArticleTreeListener.wordNum));
             } else if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
-                article.setArticle(englishMix(article.getArticle()));
+                if (SendArticleDialog.isEnDelimiterBlank()) {
+                    article.setArticle(englishMix(article.getArticle(), SendArticleDialog.enSendDelimiter.getText()));
+                } else {
+                    article.setArticle(englishMix(article.getArticle(), " "));
+                }
             } else {
                 article.setArticle(mix(article.getArticle()));
             }
             ReplayEvent.start();
         } else if (model.equals("全局乱序")) {
-            ArticleTreeListener.all = mix(ArticleTreeListener.all);
+            if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
+                if (SendArticleDialog.isEnDelimiterBlank()) {
+                    ArticleTreeListener.all = englishMix(ArticleTreeListener.all, SendArticleDialog.enSendDelimiter.getText());
+                } else {
+                    ArticleTreeListener.all = englishMix(ArticleTreeListener.all, " ");
+                }
+            } else {
+                ArticleTreeListener.all = mix(ArticleTreeListener.all);
+            }
             if (ArticleTreeListener.all == null) {
                 return;
             }
@@ -79,10 +92,13 @@ public class MixListener implements ActionListener {
         return str;
     }
 
-    public static String englishMix(String str) {
-        List<String> list = Arrays.asList(str.split(" "));
+    public static String englishMix(String str, String delimiter) {
+        if (!delimiter.equals(" ")) {
+            delimiter += " ";
+        }
+        List<String> list = Arrays.asList(str.split(delimiter));
         Collections.shuffle(list);
-        return list.stream().collect(Collectors.joining(" "));
+        return list.stream().map(String::trim).collect(Collectors.joining(delimiter));
     }
 //    public static String EnglishMix(){
 //        String str = "";

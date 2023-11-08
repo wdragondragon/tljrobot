@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TypingState {
-    private TypingState(){}
+    private TypingState() {
+    }
+
     /**
      * 跟打状态
      */
@@ -20,7 +22,7 @@ public class TypingState {
     public static int enWordLength;
 
     /**
-     *  键数
+     * 键数
      */
 
     public static int keyNumber;
@@ -29,82 +31,83 @@ public class TypingState {
 //    public static double keySpeed;//击键
 //    public static double keyLength;//码长
     /**
-    看打多字
+     * 看打多字
      */
     public static int lookMore;
     /**
-    看打少字
+     * 看打少字
      */
     public static int lookMiss;
     /**
-    看打错字
+     * 看打错字
      */
     public static int lookMis;
     /**
-     *   一共错字
+     * 一共错字
      */
     public static int mistake;
 
     /**
-     *  英词错词
+     * 英词错词
      */
     public static int enMistake;
 
     /**
-        退格
+     * 退格
      */
     public static int deleteNumber;
     /**
-        回改
+     * 回改
      */
     public static int deleteTextNumber;
     /**
-        选重
+     * 选重
      */
     public static int repeat;
     /**
-        打词数
+     * 打词数
      */
     public static int typeWordsNum;
     /**
-     *    计算键法变量
-     *    左键数
-     *    右键数
-     *    空格
+     * 计算键法变量
+     * 左键数
+     * 右键数
+     * 空格
      */
     public static int left;
     public static int right;
     public static int space;
     /**
-        暂停状态
+     * 暂停状态
      */
     public static boolean pause;
     /**
-        发文状态
+     * 发文状态
      */
     public static int sendArticle;
     /**
-        日赛状态
+     * 日赛状态
      */
     public static Boolean dailyCompetition = false;
     /**
-        计时器
+     * 计时器
      */
     public final static Timer timer = new Timer();
     /**
-        击键记录
+     * 击键记录
      */
     public static StringBuilder record = new StringBuilder();
     /**
-        错误记录
+     * 错误记录
      */
     public static List<String> mistakeList = new ArrayList<>();
 
     public static List<WordsState> typeWordsList = new ArrayList<>();
+
     /**
-        记录打词
+     * 记录打词
      */
-    public static void init(){
+    public static void init() {
         typingState = false;
         keyNumber = 0;
         mistake = 0;
@@ -125,53 +128,78 @@ public class TypingState {
         typeWordsList.clear();
         pause = false;
     }
-    public static void typingStart(){
+
+    public static void typingStart() {
         timer.timeStart();
     }
-    public static void typingEnd(){
+
+    public static void typingEnd() {
         timer.timeEnd();
     }
-    public static void pauseStart(){
+
+    public static void pauseStart() {
         timer.pauseTimeStart();
     }
-    public static void pauseEnd(){
+
+    public static void pauseEnd() {
         timer.pauseTimeEnd();
     }
-    public static double getSpeed(){
+
+    public static double getSpeed() {
         double minute = timer.getMinute();
-        return doubleKeyTwo((1.00*typeLength-5.00*mistake)/minute);
+        return doubleKeyTwo((1.00 * typeLength - 5.00 * mistake) / minute);
     }
-    public static double getSpeedNoMistake(){
+
+    public static double getEnSpeed() {
         double minute = timer.getMinute();
-        return doubleKeyTwo((1.00*typeLength)/minute);
+        return doubleKeyTwo((1.00 * enWordLength - 5.00 * enMistake) / minute);
     }
-    public static double getKeyLength(){
-        if(typeLength==0) {
+
+    public static double getSpeedNoMistake() {
+        double minute = timer.getMinute();
+        return doubleKeyTwo((1.00 * typeLength) / minute);
+    }
+
+
+    public static double getEnSpeedNoMistake() {
+        double minute = timer.getMinute();
+        return doubleKeyTwo((1.00 * enWordLength) / minute);
+    }
+
+    public static double getKeyLength() {
+        if (typeLength == 0) {
             return keyNumber;
         } else {
-            return doubleKeyTwo(1.00*keyNumber/typeLength);
+            return doubleKeyTwo(1.00 * keyNumber / typeLength);
         }
     }
-    public static double getKeySpeed(){
-        return doubleKeyTwo(1.00*keyNumber/timer.getSecond());
+
+    public static double getKeySpeed() {
+        return doubleKeyTwo(1.00 * keyNumber / timer.getSecond());
     }
-    public static double getKeyAccuracy(){
+
+    public static double getKeyAccuracy() {
 //        return doubleKeyTwo(typeLength/typeWordsNum);
-        return doubleKeyTwo(100.00*(keyNumber - deleteNumber * 2 - deleteTextNumber
-                * Article.getArticleSingleton().getShortCodeEntity().getArticleAverCodes())/keyNumber);
+        return doubleKeyTwo(100.00 * (keyNumber - deleteNumber * 2 - deleteTextNumber
+                * Article.getArticleSingleton().getShortCodeEntity().getArticleAverCodes()) / keyNumber);
     }
-    public static double getWordRate(){
-        return doubleKeyTwo(100.00*typeWordsNum / (typeLength + deleteTextNumber));
+
+    public static double getWordRate() {
+        return doubleKeyTwo(100.00 * typeWordsNum / (typeLength + deleteTextNumber));
     }
-    public static double getRepeatRate(){
-        return doubleKeyTwo(100.00*repeat/typeLength);
+
+    public static double getRepeatRate() {
+        return doubleKeyTwo(100.00 * repeat / typeLength);
     }
-    public static double getKeyMethod(){
-        return doubleKeyTwo(100.00*left/right);
+
+    public static double getKeyMethod() {
+        return doubleKeyTwo(100.00 * left / right);
     }
-    private static double doubleKeyTwo(double target){
+
+    private static double doubleKeyTwo(double target) {
         return Double.parseDouble(String.format("%.2f", target));
     }
+
     //打词时的状态
     @Data
     public static class WordsState {
@@ -180,7 +208,8 @@ public class TypingState {
         private double instantaneousSpeed;//瞬时速度
         private double time;//上屏时间
         private String words;
-        public WordsState(double speed,double keySpeed,double instantaneousSpeed,String words,double time){
+
+        public WordsState(double speed, double keySpeed, double instantaneousSpeed, String words, double time) {
             this.speed = speed;
             this.keySpeed = keySpeed;
             this.instantaneousSpeed = instantaneousSpeed;

@@ -7,6 +7,7 @@ import com.jdragon.tljrobot.client.entry.NumState;
 import com.jdragon.tljrobot.client.entry.TypingState;
 import com.jdragon.tljrobot.client.entry.TypingState.*;
 import com.jdragon.tljrobot.client.entry.UserState;
+import com.jdragon.tljrobot.client.event.FArea.ReplayEvent;
 import com.jdragon.tljrobot.client.event.other.ListenPlayEvent;
 import com.jdragon.tljrobot.client.handle.document.DocumentStyleHandler;
 import com.jdragon.tljrobot.client.test.superTest.C;
@@ -21,6 +22,8 @@ import lombok.extern.slf4j.Slf4j;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import java.awt.*;
@@ -107,6 +110,13 @@ public class TypingListener implements DocumentListener, KeyListener {
             oldTypeStrLength = typeStr.length();// 计算当前打字框长度
 
             if (Constant.TEXT_MODE_EN == LocalConfig.textMode) {
+                enMistake = 0; // 错误字数清零
+                for (n = 0; n < typeStr.length(); n++) { // 统计错误字数，向文本框添加字体
+                    if (articleCharCodePoint.length - 1 < n || !Objects.equals(typeCharCodePoint[n], articleCharCodePoint[n])) {
+                        enMistake++;
+                    }
+                }
+
                 mistake = 0;
                 String[] typeSplit = typeStr.split(" ");
                 String[] articleSplit = articleStr.split(" ");
@@ -223,10 +233,15 @@ public class TypingListener implements DocumentListener, KeyListener {
 //            if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN) || Article.getArticleSingleton().getArticle() == null) {
 //                return;
 //            }
+//            if (typingText().getText().isEmpty() &&  == ' ') {
+//                typingText().remove(0);
+//            }
+
             typeStr = new CodePointString(typingText().getText());
             articleStr = new CodePointString(Article.getArticleSingleton().getArticle());
 
             if (Constant.TEXT_MODE_EN == LocalConfig.textMode) {
+                enWordLength = typeStr.length();
                 String[] s = typeStr.split(" ");
                 typeLength = s.length;
             } else {
@@ -741,6 +756,14 @@ public class TypingListener implements DocumentListener, KeyListener {
 
     @Override
     public void insertUpdate(DocumentEvent e) {
+        try {
+            if (e.getOffset() == 0 && " ".equals(e.getDocument().getText(e.getOffset(), 1))) {
+                Runnable doHighlight = ReplayEvent::start;
+                SwingUtilities.invokeLater(doHighlight);
+            }
+        } catch (BadLocationException ex) {
+            log.error("", ex);
+        }
         changedUpdate(e);
     }
 

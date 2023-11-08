@@ -4,6 +4,7 @@ import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
 import com.jdragon.tljrobot.client.listener.common.MixListener;
 import com.jdragon.tljrobot.client.window.MainFra;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -19,32 +20,37 @@ import static com.jdragon.tljrobot.client.utils.core.Layout.xSpace;
  * Create by Jdragon on 2020.01.25
  */
 public class SendArticleDialog {
-    private SendArticleDialog(){}
+    private SendArticleDialog() {
+    }
+
     private static MainFra mainFra;
-    private static ArticleTreeListener articleTreeListener = ArticleTreeListener.getInstance();;
+    private static ArticleTreeListener articleTreeListener = ArticleTreeListener.getInstance();
+    ;
     private static JDialog sendArticleDialog = null;
     public static JTree tree;
     static JScrollPane tree1;
     static DefaultMutableTreeNode root;
     static DefaultMutableTreeNode danzilei, wenzhanglei, yingwenlei;
-    static JButton send, next, mix, chouqu, cikuchouqu, English,sendAll;
-    public static JTextField number,paragraph;
+    static JButton send, next, mix, chouqu, cikuchouqu, English, sendAll, sendENCiku;
+    public static JTextField number, paragraph, enCikuDelimiter, enSendDelimiter;
     public static JTextArea wenben;
     public static JScrollPane wenben1;
-    public static JSpinner machang1,machang2,cishu,cichang1,cichang2;
-    public static JComboBox<String> caozuo,weizhi;
+    public static JSpinner machang1, machang2, cishu, cichang1, cichang2;
+    public static JComboBox<String> caozuo, weizhi;
     public static JToggleButton automatic;
-    public static JSpinner spinnerSpeed,spinnerKey,spinnerKeyLength;
+    public static JSpinner spinnerSpeed, spinnerKey, spinnerKeyLength;
     public static JPanel p = new JPanel();
+
     public static JDialog getInstance() {
         if (sendArticleDialog == null) {
             mainFra = MainFra.getInstance();
             init();
         }
-        sendArticleDialog.setBounds(mainFra.getX()+mainFra.getWidth()/4,mainFra.getY()+mainFra.getHeight()/4,605, 470);
+        sendArticleDialog.setBounds(mainFra.getX() + mainFra.getWidth() / 4, mainFra.getY() + mainFra.getHeight() / 4, 605, 500);
         return sendArticleDialog;
     }
-    private static void init(){
+
+    private static void init() {
         sendArticleDialog = new JDialog(mainFra, "发文",
                 Dialog.ModalityType.DOCUMENT_MODAL);
         p.setLayout(null);
@@ -58,6 +64,29 @@ public class SendArticleDialog {
         addSendAll();//发送全文按钮
         addcikuchouqu();//词库联系按钮及功能
         automaticDisruption();//自动下一段条件选择及功能
+        addEnDelimiter();
+    }
+
+    private static void addEnDelimiter() {
+        JLabel label1 = new JLabel("词库分隔符");
+        JLabel label2 = new JLabel("发文分隔符");
+        label1.setFont(SwingSingleton.tipFont());
+        label2.setFont(SwingSingleton.tipFont());
+
+        enCikuDelimiter = new JTextField();
+        enSendDelimiter = new JTextField();
+        sendENCiku = new JButton("英词发文");
+        addOnBounds(p, label1, 5, 425, 70, 30);
+        addOnBounds(p, enCikuDelimiter, xSpace(label1, 0), label1.getY(), 50, 30);
+        addOnBounds(p, label2, xSpace(enCikuDelimiter, 10), enCikuDelimiter.getY(), 70, 30);
+        addOnBounds(p, enSendDelimiter, xSpace(label2, 0), label2.getY(), 50, 30);
+        sendENCiku.addActionListener(articleTreeListener);
+    }
+
+    public static boolean isEnDelimiterBlank() {
+        String enSendDelimiter = SendArticleDialog.enSendDelimiter.getText();
+        String enCikuDelimiter = SendArticleDialog.enCikuDelimiter.getText();
+        return StringUtils.isNoneEmpty(enSendDelimiter, enCikuDelimiter);
     }
 
 
@@ -68,6 +97,7 @@ public class SendArticleDialog {
         p.add(send);
         send.addActionListener(articleTreeListener);
     }
+
     private static void addMix() {
         mix = new JButton("全局乱序");
         mix.setFont(SwingSingleton.tipFont());
@@ -75,6 +105,7 @@ public class SendArticleDialog {
         p.add(mix);
         mix.addActionListener(MixListener.getInstance());
     }
+
     private static void addNoOrder() {
         chouqu = new JButton("抽取模式发文");
         chouqu.setFont(SwingSingleton.tipFont());
@@ -83,13 +114,14 @@ public class SendArticleDialog {
         chouqu.addActionListener(articleTreeListener);
     }
 
-    private static void addSendAll(){
+    private static void addSendAll() {
         sendAll = new JButton("发送全文");
         sendAll.setFont(SwingSingleton.tipFont());
         sendAll.setBounds(365, 310, 90, 30);
         p.add(sendAll);
         sendAll.addActionListener(articleTreeListener);
     }
+
     private static void addcikuchouqu() {
         cikuchouqu = new JButton("词库练习");
         cikuchouqu.setFont(SwingSingleton.tipFont());
@@ -115,24 +147,24 @@ public class SendArticleDialog {
         cichang1.setModel(new SpinnerNumberModel(0, 0, 50, 1));
         cichang2 = new JSpinner();
         cichang2.setModel(new SpinnerNumberModel(0, 0, 50, 1));
-        weizhi = new JComboBox<>() ;
+        weizhi = new JComboBox<>();
         weizhi.addItem("全部");
         weizhi.addItem("首选");
         weizhi.addItem("次选");
 
         lable1.setBounds(5, 350, 30, 30);
-        machang1.setBounds(lable1.getX()+lable1.getWidth()+5,lable1.getY(),50,30);
-        machang2.setBounds(machang1.getX()+machang1.getWidth()+3,lable1.getY(),50,30);
+        machang1.setBounds(lable1.getX() + lable1.getWidth() + 5, lable1.getY(), 50, 30);
+        machang2.setBounds(machang1.getX() + machang1.getWidth() + 3, lable1.getY(), 50, 30);
 
-        lable2.setBounds(machang2.getX()+machang2.getWidth()+5, lable1.getY(), 30, 30);
-        cishu.setBounds(lable2.getX()+lable2.getWidth()+3,lable2.getY(),50,30);
+        lable2.setBounds(machang2.getX() + machang2.getWidth() + 5, lable1.getY(), 30, 30);
+        cishu.setBounds(lable2.getX() + lable2.getWidth() + 3, lable2.getY(), 50, 30);
 
-        lable3.setBounds(cishu.getX()+cishu.getWidth()+5, lable1.getY(), 30, 30);
-        cichang1.setBounds(lable3.getX()+lable3.getWidth()+3,lable3.getY(),50,30);
-        cichang2.setBounds(cichang1.getX()+cichang1.getWidth()+3,lable3.getY(),50,30);
+        lable3.setBounds(cishu.getX() + cishu.getWidth() + 5, lable1.getY(), 30, 30);
+        cichang1.setBounds(lable3.getX() + lable3.getWidth() + 3, lable3.getY(), 50, 30);
+        cichang2.setBounds(cichang1.getX() + cichang1.getWidth() + 3, lable3.getY(), 50, 30);
 
-        lable4.setBounds(cichang2.getX()+cichang2.getWidth()+5, lable1.getY(), 50, 30);
-        weizhi.setBounds(lable4.getX()+lable4.getWidth()+3,lable4.getY(),70,30);
+        lable4.setBounds(cichang2.getX() + cichang2.getWidth() + 5, lable1.getY(), 50, 30);
+        weizhi.setBounds(lable4.getX() + lable4.getWidth() + 3, lable4.getY(), 70, 30);
 
 
         cikuchouqu.addActionListener(articleTreeListener);
@@ -148,6 +180,7 @@ public class SendArticleDialog {
         p.add(cichang2);
         p.add(cishu);
     }
+
     private static void automaticDisruption() {
         JLabel lable1 = new JLabel("速度≥");
         JLabel lable2 = new JLabel("击键≥");
@@ -161,28 +194,28 @@ public class SendArticleDialog {
         lable1.setBounds(5, 390, 40, 30);
         spinnerSpeed = new JSpinner();
         spinnerSpeed.setModel(new SpinnerNumberModel(0, 0, 999, 0.1));
-        spinnerSpeed.setBounds(lable1.getX()+lable1.getWidth()+10, lable1.getY(), 50, 30);
+        spinnerSpeed.setBounds(lable1.getX() + lable1.getWidth() + 10, lable1.getY(), 50, 30);
 
-        lable2.setBounds(spinnerSpeed.getX()+spinnerSpeed.getWidth()+10,  lable1.getY(), 40, 30);
+        lable2.setBounds(spinnerSpeed.getX() + spinnerSpeed.getWidth() + 10, lable1.getY(), 40, 30);
         spinnerKey = new JSpinner();
         spinnerKey.setModel(new SpinnerNumberModel(0, 0, 30, 0.1));
-        spinnerKey.setBounds(lable2.getX()+lable2.getWidth()+10,  lable1.getY(), 50, 30);
+        spinnerKey.setBounds(lable2.getX() + lable2.getWidth() + 10, lable1.getY(), 50, 30);
 
-        lable3.setBounds(spinnerKey.getX()+spinnerKey.getWidth()+10,  lable1.getY(), 40, 30);
+        lable3.setBounds(spinnerKey.getX() + spinnerKey.getWidth() + 10, lable1.getY(), 40, 30);
         spinnerKeyLength = new JSpinner();
         spinnerKeyLength.setModel(new SpinnerNumberModel(0, 0, 100, 0.01));
-        spinnerKeyLength.setBounds(lable3.getX()+lable3.getWidth()+10,  lable1.getY(), 50, 30);
+        spinnerKeyLength.setBounds(lable3.getX() + lable3.getWidth() + 10, lable1.getY(), 50, 30);
 
 
-        lable4.setBounds(spinnerKeyLength.getX()+spinnerKeyLength.getWidth()+10, lable1.getY(),50,30);
+        lable4.setBounds(spinnerKeyLength.getX() + spinnerKeyLength.getWidth() + 10, lable1.getY(), 50, 30);
         caozuo = new JComboBox<>();
         caozuo.addItem("不操作");
         caozuo.addItem("乱序");
         caozuo.addItem("重打");
-        caozuo.setBounds(lable4.getX()+lable4.getWidth()+10,  lable1.getY(), 100, 30);
+        caozuo.setBounds(lable4.getX() + lable4.getWidth() + 10, lable1.getY(), 100, 30);
 
         automatic = new JToggleButton("开启");
-        addOnBounds(p,automatic, xSpace(caozuo,10),caozuo.getY(),80,30);
+        addOnBounds(p, automatic, xSpace(caozuo, 10), caozuo.getY(), 80, 30);
 
         p.add(spinnerSpeed);
         p.add(spinnerKey);
@@ -193,24 +226,26 @@ public class SendArticleDialog {
         p.add(lable3);
         p.add(lable4);
     }
+
     private static void addNumber() {
         KeyListener keyListener = new KeyListener() {
             @Override
             public void keyPressed(KeyEvent e) {
 
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
                 int keyChar = e.getKeyChar();
                 if (keyChar >= KeyEvent.VK_0
-                        && keyChar <= KeyEvent.VK_9|| keyChar == '\b') {
+                        && keyChar <= KeyEvent.VK_9 || keyChar == '\b') {
                     ArticleTreeListener.getNumber();
                     ArticleTreeListener.showContent();
-                }
-                else {
+                } else {
                     e.consume();
                 }
             }
+
             @Override
             public void keyTyped(KeyEvent e) {
             }
@@ -225,11 +260,12 @@ public class SendArticleDialog {
         number.addKeyListener(keyListener);
         paragraph.addKeyListener(keyListener);
 
-        addOnBounds(p,label1,5,270,50,30);
-        addOnBounds(p,number, xSpace(label1,0),label1.getY(),50,30);
-        addOnBounds(p,label2, xSpace(number,10),number.getY(),50,30);
-        addOnBounds(p,paragraph, xSpace(label2,0),label2.getY(),50,30);
+        addOnBounds(p, label1, 5, 270, 50, 30);
+        addOnBounds(p, number, xSpace(label1, 0), label1.getY(), 50, 30);
+        addOnBounds(p, label2, xSpace(number, 10), number.getY(), 50, 30);
+        addOnBounds(p, paragraph, xSpace(label2, 0), label2.getY(), 50, 30);
     }
+
     private static void addinArea() {
         wenben = new JTextArea();
         wenben1 = new JScrollPane(wenben);
@@ -237,6 +273,7 @@ public class SendArticleDialog {
         wenben1.setBounds(191, 0, 400, 270);
         p.add(wenben1);
     }
+
     private static void articleList() {
         root = new DefaultMutableTreeNode("练习");
         danzilei = new DefaultMutableTreeNode("单字类");

@@ -108,4 +108,9 @@ public class ArticleUtil {
         str = str.replaceAll("　", "");
         return str;
     }
+
+    public static String leaveOneSpace(String str) {
+        str = str.replaceAll("\\s+", " ");
+        return str;
+    }
 }

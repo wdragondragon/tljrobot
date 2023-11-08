@@ -59,12 +59,20 @@ public class SendAchievementEvent {
                             String.format("%.2f", speed) + "-" +
                             String.format("%.2f", keySpeed) + "-" +
                             String.format("%.2f", keyLength));
-
-            String noMisSpeedStr = mistake == 0 ? "" : ("/" + String.format("%.2f", noMisSpeed));
+            String noMisSpeedStr;
+            String enPlayStr = "";
+            if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
+                speed = getEnSpeed();
+                noMisSpeedStr = enMistake == 0 ? "" : ("/" + String.format("%.2f", getEnSpeedNoMistake()));
+                String enNoMisSpeedStr = mistake == 0 ? "" : ("/" + String.format("%.2f", getSpeedNoMistake()));
+                enPlayStr = " 词速" + String.format("%.2f", getSpeed()) + enNoMisSpeedStr + "WPM";
+            } else {
+                noMisSpeedStr = mistake == 0 ? "" : ("/" + String.format("%.2f", noMisSpeed));
+            }
             String lookPlayStr = LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)
                     ? " 看打模式 错:" + lookMis + " 多:" + lookMore + " 少:" + lookMiss + "" : "";
-             result =
-                    "第" + paragraph + "段" +
+            result =
+                    "第" + paragraph + "段" + enPlayStr +
                             " 速度" + String.format("%.2f", speed) + noMisSpeedStr +
                             " 击键" + String.format("%.2f", keySpeed) +
                             " 码长" + String.format("%.2f", keyLength) +
