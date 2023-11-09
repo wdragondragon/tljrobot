@@ -23,6 +23,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Create by Jdragon on 2020.01.25
@@ -252,7 +253,15 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
     public void chouqu(String model) {
         Article article = Article.getArticleSingleton();
         getNumber();
-        article.setArticle(randomCommon(all, fontnum));
+        if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
+            String delimiter = " ";
+            if (SendArticleDialog.isEnDelimiterBlank()) {
+                delimiter = SendArticleDialog.enSendDelimiter.getText();
+            }
+            article.setArticle(enRandomCommon(all, fontnum, delimiter));
+        } else {
+            article.setArticle(randomCommon(all, fontnum));
+        }
         if (article.getArticle() == null) {
             return;
         }
@@ -422,5 +431,41 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
             resultstr.append(c[value]);
         }
         return resultstr.toString();
+    }
+
+    public static String enRandomCommon(String wen, int n, String delimiter) {
+        if (wen == null) {
+            return null;
+        }
+        if (!delimiter.equals(" ")) {
+            delimiter += " ";
+        }
+        int min = 0;
+        String[] c = wen.split(delimiter);
+        int max = c.length;
+        List<String> list = new LinkedList<>();
+        if (n > max - min + 1) {
+            return null;
+        }
+        int[] result = new int[n];
+        int count = 0;
+        while (count < n) {
+            int num = (int) (Math.random() * (max - min)) + min;
+            boolean flag = true;
+            for (int j = 0; j < n; j++) {
+                if (num == result[j]) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                result[count] = num;
+                count++;
+            }
+        }
+        for (int value : result) {
+            list.add(c[value].trim());
+        }
+        return String.join(delimiter, list);
     }
 }
