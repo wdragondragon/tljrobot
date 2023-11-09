@@ -73,6 +73,10 @@ public class TypingListener implements DocumentListener, KeyListener {
     public void keyTyped(KeyEvent e) {
         try {
             log.debug("keyTyped：{},code：{}", e.getKeyChar(), e.getKeyCode());
+            if (typeStr.trim().isEmpty() && e.getKeyChar() == ' ') {
+                e.consume();
+                return;
+            }
             if (e.getKeyChar() != '\b') {
                 typeStr = new CodePointString(typingText().getText() + e.getKeyChar());
             } else {
@@ -118,8 +122,8 @@ public class TypingListener implements DocumentListener, KeyListener {
                 }
 
                 mistake = 0;
-                String[] typeSplit = typeStr.split(" ");
-                String[] articleSplit = articleStr.split(" ");
+                String[] typeSplit = typeStr.split(", |\\. | ");
+                String[] articleSplit = articleStr.split(", |\\. | ");
                 for (int i = 0; i < typeSplit.length; i++) {
                     if (articleSplit.length - 1 < i || !Objects.equals(typeSplit[i], articleSplit[i])) {
                         mistake++;
@@ -165,6 +169,10 @@ public class TypingListener implements DocumentListener, KeyListener {
     public void keyPressed(KeyEvent e) {
         try {
             log.debug("keyPressed：{},code：{}", e.getKeyChar(), e.getKeyCode());
+            if (typeStr.trim().isEmpty() && e.getKeyChar() == ' ') {
+                e.consume();
+                return;
+            }
 //            if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
 //                return;
 //            }
@@ -196,6 +204,10 @@ public class TypingListener implements DocumentListener, KeyListener {
     public void keyReleased(KeyEvent e) {
         try {
             log.debug("keyReleased：{},code：{}", e.getKeyChar(), e.getKeyCode());
+            if (typeStr.trim().isEmpty() && e.getKeyChar() == ' ') {
+                e.consume();
+                return;
+            }
 //            if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
 //                return;
 //            }
@@ -758,8 +770,9 @@ public class TypingListener implements DocumentListener, KeyListener {
     public void insertUpdate(DocumentEvent e) {
         try {
             if (e.getOffset() == 0 && " ".equals(e.getDocument().getText(e.getOffset(), 1))) {
-                Runnable doHighlight = ReplayEvent::start;
-                SwingUtilities.invokeLater(doHighlight);
+//                Runnable doHighlight = ReplayEvent::start;
+//                SwingUtilities.invokeLater(doHighlight);
+
             }
         } catch (BadLocationException ex) {
             log.error("", ex);

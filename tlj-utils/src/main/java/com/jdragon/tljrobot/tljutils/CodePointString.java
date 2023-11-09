@@ -47,6 +47,10 @@ public class CodePointString {
         return substring(start, chars.length - 1);
     }
 
+    public String trim() {
+        return string.trim();
+    }
+
     public int length() {
         return length;
     }

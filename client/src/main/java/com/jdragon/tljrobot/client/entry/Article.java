@@ -20,8 +20,12 @@ public class Article {
         if (LocalConfig.replace && LocalConfig.textMode == Constant.TEXT_MODE_CN) {
             article1 = ArticleUtil.replace(article1);
         }
-        if (LocalConfig.clearSpace && LocalConfig.textMode == Constant.TEXT_MODE_CN) {
-            article1 = ArticleUtil.clearSpace(article1);
+        if (LocalConfig.clearSpace) {
+            if (LocalConfig.textMode == Constant.TEXT_MODE_CN) {
+                article1 = ArticleUtil.clearSpace(article1);
+            } else {
+                article1 = ArticleUtil.leaveOneSpace(article1);
+            }
         }
         if (LocalConfig.quotationMarkReplacement) {
             article1 = ArticleUtil.quotationMarkReplacement(article1);
