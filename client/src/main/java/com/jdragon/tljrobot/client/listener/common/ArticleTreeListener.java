@@ -105,9 +105,12 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
             int index = fontweizhi + fontnum;
             if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
                 char delimiter = ' ';
+                String enSendDelimiter = SendArticleDialog.enSendDelimiter.getText();
                 if (SendArticleDialog.isEnDelimiterBlank()) {
                     String enCikuDelimiter = SendArticleDialog.enCikuDelimiter.getText();
-                    String enSendDelimiter = SendArticleDialog.enSendDelimiter.getText();
+                    if (enSendDelimiter.equals(" ")) {
+                        enSendDelimiter = "";
+                    }
                     all = all.replaceAll(enCikuDelimiter, enSendDelimiter);
                     delimiter = enSendDelimiter.toCharArray()[0];
                 }
@@ -119,7 +122,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                         spaceNum++;
                     }
                     if (spaceNum == fontnum) {
-                        index++;
+                        index += delimiter == ' ' ? 1 : enSendDelimiter.length() + 1;
                         break;
                     }
                 }
@@ -190,8 +193,8 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                 int index = fontweizhi + fontnum;
                 if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
                     char delimiter = ' ';
+                    String enSendDelimiter = SendArticleDialog.enSendDelimiter.getText();
                     if (SendArticleDialog.isEnDelimiterBlank()) {
-                        String enSendDelimiter = SendArticleDialog.enSendDelimiter.getText();
                         delimiter = enSendDelimiter.toCharArray()[0];
                     }
                     int spaceNum = 0;
@@ -202,7 +205,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                             spaceNum++;
                         }
                         if (spaceNum == fontnum) {
-                            index++;
+                            index += delimiter == ' ' ? 1 : enSendDelimiter.length() + 1;
                             break;
                         }
                     }

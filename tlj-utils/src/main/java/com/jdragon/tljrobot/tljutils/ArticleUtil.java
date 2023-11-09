@@ -111,6 +111,9 @@ public class ArticleUtil {
 
     public static String leaveOneSpace(String str) {
         str = str.replaceAll("\\s+", " ");
+        if (str.startsWith(" ")) {
+            str = str.substring(1);
+        }
         return str;
     }
 }
