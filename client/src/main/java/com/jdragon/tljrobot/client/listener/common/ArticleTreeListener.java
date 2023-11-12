@@ -103,6 +103,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
             wen = all.substring(fontweizhi);
         } else {
             int index = fontweizhi + fontnum;
+            int delimiterIndex = 0;
             if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
                 char delimiter = ' ';
                 String enSendDelimiter = SendArticleDialog.enSendDelimiter.getText();
@@ -114,6 +115,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                     all = all.replaceAll(enCikuDelimiter, enSendDelimiter);
                     delimiter = enSendDelimiter.toCharArray()[0];
                 }
+                delimiterIndex = delimiter == ' ' ? 1 : enSendDelimiter.length() + 1;
                 int spaceNum = 0;
                 index = fontweizhi;
                 for (; index < all.length(); index++) {
@@ -122,12 +124,12 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                         spaceNum++;
                     }
                     if (spaceNum == fontnum) {
-                        index += delimiter == ' ' ? 1 : enSendDelimiter.length() + 1;
+                        index += delimiterIndex;
                         break;
                     }
                 }
             }
-            wen = all.substring(fontweizhi, index);
+            wen = all.substring(fontweizhi, index - delimiterIndex);
         }
         if (wen.length() > 500) {
             SendArticleDialog.wenben.setText(wen.substring(0, 500));
@@ -191,12 +193,14 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                 fontweizhi = all.length();
             } else {
                 int index = fontweizhi + fontnum;
+                int delimiterIndex = 0;
                 if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
                     char delimiter = ' ';
                     String enSendDelimiter = SendArticleDialog.enSendDelimiter.getText();
                     if (SendArticleDialog.isEnDelimiterBlank()) {
                         delimiter = enSendDelimiter.toCharArray()[0];
                     }
+                    delimiterIndex = delimiter == ' ' ? 1 : enSendDelimiter.length() + 1;
                     int spaceNum = 0;
                     index = fontweizhi;
                     for (; index < all.length(); index++) {
@@ -205,12 +209,12 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                             spaceNum++;
                         }
                         if (spaceNum == fontnum) {
-                            index += delimiter == ' ' ? 1 : enSendDelimiter.length() + 1;
+                            index += delimiterIndex;
                             break;
                         }
                     }
                 }
-                wen = all.substring(fontweizhi, index);
+                wen = all.substring(fontweizhi, index - delimiterIndex);
                 fontweizhi += wen.length();
             }
             Article article = Article.getArticleSingleton();

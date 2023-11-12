@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.client.test.swing;
 
+import com.jdragon.tljrobot.client.constant.Constant;
 import lombok.SneakyThrows;
 
 import javax.swing.*;
@@ -33,7 +34,7 @@ public class JpaneText {
         attrs.addAttribute("Number","1");
 
         MutableAttributeSet paragraph = new SimpleAttributeSet();
-        StyleConstants.setLineSpacing(paragraph, 0.5f); //此处设定行间距
+        StyleConstants.setLineSpacing(paragraph, Constant.LINE_SPACING); //此处设定行间距
 
         MutableAttributeSet attrs1 = new SimpleAttributeSet();
         StyleConstants.setFontSize(attrs1, 20); // 大小

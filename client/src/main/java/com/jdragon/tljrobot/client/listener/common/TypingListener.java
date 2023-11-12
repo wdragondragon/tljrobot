@@ -55,11 +55,11 @@ public class TypingListener implements DocumentListener, KeyListener {
     public static boolean delaySendResultSign;//跟打标志，作延迟用
     String leftStr = "qazwsxedcrfvtgb", rightStr = ";/.,。，；、plokmijnuhy";
     CodePointString typeStr = new CodePointString("");
-    CodePointString articleStr = new CodePointString("");
+    public CodePointString articleStr = new CodePointString("");
 //    char[] typeChars;
 //    char[] articleChars;
 
-    String[] articleCharCodePoint;
+    public String[] articleCharCodePoint;
     String[] typeCharCodePoint;
     int oldTypeStrLength;//判断是否为回改而记录的上一次上屏长度
     Timer deleteTextTimer = new Timer();//判断连续回改计时器
@@ -78,16 +78,12 @@ public class TypingListener implements DocumentListener, KeyListener {
                 return;
             }
             if (e.getKeyChar() != '\b') {
-                typeStr = new CodePointString(typingText().getText() + e.getKeyChar());
+                typeStr = new CodePointString(typingText().getText() + e.getKeyChar(), LocalConfig.textMode == Constant.TEXT_MODE_CN);
             } else {
-                typeStr = new CodePointString(typingText().getText());
+                typeStr = new CodePointString(typingText().getText(), LocalConfig.textMode == Constant.TEXT_MODE_CN);
             }
-            articleStr = new CodePointString(Article.getArticleSingleton().getArticle());
-
-//            typeChars = typeStr.toCharArray();
-//            articleChars = articleStr.toCharArray();
-            articleCharCodePoint = articleStr.toCharArray();
             typeCharCodePoint = typeStr.toCharArray();
+
             /**
              * 增加已打字数
              */
@@ -113,7 +109,7 @@ public class TypingListener implements DocumentListener, KeyListener {
             }
             oldTypeStrLength = typeStr.length();// 计算当前打字框长度
 
-            if (Constant.TEXT_MODE_EN == LocalConfig.textMode) {
+            if (Constant.TEXT_MODE_EN == LocalConfig.textMode && typeStr.length >= articleStr.length) {
                 enMistake = 0; // 错误字数清零
                 for (n = 0; n < typeStr.length(); n++) { // 统计错误字数，向文本框添加字体
                     if (articleCharCodePoint.length - 1 < n || !Objects.equals(typeCharCodePoint[n], articleCharCodePoint[n])) {
@@ -129,7 +125,8 @@ public class TypingListener implements DocumentListener, KeyListener {
                         mistake++;
                     }
                 }
-            } else {
+            }
+            if (Constant.TEXT_MODE_CN == LocalConfig.textMode) {
                 mistake = 0; // 错误字数清零
                 for (n = 0; n < typeStr.length(); n++) { // 统计错误字数，向文本框添加字体
                     if (articleCharCodePoint.length - 1 < n || !Objects.equals(typeCharCodePoint[n], articleCharCodePoint[n])) {
@@ -173,6 +170,9 @@ public class TypingListener implements DocumentListener, KeyListener {
                 e.consume();
                 return;
             }
+//            if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
+//                return;
+//            }
 //            if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
 //                return;
 //            }
@@ -208,6 +208,9 @@ public class TypingListener implements DocumentListener, KeyListener {
                 e.consume();
                 return;
             }
+//            if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
+//                return;
+//            }
 //            if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
 //                return;
 //            }
@@ -249,8 +252,8 @@ public class TypingListener implements DocumentListener, KeyListener {
 //                typingText().remove(0);
 //            }
 
-            typeStr = new CodePointString(typingText().getText());
-            articleStr = new CodePointString(Article.getArticleSingleton().getArticle());
+            typeStr = new CodePointString(typingText().getText(), LocalConfig.textMode == Constant.TEXT_MODE_EN);
+//            articleStr = new CodePointString(Article.getArticleSingleton().getArticle());
 
             if (Constant.TEXT_MODE_EN == LocalConfig.textMode) {
                 enWordLength = typeStr.length();
@@ -466,18 +469,17 @@ public class TypingListener implements DocumentListener, KeyListener {
      * @return: void
      * @Description 分页显示，词语提示等功能实现
      */
-    private String thisPageTypeStr;
+    private String thisPageTypeStr = "";
     int thisPageNum = -1;
 
     public void changeFontColor() {
+        changePosition();
         int pageCount = LocalConfig.typePageCount;
-        articleStr = Article.getArticleSingleton().getArticle() != null ? new CodePointString(Article.getArticleSingleton().getArticle()) : new CodePointString("");
-//        articleChars = articleStr.toCharArray();
-        articleCharCodePoint = articleStr.toCharArray();
+//        articleStr = Article.getArticleSingleton().getArticle() != null ? new CodePointString(Article.getArticleSingleton().getArticle()) : new CodePointString("");
         int prePageNum = thisPageNum;
         thisPageNum = typeStr.length() / pageCount;
         int lastIndex;
-        int pageMore = (widthFontNum + 1) / 3;
+        int pageMore = (widthFontNum + 1);
         int moreSign = thisPageNum >= 1 ? 1 : 0;
         if (articleStr.length() - pageCount * thisPageNum > pageCount + pageMore) {
             lastIndex = (thisPageNum + 1) * pageCount + pageMore;
@@ -485,25 +487,37 @@ public class TypingListener implements DocumentListener, KeyListener {
             lastIndex = articleStr.length();
         }
         thisPageTypeStr = typeStr.substring(pageCount * thisPageNum);
-
-        watchingText().setText(""); // 清空文本框
+        boolean updateColor = LocalConfig.textMode == Constant.TEXT_MODE_EN;
+        if (!updateColor) {
+            watchingText().setText(""); // 清空文本框
+        }
         try {
             if (thisPageNum > 0) {
                 n = thisPageNum * pageCount - pageMore;
             } else {
                 n = thisPageNum * pageCount;
             }
-//            if (thisPageNum != prePageNum || watchingText().getText().length() != lastIndex - n) {
-//                watchingText().setText(""); // 清空文本框
-//                watchingText().setCaretPosition(0);
-//            }
+            if (thisPageNum != prePageNum || watchingText().getText().length() != lastIndex - n) {
+                if (updateColor) {
+                    watchingText().setText(articleStr.substring(n, lastIndex)); // 清空文本框
+                } else {
+                    watchingText().setText("");
+                }
+                watchingText().setCaretPosition(0);
+            }
             for (; n < (Math.min(typeStr.length(), articleStr.length())); n++) { // 统计错误字数，向文本框添加字体
                 if (!Objects.equals(typeCharCodePoint[n], articleCharCodePoint[n]) && typingState) {
+                    documentStyleHandler.selectUpdateOrInsert(updateColor,
+                            articleCharCodePoint[n],
+                            n - pageCount * thisPageNum + moreSign * pageMore, "红");
 //                    documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, "红");
-                    documentStyleHandler.insertDoc(articleCharCodePoint[n], "红");
+//                    documentStyleHandler.insertDoc(articleCharCodePoint[n], "红");
                 } else if (typingState) {
+                    documentStyleHandler.selectUpdateOrInsert(updateColor,
+                            articleCharCodePoint[n],
+                            n - pageCount * thisPageNum + moreSign * pageMore, "黑");
 //                    documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, "黑");
-                    documentStyleHandler.insertDoc(articleCharCodePoint[n], "黑");
+//                    documentStyleHandler.insertDoc(articleCharCodePoint[n], "黑");
                 }
             }
         } catch (Exception e) {
@@ -523,8 +537,11 @@ public class TypingListener implements DocumentListener, KeyListener {
                 tempReady = lastIndex;
             }
             for (; n < tempReady; n++) {
+                documentStyleHandler.selectUpdateOrInsert(updateColor,
+                        articleCharCodePoint[n],
+                        n - pageCount * thisPageNum + moreSign * pageMore, "预读");
 //                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, "预读");
-                documentStyleHandler.insertDoc(articleCharCodePoint[n], "预读");
+//                documentStyleHandler.insertDoc(articleCharCodePoint[n], "预读");
             }
         }
         MutableAttributeSet attrs = new SimpleAttributeSet();
@@ -534,13 +551,18 @@ public class TypingListener implements DocumentListener, KeyListener {
                 Article.getArticleSingleton().getShortCodeEntity().getCodeEntities();
         for (; n < lastIndex; n++) { // 添加剩下字体
             if (n >= Article.getArticleSingleton().getShortCodeEntity().getArticle().length()) {
-                documentStyleHandler.insertDoc(articleCharCodePoint[n], "黑");
+                documentStyleHandler.selectUpdateOrInsert(updateColor, articleCharCodePoint[n],
+                        n - pageCount * thisPageNum + moreSign * pageMore, "灰");
+//                documentStyleHandler.insertDoc(articleCharCodePoint[n], "黑");
                 break;
             }
             if (!LocalConfig.tip || TypingState.dailyCompetition
                     || LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)) {
+                documentStyleHandler.selectUpdateOrInsert(updateColor,
+                        articleCharCodePoint[n],
+                        n - pageCount * thisPageNum + moreSign * pageMore, "灰");
 //                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, "灰");
-                documentStyleHandler.insertDoc(articleCharCodePoint[n], "灰");
+//                documentStyleHandler.insertDoc(articleCharCodePoint[n], "灰");
             } else {
                 int type = codeEntities[n].getType();
                 boolean isBold = codeEntities[n].isBold();
@@ -549,56 +571,86 @@ public class TypingListener implements DocumentListener, KeyListener {
                 if (!isBold) {
                     switch (type) {
                         case 0:
+                            documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                    articleStr.substring(n, next + 1),
+                                    n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "灰");
 //                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "灰");
-                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "灰");
+//                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "灰");
                             break;
                         case 1:
+                            documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                    articleStr.substring(n, next + 1),
+                                    n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "绿");
 //                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "绿");
-                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "绿");
+//                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "绿");
                             break;
                         case 2:
                             String codes = codeEntities[n].getWordsCode();
                             if (codes != null) {
                                 String number = codes.substring(codes.length() - 1);
                                 attrs.addAttribute("Number", number);
+                                documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                        articleStr.substring(n, next + 1),
+                                        n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "绿", attrs);
 //                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "绿", attrs);
-                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "绿", attrs);
+//                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "绿", attrs);
                             } else {
+                                documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                        articleStr.substring(n, next + 1),
+                                        n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "绿斜");
 //                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "绿斜");
-                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "绿斜");
+//                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "绿斜");
                             }
 
                             break;
                         case 3:
+                            documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                    articleStr.substring(n, next + 1),
+                                    n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "蓝");
 //                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "蓝");
-                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "蓝");
+//                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "蓝");
                             break;
                         case 4:
                             String codes1 = codeEntities[n].getWordsCode();
                             if (codes1 != null) {
                                 String number1 = codes1.substring(codes1.length() - 1);
                                 attrs.addAttribute("Number", number1);
+                                documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                        articleStr.substring(n, next + 1),
+                                        n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "蓝", attrs);
 //                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "蓝", attrs);
-                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "蓝", attrs);
+//                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "蓝", attrs);
                             } else {
+                                documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                        articleStr.substring(n, next + 1),
+                                        n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "蓝斜");
 //                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "蓝斜");
-                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "蓝斜");
+//                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "蓝斜");
                             }
                             break;
                         case 5:
+                            documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                    articleStr.substring(n, next + 1),
+                                    n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "粉");
 //                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "粉");
-                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "粉");
+//                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "粉");
                             break;
                         case 6:
                             String codes2 = codeEntities[n].getWordsCode();
                             if (codes2 != null) {
                                 String number2 = codes2.substring(codes2.length() - 1);
                                 attrs.addAttribute("Number", number2);
+                                documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                        articleStr.substring(n, next + 1),
+                                        n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "粉", attrs);
 //                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "粉", attrs);
-                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "粉", attrs);
+//                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "粉", attrs);
                             } else {
+                                documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                        articleStr.substring(n, next + 1),
+                                        n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "粉斜");
 //                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "粉斜");
-                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "粉斜");
+//                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "粉斜");
                             }
                             break;
                         default:
@@ -607,55 +659,85 @@ public class TypingListener implements DocumentListener, KeyListener {
                 } else {
                     switch (type) {
                         case 0:
+                            documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                    articleStr.substring(n, next + 1),
+                                    n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "灰");
 //                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "灰");
-                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "灰");
+//                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "灰");
                             break;
                         case 1:
+                            documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                    articleStr.substring(n, next + 1),
+                                    n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "绿粗");
 //                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "绿粗");
-                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "绿粗");
+//                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "绿粗");
                             break;
                         case 2:
                             String codes = codeEntities[n].getWordsCode();
                             if (codes != null) {
                                 String number = codes.substring(codes.length() - 1);
                                 attrs.addAttribute("Number", number);
+                                documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                        articleStr.substring(n, next + 1),
+                                        n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "绿粗", attrs);
 //                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "绿粗", attrs);
-                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "绿粗", attrs);
+//                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "绿粗", attrs);
                             } else {
+                                documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                        articleStr.substring(n, next + 1),
+                                        n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "绿粗斜");
 //                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "绿粗斜");
-                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "绿粗斜");
+//                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "绿粗斜");
                             }
                             break;
                         case 3:
+                            documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                    articleStr.substring(n, next + 1),
+                                    n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "蓝粗");
 //                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "蓝粗");
-                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "蓝粗");
+//                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "蓝粗");
                             break;
                         case 4:
                             String codes1 = codeEntities[n].getWordsCode();
                             if (codes1 != null) {
                                 String number1 = codes1.substring(codes1.length() - 1);
                                 attrs.addAttribute("Number", number1);
+                                documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                        articleStr.substring(n, next + 1),
+                                        n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "蓝粗", attrs);
 //                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "蓝粗", attrs);
-                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "蓝粗", attrs);
+//                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "蓝粗", attrs);
                             } else {
+                                documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                        articleStr.substring(n, next + 1),
+                                        n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "蓝粗斜");
 //                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "蓝粗斜");
-                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "蓝粗斜");
+//                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "蓝粗斜");
                             }
                             break;
                         case 5:
+                            documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                    articleStr.substring(n, next + 1),
+                                    n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "粉粗");
 //                            documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "粉粗");
-                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "粉粗");
+//                            documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "粉粗");
                             break;
                         case 6:
                             String codes2 = codeEntities[n].getWordsCode();
                             if (codes2 != null) {
                                 String number2 = codes2.substring(codes2.length() - 1);
                                 attrs.addAttribute("Number", number2);
+                                documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                        articleStr.substring(n, next + 1),
+                                        n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "粉粗", attrs);
 //                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "粉粗", attrs);
-                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "粉粗", attrs);
+//                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "粉粗", attrs);
                             } else {
+                                documentStyleHandler.selectUpdateOrInsert(updateColor,
+                                        articleStr.substring(n, next + 1),
+                                        n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "粉粗斜");
 //                                documentStyleHandler.updateDocStyle(n - pageCount * thisPageNum + moreSign * pageMore, next - n + strLength, "粉粗斜");
-                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "粉粗斜");
+//                                documentStyleHandler.insertDoc(articleStr.substring(n, next + 1), "粉粗斜");
                             }
                             break;
                         default:
@@ -730,6 +812,7 @@ public class TypingListener implements DocumentListener, KeyListener {
     int cursor = 116;//光标所在位置
     int maxPageNum;
     int pageCount, fontSize;
+    int pageTempIndex = 0;
 
     public void changePosition() {// 自动滚动条翻页方法
         fontSize = LocalConfig.fontSize;
@@ -742,11 +825,25 @@ public class TypingListener implements DocumentListener, KeyListener {
         maxPageNum = (heightFontNum - 1) * (widthFontNum + 1);
         JScrollBar jsb = watchingJsp().getVerticalScrollBar();
         int pageTotal = Math.min(pageCount, watchingText().getText().length());
-        if (pageTotal > maxPageNum) {
-            int jsbValue = (int) (((thisPageTypeStr.length() - maxPageNum / 2) / (double) (pageTotal - maxPageNum)) * (jsb
-                    .getMaximum() - jsb.getHeight()));
-            jsbValue = Math.max(jsbValue, 0);
-            jsb.setValue(jsbValue);
+
+        if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
+            if (thisPageTypeStr.length() > maxPageNum / 2 && thisPageTypeStr.length() > pageTempIndex) {
+                pageTempIndex = thisPageTypeStr.length() + widthFontNum;
+                if (pageTempIndex >= pageCount) {
+                    pageTempIndex = 0;
+                }
+                int jsbValue = (int) (((pageTempIndex - maxPageNum / 2) / (double) (pageTotal - maxPageNum)) * (jsb
+                        .getMaximum() - jsb.getHeight()));
+                jsbValue = Math.max(jsbValue, 0);
+                jsb.setValue(jsbValue);
+            }
+        } else {
+            if (pageTotal > maxPageNum) {
+                int jsbValue = (int) (((thisPageTypeStr.length() - maxPageNum / 2) / (double) (pageTotal - maxPageNum)) * (jsb
+                        .getMaximum() - jsb.getHeight()));
+                jsbValue = Math.max(jsbValue, 0);
+                jsb.setValue(jsbValue);
+            }
         }
     }
 

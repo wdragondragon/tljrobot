@@ -19,7 +19,10 @@ public class DocumentStyleHandler {
 
     public static DocumentStyleHandler INSTANCE = new DocumentStyleHandler();
 
-    private DocumentStyleHandler(){};
+    private DocumentStyleHandler() {
+    }
+
+    ;
 
     public void defineStyle(String styleName, int size, boolean bold, boolean italic, boolean underline,
                             Color color, String fontFamily, Color backColor) {
@@ -57,17 +60,38 @@ public class DocumentStyleHandler {
     public void updateDocStyle(int index, int length, String styleName, MutableAttributeSet... mutableAttributeSet) {
         MutableAttributeSet style = DocumentStyle.get(styleName);
         if (style != null) {
+            MutableAttributeSet styledDoc = new SimpleAttributeSet(DocumentStyle.get(styleName));
             if (mutableAttributeSet != null) {
                 for (MutableAttributeSet set : mutableAttributeSet) {
-                    style.addAttributes(set);
+                    styledDoc.addAttributes(set);
                 }
             }
-            updateDocStyle(index, length, style);
+            updateDocStyle(index, length, styledDoc);
         }
     }
 
     public void updateDocStyle(int index, int length, MutableAttributeSet style) {
         StyledDocument doc = (StyledDocument) SwingSingleton.watchingText().getDocument();
         doc.setCharacterAttributes(index, length, style, true);
+    }
+
+    public void selectUpdateOrInsert(boolean updateColor, String content, int index, String styleName, MutableAttributeSet... mutableAttributeSet) {
+        if (updateColor) {
+            updateDocStyle(index, styleName, mutableAttributeSet);
+        } else {
+            insertDoc(content, styleName);
+        }
+    }
+
+    public void selectUpdateOrInsert(boolean updateColor, String content, int index, int length, String styleName, MutableAttributeSet... mutableAttributeSet) {
+        if (updateColor) {
+            updateDocStyle(index, length, styleName, mutableAttributeSet);
+        } else {
+            if (mutableAttributeSet.length == 0) {
+                insertDoc(content, styleName);
+            } else {
+                insertDoc(content, styleName, mutableAttributeSet[0]);
+            }
+        }
     }
 }

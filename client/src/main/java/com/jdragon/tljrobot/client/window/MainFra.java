@@ -33,6 +33,7 @@ import lombok.EqualsAndHashCode;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -149,7 +150,24 @@ public class MainFra extends JFrame {
                             JOptionPane.showMessageDialog(mainFra, "请先结束发文");
                             break;
                         }
-                        Article.getArticleSingleton(1, "剪贴板载文", Clipboard.get());
+                        String all = Clipboard.get();
+                        if (Constant.TEXT_MODE_EN == LocalConfig.textMode) {
+                            all = ArticleUtil.leaveOneSpace(all);
+                            String text = SendArticleDialog.enCikuDelimiter.getText();
+                            if (!text.equals(" ")) {
+                                text += " ";
+                            }
+                            char[] charArray = text.toCharArray();
+                            for (int i = charArray.length; i > 0; i--) {
+                                char[] chars = Arrays.copyOf(charArray, i);
+                                String delimiter = String.valueOf(chars);
+                                if (all.endsWith(delimiter)) {
+                                    all = all.substring(0, all.length() - delimiter.length());
+                                    break;
+                                }
+                            }
+                        }
+                        Article.getArticleSingleton(1, "剪贴板载文", all);
                         ReplayEvent.start();
                         break;
                     case 'Q':

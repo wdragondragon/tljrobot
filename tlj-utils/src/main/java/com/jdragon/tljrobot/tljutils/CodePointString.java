@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.tljutils;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,6 +20,21 @@ public class CodePointString {
     public CodePointString(String string) {
         this.string = string;
         this.chars = toArticleChars(string);
+        this.length = chars.length;
+    }
+
+
+    public CodePointString(String string, boolean origin) {
+        this.string = string;
+        if (origin) {
+            char[] chars = string.toCharArray();
+            this.chars = new String[chars.length];
+            for (int i = 0; i < chars.length; i++) {
+                this.chars[i] = Character.toString(chars[i]);
+            }
+        } else {
+            this.chars = toArticleChars(string);
+        }
         this.length = chars.length;
     }
 

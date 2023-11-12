@@ -23,4 +23,6 @@ public class Constant {
 
     public static final int TEXT_MODE_CN = 1;//中文模式
     public static final int TEXT_MODE_EN = 2;//英文模式
+
+    public static final float LINE_SPACING = 0.5f;
 }

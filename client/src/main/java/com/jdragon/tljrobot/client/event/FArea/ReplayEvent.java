@@ -9,6 +9,7 @@ import com.jdragon.tljrobot.client.event.other.ListenPlayEvent;
 import com.jdragon.tljrobot.client.listener.common.TypingListener;
 import com.jdragon.tljrobot.client.utils.common.QqOperation;
 import com.jdragon.tljrobot.client.window.MainFra;
+import com.jdragon.tljrobot.tljutils.CodePointString;
 
 import javax.swing.*;
 
@@ -27,6 +28,8 @@ public class ReplayEvent {
             typingText().setEditable(true);
             ListenPlayEvent.replay();
         } else {
+            TypingListener.getInstance().articleStr = Article.getArticleSingleton().getArticle() != null ? new CodePointString(Article.getArticleSingleton().getArticle()) : new CodePointString("");
+            TypingListener.getInstance().articleCharCodePoint = TypingListener.getInstance().articleStr.toCharArray();
             typingText().setText("");
             TypingListener.getInstance().setThisPageNum(-1);
             TypingListener.getInstance().changeFontColor();
