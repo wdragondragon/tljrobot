@@ -99,11 +99,11 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
     }
 
     public static int showContent() {
+        int delimiterIndex = 0;
         if (fontnum > all.length()) {
             wen = all.substring(fontweizhi);
         } else {
             int index = fontweizhi + fontnum;
-            int delimiterIndex = 0;
             if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
                 char delimiter = ' ';
                 String enSendDelimiter = SendArticleDialog.enSendDelimiter.getText();
@@ -143,7 +143,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                 + ":"
                 + String.format("%.2f",
                 (double) fontweizhi * 100 / all.length()) + "%");
-        return wen.length();
+        return wen.length() + delimiterIndex;
     }
 
     void readjindu() throws IOException {
@@ -215,7 +215,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                     }
                 }
                 wen = all.substring(fontweizhi, index - delimiterIndex);
-                fontweizhi += wen.length();
+                fontweizhi += wen.length() + delimiterIndex;
             }
             Article article = Article.getArticleSingleton();
             article.setArticle(wen);
