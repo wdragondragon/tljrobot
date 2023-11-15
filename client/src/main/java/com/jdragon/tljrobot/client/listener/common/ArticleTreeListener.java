@@ -129,7 +129,12 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                     }
                 }
             }
-            wen = all.substring(fontweizhi, index - delimiterIndex);
+            if (index == all.length()) {
+                wen = all.substring(fontweizhi, index);
+                delimiterIndex = 0;
+            } else {
+                wen = all.substring(fontweizhi, index - delimiterIndex);
+            }
         }
         if (wen.length() > 500) {
             SendArticleDialog.wenben.setText(wen.substring(0, 500));
@@ -194,6 +199,7 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
             } else {
                 int index = fontweizhi + fontnum;
                 int delimiterIndex = 0;
+                boolean endDelimiter = false;
                 if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
                     char delimiter = ' ';
                     String enSendDelimiter = SendArticleDialog.enSendDelimiter.getText();
@@ -214,8 +220,13 @@ public class ArticleTreeListener implements TreeSelectionListener, ActionListene
                         }
                     }
                 }
-                wen = all.substring(fontweizhi, index - delimiterIndex);
-                fontweizhi += wen.length() + delimiterIndex;
+                if (index == all.length()) {
+                    wen = all.substring(fontweizhi, index);
+                    fontweizhi += wen.length();
+                } else {
+                    wen = all.substring(fontweizhi, index - delimiterIndex);
+                    fontweizhi += wen.length() + delimiterIndex;
+                }
             }
             Article article = Article.getArticleSingleton();
             article.setArticle(wen);
