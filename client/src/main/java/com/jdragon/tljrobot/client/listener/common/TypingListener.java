@@ -812,7 +812,7 @@ public class TypingListener implements DocumentListener, KeyListener {
     int cursor = 116;//光标所在位置
     int maxPageNum;
     int pageCount, fontSize;
-    int pageTempIndex = 0;
+    public int pageTempIndex = 0;
 
     public void changePosition() {// 自动滚动条翻页方法
         fontSize = LocalConfig.fontSize;
@@ -827,10 +827,15 @@ public class TypingListener implements DocumentListener, KeyListener {
         int pageTotal = Math.min(pageCount, watchingText().getText().length());
 
         if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
-            if (thisPageTypeStr.length() > maxPageNum / 2 && thisPageTypeStr.length() > pageTempIndex) {
+
+            if (thisPageTypeStr.length() < maxPageNum / 2 && pageTempIndex != 0) {
+                this.pageTempIndex = 0;
+                jsb.setValue(0);
+            }
+            if (thisPageTypeStr.length() > maxPageNum / 2 && (thisPageTypeStr.length() > pageTempIndex || thisPageTypeStr.length() < pageTempIndex - widthFontNum)) {
                 pageTempIndex = thisPageTypeStr.length() + widthFontNum;
                 if (pageTempIndex >= pageCount) {
-                    pageTempIndex = 0;
+                    pageTempIndex = pageCount;
                 }
                 int jsbValue = (int) (((pageTempIndex - maxPageNum / 2) / (double) (pageTotal - maxPageNum)) * (jsb
                         .getMaximum() - jsb.getHeight()));

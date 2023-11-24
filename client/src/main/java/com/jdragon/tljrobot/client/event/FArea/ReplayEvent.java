@@ -61,6 +61,7 @@ public class ReplayEvent {
 
             MainFra.getInstance().setTitle("长流跟打器" + FinalConfig.VERSION + " " + "文章长度：" + Article.getArticleSingleton().getArticleLength());
         }
+        TypingListener.getInstance().pageTempIndex = 0;
         typingText().requestFocusInWindow();
         if (LocalConfig.mouseGetArticle) {
             QqOperation.requestFocusInWindow();
