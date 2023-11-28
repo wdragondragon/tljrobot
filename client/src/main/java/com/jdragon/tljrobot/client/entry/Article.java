@@ -59,8 +59,7 @@ public class Article {
     }
 
     public void setArticle(String article) {
-        this.article = article;
-        this.shortCodeEntity = new SimpleEntry().readyCreate(article, BetterTypingSingleton.getInstance());
+        this.setArticleSingleton(paragraph, title, article);
     }
 
     public void addParagraph() {
