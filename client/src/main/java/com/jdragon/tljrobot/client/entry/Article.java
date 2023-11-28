@@ -31,6 +31,9 @@ public class Article {
             article1 = ArticleUtil.quotationMarkReplacement(article1);
         }
         getArticleSingleton().setArticleSingleton(paragraph1, title1, article1);
+        if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
+            getArticleSingleton().enWords = article1.split(" ");
+        }
         return articleSingleton;
     }
 
@@ -44,6 +47,7 @@ public class Article {
     private int paragraph;
     private String title;
     private String article;
+    private String[] enWords;
     private ShortCodeEntity shortCodeEntity;
 
     private Article() {

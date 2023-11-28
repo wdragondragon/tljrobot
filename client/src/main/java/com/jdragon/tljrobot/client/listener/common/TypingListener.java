@@ -254,11 +254,12 @@ public class TypingListener implements DocumentListener, KeyListener {
 
             typeStr = new CodePointString(typingText().getText(), LocalConfig.textMode == Constant.TEXT_MODE_EN);
 //            articleStr = new CodePointString(Article.getArticleSingleton().getArticle());
-
+            String enLastStr = "";
             if (Constant.TEXT_MODE_EN == LocalConfig.textMode) {
                 enWordLength = typeStr.length();
                 String[] s = typeStr.split(" ");
                 typeLength = s.length;
+                enLastStr = s[s.length - 1];
             } else {
                 typeLength = typeStr.length();
             }
@@ -272,10 +273,14 @@ public class TypingListener implements DocumentListener, KeyListener {
             }
             String typingLastIndexWord = String.valueOf(typeStr.charAt(typeStr.length() - 1));
             String articleLastIndexWord = String.valueOf(articleStr.charAt(articleStr.length() - 1)); // 取两文本最后一个字
-            if (typeStr.length() == articleStr.length() && typingLastIndexWord.equals(articleLastIndexWord)
-                    && !(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN))) // 两文本长度相等且最后一字相同时执行
+            if (LocalConfig.textMode == Constant.TEXT_MODE_CN) // 两文本长度相等且最后一字相同时执行
             {
-                delaySendResultSign = true;
+                delaySendResultSign = typeStr.length() == articleStr.length()
+                        && typingLastIndexWord.equals(articleLastIndexWord)
+                        && !(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN));
+            } else if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
+                String[] enWords = Article.getArticleSingleton().getEnWords();
+                delaySendResultSign = enWords.length == typeLength && enLastStr.equals(enWords[enWords.length - 1]);
             }
         } catch (Exception exp) {
             log.error("", exp);
