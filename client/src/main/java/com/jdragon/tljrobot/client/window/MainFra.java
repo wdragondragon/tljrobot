@@ -210,6 +210,7 @@ public class MainFra extends JFrame {
                     break;
                 case KeyEvent.VK_F3:
                     ReplayEvent.start();
+                    Article.getArticleSingleton().addRetry();
                     break;
                 case KeyEvent.VK_F4:
                     if (TypingState.sendArticle != 0) {

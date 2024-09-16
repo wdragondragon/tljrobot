@@ -43,21 +43,29 @@ public class DelayedOperationThread extends Thread {
                 if (TypingListener.delaySendResultSign){
                     List<HashMap<String,Integer>> hashMapList = null;
                     TypingListener.delaySendResultSign = false;
-                    if(LocalConfig.typingPattern.equals(Constant.FOLLOW_PLAY_PATTERN)) {
-                        TypingListener.getInstance().changeAllFontColor();
-                    } else if(LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)){
-                        hashMapList = Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(),
-                                SwingSingleton.typingText().getText());
-                        TypingListener.getInstance().changeLookPlayFontColor(hashMapList);
-                        SwingSingleton.speedButton().setText(String.format("%.2f",
-                                TypingState.getSpeed()));
-                    } else if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)){
-                        hashMapList =
-                                Comparison.getComparisonListenResult(ListenPlayEvent.getContent(),
-                                        ArticleUtil.clearSpace(typingText().getText()), BetterTypingSingleton.getInstance().getSymbolCode());
-                        TypingListener.getInstance().changeListenPlayFontColor(hashMapList);
-                        SendAchievementEvent.start();
-                        ListenPlayEvent.stop();
+                    switch (LocalConfig.typingPattern) {
+                        case Constant.FOLLOW_PLAY_PATTERN:
+                            TypingListener.getInstance().changeAllFontColor();
+                            break;
+                        case Constant.WATCH_PLAY_PATTERN:
+//                        hashMapList = Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(),
+//                                SwingSingleton.typingText().getText());
+//                        TypingListener.getInstance().changeLookPlayFontColor(hashMapList);
+                            hashMapList =
+                                    Comparison.getComparisonListenResult(Article.getArticleSingleton().getArticle(),
+                                            ArticleUtil.clearSpace(typingText().getText()), BetterTypingSingleton.getInstance().getSymbolCode());
+                            TypingListener.getInstance().changeListenPlayFontColor(hashMapList);
+                            SwingSingleton.speedButton().setText(String.format("%.2f",
+                                    TypingState.getSpeed()));
+                            break;
+                        case Constant.LISTEN_PLAY_PATTERN:
+                            hashMapList =
+                                    Comparison.getComparisonListenResult(ListenPlayEvent.getContent(),
+                                            ArticleUtil.clearSpace(typingText().getText()), BetterTypingSingleton.getInstance().getSymbolCode());
+                            TypingListener.getInstance().changeListenPlayFontColor(hashMapList);
+                            SendAchievementEvent.start();
+                            ListenPlayEvent.stop();
+                            break;
                     }
                     typingText().setEditable(false); // 设置不可打字状态
                     sleep(200);

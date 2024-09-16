@@ -8,6 +8,8 @@ import com.jdragon.tljrobot.tljutils.compShortCode.simpleEntry.ShortCodeEntity;
 import com.jdragon.tljrobot.tljutils.compShortCode.simpleEntry.SimpleEntry;
 import lombok.Data;
 
+import java.util.Objects;
+
 @Data
 public class Article {
     private static Article articleSingleton = new Article();
@@ -31,17 +33,21 @@ public class Article {
             article1 = ArticleUtil.quotationMarkReplacement(article1);
         }
         getArticleSingleton().setArticleSingleton(paragraph1, title1, article1);
-        if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
-            getArticleSingleton().enWords = article1.split(" ");
-        }
         return articleSingleton;
     }
 
     private void setArticleSingleton(int paragraph1, String title1, String article1) {
+        if (!Objects.equals(this.article, article1)) {
+            retry = 0;
+        }
         this.paragraph = paragraph1;
         this.title = title1;
         this.article = article1;
         this.shortCodeEntity = new SimpleEntry().readyCreate(article, BetterTypingSingleton.getInstance());
+        if (LocalConfig.textMode == Constant.TEXT_MODE_EN) {
+            getArticleSingleton().enWords = article1.split(" ");
+        }
+
     }
 
     private int paragraph;
@@ -49,6 +55,8 @@ public class Article {
     private String article;
     private String[] enWords;
     private ShortCodeEntity shortCodeEntity;
+
+    private int retry;
 
     private Article() {
     }
@@ -72,5 +80,9 @@ public class Article {
         } else {
             return article.length();
         }
+    }
+
+    public void addRetry() {
+        retry++;
     }
 }

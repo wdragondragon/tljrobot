@@ -184,6 +184,10 @@ public class TypingState {
                 * Article.getArticleSingleton().getShortCodeEntity().getArticleAverCodes()) / keyNumber);
     }
 
+    public static int getRetry() {
+        return Article.getArticleSingleton().getRetry();
+    }
+
     public static double getWordRate() {
         return doubleKeyTwo(100.00 * typeWordsNum / (typeLength + deleteTextNumber));
     }

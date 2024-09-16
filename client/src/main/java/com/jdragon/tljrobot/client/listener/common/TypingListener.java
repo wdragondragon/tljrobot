@@ -478,7 +478,7 @@ public class TypingListener implements DocumentListener, KeyListener {
     int thisPageNum = -1;
 
     public void changeFontColor() {
-        changePosition();
+//        changePosition();
         int pageCount = LocalConfig.typePageCount;
 //        articleStr = Article.getArticleSingleton().getArticle() != null ? new CodePointString(Article.getArticleSingleton().getArticle()) : new CodePointString("");
         int prePageNum = thisPageNum;
