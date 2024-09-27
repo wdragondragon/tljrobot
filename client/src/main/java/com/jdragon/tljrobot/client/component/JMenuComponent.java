@@ -323,7 +323,8 @@ public class JMenuComponent {
                         typingText().getText(), BetterTypingSingleton.getInstance().getSymbolCode()), "听打"));
 
         sendWatchPlayImageResult.addActionListener(e -> DrawUnLookPlayResult.drawUnFollowPlayResultImg(Article.getArticleSingleton().getTitle(),
-                Comparison.getComparisonResult(Article.getArticleSingleton().getArticle(), typingText().getText()), "看打"));
+                Comparison.getComparisonListenResult(Article.getArticleSingleton().getArticle(),
+                        ArticleUtil.clearSpace(typingText().getText()), BetterTypingSingleton.getInstance().getSymbolCode()), "看打"));
 
         thisHistory.addActionListener(e -> ThisHistoryDialog.getInstance().setVisible(true));
         randomArticle.addActionListener(e -> {
