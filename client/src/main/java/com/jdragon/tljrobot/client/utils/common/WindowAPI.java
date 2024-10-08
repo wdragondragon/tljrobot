@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.client.utils.common;
 
+import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.sun.jna.platform.DesktopWindow;
 import com.sun.jna.platform.WindowUtils;
 import com.sun.jna.platform.win32.User32;
@@ -16,7 +17,7 @@ public class WindowAPI {
         List<String> QQWindows = new ArrayList<>();
         ArrayList<HWND> HList = new ArrayList<>();
         for (String allWindow : allWindows) {
-            HWND hWnd = User32.INSTANCE.FindWindow("TXGuiFoundation", allWindow);
+            HWND hWnd = User32.INSTANCE.FindWindow(LocalConfig.ntqqGetArticle ? "Chrome_WidgetWin_1" : "TXGuiFoundation", allWindow);
             if (hWnd != null) {
                 HList.add(hWnd);
                 QQWindows.add(allWindow);

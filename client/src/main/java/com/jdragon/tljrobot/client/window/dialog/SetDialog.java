@@ -48,7 +48,7 @@ public class SetDialog{
     private static JButton achSelectAll,reverseSelect,achCancelAll;
 
     private static JPanel getArticleSetPanel = new JPanel();
-    private static JToggleButton getArticleOnNet,mouseGetArticle,requestFocusInWindowButton,globalReplayButton;
+    private static JToggleButton getArticleOnNet,mouseGetArticle,requestFocusInWindowButton,globalReplayButton,ntqqGetArticle;
     private static ArrayList<JToggleButton> getArticleJToggleButtonList = new ArrayList<>();
 
     public static JPanel windowsSetPanel = new JPanel();
@@ -105,6 +105,7 @@ public class SetDialog{
         getArticleJToggleButtonList.add(mouseGetArticle = new JToggleButton("鼠标载文"));
         getArticleJToggleButtonList.add(requestFocusInWindowButton = new JToggleButton("鼠标焦点"));
         getArticleJToggleButtonList.add(globalReplayButton = new JToggleButton("全局F3"));
+        getArticleJToggleButtonList.add(ntqqGetArticle = new JToggleButton("新版qq"));
 
         for (JToggleButton jToggleButton:getArticleJToggleButtonList){
             jToggleButton.setFont(SwingSingleton.tipFont());
@@ -113,17 +114,20 @@ public class SetDialog{
         mouseGetArticle.addChangeListener(e->LocalConfig.mouseGetArticle=mouseGetArticle.isSelected());
         requestFocusInWindowButton.addChangeListener(e->LocalConfig.requestFocusInWindow=requestFocusInWindowButton.isSelected());
         globalReplayButton.addChangeListener(e->LocalConfig.globalReplay =globalReplayButton.isSelected());
+        ntqqGetArticle.addChangeListener(e->LocalConfig.ntqqGetArticle =ntqqGetArticle.isSelected());
 
 
         addOnBounds(getArticleSetPanel,getArticleOnNet,40,10,80,20);
         addOnBounds(getArticleSetPanel,mouseGetArticle, xSpace(getArticleOnNet,10),getArticleOnNet.getY(),80,20);
         addOnBounds(getArticleSetPanel,requestFocusInWindowButton, xSpace(mouseGetArticle,10),getArticleOnNet.getY(),80,20);
         addOnBounds(getArticleSetPanel,globalReplayButton, xSpace(requestFocusInWindowButton,10),getArticleOnNet.getY(),80,20);
+        addOnBounds(getArticleSetPanel,ntqqGetArticle, xSpace(globalReplayButton,10),getArticleOnNet.getY(),80,20);
 
         getArticleOnNet.setSelected(LocalConfig.getArticleOnNet);
         mouseGetArticle.setSelected(LocalConfig.mouseGetArticle);
         requestFocusInWindowButton.setSelected(LocalConfig.requestFocusInWindow);
         globalReplayButton.setSelected(LocalConfig.globalReplay);
+        ntqqGetArticle.setSelected(LocalConfig.ntqqGetArticle);
 
         tabbedPane.add("载文设置",getArticleSetPanel);
     }
