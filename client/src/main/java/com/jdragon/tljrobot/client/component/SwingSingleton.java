@@ -209,6 +209,8 @@ public class SwingSingleton {
                 public void copy() {
                     if (TypingState.dailyCompetition) {
                         JOptionPane.showMessageDialog(MainFra.getInstance(), "日赛中不允许复制");
+                    } else {
+                        super.copy();
                     }
                 }
 
