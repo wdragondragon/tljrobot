@@ -1,6 +1,7 @@
 package com.jdragon.tljrobot.client.utils.common;
 
 import com.jdragon.tljrobot.client.config.FinalConfig;
+import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.tljutils.string.Comparison;
 
 import javax.imageio.ImageIO;
@@ -141,7 +142,7 @@ public class DrawUnLookPlayResult {
         double keySpeed = getKeySpeed();
         double keyLength = getKeyLength();
         String noMisSpeedStr = mistake == 0 ? "" : ("/" + String.format("%.2f", noMisSpeed));
-        String playResultStr2 = "速度" + String.format("%.2f", speed) + noMisSpeedStr +
+        String playResultStr2 = "速度" + String.format("%.2f", speed) + (LocalConfig.errorPunishment ? noMisSpeedStr : "") +
                 " 击键" + String.format("%.2f", keySpeed) +
                 " 码长" + String.format("%.2f", keyLength) +
                 " 回改" + deleteTextNumber +

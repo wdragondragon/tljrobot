@@ -70,10 +70,10 @@ public class SendAchievementEvent {
                 noMisSpeedStr = mistake == 0 ? "" : ("/" + String.format("%.2f", noMisSpeed));
             }
             String lookPlayStr = LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)
-                    ? " 看打模式 错:" + lookMis + " 多:" + lookMore + " 少:" + lookMiss + "" : "";
+                    ? " 看打模式 错:" + lookMis + " 多:" + lookMore + " 少:" + lookMiss : "";
             result =
                     "第" + paragraph + "段" + enPlayStr +
-                            " 速度" + String.format("%.2f", speed) + noMisSpeedStr +
+                            " 速度" + String.format("%.2f", speed) + (LocalConfig.errorPunishment ? noMisSpeedStr : "") +
                             " 击键" + String.format("%.2f", keySpeed) +
                             " 码长" + String.format("%.2f", keyLength) +
                             (LocalConfig.shortCodesNum ? " 标顶理论" + String.format("%.2f", shortCodesNum) : "") +

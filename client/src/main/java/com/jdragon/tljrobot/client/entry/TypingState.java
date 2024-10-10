@@ -1,5 +1,6 @@
 package com.jdragon.tljrobot.client.entry;
 
+import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.utils.common.Timer;
 import lombok.Data;
 
@@ -147,12 +148,20 @@ public class TypingState {
 
     public static double getSpeed() {
         double minute = timer.getMinute();
-        return doubleKeyTwo((1.00 * typeLength - 5.00 * mistake) / minute);
+        if (LocalConfig.errorPunishment) {
+            return doubleKeyTwo((1.00 * typeLength - 5.00 * mistake) / minute);
+        } else {
+            return doubleKeyTwo((1.00 * (typeLength - mistake)) / minute);
+        }
     }
 
     public static double getEnSpeed() {
         double minute = timer.getMinute();
-        return doubleKeyTwo((1.00 * enWordLength - 5.00 * enMistake) / minute);
+        if (LocalConfig.errorPunishment) {
+            return doubleKeyTwo((1.00 * enWordLength - 5.00 * enMistake) / minute);
+        } else {
+            return doubleKeyTwo((1.00 * (enWordLength - enMistake)) / minute);
+        }
     }
 
     public static double getSpeedNoMistake() {

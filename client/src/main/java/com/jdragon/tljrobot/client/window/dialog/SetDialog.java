@@ -21,46 +21,55 @@ import static com.jdragon.tljrobot.client.utils.core.Layout.*;
 /**
  * Create by Jdragon on 2020.01.17
  */
-public class SetDialog{
-    private SetDialog(){}
+public class SetDialog {
+    private SetDialog() {
+    }
+
     private static JDialog setDialog = null;
-    public static JDialog getInstance(){
-        if(setDialog==null) {
+
+    public static JDialog getInstance() {
+        if (setDialog == null) {
             init();
         }
-        setDialog.setBounds(mainFra.getX()+mainFra.getWidth()/4,mainFra.getY()+mainFra.getHeight()/4,535,330);
+        setDialog.setBounds(mainFra.getX() + mainFra.getWidth() / 4, mainFra.getY() + mainFra.getHeight() / 4, 535, 330);
         return setDialog;
     }
+
     private static MainFra mainFra = MainFra.getInstance();
     private static JTabbedPane tabbedPane = new JTabbedPane();
 
     private static JPanel baseSetPanel = new JPanel();
-    private static JToggleButton progressButton,tipButton,lurkButton,replaceButton,clearSpaceButton,quotationMarkReplacementButton;
-    public static JTextField typePageCountText, fontSizeText,readyFont;
+    private static JToggleButton progressButton, tipButton, lurkButton, replaceButton, clearSpaceButton, quotationMarkReplacementButton;
+    public static JTextField typePageCountText, fontSizeText, readyFont;
     public static JComboBox<String> family;
 
     private static JPanel sendAchSetPanel = new JPanel();
-    private static JToggleButton shortCodesNumButton,articleLengthButton,deleteTextNumberButton,deleteNumberButton,
-            mistakeButton,keyNumberButton,repeatButton,keyAccuracyButton,keyMethodButton,wordRateButton,repeatRateButton,
-            changLiuVersionButton,systemVersionButton,checkCodeButton,personalTagButton,typeWritingButton,ctrlSendAchToQQ;
+    private static JToggleButton shortCodesNumButton, articleLengthButton, deleteTextNumberButton, deleteNumberButton,
+            mistakeButton, keyNumberButton, repeatButton, keyAccuracyButton, keyMethodButton, wordRateButton, repeatRateButton,
+            changLiuVersionButton, systemVersionButton, checkCodeButton, personalTagButton, typeWritingButton, ctrlSendAchToQQ;
     private static ArrayList<JToggleButton> achJToggleButtonList = new ArrayList<>();
-    private static JTextField personalTagText,typeWritingText;
-    private static JButton achSelectAll,reverseSelect,achCancelAll;
+    private static JTextField personalTagText, typeWritingText;
+    private static JButton achSelectAll, reverseSelect, achCancelAll;
 
     private static JPanel getArticleSetPanel = new JPanel();
-    private static JToggleButton getArticleOnNet,mouseGetArticle,requestFocusInWindowButton,globalReplayButton,ntqqGetArticle;
+    private static JToggleButton getArticleOnNet, mouseGetArticle, requestFocusInWindowButton, globalReplayButton, ntqqGetArticle;
     private static ArrayList<JToggleButton> getArticleJToggleButtonList = new ArrayList<>();
 
     public static JPanel windowsSetPanel = new JPanel();
-    private static JLabel opacityLabel,themeSelectLabel;
+    private static JLabel opacityLabel, themeSelectLabel;
     private static JSlider windowsOpacitySlider;
     private static JComboBox<String> windowsThemeSelect;
     private static JToggleButton undecoratedButton;
 
-    public static JToggleButton getTipsButton(){
+    private static JPanel gradeSetPanel = new JPanel();
+    private static JToggleButton errorPunishment, ignoreMultipleWords;
+    private static ArrayList<JToggleButton> gradeSetPanelJToggleButtonList = new ArrayList<>();
+
+    public static JToggleButton getTipsButton() {
         return tipButton;
     }
-    private static void init(){
+
+    private static void init() {
         setDialog = new JDialog(mainFra, "设置",
                 Dialog.ModalityType.DOCUMENT_MODAL);
         setDialog.setTitle("设置");
@@ -69,14 +78,31 @@ public class SetDialog{
         addSendAchSet();
         addGetArticleSet();
         addWindowsSetPanel();
+        addGradeSetPanel();
     }
-    private static void addWindowsSetPanel(){
+
+    private static void addGradeSetPanel() {
+        gradeSetPanel.setLayout(null);
+        gradeSetPanelJToggleButtonList.add(errorPunishment = new JToggleButton("错误惩罚"));
+        for (JToggleButton jToggleButton : gradeSetPanelJToggleButtonList) {
+            jToggleButton.setFont(SwingSingleton.tipFont());
+        }
+        errorPunishment.addChangeListener(e -> LocalConfig.errorPunishment = errorPunishment.isSelected());
+
+        addOnBounds(gradeSetPanel, errorPunishment, 40, 10, 80, 20);
+
+        errorPunishment.setSelected(LocalConfig.errorPunishment);
+
+        tabbedPane.add("判卷设置", gradeSetPanel);
+    }
+
+    private static void addWindowsSetPanel() {
         windowsSetPanel.setLayout(null);
 
         opacityLabel = new JLabel("窗体透明");
         themeSelectLabel = new JLabel("主题选择");
 
-        windowsOpacitySlider = new JSlider(0, 100, (int)(LocalConfig.windowsOpacity*100));
+        windowsOpacitySlider = new JSlider(0, 100, (int) (LocalConfig.windowsOpacity * 100));
         windowsThemeSelect = new JComboBox<>();
         for (String themeName : ThemeManager.getAllTheme()) {
             windowsThemeSelect.addItem(themeName);
@@ -87,19 +113,20 @@ public class SetDialog{
         undecoratedButton.setSelected(LocalConfig.undecorated);
 
 
-        windowsOpacitySlider.addChangeListener(e->mainFra.setOpacity(LocalConfig.windowsOpacity = windowsOpacitySlider.getValue()/100f));
-        windowsThemeSelect.addItemListener(e->LocalConfig.windowsTheme = windowsThemeSelect.getSelectedItem().toString());
-        undecoratedButton.addChangeListener(e->LocalConfig.undecorated=undecoratedButton.isSelected());
+        windowsOpacitySlider.addChangeListener(e -> mainFra.setOpacity(LocalConfig.windowsOpacity = windowsOpacitySlider.getValue() / 100f));
+        windowsThemeSelect.addItemListener(e -> LocalConfig.windowsTheme = windowsThemeSelect.getSelectedItem().toString());
+        undecoratedButton.addChangeListener(e -> LocalConfig.undecorated = undecoratedButton.isSelected());
 
-        addOnBounds(windowsSetPanel,opacityLabel,40,10,50,30);
-        addOnBounds(windowsSetPanel,windowsOpacitySlider, xSpace(opacityLabel,10),opacityLabel.getY(),200,30);
-        addOnBounds(windowsSetPanel,themeSelectLabel,opacityLabel.getX(), ySpace(opacityLabel,10),50,30);
-        addOnBounds(windowsSetPanel, windowsThemeSelect, xSpace(themeSelectLabel,10),themeSelectLabel.getY(),120,30);
-        addOnBounds(windowsSetPanel,undecoratedButton, xSpace(windowsThemeSelect,10),windowsThemeSelect.getY(),60,30);
+        addOnBounds(windowsSetPanel, opacityLabel, 40, 10, 50, 30);
+        addOnBounds(windowsSetPanel, windowsOpacitySlider, xSpace(opacityLabel, 10), opacityLabel.getY(), 200, 30);
+        addOnBounds(windowsSetPanel, themeSelectLabel, opacityLabel.getX(), ySpace(opacityLabel, 10), 50, 30);
+        addOnBounds(windowsSetPanel, windowsThemeSelect, xSpace(themeSelectLabel, 10), themeSelectLabel.getY(), 120, 30);
+        addOnBounds(windowsSetPanel, undecoratedButton, xSpace(windowsThemeSelect, 10), windowsThemeSelect.getY(), 60, 30);
 
-        tabbedPane.add("窗体设置",windowsSetPanel);
+        tabbedPane.add("窗体设置", windowsSetPanel);
     }
-    private static void addGetArticleSet(){
+
+    private static void addGetArticleSet() {
         getArticleSetPanel.setLayout(null);
         getArticleJToggleButtonList.add(getArticleOnNet = new JToggleButton("网络模式"));
         getArticleJToggleButtonList.add(mouseGetArticle = new JToggleButton("鼠标载文"));
@@ -107,21 +134,21 @@ public class SetDialog{
         getArticleJToggleButtonList.add(globalReplayButton = new JToggleButton("全局F3"));
         getArticleJToggleButtonList.add(ntqqGetArticle = new JToggleButton("新版qq"));
 
-        for (JToggleButton jToggleButton:getArticleJToggleButtonList){
+        for (JToggleButton jToggleButton : getArticleJToggleButtonList) {
             jToggleButton.setFont(SwingSingleton.tipFont());
         }
-        getArticleOnNet.addChangeListener(e->LocalConfig.getArticleOnNet=getArticleOnNet.isSelected());
-        mouseGetArticle.addChangeListener(e->LocalConfig.mouseGetArticle=mouseGetArticle.isSelected());
-        requestFocusInWindowButton.addChangeListener(e->LocalConfig.requestFocusInWindow=requestFocusInWindowButton.isSelected());
-        globalReplayButton.addChangeListener(e->LocalConfig.globalReplay =globalReplayButton.isSelected());
-        ntqqGetArticle.addChangeListener(e->LocalConfig.ntqqGetArticle =ntqqGetArticle.isSelected());
+        getArticleOnNet.addChangeListener(e -> LocalConfig.getArticleOnNet = getArticleOnNet.isSelected());
+        mouseGetArticle.addChangeListener(e -> LocalConfig.mouseGetArticle = mouseGetArticle.isSelected());
+        requestFocusInWindowButton.addChangeListener(e -> LocalConfig.requestFocusInWindow = requestFocusInWindowButton.isSelected());
+        globalReplayButton.addChangeListener(e -> LocalConfig.globalReplay = globalReplayButton.isSelected());
+        ntqqGetArticle.addChangeListener(e -> LocalConfig.ntqqGetArticle = ntqqGetArticle.isSelected());
 
 
-        addOnBounds(getArticleSetPanel,getArticleOnNet,40,10,80,20);
-        addOnBounds(getArticleSetPanel,mouseGetArticle, xSpace(getArticleOnNet,10),getArticleOnNet.getY(),80,20);
-        addOnBounds(getArticleSetPanel,requestFocusInWindowButton, xSpace(mouseGetArticle,10),getArticleOnNet.getY(),80,20);
-        addOnBounds(getArticleSetPanel,globalReplayButton, xSpace(requestFocusInWindowButton,10),getArticleOnNet.getY(),80,20);
-        addOnBounds(getArticleSetPanel,ntqqGetArticle, xSpace(globalReplayButton,10),getArticleOnNet.getY(),80,20);
+        addOnBounds(getArticleSetPanel, getArticleOnNet, 40, 10, 80, 20);
+        addOnBounds(getArticleSetPanel, mouseGetArticle, xSpace(getArticleOnNet, 10), getArticleOnNet.getY(), 80, 20);
+        addOnBounds(getArticleSetPanel, requestFocusInWindowButton, xSpace(mouseGetArticle, 10), getArticleOnNet.getY(), 80, 20);
+        addOnBounds(getArticleSetPanel, globalReplayButton, xSpace(requestFocusInWindowButton, 10), getArticleOnNet.getY(), 80, 20);
+        addOnBounds(getArticleSetPanel, ntqqGetArticle, xSpace(globalReplayButton, 10), getArticleOnNet.getY(), 80, 20);
 
         getArticleOnNet.setSelected(LocalConfig.getArticleOnNet);
         mouseGetArticle.setSelected(LocalConfig.mouseGetArticle);
@@ -129,9 +156,10 @@ public class SetDialog{
         globalReplayButton.setSelected(LocalConfig.globalReplay);
         ntqqGetArticle.setSelected(LocalConfig.ntqqGetArticle);
 
-        tabbedPane.add("载文设置",getArticleSetPanel);
+        tabbedPane.add("载文设置", getArticleSetPanel);
     }
-    private static void addSendAchSet(){
+
+    private static void addSendAchSet() {
         sendAchSetPanel.setLayout(null);
         achJToggleButtonList.add(shortCodesNumButton = new JToggleButton("标顶码长"));
         achJToggleButtonList.add(articleLengthButton = new JToggleButton("文章长度"));
@@ -157,7 +185,7 @@ public class SetDialog{
         reverseSelect = new JButton("反选");
         achCancelAll = new JButton("全不选");
 
-        for(JToggleButton jToggleButton:achJToggleButtonList){
+        for (JToggleButton jToggleButton : achJToggleButtonList) {
             jToggleButton.setFont(SwingSingleton.tipFont());
         }
         achCancelAll.setFont(SwingSingleton.tipFont());
@@ -172,18 +200,19 @@ public class SetDialog{
             @Override
             public void keyPressed(KeyEvent e) {
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
                 // TODO Auto-generated method stub
-                if (personalTagText.getText().length()>20||typeWritingText.getText().length()>10) {
+                if (personalTagText.getText().length() > 20 || typeWritingText.getText().length() > 10) {
                     e.consume();
-                    JOptionPane.showMessageDialog(setDialog,"输入过长");
-                }
-                else{
+                    JOptionPane.showMessageDialog(setDialog, "输入过长");
+                } else {
                     LocalConfig.personalTag = personalTagText.getText();
                     LocalConfig.typeWriting = typeWritingText.getText();
                 }
             }
+
             @Override
             public void keyTyped(KeyEvent e) {
             }
@@ -216,74 +245,75 @@ public class SetDialog{
         /**
          * 初始化位置
          */
-        addOnBounds(sendAchSetPanel,shortCodesNumButton,40,10,80,20);
-        addOnBounds(sendAchSetPanel,articleLengthButton, xSpace(shortCodesNumButton,10),shortCodesNumButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,deleteNumberButton, xSpace(articleLengthButton,10),articleLengthButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,deleteTextNumberButton, xSpace(deleteNumberButton,10),deleteNumberButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,mistakeButton, xSpace(deleteTextNumberButton,10),deleteTextNumberButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel, shortCodesNumButton, 40, 10, 80, 20);
+        addOnBounds(sendAchSetPanel, articleLengthButton, xSpace(shortCodesNumButton, 10), shortCodesNumButton.getY(), 80, 20);
+        addOnBounds(sendAchSetPanel, deleteNumberButton, xSpace(articleLengthButton, 10), articleLengthButton.getY(), 80, 20);
+        addOnBounds(sendAchSetPanel, deleteTextNumberButton, xSpace(deleteNumberButton, 10), deleteNumberButton.getY(), 80, 20);
+        addOnBounds(sendAchSetPanel, mistakeButton, xSpace(deleteTextNumberButton, 10), deleteTextNumberButton.getY(), 80, 20);
 
-        addOnBounds(sendAchSetPanel,keyNumberButton,shortCodesNumButton.getX(), ySpace(shortCodesNumButton,10),80,20);
-        addOnBounds(sendAchSetPanel,repeatButton, xSpace(keyNumberButton,10),keyNumberButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,keyAccuracyButton, xSpace(repeatButton,10),repeatButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,keyMethodButton, xSpace(keyAccuracyButton,10),keyAccuracyButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,wordRateButton, xSpace(keyMethodButton,10),keyMethodButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel, keyNumberButton, shortCodesNumButton.getX(), ySpace(shortCodesNumButton, 10), 80, 20);
+        addOnBounds(sendAchSetPanel, repeatButton, xSpace(keyNumberButton, 10), keyNumberButton.getY(), 80, 20);
+        addOnBounds(sendAchSetPanel, keyAccuracyButton, xSpace(repeatButton, 10), repeatButton.getY(), 80, 20);
+        addOnBounds(sendAchSetPanel, keyMethodButton, xSpace(keyAccuracyButton, 10), keyAccuracyButton.getY(), 80, 20);
+        addOnBounds(sendAchSetPanel, wordRateButton, xSpace(keyMethodButton, 10), keyMethodButton.getY(), 80, 20);
 
-        addOnBounds(sendAchSetPanel,repeatRateButton,keyNumberButton.getX(), ySpace(keyNumberButton,10),80,20);
-        addOnBounds(sendAchSetPanel,changLiuVersionButton, xSpace(repeatRateButton,10),repeatRateButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,systemVersionButton, xSpace(changLiuVersionButton,10),changLiuVersionButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,checkCodeButton, xSpace(systemVersionButton,10),systemVersionButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,personalTagButton, xSpace(checkCodeButton,10),checkCodeButton.getY(),80,20);
+        addOnBounds(sendAchSetPanel, repeatRateButton, keyNumberButton.getX(), ySpace(keyNumberButton, 10), 80, 20);
+        addOnBounds(sendAchSetPanel, changLiuVersionButton, xSpace(repeatRateButton, 10), repeatRateButton.getY(), 80, 20);
+        addOnBounds(sendAchSetPanel, systemVersionButton, xSpace(changLiuVersionButton, 10), changLiuVersionButton.getY(), 80, 20);
+        addOnBounds(sendAchSetPanel, checkCodeButton, xSpace(systemVersionButton, 10), systemVersionButton.getY(), 80, 20);
+        addOnBounds(sendAchSetPanel, personalTagButton, xSpace(checkCodeButton, 10), checkCodeButton.getY(), 80, 20);
 
-        addOnBounds(sendAchSetPanel,typeWritingButton,repeatRateButton.getX(), ySpace(repeatRateButton,10),80,20);
-        addOnBounds(sendAchSetPanel,ctrlSendAchToQQ, xSpace(typeWritingButton,10),typeWritingButton.getY(),80,20);
-        addOnBounds(sendAchSetPanel,achSelectAll, xSpace(ctrlSendAchToQQ,10),ctrlSendAchToQQ.getY(),80,20);
-        addOnBounds(sendAchSetPanel,reverseSelect, xSpace(achSelectAll,10),achSelectAll.getY(),80,20);
-        addOnBounds(sendAchSetPanel,achCancelAll, xSpace(reverseSelect,10),reverseSelect.getY(),80,20);
+        addOnBounds(sendAchSetPanel, typeWritingButton, repeatRateButton.getX(), ySpace(repeatRateButton, 10), 80, 20);
+        addOnBounds(sendAchSetPanel, ctrlSendAchToQQ, xSpace(typeWritingButton, 10), typeWritingButton.getY(), 80, 20);
+        addOnBounds(sendAchSetPanel, achSelectAll, xSpace(ctrlSendAchToQQ, 10), ctrlSendAchToQQ.getY(), 80, 20);
+        addOnBounds(sendAchSetPanel, reverseSelect, xSpace(achSelectAll, 10), achSelectAll.getY(), 80, 20);
+        addOnBounds(sendAchSetPanel, achCancelAll, xSpace(reverseSelect, 10), reverseSelect.getY(), 80, 20);
 
-        addOnBounds(sendAchSetPanel,typeWritingText,typeWritingButton.getX(), ySpace(typeWritingButton,10),215,30);
-        addOnBounds(sendAchSetPanel,personalTagText, xSpace(typeWritingText,10),typeWritingText.getY(),215,30);
+        addOnBounds(sendAchSetPanel, typeWritingText, typeWritingButton.getX(), ySpace(typeWritingButton, 10), 215, 30);
+        addOnBounds(sendAchSetPanel, personalTagText, xSpace(typeWritingText, 10), typeWritingText.getY(), 215, 30);
         /**
          * 添加监听
          */
-        shortCodesNumButton.addChangeListener(e->LocalConfig.shortCodesNum=shortCodesNumButton.isSelected());
-        articleLengthButton.addChangeListener(e->LocalConfig.articleLength=articleLengthButton.isSelected());
-        deleteNumberButton.addChangeListener(e->LocalConfig.deleteNumber=deleteNumberButton.isSelected());
-        deleteTextNumberButton.addChangeListener(e->LocalConfig.deleteTextNumber=deleteTextNumberButton.isSelected());
-        mistakeButton.addChangeListener(e->LocalConfig.mistake=mistakeButton.isSelected());
+        shortCodesNumButton.addChangeListener(e -> LocalConfig.shortCodesNum = shortCodesNumButton.isSelected());
+        articleLengthButton.addChangeListener(e -> LocalConfig.articleLength = articleLengthButton.isSelected());
+        deleteNumberButton.addChangeListener(e -> LocalConfig.deleteNumber = deleteNumberButton.isSelected());
+        deleteTextNumberButton.addChangeListener(e -> LocalConfig.deleteTextNumber = deleteTextNumberButton.isSelected());
+        mistakeButton.addChangeListener(e -> LocalConfig.mistake = mistakeButton.isSelected());
 
-        keyNumberButton.addChangeListener(e->LocalConfig.keyNumber=keyNumberButton.isSelected());
-        repeatButton.addChangeListener(e->LocalConfig.repeat=repeatButton.isSelected());
-        keyAccuracyButton.addChangeListener(e->LocalConfig.keyAccuracy=keyAccuracyButton.isSelected());
-        keyMethodButton.addChangeListener(e->LocalConfig.keyMethod=keyMethodButton.isSelected());
-        wordRateButton.addChangeListener(e->LocalConfig.wordRate=wordRateButton.isSelected());
+        keyNumberButton.addChangeListener(e -> LocalConfig.keyNumber = keyNumberButton.isSelected());
+        repeatButton.addChangeListener(e -> LocalConfig.repeat = repeatButton.isSelected());
+        keyAccuracyButton.addChangeListener(e -> LocalConfig.keyAccuracy = keyAccuracyButton.isSelected());
+        keyMethodButton.addChangeListener(e -> LocalConfig.keyMethod = keyMethodButton.isSelected());
+        wordRateButton.addChangeListener(e -> LocalConfig.wordRate = wordRateButton.isSelected());
 
-        repeatRateButton.addChangeListener(e->LocalConfig.repeatRate=repeatRateButton.isSelected());
-        changLiuVersionButton.addChangeListener(e->LocalConfig.changLiuVersion=changLiuVersionButton.isSelected());
-        systemVersionButton.addChangeListener(e->LocalConfig.systemVersion=systemVersionButton.isSelected());
-        checkCodeButton.addChangeListener(e->LocalConfig.checkCode=checkCodeButton.isSelected());
-        personalTagButton.addChangeListener(e->LocalConfig.personalTagSign=personalTagButton.isSelected());
+        repeatRateButton.addChangeListener(e -> LocalConfig.repeatRate = repeatRateButton.isSelected());
+        changLiuVersionButton.addChangeListener(e -> LocalConfig.changLiuVersion = changLiuVersionButton.isSelected());
+        systemVersionButton.addChangeListener(e -> LocalConfig.systemVersion = systemVersionButton.isSelected());
+        checkCodeButton.addChangeListener(e -> LocalConfig.checkCode = checkCodeButton.isSelected());
+        personalTagButton.addChangeListener(e -> LocalConfig.personalTagSign = personalTagButton.isSelected());
 
-        typeWritingButton.addChangeListener(e->LocalConfig.typeWritingSign=typeWritingButton.isSelected());
-        ctrlSendAchToQQ.addChangeListener(e->LocalConfig.ctrlSendAchToQQ=ctrlSendAchToQQ.isSelected());
+        typeWritingButton.addChangeListener(e -> LocalConfig.typeWritingSign = typeWritingButton.isSelected());
+        ctrlSendAchToQQ.addChangeListener(e -> LocalConfig.ctrlSendAchToQQ = ctrlSendAchToQQ.isSelected());
 
-        achSelectAll.addActionListener(e->{
-            for(JToggleButton jToggleButton:achJToggleButtonList){
+        achSelectAll.addActionListener(e -> {
+            for (JToggleButton jToggleButton : achJToggleButtonList) {
                 jToggleButton.setSelected(true);
             }
         });
-        achCancelAll.addActionListener(e->{
-            for(JToggleButton jToggleButton:achJToggleButtonList){
+        achCancelAll.addActionListener(e -> {
+            for (JToggleButton jToggleButton : achJToggleButtonList) {
                 jToggleButton.setSelected(false);
             }
         });
-        reverseSelect.addActionListener(e->{
-            for (JToggleButton jToggleButton:achJToggleButtonList){
+        reverseSelect.addActionListener(e -> {
+            for (JToggleButton jToggleButton : achJToggleButtonList) {
                 jToggleButton.setSelected(!jToggleButton.isSelected());
             }
         });
-        tabbedPane.add("发送设置",sendAchSetPanel);
+        tabbedPane.add("发送设置", sendAchSetPanel);
     }
-    private static void addBaseSet(){
+
+    private static void addBaseSet() {
         baseSetPanel.setLayout(null);
 
         progressButton = new JToggleButton("进度条");
@@ -308,78 +338,82 @@ public class SetDialog{
         clearSpaceButton.setSelected(LocalConfig.clearSpace);
         quotationMarkReplacementButton.setSelected(LocalConfig.quotationMarkReplacement);
 
-        addOnBounds(baseSetPanel,lurkButton,10,10,50,20);
-        addOnBounds(baseSetPanel,clearSpaceButton, xSpace(lurkButton,10),10,80,20);
-        addOnBounds(baseSetPanel,replaceButton, xSpace(clearSpaceButton,10),10,80,20);
-        addOnBounds(baseSetPanel,tipButton, xSpace(replaceButton,10),10,80,20);
-        addOnBounds(baseSetPanel,progressButton, xSpace(tipButton,10),10,80,20);
-        addOnBounds(baseSetPanel,quotationMarkReplacementButton, xSpace(progressButton,10),10,80,20);
+        addOnBounds(baseSetPanel, lurkButton, 10, 10, 50, 20);
+        addOnBounds(baseSetPanel, clearSpaceButton, xSpace(lurkButton, 10), 10, 80, 20);
+        addOnBounds(baseSetPanel, replaceButton, xSpace(clearSpaceButton, 10), 10, 80, 20);
+        addOnBounds(baseSetPanel, tipButton, xSpace(replaceButton, 10), 10, 80, 20);
+        addOnBounds(baseSetPanel, progressButton, xSpace(tipButton, 10), 10, 80, 20);
+        addOnBounds(baseSetPanel, quotationMarkReplacementButton, xSpace(progressButton, 10), 10, 80, 20);
 
-        lurkButton.addChangeListener(e-> LocalConfig.lurk=lurkButton.isSelected());
-        clearSpaceButton.addChangeListener(e-> LocalConfig.clearSpace=clearSpaceButton.isSelected());
-        replaceButton.addChangeListener(e->LocalConfig.replace=replaceButton.isSelected());
-        tipButton.addChangeListener(e->{
-            LocalConfig.tip=tipButton.isSelected();
+        lurkButton.addChangeListener(e -> LocalConfig.lurk = lurkButton.isSelected());
+        clearSpaceButton.addChangeListener(e -> LocalConfig.clearSpace = clearSpaceButton.isSelected());
+        replaceButton.addChangeListener(e -> LocalConfig.replace = replaceButton.isSelected());
+        tipButton.addChangeListener(e -> {
+            LocalConfig.tip = tipButton.isSelected();
             TypingListener.getInstance().changeFontColor();
             TypingListener.getInstance().changePosition();
         });
-        progressButton.addChangeListener(e->LocalConfig.progress=progressButton.isSelected());
-        quotationMarkReplacementButton.addChangeListener(e->LocalConfig.quotationMarkReplacement=quotationMarkReplacementButton.isSelected());
+        progressButton.addChangeListener(e -> LocalConfig.progress = progressButton.isSelected());
+        quotationMarkReplacementButton.addChangeListener(e -> LocalConfig.quotationMarkReplacement = quotationMarkReplacementButton.isSelected());
 
         JButton rightcolorSet = new JButton("打对字颜色");
         rightcolorSet.setFont(SwingSingleton.tipFont());
-        rightcolorSet.setBounds(10,40,100,30);
+        rightcolorSet.setBounds(10, 40, 100, 30);
         baseSetPanel.add(rightcolorSet);
 
         JButton mistakecolorSet = new JButton("打错字颜色");
         mistakecolorSet.setFont(SwingSingleton.tipFont());
-        mistakecolorSet.setBounds(rightcolorSet.getX()+rightcolorSet.getWidth()+10,rightcolorSet.getY(),100,30);
+        mistakecolorSet.setBounds(rightcolorSet.getX() + rightcolorSet.getWidth() + 10, rightcolorSet.getY(), 100, 30);
         baseSetPanel.add(mistakecolorSet);
 
         JButton wenbenBackgroundSet = new JButton("文本框背景颜色");
         wenbenBackgroundSet.setFont(SwingSingleton.tipFont());
-        wenbenBackgroundSet.setBounds(mistakecolorSet.getX()+mistakecolorSet.getWidth()+10,rightcolorSet.getY(),140,30);
+        wenbenBackgroundSet.setBounds(mistakecolorSet.getX() + mistakecolorSet.getWidth() + 10, rightcolorSet.getY(), 140, 30);
         baseSetPanel.add(wenbenBackgroundSet);
 
         JButton qmccolorset = new JButton("全码词颜色");
         qmccolorset.setFont(SwingSingleton.tipFont());
-        qmccolorset.setBounds(wenbenBackgroundSet.getX()+wenbenBackgroundSet.getWidth()+10,rightcolorSet.getY(),140,30);
+        qmccolorset.setBounds(wenbenBackgroundSet.getX() + wenbenBackgroundSet.getWidth() + 10, rightcolorSet.getY(), 140, 30);
         baseSetPanel.add(qmccolorset);
 
         JButton backgroundSet = new JButton("整体界面颜色");
         backgroundSet.setFont(SwingSingleton.tipFont());
-        backgroundSet.setBounds(rightcolorSet.getX(),rightcolorSet.getY()+rightcolorSet.getHeight()+10,140,30);
+        backgroundSet.setBounds(rightcolorSet.getX(), rightcolorSet.getY() + rightcolorSet.getHeight() + 10, 140, 30);
         baseSetPanel.add(backgroundSet);
 
         JButton daziBackgroundSet = new JButton("打字框背景颜色");
         daziBackgroundSet.setFont(SwingSingleton.tipFont());
-        daziBackgroundSet.setBounds(backgroundSet.getX()+backgroundSet.getWidth()+10,rightcolorSet.getHeight()+rightcolorSet.getY()+10,140,30);
+        daziBackgroundSet.setBounds(backgroundSet.getX() + backgroundSet.getWidth() + 10, rightcolorSet.getHeight() + rightcolorSet.getY() + 10, 140, 30);
         baseSetPanel.add(daziBackgroundSet);
 
         JButton emccolorset = new JButton("二码词颜色");
         emccolorset.setFont(SwingSingleton.tipFont());
-        emccolorset.setBounds(daziBackgroundSet.getX()+daziBackgroundSet.getWidth()+10,rightcolorSet.getHeight()+rightcolorSet.getY()+10,100,30);
+        emccolorset.setBounds(daziBackgroundSet.getX() + daziBackgroundSet.getWidth() + 10, rightcolorSet.getHeight() + rightcolorSet.getY() + 10, 100, 30);
         baseSetPanel.add(emccolorset);
 
         JButton smccolorset = new JButton("三码词颜色");
         smccolorset.setFont(SwingSingleton.tipFont());
-        smccolorset.setBounds(emccolorset.getX()+emccolorset.getWidth()+10,rightcolorSet.getHeight()+rightcolorSet.getY()+10,100,30);
+        smccolorset.setBounds(emccolorset.getX() + emccolorset.getWidth() + 10, rightcolorSet.getHeight() + rightcolorSet.getY() + 10, 100, 30);
         baseSetPanel.add(smccolorset);
 
         fontSizeText = new JTextField();
-        fontSizeText.setBounds(backgroundSet.getX(),backgroundSet.getY()+backgroundSet.getHeight()+10,70,30);
-        fontSizeText.addKeyListener(		//只能输入数字
-                new KeyListener(){
+        fontSizeText.setBounds(backgroundSet.getX(), backgroundSet.getY() + backgroundSet.getHeight() + 10, 70, 30);
+        fontSizeText.addKeyListener(        //只能输入数字
+                new KeyListener() {
                     @Override
-                    public void keyPressed(KeyEvent arg0) {}
+                    public void keyPressed(KeyEvent arg0) {
+                    }
+
                     @Override
-                    public void keyReleased(KeyEvent arg0) {}
+                    public void keyReleased(KeyEvent arg0) {
+                    }
+
                     @Override
                     public void keyTyped(KeyEvent e) {
                         // TODO Auto-generated method stub
                         int keyChar = e.getKeyChar();
-                        if(keyChar>=KeyEvent.VK_0&&keyChar<=KeyEvent.VK_9){}
-                        else {
+                        if (keyChar >= KeyEvent.VK_0 && keyChar <= KeyEvent.VK_9) {
+                        } else {
                             e.consume();
                         }
                     }
@@ -390,24 +424,27 @@ public class SetDialog{
 
         JButton changeFontSize = new JButton("保存字体大小");
         changeFontSize.setFont(SwingSingleton.tipFont());
-        changeFontSize.setBounds(fontSizeText.getX()+ fontSizeText.getWidth()+10,backgroundSet.getY()+backgroundSet.getHeight()+10,90,30);
+        changeFontSize.setBounds(fontSizeText.getX() + fontSizeText.getWidth() + 10, backgroundSet.getY() + backgroundSet.getHeight() + 10, 90, 30);
         baseSetPanel.add(changeFontSize);
 
         typePageCountText = new JTextField();
-        typePageCountText.setBounds(changeFontSize.getX()+changeFontSize.getWidth()+10,backgroundSet.getY()+backgroundSet.getHeight()+10,70,30);
-        typePageCountText.addKeyListener(		//只能输入数字
-                new KeyListener(){
+        typePageCountText.setBounds(changeFontSize.getX() + changeFontSize.getWidth() + 10, backgroundSet.getY() + backgroundSet.getHeight() + 10, 70, 30);
+        typePageCountText.addKeyListener(        //只能输入数字
+                new KeyListener() {
                     @Override
-                    public void keyPressed(KeyEvent e) {}
+                    public void keyPressed(KeyEvent e) {
+                    }
+
                     @Override
                     public void keyReleased(KeyEvent e) {
                         // TODO Auto-generated method stub
                         int keyChar = e.getKeyChar();
-                        if(keyChar>=KeyEvent.VK_0&&keyChar<=KeyEvent.VK_9){}
-                        else {
+                        if (keyChar >= KeyEvent.VK_0 && keyChar <= KeyEvent.VK_9) {
+                        } else {
                             e.consume();
                         }
                     }
+
                     @Override
                     public void keyTyped(KeyEvent e) {
 
@@ -419,47 +456,49 @@ public class SetDialog{
 
         JButton spliteButton = new JButton("保存页字数");
         spliteButton.setFont(SwingSingleton.tipFont());
-        spliteButton.setBounds(typePageCountText.getX()+ typePageCountText.getWidth()+10,backgroundSet.getY()+backgroundSet.getHeight()+10,90,30);
+        spliteButton.setBounds(typePageCountText.getX() + typePageCountText.getWidth() + 10, backgroundSet.getY() + backgroundSet.getHeight() + 10, 90, 30);
         baseSetPanel.add(spliteButton);
 
         JButton codeTableButton = new JButton("全码表选择");
         codeTableButton.setFont(SwingSingleton.tipFont());
-        codeTableButton.setBounds(spliteButton.getX()+spliteButton.getWidth()+10,backgroundSet.getY()+backgroundSet.getHeight()+10,100,30);
+        codeTableButton.setBounds(spliteButton.getX() + spliteButton.getWidth() + 10, backgroundSet.getY() + backgroundSet.getHeight() + 10, 100, 30);
         baseSetPanel.add(codeTableButton);
 
         family = new JComboBox<>();
-        GraphicsEnvironment ge=GraphicsEnvironment.getLocalGraphicsEnvironment();
-        String [] fontName=ge.getAvailableFontFamilyNames();
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        String[] fontName = ge.getAvailableFontFamilyNames();
         for (String s : fontName) {
             family.addItem(s);
         }
-        family.setBounds(rightcolorSet.getX(), fontSizeText.getY()+ fontSizeText.getHeight()+10,120,30);
+        family.setBounds(rightcolorSet.getX(), fontSizeText.getY() + fontSizeText.getHeight() + 10, 120, 30);
         family.setSelectedItem(LocalConfig.family);
         baseSetPanel.add(family);
 
         JButton familyChange = new JButton("修改字型");
         familyChange.setFont(SwingSingleton.tipFont());
-        familyChange.setBounds(family.getX()+family.getWidth()+10, fontSizeText.getY()+ fontSizeText.getHeight()+10,90,30);
+        familyChange.setBounds(family.getX() + family.getWidth() + 10, fontSizeText.getY() + fontSizeText.getHeight() + 10, 90, 30);
         baseSetPanel.add(familyChange);
 
         readyFont = new JTextField();
         readyFont.setText(String.valueOf(LocalConfig.readyFont));
-        readyFont.setBounds(familyChange.getX()+familyChange.getWidth()+10, fontSizeText.getY()+ fontSizeText.getHeight()+10,90,30);
-        readyFont.addKeyListener(		//只能输入数字
-                new KeyListener(){
+        readyFont.setBounds(familyChange.getX() + familyChange.getWidth() + 10, fontSizeText.getY() + fontSizeText.getHeight() + 10, 90, 30);
+        readyFont.addKeyListener(        //只能输入数字
+                new KeyListener() {
                     @Override
-                    public void keyPressed(KeyEvent e) {}
+                    public void keyPressed(KeyEvent e) {
+                    }
+
                     @Override
                     public void keyReleased(KeyEvent e) {
                         // TODO Auto-generated method stub
                         int keyChar = e.getKeyChar();
-                        if(keyChar>=KeyEvent.VK_0&&keyChar<=KeyEvent.VK_9){
+                        if (keyChar >= KeyEvent.VK_0 && keyChar <= KeyEvent.VK_9) {
                             LocalConfig.readyFont = Integer.valueOf(readyFont.getText());
-                        }
-                        else {
+                        } else {
                             e.consume();
                         }
                     }
+
                     @Override
                     public void keyTyped(KeyEvent e) {
 
@@ -469,10 +508,10 @@ public class SetDialog{
 
         JTextField regex = new JTextField(LocalConfig.regex);
         JButton changeRegex = new JButton("修改选重键");
-        addOnBounds(baseSetPanel,regex,family.getX(), ySpace(family,10),100,30);
-        addOnBounds(baseSetPanel,changeRegex, xSpace(regex,10),regex.getY(),90,30);
+        addOnBounds(baseSetPanel, regex, family.getX(), ySpace(family, 10), 100, 30);
+        addOnBounds(baseSetPanel, changeRegex, xSpace(regex, 10), regex.getY(), 90, 30);
 
-        changeRegex.addActionListener(e-> BetterTypingSingleton.setBetterTypingRegex(LocalConfig.regex = regex.getText()));
+        changeRegex.addActionListener(e -> BetterTypingSingleton.setBetterTypingRegex(LocalConfig.regex = regex.getText()));
 
         baseSetPanel.add(readyFont);
 
@@ -489,15 +528,15 @@ public class SetDialog{
         emccolorset.addActionListener(setbackgroundListener);
         smccolorset.addActionListener(setbackgroundListener);
 
-        spliteButton.addActionListener(e-> LocalConfig.typePageCount = Integer.parseInt(typePageCountText.getText()));
-        changeFontSize.addActionListener(e->{
+        spliteButton.addActionListener(e -> LocalConfig.typePageCount = Integer.parseInt(typePageCountText.getText()));
+        changeFontSize.addActionListener(e -> {
             LocalConfig.fontSize = Integer.parseInt(fontSizeText.getText());
             JTextPaneFontConfig.start();
             TypingListener.getInstance().changeFontColor();
             SwingSingleton.typingText().setFont(new Font(LocalConfig.family, Font.PLAIN, LocalConfig.fontSize));
         });
         codeTableButton.addActionListener(new ChooseFile());
-        familyChange.addActionListener(e-> {
+        familyChange.addActionListener(e -> {
             LocalConfig.family = family.getSelectedItem().toString();
             JTextPaneFontConfig.start();
             TypingListener.getInstance().changeFontColor();
