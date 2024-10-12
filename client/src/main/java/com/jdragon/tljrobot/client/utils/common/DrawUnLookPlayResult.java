@@ -116,6 +116,7 @@ public class DrawUnLookPlayResult {
                 }
             }
         }
+        length -= mistake;
         //偏移
         int moveX = 10;
         int moveYBottom = 30;
@@ -155,7 +156,13 @@ public class DrawUnLookPlayResult {
                 "黑色：对、白色：少、粉色：多、红色：错、蓝色：错原字、青色：忽略" : "黑色：对、白色：少、粉色：多、红色：错、蓝色：错原字";
         graphics.drawString(help, moveX, moveYTop - 30);
         //画时间和详情
-        String playResultStr = "文章总长" + length + " 错" + (mistake + more + miss) + "处 分别错:" + mistake + " 少:" + miss + " 多:" + more + " 正确率：" + String.format("%.2f", ((double) length - mistake - more - miss) * 100 / length) + "%";
+        int mistakeAll = mistake + miss;
+        if (!LocalConfig.morePunishment) {
+            mistakeAll += more;
+        }
+        String playResultStr = "文章总长" + length + " 错" + mistakeAll + "处" +
+                " 分别错:" + mistake + " 少:" + miss + " 多:" + more +
+                " 正确率：" + String.format("%.2f", ((double) length - mistakeAll) * 100 / length) + "%";
         playResultStr += "听打".equals(model) ? " 忽略符号:" + ignore : "";
         graphics.drawString(playResultStr, moveX, moveYTop - 10);
 

@@ -804,7 +804,7 @@ public class TypingListener implements DocumentListener, KeyListener {
             }
         }
         mistake = lookMis + lookMiss;
-        if (LocalConfig.errorPunishment) {
+        if (!LocalConfig.morePunishment) {
             mistake += lookMore;
         }
         ListenPlayEvent.setLength(length);

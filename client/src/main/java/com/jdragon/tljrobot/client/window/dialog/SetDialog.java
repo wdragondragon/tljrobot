@@ -62,7 +62,7 @@ public class SetDialog {
     private static JToggleButton undecoratedButton;
 
     private static JPanel gradeSetPanel = new JPanel();
-    private static JToggleButton errorPunishment, ignoreMultipleWords;
+    private static JToggleButton errorPunishment, morePunishment;
     private static ArrayList<JToggleButton> gradeSetPanelJToggleButtonList = new ArrayList<>();
 
     public static JToggleButton getTipsButton() {
@@ -84,14 +84,18 @@ public class SetDialog {
     private static void addGradeSetPanel() {
         gradeSetPanel.setLayout(null);
         gradeSetPanelJToggleButtonList.add(errorPunishment = new JToggleButton("错误惩罚"));
+        gradeSetPanelJToggleButtonList.add(morePunishment = new JToggleButton("多字惩罚"));
         for (JToggleButton jToggleButton : gradeSetPanelJToggleButtonList) {
             jToggleButton.setFont(SwingSingleton.tipFont());
         }
         errorPunishment.addChangeListener(e -> LocalConfig.errorPunishment = errorPunishment.isSelected());
+        morePunishment.addChangeListener(e -> LocalConfig.morePunishment = morePunishment.isSelected());
 
         addOnBounds(gradeSetPanel, errorPunishment, 40, 10, 80, 20);
+        addOnBounds(gradeSetPanel, morePunishment,xSpace(errorPunishment, 10), errorPunishment.getY(), 80, 20);
 
         errorPunishment.setSelected(LocalConfig.errorPunishment);
+        morePunishment.setSelected(LocalConfig.morePunishment);
 
         tabbedPane.add("判卷设置", gradeSetPanel);
     }

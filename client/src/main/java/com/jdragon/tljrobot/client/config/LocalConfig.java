@@ -79,6 +79,7 @@ public class LocalConfig {
     public static Boolean ntqqGetArticle = false;//新版qq
 
     public static Boolean errorPunishment = true;
+    public static Boolean morePunishment = true;
 
     public static Float windowsOpacity = 1.0f;
     public static String windowsTheme = "长流默认";
