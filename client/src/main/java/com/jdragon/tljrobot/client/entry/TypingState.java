@@ -49,6 +49,11 @@ public class TypingState {
     public static int mistake;
 
     /**
+     * 看打，听打的正确字数。
+     */
+    public static int correct;
+
+    /**
      * 英词错词
      */
     public static int enMistake;
@@ -122,6 +127,7 @@ public class TypingState {
         lookMis = 0;
         lookMiss = 0;
         lookMore = 0;
+        correct = 0;
         record = new StringBuilder();
         timer.setStartTime(0L);
         timer.setEndTime(0L);

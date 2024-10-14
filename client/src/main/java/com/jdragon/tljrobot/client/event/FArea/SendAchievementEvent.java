@@ -32,7 +32,7 @@ public class SendAchievementEvent {
         if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
             int length = ListenPlayEvent.getLength();
             result = ListenPlayEvent.getTitle() +
-                    " 文章长度" + length + " 正确率" + String.format("%.2f", ((double) length - mistake) / length * 100) + "%" +
+                    " 文章长度" + length + " 正确率" + String.format("%.2f", ((double) correct) / length * 100) + "%" +
                     " 听打模式" + " 错:" + lookMis + " 多:" + lookMore + " 少:" + lookMiss +
                     " 长流" + (LocalConfig.changLiuVersion ? FinalConfig.VERSION : "") +
                     (LocalConfig.systemVersion ? " " + SystemUtil.getSystemName() + "版" : "");

@@ -84,7 +84,7 @@ public class DrawUnLookPlayResult {
         int imageHeight = 65;
 
         int imageWidthTemp = 10;
-        int length = 0, more = 0, miss = 0, mistake = 0, ignore = 0;
+        int length = 0, more = 0, miss = 0, mistake = 0, ignore = 0, correct = 0;
         for (HashMap<String, Integer> strHashMap : strList) {
             for (Map.Entry<String, Integer> entry : strHashMap.entrySet()) {
                 int type = entry.getValue();
@@ -96,7 +96,11 @@ public class DrawUnLookPlayResult {
                 DrawSub drawSub = new DrawSub(imageWidthTemp, imageHeight - 20, word, lookPlayColor.getColor(type), lookPlayColor.getFont(type));
                 drawSubList.add(drawSub);
                 imageWidthTemp += type == lookPlayColor.mistake.type ? fontSize / 2 + 3 : fontSize + 3;
+                length++;
                 switch (type) {
+                    case 0:
+                        correct++;
+                        break;
                     case 1:
                         miss++;
                         break;
@@ -106,17 +110,15 @@ public class DrawUnLookPlayResult {
                     case 3:
                         mistake++;
                         break;
+                    case 5:
+                        ignore++;
+                        break;
                     default:
                         break;
                 }
-                if (type == 5) {
-                    ignore++;
-                } else {
-                    length++;
-                }
             }
         }
-        length -= mistake;
+        length -= (ignore + mistake + more);
         //偏移
         int moveX = 10;
         int moveYBottom = 30;
@@ -162,7 +164,7 @@ public class DrawUnLookPlayResult {
         }
         String playResultStr = "文章总长" + length + " 错" + mistakeAll + "处" +
                 " 分别错:" + mistake + " 少:" + miss + " 多:" + more +
-                " 正确率：" + String.format("%.2f", ((double) length - mistakeAll) * 100 / length) + "%";
+                " 正确率：" + String.format("%.2f", ((double) correct) * 100 / length) + "%";
         playResultStr += "听打".equals(model) ? " 忽略符号:" + ignore : "";
         graphics.drawString(playResultStr, moveX, moveYTop - 10);
 

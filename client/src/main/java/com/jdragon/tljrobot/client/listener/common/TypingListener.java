@@ -780,29 +780,42 @@ public class TypingListener implements DocumentListener, KeyListener {
 
     public void changeListenPlayFontColor(List<HashMap<String, Integer>> strList) {
         int length = 0;
+        int ignore = 0;
         watchingText().setText(""); // 清空文本框
         for (HashMap<String, Integer> hashMap : strList) {
             for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
                 length++;
-                if (entry.getValue() == 0) {
-                    documentStyleHandler.insertDoc(entry.getKey(), "对");
-                } else if (entry.getValue() == 1) {
-                    lookMiss++;
-                    documentStyleHandler.insertDoc(entry.getKey(), "少");
-                } else if (entry.getValue() == 2) {
-                    lookMore++;
-                    documentStyleHandler.insertDoc(entry.getKey(), "多");
-                } else if (entry.getValue() == 3) {
-                    lookMis++;
-                    documentStyleHandler.insertDoc(entry.getKey(), "错");
-                } else if (entry.getValue() == 4) {
-                    documentStyleHandler.insertDoc(entry.getKey(), "错原");
-                } else {
-                    documentStyleHandler.insertDoc(entry.getKey(), "忽略");
-                    length--;
+                Integer type = entry.getValue();
+                switch (type) {
+                    case 0:
+                        correct++;
+                        documentStyleHandler.insertDoc(entry.getKey(), "对");
+                        break;
+                    case 1:
+                        lookMiss++;
+                        documentStyleHandler.insertDoc(entry.getKey(), "少");
+                        break;
+                    case 2:
+                        lookMore++;
+                        documentStyleHandler.insertDoc(entry.getKey(), "多");
+                        break;
+                    case 3:
+                        lookMis++;
+                        documentStyleHandler.insertDoc(entry.getKey(), "错");
+                        break;
+                    case 4:
+                        documentStyleHandler.insertDoc(entry.getKey(), "错原");
+                        break;
+                    case 5:
+                        documentStyleHandler.insertDoc(entry.getKey(), "忽略");
+                        ignore++;
+                        break;
+                    default:
+                        break;
                 }
             }
         }
+        length -= (ignore + lookMis + lookMore);
         mistake = lookMis + lookMiss;
         if (!LocalConfig.morePunishment) {
             mistake += lookMore;
