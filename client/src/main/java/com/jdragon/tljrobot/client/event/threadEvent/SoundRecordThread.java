@@ -4,6 +4,7 @@ import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
+import javazoom.jl.player.advanced.AdvancedPlayer;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,7 +14,7 @@ import java.io.FileNotFoundException;
  * Create by Jdragon on 2020.02.06
  */
 public class SoundRecordThread extends Thread{
-    static Player player;
+    static AdvancedPlayer player;
     static boolean isStart;
 //    static SourceDataLine player;
     static File file;
@@ -34,7 +35,7 @@ public class SoundRecordThread extends Thread{
             if(isStart)return;
             isStart = true;
             stream = new FileInputStream(file);
-            player = new Player(stream);
+            player = new AdvancedPlayer(stream);
             player.play();
             isStart = false;
         } catch (FileNotFoundException | JavaLayerException e) {
