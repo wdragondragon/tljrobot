@@ -34,6 +34,7 @@ public class SendAchievementEvent {
             result = ListenPlayEvent.getTitle() +
                     " 文章长度" + length + " 正确率" + String.format("%.2f", ((double) correct) / length * 100) + "%" +
                     " 听打模式" + " 错:" + lookMis + " 多:" + lookMore + " 少:" + lookMiss +
+                    (LocalConfig.useTime ? " 用时" + timer.formatSeconds() : "") +
                     " 长流" + (LocalConfig.changLiuVersion ? FinalConfig.VERSION : "") +
                     (LocalConfig.systemVersion ? " " + SystemUtil.getSystemName() + "版" : "");
             NumState.num += length;
@@ -88,6 +89,7 @@ public class SendAchievementEvent {
                                     "(左" + left + ":右" + right + ":空格" + space + ")" : "") +
                             (LocalConfig.wordRate ? " 打词率" + String.format("%.2f", getWordRate()) + "%" : "") +
                             (LocalConfig.repeatRate ? " 选重率" + String.format("%.2f", getRepeatRate()) + "%" : "") + lookPlayStr +
+                            (LocalConfig.useTime ? " 用时" + timer.formatSeconds() : "") +
                             (LocalConfig.typeWritingSign ? " 输入法:" + LocalConfig.typeWriting : "") +
                             (LocalConfig.personalTagSign ? " 个签:" + LocalConfig.personalTag : "") +
                             (LocalConfig.checkCode ? " 校验码" + checkCode : "") +

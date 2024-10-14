@@ -167,6 +167,11 @@ public class DrawUnLookPlayResult {
                 " 正确率：" + String.format("%.2f", ((double) correct) * 100 / length) + "%";
         playResultStr += "听打".equals(model) ? " 忽略符号:" + ignore : "";
         graphics.drawString(playResultStr, moveX, moveYTop - 10);
+        if (LocalConfig.useTime) {
+            String useTime = model + "用时 " + timer.formatSeconds();
+            strWidth = graphics.getFontMetrics().stringWidth(useTime);
+            graphics.drawString(useTime, imageWidth + moveX - strWidth, moveYTop - graphics.getFontMetrics().getHeight() - 10);
+        }
 
         String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         String modelAndTimeStr = model + "详细 " + time;

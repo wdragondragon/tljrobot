@@ -6,6 +6,7 @@ import java.awt.*;
 
 import static com.jdragon.tljrobot.client.constant.Constant.CODE_TABLE;
 import static com.jdragon.tljrobot.client.constant.Constant.FOLLOW_PLAY_PATTERN;
+
 public class LocalConfig {
     public static String iniFilePath = "../set/config.ini";
 
@@ -39,7 +40,7 @@ public class LocalConfig {
     public static String typingPattern = FOLLOW_PLAY_PATTERN;//打字模式
 
     public static Boolean progress = true;//进度条
-    public static Boolean tip =  true;//词提
+    public static Boolean tip = true;//词提
     public static Boolean lurk = false;//潜水
     public static Boolean replace = true;//符号替换
     public static Boolean clearSpace = true;//去除空格
@@ -67,6 +68,7 @@ public class LocalConfig {
     public static Boolean changLiuVersion = true;
     public static Boolean systemVersion = true;
     public static Boolean checkCode = true;
+    public static Boolean useTime = true;
     public static Boolean personalTagSign = false;
     public static Boolean typeWritingSign = false;
     public static Boolean ctrlSendAchToQQ = false;
@@ -97,8 +99,8 @@ public class LocalConfig {
 
     public static Integer textMode = 1;
 
-//    public static String serviceAddr = FinalConfig.TLJ_ADDR;
-    public static void readConfig(){
+    //    public static String serviceAddr = FinalConfig.TLJ_ADDR;
+    public static void readConfig() {
         IniAccess.readIni(iniFilePath);
     }
 }
