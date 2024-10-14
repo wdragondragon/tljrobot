@@ -535,9 +535,9 @@ public class SetDialog {
         spliteButton.addActionListener(e -> LocalConfig.typePageCount = Integer.parseInt(typePageCountText.getText()));
         changeFontSize.addActionListener(e -> {
             LocalConfig.fontSize = Integer.parseInt(fontSizeText.getText());
+            SwingSingleton.typingText().setFont(new Font(LocalConfig.family, Font.PLAIN, LocalConfig.fontSize));
             JTextPaneFontConfig.start();
             TypingListener.getInstance().changeFontColor();
-            SwingSingleton.typingText().setFont(new Font(LocalConfig.family, Font.PLAIN, LocalConfig.fontSize));
         });
         codeTableButton.addActionListener(new ChooseFile());
         familyChange.addActionListener(e -> {
