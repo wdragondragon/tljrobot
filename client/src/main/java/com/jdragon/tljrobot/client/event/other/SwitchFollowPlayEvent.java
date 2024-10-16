@@ -5,6 +5,7 @@ import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.event.FArea.ReplayEvent;
 import com.jdragon.tljrobot.client.handle.document.DocumentStyleHandler;
+import com.jdragon.tljrobot.client.utils.core.Layout;
 
 import java.awt.*;
 
@@ -19,6 +20,7 @@ public class SwitchFollowPlayEvent {
         ListenPlayEvent.stop();
 
         LocalConfig.typingPattern = Constant.FOLLOW_PLAY_PATTERN;
+        Layout.resetBounds();
         documentStyleHandler.defineStyle("黑", 
                 LocalConfig.fontSize, false, false, false, Color.BLACK, LocalConfig.family,
                 LocalConfig.rightColor);

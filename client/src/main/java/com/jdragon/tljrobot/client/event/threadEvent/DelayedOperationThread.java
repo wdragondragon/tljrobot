@@ -63,7 +63,6 @@ public class DelayedOperationThread extends Thread {
                                     Comparison.getComparisonListenResult(ListenPlayEvent.getContent(),
                                             ArticleUtil.clearSpace(typingText().getText()), BetterTypingSingleton.getInstance().getSymbolCode());
                             TypingListener.getInstance().changeListenPlayFontColor(hashMapList);
-                            SendAchievementEvent.start();
                             ListenPlayEvent.stop();
                             break;
                     }

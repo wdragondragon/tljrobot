@@ -15,6 +15,7 @@ import com.jdragon.tljrobot.client.event.other.SwitchWatchPlayEvent;
 import com.jdragon.tljrobot.client.handle.theme.ThemeManager;
 import com.jdragon.tljrobot.client.handle.theme.WindowThemeHandler;
 import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
+import com.jdragon.tljrobot.client.listener.common.MarkPapersListener;
 import com.jdragon.tljrobot.client.listener.common.MixListener;
 import com.jdragon.tljrobot.client.listener.common.TypingListener;
 import com.jdragon.tljrobot.client.listener.core.SystemListener;
@@ -36,6 +37,7 @@ import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import static com.jdragon.tljrobot.client.component.SwingSingleton.*;
 import static com.jdragon.tljrobot.client.utils.core.Layout.*;
@@ -68,7 +70,16 @@ public class MainFra extends JFrame {
         jMenu().add(JMenuComponent.getInstance().getMenu());
         addOnBounds(this, tipButton(), 50, 0, 20, 10);
         addOnBounds(this, jMenu(), 5, 10, 45, 32);
-        int topButtonWidth = (LocalConfig.windowWidth - (jMenu().getX() + jMenu().getWidth() + 40)) / 4;
+
+        int overButtonWidth = 45;
+        int topButtonWidth;
+        boolean followPlay = Objects.equals(LocalConfig.typingPattern, Constant.FOLLOW_PLAY_PATTERN);
+        if (followPlay) {
+            topButtonWidth = (LocalConfig.windowWidth - (jMenu().getX() + jMenu().getWidth() + 40)) / 4;
+            overButton().setVisible(false);
+        } else {
+            topButtonWidth = (LocalConfig.windowWidth - (jMenu().getX() + jMenu().getWidth() + overButtonWidth + 50)) / 4;
+        }
         addOnBounds(this, speedButton(),
                 xSpace(jMenu(), 7), 10, topButtonWidth, 30);
         addOnBounds(this, keySpeedButton(),
@@ -77,6 +88,8 @@ public class MainFra extends JFrame {
                 xSpace(keySpeedButton(), 10), 10, topButtonWidth, 30);
         addOnBounds(this, theoreticalCodeLengthButton(),
                 xSpace(keyLengthButton(), 10), 10, topButtonWidth, 30);
+        addOnBounds(this, overButton(),
+                xSpace(theoreticalCodeLengthButton(), 10), 10, overButtonWidth, 30);
 
         addOnBounds(this, typingAndWatching(), 0,
                 ySpace(speedButton(), 5), getWidth(), getHeight() - 95);
@@ -184,16 +197,7 @@ public class MainFra extends JFrame {
                         ReplayEvent.start();
                         break;
                     case KeyEvent.VK_ENTER:
-                        if (LocalConfig.typingPattern.equals(Constant.WATCH_PLAY_PATTERN)) {
-                            if (SwingSingleton.typingText().getText().length() == 0) {
-                                break;
-                            }
-                            typingText().setEditable(false); // 设置不可打字状态
-                            TypingListener.delaySendResultSign = true;
-                        } else if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
-                            typingText().setEditable(false); // 设置不可打字状态
-                            TypingListener.delaySendResultSign = true;
-                        }
+                        MarkPapersListener.action();
                         break;
                     default:
                         break;

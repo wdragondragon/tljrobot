@@ -755,30 +755,11 @@ public class TypingListener implements DocumentListener, KeyListener {
         System.out.println("color change");
     }
 
-    public void changeLookPlayFontColor(List<HashMap<String, Integer>> strList) {
-        watchingText().setText(""); // 清空文本框
-        for (HashMap<String, Integer> hashMap : strList) {
-            for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
-                if (entry.getValue() == 0) {
-                    documentStyleHandler.insertDoc(entry.getKey(), "对");
-                } else if (entry.getValue() == 1) {
-                    lookMiss++;
-                    documentStyleHandler.insertDoc(entry.getKey(), "少");
-                } else if (entry.getValue() == 2) {
-                    lookMore++;
-                    documentStyleHandler.insertDoc(entry.getKey(), "多");
-                } else if (entry.getValue() == 3) {
-                    lookMis++;
-                    documentStyleHandler.insertDoc(entry.getKey(), "错");
-                } else {
-                    documentStyleHandler.insertDoc(entry.getKey(), "错原");
-                }
-            }
-        }
-        mistake = lookMis + lookMore + lookMiss;
-    }
-
     public void changeListenPlayFontColor(List<HashMap<String, Integer>> strList) {
+        correct = 0;
+        lookMiss = 0;
+        lookMore = 0;
+        lookMis = 0;
         int length = 0;
         int ignore = 0;
         watchingText().setText(""); // 清空文本框

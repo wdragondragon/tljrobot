@@ -3,6 +3,7 @@ package com.jdragon.tljrobot.client.event.other;
 import com.jdragon.tljrobot.client.component.JMenuComponent;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
+import com.jdragon.tljrobot.client.utils.core.Layout;
 
 /**
  * Create by Jdragon on 2020.02.06
@@ -10,6 +11,7 @@ import com.jdragon.tljrobot.client.constant.Constant;
 public class SwitchListenPlayEvent {
     public static void start() {
         LocalConfig.typingPattern = Constant.LISTEN_PLAY_PATTERN;
+        Layout.resetBounds();
         JMenuComponent.getInstance().switchingMode.setText("当前模式：" + LocalConfig.typingPattern);
         JMenuComponent.getInstance().getMenu().setText(LocalConfig.typingPattern);
         SwitchTextModelEvent.start(Constant.TEXT_MODE_CN);

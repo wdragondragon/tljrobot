@@ -7,6 +7,7 @@ import com.jdragon.tljrobot.client.entry.Article;
 import com.jdragon.tljrobot.client.entry.TypingState;
 import com.jdragon.tljrobot.client.handle.document.JTextPanelEditorKit;
 import com.jdragon.tljrobot.client.listener.common.ArticleTreeListener;
+import com.jdragon.tljrobot.client.listener.common.MarkPapersListener;
 import com.jdragon.tljrobot.client.listener.common.MixListener;
 import com.jdragon.tljrobot.client.window.CirecordFra;
 import com.jdragon.tljrobot.client.window.MainFra;
@@ -22,7 +23,7 @@ public class SwingSingleton {
     private static Font normalFont = new Font(LocalConfig.family, Font.PLAIN, LocalConfig.fontSize);
     private static Font tipsFont = new Font(LocalConfig.family, Font.PLAIN, 12);
     private static JMenuBar jMenu;
-    private static JButton speedButton, keySpeedButton, keyLengthButton, theoreticalCodeLength;
+    private static JButton speedButton, keySpeedButton, keyLengthButton, theoreticalCodeLength, overButton;
     private static JTextPane typingText;
     private static JTextPane watchingText;
     private static JScrollPane watchingJSP, typingJSP;
@@ -163,6 +164,14 @@ public class SwingSingleton {
             theoreticalCodeLength.addActionListener(e -> ShowArticleDialog.getInstance(Article.getArticleSingleton().getShortCodeEntity().getArticleCodes()).setVisible(true));
         }
         return theoreticalCodeLength;
+    }
+
+    public static JButton overButton() {
+        if (overButton == null) {
+            overButton = new JButton("判卷");
+            overButton.addActionListener(e -> MarkPapersListener.action());
+        }
+        return overButton;
     }
 
     public static JMenuBar jMenu() {

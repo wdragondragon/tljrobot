@@ -2,9 +2,11 @@ package com.jdragon.tljrobot.client.utils.core;
 
 import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.config.LocalConfig;
+import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.window.MainFra;
 
 import java.awt.*;
+import java.util.Objects;
 
 import static com.jdragon.tljrobot.client.component.SwingSingleton.*;
 
@@ -132,11 +134,21 @@ public class Layout {
         int systemAddWidth = LocalConfig.undecorated ? 0 : 15;
         int systemAddHeight = LocalConfig.undecorated ? 0 : 40;
 
-        int topButtonWidth = (mainFra.getWidth() - systemAddWidth - (jMenu().getX() + jMenu().getWidth() + 40)) / 4;
+        int overButtonWidth = 45;
+        int topButtonWidth;
+        boolean followPlay = Objects.equals(LocalConfig.typingPattern, Constant.FOLLOW_PLAY_PATTERN);
+        if (followPlay) {
+            topButtonWidth = (mainFra.getWidth() - systemAddWidth - (jMenu().getX() + jMenu().getWidth() + 40)) / 4;
+            overButton().setVisible(false);
+        } else {
+            topButtonWidth = (mainFra.getWidth() - systemAddWidth - (jMenu().getX() + jMenu().getWidth() + overButtonWidth + 50)) / 4;
+            overButton().setVisible(true);
+        }
         speedButton().setBounds(speedButton().getX(), speedButton().getY(), topButtonWidth, SwingSingleton.speedButton().getHeight());
         keySpeedButton().setBounds(xSpace(speedButton(), 10), speedButton().getY(), topButtonWidth, speedButton().getHeight());
         keyLengthButton().setBounds(xSpace(keySpeedButton(), 10), speedButton().getY(), topButtonWidth, speedButton().getHeight());
-        theoreticalCodeLengthButton().setBounds(xSpace(keyLengthButton(), 10), speedButton().getY(), topButtonWidth, SwingSingleton.speedButton().getHeight());
+        theoreticalCodeLengthButton().setBounds(xSpace(keyLengthButton(), 10), speedButton().getY(), topButtonWidth, speedButton().getHeight());
+        overButton().setBounds(xSpace(theoreticalCodeLengthButton(), 10), speedButton().getY(), overButtonWidth, speedButton().getHeight());
         int baseBottomLabelWidth;
         if (sendArticleLabel().isVisible()) {
             baseBottomLabelWidth = (mainFra.getWidth() - systemAddWidth - 20) / 10;
