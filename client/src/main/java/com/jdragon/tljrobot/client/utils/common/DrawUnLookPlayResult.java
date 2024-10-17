@@ -2,6 +2,7 @@ package com.jdragon.tljrobot.client.utils.common;
 
 import com.jdragon.tljrobot.client.config.FinalConfig;
 import com.jdragon.tljrobot.client.config.LocalConfig;
+import com.jdragon.tljrobot.client.entry.UserState;
 import com.jdragon.tljrobot.tljutils.string.Comparison;
 
 import javax.imageio.ImageIO;
@@ -182,6 +183,9 @@ public class DrawUnLookPlayResult {
         graphics.setColor(Color.GRAY);
         graphics.setFont(new Font("宋体", Font.BOLD, 15));
         String foot = "该图由长流跟打器" + FinalConfig.VERSION + " " + model + "模式制作";
+        if (UserState.loginState) {
+            foot = "该图由[" + UserState.loginUserName + "][" + model + "]制作";
+        }
         strWidth = graphics.getFontMetrics().stringWidth(foot);
         graphics.drawString(foot, imageWidth + moveX - strWidth, imageHeight + moveYTop + 20);
         //画第二层背景

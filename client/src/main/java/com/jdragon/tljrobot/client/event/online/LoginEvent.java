@@ -1,4 +1,5 @@
 package com.jdragon.tljrobot.client.event.online;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.jdragon.tljrobot.client.config.FinalConfig;
@@ -7,6 +8,7 @@ import com.jdragon.tljrobot.client.constant.Constant;
 import com.jdragon.tljrobot.client.entry.UserState;
 import com.jdragon.tljrobot.tljutils.HttpUtil;
 
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 /**
@@ -21,12 +23,13 @@ public class LoginEvent {
             if ("登录成功".equals(jsonObject.getString(Constant.RESPONSE_MESSAGE))) {
                 UserState.loginState = true;
                 UserState.token = jsonObject.getString(Constant.RESPONSE_RESULT);
+                UserState.loginUserName = URLDecoder.decode(username, FinalConfig.ENCODING);
                 TypeNumManagerThread.getInstance().setLocalNumFromServer();
                 TypeNumManagerThread.getInstance().start();
                 new KeepALiveThread().start();
             }
             return jsonObject.getString(Constant.RESPONSE_MESSAGE);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "登录失败";
         }

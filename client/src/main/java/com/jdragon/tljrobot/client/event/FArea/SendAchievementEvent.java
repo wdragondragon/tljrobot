@@ -35,7 +35,7 @@ public class SendAchievementEvent {
                     " 文章长度" + length + " 正确率" + String.format("%.2f", ((double) correct) / length * 100) + "%" +
                     " 听打模式" + " 错:" + lookMis + " 多:" + lookMore + " 少:" + lookMiss +
                     (LocalConfig.useTime ? " 用时" + timer.formatSeconds() : "") +
-                    " 长流" + (LocalConfig.changLiuVersion ? FinalConfig.VERSION : "") +
+                    (LocalConfig.changLiuVersion ? " 长流" + FinalConfig.VERSION : "") +
                     (LocalConfig.systemVersion ? " " + SystemUtil.getSystemName() + "版" : "");
             int typeLength = length - lookMiss + lookMore;
             int typeMistake = lookMis + lookMore;
@@ -96,7 +96,7 @@ public class SendAchievementEvent {
                             (LocalConfig.personalTagSign ? " 个签:" + LocalConfig.personalTag : "") +
                             (LocalConfig.checkCode ? " 校验码" + checkCode : "") +
                             " 哈希" + hash +
-                            " 长流" + (LocalConfig.changLiuVersion ? FinalConfig.VERSION : "") +
+                            (LocalConfig.changLiuVersion ? " 长流" + FinalConfig.VERSION : "") +
                             (LocalConfig.systemVersion ? " " + SystemUtil.getSystemName() + "版" : "");
         }
         Clipboard.set(result);
