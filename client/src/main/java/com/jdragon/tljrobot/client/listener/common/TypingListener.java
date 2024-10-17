@@ -69,11 +69,13 @@ public class TypingListener implements DocumentListener, KeyListener {
     int n;
     int typeWordsNumTemp;
 
+    List<Character> ignoreChar = Arrays.asList('\u000B', '\u0007', '\u0011', '\f', '\u001A', '\u0010');
+
     @Override
     public void keyTyped(KeyEvent e) {
         try {
             log.debug("keyTyped：{},code：{}", e.getKeyChar(), e.getKeyCode());
-            if (typeStr.trim().isEmpty() && e.getKeyChar() == ' ') {
+            if ((typeStr.trim().isEmpty() && e.getKeyChar() == ' ') || ignoreChar.contains(e.getKeyChar())) {
                 e.consume();
                 return;
             }
