@@ -71,7 +71,7 @@ public class MainFra extends JFrame {
         addOnBounds(this, tipButton(), 50, 0, 20, 10);
         addOnBounds(this, jMenu(), 5, 10, 45, 32);
 
-        int overButtonWidth = 45;
+        int overButtonWidth = 55;
         int topButtonWidth;
         boolean followPlay = Objects.equals(LocalConfig.typingPattern, Constant.FOLLOW_PLAY_PATTERN);
         if (followPlay) {

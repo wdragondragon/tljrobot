@@ -154,6 +154,9 @@ public class BetterTyping {
     private static SubscriptInstance[] subscriptInstances;
 
     public void changecolortip(String articleStr) {
+        if (articleStr.isEmpty()) {
+            return;
+        }
         String symbol = "。，";
         String codeTemp;
         String strTemp;
@@ -186,8 +189,8 @@ public class BetterTyping {
                         && codeTemp.endsWith("_")
                         && symbol.contains(subscriptInstances[i + 1].getWord())
                         && !(articleLength > i + 2
-                            && symbolEntry.contains(subscriptInstances[i + 1].getWord()
-                            + subscriptInstances[i + 2].getWord()))
+                        && symbolEntry.contains(subscriptInstances[i + 1].getWord()
+                        + subscriptInstances[i + 2].getWord()))
                 ) {
                     codeTemp = codeTemp.substring(0, codeTemp.length() - 1);
                 }

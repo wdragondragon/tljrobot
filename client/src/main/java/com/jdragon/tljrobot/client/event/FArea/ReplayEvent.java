@@ -21,6 +21,11 @@ public class ReplayEvent {
             JOptionPane.showMessageDialog(null, "先结束日赛");
             return;
         }
+
+        if (Article.getArticleSingleton().getArticle().isEmpty()) {
+            return;
+        }
+
         if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN)) {
             typingText().setText("");
             watchingText().setText(""); // 清空文本框

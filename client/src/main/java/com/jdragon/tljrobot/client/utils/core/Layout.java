@@ -134,7 +134,7 @@ public class Layout {
         int systemAddWidth = LocalConfig.undecorated ? 0 : 15;
         int systemAddHeight = LocalConfig.undecorated ? 0 : 40;
 
-        int overButtonWidth = 45;
+        int overButtonWidth = 55;
         int topButtonWidth;
         boolean followPlay = Objects.equals(LocalConfig.typingPattern, Constant.FOLLOW_PLAY_PATTERN);
         if (followPlay) {

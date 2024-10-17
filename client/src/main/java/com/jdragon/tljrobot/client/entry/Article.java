@@ -59,6 +59,7 @@ public class Article {
     private int retry;
 
     private Article() {
+        this.setArticleSingleton(0, "", " ");
     }
 
     @Override

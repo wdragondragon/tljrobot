@@ -37,10 +37,12 @@ public class SendAchievementEvent {
                     (LocalConfig.useTime ? " 用时" + timer.formatSeconds() : "") +
                     " 长流" + (LocalConfig.changLiuVersion ? FinalConfig.VERSION : "") +
                     (LocalConfig.systemVersion ? " " + SystemUtil.getSystemName() + "版" : "");
-            NumState.num += length;
-            NumState.dateNum += length;
-            NumState.misNum += mistake;
-            NumState.rightNum += length - mistake;
+            int typeLength = length - lookMiss + lookMore;
+            int typeMistake = lookMis + lookMore;
+            NumState.num += typeLength;
+            NumState.dateNum += typeLength;
+            NumState.misNum += typeMistake;
+            NumState.rightNum += typeLength - typeMistake;
             TypingListener.getInstance().updateNumShow();
             speedButton().setText(String.format("%.2f", ((double) length - mistake) / length * 100) + "%");
             Clipboard.set(result);
