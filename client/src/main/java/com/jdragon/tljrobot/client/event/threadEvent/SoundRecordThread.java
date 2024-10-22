@@ -1,93 +1,71 @@
 package com.jdragon.tljrobot.client.event.threadEvent;
 
+import com.jdragon.tljrobot.client.component.SwingSingleton;
 import com.jdragon.tljrobot.client.config.LocalConfig;
 import com.jdragon.tljrobot.client.constant.Constant;
+import com.jdragon.tljrobot.client.listener.common.TypingListener;
 import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.Player;
 import javazoom.jl.player.advanced.AdvancedPlayer;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import static com.jdragon.tljrobot.client.component.SwingSingleton.typingText;
+
 /**
  * Create by Jdragon on 2020.02.06
  */
-public class SoundRecordThread extends Thread{
+public class SoundRecordThread extends Thread {
     static AdvancedPlayer player;
     static boolean isStart;
-//    static SourceDataLine player;
     static File file;
     static FileInputStream stream = null;
-    public SoundRecordThread(){}
-    public SoundRecordThread(File file){
-        this.file = file;
+
+    public SoundRecordThread() {
     }
-    public void run(){
+
+    public SoundRecordThread(File file) {
+        SoundRecordThread.file = file;
+    }
+
+    public void run() {
         try {
             Thread.sleep(3000);
-            if(LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN))
+            if (LocalConfig.typingPattern.equals(Constant.LISTEN_PLAY_PATTERN))
                 recordStart();
-        }catch (Exception ignore){}
+        } catch (Exception ignore) {
+        }
     }
-    public static void recordStart(){
+
+    public static void recordStart() {
         try {
-            if(isStart)return;
+            if (isStart) return;
             isStart = true;
             stream = new FileInputStream(file);
             player = new AdvancedPlayer(stream);
             player.play();
+            try {
+                int timeInSecond = 180;
+                while (timeInSecond > 0 && isStart) {
+                    Thread.sleep(1000);
+                    timeInSecond--;
+                    SwingSingleton.watchingText().setText("录音播放完毕，剩余" + timeInSecond + "秒自动提交成绩");
+                }
+            } catch (InterruptedException e) {
+                System.err.println("倒计时线程被中断: " + e.getMessage());
+            }
             isStart = false;
+            typingText().setEditable(false); // 设置不可打字状态
+            TypingListener.delaySendResultSign = true;
         } catch (FileNotFoundException | JavaLayerException e) {
             e.printStackTrace();
         }
-//        try {
-//            if(isStart)return;
-//            isStart = true;
-//            play_mp3(fileName);
-//            isStart = false;
-//        } catch (UnsupportedAudioFileException | IOException e) {
-//            e.printStackTrace();
-//        }
     }
-    public static void recordStop(){
-        if(isStart)
+
+    public static void recordStop() {
+        if (isStart)
             player.close();
         isStart = false;
     }
-//    public static void play_mp3(String path) throws UnsupportedAudioFileException, IOException {
-//        File file=new File(path);
-//        if(!file.exists() || !path.toLowerCase().endsWith(".mp3")) {
-//            throw new RuntimeException("文件不存在");
-//        }
-//        AudioInputStream stream = null;
-//        //使用 mp3spi 解码 mp3 音频文件
-//        MpegAudioFileReader mp = new MpegAudioFileReader();
-//        stream = mp.getAudioInputStream(file);
-//        AudioFormat baseFormat = stream.getFormat();
-//        //设定输出格式为pcm格式的音频文件
-//        AudioFormat format = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, baseFormat.getSampleRate(), 16, baseFormat.getChannels(), baseFormat.getChannels() * 2, baseFormat.getSampleRate(), false);
-//        // 输出到音频
-//        stream = AudioSystem.getAudioInputStream(format, stream);
-//        AudioFormat target = stream.getFormat();
-//        DataLine.Info dinfo = new DataLine.Info(SourceDataLine.class, target, AudioSystem.NOT_SPECIFIED);
-////        SourceDataLine player = null;
-//        int len = -1;
-//        try {
-//            player = (SourceDataLine) AudioSystem.getLine(dinfo);
-//            player.open(target);
-//            player.start();
-//            byte[] buffer = new byte[1024];
-//            while ((len = stream.read(buffer)) > 0) {
-//                player.write(buffer, 0, len);
-//            }
-//            player.drain();
-//            player.stop();
-//            player.close();
-//        }catch (Exception e) {
-//            throw new RuntimeException(e.getMessage());
-//        } finally {
-//            stream.close();
-//        }
-//    }
 }
